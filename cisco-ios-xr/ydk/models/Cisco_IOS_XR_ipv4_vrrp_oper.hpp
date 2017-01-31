@@ -26,6 +26,7 @@ class Vrrp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Summary : public Entity
     {
         public:
@@ -39,53 +40,54 @@ class Vrrp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value ipv4_sessions_master_owner; //type: uint32
-            Value ipv4_sessions_master; //type: uint32
-            Value ipv4_sessions_backup; //type: uint32
-            Value ipv4_sessions_init; //type: uint32
-            Value ipv4_slaves_master; //type: uint32
-            Value ipv4_slaves_backup; //type: uint32
-            Value ipv4_slaves_init; //type: uint32
-            Value ipv4_virtual_ip_addresses_master_owner_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_master_owner_down; //type: uint32
-            Value ipv4_virtual_ip_addresses_master_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_master_down; //type: uint32
-            Value ipv4_virtual_ip_addresses_backup_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_backup_down; //type: uint32
-            Value ipv4_virtual_ip_addresses_init_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_init_down; //type: uint32
-            Value ipv6_sessions_master_owner; //type: uint32
-            Value ipv6_sessions_master; //type: uint32
-            Value ipv6_sessions_backup; //type: uint32
-            Value ipv6_sessions_init; //type: uint32
-            Value ipv6_slaves_master; //type: uint32
-            Value ipv6_slaves_backup; //type: uint32
-            Value ipv6_slaves_init; //type: uint32
-            Value ipv6_virtual_ip_addresses_master_owner_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_master_owner_down; //type: uint32
-            Value ipv6_virtual_ip_addresses_master_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_master_down; //type: uint32
-            Value ipv6_virtual_ip_addresses_backup_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_backup_down; //type: uint32
-            Value ipv6_virtual_ip_addresses_init_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_init_down; //type: uint32
-            Value interfaces_ipv4_state_up; //type: uint32
-            Value interfaces_ipv4_state_down; //type: uint32
-            Value tracked_interfaces_ipv4_state_up; //type: uint32
-            Value tracked_interfaces_ipv4_state_down; //type: uint32
-            Value interfaces_ipv6_state_up; //type: uint32
-            Value interfaces_ipv6_state_down; //type: uint32
-            Value tracked_interfaces_ipv6_state_up; //type: uint32
-            Value tracked_interfaces_ipv6_state_down; //type: uint32
-            Value tracked_objects_state_up; //type: uint32
-            Value tracked_objects_state_down; //type: uint32
-            Value bfd_sessions_up; //type: uint32
-            Value bfd_sessions_down; //type: uint32
-            Value bfd_session_inactive; //type: uint32
-            Value ipv6bfd_sessions_up; //type: uint32
-            Value ipv6bfd_sessions_down; //type: uint32
-            Value ipv6bfd_session_inactive; //type: uint32
 
+
+            YLeaf ipv4_sessions_master_owner; //type: uint32
+            YLeaf ipv4_sessions_master; //type: uint32
+            YLeaf ipv4_sessions_backup; //type: uint32
+            YLeaf ipv4_sessions_init; //type: uint32
+            YLeaf ipv4_slaves_master; //type: uint32
+            YLeaf ipv4_slaves_backup; //type: uint32
+            YLeaf ipv4_slaves_init; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_master_owner_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_master_owner_down; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_master_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_master_down; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_backup_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_backup_down; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_init_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_init_down; //type: uint32
+            YLeaf ipv6_sessions_master_owner; //type: uint32
+            YLeaf ipv6_sessions_master; //type: uint32
+            YLeaf ipv6_sessions_backup; //type: uint32
+            YLeaf ipv6_sessions_init; //type: uint32
+            YLeaf ipv6_slaves_master; //type: uint32
+            YLeaf ipv6_slaves_backup; //type: uint32
+            YLeaf ipv6_slaves_init; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_master_owner_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_master_owner_down; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_master_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_master_down; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_backup_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_backup_down; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_init_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_init_down; //type: uint32
+            YLeaf interfaces_ipv4_state_up; //type: uint32
+            YLeaf interfaces_ipv4_state_down; //type: uint32
+            YLeaf tracked_interfaces_ipv4_state_up; //type: uint32
+            YLeaf tracked_interfaces_ipv4_state_down; //type: uint32
+            YLeaf interfaces_ipv6_state_up; //type: uint32
+            YLeaf interfaces_ipv6_state_down; //type: uint32
+            YLeaf tracked_interfaces_ipv6_state_up; //type: uint32
+            YLeaf tracked_interfaces_ipv6_state_down; //type: uint32
+            YLeaf tracked_objects_state_up; //type: uint32
+            YLeaf tracked_objects_state_down; //type: uint32
+            YLeaf bfd_sessions_up; //type: uint32
+            YLeaf bfd_sessions_down; //type: uint32
+            YLeaf bfd_session_inactive; //type: uint32
+            YLeaf ipv6bfd_sessions_up; //type: uint32
+            YLeaf ipv6bfd_sessions_down; //type: uint32
+            YLeaf ipv6bfd_session_inactive; //type: uint32
 
 
 
@@ -107,6 +109,7 @@ class Vrrp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrackItems : public Entity
         {
             public:
@@ -122,6 +125,7 @@ class Vrrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TrackItem : public Entity
             {
                 public:
@@ -135,16 +139,17 @@ class Vrrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value virtual_router_id; //type: int32
-                    Value tracked_interface_name; //type: string
-                    Value interface; //type: string
-                    Value virtual_router_id_xr; //type: uint32
-                    Value tracked_item_type; //type: uint16
-                    Value tracked_item_index; //type: string
-                    Value state; //type: uint8
-                    Value priority; //type: uint8
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf virtual_router_id; //type: int32
+                    YLeaf tracked_interface_name; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf virtual_router_id_xr; //type: uint32
+                    YLeaf tracked_item_type; //type: uint16
+                    YLeaf tracked_item_index; //type: string
+                    YLeaf state; //type: uint8
+                    YLeaf priority; //type: uint8
 
 
 
@@ -172,6 +177,7 @@ class Vrrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class VirtualRouter : public Entity
             {
                 public:
@@ -185,78 +191,79 @@ class Vrrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value virtual_router_id; //type: int32
-                    Value interface_name_xr; //type: string
-                    Value virtual_router_id_xr; //type: uint32
-                    Value version; //type: uint8
-                    Value address_family; //type: VrrpBAfEnum
-                    Value session_name; //type: string
-                    Value slaves; //type: uint32
-                    Value is_slave; //type: boolean
-                    Value followed_session_name; //type: string
-                    Value secondary_address_count; //type: uint8
-                    Value operational_address_count; //type: uint8
-                    Value primary_virtual_ip; //type: string
-                    Value configured_down_address_count; //type: uint8
-                    Value virtual_linklocal_ipv6_address; //type: string
-                    Value primary_state; //type: VrrpVipStateEnum
-                    Value master_ip_address; //type: string
-                    Value master_ipv6_address; //type: string
-                    Value master_priority; //type: uint8
-                    Value vrrp_state; //type: VrrpBagProtocolStateEnum
-                    Value authentication_type; //type: VrrpProtAuthEnum
-                    Value configured_advertize_time; //type: uint32
-                    Value oper_advertize_time; //type: uint32
-                    Value min_delay_time; //type: uint32
-                    Value reload_delay_time; //type: uint32
-                    Value delay_timer_flag; //type: boolean
-                    Value delay_timer_secs; //type: uint32
-                    Value delay_timer_msecs; //type: uint32
-                    Value authentication_flag; //type: boolean
-                    Value force_timer_flag; //type: boolean
-                    Value preempt_flag; //type: boolean
-                    Value ip_address_owner_flag; //type: boolean
-                    Value is_accept_mode; //type: boolean
-                    Value preempt_delay_time; //type: uint16
-                    Value configured_priority; //type: uint8
-                    Value operational_priority; //type: uint8
-                    Value priority_decrement; //type: uint32
-                    Value tracked_interface_count; //type: uint32
-                    Value tracked_interface_up_count; //type: uint32
-                    Value tracked_item_count; //type: uint32
-                    Value tracked_item_up_count; //type: uint32
-                    Value time_in_current_state; //type: uint32
-                    Value state_change_count; //type: uint32
-                    Value time_vrouter_up; //type: uint32
-                    Value master_count; //type: uint32
-                    Value adverts_received_count; //type: uint32
-                    Value advert_interval_error_count; //type: uint32
-                    Value adverts_sent_count; //type: uint32
-                    Value authentication_fail_count; //type: uint32
-                    Value ttl_error_count; //type: uint32
-                    Value priority_zero_received_count; //type: uint32
-                    Value priority_zero_sent_count; //type: uint32
-                    Value invalid_packet_count; //type: uint32
-                    Value address_list_error_count; //type: uint32
-                    Value invalid_auth_type_count; //type: uint32
-                    Value auth_type_mismatch_count; //type: uint32
-                    Value pkt_length_errors_count; //type: uint32
-                    Value time_stats_discontinuity; //type: uint32
-                    Value bfd_session_state; //type: VrrpBfdSessionStateEnum
-                    Value bfd_interval; //type: uint32
-                    Value bfd_multiplier; //type: uint32
-                    Value bfd_cfg_remote_ip; //type: string
-                    Value bfd_configured_remote_ipv6_address; //type: string
-                    Value state_from_checkpoint; //type: boolean
-                    Value interface_ipv4_address; //type: string
-                    Value interface_ipv6_address; //type: string
-                    Value virtual_mac_address; //type: string
-                    Value virtual_mac_address_state; //type: VrrpVmacStateEnum
-                    ValueList operational_address; //type: list of  string
-                    ValueList ipv4_configured_down_address; //type: list of  string
-                    ValueList authentication_string; //type: list of  uint8
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf virtual_router_id; //type: int32
+                    YLeaf interface_name_xr; //type: string
+                    YLeaf virtual_router_id_xr; //type: uint32
+                    YLeaf version; //type: uint8
+                    YLeaf address_family; //type: VrrpBAfEnum
+                    YLeaf session_name; //type: string
+                    YLeaf slaves; //type: uint32
+                    YLeaf is_slave; //type: boolean
+                    YLeaf followed_session_name; //type: string
+                    YLeaf secondary_address_count; //type: uint8
+                    YLeaf operational_address_count; //type: uint8
+                    YLeaf primary_virtual_ip; //type: string
+                    YLeaf configured_down_address_count; //type: uint8
+                    YLeaf virtual_linklocal_ipv6_address; //type: string
+                    YLeaf primary_state; //type: VrrpVipStateEnum
+                    YLeaf master_ip_address; //type: string
+                    YLeaf master_ipv6_address; //type: string
+                    YLeaf master_priority; //type: uint8
+                    YLeaf vrrp_state; //type: VrrpBagProtocolStateEnum
+                    YLeaf authentication_type; //type: VrrpProtAuthEnum
+                    YLeaf configured_advertize_time; //type: uint32
+                    YLeaf oper_advertize_time; //type: uint32
+                    YLeaf min_delay_time; //type: uint32
+                    YLeaf reload_delay_time; //type: uint32
+                    YLeaf delay_timer_flag; //type: boolean
+                    YLeaf delay_timer_secs; //type: uint32
+                    YLeaf delay_timer_msecs; //type: uint32
+                    YLeaf authentication_flag; //type: boolean
+                    YLeaf force_timer_flag; //type: boolean
+                    YLeaf preempt_flag; //type: boolean
+                    YLeaf ip_address_owner_flag; //type: boolean
+                    YLeaf is_accept_mode; //type: boolean
+                    YLeaf preempt_delay_time; //type: uint16
+                    YLeaf configured_priority; //type: uint8
+                    YLeaf operational_priority; //type: uint8
+                    YLeaf priority_decrement; //type: uint32
+                    YLeaf tracked_interface_count; //type: uint32
+                    YLeaf tracked_interface_up_count; //type: uint32
+                    YLeaf tracked_item_count; //type: uint32
+                    YLeaf tracked_item_up_count; //type: uint32
+                    YLeaf time_in_current_state; //type: uint32
+                    YLeaf state_change_count; //type: uint32
+                    YLeaf time_vrouter_up; //type: uint32
+                    YLeaf master_count; //type: uint32
+                    YLeaf adverts_received_count; //type: uint32
+                    YLeaf advert_interval_error_count; //type: uint32
+                    YLeaf adverts_sent_count; //type: uint32
+                    YLeaf authentication_fail_count; //type: uint32
+                    YLeaf ttl_error_count; //type: uint32
+                    YLeaf priority_zero_received_count; //type: uint32
+                    YLeaf priority_zero_sent_count; //type: uint32
+                    YLeaf invalid_packet_count; //type: uint32
+                    YLeaf address_list_error_count; //type: uint32
+                    YLeaf invalid_auth_type_count; //type: uint32
+                    YLeaf auth_type_mismatch_count; //type: uint32
+                    YLeaf pkt_length_errors_count; //type: uint32
+                    YLeaf time_stats_discontinuity; //type: uint32
+                    YLeaf bfd_session_state; //type: VrrpBfdSessionStateEnum
+                    YLeaf bfd_interval; //type: uint32
+                    YLeaf bfd_multiplier; //type: uint32
+                    YLeaf bfd_cfg_remote_ip; //type: string
+                    YLeaf bfd_configured_remote_ipv6_address; //type: string
+                    YLeaf state_from_checkpoint; //type: boolean
+                    YLeaf interface_ipv4_address; //type: string
+                    YLeaf interface_ipv6_address; //type: string
+                    YLeaf virtual_mac_address; //type: string
+                    YLeaf virtual_mac_address_state; //type: VrrpVmacStateEnum
+                    YLeafList operational_address; //type: list of  string
+                    YLeafList ipv4_configured_down_address; //type: list of  string
+                    YLeafList authentication_string; //type: list of  uint8
 
                 class ResignSentTime : public Entity
                 {
@@ -271,9 +278,10 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -293,9 +301,10 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -315,8 +324,9 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipv6_address; //type: string
 
+
+                        YLeaf ipv6_address; //type: string
 
 
 
@@ -336,8 +346,9 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipv6_address; //type: string
 
+
+                        YLeaf ipv6_address; //type: string
 
 
 
@@ -357,10 +368,11 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value old_state; //type: VrrpBagProtocolStateEnum
-                        Value new_state; //type: VrrpBagProtocolStateEnum
-                        Value reason; //type: VrrpStateChangeReasonEnum
 
+
+                        YLeaf old_state; //type: VrrpBagProtocolStateEnum
+                        YLeaf new_state; //type: VrrpBagProtocolStateEnum
+                        YLeaf reason; //type: VrrpStateChangeReasonEnum
 
                     class Time : public Entity
                     {
@@ -375,9 +387,10 @@ class Vrrp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nanoseconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nanoseconds; //type: uint32
 
 
 
@@ -385,9 +398,6 @@ class Vrrp : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time> time;
-                        class VrrpBagProtocolStateEnum;
-                        class VrrpBagProtocolStateEnum;
-                        class VrrpStateChangeReasonEnum;
 
 
                 }; // Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory
@@ -398,12 +408,6 @@ class Vrrp : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime> resign_sent_time;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory> > state_change_history;
-                    class VrrpBAfEnum;
-                    class VrrpProtAuthEnum;
-                    class VrrpBfdSessionStateEnum;
-                    class VrrpVipStateEnum;
-                    class VrrpVmacStateEnum;
-                    class VrrpBagProtocolStateEnum;
 
 
             }; // Vrrp::Ipv6::VirtualRouters::VirtualRouter
@@ -430,6 +434,7 @@ class Vrrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -443,13 +448,14 @@ class Vrrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value interface; //type: string
-                    Value invalid_checksum_count; //type: uint32
-                    Value invalid_version_count; //type: uint32
-                    Value invalid_vrid_count; //type: uint32
-                    Value invalid_packet_length_count; //type: uint32
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf invalid_checksum_count; //type: uint32
+                    YLeaf invalid_version_count; //type: uint32
+                    YLeaf invalid_vrid_count; //type: uint32
+                    YLeaf invalid_packet_length_count; //type: uint32
 
 
 
@@ -485,6 +491,7 @@ class Vrrp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interfaces : public Entity
         {
             public:
@@ -500,6 +507,7 @@ class Vrrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -513,13 +521,14 @@ class Vrrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value interface; //type: string
-                    Value invalid_checksum_count; //type: uint32
-                    Value invalid_version_count; //type: uint32
-                    Value invalid_vrid_count; //type: uint32
-                    Value invalid_packet_length_count; //type: uint32
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf invalid_checksum_count; //type: uint32
+                    YLeaf invalid_version_count; //type: uint32
+                    YLeaf invalid_vrid_count; //type: uint32
+                    YLeaf invalid_packet_length_count; //type: uint32
 
 
 
@@ -547,6 +556,7 @@ class Vrrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TrackItem : public Entity
             {
                 public:
@@ -560,16 +570,17 @@ class Vrrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value virtual_router_id; //type: int32
-                    Value tracked_interface_name; //type: string
-                    Value interface; //type: string
-                    Value virtual_router_id_xr; //type: uint32
-                    Value tracked_item_type; //type: uint16
-                    Value tracked_item_index; //type: string
-                    Value state; //type: uint8
-                    Value priority; //type: uint8
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf virtual_router_id; //type: int32
+                    YLeaf tracked_interface_name; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf virtual_router_id_xr; //type: uint32
+                    YLeaf tracked_item_type; //type: uint16
+                    YLeaf tracked_item_index; //type: string
+                    YLeaf state; //type: uint8
+                    YLeaf priority; //type: uint8
 
 
 
@@ -597,6 +608,7 @@ class Vrrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class VirtualRouter : public Entity
             {
                 public:
@@ -610,78 +622,79 @@ class Vrrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value virtual_router_id; //type: int32
-                    Value interface_name_xr; //type: string
-                    Value virtual_router_id_xr; //type: uint32
-                    Value version; //type: uint8
-                    Value address_family; //type: VrrpBAfEnum
-                    Value session_name; //type: string
-                    Value slaves; //type: uint32
-                    Value is_slave; //type: boolean
-                    Value followed_session_name; //type: string
-                    Value secondary_address_count; //type: uint8
-                    Value operational_address_count; //type: uint8
-                    Value primary_virtual_ip; //type: string
-                    Value configured_down_address_count; //type: uint8
-                    Value virtual_linklocal_ipv6_address; //type: string
-                    Value primary_state; //type: VrrpVipStateEnum
-                    Value master_ip_address; //type: string
-                    Value master_ipv6_address; //type: string
-                    Value master_priority; //type: uint8
-                    Value vrrp_state; //type: VrrpBagProtocolStateEnum
-                    Value authentication_type; //type: VrrpProtAuthEnum
-                    Value configured_advertize_time; //type: uint32
-                    Value oper_advertize_time; //type: uint32
-                    Value min_delay_time; //type: uint32
-                    Value reload_delay_time; //type: uint32
-                    Value delay_timer_flag; //type: boolean
-                    Value delay_timer_secs; //type: uint32
-                    Value delay_timer_msecs; //type: uint32
-                    Value authentication_flag; //type: boolean
-                    Value force_timer_flag; //type: boolean
-                    Value preempt_flag; //type: boolean
-                    Value ip_address_owner_flag; //type: boolean
-                    Value is_accept_mode; //type: boolean
-                    Value preempt_delay_time; //type: uint16
-                    Value configured_priority; //type: uint8
-                    Value operational_priority; //type: uint8
-                    Value priority_decrement; //type: uint32
-                    Value tracked_interface_count; //type: uint32
-                    Value tracked_interface_up_count; //type: uint32
-                    Value tracked_item_count; //type: uint32
-                    Value tracked_item_up_count; //type: uint32
-                    Value time_in_current_state; //type: uint32
-                    Value state_change_count; //type: uint32
-                    Value time_vrouter_up; //type: uint32
-                    Value master_count; //type: uint32
-                    Value adverts_received_count; //type: uint32
-                    Value advert_interval_error_count; //type: uint32
-                    Value adverts_sent_count; //type: uint32
-                    Value authentication_fail_count; //type: uint32
-                    Value ttl_error_count; //type: uint32
-                    Value priority_zero_received_count; //type: uint32
-                    Value priority_zero_sent_count; //type: uint32
-                    Value invalid_packet_count; //type: uint32
-                    Value address_list_error_count; //type: uint32
-                    Value invalid_auth_type_count; //type: uint32
-                    Value auth_type_mismatch_count; //type: uint32
-                    Value pkt_length_errors_count; //type: uint32
-                    Value time_stats_discontinuity; //type: uint32
-                    Value bfd_session_state; //type: VrrpBfdSessionStateEnum
-                    Value bfd_interval; //type: uint32
-                    Value bfd_multiplier; //type: uint32
-                    Value bfd_cfg_remote_ip; //type: string
-                    Value bfd_configured_remote_ipv6_address; //type: string
-                    Value state_from_checkpoint; //type: boolean
-                    Value interface_ipv4_address; //type: string
-                    Value interface_ipv6_address; //type: string
-                    Value virtual_mac_address; //type: string
-                    Value virtual_mac_address_state; //type: VrrpVmacStateEnum
-                    ValueList operational_address; //type: list of  string
-                    ValueList ipv4_configured_down_address; //type: list of  string
-                    ValueList authentication_string; //type: list of  uint8
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf virtual_router_id; //type: int32
+                    YLeaf interface_name_xr; //type: string
+                    YLeaf virtual_router_id_xr; //type: uint32
+                    YLeaf version; //type: uint8
+                    YLeaf address_family; //type: VrrpBAfEnum
+                    YLeaf session_name; //type: string
+                    YLeaf slaves; //type: uint32
+                    YLeaf is_slave; //type: boolean
+                    YLeaf followed_session_name; //type: string
+                    YLeaf secondary_address_count; //type: uint8
+                    YLeaf operational_address_count; //type: uint8
+                    YLeaf primary_virtual_ip; //type: string
+                    YLeaf configured_down_address_count; //type: uint8
+                    YLeaf virtual_linklocal_ipv6_address; //type: string
+                    YLeaf primary_state; //type: VrrpVipStateEnum
+                    YLeaf master_ip_address; //type: string
+                    YLeaf master_ipv6_address; //type: string
+                    YLeaf master_priority; //type: uint8
+                    YLeaf vrrp_state; //type: VrrpBagProtocolStateEnum
+                    YLeaf authentication_type; //type: VrrpProtAuthEnum
+                    YLeaf configured_advertize_time; //type: uint32
+                    YLeaf oper_advertize_time; //type: uint32
+                    YLeaf min_delay_time; //type: uint32
+                    YLeaf reload_delay_time; //type: uint32
+                    YLeaf delay_timer_flag; //type: boolean
+                    YLeaf delay_timer_secs; //type: uint32
+                    YLeaf delay_timer_msecs; //type: uint32
+                    YLeaf authentication_flag; //type: boolean
+                    YLeaf force_timer_flag; //type: boolean
+                    YLeaf preempt_flag; //type: boolean
+                    YLeaf ip_address_owner_flag; //type: boolean
+                    YLeaf is_accept_mode; //type: boolean
+                    YLeaf preempt_delay_time; //type: uint16
+                    YLeaf configured_priority; //type: uint8
+                    YLeaf operational_priority; //type: uint8
+                    YLeaf priority_decrement; //type: uint32
+                    YLeaf tracked_interface_count; //type: uint32
+                    YLeaf tracked_interface_up_count; //type: uint32
+                    YLeaf tracked_item_count; //type: uint32
+                    YLeaf tracked_item_up_count; //type: uint32
+                    YLeaf time_in_current_state; //type: uint32
+                    YLeaf state_change_count; //type: uint32
+                    YLeaf time_vrouter_up; //type: uint32
+                    YLeaf master_count; //type: uint32
+                    YLeaf adverts_received_count; //type: uint32
+                    YLeaf advert_interval_error_count; //type: uint32
+                    YLeaf adverts_sent_count; //type: uint32
+                    YLeaf authentication_fail_count; //type: uint32
+                    YLeaf ttl_error_count; //type: uint32
+                    YLeaf priority_zero_received_count; //type: uint32
+                    YLeaf priority_zero_sent_count; //type: uint32
+                    YLeaf invalid_packet_count; //type: uint32
+                    YLeaf address_list_error_count; //type: uint32
+                    YLeaf invalid_auth_type_count; //type: uint32
+                    YLeaf auth_type_mismatch_count; //type: uint32
+                    YLeaf pkt_length_errors_count; //type: uint32
+                    YLeaf time_stats_discontinuity; //type: uint32
+                    YLeaf bfd_session_state; //type: VrrpBfdSessionStateEnum
+                    YLeaf bfd_interval; //type: uint32
+                    YLeaf bfd_multiplier; //type: uint32
+                    YLeaf bfd_cfg_remote_ip; //type: string
+                    YLeaf bfd_configured_remote_ipv6_address; //type: string
+                    YLeaf state_from_checkpoint; //type: boolean
+                    YLeaf interface_ipv4_address; //type: string
+                    YLeaf interface_ipv6_address; //type: string
+                    YLeaf virtual_mac_address; //type: string
+                    YLeaf virtual_mac_address_state; //type: VrrpVmacStateEnum
+                    YLeafList operational_address; //type: list of  string
+                    YLeafList ipv4_configured_down_address; //type: list of  string
+                    YLeafList authentication_string; //type: list of  uint8
 
                 class ResignSentTime : public Entity
                 {
@@ -696,9 +709,10 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -718,9 +732,10 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -740,8 +755,9 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipv6_address; //type: string
 
+
+                        YLeaf ipv6_address; //type: string
 
 
 
@@ -761,8 +777,9 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipv6_address; //type: string
 
+
+                        YLeaf ipv6_address; //type: string
 
 
 
@@ -782,10 +799,11 @@ class Vrrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value old_state; //type: VrrpBagProtocolStateEnum
-                        Value new_state; //type: VrrpBagProtocolStateEnum
-                        Value reason; //type: VrrpStateChangeReasonEnum
 
+
+                        YLeaf old_state; //type: VrrpBagProtocolStateEnum
+                        YLeaf new_state; //type: VrrpBagProtocolStateEnum
+                        YLeaf reason; //type: VrrpStateChangeReasonEnum
 
                     class Time : public Entity
                     {
@@ -800,9 +818,10 @@ class Vrrp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nanoseconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nanoseconds; //type: uint32
 
 
 
@@ -810,9 +829,6 @@ class Vrrp : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time> time;
-                        class VrrpBagProtocolStateEnum;
-                        class VrrpBagProtocolStateEnum;
-                        class VrrpStateChangeReasonEnum;
 
 
                 }; // Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory
@@ -823,12 +839,6 @@ class Vrrp : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime> resign_received_time;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime> resign_sent_time;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory> > state_change_history;
-                    class VrrpBAfEnum;
-                    class VrrpProtAuthEnum;
-                    class VrrpBfdSessionStateEnum;
-                    class VrrpVipStateEnum;
-                    class VrrpVmacStateEnum;
-                    class VrrpBagProtocolStateEnum;
 
 
             }; // Vrrp::Ipv4::VirtualRouters::VirtualRouter
@@ -863,6 +873,7 @@ class Vrrp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MgoSession : public Entity
         {
             public:
@@ -876,13 +887,14 @@ class Vrrp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value session_name; //type: string
-                Value primary_session_name; //type: string
-                Value primary_session_interface; //type: string
-                Value primary_af_name; //type: VrrpBAfEnum
-                Value primary_session_number; //type: uint32
-                Value primary_session_state; //type: VrrpBagProtocolStateEnum
 
+
+                YLeaf session_name; //type: string
+                YLeaf primary_session_name; //type: string
+                YLeaf primary_session_interface; //type: string
+                YLeaf primary_af_name; //type: VrrpBAfEnum
+                YLeaf primary_session_number; //type: uint32
+                YLeaf primary_session_state; //type: VrrpBagProtocolStateEnum
 
             class Slave : public Entity
             {
@@ -897,9 +909,10 @@ class Vrrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value slave_interface; //type: string
-                    Value slave_virtual_router_id; //type: uint32
 
+
+                    YLeaf slave_interface; //type: string
+                    YLeaf slave_virtual_router_id; //type: uint32
 
 
 
@@ -907,8 +920,6 @@ class Vrrp : public Entity
 
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_vrrp_oper::Vrrp::MgoSessions::MgoSession::Slave> > slave;
-                class VrrpBAfEnum;
-                class VrrpBagProtocolStateEnum;
 
 
         }; // Vrrp::MgoSessions::MgoSession
@@ -932,74 +943,74 @@ class Vrrp : public Entity
 class VrrpStateChangeReasonEnum : public Enum
 {
     public:
-        static const Enum::Value state_change_bfd_down;
-        static const Enum::Value state_change_virtual_ip_configured;
-        static const Enum::Value state_change_interface_ip;
-        static const Enum::Value state_change_delay_timer;
-        static const Enum::Value state_change_startup;
-        static const Enum::Value state_change_interface_up;
-        static const Enum::Value state_change_interface_down;
-        static const Enum::Value state_change_master_down_timer;
-        static const Enum::Value state_change_higher_priority_master;
-        static const Enum::Value state_change_fhrp_admin;
-        static const Enum::Value state_change_mgo_parent;
-        static const Enum::Value state_change_chkpt_update;
-        static const Enum::Value state_change_issu_resync;
+        static const Enum::YLeaf state_change_bfd_down;
+        static const Enum::YLeaf state_change_virtual_ip_configured;
+        static const Enum::YLeaf state_change_interface_ip;
+        static const Enum::YLeaf state_change_delay_timer;
+        static const Enum::YLeaf state_change_startup;
+        static const Enum::YLeaf state_change_interface_up;
+        static const Enum::YLeaf state_change_interface_down;
+        static const Enum::YLeaf state_change_master_down_timer;
+        static const Enum::YLeaf state_change_higher_priority_master;
+        static const Enum::YLeaf state_change_fhrp_admin;
+        static const Enum::YLeaf state_change_mgo_parent;
+        static const Enum::YLeaf state_change_chkpt_update;
+        static const Enum::YLeaf state_change_issu_resync;
 
 };
 
 class VrrpVmacStateEnum : public Enum
 {
     public:
-        static const Enum::Value stored;
-        static const Enum::Value reserved;
-        static const Enum::Value active;
-        static const Enum::Value reserving;
+        static const Enum::YLeaf stored;
+        static const Enum::YLeaf reserved;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf reserving;
 
 };
 
 class VrrpBAfEnum : public Enum
 {
     public:
-        static const Enum::Value address_family_ipv4;
-        static const Enum::Value address_family_ipv6;
-        static const Enum::Value vrrp_baf_count;
+        static const Enum::YLeaf address_family_ipv4;
+        static const Enum::YLeaf address_family_ipv6;
+        static const Enum::YLeaf vrrp_baf_count;
 
 };
 
 class VrrpVipStateEnum : public Enum
 {
     public:
-        static const Enum::Value virtual_ip_state_down;
-        static const Enum::Value virtual_ip_state_up;
+        static const Enum::YLeaf virtual_ip_state_down;
+        static const Enum::YLeaf virtual_ip_state_up;
 
 };
 
 class VrrpProtAuthEnum : public Enum
 {
     public:
-        static const Enum::Value authentication_none;
-        static const Enum::Value authentication_text;
-        static const Enum::Value authentication_ip;
+        static const Enum::YLeaf authentication_none;
+        static const Enum::YLeaf authentication_text;
+        static const Enum::YLeaf authentication_ip;
 
 };
 
 class VrrpBfdSessionStateEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_state_none;
-        static const Enum::Value bfd_state_inactive;
-        static const Enum::Value bfd_state_up;
-        static const Enum::Value bfd_state_down;
+        static const Enum::YLeaf bfd_state_none;
+        static const Enum::YLeaf bfd_state_inactive;
+        static const Enum::YLeaf bfd_state_up;
+        static const Enum::YLeaf bfd_state_down;
 
 };
 
 class VrrpBagProtocolStateEnum : public Enum
 {
     public:
-        static const Enum::Value state_initial;
-        static const Enum::Value state_backup;
-        static const Enum::Value state_master;
+        static const Enum::YLeaf state_initial;
+        static const Enum::YLeaf state_backup;
+        static const Enum::YLeaf state_master;
 
 };
 

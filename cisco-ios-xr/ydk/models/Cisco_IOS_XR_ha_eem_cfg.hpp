@@ -24,11 +24,12 @@ class EventManager : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value refresh_time; //type: uint32
-        Value schedule_suspend; //type: boolean
-        Value directory_user_policy; //type: string
-        Value directory_user_library; //type: string
 
+
+        YLeaf refresh_time; //type: uint32
+        YLeaf schedule_suspend; //type: boolean
+        YLeaf directory_user_policy; //type: string
+        YLeaf directory_user_library; //type: string
 
     class Policies : public Entity
     {
@@ -45,6 +46,7 @@ class EventManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Policy : public Entity
         {
             public:
@@ -58,20 +60,17 @@ class EventManager : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value policy_name; //type: string
-                Value username; //type: string
-                Value persist_time; //type: uint32
-                Value policy_type; //type: EventManagerPolicyEnum
-                Value checksum_type; //type: EventManagerChecksumEnum
-                Value check_sum_value; //type: string
-                Value policy_security_mode; //type: EventManagerPolicyModeEnum
-                Value policy_security_level; //type: EventManagerPolicySecEnum
 
 
-                class EventManagerChecksumEnum;
-                class EventManagerPolicySecEnum;
-                class EventManagerPolicyModeEnum;
-                class EventManagerPolicyEnum;
+                YLeaf policy_name; //type: string
+                YLeaf username; //type: string
+                YLeaf persist_time; //type: uint32
+                YLeaf policy_type; //type: EventManagerPolicyEnum
+                YLeaf checksum_type; //type: EventManagerChecksumEnum
+                YLeaf check_sum_value; //type: string
+                YLeaf policy_security_mode; //type: EventManagerPolicyModeEnum
+                YLeaf policy_security_level; //type: EventManagerPolicySecEnum
+
 
 
         }; // EventManager::Policies::Policy
@@ -98,6 +97,7 @@ class EventManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ThreadClasses : public Entity
         {
             public:
@@ -113,6 +113,7 @@ class EventManager : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ThreadClass : public Entity
             {
                 public:
@@ -126,9 +127,10 @@ class EventManager : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value thread_class_name; //type: string
-                    Value num_threads; //type: uint32
 
+
+                    YLeaf thread_class_name; //type: string
+                    YLeaf num_threads; //type: uint32
 
 
 
@@ -162,6 +164,7 @@ class EventManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Environment : public Entity
         {
             public:
@@ -175,9 +178,10 @@ class EventManager : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value environment_name; //type: string
-                Value environment_value; //type: string
 
+
+                YLeaf environment_name; //type: string
+                YLeaf environment_value; //type: string
 
 
 
@@ -201,32 +205,32 @@ class EventManager : public Entity
 class EventManagerPolicySecEnum : public Enum
 {
     public:
-        static const Enum::Value rsa_2048;
-        static const Enum::Value trust;
+        static const Enum::YLeaf rsa_2048;
+        static const Enum::YLeaf trust;
 
 };
 
 class EventManagerPolicyModeEnum : public Enum
 {
     public:
-        static const Enum::Value cisco;
-        static const Enum::Value trust;
+        static const Enum::YLeaf cisco;
+        static const Enum::YLeaf trust;
 
 };
 
 class EventManagerChecksumEnum : public Enum
 {
     public:
-        static const Enum::Value sha_1;
-        static const Enum::Value md5;
+        static const Enum::YLeaf sha_1;
+        static const Enum::YLeaf md5;
 
 };
 
 class EventManagerPolicyEnum : public Enum
 {
     public:
-        static const Enum::Value system;
-        static const Enum::Value user;
+        static const Enum::YLeaf system;
+        static const Enum::YLeaf user;
 
 };
 

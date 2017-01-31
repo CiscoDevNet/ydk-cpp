@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_l2_eth_infra_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_l2_eth_infra_oper {
@@ -28,6 +27,7 @@ class MacAccounting : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Interfaces : public Entity
     {
         public:
@@ -43,6 +43,7 @@ class MacAccounting : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -56,8 +57,9 @@ class MacAccounting : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
 
+
+                YLeaf interface_name; //type: string
 
             class State : public Entity
             {
@@ -72,12 +74,13 @@ class MacAccounting : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value is_ingress_enabled; //type: boolean
-                    Value is_egress_enabled; //type: boolean
-                    Value number_available_ingress; //type: uint32
-                    Value number_available_egress; //type: uint32
-                    Value number_available_on_node; //type: uint32
 
+
+                    YLeaf is_ingress_enabled; //type: boolean
+                    YLeaf is_egress_enabled; //type: boolean
+                    YLeaf number_available_ingress; //type: uint32
+                    YLeaf number_available_egress; //type: uint32
+                    YLeaf number_available_on_node; //type: uint32
 
 
 
@@ -97,10 +100,11 @@ class MacAccounting : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mac_address; //type: string
-                    Value packets; //type: uint64
-                    Value bytes; //type: uint64
 
+
+                    YLeaf mac_address; //type: string
+                    YLeaf packets; //type: uint64
+                    YLeaf bytes; //type: uint64
 
 
 
@@ -120,10 +124,11 @@ class MacAccounting : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mac_address; //type: string
-                    Value packets; //type: uint64
-                    Value bytes; //type: uint64
 
+
+                    YLeaf mac_address; //type: string
+                    YLeaf packets; //type: uint64
+                    YLeaf bytes; //type: uint64
 
 
 
@@ -165,6 +170,7 @@ class Vlan : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -180,6 +186,7 @@ class Vlan : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -193,8 +200,9 @@ class Vlan : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_id; //type: string
 
+
+                YLeaf node_id; //type: string
 
             class Trunks : public Entity
             {
@@ -211,6 +219,7 @@ class Vlan : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Trunk : public Entity
                 {
                     public:
@@ -224,15 +233,16 @@ class Vlan : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface; //type: string
-                        Value interface_xr; //type: string
-                        Value state; //type: ImStateEnumEnum
-                        Value mtu; //type: uint16
-                        Value qinq_outer_ether_type; //type: VlanQinqOuterEtypeEnum
-                        Value dot1ad_count; //type: uint32
-                        Value untagged_interface; //type: string
-                        Value mac_filtering; //type: EthFilteringEnum
 
+
+                        YLeaf interface; //type: string
+                        YLeaf interface_xr; //type: string
+                        YLeaf state; //type: ImStateEnumEnum
+                        YLeaf mtu; //type: uint16
+                        YLeaf qinq_outer_ether_type; //type: VlanQinqOuterEtypeEnum
+                        YLeaf dot1ad_count; //type: uint32
+                        YLeaf untagged_interface; //type: string
+                        YLeaf mac_filtering; //type: EthFilteringEnum
 
                     class Layer2SubInterfaces : public Entity
                     {
@@ -247,12 +257,13 @@ class Vlan : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value total_count; //type: uint32
-                            Value dot1q_count; //type: uint32
-                            Value qin_q_count; //type: uint32
-                            Value qin_any_count; //type: uint32
-                            Value untagged_count; //type: uint32
 
+
+                            YLeaf total_count; //type: uint32
+                            YLeaf dot1q_count; //type: uint32
+                            YLeaf qin_q_count; //type: uint32
+                            YLeaf qin_any_count; //type: uint32
+                            YLeaf untagged_count; //type: uint32
 
                         class StateCounters : public Entity
                         {
@@ -267,10 +278,11 @@ class Vlan : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value up; //type: uint32
-                                Value down; //type: uint32
-                                Value admin_down; //type: uint32
 
+
+                                YLeaf up; //type: uint32
+                                YLeaf down; //type: uint32
+                                YLeaf admin_down; //type: uint32
 
 
 
@@ -296,12 +308,13 @@ class Vlan : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value total_count; //type: uint32
-                            Value dot1q_count; //type: uint32
-                            Value qin_q_count; //type: uint32
-                            Value untagged_count; //type: uint32
-                            Value native_vlan; //type: uint16
 
+
+                            YLeaf total_count; //type: uint32
+                            YLeaf dot1q_count; //type: uint32
+                            YLeaf qin_q_count; //type: uint32
+                            YLeaf untagged_count; //type: uint32
+                            YLeaf native_vlan; //type: uint16
 
                         class StateCounters : public Entity
                         {
@@ -316,10 +329,11 @@ class Vlan : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value up; //type: uint32
-                                Value down; //type: uint32
-                                Value admin_down; //type: uint32
 
+
+                                YLeaf up; //type: uint32
+                                YLeaf down; //type: uint32
+                                YLeaf admin_down; //type: uint32
 
 
 
@@ -334,9 +348,6 @@ class Vlan : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces> layer2_sub_interfaces;
                         std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces> layer3_sub_interfaces;
-                        class EthFilteringEnum;
-                        class VlanQinqOuterEtypeEnum;
-                        class ImStateEnumEnum;
 
 
                 }; // Vlan::Nodes::Node::Trunks::Trunk
@@ -363,6 +374,7 @@ class Vlan : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -376,14 +388,15 @@ class Vlan : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface; //type: string
-                        Value interface_xr; //type: string
-                        Value parent_interface; //type: string
-                        Value service; //type: VlanServiceEnum
-                        Value state; //type: ImStateEnumEnum
-                        Value mtu; //type: uint16
-                        Value switched_mtu; //type: uint16
 
+
+                        YLeaf interface; //type: string
+                        YLeaf interface_xr; //type: string
+                        YLeaf parent_interface; //type: string
+                        YLeaf service; //type: VlanServiceEnum
+                        YLeaf state; //type: ImStateEnumEnum
+                        YLeaf mtu; //type: uint16
+                        YLeaf switched_mtu; //type: uint16
 
                     class EncapsulationDetails : public Entity
                     {
@@ -398,14 +411,15 @@ class Vlan : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vlan_encapsulation; //type: VlanEncapsEnum
-                            Value tag; //type: uint16
-                            Value outer_tag; //type: uint16
-                            Value native_tag; //type: uint16
-                            Value dot1ad_tag; //type: uint16
-                            Value dot1ad_native_tag; //type: uint16
-                            Value dot1ad_outer_tag; //type: uint16
 
+
+                            YLeaf vlan_encapsulation; //type: VlanEncapsEnum
+                            YLeaf tag; //type: uint16
+                            YLeaf outer_tag; //type: uint16
+                            YLeaf native_tag; //type: uint16
+                            YLeaf dot1ad_tag; //type: uint16
+                            YLeaf dot1ad_native_tag; //type: uint16
+                            YLeaf dot1ad_outer_tag; //type: uint16
 
                         class Stack : public Entity
                         {
@@ -420,9 +434,10 @@ class Vlan : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value outer_tag; //type: uint16
-                                Value second_tag; //type: uint16
 
+
+                                YLeaf outer_tag; //type: uint16
+                                YLeaf second_tag; //type: uint16
 
 
 
@@ -442,14 +457,15 @@ class Vlan : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value payload_ethertype; //type: EfpPayloadEtypeEnum
-                                Value tags_popped; //type: uint16
-                                Value is_exact_match; //type: boolean
-                                Value is_native_vlan; //type: boolean
-                                Value is_native_preserving; //type: boolean
-                                Value source_mac_match; //type: string
-                                Value destination_mac_match; //type: string
 
+
+                                YLeaf payload_ethertype; //type: EfpPayloadEtypeEnum
+                                YLeaf tags_popped; //type: uint16
+                                YLeaf is_exact_match; //type: boolean
+                                YLeaf is_native_vlan; //type: boolean
+                                YLeaf is_native_preserving; //type: boolean
+                                YLeaf source_mac_match; //type: string
+                                YLeaf destination_mac_match; //type: string
 
                             class LocalTrafficStack : public Entity
                             {
@@ -466,6 +482,7 @@ class Vlan : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class LocalTrafficTag : public Entity
                                 {
                                     public:
@@ -479,11 +496,11 @@ class Vlan : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value ethertype; //type: EfpTagEtypeEnum
-                                        Value vlan_id; //type: uint16
 
 
-                                        class EfpTagEtypeEnum;
+                                        YLeaf ethertype; //type: EfpTagEtypeEnum
+                                        YLeaf vlan_id; //type: uint16
+
 
 
                                 }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
@@ -508,9 +525,10 @@ class Vlan : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ethertype; //type: EfpTagEtypeEnum
-                                    Value priority; //type: EfpTagPriorityEnum
 
+
+                                    YLeaf ethertype; //type: EfpTagEtypeEnum
+                                    YLeaf priority; //type: EfpTagPriorityEnum
 
                                 class VlanRange : public Entity
                                 {
@@ -525,9 +543,10 @@ class Vlan : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vlan_id_low; //type: uint16
-                                        Value vlan_id_high; //type: uint16
 
+
+                                        YLeaf vlan_id_low; //type: uint16
+                                        YLeaf vlan_id_high; //type: uint16
 
 
 
@@ -535,8 +554,6 @@ class Vlan : public Entity
 
 
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange> > vlan_range;
-                                    class EfpTagEtypeEnum;
-                                    class EfpTagPriorityEnum;
 
 
                             }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
@@ -555,11 +572,11 @@ class Vlan : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ethertype; //type: EfpTagEtypeEnum
-                                    Value vlan_id; //type: uint16
 
 
-                                    class EfpTagEtypeEnum;
+                                    YLeaf ethertype; //type: EfpTagEtypeEnum
+                                    YLeaf vlan_id; //type: uint16
+
 
 
                             }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe
@@ -568,7 +585,6 @@ class Vlan : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack> local_traffic_stack;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe> > pushe;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch> > tags_to_match;
-                                class EfpPayloadEtypeEnum;
 
 
                         }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails
@@ -587,9 +603,10 @@ class Vlan : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value outer_tag; //type: uint16
-                                Value second_tag; //type: uint16
 
+
+                                YLeaf outer_tag; //type: uint16
+                                YLeaf second_tag; //type: uint16
 
 
 
@@ -599,15 +616,12 @@ class Vlan : public Entity
                             std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack> dot1ad_dot1q_stack;
                             std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails> service_instance_details;
                             std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack> stack;
-                            class VlanEncapsEnum;
 
 
                     }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails
 
 
                         std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails> encapsulation_details;
-                        class VlanServiceEnum;
-                        class ImStateEnumEnum;
 
 
                 }; // Vlan::Nodes::Node::Interfaces::Interface
@@ -634,6 +648,7 @@ class Vlan : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TagAllocation : public Entity
                 {
                     public:
@@ -647,16 +662,17 @@ class Vlan : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface; //type: string
-                        Value first_tag; //type: uint32
-                        Value second_tag; //type: one of uint32, enumeration
-                        Value interface_xr; //type: string
-                        Value parent_interface; //type: string
-                        Value service; //type: VlanServiceEnum
-                        Value state; //type: ImStateEnumEnum
-                        Value mtu; //type: uint16
-                        Value switched_mtu; //type: uint16
 
+
+                        YLeaf interface; //type: string
+                        YLeaf first_tag; //type: uint32
+                        YLeaf second_tag; //type: one of uint32, enumeration
+                        YLeaf interface_xr; //type: string
+                        YLeaf parent_interface; //type: string
+                        YLeaf service; //type: VlanServiceEnum
+                        YLeaf state; //type: ImStateEnumEnum
+                        YLeaf mtu; //type: uint16
+                        YLeaf switched_mtu; //type: uint16
 
                     class EncapsulationDetails : public Entity
                     {
@@ -671,14 +687,15 @@ class Vlan : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vlan_encapsulation; //type: VlanEncapsEnum
-                            Value tag; //type: uint16
-                            Value outer_tag; //type: uint16
-                            Value native_tag; //type: uint16
-                            Value dot1ad_tag; //type: uint16
-                            Value dot1ad_native_tag; //type: uint16
-                            Value dot1ad_outer_tag; //type: uint16
 
+
+                            YLeaf vlan_encapsulation; //type: VlanEncapsEnum
+                            YLeaf tag; //type: uint16
+                            YLeaf outer_tag; //type: uint16
+                            YLeaf native_tag; //type: uint16
+                            YLeaf dot1ad_tag; //type: uint16
+                            YLeaf dot1ad_native_tag; //type: uint16
+                            YLeaf dot1ad_outer_tag; //type: uint16
 
                         class Stack : public Entity
                         {
@@ -693,9 +710,10 @@ class Vlan : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value outer_tag; //type: uint16
-                                Value second_tag; //type: uint16
 
+
+                                YLeaf outer_tag; //type: uint16
+                                YLeaf second_tag; //type: uint16
 
 
 
@@ -715,14 +733,15 @@ class Vlan : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value payload_ethertype; //type: EfpPayloadEtypeEnum
-                                Value tags_popped; //type: uint16
-                                Value is_exact_match; //type: boolean
-                                Value is_native_vlan; //type: boolean
-                                Value is_native_preserving; //type: boolean
-                                Value source_mac_match; //type: string
-                                Value destination_mac_match; //type: string
 
+
+                                YLeaf payload_ethertype; //type: EfpPayloadEtypeEnum
+                                YLeaf tags_popped; //type: uint16
+                                YLeaf is_exact_match; //type: boolean
+                                YLeaf is_native_vlan; //type: boolean
+                                YLeaf is_native_preserving; //type: boolean
+                                YLeaf source_mac_match; //type: string
+                                YLeaf destination_mac_match; //type: string
 
                             class LocalTrafficStack : public Entity
                             {
@@ -739,6 +758,7 @@ class Vlan : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class LocalTrafficTag : public Entity
                                 {
                                     public:
@@ -752,11 +772,11 @@ class Vlan : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value ethertype; //type: EfpTagEtypeEnum
-                                        Value vlan_id; //type: uint16
 
 
-                                        class EfpTagEtypeEnum;
+                                        YLeaf ethertype; //type: EfpTagEtypeEnum
+                                        YLeaf vlan_id; //type: uint16
+
 
 
                                 }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
@@ -781,9 +801,10 @@ class Vlan : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ethertype; //type: EfpTagEtypeEnum
-                                    Value priority; //type: EfpTagPriorityEnum
 
+
+                                    YLeaf ethertype; //type: EfpTagEtypeEnum
+                                    YLeaf priority; //type: EfpTagPriorityEnum
 
                                 class VlanRange : public Entity
                                 {
@@ -798,9 +819,10 @@ class Vlan : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vlan_id_low; //type: uint16
-                                        Value vlan_id_high; //type: uint16
 
+
+                                        YLeaf vlan_id_low; //type: uint16
+                                        YLeaf vlan_id_high; //type: uint16
 
 
 
@@ -808,8 +830,6 @@ class Vlan : public Entity
 
 
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange> > vlan_range;
-                                    class EfpTagEtypeEnum;
-                                    class EfpTagPriorityEnum;
 
 
                             }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
@@ -828,11 +848,11 @@ class Vlan : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ethertype; //type: EfpTagEtypeEnum
-                                    Value vlan_id; //type: uint16
 
 
-                                    class EfpTagEtypeEnum;
+                                    YLeaf ethertype; //type: EfpTagEtypeEnum
+                                    YLeaf vlan_id; //type: uint16
+
 
 
                             }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe
@@ -841,7 +861,6 @@ class Vlan : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack> local_traffic_stack;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe> > pushe;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch> > tags_to_match;
-                                class EfpPayloadEtypeEnum;
 
 
                         }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails
@@ -860,9 +879,10 @@ class Vlan : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value outer_tag; //type: uint16
-                                Value second_tag; //type: uint16
 
+
+                                YLeaf outer_tag; //type: uint16
+                                YLeaf second_tag; //type: uint16
 
 
 
@@ -872,16 +892,12 @@ class Vlan : public Entity
                             std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack> dot1ad_dot1q_stack;
                             std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails> service_instance_details;
                             std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack> stack;
-                            class VlanEncapsEnum;
 
 
                     }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails
 
 
                         std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails> encapsulation_details;
-                        class VlanTagOrAnyEnum;
-                        class VlanServiceEnum;
-                        class ImStateEnumEnum;
 
 
                 }; // Vlan::Nodes::Node::TagAllocations::TagAllocation
@@ -928,6 +944,7 @@ class EthernetEncapsulation : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -943,6 +960,7 @@ class EthernetEncapsulation : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -956,8 +974,9 @@ class EthernetEncapsulation : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class UnicastMacFilters : public Entity
             {
@@ -974,6 +993,7 @@ class EthernetEncapsulation : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class UnicastMacFilter : public Entity
                 {
                     public:
@@ -987,8 +1007,9 @@ class EthernetEncapsulation : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class UnicastFilter : public Entity
                     {
@@ -1003,11 +1024,11 @@ class EthernetEncapsulation : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mac_address; //type: string
-                            Value mode; //type: EthCapsUcastMacModeEnum
 
 
-                            class EthCapsUcastMacModeEnum;
+                            YLeaf mac_address; //type: string
+                            YLeaf mode; //type: EthCapsUcastMacModeEnum
+
 
 
                     }; // EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter
@@ -1046,109 +1067,109 @@ class EthernetEncapsulation : public Entity
 class VlanEncapsEnum : public Enum
 {
     public:
-        static const Enum::Value no_encapsulation;
-        static const Enum::Value dot1q;
-        static const Enum::Value qinq;
-        static const Enum::Value qin_any;
-        static const Enum::Value dot1q_native;
-        static const Enum::Value dot1ad;
-        static const Enum::Value dot1ad_native;
-        static const Enum::Value service_instance;
-        static const Enum::Value dot1ad_dot1q;
-        static const Enum::Value dot1ad_any;
+        static const Enum::YLeaf no_encapsulation;
+        static const Enum::YLeaf dot1q;
+        static const Enum::YLeaf qinq;
+        static const Enum::YLeaf qin_any;
+        static const Enum::YLeaf dot1q_native;
+        static const Enum::YLeaf dot1ad;
+        static const Enum::YLeaf dot1ad_native;
+        static const Enum::YLeaf service_instance;
+        static const Enum::YLeaf dot1ad_dot1q;
+        static const Enum::YLeaf dot1ad_any;
 
 };
 
 class EthCapsUcastMacModeEnum : public Enum
 {
     public:
-        static const Enum::Value reserved;
-        static const Enum::Value permit;
+        static const Enum::YLeaf reserved;
+        static const Enum::YLeaf permit;
 
 };
 
 class ImStateEnumEnum : public Enum
 {
     public:
-        static const Enum::Value im_state_not_ready;
-        static const Enum::Value im_state_admin_down;
-        static const Enum::Value im_state_down;
-        static const Enum::Value im_state_up;
-        static const Enum::Value im_state_shutdown;
-        static const Enum::Value im_state_err_disable;
-        static const Enum::Value im_state_down_immediate;
-        static const Enum::Value im_state_down_immediate_admin;
-        static const Enum::Value im_state_down_graceful;
-        static const Enum::Value im_state_begin_shutdown;
-        static const Enum::Value im_state_end_shutdown;
-        static const Enum::Value im_state_begin_error_disable;
-        static const Enum::Value im_state_end_error_disable;
-        static const Enum::Value im_state_begin_down_graceful;
-        static const Enum::Value im_state_reset;
-        static const Enum::Value im_state_operational;
-        static const Enum::Value im_state_not_operational;
-        static const Enum::Value im_state_unknown;
-        static const Enum::Value im_state_last;
+        static const Enum::YLeaf im_state_not_ready;
+        static const Enum::YLeaf im_state_admin_down;
+        static const Enum::YLeaf im_state_down;
+        static const Enum::YLeaf im_state_up;
+        static const Enum::YLeaf im_state_shutdown;
+        static const Enum::YLeaf im_state_err_disable;
+        static const Enum::YLeaf im_state_down_immediate;
+        static const Enum::YLeaf im_state_down_immediate_admin;
+        static const Enum::YLeaf im_state_down_graceful;
+        static const Enum::YLeaf im_state_begin_shutdown;
+        static const Enum::YLeaf im_state_end_shutdown;
+        static const Enum::YLeaf im_state_begin_error_disable;
+        static const Enum::YLeaf im_state_end_error_disable;
+        static const Enum::YLeaf im_state_begin_down_graceful;
+        static const Enum::YLeaf im_state_reset;
+        static const Enum::YLeaf im_state_operational;
+        static const Enum::YLeaf im_state_not_operational;
+        static const Enum::YLeaf im_state_unknown;
+        static const Enum::YLeaf im_state_last;
 
 };
 
 class EfpTagPriorityEnum : public Enum
 {
     public:
-        static const Enum::Value priority0;
-        static const Enum::Value priority1;
-        static const Enum::Value priority2;
-        static const Enum::Value priority3;
-        static const Enum::Value priority4;
-        static const Enum::Value priority5;
-        static const Enum::Value priority6;
-        static const Enum::Value priority7;
-        static const Enum::Value priority_any;
+        static const Enum::YLeaf priority0;
+        static const Enum::YLeaf priority1;
+        static const Enum::YLeaf priority2;
+        static const Enum::YLeaf priority3;
+        static const Enum::YLeaf priority4;
+        static const Enum::YLeaf priority5;
+        static const Enum::YLeaf priority6;
+        static const Enum::YLeaf priority7;
+        static const Enum::YLeaf priority_any;
 
 };
 
 class EfpTagEtypeEnum : public Enum
 {
     public:
-        static const Enum::Value untagged;
-        static const Enum::Value dot1q;
-        static const Enum::Value dot1ad;
+        static const Enum::YLeaf untagged;
+        static const Enum::YLeaf dot1q;
+        static const Enum::YLeaf dot1ad;
 
 };
 
 class VlanServiceEnum : public Enum
 {
     public:
-        static const Enum::Value vlan_service_l2;
-        static const Enum::Value vlan_service_l3;
+        static const Enum::YLeaf vlan_service_l2;
+        static const Enum::YLeaf vlan_service_l3;
 
 };
 
 class EfpPayloadEtypeEnum : public Enum
 {
     public:
-        static const Enum::Value payload_ethertype_any;
-        static const Enum::Value payload_ethertype_ip;
-        static const Enum::Value payload_ethertype_pppoe;
+        static const Enum::YLeaf payload_ethertype_any;
+        static const Enum::YLeaf payload_ethertype_ip;
+        static const Enum::YLeaf payload_ethertype_pppoe;
 
 };
 
 class VlanQinqOuterEtypeEnum : public Enum
 {
     public:
-        static const Enum::Value ether_type8100;
-        static const Enum::Value ether_type9100;
-        static const Enum::Value ether_type9200;
+        static const Enum::YLeaf ether_type8100;
+        static const Enum::YLeaf ether_type9100;
+        static const Enum::YLeaf ether_type9200;
 
 };
 
 class EthFilteringEnum : public Enum
 {
     public:
-        static const Enum::Value no_filtering;
-        static const Enum::Value dot1q_filtering;
-        static const Enum::Value dot1ad_filtering;
-        static const Enum::Value two_port_mac_relay_filtering;
+        static const Enum::YLeaf no_filtering;
+        static const Enum::YLeaf dot1q_filtering;
+        static const Enum::YLeaf dot1ad_filtering;
+        static const Enum::YLeaf two_port_mac_relay_filtering;
 
 };
 

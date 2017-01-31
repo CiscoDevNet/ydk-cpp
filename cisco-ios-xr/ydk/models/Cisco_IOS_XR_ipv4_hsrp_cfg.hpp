@@ -26,6 +26,7 @@ class Hsrp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Interfaces : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Hsrp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -54,11 +56,12 @@ class Hsrp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value mac_refresh; //type: uint32
-                Value use_bia; //type: empty
-                Value redirects_disable; //type: empty
 
+
+                YLeaf interface_name; //type: string
+                YLeaf mac_refresh; //type: uint32
+                YLeaf use_bia; //type: empty
+                YLeaf redirects_disable; //type: empty
 
             class Ipv6 : public Entity
             {
@@ -73,6 +76,7 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Version2 : public Entity
@@ -90,6 +94,7 @@ class Hsrp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Groups : public Entity
                     {
                         public:
@@ -105,6 +110,7 @@ class Hsrp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Group : public Entity
                         {
                             public:
@@ -118,12 +124,13 @@ class Hsrp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_number; //type: uint32
-                                Value priority; //type: uint32
-                                Value preempt; //type: int32
-                                Value session_name; //type: string
-                                Value virtual_mac_address; //type: string
 
+
+                                YLeaf group_number; //type: uint32
+                                YLeaf priority; //type: uint32
+                                YLeaf preempt; //type: int32
+                                YLeaf session_name; //type: string
+                                YLeaf virtual_mac_address; //type: string
 
                             class Bfd : public Entity
                             {
@@ -138,9 +145,10 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf interface_name; //type: string
 
 
 
@@ -162,6 +170,7 @@ class Hsrp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TrackedInterface : public Entity
                                 {
                                     public:
@@ -175,9 +184,10 @@ class Hsrp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
-                                        Value priority_decrement; //type: uint32
 
+
+                                        YLeaf interface_name; //type: string
+                                        YLeaf priority_decrement; //type: uint32
 
 
 
@@ -205,6 +215,7 @@ class Hsrp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TrackedObject : public Entity
                                 {
                                     public:
@@ -218,9 +229,10 @@ class Hsrp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value object_name; //type: string
-                                        Value priority_decrement; //type: uint32
 
+
+                                        YLeaf object_name; //type: string
+                                        YLeaf priority_decrement; //type: uint32
 
 
 
@@ -246,13 +258,14 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value hello_msec_flag; //type: boolean
-                                    Value hello_msec; //type: uint32
-                                    Value hello_sec; //type: uint32
-                                    Value hold_msec_flag; //type: boolean
-                                    Value hold_msec; //type: uint32
-                                    Value hold_sec; //type: uint32
 
+
+                                    YLeaf hello_msec_flag; //type: boolean
+                                    YLeaf hello_msec; //type: uint32
+                                    YLeaf hello_sec; //type: uint32
+                                    YLeaf hold_msec_flag; //type: boolean
+                                    YLeaf hold_msec; //type: uint32
+                                    YLeaf hold_sec; //type: uint32
 
 
 
@@ -272,11 +285,11 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value auto_configure; //type: HsrpLinklocalEnum
 
 
-                                    class HsrpLinklocalEnum;
+                                    YLeaf address; //type: string
+                                    YLeaf auto_configure; //type: HsrpLinklocalEnum
+
 
 
                             }; // Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::LinkLocalIpv6Address
@@ -297,6 +310,7 @@ class Hsrp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class GlobalIpv6Address : public Entity
                                 {
                                     public:
@@ -310,8 +324,9 @@ class Hsrp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
 
+
+                                        YLeaf address; //type: string
 
 
 
@@ -362,6 +377,7 @@ class Hsrp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SlaveGroup : public Entity
                     {
                         public:
@@ -375,10 +391,11 @@ class Hsrp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value slave_group_number; //type: uint32
-                            Value follow; //type: string
-                            Value virtual_mac_address; //type: string
 
+
+                            YLeaf slave_group_number; //type: uint32
+                            YLeaf follow; //type: string
+                            YLeaf virtual_mac_address; //type: string
 
                         class LinkLocalIpv6Address : public Entity
                         {
@@ -393,11 +410,11 @@ class Hsrp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
-                                Value auto_configure; //type: HsrpLinklocalEnum
 
 
-                                class HsrpLinklocalEnum;
+                                YLeaf address; //type: string
+                                YLeaf auto_configure; //type: HsrpLinklocalEnum
+
 
 
                         }; // Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::LinkLocalIpv6Address
@@ -418,6 +435,7 @@ class Hsrp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class GlobalIpv6Address : public Entity
                             {
                                 public:
@@ -431,8 +449,9 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
 
+
+                                    YLeaf address; //type: string
 
 
 
@@ -478,9 +497,10 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value detection_multiplier; //type: uint32
-                    Value interval; //type: uint32
 
+
+                    YLeaf detection_multiplier; //type: uint32
+                    YLeaf interval; //type: uint32
 
 
 
@@ -500,9 +520,10 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value minimum_delay; //type: uint32
-                    Value reload_delay; //type: uint32
 
+
+                    YLeaf minimum_delay; //type: uint32
+                    YLeaf reload_delay; //type: uint32
 
 
 
@@ -524,6 +545,7 @@ class Hsrp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SlaveGroups : public Entity
                 {
                     public:
@@ -539,6 +561,7 @@ class Hsrp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SlaveGroup : public Entity
                     {
                         public:
@@ -552,11 +575,12 @@ class Hsrp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value slave_group_number; //type: uint32
-                            Value follow; //type: string
-                            Value virtual_mac_address; //type: string
-                            Value primary_ipv4_address; //type: string
 
+
+                            YLeaf slave_group_number; //type: uint32
+                            YLeaf follow; //type: string
+                            YLeaf virtual_mac_address; //type: string
+                            YLeaf primary_ipv4_address; //type: string
 
                         class SecondaryIpv4Addresses : public Entity
                         {
@@ -573,6 +597,7 @@ class Hsrp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SecondaryIpv4Address : public Entity
                             {
                                 public:
@@ -586,8 +611,9 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
 
+
+                                    YLeaf address; //type: string
 
 
 
@@ -627,6 +653,7 @@ class Hsrp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Groups : public Entity
                     {
                         public:
@@ -642,6 +669,7 @@ class Hsrp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Group : public Entity
                         {
                             public:
@@ -655,13 +683,14 @@ class Hsrp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_number; //type: uint32
-                                Value authentication; //type: string
-                                Value session_name; //type: string
-                                Value priority; //type: uint32
-                                Value preempt; //type: int32
-                                Value virtual_mac_address; //type: string
 
+
+                                YLeaf group_number; //type: uint32
+                                YLeaf authentication; //type: string
+                                YLeaf session_name; //type: string
+                                YLeaf priority; //type: uint32
+                                YLeaf preempt; //type: int32
+                                YLeaf virtual_mac_address; //type: string
 
                             class TrackedInterfaces : public Entity
                             {
@@ -678,6 +707,7 @@ class Hsrp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TrackedInterface : public Entity
                                 {
                                     public:
@@ -691,9 +721,10 @@ class Hsrp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
-                                        Value priority_decrement; //type: uint32
 
+
+                                        YLeaf interface_name; //type: string
+                                        YLeaf priority_decrement; //type: uint32
 
 
 
@@ -719,9 +750,10 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf interface_name; //type: string
 
 
 
@@ -743,6 +775,7 @@ class Hsrp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TrackedObject : public Entity
                                 {
                                     public:
@@ -756,9 +789,10 @@ class Hsrp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value object_name; //type: string
-                                        Value priority_decrement; //type: uint32
 
+
+                                        YLeaf object_name; //type: string
+                                        YLeaf priority_decrement; //type: uint32
 
 
 
@@ -784,13 +818,14 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value hello_msec_flag; //type: boolean
-                                    Value hello_msec; //type: uint32
-                                    Value hello_sec; //type: uint32
-                                    Value hold_msec_flag; //type: boolean
-                                    Value hold_msec; //type: uint32
-                                    Value hold_sec; //type: uint32
 
+
+                                    YLeaf hello_msec_flag; //type: boolean
+                                    YLeaf hello_msec; //type: uint32
+                                    YLeaf hello_sec; //type: uint32
+                                    YLeaf hold_msec_flag; //type: boolean
+                                    YLeaf hold_msec; //type: uint32
+                                    YLeaf hold_sec; //type: uint32
 
 
 
@@ -810,9 +845,10 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value virtual_ip_learn; //type: boolean
-                                    Value address; //type: string
 
+
+                                    YLeaf virtual_ip_learn; //type: boolean
+                                    YLeaf address; //type: string
 
 
 
@@ -834,6 +870,7 @@ class Hsrp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class SecondaryIpv4Address : public Entity
                                 {
                                     public:
@@ -847,8 +884,9 @@ class Hsrp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
 
+
+                                        YLeaf address; //type: string
 
 
 
@@ -899,6 +937,7 @@ class Hsrp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Groups : public Entity
                     {
                         public:
@@ -914,6 +953,7 @@ class Hsrp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Group : public Entity
                         {
                             public:
@@ -927,12 +967,13 @@ class Hsrp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value group_number; //type: uint32
-                                Value preempt; //type: int32
-                                Value priority; //type: uint32
-                                Value virtual_mac_address; //type: string
-                                Value session_name; //type: string
 
+
+                                YLeaf group_number; //type: uint32
+                                YLeaf preempt; //type: int32
+                                YLeaf priority; //type: uint32
+                                YLeaf virtual_mac_address; //type: string
+                                YLeaf session_name; //type: string
 
                             class SecondaryIpv4Addresses : public Entity
                             {
@@ -949,6 +990,7 @@ class Hsrp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class SecondaryIpv4Address : public Entity
                                 {
                                     public:
@@ -962,8 +1004,9 @@ class Hsrp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
 
+
+                                        YLeaf address; //type: string
 
 
 
@@ -989,9 +1032,10 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf interface_name; //type: string
 
 
 
@@ -1011,9 +1055,10 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value virtual_ip_learn; //type: boolean
-                                    Value address; //type: string
 
+
+                                    YLeaf virtual_ip_learn; //type: boolean
+                                    YLeaf address; //type: string
 
 
 
@@ -1035,6 +1080,7 @@ class Hsrp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TrackedObject : public Entity
                                 {
                                     public:
@@ -1048,9 +1094,10 @@ class Hsrp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value object_name; //type: string
-                                        Value priority_decrement; //type: uint32
 
+
+                                        YLeaf object_name; //type: string
+                                        YLeaf priority_decrement; //type: uint32
 
 
 
@@ -1078,6 +1125,7 @@ class Hsrp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TrackedInterface : public Entity
                                 {
                                     public:
@@ -1091,9 +1139,10 @@ class Hsrp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
-                                        Value priority_decrement; //type: uint32
 
+
+                                        YLeaf interface_name; //type: string
+                                        YLeaf priority_decrement; //type: uint32
 
 
 
@@ -1119,13 +1168,14 @@ class Hsrp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value hello_msec_flag; //type: boolean
-                                    Value hello_msec; //type: uint32
-                                    Value hello_sec; //type: uint32
-                                    Value hold_msec_flag; //type: boolean
-                                    Value hold_msec; //type: uint32
-                                    Value hold_sec; //type: uint32
 
+
+                                    YLeaf hello_msec_flag; //type: boolean
+                                    YLeaf hello_msec; //type: uint32
+                                    YLeaf hello_sec; //type: uint32
+                                    YLeaf hold_msec_flag; //type: boolean
+                                    YLeaf hold_msec; //type: uint32
+                                    YLeaf hold_sec; //type: uint32
 
 
 
@@ -1191,8 +1241,9 @@ class Hsrp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value state_change_disable; //type: empty
 
+
+            YLeaf state_change_disable; //type: empty
 
 
 
@@ -1209,9 +1260,9 @@ class Hsrp : public Entity
 class HsrpLinklocalEnum : public Enum
 {
     public:
-        static const Enum::Value manual;
-        static const Enum::Value auto_;
-        static const Enum::Value legacy;
+        static const Enum::YLeaf manual;
+        static const Enum::YLeaf auto_;
+        static const Enum::YLeaf legacy;
 
 };
 

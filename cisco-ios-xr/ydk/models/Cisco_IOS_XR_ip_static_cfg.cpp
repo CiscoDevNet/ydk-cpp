@@ -76,7 +76,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -247,7 +247,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -420,7 +420,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -591,7 +591,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -764,7 +764,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -946,7 +946,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1137,7 +1137,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::To
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -1154,7 +1154,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1285,7 +1285,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1456,7 +1456,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1629,7 +1629,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1800,7 +1800,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1973,7 +1973,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2155,7 +2155,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2350,7 +2350,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::To
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -2367,7 +2367,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2477,7 +2477,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2611,7 +2611,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2782,7 +2782,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2955,7 +2955,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3126,7 +3126,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3299,7 +3299,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3481,7 +3481,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3672,7 +3672,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::To
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -3689,7 +3689,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3790,9 +3790,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::To
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -3809,7 +3809,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3970,7 +3970,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4061,7 +4061,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::To
 {
     return is_set(operation)
 	|| is_set(topology_name.operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::get_segment_path() const
@@ -4078,7 +4078,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4188,7 +4188,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4322,7 +4322,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4493,7 +4493,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4666,7 +4666,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4837,7 +4837,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5010,7 +5010,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5192,7 +5192,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5383,7 +5383,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::V
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::get_segment_path() const
@@ -5400,7 +5400,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5531,7 +5531,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5702,7 +5702,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5875,7 +5875,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6046,7 +6046,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6219,7 +6219,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6401,7 +6401,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6596,7 +6596,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::V
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -6613,7 +6613,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6723,7 +6723,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6857,7 +6857,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7028,7 +7028,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7201,7 +7201,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7372,7 +7372,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7545,7 +7545,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7727,7 +7727,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7918,7 +7918,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::V
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_segment_path() const
@@ -7935,7 +7935,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8036,9 +8036,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::V
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::get_segment_path() const
@@ -8055,7 +8055,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8216,7 +8216,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8350,7 +8350,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8521,7 +8521,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8694,7 +8694,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8865,7 +8865,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9038,7 +9038,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9220,7 +9220,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9411,7 +9411,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolog
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -9428,7 +9428,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9559,7 +9559,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9730,7 +9730,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9903,7 +9903,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10074,7 +10074,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10247,7 +10247,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10429,7 +10429,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10624,7 +10624,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolog
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -10641,7 +10641,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10751,7 +10751,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10885,7 +10885,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11056,7 +11056,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11229,7 +11229,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11400,7 +11400,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11573,7 +11573,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11755,7 +11755,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11946,7 +11946,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolog
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -11963,7 +11963,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12064,9 +12064,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolog
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -12083,7 +12083,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12244,7 +12244,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12331,7 +12331,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolog
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::get_segment_path() const
@@ -12348,7 +12348,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12442,9 +12442,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::has_data() con
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (default_topology !=  nullptr && is_set(default_topology->operation))
-	|| (topologies !=  nullptr && is_set(topologies->operation))
-	|| (vrf_prefixes !=  nullptr && is_set(vrf_prefixes->operation));
+	|| (default_topology !=  nullptr && default_topology->has_operation())
+	|| (topologies !=  nullptr && topologies->has_operation())
+	|| (vrf_prefixes !=  nullptr && vrf_prefixes->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::get_segment_path() const
@@ -12461,7 +12461,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfUnicast::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12638,7 +12638,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12809,7 +12809,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12982,7 +12982,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13153,7 +13153,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13326,7 +13326,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13508,7 +13508,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13699,7 +13699,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -13716,7 +13716,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13847,7 +13847,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14018,7 +14018,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14191,7 +14191,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14362,7 +14362,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14535,7 +14535,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14717,7 +14717,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14912,7 +14912,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -14929,7 +14929,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15039,7 +15039,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15173,7 +15173,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15344,7 +15344,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15517,7 +15517,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15688,7 +15688,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15861,7 +15861,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16043,7 +16043,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16234,7 +16234,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -16251,7 +16251,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16352,9 +16352,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -16371,7 +16371,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16532,7 +16532,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16623,7 +16623,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::
 {
     return is_set(operation)
 	|| is_set(topology_name.operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::get_segment_path() const
@@ -16640,7 +16640,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16750,7 +16750,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16884,7 +16884,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17055,7 +17055,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17228,7 +17228,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17399,7 +17399,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17572,7 +17572,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17754,7 +17754,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17945,7 +17945,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes:
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::get_segment_path() const
@@ -17962,7 +17962,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18093,7 +18093,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18264,7 +18264,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18437,7 +18437,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18608,7 +18608,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18781,7 +18781,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18963,7 +18963,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19158,7 +19158,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes:
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -19175,7 +19175,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19285,7 +19285,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19419,7 +19419,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19590,7 +19590,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19763,7 +19763,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19934,7 +19934,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20107,7 +20107,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20289,7 +20289,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20480,7 +20480,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes:
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_segment_path() const
@@ -20497,7 +20497,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20598,9 +20598,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes:
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::get_segment_path() const
@@ -20617,7 +20617,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20778,7 +20778,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20912,7 +20912,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21083,7 +21083,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21256,7 +21256,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21427,7 +21427,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21600,7 +21600,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21782,7 +21782,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21973,7 +21973,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopol
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -21990,7 +21990,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22121,7 +22121,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22292,7 +22292,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22465,7 +22465,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22636,7 +22636,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22809,7 +22809,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22991,7 +22991,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23186,7 +23186,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopol
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -23203,7 +23203,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23313,7 +23313,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23447,7 +23447,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23618,7 +23618,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23791,7 +23791,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23962,7 +23962,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24135,7 +24135,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24317,7 +24317,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24508,7 +24508,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopol
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -24525,7 +24525,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24626,9 +24626,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopol
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -24645,7 +24645,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24806,7 +24806,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24893,7 +24893,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopol
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::get_segment_path() const
@@ -24910,7 +24910,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25004,9 +25004,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::has_data() c
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::has_operation() const
 {
     return is_set(operation)
-	|| (default_topology !=  nullptr && is_set(default_topology->operation))
-	|| (topologies !=  nullptr && is_set(topologies->operation))
-	|| (vrf_prefixes !=  nullptr && is_set(vrf_prefixes->operation));
+	|| (default_topology !=  nullptr && default_topology->has_operation())
+	|| (topologies !=  nullptr && topologies->has_operation())
+	|| (vrf_prefixes !=  nullptr && vrf_prefixes->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::get_segment_path() const
@@ -25023,7 +25023,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25158,8 +25158,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::has_data() const
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_multicast !=  nullptr && is_set(vrf_multicast->operation))
-	|| (vrf_unicast !=  nullptr && is_set(vrf_unicast->operation));
+	|| (vrf_multicast !=  nullptr && vrf_multicast->has_operation())
+	|| (vrf_unicast !=  nullptr && vrf_unicast->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::get_segment_path() const
@@ -25176,7 +25176,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25330,7 +25330,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25501,7 +25501,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25674,7 +25674,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25845,7 +25845,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26018,7 +26018,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26200,7 +26200,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26391,7 +26391,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -26408,7 +26408,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26539,7 +26539,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26710,7 +26710,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26883,7 +26883,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27054,7 +27054,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27227,7 +27227,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27409,7 +27409,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27604,7 +27604,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -27621,7 +27621,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27731,7 +27731,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27865,7 +27865,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28036,7 +28036,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28209,7 +28209,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28380,7 +28380,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28553,7 +28553,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28735,7 +28735,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28926,7 +28926,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -28943,7 +28943,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29044,9 +29044,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -29063,7 +29063,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29224,7 +29224,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29315,7 +29315,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::To
 {
     return is_set(operation)
 	|| is_set(topology_name.operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::get_segment_path() const
@@ -29332,7 +29332,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29442,7 +29442,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29576,7 +29576,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29747,7 +29747,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29920,7 +29920,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30091,7 +30091,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30264,7 +30264,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30446,7 +30446,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30637,7 +30637,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::get_segment_path() const
@@ -30654,7 +30654,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30785,7 +30785,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30956,7 +30956,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31129,7 +31129,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31300,7 +31300,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31473,7 +31473,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31655,7 +31655,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31850,7 +31850,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -31867,7 +31867,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31977,7 +31977,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32111,7 +32111,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32282,7 +32282,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32455,7 +32455,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32626,7 +32626,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32799,7 +32799,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32981,7 +32981,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33172,7 +33172,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_segment_path() const
@@ -33189,7 +33189,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33290,9 +33290,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::V
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::get_segment_path() const
@@ -33309,7 +33309,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33470,7 +33470,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33604,7 +33604,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33775,7 +33775,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33948,7 +33948,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34119,7 +34119,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34292,7 +34292,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34474,7 +34474,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34665,7 +34665,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -34682,7 +34682,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34813,7 +34813,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34984,7 +34984,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35157,7 +35157,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35328,7 +35328,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35501,7 +35501,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35683,7 +35683,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35878,7 +35878,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -35895,7 +35895,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36005,7 +36005,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36139,7 +36139,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36310,7 +36310,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36483,7 +36483,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36654,7 +36654,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36827,7 +36827,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37009,7 +37009,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37200,7 +37200,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -37217,7 +37217,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37318,9 +37318,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -37337,7 +37337,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37498,7 +37498,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37585,7 +37585,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolog
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::get_segment_path() const
@@ -37602,7 +37602,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37696,9 +37696,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::has_data() con
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (default_topology !=  nullptr && is_set(default_topology->operation))
-	|| (topologies !=  nullptr && is_set(topologies->operation))
-	|| (vrf_prefixes !=  nullptr && is_set(vrf_prefixes->operation));
+	|| (default_topology !=  nullptr && default_topology->has_operation())
+	|| (topologies !=  nullptr && topologies->has_operation())
+	|| (vrf_prefixes !=  nullptr && vrf_prefixes->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::get_segment_path() const
@@ -37715,7 +37715,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37892,7 +37892,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38063,7 +38063,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38236,7 +38236,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38407,7 +38407,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38580,7 +38580,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38762,7 +38762,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38953,7 +38953,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -38970,7 +38970,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39101,7 +39101,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39272,7 +39272,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39445,7 +39445,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39616,7 +39616,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39789,7 +39789,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39971,7 +39971,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40166,7 +40166,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -40183,7 +40183,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40293,7 +40293,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40427,7 +40427,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40598,7 +40598,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40771,7 +40771,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40942,7 +40942,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41115,7 +41115,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41297,7 +41297,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41488,7 +41488,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -41505,7 +41505,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41606,9 +41606,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -41625,7 +41625,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41786,7 +41786,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41877,7 +41877,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::
 {
     return is_set(operation)
 	|| is_set(topology_name.operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::get_segment_path() const
@@ -41894,7 +41894,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42004,7 +42004,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topolo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42138,7 +42138,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42309,7 +42309,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42482,7 +42482,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42653,7 +42653,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42826,7 +42826,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43008,7 +43008,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43199,7 +43199,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::get_segment_path() const
@@ -43216,7 +43216,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43347,7 +43347,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43518,7 +43518,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43691,7 +43691,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43862,7 +43862,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44035,7 +44035,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44217,7 +44217,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44412,7 +44412,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -44429,7 +44429,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44539,7 +44539,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44673,7 +44673,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44844,7 +44844,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45017,7 +45017,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45188,7 +45188,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45361,7 +45361,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45543,7 +45543,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45734,7 +45734,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_segment_path() const
@@ -45751,7 +45751,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45852,9 +45852,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes:
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::get_segment_path() const
@@ -45871,7 +45871,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46032,7 +46032,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46166,7 +46166,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46337,7 +46337,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46510,7 +46510,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46681,7 +46681,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46854,7 +46854,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47036,7 +47036,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47227,7 +47227,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopol
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -47244,7 +47244,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47375,7 +47375,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47546,7 +47546,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47719,7 +47719,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47890,7 +47890,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48063,7 +48063,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48245,7 +48245,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48440,7 +48440,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopol
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -48457,7 +48457,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48567,7 +48567,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48701,7 +48701,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48872,7 +48872,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49045,7 +49045,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49216,7 +49216,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49389,7 +49389,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49571,7 +49571,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49762,7 +49762,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopol
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -49779,7 +49779,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49880,9 +49880,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopol
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -49899,7 +49899,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50060,7 +50060,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50147,7 +50147,7 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopol
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::get_segment_path() const
@@ -50164,7 +50164,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Defaul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50258,9 +50258,9 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::has_data() c
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::has_operation() const
 {
     return is_set(operation)
-	|| (default_topology !=  nullptr && is_set(default_topology->operation))
-	|| (topologies !=  nullptr && is_set(topologies->operation))
-	|| (vrf_prefixes !=  nullptr && is_set(vrf_prefixes->operation));
+	|| (default_topology !=  nullptr && default_topology->has_operation())
+	|| (topologies !=  nullptr && topologies->has_operation())
+	|| (vrf_prefixes !=  nullptr && vrf_prefixes->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::get_segment_path() const
@@ -50277,7 +50277,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50412,8 +50412,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::has_data() const
 bool RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_multicast !=  nullptr && is_set(vrf_multicast->operation))
-	|| (vrf_unicast !=  nullptr && is_set(vrf_unicast->operation));
+	|| (vrf_multicast !=  nullptr && vrf_multicast->has_operation())
+	|| (vrf_unicast !=  nullptr && vrf_unicast->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::get_segment_path() const
@@ -50430,7 +50430,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50542,8 +50542,8 @@ bool RouterStatic::Vrfs::Vrf::AddressFamily::has_data() const
 bool RouterStatic::Vrfs::Vrf::AddressFamily::has_operation() const
 {
     return is_set(operation)
-	|| (vrfipv4 !=  nullptr && is_set(vrfipv4->operation))
-	|| (vrfipv6 !=  nullptr && is_set(vrfipv6->operation));
+	|| (vrfipv4 !=  nullptr && vrfipv4->has_operation())
+	|| (vrfipv6 !=  nullptr && vrfipv6->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::AddressFamily::get_segment_path() const
@@ -50560,7 +50560,7 @@ EntityPath RouterStatic::Vrfs::Vrf::AddressFamily::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50671,7 +50671,7 @@ bool RouterStatic::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (address_family !=  nullptr && is_set(address_family->operation));
+	|| (address_family !=  nullptr && address_family->has_operation());
 }
 
 std::string RouterStatic::Vrfs::Vrf::get_segment_path() const
@@ -50932,7 +50932,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51103,7 +51103,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51276,7 +51276,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51447,7 +51447,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51620,7 +51620,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51802,7 +51802,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51993,7 +51993,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -52010,7 +52010,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52141,7 +52141,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52312,7 +52312,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52485,7 +52485,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52656,7 +52656,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52829,7 +52829,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53011,7 +53011,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53206,7 +53206,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -53223,7 +53223,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53333,7 +53333,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53467,7 +53467,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53638,7 +53638,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53811,7 +53811,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53982,7 +53982,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54155,7 +54155,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54337,7 +54337,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54528,7 +54528,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -54545,7 +54545,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54646,9 +54646,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -54665,7 +54665,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54826,7 +54826,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54917,7 +54917,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::T
 {
     return is_set(operation)
 	|| is_set(topology_name.operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Topologies::Topology::get_segment_path() const
@@ -55178,7 +55178,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55349,7 +55349,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55522,7 +55522,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55693,7 +55693,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55866,7 +55866,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56048,7 +56048,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56239,7 +56239,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::get_segment_path() const
@@ -56256,7 +56256,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56387,7 +56387,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56558,7 +56558,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56731,7 +56731,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56902,7 +56902,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57075,7 +57075,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57257,7 +57257,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57452,7 +57452,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -57469,7 +57469,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57579,7 +57579,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57713,7 +57713,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57884,7 +57884,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58057,7 +58057,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58228,7 +58228,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58401,7 +58401,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58583,7 +58583,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58774,7 +58774,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_segment_path() const
@@ -58791,7 +58791,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58892,9 +58892,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::VrfPrefixes::VrfPrefix::get_segment_path() const
@@ -59206,7 +59206,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59377,7 +59377,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59550,7 +59550,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59721,7 +59721,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59894,7 +59894,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60076,7 +60076,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60267,7 +60267,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -60284,7 +60284,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60415,7 +60415,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60586,7 +60586,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60759,7 +60759,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60930,7 +60930,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61103,7 +61103,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61285,7 +61285,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61480,7 +61480,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -61497,7 +61497,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61607,7 +61607,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61741,7 +61741,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61912,7 +61912,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62085,7 +62085,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62256,7 +62256,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62429,7 +62429,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62611,7 +62611,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62802,7 +62802,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -62819,7 +62819,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62920,9 +62920,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -63187,7 +63187,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopolo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::DefaultTopology::get_segment_path() const
@@ -63298,9 +63298,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::has_data() co
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (default_topology !=  nullptr && is_set(default_topology->operation))
-	|| (topologies !=  nullptr && is_set(topologies->operation))
-	|| (vrf_prefixes !=  nullptr && is_set(vrf_prefixes->operation));
+	|| (default_topology !=  nullptr && default_topology->has_operation())
+	|| (topologies !=  nullptr && topologies->has_operation())
+	|| (vrf_prefixes !=  nullptr && vrf_prefixes->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfUnicast::get_segment_path() const
@@ -63494,7 +63494,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63665,7 +63665,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63838,7 +63838,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64009,7 +64009,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64182,7 +64182,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64364,7 +64364,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64555,7 +64555,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -64572,7 +64572,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64703,7 +64703,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64874,7 +64874,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65047,7 +65047,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65218,7 +65218,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65391,7 +65391,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65573,7 +65573,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65768,7 +65768,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -65785,7 +65785,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65895,7 +65895,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66029,7 +66029,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66200,7 +66200,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66373,7 +66373,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66544,7 +66544,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66717,7 +66717,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66899,7 +66899,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67090,7 +67090,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -67107,7 +67107,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67208,9 +67208,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -67227,7 +67227,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67388,7 +67388,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67479,7 +67479,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies:
 {
     return is_set(operation)
 	|| is_set(topology_name.operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Topologies::Topology::get_segment_path() const
@@ -67740,7 +67740,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67911,7 +67911,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68084,7 +68084,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68255,7 +68255,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68428,7 +68428,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68610,7 +68610,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68801,7 +68801,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::get_segment_path() const
@@ -68818,7 +68818,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68949,7 +68949,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69120,7 +69120,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69293,7 +69293,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69464,7 +69464,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69637,7 +69637,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69819,7 +69819,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70014,7 +70014,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -70031,7 +70031,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70141,7 +70141,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70275,7 +70275,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70446,7 +70446,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70619,7 +70619,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70790,7 +70790,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70963,7 +70963,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71145,7 +71145,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71336,7 +71336,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_segment_path() const
@@ -71353,7 +71353,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71454,9 +71454,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::VrfPrefixes::VrfPrefix::get_segment_path() const
@@ -71768,7 +71768,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71939,7 +71939,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72112,7 +72112,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72283,7 +72283,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72456,7 +72456,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72638,7 +72638,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72829,7 +72829,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -72846,7 +72846,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72977,7 +72977,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73148,7 +73148,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73321,7 +73321,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73492,7 +73492,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73665,7 +73665,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73847,7 +73847,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74042,7 +74042,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -74059,7 +74059,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74169,7 +74169,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74303,7 +74303,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74474,7 +74474,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74647,7 +74647,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74818,7 +74818,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74991,7 +74991,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75173,7 +75173,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75364,7 +75364,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -75381,7 +75381,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75482,9 +75482,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -75749,7 +75749,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::get_segment_path() const
@@ -75860,9 +75860,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::has_data() 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::has_operation() const
 {
     return is_set(operation)
-	|| (default_topology !=  nullptr && is_set(default_topology->operation))
-	|| (topologies !=  nullptr && is_set(topologies->operation))
-	|| (vrf_prefixes !=  nullptr && is_set(vrf_prefixes->operation));
+	|| (default_topology !=  nullptr && default_topology->has_operation())
+	|| (topologies !=  nullptr && topologies->has_operation())
+	|| (vrf_prefixes !=  nullptr && vrf_prefixes->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::VrfMulticast::get_segment_path() const
@@ -76014,8 +76014,8 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::has_data() const
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_multicast !=  nullptr && is_set(vrf_multicast->operation))
-	|| (vrf_unicast !=  nullptr && is_set(vrf_unicast->operation));
+	|| (vrf_multicast !=  nullptr && vrf_multicast->has_operation())
+	|| (vrf_unicast !=  nullptr && vrf_unicast->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv4::get_segment_path() const
@@ -76186,7 +76186,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76357,7 +76357,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76530,7 +76530,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76701,7 +76701,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76874,7 +76874,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77056,7 +77056,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77247,7 +77247,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -77264,7 +77264,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77395,7 +77395,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77566,7 +77566,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77739,7 +77739,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77910,7 +77910,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78083,7 +78083,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78265,7 +78265,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78460,7 +78460,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -78477,7 +78477,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78587,7 +78587,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78721,7 +78721,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78892,7 +78892,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79065,7 +79065,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79236,7 +79236,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79409,7 +79409,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79591,7 +79591,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79782,7 +79782,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -79799,7 +79799,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79900,9 +79900,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -79919,7 +79919,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80080,7 +80080,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topolog
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80171,7 +80171,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 {
     return is_set(operation)
 	|| is_set(topology_name.operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::get_segment_path() const
@@ -80432,7 +80432,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80603,7 +80603,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80776,7 +80776,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80947,7 +80947,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81120,7 +81120,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81302,7 +81302,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81493,7 +81493,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::get_segment_path() const
@@ -81510,7 +81510,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81641,7 +81641,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81812,7 +81812,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81985,7 +81985,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82156,7 +82156,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82329,7 +82329,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82511,7 +82511,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82706,7 +82706,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -82723,7 +82723,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82833,7 +82833,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82967,7 +82967,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83138,7 +83138,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83311,7 +83311,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83482,7 +83482,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83655,7 +83655,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83837,7 +83837,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84028,7 +84028,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_segment_path() const
@@ -84045,7 +84045,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84146,9 +84146,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::get_segment_path() const
@@ -84460,7 +84460,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84631,7 +84631,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84804,7 +84804,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84975,7 +84975,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85148,7 +85148,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85330,7 +85330,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85521,7 +85521,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -85538,7 +85538,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85669,7 +85669,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85840,7 +85840,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86013,7 +86013,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86184,7 +86184,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86357,7 +86357,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86539,7 +86539,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86734,7 +86734,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -86751,7 +86751,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86861,7 +86861,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86995,7 +86995,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87166,7 +87166,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87339,7 +87339,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87510,7 +87510,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87683,7 +87683,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87865,7 +87865,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88056,7 +88056,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -88073,7 +88073,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88174,9 +88174,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -88441,7 +88441,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::get_segment_path() const
@@ -88552,9 +88552,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::has_data() co
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (default_topology !=  nullptr && is_set(default_topology->operation))
-	|| (topologies !=  nullptr && is_set(topologies->operation))
-	|| (vrf_prefixes !=  nullptr && is_set(vrf_prefixes->operation));
+	|| (default_topology !=  nullptr && default_topology->has_operation())
+	|| (topologies !=  nullptr && topologies->has_operation())
+	|| (vrf_prefixes !=  nullptr && vrf_prefixes->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfUnicast::get_segment_path() const
@@ -88748,7 +88748,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88919,7 +88919,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89092,7 +89092,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89263,7 +89263,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89436,7 +89436,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89618,7 +89618,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89809,7 +89809,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -89826,7 +89826,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89957,7 +89957,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90128,7 +90128,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90301,7 +90301,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90472,7 +90472,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90645,7 +90645,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90827,7 +90827,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91022,7 +91022,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -91039,7 +91039,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91149,7 +91149,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91283,7 +91283,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91454,7 +91454,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91627,7 +91627,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91798,7 +91798,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91971,7 +91971,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92153,7 +92153,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92344,7 +92344,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -92361,7 +92361,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92462,9 +92462,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -92481,7 +92481,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92642,7 +92642,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topol
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92733,7 +92733,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 {
     return is_set(operation)
 	|| is_set(topology_name.operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::get_segment_path() const
@@ -92994,7 +92994,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93165,7 +93165,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93338,7 +93338,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93509,7 +93509,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93682,7 +93682,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93864,7 +93864,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94055,7 +94055,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::get_segment_path() const
@@ -94072,7 +94072,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94203,7 +94203,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94374,7 +94374,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94547,7 +94547,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94718,7 +94718,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94891,7 +94891,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95073,7 +95073,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95268,7 +95268,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -95285,7 +95285,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95395,7 +95395,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95529,7 +95529,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95700,7 +95700,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95873,7 +95873,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96044,7 +96044,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96217,7 +96217,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96399,7 +96399,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96590,7 +96590,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::get_segment_path() const
@@ -96607,7 +96607,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96708,9 +96708,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::get_segment_path() const
@@ -97022,7 +97022,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97193,7 +97193,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97366,7 +97366,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97537,7 +97537,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97710,7 +97710,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97892,7 +97892,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98083,7 +98083,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_next_hop_table !=  nullptr && is_set(vrf_next_hop_table->operation));
+	|| (vrf_next_hop_table !=  nullptr && vrf_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::get_segment_path() const
@@ -98100,7 +98100,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98231,7 +98231,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98402,7 +98402,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98575,7 +98575,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98746,7 +98746,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98919,7 +98919,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99101,7 +99101,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99296,7 +99296,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_recursive_next_hop_table !=  nullptr && is_set(vrf_recursive_next_hop_table->operation));
+	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::get_segment_path() const
@@ -99313,7 +99313,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99423,7 +99423,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99557,7 +99557,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99728,7 +99728,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99901,7 +99901,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100072,7 +100072,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100245,7 +100245,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100427,7 +100427,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100618,7 +100618,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
     return is_set(operation)
-	|| (segment_route_next_hop_table !=  nullptr && is_set(segment_route_next_hop_table->operation));
+	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::get_segment_path() const
@@ -100635,7 +100635,7 @@ EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::Defau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100736,9 +100736,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (vrf_recurse_routes !=  nullptr && is_set(vrf_recurse_routes->operation))
-	|| (vrf_route !=  nullptr && is_set(vrf_route->operation))
-	|| (vrf_seg_route !=  nullptr && is_set(vrf_seg_route->operation));
+	|| (vrf_recurse_routes !=  nullptr && vrf_recurse_routes->has_operation())
+	|| (vrf_route !=  nullptr && vrf_route->has_operation())
+	|| (vrf_seg_route !=  nullptr && vrf_seg_route->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::get_segment_path() const
@@ -101003,7 +101003,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_prefix_topologies !=  nullptr && is_set(vrf_prefix_topologies->operation));
+	|| (vrf_prefix_topologies !=  nullptr && vrf_prefix_topologies->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::get_segment_path() const
@@ -101114,9 +101114,9 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::has_data() 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::has_operation() const
 {
     return is_set(operation)
-	|| (default_topology !=  nullptr && is_set(default_topology->operation))
-	|| (topologies !=  nullptr && is_set(topologies->operation))
-	|| (vrf_prefixes !=  nullptr && is_set(vrf_prefixes->operation));
+	|| (default_topology !=  nullptr && default_topology->has_operation())
+	|| (topologies !=  nullptr && topologies->has_operation())
+	|| (vrf_prefixes !=  nullptr && vrf_prefixes->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::get_segment_path() const
@@ -101268,8 +101268,8 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::has_data() const
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_multicast !=  nullptr && is_set(vrf_multicast->operation))
-	|| (vrf_unicast !=  nullptr && is_set(vrf_unicast->operation));
+	|| (vrf_multicast !=  nullptr && vrf_multicast->has_operation())
+	|| (vrf_unicast !=  nullptr && vrf_unicast->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::get_segment_path() const
@@ -101398,8 +101398,8 @@ bool RouterStatic::DefaultVrf::AddressFamily::has_data() const
 bool RouterStatic::DefaultVrf::AddressFamily::has_operation() const
 {
     return is_set(operation)
-	|| (vrfipv4 !=  nullptr && is_set(vrfipv4->operation))
-	|| (vrfipv6 !=  nullptr && is_set(vrfipv6->operation));
+	|| (vrfipv4 !=  nullptr && vrfipv4->has_operation())
+	|| (vrfipv6 !=  nullptr && vrfipv6->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::get_segment_path() const
@@ -101523,7 +101523,7 @@ bool RouterStatic::DefaultVrf::has_data() const
 bool RouterStatic::DefaultVrf::has_operation() const
 {
     return is_set(operation)
-	|| (address_family !=  nullptr && is_set(address_family->operation));
+	|| (address_family !=  nullptr && address_family->has_operation());
 }
 
 std::string RouterStatic::DefaultVrf::get_segment_path() const
@@ -101722,9 +101722,9 @@ bool RouterStatic::has_data() const
 bool RouterStatic::has_operation() const
 {
     return is_set(operation)
-	|| (default_vrf !=  nullptr && is_set(default_vrf->operation))
-	|| (maximum_routes !=  nullptr && is_set(maximum_routes->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (default_vrf !=  nullptr && default_vrf->has_operation())
+	|| (maximum_routes !=  nullptr && maximum_routes->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string RouterStatic::get_segment_path() const
@@ -101741,7 +101741,7 @@ EntityPath RouterStatic::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

@@ -133,7 +133,7 @@ bool EsAcl::Active::Oor::AclSummary::has_data() const
 bool EsAcl::Active::Oor::AclSummary::has_operation() const
 {
     return is_set(operation)
-	|| (details !=  nullptr && is_set(details->operation));
+	|| (details !=  nullptr && details->has_operation());
 }
 
 std::string EsAcl::Active::Oor::AclSummary::get_segment_path() const
@@ -234,7 +234,7 @@ bool EsAcl::Active::Oor::has_data() const
 bool EsAcl::Active::Oor::has_operation() const
 {
     return is_set(operation)
-	|| (acl_summary !=  nullptr && is_set(acl_summary->operation));
+	|| (acl_summary !=  nullptr && acl_summary->has_operation());
 }
 
 std::string EsAcl::Active::Oor::get_segment_path() const
@@ -415,7 +415,7 @@ EntityPath EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -612,7 +612,7 @@ EntityPath EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -703,7 +703,7 @@ bool EsAcl::Active::List::Acls::Acl::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (acl_sequence_numbers !=  nullptr && is_set(acl_sequence_numbers->operation));
+	|| (acl_sequence_numbers !=  nullptr && acl_sequence_numbers->has_operation());
 }
 
 std::string EsAcl::Active::List::Acls::Acl::get_segment_path() const
@@ -917,7 +917,7 @@ bool EsAcl::Active::List::has_data() const
 bool EsAcl::Active::List::has_operation() const
 {
     return is_set(operation)
-	|| (acls !=  nullptr && is_set(acls->operation));
+	|| (acls !=  nullptr && acls->has_operation());
 }
 
 std::string EsAcl::Active::List::get_segment_path() const
@@ -1465,10 +1465,10 @@ bool EsAcl::Active::has_data() const
 bool EsAcl::Active::has_operation() const
 {
     return is_set(operation)
-	|| (list !=  nullptr && is_set(list->operation))
-	|| (oor !=  nullptr && is_set(oor->operation))
-	|| (oor_acls !=  nullptr && is_set(oor_acls->operation))
-	|| (usages !=  nullptr && is_set(usages->operation));
+	|| (list !=  nullptr && list->has_operation())
+	|| (oor !=  nullptr && oor->has_operation())
+	|| (oor_acls !=  nullptr && oor_acls->has_operation())
+	|| (usages !=  nullptr && usages->has_operation());
 }
 
 std::string EsAcl::Active::get_segment_path() const
@@ -1638,7 +1638,7 @@ bool EsAcl::has_data() const
 bool EsAcl::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation));
+	|| (active !=  nullptr && active->has_operation());
 }
 
 std::string EsAcl::get_segment_path() const
@@ -1655,7 +1655,7 @@ EntityPath EsAcl::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1719,16 +1719,16 @@ std::unique_ptr<Entity> EsAcl::clone_ptr()
     return std::make_unique<EsAcl>();
 }
 
-const Enum::Value AclActionEnum::deny {0, "deny"};
-const Enum::Value AclActionEnum::permit {1, "permit"};
-const Enum::Value AclActionEnum::encrypt {2, "encrypt"};
-const Enum::Value AclActionEnum::bypass {3, "bypass"};
-const Enum::Value AclActionEnum::fallthrough {4, "fallthrough"};
-const Enum::Value AclActionEnum::invalid {5, "invalid"};
+const Enum::YLeaf AclActionEnum::deny {0, "deny"};
+const Enum::YLeaf AclActionEnum::permit {1, "permit"};
+const Enum::YLeaf AclActionEnum::encrypt {2, "encrypt"};
+const Enum::YLeaf AclActionEnum::bypass {3, "bypass"};
+const Enum::YLeaf AclActionEnum::fallthrough {4, "fallthrough"};
+const Enum::YLeaf AclActionEnum::invalid {5, "invalid"};
 
-const Enum::Value AclAce1Enum::normal {0, "normal"};
-const Enum::Value AclAce1Enum::remark {1, "remark"};
-const Enum::Value AclAce1Enum::abf {2, "abf"};
+const Enum::YLeaf AclAce1Enum::normal {0, "normal"};
+const Enum::YLeaf AclAce1Enum::remark {1, "remark"};
+const Enum::YLeaf AclAce1Enum::abf {2, "abf"};
 
 
 }

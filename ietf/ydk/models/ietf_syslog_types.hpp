@@ -290,14 +290,14 @@ class KernIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual I
 class SeverityEnum : public Enum
 {
     public:
-        static const Enum::Value emergency;
-        static const Enum::Value alert;
-        static const Enum::Value critical;
-        static const Enum::Value error;
-        static const Enum::Value warning;
-        static const Enum::Value notice;
-        static const Enum::Value info;
-        static const Enum::Value debug;
+        static const Enum::YLeaf emergency;
+        static const Enum::YLeaf alert;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf error;
+        static const Enum::YLeaf warning;
+        static const Enum::YLeaf notice;
+        static const Enum::YLeaf info;
+        static const Enum::YLeaf debug;
 
 };
 

@@ -38,6 +38,7 @@ class IpDomain : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Vrfs : public Entity
     {
         public:
@@ -53,6 +54,7 @@ class IpDomain : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -66,8 +68,9 @@ class IpDomain : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class Server : public Entity
             {
@@ -82,10 +85,11 @@ class IpDomain : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value domain_lookup; //type: ServerDomainLkupEnum
-                    Value domain_name; //type: string
-                    ValueList domain; //type: list of  string
 
+
+                    YLeaf domain_lookup; //type: ServerDomainLkupEnum
+                    YLeaf domain_name; //type: string
+                    YLeafList domain; //type: list of  string
 
                 class ServerAddress : public Entity
                 {
@@ -100,10 +104,11 @@ class IpDomain : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af_name; //type: HostAddressBaseIdentity
-                        Value ipv4_address; //type: string
-                        Value ipv6_address; //type: string
 
+
+                        YLeaf af_name; //type: HostAddressBaseIdentity
+                        YLeaf ipv4_address; //type: string
+                        YLeaf ipv6_address; //type: string
 
 
 
@@ -111,7 +116,6 @@ class IpDomain : public Entity
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Server::ServerAddress> > server_address;
-                    class ServerDomainLkupEnum;
 
 
             }; // IpDomain::Vrfs::Vrf::Server
@@ -132,6 +136,7 @@ class IpDomain : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Host : public Entity
                 {
                     public:
@@ -145,10 +150,11 @@ class IpDomain : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value host_name; //type: string
-                        Value af_name; //type: HostAddressBaseIdentity
-                        Value age; //type: uint16
 
+
+                        YLeaf host_name; //type: string
+                        YLeaf af_name; //type: HostAddressBaseIdentity
+                        YLeaf age; //type: uint16
 
                     class HostAliasList : public Entity
                     {
@@ -163,8 +169,9 @@ class IpDomain : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList host_alias; //type: list of  string
 
+
+                            YLeafList host_alias; //type: list of  string
 
 
 
@@ -184,10 +191,11 @@ class IpDomain : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: HostAddressBaseIdentity
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
+
+                            YLeaf af_name; //type: HostAddressBaseIdentity
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
 
 
 
@@ -251,8 +259,8 @@ class Ipv6Identity : public Cisco_IOS_XR_ip_domain_oper::HostAddressBaseIdentity
 class ServerDomainLkupEnum : public Enum
 {
     public:
-        static const Enum::Value static_mapping;
-        static const Enum::Value domain_service;
+        static const Enum::YLeaf static_mapping;
+        static const Enum::YLeaf domain_service;
 
 };
 

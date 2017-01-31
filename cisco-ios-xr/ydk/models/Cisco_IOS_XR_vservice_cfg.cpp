@@ -52,7 +52,7 @@ EntityPath Vservice::ServiceFunctionLocator::Names::Name::Node::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -140,7 +140,7 @@ bool Vservice::ServiceFunctionLocator::Names::Name::has_operation() const
     return is_set(operation)
 	|| is_set(function_name.operation)
 	|| is_set(locator_id.operation)
-	|| (node !=  nullptr && is_set(node->operation));
+	|| (node !=  nullptr && node->has_operation());
 }
 
 std::string Vservice::ServiceFunctionLocator::Names::Name::get_segment_path() const
@@ -359,7 +359,7 @@ bool Vservice::ServiceFunctionLocator::has_data() const
 bool Vservice::ServiceFunctionLocator::has_operation() const
 {
     return is_set(operation)
-	|| (names !=  nullptr && is_set(names->operation));
+	|| (names !=  nullptr && names->has_operation());
 }
 
 std::string Vservice::ServiceFunctionLocator::get_segment_path() const
@@ -455,7 +455,7 @@ Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::~Node()
 
 bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::has_data() const
 {
-    for (auto const & leaf : tenant_id.getValues())
+    for (auto const & leaf : tenant_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -468,7 +468,7 @@ bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::has_
 
 bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::has_operation() const
 {
-    for (auto const & leaf : tenant_id.getValues())
+    for (auto const & leaf : tenant_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -477,6 +477,7 @@ bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::has_
 	|| is_set(action_type.operation)
 	|| is_set(match_type.operation)
 	|| is_set(nexthop_ipv4_address.operation)
+	|| is_set(tenant_id.operation)
 	|| is_set(vrf.operation);
 }
 
@@ -494,7 +495,7 @@ EntityPath Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -585,7 +586,7 @@ bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::has_operat
 {
     return is_set(operation)
 	|| is_set(match_entry_name.operation)
-	|| (node !=  nullptr && is_set(node->operation));
+	|| (node !=  nullptr && node->has_operation());
 }
 
 std::string Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::get_segment_path() const
@@ -602,7 +603,7 @@ EntityPath Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -946,7 +947,7 @@ EntityPath Vservice::ServiceFunctionForwardLocator::Names::Name::Node::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1034,7 +1035,7 @@ bool Vservice::ServiceFunctionForwardLocator::Names::Name::has_operation() const
     return is_set(operation)
 	|| is_set(function_name.operation)
 	|| is_set(locator_id.operation)
-	|| (node !=  nullptr && is_set(node->operation));
+	|| (node !=  nullptr && node->has_operation());
 }
 
 std::string Vservice::ServiceFunctionForwardLocator::Names::Name::get_segment_path() const
@@ -1253,7 +1254,7 @@ bool Vservice::ServiceFunctionForwardLocator::has_data() const
 bool Vservice::ServiceFunctionForwardLocator::has_operation() const
 {
     return is_set(operation)
-	|| (names !=  nullptr && is_set(names->operation));
+	|| (names !=  nullptr && names->has_operation());
 }
 
 std::string Vservice::ServiceFunctionForwardLocator::get_segment_path() const
@@ -1589,7 +1590,7 @@ EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1670,7 +1671,7 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::has_da
 bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::has_operation() const
 {
     return is_set(operation)
-	|| (node !=  nullptr && is_set(node->operation));
+	|| (node !=  nullptr && node->has_operation());
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::get_segment_path() const
@@ -1687,7 +1688,7 @@ EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1788,7 +1789,7 @@ EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1863,7 +1864,7 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (node !=  nullptr && is_set(node->operation));
+	|| (node !=  nullptr && node->has_operation());
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::get_segment_path() const
@@ -1880,7 +1881,7 @@ EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1990,7 +1991,7 @@ EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2094,7 +2095,7 @@ EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::Sf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2169,7 +2170,7 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (node !=  nullptr && is_set(node->operation));
+	|| (node !=  nullptr && node->has_operation());
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::get_segment_path() const
@@ -2186,7 +2187,7 @@ EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::Sf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2296,7 +2297,7 @@ EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2397,9 +2398,9 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::has_operation() c
 {
     return is_set(operation)
 	|| is_set(index_.operation)
-	|| (sf_names !=  nullptr && is_set(sf_names->operation))
-	|| (sff_names !=  nullptr && is_set(sff_names->operation))
-	|| (terminate !=  nullptr && is_set(terminate->operation));
+	|| (sf_names !=  nullptr && sf_names->has_operation())
+	|| (sff_names !=  nullptr && sff_names->has_operation())
+	|| (terminate !=  nullptr && terminate->has_operation());
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::get_segment_path() const
@@ -2416,7 +2417,7 @@ EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2775,7 +2776,7 @@ bool Vservice::ServiceFunctionPath::has_data() const
 bool Vservice::ServiceFunctionPath::has_operation() const
 {
     return is_set(operation)
-	|| (paths !=  nullptr && is_set(paths->operation));
+	|| (paths !=  nullptr && paths->has_operation());
 }
 
 std::string Vservice::ServiceFunctionPath::get_segment_path() const
@@ -2896,11 +2897,11 @@ bool Vservice::has_data() const
 bool Vservice::has_operation() const
 {
     return is_set(operation)
-	|| (metadata_dispositions !=  nullptr && is_set(metadata_dispositions->operation))
-	|| (metadata_templates !=  nullptr && is_set(metadata_templates->operation))
-	|| (service_function_forward_locator !=  nullptr && is_set(service_function_forward_locator->operation))
-	|| (service_function_locator !=  nullptr && is_set(service_function_locator->operation))
-	|| (service_function_path !=  nullptr && is_set(service_function_path->operation));
+	|| (metadata_dispositions !=  nullptr && metadata_dispositions->has_operation())
+	|| (metadata_templates !=  nullptr && metadata_templates->has_operation())
+	|| (service_function_forward_locator !=  nullptr && service_function_forward_locator->has_operation())
+	|| (service_function_locator !=  nullptr && service_function_locator->has_operation())
+	|| (service_function_path !=  nullptr && service_function_path->has_operation());
 }
 
 std::string Vservice::get_segment_path() const
@@ -2917,7 +2918,7 @@ EntityPath Vservice::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3073,15 +3074,15 @@ std::unique_ptr<Entity> Vservice::clone_ptr()
     return std::make_unique<Vservice>();
 }
 
-const Enum::Value SfcSfTransportEnum::vxlan_gpe {1, "vxlan-gpe"};
+const Enum::YLeaf SfcSfTransportEnum::vxlan_gpe {1, "vxlan-gpe"};
 
-const Enum::Value SfcMetadataDispositionMatchEnum::type1_dcalloc_tenant_id {1, "type1-dcalloc-tenant-id"};
+const Enum::YLeaf SfcMetadataDispositionMatchEnum::type1_dcalloc_tenant_id {1, "type1-dcalloc-tenant-id"};
 
-const Enum::Value SfcMetadataAllocEnum::type1 {1, "type1"};
+const Enum::YLeaf SfcMetadataAllocEnum::type1 {1, "type1"};
 
-const Enum::Value SfcMetadataType1AllocFormatEnum::dc_allocation {1, "dc-allocation"};
+const Enum::YLeaf SfcMetadataType1AllocFormatEnum::dc_allocation {1, "dc-allocation"};
 
-const Enum::Value SfcMetadataDispositionActionEnum::redirect_nexthop {1, "redirect-nexthop"};
+const Enum::YLeaf SfcMetadataDispositionActionEnum::redirect_nexthop {1, "redirect-nexthop"};
 
 
 }

@@ -7,8 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "openconfig_platform_types.hpp"
-#include "openconfig_transport_types.hpp"
 
 namespace ydk {
 namespace openconfig_platform {
@@ -29,6 +27,7 @@ class Components : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Component : public Entity
     {
         public:
@@ -42,9 +41,10 @@ class Components : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            //type: string (refers to openconfig_platform::Components::Component::Config::name)
-            Value name;
 
+
+            //type: string (refers to openconfig_platform::Components::Component::Config::name)
+            YLeaf name;
 
         class Config : public Entity
         {
@@ -59,8 +59,9 @@ class Components : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
 
 
@@ -80,15 +81,16 @@ class Components : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value type; //type: identityref
-                Value id; //type: string
-                Value description; //type: string
-                Value mfg_name; //type: string
-                Value version; //type: string
-                Value serial_no; //type: string
-                Value part_no; //type: string
 
+
+                YLeaf name; //type: string
+                YLeaf type; //type: identityref
+                YLeaf id; //type: string
+                YLeaf description; //type: string
+                YLeaf mfg_name; //type: string
+                YLeaf version; //type: string
+                YLeaf serial_no; //type: string
+                YLeaf part_no; //type: string
 
 
 
@@ -110,6 +112,7 @@ class Components : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Property : public Entity
             {
                 public:
@@ -123,9 +126,10 @@ class Components : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: string (refers to openconfig_platform::Components::Component::Properties::Property::Config::name)
-                    Value name;
 
+
+                    //type: string (refers to openconfig_platform::Components::Component::Properties::Property::Config::name)
+                    YLeaf name;
 
                 class Config : public Entity
                 {
@@ -140,9 +144,10 @@ class Components : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value value_; //type: one of uint64, boolean, int64, string, decimal64
 
+
+                        YLeaf name; //type: string
+                        YLeaf value_; //type: one of uint64, boolean, int64, string, decimal64
 
 
 
@@ -162,10 +167,11 @@ class Components : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value value_; //type: one of uint64, boolean, int64, string, decimal64
-                        Value configurable; //type: boolean
 
+
+                        YLeaf name; //type: string
+                        YLeaf value_; //type: one of uint64, boolean, int64, string, decimal64
+                        YLeaf configurable; //type: boolean
 
 
 
@@ -200,6 +206,7 @@ class Components : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Subcomponent : public Entity
             {
                 public:
@@ -213,9 +220,10 @@ class Components : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: leafref (refers to openconfig_platform::Components::Component::Subcomponents::Subcomponent::Config::name)
-                    Value name;
 
+
+                    //type: leafref (refers to openconfig_platform::Components::Component::Subcomponents::Subcomponent::Config::name)
+                    YLeaf name;
 
                 class Config : public Entity
                 {
@@ -230,9 +238,10 @@ class Components : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: string (refers to openconfig_platform::Components::Component::Config::name)
-                        Value name;
 
+
+                        //type: string (refers to openconfig_platform::Components::Component::Config::name)
+                        YLeaf name;
 
 
 
@@ -252,9 +261,10 @@ class Components : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: string (refers to openconfig_platform::Components::Component::Config::name)
-                        Value name;
 
+
+                        //type: string (refers to openconfig_platform::Components::Component::Config::name)
+                        YLeaf name;
 
 
 
@@ -289,6 +299,7 @@ class Components : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -302,9 +313,10 @@ class Components : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enabled; //type: boolean
-                    Value form_factor; //type: Transceiver_Form_Factor_TypeIdentity
 
+
+                    YLeaf enabled; //type: boolean
+                    YLeaf form_factor; //type: Transceiver_Form_Factor_TypeIdentity
 
 
 
@@ -324,21 +336,22 @@ class Components : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enabled; //type: boolean
-                    Value form_factor; //type: Transceiver_Form_Factor_TypeIdentity
-                    Value present; //type: PresentEnum
-                    Value connector_type; //type: Fiber_Connector_TypeIdentity
-                    Value internal_temp; //type: int16
-                    Value vendor; //type: string
-                    Value vendor_part; //type: string
-                    Value vendor_rev; //type: string
-                    Value ethernet_compliance_code; //type: Ethernet_Pmd_TypeIdentity
-                    Value sonet_sdh_compliance_code; //type: Sonet_Application_CodeIdentity
-                    Value otn_compliance_code; //type: Otn_Application_CodeIdentity
-                    Value serial_no; //type: string
-                    Value date_code; //type: string
-                    Value fault_condition; //type: boolean
 
+
+                    YLeaf enabled; //type: boolean
+                    YLeaf form_factor; //type: Transceiver_Form_Factor_TypeIdentity
+                    YLeaf present; //type: PresentEnum
+                    YLeaf connector_type; //type: Fiber_Connector_TypeIdentity
+                    YLeaf internal_temp; //type: int16
+                    YLeaf vendor; //type: string
+                    YLeaf vendor_part; //type: string
+                    YLeaf vendor_rev; //type: string
+                    YLeaf ethernet_compliance_code; //type: Ethernet_Pmd_TypeIdentity
+                    YLeaf sonet_sdh_compliance_code; //type: Sonet_Application_CodeIdentity
+                    YLeaf otn_compliance_code; //type: Otn_Application_CodeIdentity
+                    YLeaf serial_no; //type: string
+                    YLeaf date_code; //type: string
+                    YLeaf fault_condition; //type: boolean
 
                     class PresentEnum;
 
@@ -361,6 +374,7 @@ class Components : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Channel : public Entity
                 {
                     public:
@@ -374,9 +388,10 @@ class Components : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: uint16 (refers to openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel::Config::index_)
-                        Value index_;
 
+
+                        //type: uint16 (refers to openconfig_platform::Components::Component::Transceiver::PhysicalChannels::Channel::Config::index_)
+                        YLeaf index_;
 
                     class Config : public Entity
                     {
@@ -391,11 +406,12 @@ class Components : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value index_; //type: uint16
-                            Value description; //type: string
-                            Value tx_laser; //type: boolean
-                            Value target_output_power; //type: decimal64
 
+
+                            YLeaf index_; //type: uint16
+                            YLeaf description; //type: string
+                            YLeaf tx_laser; //type: boolean
+                            YLeaf target_output_power; //type: decimal64
 
 
 
@@ -415,12 +431,13 @@ class Components : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value index_; //type: uint16
-                            Value description; //type: string
-                            Value tx_laser; //type: boolean
-                            Value target_output_power; //type: decimal64
-                            Value output_frequency; //type: uint64
 
+
+                            YLeaf index_; //type: uint16
+                            YLeaf description; //type: string
+                            YLeaf tx_laser; //type: boolean
+                            YLeaf target_output_power; //type: decimal64
+                            YLeaf output_frequency; //type: uint64
 
                         class OutputPower : public Entity
                         {
@@ -435,11 +452,12 @@ class Components : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value instant; //type: decimal64
-                                Value avg; //type: decimal64
-                                Value min; //type: decimal64
-                                Value max; //type: decimal64
 
+
+                                YLeaf instant; //type: decimal64
+                                YLeaf avg; //type: decimal64
+                                YLeaf min; //type: decimal64
+                                YLeaf max; //type: decimal64
 
 
 
@@ -459,11 +477,12 @@ class Components : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value instant; //type: decimal64
-                                Value avg; //type: decimal64
-                                Value min; //type: decimal64
-                                Value max; //type: decimal64
 
+
+                                YLeaf instant; //type: decimal64
+                                YLeaf avg; //type: decimal64
+                                YLeaf min; //type: decimal64
+                                YLeaf max; //type: decimal64
 
 
 
@@ -483,11 +502,12 @@ class Components : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value instant; //type: decimal64
-                                Value avg; //type: decimal64
-                                Value min; //type: decimal64
-                                Value max; //type: decimal64
 
+
+                                YLeaf instant; //type: decimal64
+                                YLeaf avg; //type: decimal64
+                                YLeaf min; //type: decimal64
+                                YLeaf max; //type: decimal64
 
 
 
@@ -542,8 +562,8 @@ class Components : public Entity
 class Components::Component::Transceiver::State::PresentEnum : public Enum
 {
     public:
-        static const Enum::Value PRESENT;
-        static const Enum::Value NOT_PRESENT;
+        static const Enum::YLeaf PRESENT;
+        static const Enum::YLeaf NOT_PRESENT;
 
 };
 

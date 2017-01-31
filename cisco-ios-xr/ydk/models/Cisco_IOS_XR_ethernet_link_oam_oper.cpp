@@ -650,7 +650,7 @@ EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Erro
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -787,7 +787,7 @@ EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -897,8 +897,8 @@ bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::has_operat
 	|| is_set(remote_mwd_key.operation)
 	|| is_set(remote_mwd_key_present.operation)
 	|| is_set(rx_fault.operation)
-	|| (efd_triggers !=  nullptr && is_set(efd_triggers->operation))
-	|| (errors !=  nullptr && is_set(errors->operation));
+	|| (efd_triggers !=  nullptr && efd_triggers->has_operation())
+	|| (errors !=  nullptr && errors->has_operation());
 }
 
 std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_segment_path() const
@@ -1953,7 +1953,7 @@ EntityPath EtherLinkOam::Nodes::Node::Summary::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2128,7 +2128,7 @@ bool EtherLinkOam::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string EtherLinkOam::Nodes::Node::get_segment_path() const
@@ -2407,7 +2407,7 @@ EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2579,7 +2579,7 @@ EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2670,7 +2670,7 @@ bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_operatio
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (event_log_entry_indexes !=  nullptr && is_set(event_log_entry_indexes->operation));
+	|| (event_log_entry_indexes !=  nullptr && event_log_entry_indexes->has_operation());
 }
 
 std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_segment_path() const
@@ -3305,12 +3305,12 @@ bool EtherLinkOam::has_data() const
 bool EtherLinkOam::has_operation() const
 {
     return is_set(operation)
-	|| (discovery_info_interfaces !=  nullptr && is_set(discovery_info_interfaces->operation))
-	|| (event_log_entry_interfaces !=  nullptr && is_set(event_log_entry_interfaces->operation))
-	|| (interface_state_interfaces !=  nullptr && is_set(interface_state_interfaces->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation))
-	|| (running_config_interfaces !=  nullptr && is_set(running_config_interfaces->operation))
-	|| (stats_interfaces !=  nullptr && is_set(stats_interfaces->operation));
+	|| (discovery_info_interfaces !=  nullptr && discovery_info_interfaces->has_operation())
+	|| (event_log_entry_interfaces !=  nullptr && event_log_entry_interfaces->has_operation())
+	|| (interface_state_interfaces !=  nullptr && interface_state_interfaces->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation())
+	|| (running_config_interfaces !=  nullptr && running_config_interfaces->has_operation())
+	|| (stats_interfaces !=  nullptr && stats_interfaces->has_operation());
 }
 
 std::string EtherLinkOam::get_segment_path() const
@@ -3327,7 +3327,7 @@ EntityPath EtherLinkOam::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3506,51 +3506,51 @@ std::unique_ptr<Entity> EtherLinkOam::clone_ptr()
     return std::make_unique<EtherLinkOam>();
 }
 
-const Enum::Value LogEnum::log_type_symbol_event {1, "log-type-symbol-event"};
-const Enum::Value LogEnum::log_type_period_event {2, "log-type-period-event"};
-const Enum::Value LogEnum::log_type_frame_event {3, "log-type-frame-event"};
-const Enum::Value LogEnum::log_type_secs_event {4, "log-type-secs-event"};
-const Enum::Value LogEnum::log_type_link_fault {256, "log-type-link-fault"};
-const Enum::Value LogEnum::log_type_dying_gasp {257, "log-type-dying-gasp"};
-const Enum::Value LogEnum::log_type_critical_event {258, "log-type-critical-event"};
+const Enum::YLeaf LogEnum::log_type_symbol_event {1, "log-type-symbol-event"};
+const Enum::YLeaf LogEnum::log_type_period_event {2, "log-type-period-event"};
+const Enum::YLeaf LogEnum::log_type_frame_event {3, "log-type-frame-event"};
+const Enum::YLeaf LogEnum::log_type_secs_event {4, "log-type-secs-event"};
+const Enum::YLeaf LogEnum::log_type_link_fault {256, "log-type-link-fault"};
+const Enum::YLeaf LogEnum::log_type_dying_gasp {257, "log-type-dying-gasp"};
+const Enum::YLeaf LogEnum::log_type_critical_event {258, "log-type-critical-event"};
 
-const Enum::Value LogLocationEnum::log_location_local {1, "log-location-local"};
-const Enum::Value LogLocationEnum::log_location_remote {2, "log-location-remote"};
+const Enum::YLeaf LogLocationEnum::log_location_local {1, "log-location-local"};
+const Enum::YLeaf LogLocationEnum::log_location_remote {2, "log-location-remote"};
 
-const Enum::Value LoopbackStatusEnum::none {1, "none"};
-const Enum::Value LoopbackStatusEnum::initiating {2, "initiating"};
-const Enum::Value LoopbackStatusEnum::master_loopback {3, "master-loopback"};
-const Enum::Value LoopbackStatusEnum::terminating {4, "terminating"};
-const Enum::Value LoopbackStatusEnum::local_loopback {5, "local-loopback"};
-const Enum::Value LoopbackStatusEnum::unknown {6, "unknown"};
+const Enum::YLeaf LoopbackStatusEnum::none {1, "none"};
+const Enum::YLeaf LoopbackStatusEnum::initiating {2, "initiating"};
+const Enum::YLeaf LoopbackStatusEnum::master_loopback {3, "master-loopback"};
+const Enum::YLeaf LoopbackStatusEnum::terminating {4, "terminating"};
+const Enum::YLeaf LoopbackStatusEnum::local_loopback {5, "local-loopback"};
+const Enum::YLeaf LoopbackStatusEnum::unknown {6, "unknown"};
 
-const Enum::Value OperationalStateEnum::disabled {1, "disabled"};
-const Enum::Value OperationalStateEnum::link_fault {2, "link-fault"};
-const Enum::Value OperationalStateEnum::passive_wait {3, "passive-wait"};
-const Enum::Value OperationalStateEnum::active_send_local {4, "active-send-local"};
-const Enum::Value OperationalStateEnum::send_local_and_remote {5, "send-local-and-remote"};
-const Enum::Value OperationalStateEnum::send_local_and_remote_ok {6, "send-local-and-remote-ok"};
-const Enum::Value OperationalStateEnum::peering_locally_rejected {7, "peering-locally-rejected"};
-const Enum::Value OperationalStateEnum::peering_remotely_rejected {8, "peering-remotely-rejected"};
-const Enum::Value OperationalStateEnum::operational {9, "operational"};
-const Enum::Value OperationalStateEnum::operational_half_duplex {10, "operational-half-duplex"};
+const Enum::YLeaf OperationalStateEnum::disabled {1, "disabled"};
+const Enum::YLeaf OperationalStateEnum::link_fault {2, "link-fault"};
+const Enum::YLeaf OperationalStateEnum::passive_wait {3, "passive-wait"};
+const Enum::YLeaf OperationalStateEnum::active_send_local {4, "active-send-local"};
+const Enum::YLeaf OperationalStateEnum::send_local_and_remote {5, "send-local-and-remote"};
+const Enum::YLeaf OperationalStateEnum::send_local_and_remote_ok {6, "send-local-and-remote-ok"};
+const Enum::YLeaf OperationalStateEnum::peering_locally_rejected {7, "peering-locally-rejected"};
+const Enum::YLeaf OperationalStateEnum::peering_remotely_rejected {8, "peering-remotely-rejected"};
+const Enum::YLeaf OperationalStateEnum::operational {9, "operational"};
+const Enum::YLeaf OperationalStateEnum::operational_half_duplex {10, "operational-half-duplex"};
 
-const Enum::Value ModeEnum::passive {0, "passive"};
-const Enum::Value ModeEnum::active {1, "active"};
-const Enum::Value ModeEnum::dont_care {2, "dont-care"};
+const Enum::YLeaf ModeEnum::passive {0, "passive"};
+const Enum::YLeaf ModeEnum::active {1, "active"};
+const Enum::YLeaf ModeEnum::dont_care {2, "dont-care"};
 
-const Enum::Value ActionEnum::no_action {1, "no-action"};
-const Enum::Value ActionEnum::disable_interface {2, "disable-interface"};
-const Enum::Value ActionEnum::log {3, "log"};
-const Enum::Value ActionEnum::efd {4, "efd"};
+const Enum::YLeaf ActionEnum::no_action {1, "no-action"};
+const Enum::YLeaf ActionEnum::disable_interface {2, "disable-interface"};
+const Enum::YLeaf ActionEnum::log {3, "log"};
+const Enum::YLeaf ActionEnum::efd {4, "efd"};
 
-const Enum::Value ProtocolStateEnum::protocol_state_inactive {0, "protocol-state-inactive"};
-const Enum::Value ProtocolStateEnum::protocol_state_fault {1, "protocol-state-fault"};
-const Enum::Value ProtocolStateEnum::protocol_state_active_send_local {2, "protocol-state-active-send-local"};
-const Enum::Value ProtocolStateEnum::protocol_state_passive_wait {3, "protocol-state-passive-wait"};
-const Enum::Value ProtocolStateEnum::protocol_state_send_local_remote {4, "protocol-state-send-local-remote"};
-const Enum::Value ProtocolStateEnum::protocol_state_send_local_remote_ok {5, "protocol-state-send-local-remote-ok"};
-const Enum::Value ProtocolStateEnum::protocol_state_send_any {6, "protocol-state-send-any"};
+const Enum::YLeaf ProtocolStateEnum::protocol_state_inactive {0, "protocol-state-inactive"};
+const Enum::YLeaf ProtocolStateEnum::protocol_state_fault {1, "protocol-state-fault"};
+const Enum::YLeaf ProtocolStateEnum::protocol_state_active_send_local {2, "protocol-state-active-send-local"};
+const Enum::YLeaf ProtocolStateEnum::protocol_state_passive_wait {3, "protocol-state-passive-wait"};
+const Enum::YLeaf ProtocolStateEnum::protocol_state_send_local_remote {4, "protocol-state-send-local-remote"};
+const Enum::YLeaf ProtocolStateEnum::protocol_state_send_local_remote_ok {5, "protocol-state-send-local-remote-ok"};
+const Enum::YLeaf ProtocolStateEnum::protocol_state_send_any {6, "protocol-state-send-any"};
 
 
 }

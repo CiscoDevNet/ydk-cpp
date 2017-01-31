@@ -186,7 +186,7 @@ EntityPath Macsec::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -253,19 +253,19 @@ std::unique_ptr<Entity> Macsec::clone_ptr()
     return std::make_unique<Macsec>();
 }
 
-const Enum::Value MacsecMkaConfOffsetEnum::conf_off_set_0 {0, "conf-off-set-0"};
-const Enum::Value MacsecMkaConfOffsetEnum::conf_off_set_30 {30, "conf-off-set-30"};
-const Enum::Value MacsecMkaConfOffsetEnum::conf_off_set_50 {50, "conf-off-set-50"};
+const Enum::YLeaf MacsecMkaConfOffsetEnum::conf_off_set_0 {0, "conf-off-set-0"};
+const Enum::YLeaf MacsecMkaConfOffsetEnum::conf_off_set_30 {30, "conf-off-set-30"};
+const Enum::YLeaf MacsecMkaConfOffsetEnum::conf_off_set_50 {50, "conf-off-set-50"};
 
-const Enum::Value MacsecMkaSecurityPolicyEnum::should_secure {0, "should-secure"};
-const Enum::Value MacsecMkaSecurityPolicyEnum::must_secure {1, "must-secure"};
+const Enum::YLeaf MacsecMkaSecurityPolicyEnum::should_secure {0, "should-secure"};
+const Enum::YLeaf MacsecMkaSecurityPolicyEnum::must_secure {1, "must-secure"};
 
-const Enum::Value MacsecMkaPolicyExceptionEnum::lacp_in_clear {1, "lacp-in-clear"};
+const Enum::YLeaf MacsecMkaPolicyExceptionEnum::lacp_in_clear {1, "lacp-in-clear"};
 
-const Enum::Value MacsecMkaCipherSuiteEnum::gcm_aes_128 {1, "gcm-aes-128"};
-const Enum::Value MacsecMkaCipherSuiteEnum::gcm_aes_256 {2, "gcm-aes-256"};
-const Enum::Value MacsecMkaCipherSuiteEnum::gcm_aes_xpn_128 {3, "gcm-aes-xpn-128"};
-const Enum::Value MacsecMkaCipherSuiteEnum::gcm_aes_xpn_256 {4, "gcm-aes-xpn-256"};
+const Enum::YLeaf MacsecMkaCipherSuiteEnum::gcm_aes_128 {1, "gcm-aes-128"};
+const Enum::YLeaf MacsecMkaCipherSuiteEnum::gcm_aes_256 {2, "gcm-aes-256"};
+const Enum::YLeaf MacsecMkaCipherSuiteEnum::gcm_aes_xpn_128 {3, "gcm-aes-xpn-128"};
+const Enum::YLeaf MacsecMkaCipherSuiteEnum::gcm_aes_xpn_256 {4, "gcm-aes-xpn-256"};
 
 
 }

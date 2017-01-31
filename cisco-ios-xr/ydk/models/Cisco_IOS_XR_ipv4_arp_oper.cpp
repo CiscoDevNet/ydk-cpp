@@ -283,7 +283,7 @@ EntityPath ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -390,7 +390,7 @@ EntityPath ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -473,7 +473,7 @@ ArpGmp::Vrfs::Vrf::Routes::Route::~Route()
 
 bool ArpGmp::Vrfs::Vrf::Routes::Route::has_data() const
 {
-    for (auto const & leaf : interface_name.getValues())
+    for (auto const & leaf : interface_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -487,13 +487,14 @@ bool ArpGmp::Vrfs::Vrf::Routes::Route::has_data() const
 
 bool ArpGmp::Vrfs::Vrf::Routes::Route::has_operation() const
 {
-    for (auto const & leaf : interface_name.getValues())
+    for (auto const & leaf : interface_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(address.operation)
+	|| is_set(interface_name.operation)
 	|| is_set(interface_name_xr.operation)
 	|| is_set(ip_address.operation)
 	|| is_set(prefix_length.operation)
@@ -514,7 +515,7 @@ EntityPath ArpGmp::Vrfs::Vrf::Routes::Route::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -627,7 +628,7 @@ EntityPath ArpGmp::Vrfs::Vrf::Routes::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -737,7 +738,7 @@ EntityPath ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::Ass
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -831,7 +832,7 @@ bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::has_opera
 	|| is_set(interface_name.operation)
 	|| is_set(interface_name_xr.operation)
 	|| is_set(reference_count.operation)
-	|| (associated_configuration_entry !=  nullptr && is_set(associated_configuration_entry->operation));
+	|| (associated_configuration_entry !=  nullptr && associated_configuration_entry->has_operation());
 }
 
 std::string ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::get_segment_path() const
@@ -848,7 +849,7 @@ EntityPath ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -973,7 +974,7 @@ EntityPath ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1074,9 +1075,9 @@ bool ArpGmp::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (configured_ip_addresses !=  nullptr && is_set(configured_ip_addresses->operation))
-	|| (interface_configured_ips !=  nullptr && is_set(interface_configured_ips->operation))
-	|| (routes !=  nullptr && is_set(routes->operation));
+	|| (configured_ip_addresses !=  nullptr && configured_ip_addresses->has_operation())
+	|| (interface_configured_ips !=  nullptr && interface_configured_ips->has_operation())
+	|| (routes !=  nullptr && routes->has_operation());
 }
 
 std::string ArpGmp::Vrfs::Vrf::get_segment_path() const
@@ -1341,8 +1342,8 @@ bool ArpGmp::has_data() const
 bool ArpGmp::has_operation() const
 {
     return is_set(operation)
-	|| (vrf_infos !=  nullptr && is_set(vrf_infos->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (vrf_infos !=  nullptr && vrf_infos->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string ArpGmp::get_segment_path() const
@@ -1359,7 +1360,7 @@ EntityPath ArpGmp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1502,7 +1503,7 @@ EntityPath Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1624,7 +1625,7 @@ EntityPath Arp::Nodes::Node::ResolutionHistoryDynamic::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1809,7 +1810,7 @@ EntityPath Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2036,7 +2037,7 @@ EntityPath Arp::Nodes::Node::TrafficVrfs::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2218,7 +2219,7 @@ EntityPath Arp::Nodes::Node::TrafficNode::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2454,7 +2455,7 @@ EntityPath Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2576,7 +2577,7 @@ EntityPath Arp::Nodes::Node::ResolutionHistoryClient::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2698,7 +2699,7 @@ EntityPath Arp::Nodes::Node::Entries::Entry::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2820,7 +2821,7 @@ EntityPath Arp::Nodes::Node::Entries::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3005,7 +3006,7 @@ EntityPath Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3232,7 +3233,7 @@ EntityPath Arp::Nodes::Node::TrafficInterfaces::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3348,12 +3349,12 @@ bool Arp::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (entries !=  nullptr && is_set(entries->operation))
-	|| (resolution_history_client !=  nullptr && is_set(resolution_history_client->operation))
-	|| (resolution_history_dynamic !=  nullptr && is_set(resolution_history_dynamic->operation))
-	|| (traffic_interfaces !=  nullptr && is_set(traffic_interfaces->operation))
-	|| (traffic_node !=  nullptr && is_set(traffic_node->operation))
-	|| (traffic_vrfs !=  nullptr && is_set(traffic_vrfs->operation));
+	|| (entries !=  nullptr && entries->has_operation())
+	|| (resolution_history_client !=  nullptr && resolution_history_client->has_operation())
+	|| (resolution_history_dynamic !=  nullptr && resolution_history_dynamic->has_operation())
+	|| (traffic_interfaces !=  nullptr && traffic_interfaces->has_operation())
+	|| (traffic_node !=  nullptr && traffic_node->has_operation())
+	|| (traffic_vrfs !=  nullptr && traffic_vrfs->has_operation());
 }
 
 std::string Arp::Nodes::Node::get_segment_path() const
@@ -3682,7 +3683,7 @@ bool Arp::has_data() const
 bool Arp::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Arp::get_segment_path() const
@@ -3699,7 +3700,7 @@ EntityPath Arp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3763,69 +3764,69 @@ std::unique_ptr<Entity> Arp::clone_ptr()
     return std::make_unique<Arp>();
 }
 
-const Enum::Value ArpResolutionHistoryStatusEnum::status_none {0, "status-none"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_resolution_request {1, "status-resolution-request"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_resolved_reply {2, "status-resolved-reply"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_resolved_grat_arp {3, "status-resolved-grat-arp"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_resolved_request {4, "status-resolved-request"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_resolved_lc_sync {5, "status-resolved-lc-sync"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_resolved_lc_sync_purge_delay {6, "status-resolved-lc-sync-purge-delay"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_resolved_client {7, "status-resolved-client"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_removed_client {8, "status-removed-client"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_already_resolved {9, "status-already-resolved"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_failed {10, "status-failed"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_dropped_interface_down {11, "status-dropped-interface-down"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_dropped_broadcast_disabled {12, "status-dropped-broadcast-disabled"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_dropped_interface_unavailable {13, "status-dropped-interface-unavailable"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_dropped_bad_subnet {14, "status-dropped-bad-subnet"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_dropped_dynamic_learning_disabled {15, "status-dropped-dynamic-learning-disabled"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_dropped_out_of_subnet_disabled {16, "status-dropped-out-of-subnet-disabled"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_removed_client_sweep {17, "status-removed-client-sweep"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_added_client {18, "status-added-client"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_added_v1 {19, "status-added-v1"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_removed_v1 {20, "status-removed-v1"};
-const Enum::Value ArpResolutionHistoryStatusEnum::status_resolved_peer_sync {21, "status-resolved-peer-sync"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_none {0, "status-none"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolution_request {1, "status-resolution-request"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_reply {2, "status-resolved-reply"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_grat_arp {3, "status-resolved-grat-arp"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_request {4, "status-resolved-request"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_lc_sync {5, "status-resolved-lc-sync"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_lc_sync_purge_delay {6, "status-resolved-lc-sync-purge-delay"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_client {7, "status-resolved-client"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_removed_client {8, "status-removed-client"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_already_resolved {9, "status-already-resolved"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_failed {10, "status-failed"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_interface_down {11, "status-dropped-interface-down"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_broadcast_disabled {12, "status-dropped-broadcast-disabled"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_interface_unavailable {13, "status-dropped-interface-unavailable"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_bad_subnet {14, "status-dropped-bad-subnet"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_dynamic_learning_disabled {15, "status-dropped-dynamic-learning-disabled"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_out_of_subnet_disabled {16, "status-dropped-out-of-subnet-disabled"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_removed_client_sweep {17, "status-removed-client-sweep"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_added_client {18, "status-added-client"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_added_v1 {19, "status-added-v1"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_removed_v1 {20, "status-removed-v1"};
+const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_peer_sync {21, "status-resolved-peer-sync"};
 
-const Enum::Value IpArpBagEncapEnum::none {0, "none"};
-const Enum::Value IpArpBagEncapEnum::arpa {1, "arpa"};
-const Enum::Value IpArpBagEncapEnum::snap {2, "snap"};
-const Enum::Value IpArpBagEncapEnum::ieee802_1q {3, "ieee802-1q"};
-const Enum::Value IpArpBagEncapEnum::srp {4, "srp"};
-const Enum::Value IpArpBagEncapEnum::srpa {5, "srpa"};
-const Enum::Value IpArpBagEncapEnum::srpb {6, "srpb"};
+const Enum::YLeaf IpArpBagEncapEnum::none {0, "none"};
+const Enum::YLeaf IpArpBagEncapEnum::arpa {1, "arpa"};
+const Enum::YLeaf IpArpBagEncapEnum::snap {2, "snap"};
+const Enum::YLeaf IpArpBagEncapEnum::ieee802_1q {3, "ieee802-1q"};
+const Enum::YLeaf IpArpBagEncapEnum::srp {4, "srp"};
+const Enum::YLeaf IpArpBagEncapEnum::srpa {5, "srpa"};
+const Enum::YLeaf IpArpBagEncapEnum::srpb {6, "srpb"};
 
-const Enum::Value ArpGmpBagEncapEnum::none {0, "none"};
-const Enum::Value ArpGmpBagEncapEnum::arpa {1, "arpa"};
-const Enum::Value ArpGmpBagEncapEnum::snap {2, "snap"};
-const Enum::Value ArpGmpBagEncapEnum::ieee802_1q {3, "ieee802-1q"};
-const Enum::Value ArpGmpBagEncapEnum::srp {4, "srp"};
-const Enum::Value ArpGmpBagEncapEnum::srpa {5, "srpa"};
-const Enum::Value ArpGmpBagEncapEnum::srpb {6, "srpb"};
+const Enum::YLeaf ArpGmpBagEncapEnum::none {0, "none"};
+const Enum::YLeaf ArpGmpBagEncapEnum::arpa {1, "arpa"};
+const Enum::YLeaf ArpGmpBagEncapEnum::snap {2, "snap"};
+const Enum::YLeaf ArpGmpBagEncapEnum::ieee802_1q {3, "ieee802-1q"};
+const Enum::YLeaf ArpGmpBagEncapEnum::srp {4, "srp"};
+const Enum::YLeaf ArpGmpBagEncapEnum::srpa {5, "srpa"};
+const Enum::YLeaf ArpGmpBagEncapEnum::srpb {6, "srpb"};
 
-const Enum::Value IpArpBagMediaEnum::media_arpa {0, "media-arpa"};
-const Enum::Value IpArpBagMediaEnum::media_srp {1, "media-srp"};
-const Enum::Value IpArpBagMediaEnum::media_unknown {2, "media-unknown"};
+const Enum::YLeaf IpArpBagMediaEnum::media_arpa {0, "media-arpa"};
+const Enum::YLeaf IpArpBagMediaEnum::media_srp {1, "media-srp"};
+const Enum::YLeaf IpArpBagMediaEnum::media_unknown {2, "media-unknown"};
 
-const Enum::Value ArpGmpBagEntryEnum::null {0, "null"};
-const Enum::Value ArpGmpBagEntryEnum::static_ {1, "static"};
-const Enum::Value ArpGmpBagEntryEnum::alias {2, "alias"};
+const Enum::YLeaf ArpGmpBagEntryEnum::null {0, "null"};
+const Enum::YLeaf ArpGmpBagEntryEnum::static_ {1, "static"};
+const Enum::YLeaf ArpGmpBagEntryEnum::alias {2, "alias"};
 
-const Enum::Value IpArpBagStateEnum::state_none {0, "state-none"};
-const Enum::Value IpArpBagStateEnum::state_interface {1, "state-interface"};
-const Enum::Value IpArpBagStateEnum::state_standby {2, "state-standby"};
-const Enum::Value IpArpBagStateEnum::state_static {3, "state-static"};
-const Enum::Value IpArpBagStateEnum::state_alias {4, "state-alias"};
-const Enum::Value IpArpBagStateEnum::state_mobile {5, "state-mobile"};
-const Enum::Value IpArpBagStateEnum::state_incomplete {6, "state-incomplete"};
-const Enum::Value IpArpBagStateEnum::state_deleted {7, "state-deleted"};
-const Enum::Value IpArpBagStateEnum::state_dynamic {8, "state-dynamic"};
-const Enum::Value IpArpBagStateEnum::state_probe {9, "state-probe"};
-const Enum::Value IpArpBagStateEnum::state_purge_delayed {10, "state-purge-delayed"};
-const Enum::Value IpArpBagStateEnum::state_dhcp {11, "state-dhcp"};
-const Enum::Value IpArpBagStateEnum::state_vxlan {12, "state-vxlan"};
-const Enum::Value IpArpBagStateEnum::state_sat {13, "state-sat"};
-const Enum::Value IpArpBagStateEnum::state_r_sync {14, "state-r-sync"};
-const Enum::Value IpArpBagStateEnum::state_max {15, "state-max"};
+const Enum::YLeaf IpArpBagStateEnum::state_none {0, "state-none"};
+const Enum::YLeaf IpArpBagStateEnum::state_interface {1, "state-interface"};
+const Enum::YLeaf IpArpBagStateEnum::state_standby {2, "state-standby"};
+const Enum::YLeaf IpArpBagStateEnum::state_static {3, "state-static"};
+const Enum::YLeaf IpArpBagStateEnum::state_alias {4, "state-alias"};
+const Enum::YLeaf IpArpBagStateEnum::state_mobile {5, "state-mobile"};
+const Enum::YLeaf IpArpBagStateEnum::state_incomplete {6, "state-incomplete"};
+const Enum::YLeaf IpArpBagStateEnum::state_deleted {7, "state-deleted"};
+const Enum::YLeaf IpArpBagStateEnum::state_dynamic {8, "state-dynamic"};
+const Enum::YLeaf IpArpBagStateEnum::state_probe {9, "state-probe"};
+const Enum::YLeaf IpArpBagStateEnum::state_purge_delayed {10, "state-purge-delayed"};
+const Enum::YLeaf IpArpBagStateEnum::state_dhcp {11, "state-dhcp"};
+const Enum::YLeaf IpArpBagStateEnum::state_vxlan {12, "state-vxlan"};
+const Enum::YLeaf IpArpBagStateEnum::state_sat {13, "state-sat"};
+const Enum::YLeaf IpArpBagStateEnum::state_r_sync {14, "state-r-sync"};
+const Enum::YLeaf IpArpBagStateEnum::state_max {15, "state-max"};
 
 
 }

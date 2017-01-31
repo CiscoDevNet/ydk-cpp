@@ -52,7 +52,7 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -156,7 +156,7 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -285,8 +285,8 @@ bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::has_operation(
 	|| is_set(priority.operation)
 	|| is_set(replay_protect.operation)
 	|| is_set(window_size.operation)
-	|| (inner_tag !=  nullptr && is_set(inner_tag->operation))
-	|| (outer_tag !=  nullptr && is_set(outer_tag->operation));
+	|| (inner_tag !=  nullptr && inner_tag->has_operation())
+	|| (outer_tag !=  nullptr && outer_tag->has_operation());
 }
 
 std::string Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_segment_path() const
@@ -303,7 +303,7 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -539,7 +539,7 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Vp::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -706,7 +706,7 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -818,7 +818,7 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -930,7 +930,7 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1090,7 +1090,7 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::Ca::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1299,8 +1299,8 @@ bool Macsec::Mka::Interfaces::Interface::Session::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (session_summary !=  nullptr && is_set(session_summary->operation))
-	|| (vp !=  nullptr && is_set(vp->operation));
+	|| (session_summary !=  nullptr && session_summary->has_operation())
+	|| (vp !=  nullptr && vp->has_operation());
 }
 
 std::string Macsec::Mka::Interfaces::Interface::Session::get_segment_path() const
@@ -1317,7 +1317,7 @@ EntityPath Macsec::Mka::Interfaces::Interface::Session::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1454,7 +1454,7 @@ bool Macsec::Mka::Interfaces::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string Macsec::Mka::Interfaces::Interface::get_segment_path() const
@@ -1668,7 +1668,7 @@ bool Macsec::Mka::has_data() const
 bool Macsec::Mka::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string Macsec::Mka::get_segment_path() const
@@ -1769,7 +1769,7 @@ bool Macsec::has_data() const
 bool Macsec::has_operation() const
 {
     return is_set(operation)
-	|| (mka !=  nullptr && is_set(mka->operation));
+	|| (mka !=  nullptr && mka->has_operation());
 }
 
 std::string Macsec::get_segment_path() const
@@ -1786,7 +1786,7 @@ EntityPath Macsec::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

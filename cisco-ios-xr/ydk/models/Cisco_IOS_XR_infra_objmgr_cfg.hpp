@@ -26,6 +26,7 @@ class ObjectGroup : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Port : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class ObjectGroup : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Objects : public Entity
@@ -56,6 +58,7 @@ class ObjectGroup : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Object : public Entity
             {
                 public:
@@ -69,9 +72,10 @@ class ObjectGroup : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value object_name; //type: string
-                    Value description; //type: string
 
+
+                    YLeaf object_name; //type: string
+                    YLeaf description; //type: string
 
                 class Operators : public Entity
                 {
@@ -88,6 +92,7 @@ class ObjectGroup : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Operator_ : public Entity
                     {
                         public:
@@ -101,12 +106,11 @@ class ObjectGroup : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_type; //type: PortOperatorEnum
-                            Value port; //type: one of uint32, enumeration
 
 
-                            class PortOperatorEnum;
-                            class PortEnum;
+                            YLeaf operator_type; //type: PortOperatorEnum
+                            YLeaf port; //type: one of uint32, enumeration
+
 
 
                     }; // ObjectGroup::Port::Objects::Object::Operators::Operator_
@@ -133,6 +137,7 @@ class ObjectGroup : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class NestedGroup : public Entity
                     {
                         public:
@@ -146,8 +151,9 @@ class ObjectGroup : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value nested_group_name; //type: string
 
+
+                            YLeaf nested_group_name; //type: string
 
 
 
@@ -175,6 +181,7 @@ class ObjectGroup : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PortRange : public Entity
                     {
                         public:
@@ -188,12 +195,11 @@ class ObjectGroup : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start_port; //type: one of uint32, enumeration
-                            Value end_port; //type: one of uint32, enumeration
 
 
-                            class EndPortEnum;
-                            class StartPortEnum;
+                            YLeaf start_port; //type: one of uint32, enumeration
+                            YLeaf end_port; //type: one of uint32, enumeration
+
 
 
                     }; // ObjectGroup::Port::Objects::Object::PortRanges::PortRange
@@ -240,6 +246,7 @@ class ObjectGroup : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6 : public Entity
         {
             public:
@@ -253,6 +260,7 @@ class ObjectGroup : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class Objects : public Entity
@@ -270,6 +278,7 @@ class ObjectGroup : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Object : public Entity
                 {
                     public:
@@ -283,9 +292,10 @@ class ObjectGroup : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object_name; //type: string
-                        Value description; //type: string
 
+
+                        YLeaf object_name; //type: string
+                        YLeaf description; //type: string
 
                     class NestedGroups : public Entity
                     {
@@ -302,6 +312,7 @@ class ObjectGroup : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NestedGroup : public Entity
                         {
                             public:
@@ -315,8 +326,9 @@ class ObjectGroup : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value nested_group_name; //type: string
 
+
+                                YLeaf nested_group_name; //type: string
 
 
 
@@ -344,6 +356,7 @@ class ObjectGroup : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class AddressRange : public Entity
                         {
                             public:
@@ -357,9 +370,10 @@ class ObjectGroup : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value start_address; //type: string
-                                Value end_address; //type: string
 
+
+                                YLeaf start_address; //type: string
+                                YLeaf end_address; //type: string
 
 
 
@@ -387,6 +401,7 @@ class ObjectGroup : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Address : public Entity
                         {
                             public:
@@ -400,9 +415,10 @@ class ObjectGroup : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
 
 
 
@@ -430,6 +446,7 @@ class ObjectGroup : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Host : public Entity
                         {
                             public:
@@ -443,8 +460,9 @@ class ObjectGroup : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value host_address; //type: string
 
+
+                                YLeaf host_address; //type: string
 
 
 
@@ -493,6 +511,7 @@ class ObjectGroup : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Objects : public Entity
             {
                 public:
@@ -508,6 +527,7 @@ class ObjectGroup : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Object : public Entity
                 {
                     public:
@@ -521,9 +541,10 @@ class ObjectGroup : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object_name; //type: string
-                        Value description; //type: string
 
+
+                        YLeaf object_name; //type: string
+                        YLeaf description; //type: string
 
                     class NestedGroups : public Entity
                     {
@@ -540,6 +561,7 @@ class ObjectGroup : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class NestedGroup : public Entity
                         {
                             public:
@@ -553,8 +575,9 @@ class ObjectGroup : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value nested_group_name; //type: string
 
+
+                                YLeaf nested_group_name; //type: string
 
 
 
@@ -582,6 +605,7 @@ class ObjectGroup : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class AddressRange : public Entity
                         {
                             public:
@@ -595,9 +619,10 @@ class ObjectGroup : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value start_address; //type: string
-                                Value end_address; //type: string
 
+
+                                YLeaf start_address; //type: string
+                                YLeaf end_address; //type: string
 
 
 
@@ -625,6 +650,7 @@ class ObjectGroup : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Address : public Entity
                         {
                             public:
@@ -638,9 +664,10 @@ class ObjectGroup : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value prefix_length; //type: uint8
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf prefix_length; //type: uint8
 
 
 
@@ -668,6 +695,7 @@ class ObjectGroup : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Host : public Entity
                         {
                             public:
@@ -681,8 +709,9 @@ class ObjectGroup : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value host_address; //type: string
 
+
+                                YLeaf host_address; //type: string
 
 
 
@@ -733,130 +762,130 @@ class ObjectGroup : public Entity
 class EndPortEnum : public Enum
 {
     public:
-        static const Enum::Value echo;
-        static const Enum::Value discard;
-        static const Enum::Value daytime;
-        static const Enum::Value chargen;
-        static const Enum::Value ftp_data;
-        static const Enum::Value ftp;
-        static const Enum::Value ssh;
-        static const Enum::Value telnet;
-        static const Enum::Value smtp;
-        static const Enum::Value time;
-        static const Enum::Value nicname;
-        static const Enum::Value tacacs;
-        static const Enum::Value domain;
-        static const Enum::Value gopher;
-        static const Enum::Value finger;
-        static const Enum::Value www;
-        static const Enum::Value host_name;
-        static const Enum::Value pop2;
-        static const Enum::Value pop3;
-        static const Enum::Value sun_rpc;
-        static const Enum::Value ident;
-        static const Enum::Value nntp;
-        static const Enum::Value bgp;
-        static const Enum::Value irc;
-        static const Enum::Value pim_auto_rp;
-        static const Enum::Value exec;
-        static const Enum::Value login;
-        static const Enum::Value cmd;
-        static const Enum::Value lpd;
-        static const Enum::Value uucp;
-        static const Enum::Value klogin;
-        static const Enum::Value kshell;
-        static const Enum::Value talk;
-        static const Enum::Value ldp;
+        static const Enum::YLeaf echo;
+        static const Enum::YLeaf discard;
+        static const Enum::YLeaf daytime;
+        static const Enum::YLeaf chargen;
+        static const Enum::YLeaf ftp_data;
+        static const Enum::YLeaf ftp;
+        static const Enum::YLeaf ssh;
+        static const Enum::YLeaf telnet;
+        static const Enum::YLeaf smtp;
+        static const Enum::YLeaf time;
+        static const Enum::YLeaf nicname;
+        static const Enum::YLeaf tacacs;
+        static const Enum::YLeaf domain;
+        static const Enum::YLeaf gopher;
+        static const Enum::YLeaf finger;
+        static const Enum::YLeaf www;
+        static const Enum::YLeaf host_name;
+        static const Enum::YLeaf pop2;
+        static const Enum::YLeaf pop3;
+        static const Enum::YLeaf sun_rpc;
+        static const Enum::YLeaf ident;
+        static const Enum::YLeaf nntp;
+        static const Enum::YLeaf bgp;
+        static const Enum::YLeaf irc;
+        static const Enum::YLeaf pim_auto_rp;
+        static const Enum::YLeaf exec;
+        static const Enum::YLeaf login;
+        static const Enum::YLeaf cmd;
+        static const Enum::YLeaf lpd;
+        static const Enum::YLeaf uucp;
+        static const Enum::YLeaf klogin;
+        static const Enum::YLeaf kshell;
+        static const Enum::YLeaf talk;
+        static const Enum::YLeaf ldp;
 
 };
 
 class PortOperatorEnum : public Enum
 {
     public:
-        static const Enum::Value equal;
-        static const Enum::Value not_equal;
-        static const Enum::Value greater_than;
-        static const Enum::Value less_than;
+        static const Enum::YLeaf equal;
+        static const Enum::YLeaf not_equal;
+        static const Enum::YLeaf greater_than;
+        static const Enum::YLeaf less_than;
 
 };
 
 class PortEnum : public Enum
 {
     public:
-        static const Enum::Value echo;
-        static const Enum::Value discard;
-        static const Enum::Value daytime;
-        static const Enum::Value chargen;
-        static const Enum::Value ftp_data;
-        static const Enum::Value ftp;
-        static const Enum::Value ssh;
-        static const Enum::Value telnet;
-        static const Enum::Value smtp;
-        static const Enum::Value time;
-        static const Enum::Value nicname;
-        static const Enum::Value tacacs;
-        static const Enum::Value domain;
-        static const Enum::Value gopher;
-        static const Enum::Value finger;
-        static const Enum::Value www;
-        static const Enum::Value host_name;
-        static const Enum::Value pop2;
-        static const Enum::Value pop3;
-        static const Enum::Value sun_rpc;
-        static const Enum::Value ident;
-        static const Enum::Value nntp;
-        static const Enum::Value bgp;
-        static const Enum::Value irc;
-        static const Enum::Value pim_auto_rp;
-        static const Enum::Value exec;
-        static const Enum::Value login;
-        static const Enum::Value cmd;
-        static const Enum::Value lpd;
-        static const Enum::Value uucp;
-        static const Enum::Value klogin;
-        static const Enum::Value kshell;
-        static const Enum::Value talk;
-        static const Enum::Value ldp;
+        static const Enum::YLeaf echo;
+        static const Enum::YLeaf discard;
+        static const Enum::YLeaf daytime;
+        static const Enum::YLeaf chargen;
+        static const Enum::YLeaf ftp_data;
+        static const Enum::YLeaf ftp;
+        static const Enum::YLeaf ssh;
+        static const Enum::YLeaf telnet;
+        static const Enum::YLeaf smtp;
+        static const Enum::YLeaf time;
+        static const Enum::YLeaf nicname;
+        static const Enum::YLeaf tacacs;
+        static const Enum::YLeaf domain;
+        static const Enum::YLeaf gopher;
+        static const Enum::YLeaf finger;
+        static const Enum::YLeaf www;
+        static const Enum::YLeaf host_name;
+        static const Enum::YLeaf pop2;
+        static const Enum::YLeaf pop3;
+        static const Enum::YLeaf sun_rpc;
+        static const Enum::YLeaf ident;
+        static const Enum::YLeaf nntp;
+        static const Enum::YLeaf bgp;
+        static const Enum::YLeaf irc;
+        static const Enum::YLeaf pim_auto_rp;
+        static const Enum::YLeaf exec;
+        static const Enum::YLeaf login;
+        static const Enum::YLeaf cmd;
+        static const Enum::YLeaf lpd;
+        static const Enum::YLeaf uucp;
+        static const Enum::YLeaf klogin;
+        static const Enum::YLeaf kshell;
+        static const Enum::YLeaf talk;
+        static const Enum::YLeaf ldp;
 
 };
 
 class StartPortEnum : public Enum
 {
     public:
-        static const Enum::Value echo;
-        static const Enum::Value discard;
-        static const Enum::Value daytime;
-        static const Enum::Value chargen;
-        static const Enum::Value ftp_data;
-        static const Enum::Value ftp;
-        static const Enum::Value ssh;
-        static const Enum::Value telnet;
-        static const Enum::Value smtp;
-        static const Enum::Value time;
-        static const Enum::Value nicname;
-        static const Enum::Value tacacs;
-        static const Enum::Value domain;
-        static const Enum::Value gopher;
-        static const Enum::Value finger;
-        static const Enum::Value www;
-        static const Enum::Value host_name;
-        static const Enum::Value pop2;
-        static const Enum::Value pop3;
-        static const Enum::Value sun_rpc;
-        static const Enum::Value ident;
-        static const Enum::Value nntp;
-        static const Enum::Value bgp;
-        static const Enum::Value irc;
-        static const Enum::Value pim_auto_rp;
-        static const Enum::Value exec;
-        static const Enum::Value login;
-        static const Enum::Value cmd;
-        static const Enum::Value lpd;
-        static const Enum::Value uucp;
-        static const Enum::Value klogin;
-        static const Enum::Value kshell;
-        static const Enum::Value talk;
-        static const Enum::Value ldp;
+        static const Enum::YLeaf echo;
+        static const Enum::YLeaf discard;
+        static const Enum::YLeaf daytime;
+        static const Enum::YLeaf chargen;
+        static const Enum::YLeaf ftp_data;
+        static const Enum::YLeaf ftp;
+        static const Enum::YLeaf ssh;
+        static const Enum::YLeaf telnet;
+        static const Enum::YLeaf smtp;
+        static const Enum::YLeaf time;
+        static const Enum::YLeaf nicname;
+        static const Enum::YLeaf tacacs;
+        static const Enum::YLeaf domain;
+        static const Enum::YLeaf gopher;
+        static const Enum::YLeaf finger;
+        static const Enum::YLeaf www;
+        static const Enum::YLeaf host_name;
+        static const Enum::YLeaf pop2;
+        static const Enum::YLeaf pop3;
+        static const Enum::YLeaf sun_rpc;
+        static const Enum::YLeaf ident;
+        static const Enum::YLeaf nntp;
+        static const Enum::YLeaf bgp;
+        static const Enum::YLeaf irc;
+        static const Enum::YLeaf pim_auto_rp;
+        static const Enum::YLeaf exec;
+        static const Enum::YLeaf login;
+        static const Enum::YLeaf cmd;
+        static const Enum::YLeaf lpd;
+        static const Enum::YLeaf uucp;
+        static const Enum::YLeaf klogin;
+        static const Enum::YLeaf kshell;
+        static const Enum::YLeaf talk;
+        static const Enum::YLeaf ldp;
 
 };
 

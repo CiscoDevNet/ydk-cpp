@@ -55,7 +55,7 @@ EntityPath Interfaces::Interface::Config::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -194,7 +194,7 @@ EntityPath Interfaces::Interface::State::Counters::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -356,7 +356,7 @@ bool Interfaces::Interface::State::has_operation() const
 	|| is_set(name.operation)
 	|| is_set(oper_status.operation)
 	|| is_set(type.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string Interfaces::Interface::State::get_segment_path() const
@@ -373,7 +373,7 @@ EntityPath Interfaces::Interface::State::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -524,7 +524,7 @@ EntityPath Interfaces::Interface::HoldTime::Config::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -612,7 +612,7 @@ EntityPath Interfaces::Interface::HoldTime::State::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -688,8 +688,8 @@ bool Interfaces::Interface::HoldTime::has_data() const
 bool Interfaces::Interface::HoldTime::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::HoldTime::get_segment_path() const
@@ -706,7 +706,7 @@ EntityPath Interfaces::Interface::HoldTime::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -839,7 +839,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Config::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -978,7 +978,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1137,7 +1137,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::State::has_operation() 
 	|| is_set(name.operation)
 	|| is_set(oper_status.operation)
 	|| is_set(unnumbered.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::State::get_segment_path() const
@@ -1154,7 +1154,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::State::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1300,7 +1300,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1388,7 +1388,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1464,8 +1464,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Vlan::has_data() const
 bool Interfaces::Interface::Subinterfaces::Subinterface::Vlan::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Vlan::get_segment_path() const
@@ -1482,7 +1482,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Vlan::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1606,7 +1606,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1697,7 +1697,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1770,7 +1770,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGro
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::Config::has_data() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1785,7 +1785,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::Config::has_operation() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -1796,6 +1796,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::Vr
 	|| is_set(preempt.operation)
 	|| is_set(preempt_delay.operation)
 	|| is_set(priority.operation)
+	|| is_set(virtual_address.operation)
 	|| is_set(virtual_router_id.operation);
 }
 
@@ -1813,7 +1814,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1908,7 +1909,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGro
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::State::has_data() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1924,7 +1925,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::State::has_operation() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -1936,6 +1937,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::Vr
 	|| is_set(preempt.operation)
 	|| is_set(preempt_delay.operation)
 	|| is_set(priority.operation)
+	|| is_set(virtual_address.operation)
 	|| is_set(virtual_router_id.operation);
 }
 
@@ -1953,7 +1955,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2072,7 +2074,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2160,7 +2162,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2236,8 +2238,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::Vr
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::get_segment_path() const
@@ -2254,7 +2256,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2375,9 +2377,9 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::Vr
 {
     return is_set(operation)
 	|| is_set(virtual_router_id.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (interface_tracking !=  nullptr && is_set(interface_tracking->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (interface_tracking !=  nullptr && interface_tracking->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vrrp::VrrpGroup::get_segment_path() const
@@ -2394,7 +2396,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2550,7 +2552,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2651,9 +2653,9 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::has_oper
 {
     return is_set(operation)
 	|| is_set(ip.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (vrrp !=  nullptr && is_set(vrrp->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (vrrp !=  nullptr && vrrp->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::get_segment_path() const
@@ -2670,7 +2672,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Address::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2822,7 +2824,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::C
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2913,7 +2915,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2998,8 +3000,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::has_ope
 {
     return is_set(operation)
 	|| is_set(ip.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::get_segment_path() const
@@ -3016,7 +3018,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbor::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3145,7 +3147,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3233,7 +3235,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3329,8 +3331,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::has_operation() c
             return true;
     }
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::get_segment_path() const
@@ -3347,7 +3349,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3523,7 +3525,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3617,7 +3619,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3696,7 +3698,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGro
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::Config::has_data() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3712,7 +3714,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::Config::has_operation() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -3723,6 +3725,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::Vr
 	|| is_set(preempt.operation)
 	|| is_set(preempt_delay.operation)
 	|| is_set(priority.operation)
+	|| is_set(virtual_address.operation)
 	|| is_set(virtual_link_local.operation)
 	|| is_set(virtual_router_id.operation);
 }
@@ -3741,7 +3744,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3842,7 +3845,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGro
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::State::has_data() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3859,7 +3862,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::State::has_operation() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -3871,6 +3874,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::Vr
 	|| is_set(preempt.operation)
 	|| is_set(preempt_delay.operation)
 	|| is_set(priority.operation)
+	|| is_set(virtual_address.operation)
 	|| is_set(virtual_link_local.operation)
 	|| is_set(virtual_router_id.operation);
 }
@@ -3889,7 +3893,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4013,7 +4017,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4101,7 +4105,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4177,8 +4181,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::Vr
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::get_segment_path() const
@@ -4195,7 +4199,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4316,9 +4320,9 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::Vr
 {
     return is_set(operation)
 	|| is_set(virtual_router_id.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (interface_tracking !=  nullptr && is_set(interface_tracking->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (interface_tracking !=  nullptr && interface_tracking->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vrrp::VrrpGroup::get_segment_path() const
@@ -4335,7 +4339,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4491,7 +4495,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::Vr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4592,9 +4596,9 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::has_oper
 {
     return is_set(operation)
 	|| is_set(ip.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (vrrp !=  nullptr && is_set(vrrp->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (vrrp !=  nullptr && vrrp->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::get_segment_path() const
@@ -4611,7 +4615,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4763,7 +4767,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::C
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4860,7 +4864,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4955,8 +4959,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::has_ope
 {
     return is_set(operation)
 	|| is_set(ip.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::get_segment_path() const
@@ -4973,7 +4977,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5105,7 +5109,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5201,7 +5205,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5300,7 +5304,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::C
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5404,7 +5408,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5490,8 +5494,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::has_dat
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::get_segment_path() const
@@ -5508,7 +5512,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5645,9 +5649,9 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::has_operation() c
             return true;
     }
     return is_set(operation)
-	|| (autoconf !=  nullptr && is_set(autoconf->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (autoconf !=  nullptr && autoconf->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::get_segment_path() const
@@ -5664,7 +5668,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5864,11 +5868,11 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(index_.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (vlan !=  nullptr && is_set(vlan->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (vlan !=  nullptr && vlan->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::get_segment_path() const
@@ -5885,7 +5889,7 @@ EntityPath Interfaces::Interface::Subinterfaces::Subinterface::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6087,7 +6091,7 @@ EntityPath Interfaces::Interface::Subinterfaces::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6203,7 +6207,7 @@ EntityPath Interfaces::Interface::Ethernet::Config::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6335,7 +6339,7 @@ EntityPath Interfaces::Interface::Ethernet::State::Counters::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6468,7 +6472,7 @@ bool Interfaces::Interface::Ethernet::State::has_operation() const
 	|| is_set(hw_mac_address.operation)
 	|| is_set(mac_address.operation)
 	|| is_set(port_speed.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string Interfaces::Interface::Ethernet::State::get_segment_path() const
@@ -6485,7 +6489,7 @@ EntityPath Interfaces::Interface::Ethernet::State::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6598,7 +6602,7 @@ Interfaces::Interface::Ethernet::Vlan::Config::~Config()
 
 bool Interfaces::Interface::Ethernet::Vlan::Config::has_data() const
 {
-    for (auto const & leaf : trunk_vlans.getValues())
+    for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6610,7 +6614,7 @@ bool Interfaces::Interface::Ethernet::Vlan::Config::has_data() const
 
 bool Interfaces::Interface::Ethernet::Vlan::Config::has_operation() const
 {
-    for (auto const & leaf : trunk_vlans.getValues())
+    for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -6618,7 +6622,8 @@ bool Interfaces::Interface::Ethernet::Vlan::Config::has_operation() const
     return is_set(operation)
 	|| is_set(access_vlan.operation)
 	|| is_set(interface_mode.operation)
-	|| is_set(native_vlan.operation);
+	|| is_set(native_vlan.operation)
+	|| is_set(trunk_vlans.operation);
 }
 
 std::string Interfaces::Interface::Ethernet::Vlan::Config::get_segment_path() const
@@ -6635,7 +6640,7 @@ EntityPath Interfaces::Interface::Ethernet::Vlan::Config::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6711,7 +6716,7 @@ Interfaces::Interface::Ethernet::Vlan::State::~State()
 
 bool Interfaces::Interface::Ethernet::Vlan::State::has_data() const
 {
-    for (auto const & leaf : trunk_vlans.getValues())
+    for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6723,7 +6728,7 @@ bool Interfaces::Interface::Ethernet::Vlan::State::has_data() const
 
 bool Interfaces::Interface::Ethernet::Vlan::State::has_operation() const
 {
-    for (auto const & leaf : trunk_vlans.getValues())
+    for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -6731,7 +6736,8 @@ bool Interfaces::Interface::Ethernet::Vlan::State::has_operation() const
     return is_set(operation)
 	|| is_set(access_vlan.operation)
 	|| is_set(interface_mode.operation)
-	|| is_set(native_vlan.operation);
+	|| is_set(native_vlan.operation)
+	|| is_set(trunk_vlans.operation);
 }
 
 std::string Interfaces::Interface::Ethernet::Vlan::State::get_segment_path() const
@@ -6748,7 +6754,7 @@ EntityPath Interfaces::Interface::Ethernet::Vlan::State::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6835,8 +6841,8 @@ bool Interfaces::Interface::Ethernet::Vlan::has_data() const
 bool Interfaces::Interface::Ethernet::Vlan::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Ethernet::Vlan::get_segment_path() const
@@ -6853,7 +6859,7 @@ EntityPath Interfaces::Interface::Ethernet::Vlan::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6970,9 +6976,9 @@ bool Interfaces::Interface::Ethernet::has_data() const
 bool Interfaces::Interface::Ethernet::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (vlan !=  nullptr && is_set(vlan->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (vlan !=  nullptr && vlan->has_operation());
 }
 
 std::string Interfaces::Interface::Ethernet::get_segment_path() const
@@ -6989,7 +6995,7 @@ EntityPath Interfaces::Interface::Ethernet::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7136,7 +7142,7 @@ EntityPath Interfaces::Interface::Aggregation::Config::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7200,7 +7206,7 @@ Interfaces::Interface::Aggregation::State::~State()
 
 bool Interfaces::Interface::Aggregation::State::has_data() const
 {
-    for (auto const & leaf : members.getValues())
+    for (auto const & leaf : members.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7211,13 +7217,14 @@ bool Interfaces::Interface::Aggregation::State::has_data() const
 
 bool Interfaces::Interface::Aggregation::State::has_operation() const
 {
-    for (auto const & leaf : members.getValues())
+    for (auto const & leaf : members.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(lag_type.operation)
+	|| is_set(members.operation)
 	|| is_set(min_links.operation);
 }
 
@@ -7235,7 +7242,7 @@ EntityPath Interfaces::Interface::Aggregation::State::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7335,7 +7342,7 @@ EntityPath Interfaces::Interface::Aggregation::Lacp::Config::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7439,7 +7446,7 @@ EntityPath Interfaces::Interface::Aggregation::Lacp::State::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7549,7 +7556,7 @@ EntityPath Interfaces::Interface::Aggregation::Lacp::Members::Member::State::Cou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7674,7 +7681,7 @@ bool Interfaces::Interface::Aggregation::Lacp::Members::Member::State::has_opera
 	|| is_set(synchronization.operation)
 	|| is_set(system_id.operation)
 	|| is_set(timeout.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string Interfaces::Interface::Aggregation::Lacp::Members::Member::State::get_segment_path() const
@@ -7691,7 +7698,7 @@ EntityPath Interfaces::Interface::Aggregation::Lacp::Members::Member::State::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7834,7 +7841,7 @@ bool Interfaces::Interface::Aggregation::Lacp::Members::Member::has_operation() 
 {
     return is_set(operation)
 	|| is_set(interface.operation)
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Aggregation::Lacp::Members::Member::get_segment_path() const
@@ -7851,7 +7858,7 @@ EntityPath Interfaces::Interface::Aggregation::Lacp::Members::Member::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7961,7 +7968,7 @@ EntityPath Interfaces::Interface::Aggregation::Lacp::Members::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8058,9 +8065,9 @@ bool Interfaces::Interface::Aggregation::Lacp::has_data() const
 bool Interfaces::Interface::Aggregation::Lacp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (members !=  nullptr && is_set(members->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (members !=  nullptr && members->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Aggregation::Lacp::get_segment_path() const
@@ -8077,7 +8084,7 @@ EntityPath Interfaces::Interface::Aggregation::Lacp::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8201,7 +8208,7 @@ Interfaces::Interface::Aggregation::Vlan::Config::~Config()
 
 bool Interfaces::Interface::Aggregation::Vlan::Config::has_data() const
 {
-    for (auto const & leaf : trunk_vlans.getValues())
+    for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8213,7 +8220,7 @@ bool Interfaces::Interface::Aggregation::Vlan::Config::has_data() const
 
 bool Interfaces::Interface::Aggregation::Vlan::Config::has_operation() const
 {
-    for (auto const & leaf : trunk_vlans.getValues())
+    for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -8221,7 +8228,8 @@ bool Interfaces::Interface::Aggregation::Vlan::Config::has_operation() const
     return is_set(operation)
 	|| is_set(access_vlan.operation)
 	|| is_set(interface_mode.operation)
-	|| is_set(native_vlan.operation);
+	|| is_set(native_vlan.operation)
+	|| is_set(trunk_vlans.operation);
 }
 
 std::string Interfaces::Interface::Aggregation::Vlan::Config::get_segment_path() const
@@ -8238,7 +8246,7 @@ EntityPath Interfaces::Interface::Aggregation::Vlan::Config::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8314,7 +8322,7 @@ Interfaces::Interface::Aggregation::Vlan::State::~State()
 
 bool Interfaces::Interface::Aggregation::Vlan::State::has_data() const
 {
-    for (auto const & leaf : trunk_vlans.getValues())
+    for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8326,7 +8334,7 @@ bool Interfaces::Interface::Aggregation::Vlan::State::has_data() const
 
 bool Interfaces::Interface::Aggregation::Vlan::State::has_operation() const
 {
-    for (auto const & leaf : trunk_vlans.getValues())
+    for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -8334,7 +8342,8 @@ bool Interfaces::Interface::Aggregation::Vlan::State::has_operation() const
     return is_set(operation)
 	|| is_set(access_vlan.operation)
 	|| is_set(interface_mode.operation)
-	|| is_set(native_vlan.operation);
+	|| is_set(native_vlan.operation)
+	|| is_set(trunk_vlans.operation);
 }
 
 std::string Interfaces::Interface::Aggregation::Vlan::State::get_segment_path() const
@@ -8351,7 +8360,7 @@ EntityPath Interfaces::Interface::Aggregation::Vlan::State::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8438,8 +8447,8 @@ bool Interfaces::Interface::Aggregation::Vlan::has_data() const
 bool Interfaces::Interface::Aggregation::Vlan::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Aggregation::Vlan::get_segment_path() const
@@ -8456,7 +8465,7 @@ EntityPath Interfaces::Interface::Aggregation::Vlan::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8575,10 +8584,10 @@ bool Interfaces::Interface::Aggregation::has_data() const
 bool Interfaces::Interface::Aggregation::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (lacp !=  nullptr && is_set(lacp->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (vlan !=  nullptr && is_set(vlan->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (lacp !=  nullptr && lacp->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (vlan !=  nullptr && vlan->has_operation());
 }
 
 std::string Interfaces::Interface::Aggregation::get_segment_path() const
@@ -8595,7 +8604,7 @@ EntityPath Interfaces::Interface::Aggregation::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8762,7 +8771,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Config::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8842,7 +8851,7 @@ EntityPath Interfaces::Interface::RoutedVlan::State::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8925,7 +8934,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::Config::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9016,7 +9025,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::State::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9089,7 +9098,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config::~Conf
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config::has_data() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9104,7 +9113,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config::
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config::has_operation() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -9115,6 +9124,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Config::
 	|| is_set(preempt.operation)
 	|| is_set(preempt_delay.operation)
 	|| is_set(priority.operation)
+	|| is_set(virtual_address.operation)
 	|| is_set(virtual_router_id.operation);
 }
 
@@ -9132,7 +9142,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9227,7 +9237,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State::~State
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State::has_data() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9243,7 +9253,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State::h
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State::has_operation() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -9255,6 +9265,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::State::h
 	|| is_set(preempt.operation)
 	|| is_set(preempt_delay.operation)
 	|| is_set(priority.operation)
+	|| is_set(virtual_address.operation)
 	|| is_set(virtual_router_id.operation);
 }
 
@@ -9272,7 +9283,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9391,7 +9402,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::In
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9479,7 +9490,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::In
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9555,8 +9566,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::Interfac
 bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::InterfaceTracking::get_segment_path() const
@@ -9573,7 +9584,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::In
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9694,9 +9705,9 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::has_oper
 {
     return is_set(operation)
 	|| is_set(virtual_router_id.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (interface_tracking !=  nullptr && is_set(interface_tracking->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (interface_tracking !=  nullptr && interface_tracking->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::get_segment_path() const
@@ -9713,7 +9724,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::VrrpGroup::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9869,7 +9880,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::Vrrp::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9970,9 +9981,9 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Address::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ip.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (vrrp !=  nullptr && is_set(vrrp->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (vrrp !=  nullptr && vrrp->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv4::Address::get_segment_path() const
@@ -9989,7 +10000,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Address::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10141,7 +10152,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::Config::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10232,7 +10243,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::State::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10317,8 +10328,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ip.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::get_segment_path() const
@@ -10335,7 +10346,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Neighbor::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10464,7 +10475,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::Config::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10552,7 +10563,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::State::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10648,8 +10659,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv4::get_segment_path() const
@@ -10666,7 +10677,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv4::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10842,7 +10853,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::Config::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10936,7 +10947,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::State::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11015,7 +11026,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config::~Conf
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config::has_data() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11031,7 +11042,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config::
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config::has_operation() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -11042,6 +11053,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Config::
 	|| is_set(preempt.operation)
 	|| is_set(preempt_delay.operation)
 	|| is_set(priority.operation)
+	|| is_set(virtual_address.operation)
 	|| is_set(virtual_link_local.operation)
 	|| is_set(virtual_router_id.operation);
 }
@@ -11060,7 +11072,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11161,7 +11173,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State::~State
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State::has_data() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11178,7 +11190,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State::h
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State::has_operation() const
 {
-    for (auto const & leaf : virtual_address.getValues())
+    for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -11190,6 +11202,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::State::h
 	|| is_set(preempt.operation)
 	|| is_set(preempt_delay.operation)
 	|| is_set(priority.operation)
+	|| is_set(virtual_address.operation)
 	|| is_set(virtual_link_local.operation)
 	|| is_set(virtual_router_id.operation);
 }
@@ -11208,7 +11221,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11332,7 +11345,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::In
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11420,7 +11433,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::In
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11496,8 +11509,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::Interfac
 bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::InterfaceTracking::get_segment_path() const
@@ -11514,7 +11527,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::In
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11635,9 +11648,9 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::has_oper
 {
     return is_set(operation)
 	|| is_set(virtual_router_id.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (interface_tracking !=  nullptr && is_set(interface_tracking->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (interface_tracking !=  nullptr && interface_tracking->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::get_segment_path() const
@@ -11654,7 +11667,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::VrrpGroup::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11810,7 +11823,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::Vrrp::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11911,9 +11924,9 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Address::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ip.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (vrrp !=  nullptr && is_set(vrrp->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (vrrp !=  nullptr && vrrp->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv6::Address::get_segment_path() const
@@ -11930,7 +11943,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Address::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12082,7 +12095,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::Config::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12179,7 +12192,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12274,8 +12287,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ip.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::get_segment_path() const
@@ -12292,7 +12305,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12424,7 +12437,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Config::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12520,7 +12533,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::State::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12619,7 +12632,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::Config::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12723,7 +12736,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::State::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12809,8 +12822,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::has_data() const
 bool Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::get_segment_path() const
@@ -12827,7 +12840,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::Autoconf::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12964,9 +12977,9 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (autoconf !=  nullptr && is_set(autoconf->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (autoconf !=  nullptr && autoconf->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::Ipv6::get_segment_path() const
@@ -12983,7 +12996,7 @@ EntityPath Interfaces::Interface::RoutedVlan::Ipv6::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13174,10 +13187,10 @@ bool Interfaces::Interface::RoutedVlan::has_data() const
 bool Interfaces::Interface::RoutedVlan::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::RoutedVlan::get_segment_path() const
@@ -13194,7 +13207,7 @@ EntityPath Interfaces::Interface::RoutedVlan::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13378,13 +13391,13 @@ bool Interfaces::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (aggregation !=  nullptr && is_set(aggregation->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ethernet !=  nullptr && is_set(ethernet->operation))
-	|| (hold_time !=  nullptr && is_set(hold_time->operation))
-	|| (routed_vlan !=  nullptr && is_set(routed_vlan->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (subinterfaces !=  nullptr && is_set(subinterfaces->operation));
+	|| (aggregation !=  nullptr && aggregation->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (ethernet !=  nullptr && ethernet->has_operation())
+	|| (hold_time !=  nullptr && hold_time->has_operation())
+	|| (routed_vlan !=  nullptr && routed_vlan->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (subinterfaces !=  nullptr && subinterfaces->has_operation());
 }
 
 std::string Interfaces::Interface::get_segment_path() const
@@ -13649,7 +13662,7 @@ EntityPath Interfaces::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -13716,65 +13729,65 @@ std::unique_ptr<Entity> Interfaces::clone_ptr()
     return std::make_unique<Interfaces>();
 }
 
-const Enum::Value Interfaces::Interface::State::AdminStatusEnum::UP {0, "UP"};
-const Enum::Value Interfaces::Interface::State::AdminStatusEnum::DOWN {1, "DOWN"};
-const Enum::Value Interfaces::Interface::State::AdminStatusEnum::TESTING {2, "TESTING"};
+const Enum::YLeaf Interfaces::Interface::State::AdminStatusEnum::UP {0, "UP"};
+const Enum::YLeaf Interfaces::Interface::State::AdminStatusEnum::DOWN {1, "DOWN"};
+const Enum::YLeaf Interfaces::Interface::State::AdminStatusEnum::TESTING {2, "TESTING"};
 
-const Enum::Value Interfaces::Interface::State::OperStatusEnum::UP {1, "UP"};
-const Enum::Value Interfaces::Interface::State::OperStatusEnum::DOWN {2, "DOWN"};
-const Enum::Value Interfaces::Interface::State::OperStatusEnum::TESTING {3, "TESTING"};
-const Enum::Value Interfaces::Interface::State::OperStatusEnum::UNKNOWN {4, "UNKNOWN"};
-const Enum::Value Interfaces::Interface::State::OperStatusEnum::DORMANT {5, "DORMANT"};
-const Enum::Value Interfaces::Interface::State::OperStatusEnum::NOT_PRESENT {6, "NOT-PRESENT"};
-const Enum::Value Interfaces::Interface::State::OperStatusEnum::LOWER_LAYER_DOWN {7, "LOWER-LAYER-DOWN"};
+const Enum::YLeaf Interfaces::Interface::State::OperStatusEnum::UP {1, "UP"};
+const Enum::YLeaf Interfaces::Interface::State::OperStatusEnum::DOWN {2, "DOWN"};
+const Enum::YLeaf Interfaces::Interface::State::OperStatusEnum::TESTING {3, "TESTING"};
+const Enum::YLeaf Interfaces::Interface::State::OperStatusEnum::UNKNOWN {4, "UNKNOWN"};
+const Enum::YLeaf Interfaces::Interface::State::OperStatusEnum::DORMANT {5, "DORMANT"};
+const Enum::YLeaf Interfaces::Interface::State::OperStatusEnum::NOT_PRESENT {6, "NOT-PRESENT"};
+const Enum::YLeaf Interfaces::Interface::State::OperStatusEnum::LOWER_LAYER_DOWN {7, "LOWER-LAYER-DOWN"};
 
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::AdminStatusEnum::UP {0, "UP"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::AdminStatusEnum::DOWN {1, "DOWN"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::AdminStatusEnum::TESTING {2, "TESTING"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::AdminStatusEnum::UP {0, "UP"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::AdminStatusEnum::DOWN {1, "DOWN"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::AdminStatusEnum::TESTING {2, "TESTING"};
 
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::UP {1, "UP"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::DOWN {2, "DOWN"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::TESTING {3, "TESTING"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::UNKNOWN {4, "UNKNOWN"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::DORMANT {5, "DORMANT"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::NOT_PRESENT {6, "NOT-PRESENT"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::LOWER_LAYER_DOWN {7, "LOWER-LAYER-DOWN"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::UP {1, "UP"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::DOWN {2, "DOWN"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::TESTING {3, "TESTING"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::UNKNOWN {4, "UNKNOWN"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::DORMANT {5, "DORMANT"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::NOT_PRESENT {6, "NOT-PRESENT"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::State::OperStatusEnum::LOWER_LAYER_DOWN {7, "LOWER-LAYER-DOWN"};
 
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::PREFERRED {0, "PREFERRED"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::DEPRECATED {1, "DEPRECATED"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::INVALID {2, "INVALID"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::INACCESSIBLE {3, "INACCESSIBLE"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::UNKNOWN {4, "UNKNOWN"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::TENTATIVE {5, "TENTATIVE"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::DUPLICATE {6, "DUPLICATE"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::OPTIMISTIC {7, "OPTIMISTIC"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::PREFERRED {0, "PREFERRED"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::DEPRECATED {1, "DEPRECATED"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::INVALID {2, "INVALID"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::INACCESSIBLE {3, "INACCESSIBLE"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::UNKNOWN {4, "UNKNOWN"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::TENTATIVE {5, "TENTATIVE"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::DUPLICATE {6, "DUPLICATE"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Address::State::StatusEnum::OPTIMISTIC {7, "OPTIMISTIC"};
 
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::INCOMPLETE {0, "INCOMPLETE"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::REACHABLE {1, "REACHABLE"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::STALE {2, "STALE"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::DELAY {3, "DELAY"};
-const Enum::Value Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::PROBE {4, "PROBE"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::INCOMPLETE {0, "INCOMPLETE"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::REACHABLE {1, "REACHABLE"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::STALE {2, "STALE"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::DELAY {3, "DELAY"};
+const Enum::YLeaf Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbor::State::NeighborStateEnum::PROBE {4, "PROBE"};
 
-const Enum::Value Interfaces::Interface::Ethernet::Config::DuplexModeEnum::FULL {0, "FULL"};
-const Enum::Value Interfaces::Interface::Ethernet::Config::DuplexModeEnum::HALF {1, "HALF"};
+const Enum::YLeaf Interfaces::Interface::Ethernet::Config::DuplexModeEnum::FULL {0, "FULL"};
+const Enum::YLeaf Interfaces::Interface::Ethernet::Config::DuplexModeEnum::HALF {1, "HALF"};
 
-const Enum::Value Interfaces::Interface::Ethernet::State::DuplexModeEnum::FULL {0, "FULL"};
-const Enum::Value Interfaces::Interface::Ethernet::State::DuplexModeEnum::HALF {1, "HALF"};
+const Enum::YLeaf Interfaces::Interface::Ethernet::State::DuplexModeEnum::FULL {0, "FULL"};
+const Enum::YLeaf Interfaces::Interface::Ethernet::State::DuplexModeEnum::HALF {1, "HALF"};
 
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::PREFERRED {0, "PREFERRED"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::DEPRECATED {1, "DEPRECATED"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::INVALID {2, "INVALID"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::INACCESSIBLE {3, "INACCESSIBLE"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::UNKNOWN {4, "UNKNOWN"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::TENTATIVE {5, "TENTATIVE"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::DUPLICATE {6, "DUPLICATE"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::OPTIMISTIC {7, "OPTIMISTIC"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::PREFERRED {0, "PREFERRED"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::DEPRECATED {1, "DEPRECATED"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::INVALID {2, "INVALID"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::INACCESSIBLE {3, "INACCESSIBLE"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::UNKNOWN {4, "UNKNOWN"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::TENTATIVE {5, "TENTATIVE"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::DUPLICATE {6, "DUPLICATE"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Address::State::StatusEnum::OPTIMISTIC {7, "OPTIMISTIC"};
 
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::INCOMPLETE {0, "INCOMPLETE"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::REACHABLE {1, "REACHABLE"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::STALE {2, "STALE"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::DELAY {3, "DELAY"};
-const Enum::Value Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::PROBE {4, "PROBE"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::INCOMPLETE {0, "INCOMPLETE"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::REACHABLE {1, "REACHABLE"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::STALE {2, "STALE"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::DELAY {3, "DELAY"};
+const Enum::YLeaf Interfaces::Interface::RoutedVlan::Ipv6::Neighbor::State::NeighborStateEnum::PROBE {4, "PROBE"};
 
 
 }

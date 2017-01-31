@@ -26,6 +26,7 @@ class InterfaceDampening : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Interfaces : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class InterfaceDampening : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class InterfaceDampening : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
 
+
+                YLeaf interface_name; //type: string
 
             class IfDampening : public Entity
             {
@@ -70,15 +73,16 @@ class InterfaceDampening : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value state_transition_count; //type: uint32
-                    Value last_state_transition_time; //type: uint32
-                    Value is_dampening_enabled; //type: boolean
-                    Value half_life; //type: uint32
-                    Value reuse_threshold; //type: uint32
-                    Value suppress_threshold; //type: uint32
-                    Value maximum_suppress_time; //type: uint32
-                    Value restart_penalty; //type: uint32
 
+
+                    YLeaf state_transition_count; //type: uint32
+                    YLeaf last_state_transition_time; //type: uint32
+                    YLeaf is_dampening_enabled; //type: boolean
+                    YLeaf half_life; //type: uint32
+                    YLeaf reuse_threshold; //type: uint32
+                    YLeaf suppress_threshold; //type: uint32
+                    YLeaf maximum_suppress_time; //type: uint32
+                    YLeaf restart_penalty; //type: uint32
 
                 class InterfaceDampening_ : public Entity
                 {
@@ -93,14 +97,14 @@ class InterfaceDampening : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value penalty; //type: uint32
-                        Value is_suppressed_enabled; //type: boolean
-                        Value seconds_remaining; //type: uint32
-                        Value flaps; //type: uint32
-                        Value state; //type: ImStateEnumEnum
 
 
-                        class ImStateEnumEnum;
+                        YLeaf penalty; //type: uint32
+                        YLeaf is_suppressed_enabled; //type: boolean
+                        YLeaf seconds_remaining; //type: uint32
+                        YLeaf flaps; //type: uint32
+                        YLeaf state; //type: ImStateEnumEnum
+
 
 
                 }; // InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_
@@ -119,8 +123,9 @@ class InterfaceDampening : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value capsulation_number; //type: string
 
+
+                        YLeaf capsulation_number; //type: string
 
                     class CapsulationDampening : public Entity
                     {
@@ -135,14 +140,14 @@ class InterfaceDampening : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value penalty; //type: uint32
-                            Value is_suppressed_enabled; //type: boolean
-                            Value seconds_remaining; //type: uint32
-                            Value flaps; //type: uint32
-                            Value state; //type: ImStateEnumEnum
 
 
-                            class ImStateEnumEnum;
+                            YLeaf penalty; //type: uint32
+                            YLeaf is_suppressed_enabled; //type: boolean
+                            YLeaf seconds_remaining; //type: uint32
+                            YLeaf flaps; //type: uint32
+                            YLeaf state; //type: ImStateEnumEnum
+
 
 
                     }; // InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening
@@ -188,6 +193,7 @@ class InterfaceDampening : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -201,8 +207,9 @@ class InterfaceDampening : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Show : public Entity
             {
@@ -217,6 +224,7 @@ class InterfaceDampening : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Dampening : public Entity
@@ -234,6 +242,7 @@ class InterfaceDampening : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class IfHandles : public Entity
                     {
                         public:
@@ -249,6 +258,7 @@ class InterfaceDampening : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class IfHandle : public Entity
                         {
                             public:
@@ -262,16 +272,17 @@ class InterfaceDampening : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_handle_name; //type: string
-                                Value state_transition_count; //type: uint32
-                                Value last_state_transition_time; //type: uint32
-                                Value is_dampening_enabled; //type: boolean
-                                Value half_life; //type: uint32
-                                Value reuse_threshold; //type: uint32
-                                Value suppress_threshold; //type: uint32
-                                Value maximum_suppress_time; //type: uint32
-                                Value restart_penalty; //type: uint32
 
+
+                                YLeaf interface_handle_name; //type: string
+                                YLeaf state_transition_count; //type: uint32
+                                YLeaf last_state_transition_time; //type: uint32
+                                YLeaf is_dampening_enabled; //type: boolean
+                                YLeaf half_life; //type: uint32
+                                YLeaf reuse_threshold; //type: uint32
+                                YLeaf suppress_threshold; //type: uint32
+                                YLeaf maximum_suppress_time; //type: uint32
+                                YLeaf restart_penalty; //type: uint32
 
                             class InterfaceDampening_ : public Entity
                             {
@@ -286,14 +297,14 @@ class InterfaceDampening : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value penalty; //type: uint32
-                                    Value is_suppressed_enabled; //type: boolean
-                                    Value seconds_remaining; //type: uint32
-                                    Value flaps; //type: uint32
-                                    Value state; //type: ImStateEnumEnum
 
 
-                                    class ImStateEnumEnum;
+                                    YLeaf penalty; //type: uint32
+                                    YLeaf is_suppressed_enabled; //type: boolean
+                                    YLeaf seconds_remaining; //type: uint32
+                                    YLeaf flaps; //type: uint32
+                                    YLeaf state; //type: ImStateEnumEnum
+
 
 
                             }; // InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_
@@ -312,8 +323,9 @@ class InterfaceDampening : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value capsulation_number; //type: string
 
+
+                                    YLeaf capsulation_number; //type: string
 
                                 class CapsulationDampening : public Entity
                                 {
@@ -328,14 +340,14 @@ class InterfaceDampening : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value penalty; //type: uint32
-                                        Value is_suppressed_enabled; //type: boolean
-                                        Value seconds_remaining; //type: uint32
-                                        Value flaps; //type: uint32
-                                        Value state; //type: ImStateEnumEnum
 
 
-                                        class ImStateEnumEnum;
+                                        YLeaf penalty; //type: uint32
+                                        YLeaf is_suppressed_enabled; //type: boolean
+                                        YLeaf seconds_remaining; //type: uint32
+                                        YLeaf flaps; //type: uint32
+                                        YLeaf state; //type: ImStateEnumEnum
+
 
 
                                 }; // InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening
@@ -375,6 +387,7 @@ class InterfaceDampening : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Interface : public Entity
                         {
                             public:
@@ -388,16 +401,17 @@ class InterfaceDampening : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value state_transition_count; //type: uint32
-                                Value last_state_transition_time; //type: uint32
-                                Value is_dampening_enabled; //type: boolean
-                                Value half_life; //type: uint32
-                                Value reuse_threshold; //type: uint32
-                                Value suppress_threshold; //type: uint32
-                                Value maximum_suppress_time; //type: uint32
-                                Value restart_penalty; //type: uint32
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf state_transition_count; //type: uint32
+                                YLeaf last_state_transition_time; //type: uint32
+                                YLeaf is_dampening_enabled; //type: boolean
+                                YLeaf half_life; //type: uint32
+                                YLeaf reuse_threshold; //type: uint32
+                                YLeaf suppress_threshold; //type: uint32
+                                YLeaf maximum_suppress_time; //type: uint32
+                                YLeaf restart_penalty; //type: uint32
 
                             class InterfaceDampening_ : public Entity
                             {
@@ -412,14 +426,14 @@ class InterfaceDampening : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value penalty; //type: uint32
-                                    Value is_suppressed_enabled; //type: boolean
-                                    Value seconds_remaining; //type: uint32
-                                    Value flaps; //type: uint32
-                                    Value state; //type: ImStateEnumEnum
 
 
-                                    class ImStateEnumEnum;
+                                    YLeaf penalty; //type: uint32
+                                    YLeaf is_suppressed_enabled; //type: boolean
+                                    YLeaf seconds_remaining; //type: uint32
+                                    YLeaf flaps; //type: uint32
+                                    YLeaf state; //type: ImStateEnumEnum
+
 
 
                             }; // InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_
@@ -438,8 +452,9 @@ class InterfaceDampening : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value capsulation_number; //type: string
 
+
+                                    YLeaf capsulation_number; //type: string
 
                                 class CapsulationDampening : public Entity
                                 {
@@ -454,14 +469,14 @@ class InterfaceDampening : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value penalty; //type: uint32
-                                        Value is_suppressed_enabled; //type: boolean
-                                        Value seconds_remaining; //type: uint32
-                                        Value flaps; //type: uint32
-                                        Value state; //type: ImStateEnumEnum
 
 
-                                        class ImStateEnumEnum;
+                                        YLeaf penalty; //type: uint32
+                                        YLeaf is_suppressed_enabled; //type: boolean
+                                        YLeaf seconds_remaining; //type: uint32
+                                        YLeaf flaps; //type: uint32
+                                        YLeaf state; //type: ImStateEnumEnum
+
 
 
                                 }; // InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening
@@ -533,6 +548,7 @@ class InterfaceProperties : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class DataNodes : public Entity
     {
         public:
@@ -548,6 +564,7 @@ class InterfaceProperties : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class DataNode : public Entity
         {
             public:
@@ -561,8 +578,9 @@ class InterfaceProperties : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value data_node_name; //type: string
 
+
+                YLeaf data_node_name; //type: string
 
             class Locationviews : public Entity
             {
@@ -579,6 +597,7 @@ class InterfaceProperties : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Locationview : public Entity
                 {
                     public:
@@ -592,8 +611,9 @@ class InterfaceProperties : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value locationview_name; //type: string
 
+
+                        YLeaf locationview_name; //type: string
 
                     class Interfaces : public Entity
                     {
@@ -610,6 +630,7 @@ class InterfaceProperties : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Interface : public Entity
                         {
                             public:
@@ -623,26 +644,23 @@ class InterfaceProperties : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value interface; //type: string
-                                Value parent_interface; //type: string
-                                Value type; //type: string
-                                Value state; //type: ImStateEnumEnum
-                                Value actual_state; //type: ImStateEnumEnum
-                                Value line_state; //type: ImStateEnumEnum
-                                Value actual_line_state; //type: ImStateEnumEnum
-                                Value encapsulation; //type: string
-                                Value encapsulation_type_string; //type: string
-                                Value mtu; //type: uint32
-                                Value sub_interface_mtu_overhead; //type: uint32
-                                Value l2_transport; //type: boolean
-                                Value bandwidth; //type: uint32
 
 
-                                class ImStateEnumEnum;
-                                class ImStateEnumEnum;
-                                class ImStateEnumEnum;
-                                class ImStateEnumEnum;
+                                YLeaf interface_name; //type: string
+                                YLeaf interface; //type: string
+                                YLeaf parent_interface; //type: string
+                                YLeaf type; //type: string
+                                YLeaf state; //type: ImStateEnumEnum
+                                YLeaf actual_state; //type: ImStateEnumEnum
+                                YLeaf line_state; //type: ImStateEnumEnum
+                                YLeaf actual_line_state; //type: ImStateEnumEnum
+                                YLeaf encapsulation; //type: string
+                                YLeaf encapsulation_type_string; //type: string
+                                YLeaf mtu; //type: uint32
+                                YLeaf sub_interface_mtu_overhead; //type: uint32
+                                YLeaf l2_transport; //type: boolean
+                                YLeaf bandwidth; //type: uint32
+
 
 
                         }; // InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface
@@ -681,6 +699,7 @@ class InterfaceProperties : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PqNodeLocation : public Entity
                 {
                     public:
@@ -694,8 +713,9 @@ class InterfaceProperties : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value pq_node_name; //type: string
 
+
+                        YLeaf pq_node_name; //type: string
 
                     class Interfaces : public Entity
                     {
@@ -712,6 +732,7 @@ class InterfaceProperties : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Interface : public Entity
                         {
                             public:
@@ -725,26 +746,23 @@ class InterfaceProperties : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value interface; //type: string
-                                Value parent_interface; //type: string
-                                Value type; //type: string
-                                Value state; //type: ImStateEnumEnum
-                                Value actual_state; //type: ImStateEnumEnum
-                                Value line_state; //type: ImStateEnumEnum
-                                Value actual_line_state; //type: ImStateEnumEnum
-                                Value encapsulation; //type: string
-                                Value encapsulation_type_string; //type: string
-                                Value mtu; //type: uint32
-                                Value sub_interface_mtu_overhead; //type: uint32
-                                Value l2_transport; //type: boolean
-                                Value bandwidth; //type: uint32
 
 
-                                class ImStateEnumEnum;
-                                class ImStateEnumEnum;
-                                class ImStateEnumEnum;
-                                class ImStateEnumEnum;
+                                YLeaf interface_name; //type: string
+                                YLeaf interface; //type: string
+                                YLeaf parent_interface; //type: string
+                                YLeaf type; //type: string
+                                YLeaf state; //type: ImStateEnumEnum
+                                YLeaf actual_state; //type: ImStateEnumEnum
+                                YLeaf line_state; //type: ImStateEnumEnum
+                                YLeaf actual_line_state; //type: ImStateEnumEnum
+                                YLeaf encapsulation; //type: string
+                                YLeaf encapsulation_type_string; //type: string
+                                YLeaf mtu; //type: uint32
+                                YLeaf sub_interface_mtu_overhead; //type: uint32
+                                YLeaf l2_transport; //type: boolean
+                                YLeaf bandwidth; //type: uint32
+
 
 
                         }; // InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface
@@ -783,6 +801,7 @@ class InterfaceProperties : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interfaces : public Entity
                 {
                     public:
@@ -798,6 +817,7 @@ class InterfaceProperties : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -811,26 +831,23 @@ class InterfaceProperties : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value interface; //type: string
-                            Value parent_interface; //type: string
-                            Value type; //type: string
-                            Value state; //type: ImStateEnumEnum
-                            Value actual_state; //type: ImStateEnumEnum
-                            Value line_state; //type: ImStateEnumEnum
-                            Value actual_line_state; //type: ImStateEnumEnum
-                            Value encapsulation; //type: string
-                            Value encapsulation_type_string; //type: string
-                            Value mtu; //type: uint32
-                            Value sub_interface_mtu_overhead; //type: uint32
-                            Value l2_transport; //type: boolean
-                            Value bandwidth; //type: uint32
 
 
-                            class ImStateEnumEnum;
-                            class ImStateEnumEnum;
-                            class ImStateEnumEnum;
-                            class ImStateEnumEnum;
+                            YLeaf interface_name; //type: string
+                            YLeaf interface; //type: string
+                            YLeaf parent_interface; //type: string
+                            YLeaf type; //type: string
+                            YLeaf state; //type: ImStateEnumEnum
+                            YLeaf actual_state; //type: ImStateEnumEnum
+                            YLeaf line_state; //type: ImStateEnumEnum
+                            YLeaf actual_line_state; //type: ImStateEnumEnum
+                            YLeaf encapsulation; //type: string
+                            YLeaf encapsulation_type_string; //type: string
+                            YLeaf mtu; //type: uint32
+                            YLeaf sub_interface_mtu_overhead; //type: uint32
+                            YLeaf l2_transport; //type: boolean
+                            YLeaf bandwidth; //type: uint32
+
 
 
                     }; // InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface
@@ -871,25 +888,25 @@ class InterfaceProperties : public Entity
 class ImStateEnumEnum : public Enum
 {
     public:
-        static const Enum::Value im_state_not_ready;
-        static const Enum::Value im_state_admin_down;
-        static const Enum::Value im_state_down;
-        static const Enum::Value im_state_up;
-        static const Enum::Value im_state_shutdown;
-        static const Enum::Value im_state_err_disable;
-        static const Enum::Value im_state_down_immediate;
-        static const Enum::Value im_state_down_immediate_admin;
-        static const Enum::Value im_state_down_graceful;
-        static const Enum::Value im_state_begin_shutdown;
-        static const Enum::Value im_state_end_shutdown;
-        static const Enum::Value im_state_begin_error_disable;
-        static const Enum::Value im_state_end_error_disable;
-        static const Enum::Value im_state_begin_down_graceful;
-        static const Enum::Value im_state_reset;
-        static const Enum::Value im_state_operational;
-        static const Enum::Value im_state_not_operational;
-        static const Enum::Value im_state_unknown;
-        static const Enum::Value im_state_last;
+        static const Enum::YLeaf im_state_not_ready;
+        static const Enum::YLeaf im_state_admin_down;
+        static const Enum::YLeaf im_state_down;
+        static const Enum::YLeaf im_state_up;
+        static const Enum::YLeaf im_state_shutdown;
+        static const Enum::YLeaf im_state_err_disable;
+        static const Enum::YLeaf im_state_down_immediate;
+        static const Enum::YLeaf im_state_down_immediate_admin;
+        static const Enum::YLeaf im_state_down_graceful;
+        static const Enum::YLeaf im_state_begin_shutdown;
+        static const Enum::YLeaf im_state_end_shutdown;
+        static const Enum::YLeaf im_state_begin_error_disable;
+        static const Enum::YLeaf im_state_end_error_disable;
+        static const Enum::YLeaf im_state_begin_down_graceful;
+        static const Enum::YLeaf im_state_reset;
+        static const Enum::YLeaf im_state_operational;
+        static const Enum::YLeaf im_state_not_operational;
+        static const Enum::YLeaf im_state_unknown;
+        static const Enum::YLeaf im_state_last;
 
 };
 

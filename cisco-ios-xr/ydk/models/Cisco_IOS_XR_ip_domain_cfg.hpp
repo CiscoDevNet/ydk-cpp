@@ -26,6 +26,7 @@ class IpDomain : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Vrfs : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class IpDomain : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -54,12 +56,13 @@ class IpDomain : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value lookup; //type: empty
-                Value multicast_domain; //type: string
-                Value source_interface; //type: string
-                Value name; //type: string
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf lookup; //type: empty
+                YLeaf multicast_domain; //type: string
+                YLeaf source_interface; //type: string
+                YLeaf name; //type: string
 
             class Ipv6Hosts : public Entity
             {
@@ -76,6 +79,7 @@ class IpDomain : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ipv6Host : public Entity
                 {
                     public:
@@ -89,9 +93,10 @@ class IpDomain : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value host_name; //type: string
-                        ValueList address; //type: list of  string
 
+
+                        YLeaf host_name; //type: string
+                        YLeafList address; //type: list of  string
 
 
 
@@ -119,6 +124,7 @@ class IpDomain : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Server : public Entity
                 {
                     public:
@@ -132,9 +138,10 @@ class IpDomain : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value order; //type: int32
-                        Value server_address; //type: string
 
+
+                        YLeaf order; //type: int32
+                        YLeaf server_address; //type: string
 
 
 
@@ -162,6 +169,7 @@ class IpDomain : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class List : public Entity
                 {
                     public:
@@ -175,9 +183,10 @@ class IpDomain : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value order; //type: int32
-                        Value list_name; //type: string
 
+
+                        YLeaf order; //type: int32
+                        YLeaf list_name; //type: string
 
 
 
@@ -205,6 +214,7 @@ class IpDomain : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ipv4Host : public Entity
                 {
                     public:
@@ -218,9 +228,10 @@ class IpDomain : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value host_name; //type: string
-                        ValueList address; //type: list of  string
 
+
+                        YLeaf host_name; //type: string
+                        YLeafList address; //type: list of  string
 
 
 

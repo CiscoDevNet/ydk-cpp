@@ -26,6 +26,7 @@ class Ipv6NodeDiscovery : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Ipv6NodeDiscovery : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Ipv6NodeDiscovery : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class NeighborInterfaces : public Entity
             {
@@ -72,6 +75,7 @@ class Ipv6NodeDiscovery : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class NeighborInterface : public Entity
                 {
                     public:
@@ -85,8 +89,9 @@ class Ipv6NodeDiscovery : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class HostAddresses : public Entity
                     {
@@ -103,6 +108,7 @@ class Ipv6NodeDiscovery : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class HostAddress : public Entity
                         {
                             public:
@@ -116,16 +122,17 @@ class Ipv6NodeDiscovery : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value host_address; //type: string
-                                Value reachability_state; //type: Ipv6NdShStateEnum
-                                Value link_layer_address; //type: string
-                                Value encapsulation; //type: Ipv6NdMediaEncapEnum
-                                Value selected_encapsulation; //type: Ipv6NdMediaEncapEnum
-                                Value origin_encapsulation; //type: Ipv6NdNeighborOriginEnum
-                                Value interface_name; //type: string
-                                Value location; //type: string
-                                Value is_router; //type: boolean
 
+
+                                YLeaf host_address; //type: string
+                                YLeaf reachability_state; //type: Ipv6NdShStateEnum
+                                YLeaf link_layer_address; //type: string
+                                YLeaf encapsulation; //type: Ipv6NdMediaEncapEnum
+                                YLeaf selected_encapsulation; //type: Ipv6NdMediaEncapEnum
+                                YLeaf origin_encapsulation; //type: Ipv6NdNeighborOriginEnum
+                                YLeaf interface_name; //type: string
+                                YLeaf location; //type: string
+                                YLeaf is_router; //type: boolean
 
                             class LastReachedTime : public Entity
                             {
@@ -140,8 +147,9 @@ class Ipv6NodeDiscovery : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value seconds; //type: uint32
 
+
+                                    YLeaf seconds; //type: uint32
 
 
 
@@ -149,10 +157,6 @@ class Ipv6NodeDiscovery : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::LastReachedTime> last_reached_time;
-                                class Ipv6NdMediaEncapEnum;
-                                class Ipv6NdNeighborOriginEnum;
-                                class Ipv6NdShStateEnum;
-                                class Ipv6NdMediaEncapEnum;
 
 
                         }; // Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress
@@ -189,8 +193,9 @@ class Ipv6NodeDiscovery : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_neighbor_entries; //type: uint32
 
+
+                    YLeaf total_neighbor_entries; //type: uint32
 
                 class Multicast : public Entity
                 {
@@ -205,14 +210,15 @@ class Ipv6NodeDiscovery : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value incomplete_entries; //type: uint32
-                        Value reachable_entries; //type: uint32
-                        Value stale_entries; //type: uint32
-                        Value delayed_entries; //type: uint32
-                        Value probe_entries; //type: uint32
-                        Value deleted_entries; //type: uint32
-                        Value subtotal_neighbor_entries; //type: uint32
 
+
+                        YLeaf incomplete_entries; //type: uint32
+                        YLeaf reachable_entries; //type: uint32
+                        YLeaf stale_entries; //type: uint32
+                        YLeaf delayed_entries; //type: uint32
+                        YLeaf probe_entries; //type: uint32
+                        YLeaf deleted_entries; //type: uint32
+                        YLeaf subtotal_neighbor_entries; //type: uint32
 
 
 
@@ -232,14 +238,15 @@ class Ipv6NodeDiscovery : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value incomplete_entries; //type: uint32
-                        Value reachable_entries; //type: uint32
-                        Value stale_entries; //type: uint32
-                        Value delayed_entries; //type: uint32
-                        Value probe_entries; //type: uint32
-                        Value deleted_entries; //type: uint32
-                        Value subtotal_neighbor_entries; //type: uint32
 
+
+                        YLeaf incomplete_entries; //type: uint32
+                        YLeaf reachable_entries; //type: uint32
+                        YLeaf stale_entries; //type: uint32
+                        YLeaf delayed_entries; //type: uint32
+                        YLeaf probe_entries; //type: uint32
+                        YLeaf deleted_entries; //type: uint32
+                        YLeaf subtotal_neighbor_entries; //type: uint32
 
 
 
@@ -259,14 +266,15 @@ class Ipv6NodeDiscovery : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value incomplete_entries; //type: uint32
-                        Value reachable_entries; //type: uint32
-                        Value stale_entries; //type: uint32
-                        Value delayed_entries; //type: uint32
-                        Value probe_entries; //type: uint32
-                        Value deleted_entries; //type: uint32
-                        Value subtotal_neighbor_entries; //type: uint32
 
+
+                        YLeaf incomplete_entries; //type: uint32
+                        YLeaf reachable_entries; //type: uint32
+                        YLeaf stale_entries; //type: uint32
+                        YLeaf delayed_entries; //type: uint32
+                        YLeaf probe_entries; //type: uint32
+                        YLeaf deleted_entries; //type: uint32
+                        YLeaf subtotal_neighbor_entries; //type: uint32
 
 
 
@@ -296,6 +304,7 @@ class Ipv6NodeDiscovery : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BundleNode : public Entity
                 {
                     public:
@@ -309,16 +318,17 @@ class Ipv6NodeDiscovery : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value node_name; //type: string
-                        Value group_id; //type: uint32
-                        Value process_name; //type: string
-                        Value sent_sequence_number; //type: uint32
-                        Value received_sequence_number; //type: uint32
-                        Value state; //type: Ipv6NdBndlStateEnum
-                        Value state_changes; //type: uint32
-                        Value sent_packets; //type: uint32
-                        Value received_packets; //type: uint32
 
+
+                        YLeaf node_name; //type: string
+                        YLeaf group_id; //type: uint32
+                        YLeaf process_name; //type: string
+                        YLeaf sent_sequence_number; //type: uint32
+                        YLeaf received_sequence_number; //type: uint32
+                        YLeaf state; //type: Ipv6NdBndlStateEnum
+                        YLeaf state_changes; //type: uint32
+                        YLeaf sent_packets; //type: uint32
+                        YLeaf received_packets; //type: uint32
 
                     class Age : public Entity
                     {
@@ -333,8 +343,9 @@ class Ipv6NodeDiscovery : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
 
 
 
@@ -342,7 +353,6 @@ class Ipv6NodeDiscovery : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::Age> age;
-                        class Ipv6NdBndlStateEnum;
 
 
                 }; // Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode
@@ -369,6 +379,7 @@ class Ipv6NodeDiscovery : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BundleInterface : public Entity
                 {
                     public:
@@ -382,19 +393,20 @@ class Ipv6NodeDiscovery : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value parent_interface_name; //type: string
-                        Value iftype; //type: uint32
-                        Value mtu; //type: uint32
-                        Value etype; //type: uint32
-                        Value vlan_tag; //type: uint16
-                        Value mac_addr_size; //type: uint32
-                        Value mac_addr; //type: string
-                        Value is_interface_enabled; //type: boolean
-                        Value is_ipv6_enabled; //type: boolean
-                        Value is_mpls_enabled; //type: boolean
-                        ValueList member_link; //type: list of  uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf parent_interface_name; //type: string
+                        YLeaf iftype; //type: uint32
+                        YLeaf mtu; //type: uint32
+                        YLeaf etype; //type: uint32
+                        YLeaf vlan_tag; //type: uint16
+                        YLeaf mac_addr_size; //type: uint32
+                        YLeaf mac_addr; //type: string
+                        YLeaf is_interface_enabled; //type: boolean
+                        YLeaf is_ipv6_enabled; //type: boolean
+                        YLeaf is_mpls_enabled; //type: boolean
+                        YLeafList member_link; //type: list of  uint32
 
                     class NdParameters : public Entity
                     {
@@ -409,25 +421,26 @@ class Ipv6NodeDiscovery : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_dad_enabled; //type: boolean
-                            Value dad_attempts; //type: uint32
-                            Value is_icm_pv6_redirect; //type: boolean
-                            Value is_dhcp_managed; //type: boolean
-                            Value is_route_address_managed; //type: boolean
-                            Value is_suppressed; //type: boolean
-                            Value nd_retransmit_interval; //type: uint32
-                            Value nd_min_transmit_interval; //type: uint32
-                            Value nd_max_transmit_interval; //type: uint32
-                            Value nd_advertisement_lifetime; //type: uint32
-                            Value nd_reachable_time; //type: uint32
-                            Value nd_cache_limit; //type: uint32
-                            Value complete_protocol_count; //type: uint32
-                            Value complete_glean_count; //type: uint32
-                            Value incomplete_protocol_count; //type: uint32
-                            Value incomplete_glean_count; //type: uint32
-                            Value dropped_protocol_req_count; //type: uint32
-                            Value dropped_glean_req_count; //type: uint32
 
+
+                            YLeaf is_dad_enabled; //type: boolean
+                            YLeaf dad_attempts; //type: uint32
+                            YLeaf is_icm_pv6_redirect; //type: boolean
+                            YLeaf is_dhcp_managed; //type: boolean
+                            YLeaf is_route_address_managed; //type: boolean
+                            YLeaf is_suppressed; //type: boolean
+                            YLeaf nd_retransmit_interval; //type: uint32
+                            YLeaf nd_min_transmit_interval; //type: uint32
+                            YLeaf nd_max_transmit_interval; //type: uint32
+                            YLeaf nd_advertisement_lifetime; //type: uint32
+                            YLeaf nd_reachable_time; //type: uint32
+                            YLeaf nd_cache_limit; //type: uint32
+                            YLeaf complete_protocol_count; //type: uint32
+                            YLeaf complete_glean_count; //type: uint32
+                            YLeaf incomplete_protocol_count; //type: uint32
+                            YLeaf incomplete_glean_count; //type: uint32
+                            YLeaf dropped_protocol_req_count; //type: uint32
+                            YLeaf dropped_glean_req_count; //type: uint32
 
 
 
@@ -447,8 +460,9 @@ class Ipv6NodeDiscovery : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv6_address; //type: string
 
+
+                            YLeaf ipv6_address; //type: string
 
 
 
@@ -468,8 +482,9 @@ class Ipv6NodeDiscovery : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv6_address; //type: string
 
+
+                            YLeaf ipv6_address; //type: string
 
 
 
@@ -489,9 +504,10 @@ class Ipv6NodeDiscovery : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_name; //type: string
-                            Value total_links; //type: uint32
 
+
+                            YLeaf node_name; //type: string
+                            YLeaf total_links; //type: uint32
 
 
 
@@ -528,6 +544,7 @@ class Ipv6NodeDiscovery : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -541,26 +558,27 @@ class Ipv6NodeDiscovery : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value is_dad_enabled; //type: boolean
-                        Value dad_attempts; //type: uint32
-                        Value is_icm_pv6_redirect; //type: boolean
-                        Value is_dhcp_managed; //type: boolean
-                        Value is_route_address_managed; //type: boolean
-                        Value is_suppressed; //type: boolean
-                        Value nd_retransmit_interval; //type: uint32
-                        Value nd_min_transmit_interval; //type: uint32
-                        Value nd_max_transmit_interval; //type: uint32
-                        Value nd_advertisement_lifetime; //type: uint32
-                        Value nd_reachable_time; //type: uint32
-                        Value nd_cache_limit; //type: uint32
-                        Value complete_protocol_count; //type: uint32
-                        Value complete_glean_count; //type: uint32
-                        Value incomplete_protocol_count; //type: uint32
-                        Value incomplete_glean_count; //type: uint32
-                        Value dropped_protocol_req_count; //type: uint32
-                        Value dropped_glean_req_count; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf is_dad_enabled; //type: boolean
+                        YLeaf dad_attempts; //type: uint32
+                        YLeaf is_icm_pv6_redirect; //type: boolean
+                        YLeaf is_dhcp_managed; //type: boolean
+                        YLeaf is_route_address_managed; //type: boolean
+                        YLeaf is_suppressed; //type: boolean
+                        YLeaf nd_retransmit_interval; //type: uint32
+                        YLeaf nd_min_transmit_interval; //type: uint32
+                        YLeaf nd_max_transmit_interval; //type: uint32
+                        YLeaf nd_advertisement_lifetime; //type: uint32
+                        YLeaf nd_reachable_time; //type: uint32
+                        YLeaf nd_cache_limit; //type: uint32
+                        YLeaf complete_protocol_count; //type: uint32
+                        YLeaf complete_glean_count; //type: uint32
+                        YLeaf incomplete_protocol_count; //type: uint32
+                        YLeaf incomplete_glean_count; //type: uint32
+                        YLeaf dropped_protocol_req_count; //type: uint32
+                        YLeaf dropped_glean_req_count; //type: uint32
 
 
 
@@ -588,6 +606,7 @@ class Ipv6NodeDiscovery : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class NdVirtualRouter : public Entity
                 {
                     public:
@@ -601,13 +620,14 @@ class Ipv6NodeDiscovery : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value link_layer_address; //type: string
-                        Value context; //type: uint32
-                        Value state; //type: Ipv6NdShVrStateEnum
-                        Value flags; //type: Ipv6NdShVrFlagsEnum
-                        Value vr_gl_addr_ct; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf link_layer_address; //type: string
+                        YLeaf context; //type: uint32
+                        YLeaf state; //type: Ipv6NdShVrStateEnum
+                        YLeaf flags; //type: Ipv6NdShVrFlagsEnum
+                        YLeaf vr_gl_addr_ct; //type: uint32
 
                     class LocalAddress : public Entity
                     {
@@ -622,8 +642,9 @@ class Ipv6NodeDiscovery : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv6_address; //type: string
 
+
+                            YLeaf ipv6_address; //type: string
 
 
 
@@ -643,8 +664,9 @@ class Ipv6NodeDiscovery : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv6_address; //type: string
 
+
+                            YLeaf ipv6_address; //type: string
 
 
 
@@ -653,8 +675,6 @@ class Ipv6NodeDiscovery : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress> local_address;
                         std::vector<std::unique_ptr<Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress> > vr_global_address;
-                        class Ipv6NdShVrFlagsEnum;
-                        class Ipv6NdShVrStateEnum;
 
 
                 }; // Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter
@@ -692,67 +712,67 @@ class Ipv6NodeDiscovery : public Entity
 class Ipv6NdShVrStateEnum : public Enum
 {
     public:
-        static const Enum::Value deleted;
-        static const Enum::Value standby;
-        static const Enum::Value active;
+        static const Enum::YLeaf deleted;
+        static const Enum::YLeaf standby;
+        static const Enum::YLeaf active;
 
 };
 
 class Ipv6NdBndlStateEnum : public Enum
 {
     public:
-        static const Enum::Value run;
-        static const Enum::Value error;
-        static const Enum::Value wait;
+        static const Enum::YLeaf run;
+        static const Enum::YLeaf error;
+        static const Enum::YLeaf wait;
 
 };
 
 class Ipv6NdMediaEncapEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value arpa;
-        static const Enum::Value snap;
-        static const Enum::Value ieee802_1q;
-        static const Enum::Value srp;
-        static const Enum::Value srpa;
-        static const Enum::Value srpb;
-        static const Enum::Value ppp;
-        static const Enum::Value hdlc;
-        static const Enum::Value chdlc;
-        static const Enum::Value dot1q;
-        static const Enum::Value fr;
-        static const Enum::Value gre;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf arpa;
+        static const Enum::YLeaf snap;
+        static const Enum::YLeaf ieee802_1q;
+        static const Enum::YLeaf srp;
+        static const Enum::YLeaf srpa;
+        static const Enum::YLeaf srpb;
+        static const Enum::YLeaf ppp;
+        static const Enum::YLeaf hdlc;
+        static const Enum::YLeaf chdlc;
+        static const Enum::YLeaf dot1q;
+        static const Enum::YLeaf fr;
+        static const Enum::YLeaf gre;
 
 };
 
 class Ipv6NdNeighborOriginEnum : public Enum
 {
     public:
-        static const Enum::Value other;
-        static const Enum::Value static_;
-        static const Enum::Value dynamic;
+        static const Enum::YLeaf other;
+        static const Enum::YLeaf static_;
+        static const Enum::YLeaf dynamic;
 
 };
 
 class Ipv6NdShStateEnum : public Enum
 {
     public:
-        static const Enum::Value incomplete;
-        static const Enum::Value reachable;
-        static const Enum::Value stale;
-        static const Enum::Value glean;
-        static const Enum::Value delay;
-        static const Enum::Value probe;
-        static const Enum::Value delete_;
+        static const Enum::YLeaf incomplete;
+        static const Enum::YLeaf reachable;
+        static const Enum::YLeaf stale;
+        static const Enum::YLeaf glean;
+        static const Enum::YLeaf delay;
+        static const Enum::YLeaf probe;
+        static const Enum::YLeaf delete_;
 
 };
 
 class Ipv6NdShVrFlagsEnum : public Enum
 {
     public:
-        static const Enum::Value no_flags;
-        static const Enum::Value final_ra;
+        static const Enum::YLeaf no_flags;
+        static const Enum::YLeaf final_ra;
 
 };
 

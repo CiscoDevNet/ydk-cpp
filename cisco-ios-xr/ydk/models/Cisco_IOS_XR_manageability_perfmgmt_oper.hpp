@@ -26,6 +26,7 @@ class PerfMgmt : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Periodic : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class PerfMgmt : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Ospf : public Entity
@@ -56,6 +58,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ospfv2ProtocolInstances : public Entity
             {
                 public:
@@ -71,6 +74,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ospfv2ProtocolInstance : public Entity
                 {
                     public:
@@ -84,8 +88,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value instance_name; //type: string
 
+
+                        YLeaf instance_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -102,6 +107,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -115,30 +121,31 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value input_packets; //type: uint32
-                                Value output_packets; //type: uint32
-                                Value input_hello_packets; //type: uint32
-                                Value output_hello_packets; //type: uint32
-                                Value input_db_ds; //type: uint32
-                                Value input_db_ds_lsa; //type: uint32
-                                Value output_db_ds; //type: uint32
-                                Value output_db_ds_lsa; //type: uint32
-                                Value input_ls_requests; //type: uint32
-                                Value input_ls_requests_lsa; //type: uint32
-                                Value output_ls_requests; //type: uint32
-                                Value output_ls_requests_lsa; //type: uint32
-                                Value input_lsa_updates; //type: uint32
-                                Value input_lsa_updates_lsa; //type: uint32
-                                Value output_lsa_updates; //type: uint32
-                                Value output_lsa_updates_lsa; //type: uint32
-                                Value input_lsa_acks; //type: uint32
-                                Value input_lsa_acks_lsa; //type: uint32
-                                Value output_lsa_acks; //type: uint32
-                                Value output_lsa_acks_lsa; //type: uint32
-                                Value checksum_errors; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf input_packets; //type: uint32
+                                YLeaf output_packets; //type: uint32
+                                YLeaf input_hello_packets; //type: uint32
+                                YLeaf output_hello_packets; //type: uint32
+                                YLeaf input_db_ds; //type: uint32
+                                YLeaf input_db_ds_lsa; //type: uint32
+                                YLeaf output_db_ds; //type: uint32
+                                YLeaf output_db_ds_lsa; //type: uint32
+                                YLeaf input_ls_requests; //type: uint32
+                                YLeaf input_ls_requests_lsa; //type: uint32
+                                YLeaf output_ls_requests; //type: uint32
+                                YLeaf output_ls_requests_lsa; //type: uint32
+                                YLeaf input_lsa_updates; //type: uint32
+                                YLeaf input_lsa_updates_lsa; //type: uint32
+                                YLeaf output_lsa_updates; //type: uint32
+                                YLeaf output_lsa_updates_lsa; //type: uint32
+                                YLeaf input_lsa_acks; //type: uint32
+                                YLeaf input_lsa_acks_lsa; //type: uint32
+                                YLeaf output_lsa_acks; //type: uint32
+                                YLeaf output_lsa_acks_lsa; //type: uint32
+                                YLeaf checksum_errors; //type: uint32
 
 
 
@@ -178,6 +185,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ospfv3ProtocolInstance : public Entity
                 {
                     public:
@@ -191,8 +199,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value instance_name; //type: string
 
+
+                        YLeaf instance_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -209,6 +218,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -222,29 +232,30 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value input_packets; //type: uint32
-                                Value output_packets; //type: uint32
-                                Value input_hello_packets; //type: uint32
-                                Value output_hello_packets; //type: uint32
-                                Value input_db_ds; //type: uint32
-                                Value input_db_ds_lsa; //type: uint32
-                                Value output_db_ds; //type: uint32
-                                Value output_db_ds_lsa; //type: uint32
-                                Value input_ls_requests; //type: uint32
-                                Value input_ls_requests_lsa; //type: uint32
-                                Value output_ls_requests; //type: uint32
-                                Value output_ls_requests_lsa; //type: uint32
-                                Value input_lsa_updates; //type: uint32
-                                Value input_lsa_updates_lsa; //type: uint32
-                                Value output_lsa_updates; //type: uint32
-                                Value output_lsa_updates_lsa; //type: uint32
-                                Value input_lsa_acks; //type: uint32
-                                Value input_lsa_acks_lsa; //type: uint32
-                                Value output_lsa_acks; //type: uint32
-                                Value output_lsa_acks_lsa; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf input_packets; //type: uint32
+                                YLeaf output_packets; //type: uint32
+                                YLeaf input_hello_packets; //type: uint32
+                                YLeaf output_hello_packets; //type: uint32
+                                YLeaf input_db_ds; //type: uint32
+                                YLeaf input_db_ds_lsa; //type: uint32
+                                YLeaf output_db_ds; //type: uint32
+                                YLeaf output_db_ds_lsa; //type: uint32
+                                YLeaf input_ls_requests; //type: uint32
+                                YLeaf input_ls_requests_lsa; //type: uint32
+                                YLeaf output_ls_requests; //type: uint32
+                                YLeaf output_ls_requests_lsa; //type: uint32
+                                YLeaf input_lsa_updates; //type: uint32
+                                YLeaf input_lsa_updates_lsa; //type: uint32
+                                YLeaf output_lsa_updates; //type: uint32
+                                YLeaf output_lsa_updates_lsa; //type: uint32
+                                YLeaf input_lsa_acks; //type: uint32
+                                YLeaf input_lsa_acks_lsa; //type: uint32
+                                YLeaf output_lsa_acks; //type: uint32
+                                YLeaf output_lsa_acks_lsa; //type: uint32
 
 
 
@@ -291,6 +302,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LdpNeighbors : public Entity
             {
                 public:
@@ -306,6 +318,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LdpNeighbor : public Entity
                 {
                     public:
@@ -319,8 +332,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value nbr; //type: string
 
+
+                        YLeaf nbr; //type: string
 
                     class Samples : public Entity
                     {
@@ -337,6 +351,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -350,27 +365,28 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value total_msgs_sent; //type: uint16
-                                Value total_msgs_rcvd; //type: uint16
-                                Value init_msgs_sent; //type: uint16
-                                Value init_msgs_rcvd; //type: uint16
-                                Value address_msgs_sent; //type: uint16
-                                Value address_msgs_rcvd; //type: uint16
-                                Value address_withdraw_msgs_sent; //type: uint16
-                                Value address_withdraw_msgs_rcvd; //type: uint16
-                                Value label_mapping_msgs_sent; //type: uint16
-                                Value label_mapping_msgs_rcvd; //type: uint16
-                                Value label_withdraw_msgs_sent; //type: uint16
-                                Value label_withdraw_msgs_rcvd; //type: uint16
-                                Value label_release_msgs_sent; //type: uint16
-                                Value label_release_msgs_rcvd; //type: uint16
-                                Value notification_msgs_sent; //type: uint16
-                                Value notification_msgs_rcvd; //type: uint16
-                                Value keepalive_msgs_sent; //type: uint16
-                                Value keepalive_msgs_rcvd; //type: uint16
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf total_msgs_sent; //type: uint16
+                                YLeaf total_msgs_rcvd; //type: uint16
+                                YLeaf init_msgs_sent; //type: uint16
+                                YLeaf init_msgs_rcvd; //type: uint16
+                                YLeaf address_msgs_sent; //type: uint16
+                                YLeaf address_msgs_rcvd; //type: uint16
+                                YLeaf address_withdraw_msgs_sent; //type: uint16
+                                YLeaf address_withdraw_msgs_rcvd; //type: uint16
+                                YLeaf label_mapping_msgs_sent; //type: uint16
+                                YLeaf label_mapping_msgs_rcvd; //type: uint16
+                                YLeaf label_withdraw_msgs_sent; //type: uint16
+                                YLeaf label_withdraw_msgs_rcvd; //type: uint16
+                                YLeaf label_release_msgs_sent; //type: uint16
+                                YLeaf label_release_msgs_rcvd; //type: uint16
+                                YLeaf notification_msgs_sent; //type: uint16
+                                YLeaf notification_msgs_rcvd; //type: uint16
+                                YLeaf keepalive_msgs_sent; //type: uint16
+                                YLeaf keepalive_msgs_rcvd; //type: uint16
 
 
 
@@ -416,6 +432,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -429,8 +446,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_id; //type: string
 
+
+                    YLeaf node_id; //type: string
 
                 class SampleXr : public Entity
                 {
@@ -447,6 +465,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Sample : public Entity
                     {
                         public:
@@ -460,11 +479,12 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sample_id; //type: int32
-                            Value time_stamp; //type: uint64
-                            Value no_processes; //type: uint32
-                            Value average_cpu_used; //type: uint32
 
+
+                            YLeaf sample_id; //type: int32
+                            YLeaf time_stamp; //type: uint64
+                            YLeaf no_processes; //type: uint32
+                            YLeaf average_cpu_used; //type: uint32
 
 
 
@@ -492,6 +512,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Process : public Entity
                     {
                         public:
@@ -505,8 +526,9 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value process_id; //type: int32
 
+
+                            YLeaf process_id; //type: int32
 
                         class Samples : public Entity
                         {
@@ -523,6 +545,7 @@ class PerfMgmt : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Sample : public Entity
                             {
                                 public:
@@ -536,12 +559,13 @@ class PerfMgmt : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sample_id; //type: int32
-                                    Value time_stamp; //type: uint64
-                                    Value peak_memory; //type: uint32
-                                    Value average_cpu_used; //type: uint32
-                                    Value no_threads; //type: uint32
 
+
+                                    YLeaf sample_id; //type: int32
+                                    YLeaf time_stamp; //type: uint64
+                                    YLeaf peak_memory; //type: uint32
+                                    YLeaf average_cpu_used; //type: uint32
+                                    YLeaf no_threads; //type: uint32
 
 
 
@@ -581,6 +605,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Sample : public Entity
                     {
                         public:
@@ -594,11 +619,12 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sample_id; //type: int32
-                            Value time_stamp; //type: uint64
-                            Value curr_memory; //type: uint32
-                            Value peak_memory; //type: uint32
 
+
+                            YLeaf sample_id; //type: int32
+                            YLeaf time_stamp; //type: uint64
+                            YLeaf curr_memory; //type: uint32
+                            YLeaf peak_memory; //type: uint32
 
 
 
@@ -640,6 +666,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class BgpNeighbors : public Entity
             {
                 public:
@@ -655,6 +682,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BgpNeighbor : public Entity
                 {
                     public:
@@ -668,8 +696,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ip_address; //type: string
 
+
+                        YLeaf ip_address; //type: string
 
                     class Samples : public Entity
                     {
@@ -686,6 +715,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -699,17 +729,18 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value input_messages; //type: uint32
-                                Value output_messages; //type: uint32
-                                Value input_update_messages; //type: uint32
-                                Value output_update_messages; //type: uint32
-                                Value conn_established; //type: uint32
-                                Value conn_dropped; //type: uint32
-                                Value errors_received; //type: uint32
-                                Value errors_sent; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf input_messages; //type: uint32
+                                YLeaf output_messages; //type: uint32
+                                YLeaf input_update_messages; //type: uint32
+                                YLeaf output_update_messages; //type: uint32
+                                YLeaf conn_established; //type: uint32
+                                YLeaf conn_dropped; //type: uint32
+                                YLeaf errors_received; //type: uint32
+                                YLeaf errors_sent; //type: uint32
 
 
 
@@ -755,6 +786,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class GenericCounterInterfaces : public Entity
             {
                 public:
@@ -770,6 +802,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class GenericCounterInterface : public Entity
                 {
                     public:
@@ -783,8 +816,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -801,6 +835,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -814,29 +849,30 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value in_packets; //type: uint64
-                                Value in_octets; //type: uint64
-                                Value out_packets; //type: uint64
-                                Value out_octets; //type: uint64
-                                Value in_ucast_pkts; //type: uint64
-                                Value in_multicast_pkts; //type: uint64
-                                Value in_broadcast_pkts; //type: uint64
-                                Value out_ucast_pkts; //type: uint64
-                                Value out_multicast_pkts; //type: uint64
-                                Value out_broadcast_pkts; //type: uint64
-                                Value output_total_drops; //type: uint32
-                                Value input_total_drops; //type: uint32
-                                Value input_queue_drops; //type: uint32
-                                Value input_unknown_proto; //type: uint32
-                                Value output_total_errors; //type: uint32
-                                Value output_underrun; //type: uint32
-                                Value input_total_errors; //type: uint32
-                                Value input_crc; //type: uint32
-                                Value input_overrun; //type: uint32
-                                Value input_frame; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf in_packets; //type: uint64
+                                YLeaf in_octets; //type: uint64
+                                YLeaf out_packets; //type: uint64
+                                YLeaf out_octets; //type: uint64
+                                YLeaf in_ucast_pkts; //type: uint64
+                                YLeaf in_multicast_pkts; //type: uint64
+                                YLeaf in_broadcast_pkts; //type: uint64
+                                YLeaf out_ucast_pkts; //type: uint64
+                                YLeaf out_multicast_pkts; //type: uint64
+                                YLeaf out_broadcast_pkts; //type: uint64
+                                YLeaf output_total_drops; //type: uint32
+                                YLeaf input_total_drops; //type: uint32
+                                YLeaf input_queue_drops; //type: uint32
+                                YLeaf input_unknown_proto; //type: uint32
+                                YLeaf output_total_errors; //type: uint32
+                                YLeaf output_underrun; //type: uint32
+                                YLeaf input_total_errors; //type: uint32
+                                YLeaf input_crc; //type: uint32
+                                YLeaf input_overrun; //type: uint32
+                                YLeaf input_frame; //type: uint32
 
 
 
@@ -876,6 +912,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BasicCounterInterface : public Entity
                 {
                     public:
@@ -889,8 +926,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -907,6 +945,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -920,19 +959,20 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value in_packets; //type: uint64
-                                Value in_octets; //type: uint64
-                                Value out_packets; //type: uint64
-                                Value out_octets; //type: uint64
-                                Value input_total_drops; //type: uint64
-                                Value input_queue_drops; //type: uint64
-                                Value input_total_errors; //type: uint64
-                                Value output_total_drops; //type: uint64
-                                Value output_queue_drops; //type: uint64
-                                Value output_total_errors; //type: uint64
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf in_packets; //type: uint64
+                                YLeaf in_octets; //type: uint64
+                                YLeaf out_packets; //type: uint64
+                                YLeaf out_octets; //type: uint64
+                                YLeaf input_total_drops; //type: uint64
+                                YLeaf input_queue_drops; //type: uint64
+                                YLeaf input_total_errors; //type: uint64
+                                YLeaf output_total_drops; //type: uint64
+                                YLeaf output_queue_drops; //type: uint64
+                                YLeaf output_total_errors; //type: uint64
 
 
 
@@ -972,6 +1012,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DataRateInterface : public Entity
                 {
                     public:
@@ -985,8 +1026,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -1003,6 +1045,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -1016,18 +1059,19 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value input_data_rate; //type: uint32
-                                Value input_packet_rate; //type: uint32
-                                Value output_data_rate; //type: uint32
-                                Value output_packet_rate; //type: uint32
-                                Value input_peak_rate; //type: uint32
-                                Value input_peak_pkts; //type: uint32
-                                Value output_peak_rate; //type: uint32
-                                Value output_peak_pkts; //type: uint32
-                                Value bandwidth; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf input_data_rate; //type: uint32
+                                YLeaf input_packet_rate; //type: uint32
+                                YLeaf output_data_rate; //type: uint32
+                                YLeaf output_packet_rate; //type: uint32
+                                YLeaf input_peak_rate; //type: uint32
+                                YLeaf input_peak_pkts; //type: uint32
+                                YLeaf output_peak_rate; //type: uint32
+                                YLeaf output_peak_pkts; //type: uint32
+                                YLeaf bandwidth; //type: uint32
 
 
 
@@ -1085,6 +1129,7 @@ class PerfMgmt : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ospf : public Entity
         {
             public:
@@ -1098,6 +1143,7 @@ class PerfMgmt : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class Ospfv2ProtocolInstances : public Entity
@@ -1115,6 +1161,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ospfv2ProtocolInstance : public Entity
                 {
                     public:
@@ -1128,8 +1175,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value instance_name; //type: string
 
+
+                        YLeaf instance_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -1146,6 +1194,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -1159,30 +1208,31 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value input_packets; //type: uint32
-                                Value output_packets; //type: uint32
-                                Value input_hello_packets; //type: uint32
-                                Value output_hello_packets; //type: uint32
-                                Value input_db_ds; //type: uint32
-                                Value input_db_ds_lsa; //type: uint32
-                                Value output_db_ds; //type: uint32
-                                Value output_db_ds_lsa; //type: uint32
-                                Value input_ls_requests; //type: uint32
-                                Value input_ls_requests_lsa; //type: uint32
-                                Value output_ls_requests; //type: uint32
-                                Value output_ls_requests_lsa; //type: uint32
-                                Value input_lsa_updates; //type: uint32
-                                Value input_lsa_updates_lsa; //type: uint32
-                                Value output_lsa_updates; //type: uint32
-                                Value output_lsa_updates_lsa; //type: uint32
-                                Value input_lsa_acks; //type: uint32
-                                Value input_lsa_acks_lsa; //type: uint32
-                                Value output_lsa_acks; //type: uint32
-                                Value output_lsa_acks_lsa; //type: uint32
-                                Value checksum_errors; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf input_packets; //type: uint32
+                                YLeaf output_packets; //type: uint32
+                                YLeaf input_hello_packets; //type: uint32
+                                YLeaf output_hello_packets; //type: uint32
+                                YLeaf input_db_ds; //type: uint32
+                                YLeaf input_db_ds_lsa; //type: uint32
+                                YLeaf output_db_ds; //type: uint32
+                                YLeaf output_db_ds_lsa; //type: uint32
+                                YLeaf input_ls_requests; //type: uint32
+                                YLeaf input_ls_requests_lsa; //type: uint32
+                                YLeaf output_ls_requests; //type: uint32
+                                YLeaf output_ls_requests_lsa; //type: uint32
+                                YLeaf input_lsa_updates; //type: uint32
+                                YLeaf input_lsa_updates_lsa; //type: uint32
+                                YLeaf output_lsa_updates; //type: uint32
+                                YLeaf output_lsa_updates_lsa; //type: uint32
+                                YLeaf input_lsa_acks; //type: uint32
+                                YLeaf input_lsa_acks_lsa; //type: uint32
+                                YLeaf output_lsa_acks; //type: uint32
+                                YLeaf output_lsa_acks_lsa; //type: uint32
+                                YLeaf checksum_errors; //type: uint32
 
 
 
@@ -1222,6 +1272,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ospfv3ProtocolInstance : public Entity
                 {
                     public:
@@ -1235,8 +1286,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value instance_name; //type: string
 
+
+                        YLeaf instance_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -1253,6 +1305,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -1266,29 +1319,30 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value input_packets; //type: uint32
-                                Value output_packets; //type: uint32
-                                Value input_hello_packets; //type: uint32
-                                Value output_hello_packets; //type: uint32
-                                Value input_db_ds; //type: uint32
-                                Value input_db_ds_lsa; //type: uint32
-                                Value output_db_ds; //type: uint32
-                                Value output_db_ds_lsa; //type: uint32
-                                Value input_ls_requests; //type: uint32
-                                Value input_ls_requests_lsa; //type: uint32
-                                Value output_ls_requests; //type: uint32
-                                Value output_ls_requests_lsa; //type: uint32
-                                Value input_lsa_updates; //type: uint32
-                                Value input_lsa_updates_lsa; //type: uint32
-                                Value output_lsa_updates; //type: uint32
-                                Value output_lsa_updates_lsa; //type: uint32
-                                Value input_lsa_acks; //type: uint32
-                                Value input_lsa_acks_lsa; //type: uint32
-                                Value output_lsa_acks; //type: uint32
-                                Value output_lsa_acks_lsa; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf input_packets; //type: uint32
+                                YLeaf output_packets; //type: uint32
+                                YLeaf input_hello_packets; //type: uint32
+                                YLeaf output_hello_packets; //type: uint32
+                                YLeaf input_db_ds; //type: uint32
+                                YLeaf input_db_ds_lsa; //type: uint32
+                                YLeaf output_db_ds; //type: uint32
+                                YLeaf output_db_ds_lsa; //type: uint32
+                                YLeaf input_ls_requests; //type: uint32
+                                YLeaf input_ls_requests_lsa; //type: uint32
+                                YLeaf output_ls_requests; //type: uint32
+                                YLeaf output_ls_requests_lsa; //type: uint32
+                                YLeaf input_lsa_updates; //type: uint32
+                                YLeaf input_lsa_updates_lsa; //type: uint32
+                                YLeaf output_lsa_updates; //type: uint32
+                                YLeaf output_lsa_updates_lsa; //type: uint32
+                                YLeaf input_lsa_acks; //type: uint32
+                                YLeaf input_lsa_acks_lsa; //type: uint32
+                                YLeaf output_lsa_acks; //type: uint32
+                                YLeaf output_lsa_acks_lsa; //type: uint32
 
 
 
@@ -1335,6 +1389,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LdpNeighbors : public Entity
             {
                 public:
@@ -1350,6 +1405,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LdpNeighbor : public Entity
                 {
                     public:
@@ -1363,8 +1419,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value nbr; //type: string
 
+
+                        YLeaf nbr; //type: string
 
                     class Samples : public Entity
                     {
@@ -1381,6 +1438,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -1394,27 +1452,28 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value total_msgs_sent; //type: uint16
-                                Value total_msgs_rcvd; //type: uint16
-                                Value init_msgs_sent; //type: uint16
-                                Value init_msgs_rcvd; //type: uint16
-                                Value address_msgs_sent; //type: uint16
-                                Value address_msgs_rcvd; //type: uint16
-                                Value address_withdraw_msgs_sent; //type: uint16
-                                Value address_withdraw_msgs_rcvd; //type: uint16
-                                Value label_mapping_msgs_sent; //type: uint16
-                                Value label_mapping_msgs_rcvd; //type: uint16
-                                Value label_withdraw_msgs_sent; //type: uint16
-                                Value label_withdraw_msgs_rcvd; //type: uint16
-                                Value label_release_msgs_sent; //type: uint16
-                                Value label_release_msgs_rcvd; //type: uint16
-                                Value notification_msgs_sent; //type: uint16
-                                Value notification_msgs_rcvd; //type: uint16
-                                Value keepalive_msgs_sent; //type: uint16
-                                Value keepalive_msgs_rcvd; //type: uint16
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf total_msgs_sent; //type: uint16
+                                YLeaf total_msgs_rcvd; //type: uint16
+                                YLeaf init_msgs_sent; //type: uint16
+                                YLeaf init_msgs_rcvd; //type: uint16
+                                YLeaf address_msgs_sent; //type: uint16
+                                YLeaf address_msgs_rcvd; //type: uint16
+                                YLeaf address_withdraw_msgs_sent; //type: uint16
+                                YLeaf address_withdraw_msgs_rcvd; //type: uint16
+                                YLeaf label_mapping_msgs_sent; //type: uint16
+                                YLeaf label_mapping_msgs_rcvd; //type: uint16
+                                YLeaf label_withdraw_msgs_sent; //type: uint16
+                                YLeaf label_withdraw_msgs_rcvd; //type: uint16
+                                YLeaf label_release_msgs_sent; //type: uint16
+                                YLeaf label_release_msgs_rcvd; //type: uint16
+                                YLeaf notification_msgs_sent; //type: uint16
+                                YLeaf notification_msgs_rcvd; //type: uint16
+                                YLeaf keepalive_msgs_sent; //type: uint16
+                                YLeaf keepalive_msgs_rcvd; //type: uint16
 
 
 
@@ -1460,6 +1519,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -1473,8 +1533,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_id; //type: string
 
+
+                    YLeaf node_id; //type: string
 
                 class SampleXr : public Entity
                 {
@@ -1491,6 +1552,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Sample : public Entity
                     {
                         public:
@@ -1504,11 +1566,12 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sample_id; //type: int32
-                            Value time_stamp; //type: uint64
-                            Value no_processes; //type: uint32
-                            Value average_cpu_used; //type: uint32
 
+
+                            YLeaf sample_id; //type: int32
+                            YLeaf time_stamp; //type: uint64
+                            YLeaf no_processes; //type: uint32
+                            YLeaf average_cpu_used; //type: uint32
 
 
 
@@ -1536,6 +1599,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Process : public Entity
                     {
                         public:
@@ -1549,8 +1613,9 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value process_id; //type: int32
 
+
+                            YLeaf process_id; //type: int32
 
                         class Samples : public Entity
                         {
@@ -1567,6 +1632,7 @@ class PerfMgmt : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Sample : public Entity
                             {
                                 public:
@@ -1580,12 +1646,13 @@ class PerfMgmt : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sample_id; //type: int32
-                                    Value time_stamp; //type: uint64
-                                    Value peak_memory; //type: uint32
-                                    Value average_cpu_used; //type: uint32
-                                    Value no_threads; //type: uint32
 
+
+                                    YLeaf sample_id; //type: int32
+                                    YLeaf time_stamp; //type: uint64
+                                    YLeaf peak_memory; //type: uint32
+                                    YLeaf average_cpu_used; //type: uint32
+                                    YLeaf no_threads; //type: uint32
 
 
 
@@ -1625,6 +1692,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Sample : public Entity
                     {
                         public:
@@ -1638,11 +1706,12 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sample_id; //type: int32
-                            Value time_stamp; //type: uint64
-                            Value curr_memory; //type: uint32
-                            Value peak_memory; //type: uint32
 
+
+                            YLeaf sample_id; //type: int32
+                            YLeaf time_stamp; //type: uint64
+                            YLeaf curr_memory; //type: uint32
+                            YLeaf peak_memory; //type: uint32
 
 
 
@@ -1684,6 +1753,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class BgpNeighbors : public Entity
             {
                 public:
@@ -1699,6 +1769,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BgpNeighbor : public Entity
                 {
                     public:
@@ -1712,8 +1783,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ip_address; //type: string
 
+
+                        YLeaf ip_address; //type: string
 
                     class Samples : public Entity
                     {
@@ -1730,6 +1802,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -1743,17 +1816,18 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value input_messages; //type: uint32
-                                Value output_messages; //type: uint32
-                                Value input_update_messages; //type: uint32
-                                Value output_update_messages; //type: uint32
-                                Value conn_established; //type: uint32
-                                Value conn_dropped; //type: uint32
-                                Value errors_received; //type: uint32
-                                Value errors_sent; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf input_messages; //type: uint32
+                                YLeaf output_messages; //type: uint32
+                                YLeaf input_update_messages; //type: uint32
+                                YLeaf output_update_messages; //type: uint32
+                                YLeaf conn_established; //type: uint32
+                                YLeaf conn_dropped; //type: uint32
+                                YLeaf errors_received; //type: uint32
+                                YLeaf errors_sent; //type: uint32
 
 
 
@@ -1799,6 +1873,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class GenericCounterInterfaces : public Entity
             {
                 public:
@@ -1814,6 +1889,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class GenericCounterInterface : public Entity
                 {
                     public:
@@ -1827,8 +1903,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -1845,6 +1922,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -1858,29 +1936,30 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value in_packets; //type: uint64
-                                Value in_octets; //type: uint64
-                                Value out_packets; //type: uint64
-                                Value out_octets; //type: uint64
-                                Value in_ucast_pkts; //type: uint64
-                                Value in_multicast_pkts; //type: uint64
-                                Value in_broadcast_pkts; //type: uint64
-                                Value out_ucast_pkts; //type: uint64
-                                Value out_multicast_pkts; //type: uint64
-                                Value out_broadcast_pkts; //type: uint64
-                                Value output_total_drops; //type: uint32
-                                Value input_total_drops; //type: uint32
-                                Value input_queue_drops; //type: uint32
-                                Value input_unknown_proto; //type: uint32
-                                Value output_total_errors; //type: uint32
-                                Value output_underrun; //type: uint32
-                                Value input_total_errors; //type: uint32
-                                Value input_crc; //type: uint32
-                                Value input_overrun; //type: uint32
-                                Value input_frame; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf in_packets; //type: uint64
+                                YLeaf in_octets; //type: uint64
+                                YLeaf out_packets; //type: uint64
+                                YLeaf out_octets; //type: uint64
+                                YLeaf in_ucast_pkts; //type: uint64
+                                YLeaf in_multicast_pkts; //type: uint64
+                                YLeaf in_broadcast_pkts; //type: uint64
+                                YLeaf out_ucast_pkts; //type: uint64
+                                YLeaf out_multicast_pkts; //type: uint64
+                                YLeaf out_broadcast_pkts; //type: uint64
+                                YLeaf output_total_drops; //type: uint32
+                                YLeaf input_total_drops; //type: uint32
+                                YLeaf input_queue_drops; //type: uint32
+                                YLeaf input_unknown_proto; //type: uint32
+                                YLeaf output_total_errors; //type: uint32
+                                YLeaf output_underrun; //type: uint32
+                                YLeaf input_total_errors; //type: uint32
+                                YLeaf input_crc; //type: uint32
+                                YLeaf input_overrun; //type: uint32
+                                YLeaf input_frame; //type: uint32
 
 
 
@@ -1920,6 +1999,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BasicCounterInterface : public Entity
                 {
                     public:
@@ -1933,8 +2013,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -1951,6 +2032,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -1964,19 +2046,20 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value in_packets; //type: uint64
-                                Value in_octets; //type: uint64
-                                Value out_packets; //type: uint64
-                                Value out_octets; //type: uint64
-                                Value input_total_drops; //type: uint64
-                                Value input_queue_drops; //type: uint64
-                                Value input_total_errors; //type: uint64
-                                Value output_total_drops; //type: uint64
-                                Value output_queue_drops; //type: uint64
-                                Value output_total_errors; //type: uint64
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf in_packets; //type: uint64
+                                YLeaf in_octets; //type: uint64
+                                YLeaf out_packets; //type: uint64
+                                YLeaf out_octets; //type: uint64
+                                YLeaf input_total_drops; //type: uint64
+                                YLeaf input_queue_drops; //type: uint64
+                                YLeaf input_total_errors; //type: uint64
+                                YLeaf output_total_drops; //type: uint64
+                                YLeaf output_queue_drops; //type: uint64
+                                YLeaf output_total_errors; //type: uint64
 
 
 
@@ -2016,6 +2099,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DataRateInterface : public Entity
                 {
                     public:
@@ -2029,8 +2113,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class Samples : public Entity
                     {
@@ -2047,6 +2132,7 @@ class PerfMgmt : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sample : public Entity
                         {
                             public:
@@ -2060,18 +2146,19 @@ class PerfMgmt : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sample_id; //type: int32
-                                Value time_stamp; //type: uint64
-                                Value input_data_rate; //type: uint32
-                                Value input_packet_rate; //type: uint32
-                                Value output_data_rate; //type: uint32
-                                Value output_packet_rate; //type: uint32
-                                Value input_peak_rate; //type: uint32
-                                Value input_peak_pkts; //type: uint32
-                                Value output_peak_rate; //type: uint32
-                                Value output_peak_pkts; //type: uint32
-                                Value bandwidth; //type: uint32
 
+
+                                YLeaf sample_id; //type: int32
+                                YLeaf time_stamp; //type: uint64
+                                YLeaf input_data_rate; //type: uint32
+                                YLeaf input_packet_rate; //type: uint32
+                                YLeaf output_data_rate; //type: uint32
+                                YLeaf output_packet_rate; //type: uint32
+                                YLeaf input_peak_rate; //type: uint32
+                                YLeaf input_peak_pkts; //type: uint32
+                                YLeaf output_peak_rate; //type: uint32
+                                YLeaf output_peak_pkts; //type: uint32
+                                YLeaf bandwidth; //type: uint32
 
 
 

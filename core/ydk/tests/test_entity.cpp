@@ -27,7 +27,7 @@
 
 #define BOOST_TEST_MODULE EntityTest
 #include <boost/test/unit_test.hpp>
-#include "../../src/types.hpp"
+#include "../src/types.hpp"
 
 using namespace ydk;
 using namespace std;
@@ -173,7 +173,7 @@ class TestEntity:public Entity
 			}
 		}
 
-		Value child_val;
+		YLeaf child_val;
 
 
 		class MultiChild : public Entity
@@ -223,15 +223,15 @@ class TestEntity:public Entity
 				}
 			}
 
-			Value child_key;
+			YLeaf child_key;
 		};
 
 		vector<unique_ptr<TestEntity::Child::MultiChild> > multi_child;
 	};
 
-  Value name;
-  Value enabled;
-  Value bits_field;
+  YLeaf name;
+  YLeaf enabled;
+  YLeaf bits_field;
   unique_ptr<TestEntity::Child> child;
 };
 
@@ -240,9 +240,9 @@ BOOST_AUTO_TEST_CASE(test_create)
 	TestEntity test{};
 	string test_value = "value for test";
 	EntityPath expected {"test",
-							{{"name", {test_value, EditOperation::not_set}},
-							 {"enabled", {"true", EditOperation::not_set}},
-							 {"bits-field", {"bit1 bit2", EditOperation::not_set}}}};
+							{{"name", {test_value, EditOperation::not_set, true}},
+							 {"enabled", {"true", EditOperation::not_set, true}},
+							 {"bits-field", {"bit1 bit2", EditOperation::not_set, true}}}};
 
 	BOOST_REQUIRE(test.get_entity_path(nullptr).path == "test");
 	BOOST_REQUIRE(test.has_data() == false);
@@ -304,5 +304,4 @@ BOOST_AUTO_TEST_CASE(test_multi_read)
 
 	auto m = test.child->get_child_by_name("multi-child", "multi-child[multi-key='abc']");
 	BOOST_REQUIRE(m != nullptr);
-
 }

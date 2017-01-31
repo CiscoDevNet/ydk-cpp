@@ -24,12 +24,13 @@ class Grpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value port; //type: uint32
-        Value enable; //type: empty
-        Value max_request_per_user; //type: uint32
-        Value address_family; //type: string
-        Value max_request_total; //type: uint32
 
+
+        YLeaf port; //type: uint32
+        YLeaf enable; //type: empty
+        YLeaf max_request_per_user; //type: uint32
+        YLeaf address_family; //type: string
+        YLeaf max_request_total; //type: uint32
 
     class Tls : public Entity
     {
@@ -44,9 +45,10 @@ class Grpc : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value trustpoint; //type: string
-            Value enable; //type: empty
 
+
+            YLeaf trustpoint; //type: string
+            YLeaf enable; //type: empty
 
 
 

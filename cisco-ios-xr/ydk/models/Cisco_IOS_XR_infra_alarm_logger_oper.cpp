@@ -414,8 +414,8 @@ bool AlarmLogger::has_data() const
 bool AlarmLogger::has_operation() const
 {
     return is_set(operation)
-	|| (alarms !=  nullptr && is_set(alarms->operation))
-	|| (buffer_status !=  nullptr && is_set(buffer_status->operation));
+	|| (alarms !=  nullptr && alarms->has_operation())
+	|| (buffer_status !=  nullptr && buffer_status->has_operation());
 }
 
 std::string AlarmLogger::get_segment_path() const
@@ -432,7 +432,7 @@ EntityPath AlarmLogger::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -519,19 +519,19 @@ std::unique_ptr<Entity> AlarmLogger::clone_ptr()
     return std::make_unique<AlarmLogger>();
 }
 
-const Enum::Value AlAlarmBistateEnum::not_available {0, "not-available"};
-const Enum::Value AlAlarmBistateEnum::active {1, "active"};
-const Enum::Value AlAlarmBistateEnum::clear {2, "clear"};
+const Enum::YLeaf AlAlarmBistateEnum::not_available {0, "not-available"};
+const Enum::YLeaf AlAlarmBistateEnum::active {1, "active"};
+const Enum::YLeaf AlAlarmBistateEnum::clear {2, "clear"};
 
-const Enum::Value AlAlarmSeverityEnum::unknown {-1, "unknown"};
-const Enum::Value AlAlarmSeverityEnum::emergency {0, "emergency"};
-const Enum::Value AlAlarmSeverityEnum::alert {1, "alert"};
-const Enum::Value AlAlarmSeverityEnum::critical {2, "critical"};
-const Enum::Value AlAlarmSeverityEnum::error {3, "error"};
-const Enum::Value AlAlarmSeverityEnum::warning {4, "warning"};
-const Enum::Value AlAlarmSeverityEnum::notice {5, "notice"};
-const Enum::Value AlAlarmSeverityEnum::informational {6, "informational"};
-const Enum::Value AlAlarmSeverityEnum::debugging {7, "debugging"};
+const Enum::YLeaf AlAlarmSeverityEnum::unknown {-1, "unknown"};
+const Enum::YLeaf AlAlarmSeverityEnum::emergency {0, "emergency"};
+const Enum::YLeaf AlAlarmSeverityEnum::alert {1, "alert"};
+const Enum::YLeaf AlAlarmSeverityEnum::critical {2, "critical"};
+const Enum::YLeaf AlAlarmSeverityEnum::error {3, "error"};
+const Enum::YLeaf AlAlarmSeverityEnum::warning {4, "warning"};
+const Enum::YLeaf AlAlarmSeverityEnum::notice {5, "notice"};
+const Enum::YLeaf AlAlarmSeverityEnum::informational {6, "informational"};
+const Enum::YLeaf AlAlarmSeverityEnum::debugging {7, "debugging"};
 
 
 }

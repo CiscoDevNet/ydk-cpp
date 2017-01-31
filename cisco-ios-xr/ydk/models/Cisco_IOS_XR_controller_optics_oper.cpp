@@ -52,7 +52,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::Dw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -163,7 +163,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -257,7 +257,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArr
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::has_data() const
 {
-    for (auto const & leaf : network_srlg.getValues())
+    for (auto const & leaf : network_srlg.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -267,12 +267,13 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSr
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::has_operation() const
 {
-    for (auto const & leaf : network_srlg.getValues())
+    for (auto const & leaf : network_srlg.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(network_srlg.operation)
 	|| is_set(set_number.operation);
 }
 
@@ -290,7 +291,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::Net
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -383,7 +384,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -487,7 +488,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -575,7 +576,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -663,7 +664,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -751,7 +752,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -839,7 +840,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -927,7 +928,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1015,7 +1016,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1103,7 +1104,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1191,7 +1192,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1279,7 +1280,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1367,7 +1368,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1455,7 +1456,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1543,7 +1544,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1631,7 +1632,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1719,7 +1720,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1807,7 +1808,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1895,7 +1896,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1983,7 +1984,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2071,7 +2072,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2159,7 +2160,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2247,7 +2248,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2335,7 +2336,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2423,7 +2424,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2511,7 +2512,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2599,7 +2600,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hig
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2687,7 +2688,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2775,7 +2776,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2863,7 +2864,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2951,7 +2952,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Low
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3039,7 +3040,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3127,7 +3128,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3215,7 +3216,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3303,7 +3304,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3391,7 +3392,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxF
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3479,7 +3480,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hid
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3567,7 +3568,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3655,7 +3656,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3743,7 +3744,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3831,7 +3832,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3919,7 +3920,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Imp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4007,7 +4008,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4095,7 +4096,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Amp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4183,7 +4184,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Amp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4464,49 +4465,49 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::has_data(
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::has_operation() const
 {
     return is_set(operation)
-	|| (amp_gain_deg_high !=  nullptr && is_set(amp_gain_deg_high->operation))
-	|| (amp_gain_deg_low !=  nullptr && is_set(amp_gain_deg_low->operation))
-	|| (hidgd !=  nullptr && is_set(hidgd->operation))
-	|| (high_lbc !=  nullptr && is_set(high_lbc->operation))
-	|| (high_rx1_power !=  nullptr && is_set(high_rx1_power->operation))
-	|| (high_rx2_power !=  nullptr && is_set(high_rx2_power->operation))
-	|| (high_rx3_power !=  nullptr && is_set(high_rx3_power->operation))
-	|| (high_rx4_power !=  nullptr && is_set(high_rx4_power->operation))
-	|| (high_rx_power !=  nullptr && is_set(high_rx_power->operation))
-	|| (high_tx1_power !=  nullptr && is_set(high_tx1_power->operation))
-	|| (high_tx1lbc !=  nullptr && is_set(high_tx1lbc->operation))
-	|| (high_tx2_power !=  nullptr && is_set(high_tx2_power->operation))
-	|| (high_tx2lbc !=  nullptr && is_set(high_tx2lbc->operation))
-	|| (high_tx3_power !=  nullptr && is_set(high_tx3_power->operation))
-	|| (high_tx3lbc !=  nullptr && is_set(high_tx3lbc->operation))
-	|| (high_tx4_power !=  nullptr && is_set(high_tx4_power->operation))
-	|| (high_tx4lbc !=  nullptr && is_set(high_tx4lbc->operation))
-	|| (high_tx_power !=  nullptr && is_set(high_tx_power->operation))
-	|| (imp_removal !=  nullptr && is_set(imp_removal->operation))
-	|| (low_rx1_power !=  nullptr && is_set(low_rx1_power->operation))
-	|| (low_rx2_power !=  nullptr && is_set(low_rx2_power->operation))
-	|| (low_rx3_power !=  nullptr && is_set(low_rx3_power->operation))
-	|| (low_rx4_power !=  nullptr && is_set(low_rx4_power->operation))
-	|| (low_rx_power !=  nullptr && is_set(low_rx_power->operation))
-	|| (low_tx1_power !=  nullptr && is_set(low_tx1_power->operation))
-	|| (low_tx1lbc !=  nullptr && is_set(low_tx1lbc->operation))
-	|| (low_tx2_power !=  nullptr && is_set(low_tx2_power->operation))
-	|| (low_tx2lbc !=  nullptr && is_set(low_tx2lbc->operation))
-	|| (low_tx3_power !=  nullptr && is_set(low_tx3_power->operation))
-	|| (low_tx3lbc !=  nullptr && is_set(low_tx3lbc->operation))
-	|| (low_tx4_power !=  nullptr && is_set(low_tx4_power->operation))
-	|| (low_tx4lbc !=  nullptr && is_set(low_tx4lbc->operation))
-	|| (low_tx_power !=  nullptr && is_set(low_tx_power->operation))
-	|| (mea !=  nullptr && is_set(mea->operation))
-	|| (oorcd !=  nullptr && is_set(oorcd->operation))
-	|| (osnr !=  nullptr && is_set(osnr->operation))
-	|| (rx_loc !=  nullptr && is_set(rx_loc->operation))
-	|| (rx_lol !=  nullptr && is_set(rx_lol->operation))
-	|| (rx_los !=  nullptr && is_set(rx_los->operation))
-	|| (tx_fault !=  nullptr && is_set(tx_fault->operation))
-	|| (tx_lol !=  nullptr && is_set(tx_lol->operation))
-	|| (tx_los !=  nullptr && is_set(tx_los->operation))
-	|| (wvlool !=  nullptr && is_set(wvlool->operation));
+	|| (amp_gain_deg_high !=  nullptr && amp_gain_deg_high->has_operation())
+	|| (amp_gain_deg_low !=  nullptr && amp_gain_deg_low->has_operation())
+	|| (hidgd !=  nullptr && hidgd->has_operation())
+	|| (high_lbc !=  nullptr && high_lbc->has_operation())
+	|| (high_rx1_power !=  nullptr && high_rx1_power->has_operation())
+	|| (high_rx2_power !=  nullptr && high_rx2_power->has_operation())
+	|| (high_rx3_power !=  nullptr && high_rx3_power->has_operation())
+	|| (high_rx4_power !=  nullptr && high_rx4_power->has_operation())
+	|| (high_rx_power !=  nullptr && high_rx_power->has_operation())
+	|| (high_tx1_power !=  nullptr && high_tx1_power->has_operation())
+	|| (high_tx1lbc !=  nullptr && high_tx1lbc->has_operation())
+	|| (high_tx2_power !=  nullptr && high_tx2_power->has_operation())
+	|| (high_tx2lbc !=  nullptr && high_tx2lbc->has_operation())
+	|| (high_tx3_power !=  nullptr && high_tx3_power->has_operation())
+	|| (high_tx3lbc !=  nullptr && high_tx3lbc->has_operation())
+	|| (high_tx4_power !=  nullptr && high_tx4_power->has_operation())
+	|| (high_tx4lbc !=  nullptr && high_tx4lbc->has_operation())
+	|| (high_tx_power !=  nullptr && high_tx_power->has_operation())
+	|| (imp_removal !=  nullptr && imp_removal->has_operation())
+	|| (low_rx1_power !=  nullptr && low_rx1_power->has_operation())
+	|| (low_rx2_power !=  nullptr && low_rx2_power->has_operation())
+	|| (low_rx3_power !=  nullptr && low_rx3_power->has_operation())
+	|| (low_rx4_power !=  nullptr && low_rx4_power->has_operation())
+	|| (low_rx_power !=  nullptr && low_rx_power->has_operation())
+	|| (low_tx1_power !=  nullptr && low_tx1_power->has_operation())
+	|| (low_tx1lbc !=  nullptr && low_tx1lbc->has_operation())
+	|| (low_tx2_power !=  nullptr && low_tx2_power->has_operation())
+	|| (low_tx2lbc !=  nullptr && low_tx2lbc->has_operation())
+	|| (low_tx3_power !=  nullptr && low_tx3_power->has_operation())
+	|| (low_tx3lbc !=  nullptr && low_tx3lbc->has_operation())
+	|| (low_tx4_power !=  nullptr && low_tx4_power->has_operation())
+	|| (low_tx4lbc !=  nullptr && low_tx4lbc->has_operation())
+	|| (low_tx_power !=  nullptr && low_tx_power->has_operation())
+	|| (mea !=  nullptr && mea->has_operation())
+	|| (oorcd !=  nullptr && oorcd->has_operation())
+	|| (osnr !=  nullptr && osnr->has_operation())
+	|| (rx_loc !=  nullptr && rx_loc->has_operation())
+	|| (rx_lol !=  nullptr && rx_lol->has_operation())
+	|| (rx_los !=  nullptr && rx_los->has_operation())
+	|| (tx_fault !=  nullptr && tx_fault->has_operation())
+	|| (tx_lol !=  nullptr && tx_lol->has_operation())
+	|| (tx_los !=  nullptr && tx_los->has_operation())
+	|| (wvlool !=  nullptr && wvlool->has_operation());
 }
 
 std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_segment_path() const
@@ -4523,7 +4524,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5614,7 +5615,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5802,7 +5803,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6176,7 +6177,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6574,7 +6575,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6662,7 +6663,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6750,7 +6751,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6838,7 +6839,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6926,7 +6927,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7017,11 +7018,11 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::h
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::has_operation() const
 {
     return is_set(operation)
-	|| (high_lbc !=  nullptr && is_set(high_lbc->operation))
-	|| (high_rx_power !=  nullptr && is_set(high_rx_power->operation))
-	|| (high_tx_power !=  nullptr && is_set(high_tx_power->operation))
-	|| (low_rx_power !=  nullptr && is_set(low_rx_power->operation))
-	|| (low_tx_power !=  nullptr && is_set(low_tx_power->operation));
+	|| (high_lbc !=  nullptr && high_lbc->has_operation())
+	|| (high_rx_power !=  nullptr && high_rx_power->has_operation())
+	|| (high_tx_power !=  nullptr && high_tx_power->has_operation())
+	|| (low_rx_power !=  nullptr && low_rx_power->has_operation())
+	|| (low_tx_power !=  nullptr && low_tx_power->has_operation());
 }
 
 std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_segment_path() const
@@ -7038,7 +7039,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7239,7 +7240,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::has_operation() 
 	|| is_set(receive_signal_power.operation)
 	|| is_set(transmit_power.operation)
 	|| is_set(transmit_signal_power.operation)
-	|| (lane_alarm_info !=  nullptr && is_set(lane_alarm_info->operation));
+	|| (lane_alarm_info !=  nullptr && lane_alarm_info->has_operation());
 }
 
 std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_segment_path() const
@@ -7256,7 +7257,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7615,11 +7616,11 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| is_set(tx_voa_attenuation_config_val.operation)
 	|| is_set(volt_high_threshold.operation)
 	|| is_set(volt_low_threshold.operation)
-	|| (ext_param_threshold_val !=  nullptr && is_set(ext_param_threshold_val->operation))
-	|| (ext_param_val !=  nullptr && is_set(ext_param_val->operation))
-	|| (network_srlg_info !=  nullptr && is_set(network_srlg_info->operation))
-	|| (optics_alarm_info !=  nullptr && is_set(optics_alarm_info->operation))
-	|| (transceiver_info !=  nullptr && is_set(transceiver_info->operation));
+	|| (ext_param_threshold_val !=  nullptr && ext_param_threshold_val->has_operation())
+	|| (ext_param_val !=  nullptr && ext_param_val->has_operation())
+	|| (network_srlg_info !=  nullptr && network_srlg_info->has_operation())
+	|| (optics_alarm_info !=  nullptr && optics_alarm_info->has_operation())
+	|| (transceiver_info !=  nullptr && transceiver_info->has_operation());
 }
 
 std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_segment_path() const
@@ -7636,7 +7637,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8195,7 +8196,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::Lan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8283,7 +8284,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::Lan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8371,7 +8372,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::Lan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8459,7 +8460,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::Lan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8547,7 +8548,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::Lan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8638,11 +8639,11 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::LaneData:
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::LaneData::LaneAlarmInfo::has_operation() const
 {
     return is_set(operation)
-	|| (high_lbc !=  nullptr && is_set(high_lbc->operation))
-	|| (high_rx_power !=  nullptr && is_set(high_rx_power->operation))
-	|| (high_tx_power !=  nullptr && is_set(high_tx_power->operation))
-	|| (low_rx_power !=  nullptr && is_set(low_rx_power->operation))
-	|| (low_tx_power !=  nullptr && is_set(low_tx_power->operation));
+	|| (high_lbc !=  nullptr && high_lbc->has_operation())
+	|| (high_rx_power !=  nullptr && high_rx_power->has_operation())
+	|| (high_tx_power !=  nullptr && high_tx_power->has_operation())
+	|| (low_rx_power !=  nullptr && low_rx_power->has_operation())
+	|| (low_tx_power !=  nullptr && low_tx_power->has_operation());
 }
 
 std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::LaneData::LaneAlarmInfo::get_segment_path() const
@@ -8659,7 +8660,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::Lan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8860,7 +8861,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::LaneData:
 	|| is_set(receive_signal_power.operation)
 	|| is_set(transmit_power.operation)
 	|| is_set(transmit_signal_power.operation)
-	|| (lane_alarm_info !=  nullptr && is_set(lane_alarm_info->operation));
+	|| (lane_alarm_info !=  nullptr && lane_alarm_info->has_operation());
 }
 
 std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::LaneData::get_segment_path() const
@@ -8877,7 +8878,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::Lan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9022,7 +9023,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::OpticsLane::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9109,7 +9110,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::has_data() const
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::has_operation() const
 {
     return is_set(operation)
-	|| (optics_lane !=  nullptr && is_set(optics_lane->operation));
+	|| (optics_lane !=  nullptr && optics_lane->has_operation());
 }
 
 std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::get_segment_path() const
@@ -9126,7 +9127,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsLaneTable::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9202,7 +9203,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgA
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::has_data() const
 {
-    for (auto const & leaf : network_srlg.getValues())
+    for (auto const & leaf : network_srlg.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9212,12 +9213,13 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::Network
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::has_operation() const
 {
-    for (auto const & leaf : network_srlg.getValues())
+    for (auto const & leaf : network_srlg.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(network_srlg.operation)
 	|| is_set(set_number.operation);
 }
 
@@ -9235,7 +9237,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9328,7 +9330,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9422,7 +9424,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::has_operation() const
     return is_set(operation)
 	|| is_set(controller_state.operation)
 	|| is_set(transport_admin_state.operation)
-	|| (network_srlg_info !=  nullptr && is_set(network_srlg_info->operation));
+	|| (network_srlg_info !=  nullptr && network_srlg_info->has_operation());
 }
 
 std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_segment_path() const
@@ -9439,7 +9441,7 @@ EntityPath OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9552,10 +9554,10 @@ bool OpticsOper::OpticsPorts::OpticsPort::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (optics_db_info !=  nullptr && is_set(optics_db_info->operation))
-	|| (optics_dwdm_carrrier_channel_map !=  nullptr && is_set(optics_dwdm_carrrier_channel_map->operation))
-	|| (optics_info !=  nullptr && is_set(optics_info->operation))
-	|| (optics_lane_table !=  nullptr && is_set(optics_lane_table->operation));
+	|| (optics_db_info !=  nullptr && optics_db_info->has_operation())
+	|| (optics_dwdm_carrrier_channel_map !=  nullptr && optics_dwdm_carrrier_channel_map->has_operation())
+	|| (optics_info !=  nullptr && optics_info->has_operation())
+	|| (optics_lane_table !=  nullptr && optics_lane_table->has_operation());
 }
 
 std::string OpticsOper::OpticsPorts::OpticsPort::get_segment_path() const
@@ -9838,7 +9840,7 @@ bool OpticsOper::has_data() const
 bool OpticsOper::has_operation() const
 {
     return is_set(operation)
-	|| (optics_ports !=  nullptr && is_set(optics_ports->operation));
+	|| (optics_ports !=  nullptr && optics_ports->has_operation());
 }
 
 std::string OpticsOper::get_segment_path() const
@@ -9855,7 +9857,7 @@ EntityPath OpticsOper::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -9919,167 +9921,167 @@ std::unique_ptr<Entity> OpticsOper::clone_ptr()
     return std::make_unique<OpticsOper>();
 }
 
-const Enum::Value OpticsAmplifierGainRangeEnum::optics_amplifier_gain_range_normal {1, "optics-amplifier-gain-range-normal"};
-const Enum::Value OpticsAmplifierGainRangeEnum::optics_amplifier_gain_range_ext_end_ed {2, "optics-amplifier-gain-range-ext-end-ed"};
+const Enum::YLeaf OpticsAmplifierGainRangeEnum::optics_amplifier_gain_range_normal {1, "optics-amplifier-gain-range-normal"};
+const Enum::YLeaf OpticsAmplifierGainRangeEnum::optics_amplifier_gain_range_ext_end_ed {2, "optics-amplifier-gain-range-ext-end-ed"};
 
-const Enum::Value OpticsAmplifierControlModeEnum::automatic {1, "automatic"};
-const Enum::Value OpticsAmplifierControlModeEnum::manual {2, "manual"};
+const Enum::YLeaf OpticsAmplifierControlModeEnum::automatic {1, "automatic"};
+const Enum::YLeaf OpticsAmplifierControlModeEnum::manual {2, "manual"};
 
-const Enum::Value EthernetPmdEnum::optics_eth_not_set {0, "optics-eth-not-set"};
-const Enum::Value EthernetPmdEnum::optics_eth_10gbase_lrm {1, "optics-eth-10gbase-lrm"};
-const Enum::Value EthernetPmdEnum::optics_eth_10gbase_lr {2, "optics-eth-10gbase-lr"};
-const Enum::Value EthernetPmdEnum::optics_eth_10gbase_zr {3, "optics-eth-10gbase-zr"};
-const Enum::Value EthernetPmdEnum::optics_eth_10gbase_er {4, "optics-eth-10gbase-er"};
-const Enum::Value EthernetPmdEnum::optics_eth_10gbase_sr {5, "optics-eth-10gbase-sr"};
-const Enum::Value EthernetPmdEnum::optics_eth_10gbase {6, "optics-eth-10gbase"};
-const Enum::Value EthernetPmdEnum::optics_eth_40gbase_cr4 {7, "optics-eth-40gbase-cr4"};
-const Enum::Value EthernetPmdEnum::optics_eth_40gbase_sr4 {8, "optics-eth-40gbase-sr4"};
-const Enum::Value EthernetPmdEnum::optics_eth_40gbase_lr4 {9, "optics-eth-40gbase-lr4"};
-const Enum::Value EthernetPmdEnum::optics_eth_40gbase_er4 {10, "optics-eth-40gbase-er4"};
-const Enum::Value EthernetPmdEnum::optics_eth_40gbase_psm4 {11, "optics-eth-40gbase-psm4"};
-const Enum::Value EthernetPmdEnum::optics_eth_40gbase_csr4 {12, "optics-eth-40gbase-csr4"};
-const Enum::Value EthernetPmdEnum::optics_eth_40gbase_sr_bd {13, "optics-eth-40gbase-sr-bd"};
-const Enum::Value EthernetPmdEnum::optics_eth_40g_aoc {14, "optics-eth-40g-aoc"};
-const Enum::Value EthernetPmdEnum::optics_eth_4x10gbase_lr {15, "optics-eth-4x10gbase-lr"};
-const Enum::Value EthernetPmdEnum::optics_eth_4x10gbase_sr {16, "optics-eth-4x10gbase-sr"};
-const Enum::Value EthernetPmdEnum::optics_eth_100g_aoc {17, "optics-eth-100g-aoc"};
-const Enum::Value EthernetPmdEnum::optics_eth_100g_acc {18, "optics-eth-100g-acc"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_sr10 {19, "optics-eth-100gbase-sr10"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_sr4 {20, "optics-eth-100gbase-sr4"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_lr4 {21, "optics-eth-100gbase-lr4"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_er4 {22, "optics-eth-100gbase-er4"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_cwdm4 {23, "optics-eth-100gbase-cwdm4"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_clr4 {24, "optics-eth-100gbase-clr4"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_psm4 {25, "optics-eth-100gbase-psm4"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_cr4 {26, "optics-eth-100gbase-cr4"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_al {27, "optics-eth-100gbase-al"};
-const Enum::Value EthernetPmdEnum::optics_eth_100gbase_pl {28, "optics-eth-100gbase-pl"};
-const Enum::Value EthernetPmdEnum::optics_eth_undefined {29, "optics-eth-undefined"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_not_set {0, "optics-eth-not-set"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_10gbase_lrm {1, "optics-eth-10gbase-lrm"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_10gbase_lr {2, "optics-eth-10gbase-lr"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_10gbase_zr {3, "optics-eth-10gbase-zr"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_10gbase_er {4, "optics-eth-10gbase-er"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_10gbase_sr {5, "optics-eth-10gbase-sr"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_10gbase {6, "optics-eth-10gbase"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_40gbase_cr4 {7, "optics-eth-40gbase-cr4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_40gbase_sr4 {8, "optics-eth-40gbase-sr4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_40gbase_lr4 {9, "optics-eth-40gbase-lr4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_40gbase_er4 {10, "optics-eth-40gbase-er4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_40gbase_psm4 {11, "optics-eth-40gbase-psm4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_40gbase_csr4 {12, "optics-eth-40gbase-csr4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_40gbase_sr_bd {13, "optics-eth-40gbase-sr-bd"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_40g_aoc {14, "optics-eth-40g-aoc"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_4x10gbase_lr {15, "optics-eth-4x10gbase-lr"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_4x10gbase_sr {16, "optics-eth-4x10gbase-sr"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100g_aoc {17, "optics-eth-100g-aoc"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100g_acc {18, "optics-eth-100g-acc"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_sr10 {19, "optics-eth-100gbase-sr10"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_sr4 {20, "optics-eth-100gbase-sr4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_lr4 {21, "optics-eth-100gbase-lr4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_er4 {22, "optics-eth-100gbase-er4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_cwdm4 {23, "optics-eth-100gbase-cwdm4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_clr4 {24, "optics-eth-100gbase-clr4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_psm4 {25, "optics-eth-100gbase-psm4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_cr4 {26, "optics-eth-100gbase-cr4"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_al {27, "optics-eth-100gbase-al"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_100gbase_pl {28, "optics-eth-100gbase-pl"};
+const Enum::YLeaf EthernetPmdEnum::optics_eth_undefined {29, "optics-eth-undefined"};
 
-const Enum::Value OpticsWaveBandEnum::c_band {0, "c-band"};
-const Enum::Value OpticsWaveBandEnum::l_band {1, "l-band"};
-const Enum::Value OpticsWaveBandEnum::c_band_odd {2, "c-band-odd"};
-const Enum::Value OpticsWaveBandEnum::c_band_even {3, "c-band-even"};
-const Enum::Value OpticsWaveBandEnum::invalid_band {4, "invalid-band"};
+const Enum::YLeaf OpticsWaveBandEnum::c_band {0, "c-band"};
+const Enum::YLeaf OpticsWaveBandEnum::l_band {1, "l-band"};
+const Enum::YLeaf OpticsWaveBandEnum::c_band_odd {2, "c-band-odd"};
+const Enum::YLeaf OpticsWaveBandEnum::c_band_even {3, "c-band-even"};
+const Enum::YLeaf OpticsWaveBandEnum::invalid_band {4, "invalid-band"};
 
-const Enum::Value OpticsFormFactorEnum::not_set {0, "not-set"};
-const Enum::Value OpticsFormFactorEnum::invalid {1, "invalid"};
-const Enum::Value OpticsFormFactorEnum::cpak {2, "cpak"};
-const Enum::Value OpticsFormFactorEnum::cxp {3, "cxp"};
-const Enum::Value OpticsFormFactorEnum::sfp_plus {4, "sfp-plus"};
-const Enum::Value OpticsFormFactorEnum::qsfp {5, "qsfp"};
-const Enum::Value OpticsFormFactorEnum::qsfp_plus {6, "qsfp-plus"};
-const Enum::Value OpticsFormFactorEnum::qsfp28 {7, "qsfp28"};
-const Enum::Value OpticsFormFactorEnum::sfp {8, "sfp"};
-const Enum::Value OpticsFormFactorEnum::cfp {9, "cfp"};
-const Enum::Value OpticsFormFactorEnum::cfp2 {10, "cfp2"};
-const Enum::Value OpticsFormFactorEnum::cfp4 {11, "cfp4"};
-const Enum::Value OpticsFormFactorEnum::xfp {12, "xfp"};
-const Enum::Value OpticsFormFactorEnum::x2 {13, "x2"};
-const Enum::Value OpticsFormFactorEnum::non_pluggable {14, "non-pluggable"};
-const Enum::Value OpticsFormFactorEnum::other {15, "other"};
+const Enum::YLeaf OpticsFormFactorEnum::not_set {0, "not-set"};
+const Enum::YLeaf OpticsFormFactorEnum::invalid {1, "invalid"};
+const Enum::YLeaf OpticsFormFactorEnum::cpak {2, "cpak"};
+const Enum::YLeaf OpticsFormFactorEnum::cxp {3, "cxp"};
+const Enum::YLeaf OpticsFormFactorEnum::sfp_plus {4, "sfp-plus"};
+const Enum::YLeaf OpticsFormFactorEnum::qsfp {5, "qsfp"};
+const Enum::YLeaf OpticsFormFactorEnum::qsfp_plus {6, "qsfp-plus"};
+const Enum::YLeaf OpticsFormFactorEnum::qsfp28 {7, "qsfp28"};
+const Enum::YLeaf OpticsFormFactorEnum::sfp {8, "sfp"};
+const Enum::YLeaf OpticsFormFactorEnum::cfp {9, "cfp"};
+const Enum::YLeaf OpticsFormFactorEnum::cfp2 {10, "cfp2"};
+const Enum::YLeaf OpticsFormFactorEnum::cfp4 {11, "cfp4"};
+const Enum::YLeaf OpticsFormFactorEnum::xfp {12, "xfp"};
+const Enum::YLeaf OpticsFormFactorEnum::x2 {13, "x2"};
+const Enum::YLeaf OpticsFormFactorEnum::non_pluggable {14, "non-pluggable"};
+const Enum::YLeaf OpticsFormFactorEnum::other {15, "other"};
 
-const Enum::Value SonetApplicationCodeEnum::optics_sonet_not_set {0, "optics-sonet-not-set"};
-const Enum::Value SonetApplicationCodeEnum::optics_vsr2000_3r2 {1, "optics-vsr2000-3r2"};
-const Enum::Value SonetApplicationCodeEnum::optics_vsr2000_3r3 {2, "optics-vsr2000-3r3"};
-const Enum::Value SonetApplicationCodeEnum::optics_vsr2000_3r5 {3, "optics-vsr2000-3r5"};
-const Enum::Value SonetApplicationCodeEnum::optics_sonet_undefined {4, "optics-sonet-undefined"};
+const Enum::YLeaf SonetApplicationCodeEnum::optics_sonet_not_set {0, "optics-sonet-not-set"};
+const Enum::YLeaf SonetApplicationCodeEnum::optics_vsr2000_3r2 {1, "optics-vsr2000-3r2"};
+const Enum::YLeaf SonetApplicationCodeEnum::optics_vsr2000_3r3 {2, "optics-vsr2000-3r3"};
+const Enum::YLeaf SonetApplicationCodeEnum::optics_vsr2000_3r5 {3, "optics-vsr2000-3r5"};
+const Enum::YLeaf SonetApplicationCodeEnum::optics_sonet_undefined {4, "optics-sonet-undefined"};
 
-const Enum::Value OpticsControllerStateEnum::optics_state_up {0, "optics-state-up"};
-const Enum::Value OpticsControllerStateEnum::optics_state_down {1, "optics-state-down"};
-const Enum::Value OpticsControllerStateEnum::optics_state_admin_down {2, "optics-state-admin-down"};
+const Enum::YLeaf OpticsControllerStateEnum::optics_state_up {0, "optics-state-up"};
+const Enum::YLeaf OpticsControllerStateEnum::optics_state_down {1, "optics-state-down"};
+const Enum::YLeaf OpticsControllerStateEnum::optics_state_admin_down {2, "optics-state-admin-down"};
 
-const Enum::Value OpticsAmplifierSafetyControlModeEnum::optics_amplifier_safety_mode_auto {1, "optics-amplifier-safety-mode-auto"};
-const Enum::Value OpticsAmplifierSafetyControlModeEnum::optics_amplifier_safety_mode_manual {2, "optics-amplifier-safety-mode-manual"};
-const Enum::Value OpticsAmplifierSafetyControlModeEnum::optics_amplifier_safety_mode_disabled {4, "optics-amplifier-safety-mode-disabled"};
+const Enum::YLeaf OpticsAmplifierSafetyControlModeEnum::optics_amplifier_safety_mode_auto {1, "optics-amplifier-safety-mode-auto"};
+const Enum::YLeaf OpticsAmplifierSafetyControlModeEnum::optics_amplifier_safety_mode_manual {2, "optics-amplifier-safety-mode-manual"};
+const Enum::YLeaf OpticsAmplifierSafetyControlModeEnum::optics_amplifier_safety_mode_disabled {4, "optics-amplifier-safety-mode-disabled"};
 
-const Enum::Value OpticsLaserStateEnum::on {0, "on"};
-const Enum::Value OpticsLaserStateEnum::off {1, "off"};
-const Enum::Value OpticsLaserStateEnum::unknown {2, "unknown"};
+const Enum::YLeaf OpticsLaserStateEnum::on {0, "on"};
+const Enum::YLeaf OpticsLaserStateEnum::off {1, "off"};
+const Enum::YLeaf OpticsLaserStateEnum::unknown {2, "unknown"};
 
-const Enum::Value OpticsFecEnum::fec_none {0, "fec-none"};
-const Enum::Value OpticsFecEnum::fec_hg15 {1, "fec-hg15"};
-const Enum::Value OpticsFecEnum::fec_hg25 {2, "fec-hg25"};
-const Enum::Value OpticsFecEnum::fec_hg15_de {4, "fec-hg15-de"};
-const Enum::Value OpticsFecEnum::fec_hg25_de {8, "fec-hg25-de"};
-const Enum::Value OpticsFecEnum::fec_enabled {16, "fec-enabled"};
+const Enum::YLeaf OpticsFecEnum::fec_none {0, "fec-none"};
+const Enum::YLeaf OpticsFecEnum::fec_hg15 {1, "fec-hg15"};
+const Enum::YLeaf OpticsFecEnum::fec_hg25 {2, "fec-hg25"};
+const Enum::YLeaf OpticsFecEnum::fec_hg15_de {4, "fec-hg15-de"};
+const Enum::YLeaf OpticsFecEnum::fec_hg25_de {8, "fec-hg25-de"};
+const Enum::YLeaf OpticsFecEnum::fec_enabled {16, "fec-enabled"};
 
-const Enum::Value FiberConnectorEnum::optics_connect_or_not_set {0, "optics-connect-or-not-set"};
-const Enum::Value FiberConnectorEnum::optics_sc_connect_or {1, "optics-sc-connect-or"};
-const Enum::Value FiberConnectorEnum::optics_lc_connect_or {2, "optics-lc-connect-or"};
-const Enum::Value FiberConnectorEnum::optics_mpo_connect_or {3, "optics-mpo-connect-or"};
-const Enum::Value FiberConnectorEnum::optics_undefined_connect_or {4, "optics-undefined-connect-or"};
+const Enum::YLeaf FiberConnectorEnum::optics_connect_or_not_set {0, "optics-connect-or-not-set"};
+const Enum::YLeaf FiberConnectorEnum::optics_sc_connect_or {1, "optics-sc-connect-or"};
+const Enum::YLeaf FiberConnectorEnum::optics_lc_connect_or {2, "optics-lc-connect-or"};
+const Enum::YLeaf FiberConnectorEnum::optics_mpo_connect_or {3, "optics-mpo-connect-or"};
+const Enum::YLeaf FiberConnectorEnum::optics_undefined_connect_or {4, "optics-undefined-connect-or"};
 
-const Enum::Value OpticsPhyEnum::not_set {0, "not-set"};
-const Enum::Value OpticsPhyEnum::invalid {1, "invalid"};
-const Enum::Value OpticsPhyEnum::long_reach_four_lanes {2, "long-reach-four-lanes"};
-const Enum::Value OpticsPhyEnum::short_reach_ten_lanes {3, "short-reach-ten-lanes"};
-const Enum::Value OpticsPhyEnum::short_reach_one_lane {4, "short-reach-one-lane"};
-const Enum::Value OpticsPhyEnum::long_reach_one_lane {5, "long-reach-one-lane"};
-const Enum::Value OpticsPhyEnum::short_reach_four_lanes {6, "short-reach-four-lanes"};
-const Enum::Value OpticsPhyEnum::copper_four_lanes {7, "copper-four-lanes"};
-const Enum::Value OpticsPhyEnum::active_optical_cable {8, "active-optical-cable"};
-const Enum::Value OpticsPhyEnum::fourty_gig_e_long_reach_four_lanes {9, "fourty-gig-e-long-reach-four-lanes"};
-const Enum::Value OpticsPhyEnum::fourty_gig_e_short_reach_four_lanes {10, "fourty-gig-e-short-reach-four-lanes"};
-const Enum::Value OpticsPhyEnum::cwdm_four_lanes {11, "cwdm-four-lanes"};
-const Enum::Value OpticsPhyEnum::extended_reach_four_lanes {12, "extended-reach-four-lanes"};
-const Enum::Value OpticsPhyEnum::psm_four_lanes {13, "psm-four-lanes"};
-const Enum::Value OpticsPhyEnum::active_copper_cable {14, "active-copper-cable"};
-const Enum::Value OpticsPhyEnum::fourty_gig_e_extended_reach_four_lanes {15, "fourty-gig-e-extended-reach-four-lanes"};
-const Enum::Value OpticsPhyEnum::four_x_ten_gig_e_short_reach_one_lane {16, "four-x-ten-gig-e-short-reach-one-lane"};
-const Enum::Value OpticsPhyEnum::fourty_gig_epsm_four_lanes {17, "fourty-gig-epsm-four-lanes"};
-const Enum::Value OpticsPhyEnum::fourty_gig_e_copper_four_lanes {18, "fourty-gig-e-copper-four-lanes"};
-const Enum::Value OpticsPhyEnum::long_reach_mm_one_lane {19, "long-reach-mm-one-lane"};
-const Enum::Value OpticsPhyEnum::copper_short_reach {20, "copper-short-reach"};
-const Enum::Value OpticsPhyEnum::short_reach_srbd {21, "short-reach-srbd"};
-const Enum::Value OpticsPhyEnum::copper_one_lane {22, "copper-one-lane"};
-const Enum::Value OpticsPhyEnum::four_x_ten_gig_e_long_reach_one_lane {23, "four-x-ten-gig-e-long-reach-one-lane"};
-const Enum::Value OpticsPhyEnum::fourty_gig_eaoc_four_lanes {24, "fourty-gig-eaoc-four-lanes"};
-const Enum::Value OpticsPhyEnum::extended_one_lane {25, "extended-one-lane"};
-const Enum::Value OpticsPhyEnum::zr_one_lane {26, "zr-one-lane"};
-const Enum::Value OpticsPhyEnum::dwdm_one_lane {27, "dwdm-one-lane"};
-const Enum::Value OpticsPhyEnum::sx_one_lane {28, "sx-one-lane"};
-const Enum::Value OpticsPhyEnum::lx_one_lane {29, "lx-one-lane"};
-const Enum::Value OpticsPhyEnum::ex_one_lane {30, "ex-one-lane"};
-const Enum::Value OpticsPhyEnum::zx_one_lane {31, "zx-one-lane"};
-const Enum::Value OpticsPhyEnum::ba_set_one_lane {32, "ba-set-one-lane"};
-const Enum::Value OpticsPhyEnum::aoc_one_lane {33, "aoc-one-lane"};
-const Enum::Value OpticsPhyEnum::active_copper_one_lane {34, "active-copper-one-lane"};
-const Enum::Value OpticsPhyEnum::fourty_gig_eacu_four_lanes {35, "fourty-gig-eacu-four-lanes"};
-const Enum::Value OpticsPhyEnum::four_x_ten_gig_eacu_one_lanes {36, "four-x-ten-gig-eacu-one-lanes"};
-const Enum::Value OpticsPhyEnum::four_x_ten_gig_ecu_one_lanes {37, "four-x-ten-gig-ecu-one-lanes"};
-const Enum::Value OpticsPhyEnum::four_x_ten_gig_eaoc_one_lanes {38, "four-x-ten-gig-eaoc-one-lanes"};
-const Enum::Value OpticsPhyEnum::hundred_gig_edwdm_two {39, "hundred-gig-edwdm-two"};
-const Enum::Value OpticsPhyEnum::fourty_gig_plr4_four_lanes {40, "fourty-gig-plr4-four-lanes"};
-const Enum::Value OpticsPhyEnum::fourty_gig_esr4_four_lanes {41, "fourty-gig-esr4-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::not_set {0, "not-set"};
+const Enum::YLeaf OpticsPhyEnum::invalid {1, "invalid"};
+const Enum::YLeaf OpticsPhyEnum::long_reach_four_lanes {2, "long-reach-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::short_reach_ten_lanes {3, "short-reach-ten-lanes"};
+const Enum::YLeaf OpticsPhyEnum::short_reach_one_lane {4, "short-reach-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::long_reach_one_lane {5, "long-reach-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::short_reach_four_lanes {6, "short-reach-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::copper_four_lanes {7, "copper-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::active_optical_cable {8, "active-optical-cable"};
+const Enum::YLeaf OpticsPhyEnum::fourty_gig_e_long_reach_four_lanes {9, "fourty-gig-e-long-reach-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::fourty_gig_e_short_reach_four_lanes {10, "fourty-gig-e-short-reach-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::cwdm_four_lanes {11, "cwdm-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::extended_reach_four_lanes {12, "extended-reach-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::psm_four_lanes {13, "psm-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::active_copper_cable {14, "active-copper-cable"};
+const Enum::YLeaf OpticsPhyEnum::fourty_gig_e_extended_reach_four_lanes {15, "fourty-gig-e-extended-reach-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::four_x_ten_gig_e_short_reach_one_lane {16, "four-x-ten-gig-e-short-reach-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::fourty_gig_epsm_four_lanes {17, "fourty-gig-epsm-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::fourty_gig_e_copper_four_lanes {18, "fourty-gig-e-copper-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::long_reach_mm_one_lane {19, "long-reach-mm-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::copper_short_reach {20, "copper-short-reach"};
+const Enum::YLeaf OpticsPhyEnum::short_reach_srbd {21, "short-reach-srbd"};
+const Enum::YLeaf OpticsPhyEnum::copper_one_lane {22, "copper-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::four_x_ten_gig_e_long_reach_one_lane {23, "four-x-ten-gig-e-long-reach-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::fourty_gig_eaoc_four_lanes {24, "fourty-gig-eaoc-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::extended_one_lane {25, "extended-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::zr_one_lane {26, "zr-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::dwdm_one_lane {27, "dwdm-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::sx_one_lane {28, "sx-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::lx_one_lane {29, "lx-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::ex_one_lane {30, "ex-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::zx_one_lane {31, "zx-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::ba_set_one_lane {32, "ba-set-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::aoc_one_lane {33, "aoc-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::active_copper_one_lane {34, "active-copper-one-lane"};
+const Enum::YLeaf OpticsPhyEnum::fourty_gig_eacu_four_lanes {35, "fourty-gig-eacu-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::four_x_ten_gig_eacu_one_lanes {36, "four-x-ten-gig-eacu-one-lanes"};
+const Enum::YLeaf OpticsPhyEnum::four_x_ten_gig_ecu_one_lanes {37, "four-x-ten-gig-ecu-one-lanes"};
+const Enum::YLeaf OpticsPhyEnum::four_x_ten_gig_eaoc_one_lanes {38, "four-x-ten-gig-eaoc-one-lanes"};
+const Enum::YLeaf OpticsPhyEnum::hundred_gig_edwdm_two {39, "hundred-gig-edwdm-two"};
+const Enum::YLeaf OpticsPhyEnum::fourty_gig_plr4_four_lanes {40, "fourty-gig-plr4-four-lanes"};
+const Enum::YLeaf OpticsPhyEnum::fourty_gig_esr4_four_lanes {41, "fourty-gig-esr4-four-lanes"};
 
-const Enum::Value OpticsTasEnum::tas_ui_oos {0, "tas-ui-oos"};
-const Enum::Value OpticsTasEnum::tas_ui_main {1, "tas-ui-main"};
-const Enum::Value OpticsTasEnum::tas_ui_is {2, "tas-ui-is"};
-const Enum::Value OpticsTasEnum::tas_ui_ains {3, "tas-ui-ains"};
+const Enum::YLeaf OpticsTasEnum::tas_ui_oos {0, "tas-ui-oos"};
+const Enum::YLeaf OpticsTasEnum::tas_ui_main {1, "tas-ui-main"};
+const Enum::YLeaf OpticsTasEnum::tas_ui_is {2, "tas-ui-is"};
+const Enum::YLeaf OpticsTasEnum::tas_ui_ains {3, "tas-ui-ains"};
 
-const Enum::Value OpticsEnum::optics_unknown {0, "optics-unknown"};
-const Enum::Value OpticsEnum::optics_grey {1, "optics-grey"};
-const Enum::Value OpticsEnum::optics_dwdm {2, "optics-dwdm"};
-const Enum::Value OpticsEnum::optics_cwdm {3, "optics-cwdm"};
+const Enum::YLeaf OpticsEnum::optics_unknown {0, "optics-unknown"};
+const Enum::YLeaf OpticsEnum::optics_grey {1, "optics-grey"};
+const Enum::YLeaf OpticsEnum::optics_dwdm {2, "optics-dwdm"};
+const Enum::YLeaf OpticsEnum::optics_cwdm {3, "optics-cwdm"};
 
-const Enum::Value OtnApplicationCodeEnum::optics_not_set {0, "optics-not-set"};
-const Enum::Value OtnApplicationCodeEnum::optics_p1l1_2d1 {1, "optics-p1l1-2d1"};
-const Enum::Value OtnApplicationCodeEnum::optics_p1s1_2d2 {2, "optics-p1s1-2d2"};
-const Enum::Value OtnApplicationCodeEnum::optics_p1l1_2d2 {3, "optics-p1l1-2d2"};
-const Enum::Value OtnApplicationCodeEnum::optics_undefined {4, "optics-undefined"};
+const Enum::YLeaf OtnApplicationCodeEnum::optics_not_set {0, "optics-not-set"};
+const Enum::YLeaf OtnApplicationCodeEnum::optics_p1l1_2d1 {1, "optics-p1l1-2d1"};
+const Enum::YLeaf OtnApplicationCodeEnum::optics_p1s1_2d2 {2, "optics-p1s1-2d2"};
+const Enum::YLeaf OtnApplicationCodeEnum::optics_p1l1_2d2 {3, "optics-p1l1-2d2"};
+const Enum::YLeaf OtnApplicationCodeEnum::optics_undefined {4, "optics-undefined"};
 
-const Enum::Value OpticsLedStateEnum::off {0, "off"};
-const Enum::Value OpticsLedStateEnum::green_on {1, "green-on"};
-const Enum::Value OpticsLedStateEnum::green_flashing {2, "green-flashing"};
-const Enum::Value OpticsLedStateEnum::yellow_on {3, "yellow-on"};
-const Enum::Value OpticsLedStateEnum::yellow_flashing {4, "yellow-flashing"};
-const Enum::Value OpticsLedStateEnum::red_on {5, "red-on"};
-const Enum::Value OpticsLedStateEnum::red_flashing {6, "red-flashing"};
+const Enum::YLeaf OpticsLedStateEnum::off {0, "off"};
+const Enum::YLeaf OpticsLedStateEnum::green_on {1, "green-on"};
+const Enum::YLeaf OpticsLedStateEnum::green_flashing {2, "green-flashing"};
+const Enum::YLeaf OpticsLedStateEnum::yellow_on {3, "yellow-on"};
+const Enum::YLeaf OpticsLedStateEnum::yellow_flashing {4, "yellow-flashing"};
+const Enum::YLeaf OpticsLedStateEnum::red_on {5, "red-on"};
+const Enum::YLeaf OpticsLedStateEnum::red_flashing {6, "red-flashing"};
 
-const Enum::Value OpticsPortEnum::com {0, "com"};
-const Enum::Value OpticsPortEnum::line {1, "line"};
-const Enum::Value OpticsPortEnum::osc {2, "osc"};
+const Enum::YLeaf OpticsPortEnum::com {0, "com"};
+const Enum::YLeaf OpticsPortEnum::line {1, "line"};
+const Enum::YLeaf OpticsPortEnum::osc {2, "osc"};
 
 
 }

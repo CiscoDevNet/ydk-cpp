@@ -26,6 +26,7 @@ class Inventory : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Racks : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Inventory : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Rack : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Inventory : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value number; //type: int32
 
+
+                YLeaf number; //type: int32
 
             class PowerSupplyShelfs : public Entity
             {
@@ -72,6 +75,7 @@ class Inventory : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PowerSupplyShelf : public Entity
                 {
                     public:
@@ -85,8 +89,9 @@ class Inventory : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: int32
 
+
+                        YLeaf number; //type: int32
 
                     class BasicAttributes : public Entity
                     {
@@ -103,6 +108,7 @@ class Inventory : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class BasicInfo : public Entity
                         {
                             public:
@@ -116,32 +122,33 @@ class Inventory : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value description; //type: string
-                                Value vendor_type; //type: string
-                                Value name; //type: string
-                                Value hardware_revision; //type: string
-                                Value firmware_revision; //type: string
-                                Value software_revision; //type: string
-                                Value chip_hardware_revision; //type: string
-                                Value serial_number; //type: string
-                                Value manufacturer_name; //type: string
-                                Value model_name; //type: string
-                                Value asset_id_str; //type: string
-                                Value asset_identification; //type: int32
-                                Value is_field_replaceable_unit; //type: boolean
-                                Value manufacturer_asset_tags; //type: int32
-                                Value composite_class_code; //type: int32
-                                Value memory_size; //type: int32
-                                Value environmental_monitor_path; //type: string
-                                Value alias; //type: string
-                                Value group_flag; //type: boolean
-                                Value new_deviation_number; //type: int32
-                                Value physical_layer_interface_module_type; //type: int32
-                                Value unrecognized_fru; //type: boolean
-                                Value redundancystate; //type: int32
-                                Value ceport; //type: boolean
-                                Value xr_scoped; //type: boolean
 
+
+                                YLeaf description; //type: string
+                                YLeaf vendor_type; //type: string
+                                YLeaf name; //type: string
+                                YLeaf hardware_revision; //type: string
+                                YLeaf firmware_revision; //type: string
+                                YLeaf software_revision; //type: string
+                                YLeaf chip_hardware_revision; //type: string
+                                YLeaf serial_number; //type: string
+                                YLeaf manufacturer_name; //type: string
+                                YLeaf model_name; //type: string
+                                YLeaf asset_id_str; //type: string
+                                YLeaf asset_identification; //type: int32
+                                YLeaf is_field_replaceable_unit; //type: boolean
+                                YLeaf manufacturer_asset_tags; //type: int32
+                                YLeaf composite_class_code; //type: int32
+                                YLeaf memory_size; //type: int32
+                                YLeaf environmental_monitor_path; //type: string
+                                YLeaf alias; //type: string
+                                YLeaf group_flag; //type: boolean
+                                YLeaf new_deviation_number; //type: int32
+                                YLeaf physical_layer_interface_module_type; //type: int32
+                                YLeaf unrecognized_fru; //type: boolean
+                                YLeaf redundancystate; //type: int32
+                                YLeaf ceport; //type: boolean
+                                YLeaf xr_scoped; //type: boolean
 
 
 
@@ -181,6 +188,7 @@ class Inventory : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Slot : public Entity
                 {
                     public:
@@ -194,8 +202,9 @@ class Inventory : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: int32
 
+
+                        YLeaf number; //type: int32
 
                     class Cards : public Entity
                     {
@@ -212,6 +221,7 @@ class Inventory : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Card : public Entity
                         {
                             public:
@@ -225,8 +235,9 @@ class Inventory : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value number; //type: int32
 
+
+                                YLeaf number; //type: int32
 
                             class SubSlots : public Entity
                             {
@@ -243,6 +254,7 @@ class Inventory : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class SubSlot : public Entity
                                 {
                                     public:
@@ -256,8 +268,9 @@ class Inventory : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value number; //type: int32
 
+
+                                        YLeaf number; //type: int32
 
                                     class Module : public Entity
                                     {
@@ -272,6 +285,7 @@ class Inventory : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                                         class PortSlots : public Entity
@@ -289,6 +303,7 @@ class Inventory : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class PortSlot : public Entity
                                             {
                                                 public:
@@ -302,8 +317,9 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value number; //type: int32
 
+
+                                                    YLeaf number; //type: int32
 
                                                 class Port : public Entity
                                                 {
@@ -318,6 +334,7 @@ class Inventory : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                                     class BasicAttributes : public Entity
@@ -335,6 +352,7 @@ class Inventory : public Entity
                                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                         class FruInfo : public Entity
                                                         {
                                                             public:
@@ -348,14 +366,15 @@ class Inventory : public Entity
                                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                 void set_value(const std::string & value_path, std::string value) override;
                                                                 std::map<std::string, Entity*> & get_children() override;
-                                                                Value card_administrative_state; //type: int32
-                                                                Value power_administrative_state; //type: int32
-                                                                Value card_operational_state; //type: InvCardStateEnum
-                                                                Value card_monitor_state; //type: int32
-                                                                Value card_reset_reason; //type: CardResetReasonEnum
-                                                                Value power_current_measurement; //type: int32
-                                                                Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                                YLeaf card_administrative_state; //type: int32
+                                                                YLeaf power_administrative_state; //type: int32
+                                                                YLeaf card_operational_state; //type: InvCardStateEnum
+                                                                YLeaf card_monitor_state; //type: int32
+                                                                YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                                YLeaf power_current_measurement; //type: int32
+                                                                YLeaf power_operational_state; //type: InvCardStateEnum
 
                                                             class LastOperationalStateChange : public Entity
                                                             {
@@ -370,9 +389,10 @@ class Inventory : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value time_in_seconds; //type: int32
-                                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                                    YLeaf time_in_seconds; //type: int32
+                                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -392,9 +412,10 @@ class Inventory : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value time_in_seconds; //type: int32
-                                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                                    YLeaf time_in_seconds; //type: int32
+                                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -403,9 +424,6 @@ class Inventory : public Entity
 
                                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                                class InvCardStateEnum;
-                                                                class CardResetReasonEnum;
-                                                                class InvCardStateEnum;
 
 
                                                         }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
@@ -424,32 +442,33 @@ class Inventory : public Entity
                                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                 void set_value(const std::string & value_path, std::string value) override;
                                                                 std::map<std::string, Entity*> & get_children() override;
-                                                                Value description; //type: string
-                                                                Value vendor_type; //type: string
-                                                                Value name; //type: string
-                                                                Value hardware_revision; //type: string
-                                                                Value firmware_revision; //type: string
-                                                                Value software_revision; //type: string
-                                                                Value chip_hardware_revision; //type: string
-                                                                Value serial_number; //type: string
-                                                                Value manufacturer_name; //type: string
-                                                                Value model_name; //type: string
-                                                                Value asset_id_str; //type: string
-                                                                Value asset_identification; //type: int32
-                                                                Value is_field_replaceable_unit; //type: boolean
-                                                                Value manufacturer_asset_tags; //type: int32
-                                                                Value composite_class_code; //type: int32
-                                                                Value memory_size; //type: int32
-                                                                Value environmental_monitor_path; //type: string
-                                                                Value alias; //type: string
-                                                                Value group_flag; //type: boolean
-                                                                Value new_deviation_number; //type: int32
-                                                                Value physical_layer_interface_module_type; //type: int32
-                                                                Value unrecognized_fru; //type: boolean
-                                                                Value redundancystate; //type: int32
-                                                                Value ceport; //type: boolean
-                                                                Value xr_scoped; //type: boolean
 
+
+                                                                YLeaf description; //type: string
+                                                                YLeaf vendor_type; //type: string
+                                                                YLeaf name; //type: string
+                                                                YLeaf hardware_revision; //type: string
+                                                                YLeaf firmware_revision; //type: string
+                                                                YLeaf software_revision; //type: string
+                                                                YLeaf chip_hardware_revision; //type: string
+                                                                YLeaf serial_number; //type: string
+                                                                YLeaf manufacturer_name; //type: string
+                                                                YLeaf model_name; //type: string
+                                                                YLeaf asset_id_str; //type: string
+                                                                YLeaf asset_identification; //type: int32
+                                                                YLeaf is_field_replaceable_unit; //type: boolean
+                                                                YLeaf manufacturer_asset_tags; //type: int32
+                                                                YLeaf composite_class_code; //type: int32
+                                                                YLeaf memory_size; //type: int32
+                                                                YLeaf environmental_monitor_path; //type: string
+                                                                YLeaf alias; //type: string
+                                                                YLeaf group_flag; //type: boolean
+                                                                YLeaf new_deviation_number; //type: int32
+                                                                YLeaf physical_layer_interface_module_type; //type: int32
+                                                                YLeaf unrecognized_fru; //type: boolean
+                                                                YLeaf redundancystate; //type: int32
+                                                                YLeaf ceport; //type: boolean
+                                                                YLeaf xr_scoped; //type: boolean
 
 
 
@@ -484,6 +503,7 @@ class Inventory : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class FruInfo : public Entity
                                                     {
                                                         public:
@@ -497,14 +517,15 @@ class Inventory : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value card_administrative_state; //type: int32
-                                                            Value power_administrative_state; //type: int32
-                                                            Value card_operational_state; //type: InvCardStateEnum
-                                                            Value card_monitor_state; //type: int32
-                                                            Value card_reset_reason; //type: CardResetReasonEnum
-                                                            Value power_current_measurement; //type: int32
-                                                            Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                            YLeaf card_administrative_state; //type: int32
+                                                            YLeaf power_administrative_state; //type: int32
+                                                            YLeaf card_operational_state; //type: InvCardStateEnum
+                                                            YLeaf card_monitor_state; //type: int32
+                                                            YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                            YLeaf power_current_measurement; //type: int32
+                                                            YLeaf power_operational_state; //type: InvCardStateEnum
 
                                                         class LastOperationalStateChange : public Entity
                                                         {
@@ -519,9 +540,10 @@ class Inventory : public Entity
                                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                 void set_value(const std::string & value_path, std::string value) override;
                                                                 std::map<std::string, Entity*> & get_children() override;
-                                                                Value time_in_seconds; //type: int32
-                                                                Value time_in_nano_seconds; //type: int32
 
+
+                                                                YLeaf time_in_seconds; //type: int32
+                                                                YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -541,9 +563,10 @@ class Inventory : public Entity
                                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                 void set_value(const std::string & value_path, std::string value) override;
                                                                 std::map<std::string, Entity*> & get_children() override;
-                                                                Value time_in_seconds; //type: int32
-                                                                Value time_in_nano_seconds; //type: int32
 
+
+                                                                YLeaf time_in_seconds; //type: int32
+                                                                YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -552,9 +575,6 @@ class Inventory : public Entity
 
                                                             std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                             std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                            class InvCardStateEnum;
-                                                            class CardResetReasonEnum;
-                                                            class InvCardStateEnum;
 
 
                                                     }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo
@@ -573,32 +593,33 @@ class Inventory : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value description; //type: string
-                                                            Value vendor_type; //type: string
-                                                            Value name; //type: string
-                                                            Value hardware_revision; //type: string
-                                                            Value firmware_revision; //type: string
-                                                            Value software_revision; //type: string
-                                                            Value chip_hardware_revision; //type: string
-                                                            Value serial_number; //type: string
-                                                            Value manufacturer_name; //type: string
-                                                            Value model_name; //type: string
-                                                            Value asset_id_str; //type: string
-                                                            Value asset_identification; //type: int32
-                                                            Value is_field_replaceable_unit; //type: boolean
-                                                            Value manufacturer_asset_tags; //type: int32
-                                                            Value composite_class_code; //type: int32
-                                                            Value memory_size; //type: int32
-                                                            Value environmental_monitor_path; //type: string
-                                                            Value alias; //type: string
-                                                            Value group_flag; //type: boolean
-                                                            Value new_deviation_number; //type: int32
-                                                            Value physical_layer_interface_module_type; //type: int32
-                                                            Value unrecognized_fru; //type: boolean
-                                                            Value redundancystate; //type: int32
-                                                            Value ceport; //type: boolean
-                                                            Value xr_scoped; //type: boolean
 
+
+                                                            YLeaf description; //type: string
+                                                            YLeaf vendor_type; //type: string
+                                                            YLeaf name; //type: string
+                                                            YLeaf hardware_revision; //type: string
+                                                            YLeaf firmware_revision; //type: string
+                                                            YLeaf software_revision; //type: string
+                                                            YLeaf chip_hardware_revision; //type: string
+                                                            YLeaf serial_number; //type: string
+                                                            YLeaf manufacturer_name; //type: string
+                                                            YLeaf model_name; //type: string
+                                                            YLeaf asset_id_str; //type: string
+                                                            YLeaf asset_identification; //type: int32
+                                                            YLeaf is_field_replaceable_unit; //type: boolean
+                                                            YLeaf manufacturer_asset_tags; //type: int32
+                                                            YLeaf composite_class_code; //type: int32
+                                                            YLeaf memory_size; //type: int32
+                                                            YLeaf environmental_monitor_path; //type: string
+                                                            YLeaf alias; //type: string
+                                                            YLeaf group_flag; //type: boolean
+                                                            YLeaf new_deviation_number; //type: int32
+                                                            YLeaf physical_layer_interface_module_type; //type: int32
+                                                            YLeaf unrecognized_fru; //type: boolean
+                                                            YLeaf redundancystate; //type: int32
+                                                            YLeaf ceport; //type: boolean
+                                                            YLeaf xr_scoped; //type: boolean
 
 
 
@@ -640,6 +661,7 @@ class Inventory : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Sensor : public Entity
                                             {
                                                 public:
@@ -653,8 +675,9 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value number; //type: int32
 
+
+                                                    YLeaf number; //type: int32
 
                                                 class BasicAttributes : public Entity
                                                 {
@@ -671,6 +694,7 @@ class Inventory : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class FruInfo : public Entity
                                                     {
                                                         public:
@@ -684,14 +708,15 @@ class Inventory : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value card_administrative_state; //type: int32
-                                                            Value power_administrative_state; //type: int32
-                                                            Value card_operational_state; //type: InvCardStateEnum
-                                                            Value card_monitor_state; //type: int32
-                                                            Value card_reset_reason; //type: CardResetReasonEnum
-                                                            Value power_current_measurement; //type: int32
-                                                            Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                            YLeaf card_administrative_state; //type: int32
+                                                            YLeaf power_administrative_state; //type: int32
+                                                            YLeaf card_operational_state; //type: InvCardStateEnum
+                                                            YLeaf card_monitor_state; //type: int32
+                                                            YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                            YLeaf power_current_measurement; //type: int32
+                                                            YLeaf power_operational_state; //type: InvCardStateEnum
 
                                                         class LastOperationalStateChange : public Entity
                                                         {
@@ -706,9 +731,10 @@ class Inventory : public Entity
                                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                 void set_value(const std::string & value_path, std::string value) override;
                                                                 std::map<std::string, Entity*> & get_children() override;
-                                                                Value time_in_seconds; //type: int32
-                                                                Value time_in_nano_seconds; //type: int32
 
+
+                                                                YLeaf time_in_seconds; //type: int32
+                                                                YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -728,9 +754,10 @@ class Inventory : public Entity
                                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                 void set_value(const std::string & value_path, std::string value) override;
                                                                 std::map<std::string, Entity*> & get_children() override;
-                                                                Value time_in_seconds; //type: int32
-                                                                Value time_in_nano_seconds; //type: int32
 
+
+                                                                YLeaf time_in_seconds; //type: int32
+                                                                YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -739,9 +766,6 @@ class Inventory : public Entity
 
                                                             std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                             std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                            class InvCardStateEnum;
-                                                            class CardResetReasonEnum;
-                                                            class InvCardStateEnum;
 
 
                                                     }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo
@@ -760,32 +784,33 @@ class Inventory : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value description; //type: string
-                                                            Value vendor_type; //type: string
-                                                            Value name; //type: string
-                                                            Value hardware_revision; //type: string
-                                                            Value firmware_revision; //type: string
-                                                            Value software_revision; //type: string
-                                                            Value chip_hardware_revision; //type: string
-                                                            Value serial_number; //type: string
-                                                            Value manufacturer_name; //type: string
-                                                            Value model_name; //type: string
-                                                            Value asset_id_str; //type: string
-                                                            Value asset_identification; //type: int32
-                                                            Value is_field_replaceable_unit; //type: boolean
-                                                            Value manufacturer_asset_tags; //type: int32
-                                                            Value composite_class_code; //type: int32
-                                                            Value memory_size; //type: int32
-                                                            Value environmental_monitor_path; //type: string
-                                                            Value alias; //type: string
-                                                            Value group_flag; //type: boolean
-                                                            Value new_deviation_number; //type: int32
-                                                            Value physical_layer_interface_module_type; //type: int32
-                                                            Value unrecognized_fru; //type: boolean
-                                                            Value redundancystate; //type: int32
-                                                            Value ceport; //type: boolean
-                                                            Value xr_scoped; //type: boolean
 
+
+                                                            YLeaf description; //type: string
+                                                            YLeaf vendor_type; //type: string
+                                                            YLeaf name; //type: string
+                                                            YLeaf hardware_revision; //type: string
+                                                            YLeaf firmware_revision; //type: string
+                                                            YLeaf software_revision; //type: string
+                                                            YLeaf chip_hardware_revision; //type: string
+                                                            YLeaf serial_number; //type: string
+                                                            YLeaf manufacturer_name; //type: string
+                                                            YLeaf model_name; //type: string
+                                                            YLeaf asset_id_str; //type: string
+                                                            YLeaf asset_identification; //type: int32
+                                                            YLeaf is_field_replaceable_unit; //type: boolean
+                                                            YLeaf manufacturer_asset_tags; //type: int32
+                                                            YLeaf composite_class_code; //type: int32
+                                                            YLeaf memory_size; //type: int32
+                                                            YLeaf environmental_monitor_path; //type: string
+                                                            YLeaf alias; //type: string
+                                                            YLeaf group_flag; //type: boolean
+                                                            YLeaf new_deviation_number; //type: int32
+                                                            YLeaf physical_layer_interface_module_type; //type: int32
+                                                            YLeaf unrecognized_fru; //type: boolean
+                                                            YLeaf redundancystate; //type: int32
+                                                            YLeaf ceport; //type: boolean
+                                                            YLeaf xr_scoped; //type: boolean
 
 
 
@@ -826,6 +851,7 @@ class Inventory : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class FruInfo : public Entity
                                             {
                                                 public:
@@ -839,14 +865,15 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value card_administrative_state; //type: int32
-                                                    Value power_administrative_state; //type: int32
-                                                    Value card_operational_state; //type: InvCardStateEnum
-                                                    Value card_monitor_state; //type: int32
-                                                    Value card_reset_reason; //type: CardResetReasonEnum
-                                                    Value power_current_measurement; //type: int32
-                                                    Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                    YLeaf card_administrative_state; //type: int32
+                                                    YLeaf power_administrative_state; //type: int32
+                                                    YLeaf card_operational_state; //type: InvCardStateEnum
+                                                    YLeaf card_monitor_state; //type: int32
+                                                    YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                    YLeaf power_current_measurement; //type: int32
+                                                    YLeaf power_operational_state; //type: InvCardStateEnum
 
                                                 class LastOperationalStateChange : public Entity
                                                 {
@@ -861,9 +888,10 @@ class Inventory : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value time_in_seconds; //type: int32
-                                                        Value time_in_nano_seconds; //type: int32
 
+
+                                                        YLeaf time_in_seconds; //type: int32
+                                                        YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -883,9 +911,10 @@ class Inventory : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value time_in_seconds; //type: int32
-                                                        Value time_in_nano_seconds; //type: int32
 
+
+                                                        YLeaf time_in_seconds; //type: int32
+                                                        YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -894,9 +923,6 @@ class Inventory : public Entity
 
                                                     std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                     std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                    class InvCardStateEnum;
-                                                    class CardResetReasonEnum;
-                                                    class InvCardStateEnum;
 
 
                                             }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo
@@ -915,32 +941,33 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value description; //type: string
-                                                    Value vendor_type; //type: string
-                                                    Value name; //type: string
-                                                    Value hardware_revision; //type: string
-                                                    Value firmware_revision; //type: string
-                                                    Value software_revision; //type: string
-                                                    Value chip_hardware_revision; //type: string
-                                                    Value serial_number; //type: string
-                                                    Value manufacturer_name; //type: string
-                                                    Value model_name; //type: string
-                                                    Value asset_id_str; //type: string
-                                                    Value asset_identification; //type: int32
-                                                    Value is_field_replaceable_unit; //type: boolean
-                                                    Value manufacturer_asset_tags; //type: int32
-                                                    Value composite_class_code; //type: int32
-                                                    Value memory_size; //type: int32
-                                                    Value environmental_monitor_path; //type: string
-                                                    Value alias; //type: string
-                                                    Value group_flag; //type: boolean
-                                                    Value new_deviation_number; //type: int32
-                                                    Value physical_layer_interface_module_type; //type: int32
-                                                    Value unrecognized_fru; //type: boolean
-                                                    Value redundancystate; //type: int32
-                                                    Value ceport; //type: boolean
-                                                    Value xr_scoped; //type: boolean
 
+
+                                                    YLeaf description; //type: string
+                                                    YLeaf vendor_type; //type: string
+                                                    YLeaf name; //type: string
+                                                    YLeaf hardware_revision; //type: string
+                                                    YLeaf firmware_revision; //type: string
+                                                    YLeaf software_revision; //type: string
+                                                    YLeaf chip_hardware_revision; //type: string
+                                                    YLeaf serial_number; //type: string
+                                                    YLeaf manufacturer_name; //type: string
+                                                    YLeaf model_name; //type: string
+                                                    YLeaf asset_id_str; //type: string
+                                                    YLeaf asset_identification; //type: int32
+                                                    YLeaf is_field_replaceable_unit; //type: boolean
+                                                    YLeaf manufacturer_asset_tags; //type: int32
+                                                    YLeaf composite_class_code; //type: int32
+                                                    YLeaf memory_size; //type: int32
+                                                    YLeaf environmental_monitor_path; //type: string
+                                                    YLeaf alias; //type: string
+                                                    YLeaf group_flag; //type: boolean
+                                                    YLeaf new_deviation_number; //type: int32
+                                                    YLeaf physical_layer_interface_module_type; //type: int32
+                                                    YLeaf unrecognized_fru; //type: boolean
+                                                    YLeaf redundancystate; //type: int32
+                                                    YLeaf ceport; //type: boolean
+                                                    YLeaf xr_scoped; //type: boolean
 
 
 
@@ -977,6 +1004,7 @@ class Inventory : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FruInfo : public Entity
                                         {
                                             public:
@@ -990,14 +1018,15 @@ class Inventory : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value card_administrative_state; //type: int32
-                                                Value power_administrative_state; //type: int32
-                                                Value card_operational_state; //type: InvCardStateEnum
-                                                Value card_monitor_state; //type: int32
-                                                Value card_reset_reason; //type: CardResetReasonEnum
-                                                Value power_current_measurement; //type: int32
-                                                Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                YLeaf card_administrative_state; //type: int32
+                                                YLeaf power_administrative_state; //type: int32
+                                                YLeaf card_operational_state; //type: InvCardStateEnum
+                                                YLeaf card_monitor_state; //type: int32
+                                                YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                YLeaf power_current_measurement; //type: int32
+                                                YLeaf power_operational_state; //type: InvCardStateEnum
 
                                             class LastOperationalStateChange : public Entity
                                             {
@@ -1012,9 +1041,10 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value time_in_seconds; //type: int32
-                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                    YLeaf time_in_seconds; //type: int32
+                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1034,9 +1064,10 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value time_in_seconds; //type: int32
-                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                    YLeaf time_in_seconds; //type: int32
+                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1045,9 +1076,6 @@ class Inventory : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                class InvCardStateEnum;
-                                                class CardResetReasonEnum;
-                                                class InvCardStateEnum;
 
 
                                         }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo
@@ -1066,32 +1094,33 @@ class Inventory : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value description; //type: string
-                                                Value vendor_type; //type: string
-                                                Value name; //type: string
-                                                Value hardware_revision; //type: string
-                                                Value firmware_revision; //type: string
-                                                Value software_revision; //type: string
-                                                Value chip_hardware_revision; //type: string
-                                                Value serial_number; //type: string
-                                                Value manufacturer_name; //type: string
-                                                Value model_name; //type: string
-                                                Value asset_id_str; //type: string
-                                                Value asset_identification; //type: int32
-                                                Value is_field_replaceable_unit; //type: boolean
-                                                Value manufacturer_asset_tags; //type: int32
-                                                Value composite_class_code; //type: int32
-                                                Value memory_size; //type: int32
-                                                Value environmental_monitor_path; //type: string
-                                                Value alias; //type: string
-                                                Value group_flag; //type: boolean
-                                                Value new_deviation_number; //type: int32
-                                                Value physical_layer_interface_module_type; //type: int32
-                                                Value unrecognized_fru; //type: boolean
-                                                Value redundancystate; //type: int32
-                                                Value ceport; //type: boolean
-                                                Value xr_scoped; //type: boolean
 
+
+                                                YLeaf description; //type: string
+                                                YLeaf vendor_type; //type: string
+                                                YLeaf name; //type: string
+                                                YLeaf hardware_revision; //type: string
+                                                YLeaf firmware_revision; //type: string
+                                                YLeaf software_revision; //type: string
+                                                YLeaf chip_hardware_revision; //type: string
+                                                YLeaf serial_number; //type: string
+                                                YLeaf manufacturer_name; //type: string
+                                                YLeaf model_name; //type: string
+                                                YLeaf asset_id_str; //type: string
+                                                YLeaf asset_identification; //type: int32
+                                                YLeaf is_field_replaceable_unit; //type: boolean
+                                                YLeaf manufacturer_asset_tags; //type: int32
+                                                YLeaf composite_class_code; //type: int32
+                                                YLeaf memory_size; //type: int32
+                                                YLeaf environmental_monitor_path; //type: string
+                                                YLeaf alias; //type: string
+                                                YLeaf group_flag; //type: boolean
+                                                YLeaf new_deviation_number; //type: int32
+                                                YLeaf physical_layer_interface_module_type; //type: int32
+                                                YLeaf unrecognized_fru; //type: boolean
+                                                YLeaf redundancystate; //type: int32
+                                                YLeaf ceport; //type: boolean
+                                                YLeaf xr_scoped; //type: boolean
 
 
 
@@ -1133,6 +1162,7 @@ class Inventory : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class HwComponent : public Entity
                                 {
                                     public:
@@ -1146,8 +1176,9 @@ class Inventory : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value number; //type: int32
 
+
+                                        YLeaf number; //type: int32
 
                                     class Sensors : public Entity
                                     {
@@ -1164,6 +1195,7 @@ class Inventory : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Sensor : public Entity
                                         {
                                             public:
@@ -1177,8 +1209,9 @@ class Inventory : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value number; //type: int32
 
+
+                                                YLeaf number; //type: int32
 
                                             class BasicAttributes : public Entity
                                             {
@@ -1195,6 +1228,7 @@ class Inventory : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class FruInfo : public Entity
                                                 {
                                                     public:
@@ -1208,14 +1242,15 @@ class Inventory : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value card_administrative_state; //type: int32
-                                                        Value power_administrative_state; //type: int32
-                                                        Value card_operational_state; //type: InvCardStateEnum
-                                                        Value card_monitor_state; //type: int32
-                                                        Value card_reset_reason; //type: CardResetReasonEnum
-                                                        Value power_current_measurement; //type: int32
-                                                        Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                        YLeaf card_administrative_state; //type: int32
+                                                        YLeaf power_administrative_state; //type: int32
+                                                        YLeaf card_operational_state; //type: InvCardStateEnum
+                                                        YLeaf card_monitor_state; //type: int32
+                                                        YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                        YLeaf power_current_measurement; //type: int32
+                                                        YLeaf power_operational_state; //type: InvCardStateEnum
 
                                                     class LastOperationalStateChange : public Entity
                                                     {
@@ -1230,9 +1265,10 @@ class Inventory : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value time_in_seconds; //type: int32
-                                                            Value time_in_nano_seconds; //type: int32
 
+
+                                                            YLeaf time_in_seconds; //type: int32
+                                                            YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1252,9 +1288,10 @@ class Inventory : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value time_in_seconds; //type: int32
-                                                            Value time_in_nano_seconds; //type: int32
 
+
+                                                            YLeaf time_in_seconds; //type: int32
+                                                            YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1263,9 +1300,6 @@ class Inventory : public Entity
 
                                                         std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                         std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                        class InvCardStateEnum;
-                                                        class CardResetReasonEnum;
-                                                        class InvCardStateEnum;
 
 
                                                 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo
@@ -1284,32 +1318,33 @@ class Inventory : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value description; //type: string
-                                                        Value vendor_type; //type: string
-                                                        Value name; //type: string
-                                                        Value hardware_revision; //type: string
-                                                        Value firmware_revision; //type: string
-                                                        Value software_revision; //type: string
-                                                        Value chip_hardware_revision; //type: string
-                                                        Value serial_number; //type: string
-                                                        Value manufacturer_name; //type: string
-                                                        Value model_name; //type: string
-                                                        Value asset_id_str; //type: string
-                                                        Value asset_identification; //type: int32
-                                                        Value is_field_replaceable_unit; //type: boolean
-                                                        Value manufacturer_asset_tags; //type: int32
-                                                        Value composite_class_code; //type: int32
-                                                        Value memory_size; //type: int32
-                                                        Value environmental_monitor_path; //type: string
-                                                        Value alias; //type: string
-                                                        Value group_flag; //type: boolean
-                                                        Value new_deviation_number; //type: int32
-                                                        Value physical_layer_interface_module_type; //type: int32
-                                                        Value unrecognized_fru; //type: boolean
-                                                        Value redundancystate; //type: int32
-                                                        Value ceport; //type: boolean
-                                                        Value xr_scoped; //type: boolean
 
+
+                                                        YLeaf description; //type: string
+                                                        YLeaf vendor_type; //type: string
+                                                        YLeaf name; //type: string
+                                                        YLeaf hardware_revision; //type: string
+                                                        YLeaf firmware_revision; //type: string
+                                                        YLeaf software_revision; //type: string
+                                                        YLeaf chip_hardware_revision; //type: string
+                                                        YLeaf serial_number; //type: string
+                                                        YLeaf manufacturer_name; //type: string
+                                                        YLeaf model_name; //type: string
+                                                        YLeaf asset_id_str; //type: string
+                                                        YLeaf asset_identification; //type: int32
+                                                        YLeaf is_field_replaceable_unit; //type: boolean
+                                                        YLeaf manufacturer_asset_tags; //type: int32
+                                                        YLeaf composite_class_code; //type: int32
+                                                        YLeaf memory_size; //type: int32
+                                                        YLeaf environmental_monitor_path; //type: string
+                                                        YLeaf alias; //type: string
+                                                        YLeaf group_flag; //type: boolean
+                                                        YLeaf new_deviation_number; //type: int32
+                                                        YLeaf physical_layer_interface_module_type; //type: int32
+                                                        YLeaf unrecognized_fru; //type: boolean
+                                                        YLeaf redundancystate; //type: int32
+                                                        YLeaf ceport; //type: boolean
+                                                        YLeaf xr_scoped; //type: boolean
 
 
 
@@ -1350,6 +1385,7 @@ class Inventory : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FruInfo : public Entity
                                         {
                                             public:
@@ -1363,14 +1399,15 @@ class Inventory : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value card_administrative_state; //type: int32
-                                                Value power_administrative_state; //type: int32
-                                                Value card_operational_state; //type: InvCardStateEnum
-                                                Value card_monitor_state; //type: int32
-                                                Value card_reset_reason; //type: CardResetReasonEnum
-                                                Value power_current_measurement; //type: int32
-                                                Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                YLeaf card_administrative_state; //type: int32
+                                                YLeaf power_administrative_state; //type: int32
+                                                YLeaf card_operational_state; //type: InvCardStateEnum
+                                                YLeaf card_monitor_state; //type: int32
+                                                YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                YLeaf power_current_measurement; //type: int32
+                                                YLeaf power_operational_state; //type: InvCardStateEnum
 
                                             class LastOperationalStateChange : public Entity
                                             {
@@ -1385,9 +1422,10 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value time_in_seconds; //type: int32
-                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                    YLeaf time_in_seconds; //type: int32
+                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1407,9 +1445,10 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value time_in_seconds; //type: int32
-                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                    YLeaf time_in_seconds; //type: int32
+                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1418,9 +1457,6 @@ class Inventory : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                class InvCardStateEnum;
-                                                class CardResetReasonEnum;
-                                                class InvCardStateEnum;
 
 
                                         }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo
@@ -1439,32 +1475,33 @@ class Inventory : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value description; //type: string
-                                                Value vendor_type; //type: string
-                                                Value name; //type: string
-                                                Value hardware_revision; //type: string
-                                                Value firmware_revision; //type: string
-                                                Value software_revision; //type: string
-                                                Value chip_hardware_revision; //type: string
-                                                Value serial_number; //type: string
-                                                Value manufacturer_name; //type: string
-                                                Value model_name; //type: string
-                                                Value asset_id_str; //type: string
-                                                Value asset_identification; //type: int32
-                                                Value is_field_replaceable_unit; //type: boolean
-                                                Value manufacturer_asset_tags; //type: int32
-                                                Value composite_class_code; //type: int32
-                                                Value memory_size; //type: int32
-                                                Value environmental_monitor_path; //type: string
-                                                Value alias; //type: string
-                                                Value group_flag; //type: boolean
-                                                Value new_deviation_number; //type: int32
-                                                Value physical_layer_interface_module_type; //type: int32
-                                                Value unrecognized_fru; //type: boolean
-                                                Value redundancystate; //type: int32
-                                                Value ceport; //type: boolean
-                                                Value xr_scoped; //type: boolean
 
+
+                                                YLeaf description; //type: string
+                                                YLeaf vendor_type; //type: string
+                                                YLeaf name; //type: string
+                                                YLeaf hardware_revision; //type: string
+                                                YLeaf firmware_revision; //type: string
+                                                YLeaf software_revision; //type: string
+                                                YLeaf chip_hardware_revision; //type: string
+                                                YLeaf serial_number; //type: string
+                                                YLeaf manufacturer_name; //type: string
+                                                YLeaf model_name; //type: string
+                                                YLeaf asset_id_str; //type: string
+                                                YLeaf asset_identification; //type: int32
+                                                YLeaf is_field_replaceable_unit; //type: boolean
+                                                YLeaf manufacturer_asset_tags; //type: int32
+                                                YLeaf composite_class_code; //type: int32
+                                                YLeaf memory_size; //type: int32
+                                                YLeaf environmental_monitor_path; //type: string
+                                                YLeaf alias; //type: string
+                                                YLeaf group_flag; //type: boolean
+                                                YLeaf new_deviation_number; //type: int32
+                                                YLeaf physical_layer_interface_module_type; //type: int32
+                                                YLeaf unrecognized_fru; //type: boolean
+                                                YLeaf redundancystate; //type: int32
+                                                YLeaf ceport; //type: boolean
+                                                YLeaf xr_scoped; //type: boolean
 
 
 
@@ -1506,6 +1543,7 @@ class Inventory : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PortSlot : public Entity
                                 {
                                     public:
@@ -1519,8 +1557,9 @@ class Inventory : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value number; //type: int32
 
+
+                                        YLeaf number; //type: int32
 
                                     class Port : public Entity
                                     {
@@ -1535,6 +1574,7 @@ class Inventory : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                                         class BasicAttributes : public Entity
@@ -1552,6 +1592,7 @@ class Inventory : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class FruInfo : public Entity
                                             {
                                                 public:
@@ -1565,14 +1606,15 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value card_administrative_state; //type: int32
-                                                    Value power_administrative_state; //type: int32
-                                                    Value card_operational_state; //type: InvCardStateEnum
-                                                    Value card_monitor_state; //type: int32
-                                                    Value card_reset_reason; //type: CardResetReasonEnum
-                                                    Value power_current_measurement; //type: int32
-                                                    Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                    YLeaf card_administrative_state; //type: int32
+                                                    YLeaf power_administrative_state; //type: int32
+                                                    YLeaf card_operational_state; //type: InvCardStateEnum
+                                                    YLeaf card_monitor_state; //type: int32
+                                                    YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                    YLeaf power_current_measurement; //type: int32
+                                                    YLeaf power_operational_state; //type: InvCardStateEnum
 
                                                 class LastOperationalStateChange : public Entity
                                                 {
@@ -1587,9 +1629,10 @@ class Inventory : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value time_in_seconds; //type: int32
-                                                        Value time_in_nano_seconds; //type: int32
 
+
+                                                        YLeaf time_in_seconds; //type: int32
+                                                        YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1609,9 +1652,10 @@ class Inventory : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value time_in_seconds; //type: int32
-                                                        Value time_in_nano_seconds; //type: int32
 
+
+                                                        YLeaf time_in_seconds; //type: int32
+                                                        YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1620,9 +1664,6 @@ class Inventory : public Entity
 
                                                     std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                     std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                    class InvCardStateEnum;
-                                                    class CardResetReasonEnum;
-                                                    class InvCardStateEnum;
 
 
                                             }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
@@ -1641,32 +1682,33 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value description; //type: string
-                                                    Value vendor_type; //type: string
-                                                    Value name; //type: string
-                                                    Value hardware_revision; //type: string
-                                                    Value firmware_revision; //type: string
-                                                    Value software_revision; //type: string
-                                                    Value chip_hardware_revision; //type: string
-                                                    Value serial_number; //type: string
-                                                    Value manufacturer_name; //type: string
-                                                    Value model_name; //type: string
-                                                    Value asset_id_str; //type: string
-                                                    Value asset_identification; //type: int32
-                                                    Value is_field_replaceable_unit; //type: boolean
-                                                    Value manufacturer_asset_tags; //type: int32
-                                                    Value composite_class_code; //type: int32
-                                                    Value memory_size; //type: int32
-                                                    Value environmental_monitor_path; //type: string
-                                                    Value alias; //type: string
-                                                    Value group_flag; //type: boolean
-                                                    Value new_deviation_number; //type: int32
-                                                    Value physical_layer_interface_module_type; //type: int32
-                                                    Value unrecognized_fru; //type: boolean
-                                                    Value redundancystate; //type: int32
-                                                    Value ceport; //type: boolean
-                                                    Value xr_scoped; //type: boolean
 
+
+                                                    YLeaf description; //type: string
+                                                    YLeaf vendor_type; //type: string
+                                                    YLeaf name; //type: string
+                                                    YLeaf hardware_revision; //type: string
+                                                    YLeaf firmware_revision; //type: string
+                                                    YLeaf software_revision; //type: string
+                                                    YLeaf chip_hardware_revision; //type: string
+                                                    YLeaf serial_number; //type: string
+                                                    YLeaf manufacturer_name; //type: string
+                                                    YLeaf model_name; //type: string
+                                                    YLeaf asset_id_str; //type: string
+                                                    YLeaf asset_identification; //type: int32
+                                                    YLeaf is_field_replaceable_unit; //type: boolean
+                                                    YLeaf manufacturer_asset_tags; //type: int32
+                                                    YLeaf composite_class_code; //type: int32
+                                                    YLeaf memory_size; //type: int32
+                                                    YLeaf environmental_monitor_path; //type: string
+                                                    YLeaf alias; //type: string
+                                                    YLeaf group_flag; //type: boolean
+                                                    YLeaf new_deviation_number; //type: int32
+                                                    YLeaf physical_layer_interface_module_type; //type: int32
+                                                    YLeaf unrecognized_fru; //type: boolean
+                                                    YLeaf redundancystate; //type: int32
+                                                    YLeaf ceport; //type: boolean
+                                                    YLeaf xr_scoped; //type: boolean
 
 
 
@@ -1701,6 +1743,7 @@ class Inventory : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FruInfo : public Entity
                                         {
                                             public:
@@ -1714,14 +1757,15 @@ class Inventory : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value card_administrative_state; //type: int32
-                                                Value power_administrative_state; //type: int32
-                                                Value card_operational_state; //type: InvCardStateEnum
-                                                Value card_monitor_state; //type: int32
-                                                Value card_reset_reason; //type: CardResetReasonEnum
-                                                Value power_current_measurement; //type: int32
-                                                Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                YLeaf card_administrative_state; //type: int32
+                                                YLeaf power_administrative_state; //type: int32
+                                                YLeaf card_operational_state; //type: InvCardStateEnum
+                                                YLeaf card_monitor_state; //type: int32
+                                                YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                YLeaf power_current_measurement; //type: int32
+                                                YLeaf power_operational_state; //type: InvCardStateEnum
 
                                             class LastOperationalStateChange : public Entity
                                             {
@@ -1736,9 +1780,10 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value time_in_seconds; //type: int32
-                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                    YLeaf time_in_seconds; //type: int32
+                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1758,9 +1803,10 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value time_in_seconds; //type: int32
-                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                    YLeaf time_in_seconds; //type: int32
+                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1769,9 +1815,6 @@ class Inventory : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                class InvCardStateEnum;
-                                                class CardResetReasonEnum;
-                                                class InvCardStateEnum;
 
 
                                         }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo
@@ -1790,32 +1833,33 @@ class Inventory : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value description; //type: string
-                                                Value vendor_type; //type: string
-                                                Value name; //type: string
-                                                Value hardware_revision; //type: string
-                                                Value firmware_revision; //type: string
-                                                Value software_revision; //type: string
-                                                Value chip_hardware_revision; //type: string
-                                                Value serial_number; //type: string
-                                                Value manufacturer_name; //type: string
-                                                Value model_name; //type: string
-                                                Value asset_id_str; //type: string
-                                                Value asset_identification; //type: int32
-                                                Value is_field_replaceable_unit; //type: boolean
-                                                Value manufacturer_asset_tags; //type: int32
-                                                Value composite_class_code; //type: int32
-                                                Value memory_size; //type: int32
-                                                Value environmental_monitor_path; //type: string
-                                                Value alias; //type: string
-                                                Value group_flag; //type: boolean
-                                                Value new_deviation_number; //type: int32
-                                                Value physical_layer_interface_module_type; //type: int32
-                                                Value unrecognized_fru; //type: boolean
-                                                Value redundancystate; //type: int32
-                                                Value ceport; //type: boolean
-                                                Value xr_scoped; //type: boolean
 
+
+                                                YLeaf description; //type: string
+                                                YLeaf vendor_type; //type: string
+                                                YLeaf name; //type: string
+                                                YLeaf hardware_revision; //type: string
+                                                YLeaf firmware_revision; //type: string
+                                                YLeaf software_revision; //type: string
+                                                YLeaf chip_hardware_revision; //type: string
+                                                YLeaf serial_number; //type: string
+                                                YLeaf manufacturer_name; //type: string
+                                                YLeaf model_name; //type: string
+                                                YLeaf asset_id_str; //type: string
+                                                YLeaf asset_identification; //type: int32
+                                                YLeaf is_field_replaceable_unit; //type: boolean
+                                                YLeaf manufacturer_asset_tags; //type: int32
+                                                YLeaf composite_class_code; //type: int32
+                                                YLeaf memory_size; //type: int32
+                                                YLeaf environmental_monitor_path; //type: string
+                                                YLeaf alias; //type: string
+                                                YLeaf group_flag; //type: boolean
+                                                YLeaf new_deviation_number; //type: int32
+                                                YLeaf physical_layer_interface_module_type; //type: int32
+                                                YLeaf unrecognized_fru; //type: boolean
+                                                YLeaf redundancystate; //type: int32
+                                                YLeaf ceport; //type: boolean
+                                                YLeaf xr_scoped; //type: boolean
 
 
 
@@ -1857,6 +1901,7 @@ class Inventory : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Sensor : public Entity
                                 {
                                     public:
@@ -1870,8 +1915,9 @@ class Inventory : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value number; //type: int32
 
+
+                                        YLeaf number; //type: int32
 
                                     class BasicAttributes : public Entity
                                     {
@@ -1888,6 +1934,7 @@ class Inventory : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FruInfo : public Entity
                                         {
                                             public:
@@ -1901,14 +1948,15 @@ class Inventory : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value card_administrative_state; //type: int32
-                                                Value power_administrative_state; //type: int32
-                                                Value card_operational_state; //type: InvCardStateEnum
-                                                Value card_monitor_state; //type: int32
-                                                Value card_reset_reason; //type: CardResetReasonEnum
-                                                Value power_current_measurement; //type: int32
-                                                Value power_operational_state; //type: InvCardStateEnum
 
+
+                                                YLeaf card_administrative_state; //type: int32
+                                                YLeaf power_administrative_state; //type: int32
+                                                YLeaf card_operational_state; //type: InvCardStateEnum
+                                                YLeaf card_monitor_state; //type: int32
+                                                YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                                YLeaf power_current_measurement; //type: int32
+                                                YLeaf power_operational_state; //type: InvCardStateEnum
 
                                             class LastOperationalStateChange : public Entity
                                             {
@@ -1923,9 +1971,10 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value time_in_seconds; //type: int32
-                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                    YLeaf time_in_seconds; //type: int32
+                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1945,9 +1994,10 @@ class Inventory : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value time_in_seconds; //type: int32
-                                                    Value time_in_nano_seconds; //type: int32
 
+
+                                                    YLeaf time_in_seconds; //type: int32
+                                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -1956,9 +2006,6 @@ class Inventory : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                                class InvCardStateEnum;
-                                                class CardResetReasonEnum;
-                                                class InvCardStateEnum;
 
 
                                         }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo
@@ -1977,32 +2024,33 @@ class Inventory : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value description; //type: string
-                                                Value vendor_type; //type: string
-                                                Value name; //type: string
-                                                Value hardware_revision; //type: string
-                                                Value firmware_revision; //type: string
-                                                Value software_revision; //type: string
-                                                Value chip_hardware_revision; //type: string
-                                                Value serial_number; //type: string
-                                                Value manufacturer_name; //type: string
-                                                Value model_name; //type: string
-                                                Value asset_id_str; //type: string
-                                                Value asset_identification; //type: int32
-                                                Value is_field_replaceable_unit; //type: boolean
-                                                Value manufacturer_asset_tags; //type: int32
-                                                Value composite_class_code; //type: int32
-                                                Value memory_size; //type: int32
-                                                Value environmental_monitor_path; //type: string
-                                                Value alias; //type: string
-                                                Value group_flag; //type: boolean
-                                                Value new_deviation_number; //type: int32
-                                                Value physical_layer_interface_module_type; //type: int32
-                                                Value unrecognized_fru; //type: boolean
-                                                Value redundancystate; //type: int32
-                                                Value ceport; //type: boolean
-                                                Value xr_scoped; //type: boolean
 
+
+                                                YLeaf description; //type: string
+                                                YLeaf vendor_type; //type: string
+                                                YLeaf name; //type: string
+                                                YLeaf hardware_revision; //type: string
+                                                YLeaf firmware_revision; //type: string
+                                                YLeaf software_revision; //type: string
+                                                YLeaf chip_hardware_revision; //type: string
+                                                YLeaf serial_number; //type: string
+                                                YLeaf manufacturer_name; //type: string
+                                                YLeaf model_name; //type: string
+                                                YLeaf asset_id_str; //type: string
+                                                YLeaf asset_identification; //type: int32
+                                                YLeaf is_field_replaceable_unit; //type: boolean
+                                                YLeaf manufacturer_asset_tags; //type: int32
+                                                YLeaf composite_class_code; //type: int32
+                                                YLeaf memory_size; //type: int32
+                                                YLeaf environmental_monitor_path; //type: string
+                                                YLeaf alias; //type: string
+                                                YLeaf group_flag; //type: boolean
+                                                YLeaf new_deviation_number; //type: int32
+                                                YLeaf physical_layer_interface_module_type; //type: int32
+                                                YLeaf unrecognized_fru; //type: boolean
+                                                YLeaf redundancystate; //type: int32
+                                                YLeaf ceport; //type: boolean
+                                                YLeaf xr_scoped; //type: boolean
 
 
 
@@ -2043,6 +2091,7 @@ class Inventory : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FruInfo : public Entity
                                 {
                                     public:
@@ -2056,14 +2105,15 @@ class Inventory : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value card_administrative_state; //type: int32
-                                        Value power_administrative_state; //type: int32
-                                        Value card_operational_state; //type: InvCardStateEnum
-                                        Value card_monitor_state; //type: int32
-                                        Value card_reset_reason; //type: CardResetReasonEnum
-                                        Value power_current_measurement; //type: int32
-                                        Value power_operational_state; //type: InvCardStateEnum
 
+
+                                        YLeaf card_administrative_state; //type: int32
+                                        YLeaf power_administrative_state; //type: int32
+                                        YLeaf card_operational_state; //type: InvCardStateEnum
+                                        YLeaf card_monitor_state; //type: int32
+                                        YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                        YLeaf power_current_measurement; //type: int32
+                                        YLeaf power_operational_state; //type: InvCardStateEnum
 
                                     class LastOperationalStateChange : public Entity
                                     {
@@ -2078,9 +2128,10 @@ class Inventory : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value time_in_seconds; //type: int32
-                                            Value time_in_nano_seconds; //type: int32
 
+
+                                            YLeaf time_in_seconds; //type: int32
+                                            YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -2100,9 +2151,10 @@ class Inventory : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value time_in_seconds; //type: int32
-                                            Value time_in_nano_seconds; //type: int32
 
+
+                                            YLeaf time_in_seconds; //type: int32
+                                            YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -2111,9 +2163,6 @@ class Inventory : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                         std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                        class InvCardStateEnum;
-                                        class CardResetReasonEnum;
-                                        class InvCardStateEnum;
 
 
                                 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
@@ -2132,32 +2181,33 @@ class Inventory : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value description; //type: string
-                                        Value vendor_type; //type: string
-                                        Value name; //type: string
-                                        Value hardware_revision; //type: string
-                                        Value firmware_revision; //type: string
-                                        Value software_revision; //type: string
-                                        Value chip_hardware_revision; //type: string
-                                        Value serial_number; //type: string
-                                        Value manufacturer_name; //type: string
-                                        Value model_name; //type: string
-                                        Value asset_id_str; //type: string
-                                        Value asset_identification; //type: int32
-                                        Value is_field_replaceable_unit; //type: boolean
-                                        Value manufacturer_asset_tags; //type: int32
-                                        Value composite_class_code; //type: int32
-                                        Value memory_size; //type: int32
-                                        Value environmental_monitor_path; //type: string
-                                        Value alias; //type: string
-                                        Value group_flag; //type: boolean
-                                        Value new_deviation_number; //type: int32
-                                        Value physical_layer_interface_module_type; //type: int32
-                                        Value unrecognized_fru; //type: boolean
-                                        Value redundancystate; //type: int32
-                                        Value ceport; //type: boolean
-                                        Value xr_scoped; //type: boolean
 
+
+                                        YLeaf description; //type: string
+                                        YLeaf vendor_type; //type: string
+                                        YLeaf name; //type: string
+                                        YLeaf hardware_revision; //type: string
+                                        YLeaf firmware_revision; //type: string
+                                        YLeaf software_revision; //type: string
+                                        YLeaf chip_hardware_revision; //type: string
+                                        YLeaf serial_number; //type: string
+                                        YLeaf manufacturer_name; //type: string
+                                        YLeaf model_name; //type: string
+                                        YLeaf asset_id_str; //type: string
+                                        YLeaf asset_identification; //type: int32
+                                        YLeaf is_field_replaceable_unit; //type: boolean
+                                        YLeaf manufacturer_asset_tags; //type: int32
+                                        YLeaf composite_class_code; //type: int32
+                                        YLeaf memory_size; //type: int32
+                                        YLeaf environmental_monitor_path; //type: string
+                                        YLeaf alias; //type: string
+                                        YLeaf group_flag; //type: boolean
+                                        YLeaf new_deviation_number; //type: int32
+                                        YLeaf physical_layer_interface_module_type; //type: int32
+                                        YLeaf unrecognized_fru; //type: boolean
+                                        YLeaf redundancystate; //type: int32
+                                        YLeaf ceport; //type: boolean
+                                        YLeaf xr_scoped; //type: boolean
 
 
 
@@ -2202,6 +2252,7 @@ class Inventory : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class FruInfo : public Entity
                         {
                             public:
@@ -2215,14 +2266,15 @@ class Inventory : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value card_administrative_state; //type: int32
-                                Value power_administrative_state; //type: int32
-                                Value card_operational_state; //type: InvCardStateEnum
-                                Value card_monitor_state; //type: int32
-                                Value card_reset_reason; //type: CardResetReasonEnum
-                                Value power_current_measurement; //type: int32
-                                Value power_operational_state; //type: InvCardStateEnum
 
+
+                                YLeaf card_administrative_state; //type: int32
+                                YLeaf power_administrative_state; //type: int32
+                                YLeaf card_operational_state; //type: InvCardStateEnum
+                                YLeaf card_monitor_state; //type: int32
+                                YLeaf card_reset_reason; //type: CardResetReasonEnum
+                                YLeaf power_current_measurement; //type: int32
+                                YLeaf power_operational_state; //type: InvCardStateEnum
 
                             class LastOperationalStateChange : public Entity
                             {
@@ -2237,9 +2289,10 @@ class Inventory : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value time_in_seconds; //type: int32
-                                    Value time_in_nano_seconds; //type: int32
 
+
+                                    YLeaf time_in_seconds; //type: int32
+                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -2259,9 +2312,10 @@ class Inventory : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value time_in_seconds; //type: int32
-                                    Value time_in_nano_seconds; //type: int32
 
+
+                                    YLeaf time_in_seconds; //type: int32
+                                    YLeaf time_in_nano_seconds; //type: int32
 
 
 
@@ -2270,9 +2324,6 @@ class Inventory : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime> card_up_time;
                                 std::unique_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-                                class InvCardStateEnum;
-                                class CardResetReasonEnum;
-                                class InvCardStateEnum;
 
 
                         }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo
@@ -2291,32 +2342,33 @@ class Inventory : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value description; //type: string
-                                Value vendor_type; //type: string
-                                Value name; //type: string
-                                Value hardware_revision; //type: string
-                                Value firmware_revision; //type: string
-                                Value software_revision; //type: string
-                                Value chip_hardware_revision; //type: string
-                                Value serial_number; //type: string
-                                Value manufacturer_name; //type: string
-                                Value model_name; //type: string
-                                Value asset_id_str; //type: string
-                                Value asset_identification; //type: int32
-                                Value is_field_replaceable_unit; //type: boolean
-                                Value manufacturer_asset_tags; //type: int32
-                                Value composite_class_code; //type: int32
-                                Value memory_size; //type: int32
-                                Value environmental_monitor_path; //type: string
-                                Value alias; //type: string
-                                Value group_flag; //type: boolean
-                                Value new_deviation_number; //type: int32
-                                Value physical_layer_interface_module_type; //type: int32
-                                Value unrecognized_fru; //type: boolean
-                                Value redundancystate; //type: int32
-                                Value ceport; //type: boolean
-                                Value xr_scoped; //type: boolean
 
+
+                                YLeaf description; //type: string
+                                YLeaf vendor_type; //type: string
+                                YLeaf name; //type: string
+                                YLeaf hardware_revision; //type: string
+                                YLeaf firmware_revision; //type: string
+                                YLeaf software_revision; //type: string
+                                YLeaf chip_hardware_revision; //type: string
+                                YLeaf serial_number; //type: string
+                                YLeaf manufacturer_name; //type: string
+                                YLeaf model_name; //type: string
+                                YLeaf asset_id_str; //type: string
+                                YLeaf asset_identification; //type: int32
+                                YLeaf is_field_replaceable_unit; //type: boolean
+                                YLeaf manufacturer_asset_tags; //type: int32
+                                YLeaf composite_class_code; //type: int32
+                                YLeaf memory_size; //type: int32
+                                YLeaf environmental_monitor_path; //type: string
+                                YLeaf alias; //type: string
+                                YLeaf group_flag; //type: boolean
+                                YLeaf new_deviation_number; //type: int32
+                                YLeaf physical_layer_interface_module_type; //type: int32
+                                YLeaf unrecognized_fru; //type: boolean
+                                YLeaf redundancystate; //type: int32
+                                YLeaf ceport; //type: boolean
+                                YLeaf xr_scoped; //type: boolean
 
 
 
@@ -2358,6 +2410,7 @@ class Inventory : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class FanTray : public Entity
                 {
                     public:
@@ -2371,8 +2424,9 @@ class Inventory : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: int32
 
+
+                        YLeaf number; //type: int32
 
                     class BasicAttributes : public Entity
                     {
@@ -2389,6 +2443,7 @@ class Inventory : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class BasicInfo : public Entity
                         {
                             public:
@@ -2402,32 +2457,33 @@ class Inventory : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value description; //type: string
-                                Value vendor_type; //type: string
-                                Value name; //type: string
-                                Value hardware_revision; //type: string
-                                Value firmware_revision; //type: string
-                                Value software_revision; //type: string
-                                Value chip_hardware_revision; //type: string
-                                Value serial_number; //type: string
-                                Value manufacturer_name; //type: string
-                                Value model_name; //type: string
-                                Value asset_id_str; //type: string
-                                Value asset_identification; //type: int32
-                                Value is_field_replaceable_unit; //type: boolean
-                                Value manufacturer_asset_tags; //type: int32
-                                Value composite_class_code; //type: int32
-                                Value memory_size; //type: int32
-                                Value environmental_monitor_path; //type: string
-                                Value alias; //type: string
-                                Value group_flag; //type: boolean
-                                Value new_deviation_number; //type: int32
-                                Value physical_layer_interface_module_type; //type: int32
-                                Value unrecognized_fru; //type: boolean
-                                Value redundancystate; //type: int32
-                                Value ceport; //type: boolean
-                                Value xr_scoped; //type: boolean
 
+
+                                YLeaf description; //type: string
+                                YLeaf vendor_type; //type: string
+                                YLeaf name; //type: string
+                                YLeaf hardware_revision; //type: string
+                                YLeaf firmware_revision; //type: string
+                                YLeaf software_revision; //type: string
+                                YLeaf chip_hardware_revision; //type: string
+                                YLeaf serial_number; //type: string
+                                YLeaf manufacturer_name; //type: string
+                                YLeaf model_name; //type: string
+                                YLeaf asset_id_str; //type: string
+                                YLeaf asset_identification; //type: int32
+                                YLeaf is_field_replaceable_unit; //type: boolean
+                                YLeaf manufacturer_asset_tags; //type: int32
+                                YLeaf composite_class_code; //type: int32
+                                YLeaf memory_size; //type: int32
+                                YLeaf environmental_monitor_path; //type: string
+                                YLeaf alias; //type: string
+                                YLeaf group_flag; //type: boolean
+                                YLeaf new_deviation_number; //type: int32
+                                YLeaf physical_layer_interface_module_type; //type: int32
+                                YLeaf unrecognized_fru; //type: boolean
+                                YLeaf redundancystate; //type: int32
+                                YLeaf ceport; //type: boolean
+                                YLeaf xr_scoped; //type: boolean
 
 
 
@@ -2467,6 +2523,7 @@ class Inventory : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PowerSupplyZone : public Entity
                 {
                     public:
@@ -2480,8 +2537,9 @@ class Inventory : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: int32
 
+
+                        YLeaf number; //type: int32
 
                     class PowerSupplyZoneAttributes : public Entity
                     {
@@ -2498,6 +2556,7 @@ class Inventory : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PowerSupplyGroupInfo : public Entity
                         {
                             public:
@@ -2511,11 +2570,12 @@ class Inventory : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value power_group_redundancy_mode; //type: int32
-                                Value power_group_power_units; //type: string
-                                Value power_group_available_current; //type: int32
-                                Value power_group_drawn_current; //type: int32
 
+
+                                YLeaf power_group_redundancy_mode; //type: int32
+                                YLeaf power_group_power_units; //type: string
+                                YLeaf power_group_available_current; //type: int32
+                                YLeaf power_group_drawn_current; //type: int32
 
 
 
@@ -2555,6 +2615,7 @@ class Inventory : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BasicInfo : public Entity
                 {
                     public:
@@ -2568,32 +2629,33 @@ class Inventory : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value description; //type: string
-                        Value vendor_type; //type: string
-                        Value name; //type: string
-                        Value hardware_revision; //type: string
-                        Value firmware_revision; //type: string
-                        Value software_revision; //type: string
-                        Value chip_hardware_revision; //type: string
-                        Value serial_number; //type: string
-                        Value manufacturer_name; //type: string
-                        Value model_name; //type: string
-                        Value asset_id_str; //type: string
-                        Value asset_identification; //type: int32
-                        Value is_field_replaceable_unit; //type: boolean
-                        Value manufacturer_asset_tags; //type: int32
-                        Value composite_class_code; //type: int32
-                        Value memory_size; //type: int32
-                        Value environmental_monitor_path; //type: string
-                        Value alias; //type: string
-                        Value group_flag; //type: boolean
-                        Value new_deviation_number; //type: int32
-                        Value physical_layer_interface_module_type; //type: int32
-                        Value unrecognized_fru; //type: boolean
-                        Value redundancystate; //type: int32
-                        Value ceport; //type: boolean
-                        Value xr_scoped; //type: boolean
 
+
+                        YLeaf description; //type: string
+                        YLeaf vendor_type; //type: string
+                        YLeaf name; //type: string
+                        YLeaf hardware_revision; //type: string
+                        YLeaf firmware_revision; //type: string
+                        YLeaf software_revision; //type: string
+                        YLeaf chip_hardware_revision; //type: string
+                        YLeaf serial_number; //type: string
+                        YLeaf manufacturer_name; //type: string
+                        YLeaf model_name; //type: string
+                        YLeaf asset_id_str; //type: string
+                        YLeaf asset_identification; //type: int32
+                        YLeaf is_field_replaceable_unit; //type: boolean
+                        YLeaf manufacturer_asset_tags; //type: int32
+                        YLeaf composite_class_code; //type: int32
+                        YLeaf memory_size; //type: int32
+                        YLeaf environmental_monitor_path; //type: string
+                        YLeaf alias; //type: string
+                        YLeaf group_flag; //type: boolean
+                        YLeaf new_deviation_number; //type: int32
+                        YLeaf physical_layer_interface_module_type; //type: int32
+                        YLeaf unrecognized_fru; //type: boolean
+                        YLeaf redundancystate; //type: int32
+                        YLeaf ceport; //type: boolean
+                        YLeaf xr_scoped; //type: boolean
 
 
 
@@ -2631,75 +2693,75 @@ class Inventory : public Entity
 class CardResetReasonEnum : public Enum
 {
     public:
-        static const Enum::Value reset_unknown;
-        static const Enum::Value power_up;
-        static const Enum::Value parity_error;
-        static const Enum::Value clear_config_reset;
-        static const Enum::Value manual_reset;
-        static const Enum::Value watch_dog_timeout_reset;
-        static const Enum::Value resource_overflow_reset;
-        static const Enum::Value missing_task_reset;
-        static const Enum::Value low_voltage_reset;
-        static const Enum::Value controller_reset;
-        static const Enum::Value system_reset;
-        static const Enum::Value switchover_reset;
-        static const Enum::Value upgrade_reset;
-        static const Enum::Value downgrade_reset;
-        static const Enum::Value cache_error_reset;
-        static const Enum::Value device_driver_reset;
-        static const Enum::Value software_exception_reset;
-        static const Enum::Value restore_config_reset;
-        static const Enum::Value abort_rev_reset;
-        static const Enum::Value burn_boot_reset;
-        static const Enum::Value standby_cd_healthier_reset;
-        static const Enum::Value non_native_config_clear_reset;
-        static const Enum::Value memory_protection_error_reset;
-        static const Enum::Value card_reset_reason_max;
+        static const Enum::YLeaf reset_unknown;
+        static const Enum::YLeaf power_up;
+        static const Enum::YLeaf parity_error;
+        static const Enum::YLeaf clear_config_reset;
+        static const Enum::YLeaf manual_reset;
+        static const Enum::YLeaf watch_dog_timeout_reset;
+        static const Enum::YLeaf resource_overflow_reset;
+        static const Enum::YLeaf missing_task_reset;
+        static const Enum::YLeaf low_voltage_reset;
+        static const Enum::YLeaf controller_reset;
+        static const Enum::YLeaf system_reset;
+        static const Enum::YLeaf switchover_reset;
+        static const Enum::YLeaf upgrade_reset;
+        static const Enum::YLeaf downgrade_reset;
+        static const Enum::YLeaf cache_error_reset;
+        static const Enum::YLeaf device_driver_reset;
+        static const Enum::YLeaf software_exception_reset;
+        static const Enum::YLeaf restore_config_reset;
+        static const Enum::YLeaf abort_rev_reset;
+        static const Enum::YLeaf burn_boot_reset;
+        static const Enum::YLeaf standby_cd_healthier_reset;
+        static const Enum::YLeaf non_native_config_clear_reset;
+        static const Enum::YLeaf memory_protection_error_reset;
+        static const Enum::YLeaf card_reset_reason_max;
 
 };
 
 class InvCardStateEnum : public Enum
 {
     public:
-        static const Enum::Value inv_card_not_present;
-        static const Enum::Value inv_card_present;
-        static const Enum::Value inv_card_reset;
-        static const Enum::Value inv_card_booting;
-        static const Enum::Value inv_card_mbi_booting;
-        static const Enum::Value inv_card_running_mbi;
-        static const Enum::Value inv_card_running_ena;
-        static const Enum::Value inv_card_bring_down;
-        static const Enum::Value inv_card_ena_failure;
-        static const Enum::Value inv_card_f_diag_run;
-        static const Enum::Value inv_card_f_diag_failure;
-        static const Enum::Value inv_card_powered;
-        static const Enum::Value inv_card_unpowered;
-        static const Enum::Value inv_card_mdr;
-        static const Enum::Value inv_card_mdr_running_mbi;
-        static const Enum::Value inv_card_main_t_mode;
-        static const Enum::Value inv_card_admin_down;
-        static const Enum::Value inv_card_no_mon;
-        static const Enum::Value inv_card_unknown;
-        static const Enum::Value inv_card_failed;
-        static const Enum::Value inv_card_ok;
-        static const Enum::Value inv_card_missing;
-        static const Enum::Value inv_card_field_diag_downloading;
-        static const Enum::Value inv_card_field_diag_unmonitor;
-        static const Enum::Value inv_card_fabric_field_diag_unmonitor;
-        static const Enum::Value inv_card_field_diag_rp_launching;
-        static const Enum::Value inv_card_field_diag_running;
-        static const Enum::Value inv_card_field_diag_pass;
-        static const Enum::Value inv_card_field_diag_fail;
-        static const Enum::Value inv_card_field_diag_timeout;
-        static const Enum::Value inv_card_disabled;
-        static const Enum::Value inv_card_spa_booting;
-        static const Enum::Value inv_card_not_allowed_online;
-        static const Enum::Value inv_card_stopped;
-        static const Enum::Value inv_card_incompatible_fw_ver;
-        static const Enum::Value inv_card_fpd_hold;
-        static const Enum::Value inv_card_node_prep;
-        static const Enum::Value inv_card_updating_fpd;
-        static const Enum::Value inv_card_num_states;
+        static const Enum::YLeaf inv_card_not_present;
+        static const Enum::YLeaf inv_card_present;
+        static const Enum::YLeaf inv_card_reset;
+        static const Enum::YLeaf inv_card_booting;
+        static const Enum::YLeaf inv_card_mbi_booting;
+        static const Enum::YLeaf inv_card_running_mbi;
+        static const Enum::YLeaf inv_card_running_ena;
+        static const Enum::YLeaf inv_card_bring_down;
+        static const Enum::YLeaf inv_card_ena_failure;
+        static const Enum::YLeaf inv_card_f_diag_run;
+        static const Enum::YLeaf inv_card_f_diag_failure;
+        static const Enum::YLeaf inv_card_powered;
+        static const Enum::YLeaf inv_card_unpowered;
+        static const Enum::YLeaf inv_card_mdr;
+        static const Enum::YLeaf inv_card_mdr_running_mbi;
+        static const Enum::YLeaf inv_card_main_t_mode;
+        static const Enum::YLeaf inv_card_admin_down;
+        static const Enum::YLeaf inv_card_no_mon;
+        static const Enum::YLeaf inv_card_unknown;
+        static const Enum::YLeaf inv_card_failed;
+        static const Enum::YLeaf inv_card_ok;
+        static const Enum::YLeaf inv_card_missing;
+        static const Enum::YLeaf inv_card_field_diag_downloading;
+        static const Enum::YLeaf inv_card_field_diag_unmonitor;
+        static const Enum::YLeaf inv_card_fabric_field_diag_unmonitor;
+        static const Enum::YLeaf inv_card_field_diag_rp_launching;
+        static const Enum::YLeaf inv_card_field_diag_running;
+        static const Enum::YLeaf inv_card_field_diag_pass;
+        static const Enum::YLeaf inv_card_field_diag_fail;
+        static const Enum::YLeaf inv_card_field_diag_timeout;
+        static const Enum::YLeaf inv_card_disabled;
+        static const Enum::YLeaf inv_card_spa_booting;
+        static const Enum::YLeaf inv_card_not_allowed_online;
+        static const Enum::YLeaf inv_card_stopped;
+        static const Enum::YLeaf inv_card_incompatible_fw_ver;
+        static const Enum::YLeaf inv_card_fpd_hold;
+        static const Enum::YLeaf inv_card_node_prep;
+        static const Enum::YLeaf inv_card_updating_fpd;
+        static const Enum::YLeaf inv_card_num_states;
 
 };
 

@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "openconfig_mpls_types.hpp"
 
 namespace ydk {
 namespace openconfig_mpls {
@@ -40,6 +39,7 @@ class Mpls : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Global : public Entity
     {
         public:
@@ -55,6 +55,7 @@ class Mpls : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Config : public Entity
         {
             public:
@@ -68,8 +69,9 @@ class Mpls : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value null_label; //type: NullLabelTypeIdentity
 
+
+                YLeaf null_label; //type: NullLabelTypeIdentity
 
 
 
@@ -89,8 +91,9 @@ class Mpls : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value null_label; //type: NullLabelTypeIdentity
 
+
+                YLeaf null_label; //type: NullLabelTypeIdentity
 
 
 
@@ -112,6 +115,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -125,9 +129,10 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: leafref (refers to openconfig_mpls::Mpls::Global::MplsInterfaceAttributes::Interface::Config::name)
-                    Value name;
 
+
+                    //type: leafref (refers to openconfig_mpls::Mpls::Global::MplsInterfaceAttributes::Interface::Config::name)
+                    YLeaf name;
 
                 class Config : public Entity
                 {
@@ -142,10 +147,11 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                        Value name;
-                        Value mpls_enabled; //type: boolean
 
+
+                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                        YLeaf name;
+                        YLeaf mpls_enabled; //type: boolean
 
 
 
@@ -165,10 +171,11 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                        Value name;
-                        Value mpls_enabled; //type: boolean
 
+
+                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                        YLeaf name;
+                        YLeaf mpls_enabled; //type: boolean
 
 
 
@@ -211,6 +218,7 @@ class Mpls : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Srlg : public Entity
         {
             public:
@@ -226,6 +234,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Srlg_ : public Entity
             {
                 public:
@@ -239,9 +248,10 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: string (refers to openconfig_mpls::Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::name)
-                    Value name;
 
+
+                    //type: string (refers to openconfig_mpls::Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::name)
+                    YLeaf name;
 
                 class Config : public Entity
                 {
@@ -256,13 +266,13 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value value_; //type: uint32
-                        Value cost; //type: uint32
-                        Value flooding_type; //type: MplsSrlgFloodingTypeEnum
 
 
-                        class MplsSrlgFloodingTypeEnum;
+                        YLeaf name; //type: string
+                        YLeaf value_; //type: uint32
+                        YLeaf cost; //type: uint32
+                        YLeaf flooding_type; //type: MplsSrlgFloodingTypeEnum
+
 
 
                 }; // Mpls::TeGlobalAttributes::Srlg::Srlg_::Config
@@ -281,13 +291,13 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value value_; //type: uint32
-                        Value cost; //type: uint32
-                        Value flooding_type; //type: MplsSrlgFloodingTypeEnum
 
 
-                        class MplsSrlgFloodingTypeEnum;
+                        YLeaf name; //type: string
+                        YLeaf value_; //type: uint32
+                        YLeaf cost; //type: uint32
+                        YLeaf flooding_type; //type: MplsSrlgFloodingTypeEnum
+
 
 
                 }; // Mpls::TeGlobalAttributes::Srlg::Srlg_::State
@@ -308,6 +318,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class MembersList : public Entity
                     {
                         public:
@@ -321,9 +332,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: union (refers to openconfig_mpls::Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Config::from_address)
-                            Value from_address;
 
+
+                            //type: union (refers to openconfig_mpls::Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Config::from_address)
+                            YLeaf from_address;
 
                         class Config : public Entity
                         {
@@ -338,9 +350,10 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value from_address; //type: string
-                                Value to_address; //type: string
 
+
+                                YLeaf from_address; //type: string
+                                YLeaf to_address; //type: string
 
 
 
@@ -360,9 +373,10 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value from_address; //type: string
-                                Value to_address; //type: string
 
+
+                                YLeaf from_address; //type: string
+                                YLeaf to_address; //type: string
 
 
 
@@ -411,6 +425,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -424,16 +439,17 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value threshold_type; //type: ThresholdTypeEnum
-                    Value delta_percentage; //type: uint8
-                    Value threshold_specification; //type: ThresholdSpecificationEnum
-                    ValueList up_thresholds; //type: list of  uint8
-                    ValueList down_thresholds; //type: list of  uint8
-                    ValueList up_down_thresholds; //type: list of  uint8
 
 
-                    class ThresholdSpecificationEnum;
+                    YLeaf threshold_type; //type: ThresholdTypeEnum
+                    YLeaf delta_percentage; //type: uint8
+                    YLeaf threshold_specification; //type: ThresholdSpecificationEnum
+                    YLeafList up_thresholds; //type: list of  uint8
+                    YLeafList down_thresholds; //type: list of  uint8
+                    YLeafList up_down_thresholds; //type: list of  uint8
+
                     class ThresholdTypeEnum;
+                    class ThresholdSpecificationEnum;
 
 
             }; // Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config
@@ -452,16 +468,17 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value threshold_type; //type: ThresholdTypeEnum
-                    Value delta_percentage; //type: uint8
-                    Value threshold_specification; //type: ThresholdSpecificationEnum
-                    ValueList up_thresholds; //type: list of  uint8
-                    ValueList down_thresholds; //type: list of  uint8
-                    ValueList up_down_thresholds; //type: list of  uint8
 
 
-                    class ThresholdSpecificationEnum;
+                    YLeaf threshold_type; //type: ThresholdTypeEnum
+                    YLeaf delta_percentage; //type: uint8
+                    YLeaf threshold_specification; //type: ThresholdSpecificationEnum
+                    YLeafList up_thresholds; //type: list of  uint8
+                    YLeafList down_thresholds; //type: list of  uint8
+                    YLeafList up_down_thresholds; //type: list of  uint8
+
                     class ThresholdTypeEnum;
+                    class ThresholdSpecificationEnum;
 
 
             }; // Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State
@@ -489,6 +506,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class AdminGroup : public Entity
             {
                 public:
@@ -502,9 +520,10 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: string (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::admin_group_name)
-                    Value admin_group_name;
 
+
+                    //type: string (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::admin_group_name)
+                    YLeaf admin_group_name;
 
                 class Config : public Entity
                 {
@@ -519,9 +538,10 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value admin_group_name; //type: string
-                        Value bit_position; //type: uint32
 
+
+                        YLeaf admin_group_name; //type: string
+                        YLeaf bit_position; //type: uint32
 
 
 
@@ -541,9 +561,10 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value admin_group_name; //type: string
-                        Value bit_position; //type: uint32
 
+
+                        YLeaf admin_group_name; //type: string
+                        YLeaf bit_position; //type: uint32
 
 
 
@@ -578,6 +599,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -591,10 +613,11 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value install_delay; //type: uint16
-                    Value cleanup_delay; //type: uint16
-                    Value reoptimize_timer; //type: uint16
 
+
+                    YLeaf install_delay; //type: uint16
+                    YLeaf cleanup_delay; //type: uint16
+                    YLeaf reoptimize_timer; //type: uint16
 
 
 
@@ -614,10 +637,11 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value install_delay; //type: uint16
-                    Value cleanup_delay; //type: uint16
-                    Value reoptimize_timer; //type: uint16
 
+
+                    YLeaf install_delay; //type: uint16
+                    YLeaf cleanup_delay; //type: uint16
+                    YLeaf reoptimize_timer; //type: uint16
 
 
 
@@ -655,6 +679,7 @@ class Mpls : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -668,9 +693,10 @@ class Mpls : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                //type: leafref (refers to openconfig_mpls::Mpls::TeInterfaceAttributes::Interface::Config::name)
-                Value name;
 
+
+                //type: leafref (refers to openconfig_mpls::Mpls::TeInterfaceAttributes::Interface::Config::name)
+                YLeaf name;
 
             class Config : public Entity
             {
@@ -685,13 +711,14 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                    Value name;
-                    Value te_metric; //type: uint32
-                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::Srlg::Srlg_::name)
-                    ValueList srlg_membership;
-                    ValueList admin_group; //type: list of  string
 
+
+                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                    YLeaf name;
+                    YLeaf te_metric; //type: uint32
+                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::Srlg::Srlg_::name)
+                    YLeafList srlg_membership;
+                    YLeafList admin_group; //type: list of  string
 
 
 
@@ -711,13 +738,14 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                    Value name;
-                    Value te_metric; //type: uint32
-                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::Srlg::Srlg_::name)
-                    ValueList srlg_membership;
-                    ValueList admin_group; //type: list of  string
 
+
+                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                    YLeaf name;
+                    YLeaf te_metric; //type: uint32
+                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::Srlg::Srlg_::name)
+                    YLeafList srlg_membership;
+                    YLeafList admin_group; //type: list of  string
 
 
 
@@ -739,6 +767,7 @@ class Mpls : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -752,16 +781,17 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value threshold_type; //type: ThresholdTypeEnum
-                        Value delta_percentage; //type: uint8
-                        Value threshold_specification; //type: ThresholdSpecificationEnum
-                        ValueList up_thresholds; //type: list of  uint8
-                        ValueList down_thresholds; //type: list of  uint8
-                        ValueList up_down_thresholds; //type: list of  uint8
 
 
-                        class ThresholdSpecificationEnum;
+                        YLeaf threshold_type; //type: ThresholdTypeEnum
+                        YLeaf delta_percentage; //type: uint8
+                        YLeaf threshold_specification; //type: ThresholdSpecificationEnum
+                        YLeafList up_thresholds; //type: list of  uint8
+                        YLeafList down_thresholds; //type: list of  uint8
+                        YLeafList up_down_thresholds; //type: list of  uint8
+
                         class ThresholdTypeEnum;
+                        class ThresholdSpecificationEnum;
 
 
                 }; // Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config
@@ -780,16 +810,17 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value threshold_type; //type: ThresholdTypeEnum
-                        Value delta_percentage; //type: uint8
-                        Value threshold_specification; //type: ThresholdSpecificationEnum
-                        ValueList up_thresholds; //type: list of  uint8
-                        ValueList down_thresholds; //type: list of  uint8
-                        ValueList up_down_thresholds; //type: list of  uint8
 
 
-                        class ThresholdSpecificationEnum;
+                        YLeaf threshold_type; //type: ThresholdTypeEnum
+                        YLeaf delta_percentage; //type: uint8
+                        YLeaf threshold_specification; //type: ThresholdSpecificationEnum
+                        YLeafList up_thresholds; //type: list of  uint8
+                        YLeafList down_thresholds; //type: list of  uint8
+                        YLeafList up_down_thresholds; //type: list of  uint8
+
                         class ThresholdTypeEnum;
+                        class ThresholdSpecificationEnum;
 
 
                 }; // Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State
@@ -831,6 +862,7 @@ class Mpls : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RsvpTe : public Entity
         {
             public:
@@ -844,6 +876,7 @@ class Mpls : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class Sessions : public Entity
@@ -861,6 +894,7 @@ class Mpls : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -874,6 +908,7 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
 
@@ -896,6 +931,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Session : public Entity
                     {
                         public:
@@ -909,21 +945,20 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_port; //type: uint16
-                            Value destination_port; //type: uint16
-                            Value source_address; //type: string
-                            Value destination_address; //type: string
-                            Value status; //type: StatusEnum
-                            Value type; //type: TypeEnum
-                            Value tunnel_id; //type: uint16
-                            Value label_in; //type: one of uint32, enumeration
-                            Value label_out; //type: one of uint32, enumeration
+
+
+                            YLeaf source_port; //type: uint16
+                            YLeaf destination_port; //type: uint16
+                            YLeaf source_address; //type: string
+                            YLeaf destination_address; //type: string
+                            YLeaf status; //type: StatusEnum
+                            YLeaf type; //type: TypeEnum
+                            YLeaf tunnel_id; //type: uint16
+                            YLeaf label_in; //type: one of uint32, enumeration
+                            YLeaf label_out; //type: one of uint32, enumeration
                             //type: list of  string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::Config::name)
-                            ValueList associated_lsps;
+                            YLeafList associated_lsps;
 
-
-                            class MplsLabelEnum;
-                            class MplsLabelEnum;
                             class StatusEnum;
                             class TypeEnum;
 
@@ -959,6 +994,7 @@ class Mpls : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -972,6 +1008,7 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
 
@@ -994,6 +1031,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Neighbor : public Entity
                     {
                         public:
@@ -1007,11 +1045,12 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value detected_interface; //type: string
-                            Value neighbor_status; //type: NeighborStatusEnum
-                            Value refresh_reduction; //type: boolean
 
+
+                            YLeaf address; //type: string
+                            YLeaf detected_interface; //type: string
+                            YLeaf neighbor_status; //type: NeighborStatusEnum
+                            YLeaf refresh_reduction; //type: boolean
 
                             class NeighborStatusEnum;
 
@@ -1047,6 +1086,7 @@ class Mpls : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class GracefulRestart : public Entity
                 {
                     public:
@@ -1062,6 +1102,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -1075,10 +1116,11 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: boolean
-                            Value restart_time; //type: uint32
-                            Value recovery_time; //type: uint32
 
+
+                            YLeaf enable; //type: boolean
+                            YLeaf restart_time; //type: uint32
+                            YLeaf recovery_time; //type: uint32
 
 
 
@@ -1098,10 +1140,11 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: boolean
-                            Value restart_time; //type: uint32
-                            Value recovery_time; //type: uint32
 
+
+                            YLeaf enable; //type: boolean
+                            YLeaf restart_time; //type: uint32
+                            YLeaf recovery_time; //type: uint32
 
 
 
@@ -1130,6 +1173,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -1143,9 +1187,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: boolean
-                            Value soft_preemption_timeout; //type: uint16
 
+
+                            YLeaf enable; //type: boolean
+                            YLeaf soft_preemption_timeout; //type: uint16
 
 
 
@@ -1165,9 +1210,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: boolean
-                            Value soft_preemption_timeout; //type: uint16
 
+
+                            YLeaf enable; //type: boolean
+                            YLeaf soft_preemption_timeout; //type: uint16
 
 
 
@@ -1196,6 +1242,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -1209,9 +1256,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value hello_interval; //type: uint16
-                            Value refresh_reduction; //type: boolean
 
+
+                            YLeaf hello_interval; //type: uint16
+                            YLeaf refresh_reduction; //type: boolean
 
 
 
@@ -1231,9 +1279,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value hello_interval; //type: uint16
-                            Value refresh_reduction; //type: boolean
 
+
+                            YLeaf hello_interval; //type: uint16
+                            YLeaf refresh_reduction; //type: boolean
 
 
 
@@ -1262,6 +1311,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Counters : public Entity
                     {
                         public:
@@ -1275,28 +1325,29 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value path_timeouts; //type: uint64
-                            Value reservation_timeouts; //type: uint64
-                            Value rate_limited_messages; //type: uint64
-                            Value in_path_messages; //type: uint64
-                            Value in_path_error_messages; //type: uint64
-                            Value in_path_tear_messages; //type: uint64
-                            Value in_reservation_messages; //type: uint64
-                            Value in_reservation_error_messages; //type: uint64
-                            Value in_reservation_tear_messages; //type: uint64
-                            Value in_hello_messages; //type: uint64
-                            Value in_srefresh_messages; //type: uint64
-                            Value in_ack_messages; //type: uint64
-                            Value out_path_messages; //type: uint64
-                            Value out_path_error_messages; //type: uint64
-                            Value out_path_tear_messages; //type: uint64
-                            Value out_reservation_messages; //type: uint64
-                            Value out_reservation_error_messages; //type: uint64
-                            Value out_reservation_tear_messages; //type: uint64
-                            Value out_hello_messages; //type: uint64
-                            Value out_srefresh_messages; //type: uint64
-                            Value out_ack_messages; //type: uint64
 
+
+                            YLeaf path_timeouts; //type: uint64
+                            YLeaf reservation_timeouts; //type: uint64
+                            YLeaf rate_limited_messages; //type: uint64
+                            YLeaf in_path_messages; //type: uint64
+                            YLeaf in_path_error_messages; //type: uint64
+                            YLeaf in_path_tear_messages; //type: uint64
+                            YLeaf in_reservation_messages; //type: uint64
+                            YLeaf in_reservation_error_messages; //type: uint64
+                            YLeaf in_reservation_tear_messages; //type: uint64
+                            YLeaf in_hello_messages; //type: uint64
+                            YLeaf in_srefresh_messages; //type: uint64
+                            YLeaf in_ack_messages; //type: uint64
+                            YLeaf out_path_messages; //type: uint64
+                            YLeaf out_path_error_messages; //type: uint64
+                            YLeaf out_path_tear_messages; //type: uint64
+                            YLeaf out_reservation_messages; //type: uint64
+                            YLeaf out_reservation_error_messages; //type: uint64
+                            YLeaf out_reservation_tear_messages; //type: uint64
+                            YLeaf out_hello_messages; //type: uint64
+                            YLeaf out_srefresh_messages; //type: uint64
+                            YLeaf out_ack_messages; //type: uint64
 
 
 
@@ -1333,6 +1384,7 @@ class Mpls : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -1346,9 +1398,10 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: leafref (refers to openconfig_mpls::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::interface_name)
-                        Value interface_name;
 
+
+                        //type: leafref (refers to openconfig_mpls::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::interface_name)
+                        YLeaf interface_name;
 
                     class Config : public Entity
                     {
@@ -1363,9 +1416,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                            Value interface_name;
 
+
+                            //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                            YLeaf interface_name;
 
 
 
@@ -1385,9 +1439,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value highwater_mark; //type: uint64
-                            Value active_reservation_count; //type: uint64
 
+
+                            YLeaf highwater_mark; //type: uint64
+                            YLeaf active_reservation_count; //type: uint64
 
                         class Bandwidth : public Entity
                         {
@@ -1402,10 +1457,11 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value priority; //type: uint8
-                                Value available_bandwidth; //type: uint64
-                                Value reserved_bandwidth; //type: uint64
 
+
+                                YLeaf priority; //type: uint8
+                                YLeaf available_bandwidth; //type: uint64
+                                YLeaf reserved_bandwidth; //type: uint64
 
 
 
@@ -1425,25 +1481,26 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value in_path_messages; //type: uint64
-                                Value in_path_error_messages; //type: uint64
-                                Value in_path_tear_messages; //type: uint64
-                                Value in_reservation_messages; //type: uint64
-                                Value in_reservation_error_messages; //type: uint64
-                                Value in_reservation_tear_messages; //type: uint64
-                                Value in_hello_messages; //type: uint64
-                                Value in_srefresh_messages; //type: uint64
-                                Value in_ack_messages; //type: uint64
-                                Value out_path_messages; //type: uint64
-                                Value out_path_error_messages; //type: uint64
-                                Value out_path_tear_messages; //type: uint64
-                                Value out_reservation_messages; //type: uint64
-                                Value out_reservation_error_messages; //type: uint64
-                                Value out_reservation_tear_messages; //type: uint64
-                                Value out_hello_messages; //type: uint64
-                                Value out_srefresh_messages; //type: uint64
-                                Value out_ack_messages; //type: uint64
 
+
+                                YLeaf in_path_messages; //type: uint64
+                                YLeaf in_path_error_messages; //type: uint64
+                                YLeaf in_path_tear_messages; //type: uint64
+                                YLeaf in_reservation_messages; //type: uint64
+                                YLeaf in_reservation_error_messages; //type: uint64
+                                YLeaf in_reservation_tear_messages; //type: uint64
+                                YLeaf in_hello_messages; //type: uint64
+                                YLeaf in_srefresh_messages; //type: uint64
+                                YLeaf in_ack_messages; //type: uint64
+                                YLeaf out_path_messages; //type: uint64
+                                YLeaf out_path_error_messages; //type: uint64
+                                YLeaf out_path_tear_messages; //type: uint64
+                                YLeaf out_reservation_messages; //type: uint64
+                                YLeaf out_reservation_error_messages; //type: uint64
+                                YLeaf out_reservation_tear_messages; //type: uint64
+                                YLeaf out_hello_messages; //type: uint64
+                                YLeaf out_srefresh_messages; //type: uint64
+                                YLeaf out_ack_messages; //type: uint64
 
 
 
@@ -1472,6 +1529,7 @@ class Mpls : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1485,9 +1543,10 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value hello_interval; //type: uint16
-                                Value refresh_reduction; //type: boolean
 
+
+                                YLeaf hello_interval; //type: uint16
+                                YLeaf refresh_reduction; //type: boolean
 
 
 
@@ -1507,9 +1566,10 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value hello_interval; //type: uint16
-                                Value refresh_reduction; //type: boolean
 
+
+                                YLeaf hello_interval; //type: uint16
+                                YLeaf refresh_reduction; //type: boolean
 
 
 
@@ -1538,6 +1598,7 @@ class Mpls : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1551,9 +1612,10 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: boolean
-                                Value authentication_key; //type: string
 
+
+                                YLeaf enable; //type: boolean
+                                YLeaf authentication_key; //type: string
 
 
 
@@ -1573,9 +1635,10 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: boolean
-                                Value authentication_key; //type: string
 
+
+                                YLeaf enable; //type: boolean
+                                YLeaf authentication_key; //type: string
 
 
 
@@ -1604,6 +1667,7 @@ class Mpls : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1617,8 +1681,9 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value subscription; //type: uint8
 
+
+                                YLeaf subscription; //type: uint8
 
 
 
@@ -1638,8 +1703,9 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value subscription; //type: uint8
 
+
+                                YLeaf subscription; //type: uint8
 
 
 
@@ -1668,6 +1734,7 @@ class Mpls : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1681,9 +1748,10 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value link_protection_style_requested; //type: ProtectionTypeIdentity
-                                Value bypass_optimize_interval; //type: uint16
 
+
+                                YLeaf link_protection_style_requested; //type: ProtectionTypeIdentity
+                                YLeaf bypass_optimize_interval; //type: uint16
 
 
 
@@ -1703,9 +1771,10 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value link_protection_style_requested; //type: ProtectionTypeIdentity
-                                Value bypass_optimize_interval; //type: uint16
 
+
+                                YLeaf link_protection_style_requested; //type: ProtectionTypeIdentity
+                                YLeaf bypass_optimize_interval; //type: uint16
 
 
 
@@ -1760,6 +1829,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Srgb : public Entity
             {
                 public:
@@ -1773,9 +1843,10 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lower_bound; //type: uint32
-                    Value upper_bound; //type: uint32
 
+
+                    YLeaf lower_bound; //type: uint32
+                    YLeaf upper_bound; //type: uint32
 
                 class Config : public Entity
                 {
@@ -1790,9 +1861,10 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lower_bound; //type: uint32
-                        Value upper_bound; //type: uint32
 
+
+                        YLeaf lower_bound; //type: uint32
+                        YLeaf upper_bound; //type: uint32
 
 
 
@@ -1812,12 +1884,13 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lower_bound; //type: uint32
-                        Value upper_bound; //type: uint32
-                        Value size; //type: uint32
-                        Value free; //type: uint32
-                        Value used; //type: uint32
 
+
+                        YLeaf lower_bound; //type: uint32
+                        YLeaf upper_bound; //type: uint32
+                        YLeaf size; //type: uint32
+                        YLeaf free; //type: uint32
+                        YLeaf used; //type: uint32
 
 
 
@@ -1844,9 +1917,10 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                    Value interface;
 
+
+                    //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                    YLeaf interface;
 
                 class Config : public Entity
                 {
@@ -1861,9 +1935,10 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                        Value interface;
 
+
+                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                        YLeaf interface;
 
 
 
@@ -1883,9 +1958,10 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                        Value interface;
 
+
+                        //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                        YLeaf interface;
 
 
 
@@ -1907,6 +1983,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -1920,9 +1997,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList advertise; //type: list of  AdvertiseEnum
-                            ValueList groups; //type: list of  uint32
 
+
+                            YLeafList advertise; //type: list of  AdvertiseEnum
+                            YLeafList groups; //type: list of  uint32
 
                             class AdvertiseEnum;
 
@@ -1943,9 +2021,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList advertise; //type: list of  AdvertiseEnum
-                            ValueList groups; //type: list of  uint32
 
+
+                            YLeafList advertise; //type: list of  AdvertiseEnum
+                            YLeafList groups; //type: list of  uint32
 
                             class AdvertiseEnum;
 
@@ -1990,6 +2069,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Timers : public Entity
             {
                 public:
@@ -2003,6 +2083,7 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
 
@@ -2039,6 +2120,7 @@ class Mpls : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ConstrainedPath : public Entity
         {
             public:
@@ -2054,6 +2136,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class NamedExplicitPaths : public Entity
             {
                 public:
@@ -2067,9 +2150,10 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::name)
-                    Value name;
 
+
+                    //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::name)
+                    YLeaf name;
 
                 class Config : public Entity
                 {
@@ -2084,8 +2168,9 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
 
 
@@ -2105,8 +2190,9 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
 
 
@@ -2126,9 +2212,10 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: uint8 (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config::index_)
-                        Value index_;
 
+
+                        //type: uint8 (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config::index_)
+                        YLeaf index_;
 
                     class Config : public Entity
                     {
@@ -2143,12 +2230,12 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value hop_type; //type: MplsHopTypeEnum
-                            Value index_; //type: uint8
 
 
-                            class MplsHopTypeEnum;
+                            YLeaf address; //type: string
+                            YLeaf hop_type; //type: MplsHopTypeEnum
+                            YLeaf index_; //type: uint8
+
 
 
                     }; // Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config
@@ -2167,12 +2254,12 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value hop_type; //type: MplsHopTypeEnum
-                            Value index_; //type: uint8
 
 
-                            class MplsHopTypeEnum;
+                            YLeaf address; //type: string
+                            YLeaf hop_type; //type: MplsHopTypeEnum
+                            YLeaf index_; //type: uint8
+
 
 
                     }; // Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::State
@@ -2206,10 +2293,11 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::Config::name)
-                    Value name;
-                    Value type; //type: TunnelTypeIdentity
 
+
+                    //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::Config::name)
+                    YLeaf name;
+                    YLeaf type; //type: TunnelTypeIdentity
 
                 class Config : public Entity
                 {
@@ -2224,23 +2312,23 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value type; //type: TunnelTypeIdentity
-                        Value signaling_protocol; //type: TunnelTypeIdentity
-                        Value local_id; //type: one of uint32, string
-                        Value description; //type: string
-                        Value admin_status; //type: TunnelAdminStatusIdentity
-                        Value preference; //type: uint8
-                        Value metric; //type: one of uint32, enumeration
-                        Value protection_style_requested; //type: ProtectionTypeIdentity
-                        Value reoptimize_timer; //type: uint16
-                        Value source; //type: string
-                        Value soft_preemption; //type: boolean
-                        Value setup_priority; //type: uint8
-                        Value hold_priority; //type: uint8
 
 
-                        class TeMetricTypeEnum;
+                        YLeaf name; //type: string
+                        YLeaf type; //type: TunnelTypeIdentity
+                        YLeaf signaling_protocol; //type: TunnelTypeIdentity
+                        YLeaf local_id; //type: one of uint32, string
+                        YLeaf description; //type: string
+                        YLeaf admin_status; //type: TunnelAdminStatusIdentity
+                        YLeaf preference; //type: uint8
+                        YLeaf metric; //type: one of uint32, enumeration
+                        YLeaf protection_style_requested; //type: ProtectionTypeIdentity
+                        YLeaf reoptimize_timer; //type: uint16
+                        YLeaf source; //type: string
+                        YLeaf soft_preemption; //type: boolean
+                        YLeaf setup_priority; //type: uint8
+                        YLeaf hold_priority; //type: uint8
+
 
 
                 }; // Mpls::Lsps::ConstrainedPath::Tunnel::Config
@@ -2259,23 +2347,24 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value type; //type: TunnelTypeIdentity
-                        Value signaling_protocol; //type: TunnelTypeIdentity
-                        Value local_id; //type: one of uint32, string
-                        Value description; //type: string
-                        Value admin_status; //type: TunnelAdminStatusIdentity
-                        Value preference; //type: uint8
-                        Value metric; //type: one of uint32, enumeration
-                        Value protection_style_requested; //type: ProtectionTypeIdentity
-                        Value reoptimize_timer; //type: uint16
-                        Value source; //type: string
-                        Value soft_preemption; //type: boolean
-                        Value setup_priority; //type: uint8
-                        Value hold_priority; //type: uint8
-                        Value oper_status; //type: LspOperStatusIdentity
-                        Value role; //type: LspRoleIdentity
 
+
+                        YLeaf name; //type: string
+                        YLeaf type; //type: TunnelTypeIdentity
+                        YLeaf signaling_protocol; //type: TunnelTypeIdentity
+                        YLeaf local_id; //type: one of uint32, string
+                        YLeaf description; //type: string
+                        YLeaf admin_status; //type: TunnelAdminStatusIdentity
+                        YLeaf preference; //type: uint8
+                        YLeaf metric; //type: one of uint32, enumeration
+                        YLeaf protection_style_requested; //type: ProtectionTypeIdentity
+                        YLeaf reoptimize_timer; //type: uint16
+                        YLeaf source; //type: string
+                        YLeaf soft_preemption; //type: boolean
+                        YLeaf setup_priority; //type: uint8
+                        YLeaf hold_priority; //type: uint8
+                        YLeaf oper_status; //type: LspOperStatusIdentity
+                        YLeaf role; //type: LspRoleIdentity
 
                     class Counters : public Entity
                     {
@@ -2290,14 +2379,15 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bytes; //type: uint64
-                            Value packets; //type: uint64
-                            Value path_changes; //type: uint64
-                            Value state_changes; //type: uint64
-                            Value online_time; //type: string
-                            Value current_path_time; //type: string
-                            Value next_reoptimization_time; //type: string
 
+
+                            YLeaf bytes; //type: uint64
+                            YLeaf packets; //type: uint64
+                            YLeaf path_changes; //type: uint64
+                            YLeaf state_changes; //type: uint64
+                            YLeaf online_time; //type: string
+                            YLeaf current_path_time; //type: string
+                            YLeaf next_reoptimization_time; //type: string
 
 
 
@@ -2305,7 +2395,6 @@ class Mpls : public Entity
 
 
                         std::unique_ptr<openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters> counters;
-                        class TeMetricTypeEnum;
 
 
                 }; // Mpls::Lsps::ConstrainedPath::Tunnel::State
@@ -2326,6 +2415,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -2339,11 +2429,11 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value specification_type; //type: TeBandwidthTypeEnum
-                            Value set_bandwidth; //type: uint32
 
 
-                            class TeBandwidthTypeEnum;
+                            YLeaf specification_type; //type: TeBandwidthTypeEnum
+                            YLeaf set_bandwidth; //type: uint32
+
 
 
                     }; // Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config
@@ -2362,11 +2452,11 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value specification_type; //type: TeBandwidthTypeEnum
-                            Value set_bandwidth; //type: uint32
 
 
-                            class TeBandwidthTypeEnum;
+                            YLeaf specification_type; //type: TeBandwidthTypeEnum
+                            YLeaf set_bandwidth; //type: uint32
+
 
 
                     }; // Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State
@@ -2387,6 +2477,7 @@ class Mpls : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -2400,12 +2491,13 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
-                                Value min_bw; //type: uint32
-                                Value max_bw; //type: uint32
-                                Value adjust_interval; //type: uint32
-                                Value adjust_threshold; //type: uint8
 
+
+                                YLeaf enabled; //type: boolean
+                                YLeaf min_bw; //type: uint32
+                                YLeaf max_bw; //type: uint32
+                                YLeaf adjust_interval; //type: uint32
+                                YLeaf adjust_threshold; //type: uint8
 
 
 
@@ -2425,12 +2517,13 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
-                                Value min_bw; //type: uint32
-                                Value max_bw; //type: uint32
-                                Value adjust_interval; //type: uint32
-                                Value adjust_threshold; //type: uint8
 
+
+                                YLeaf enabled; //type: boolean
+                                YLeaf min_bw; //type: uint32
+                                YLeaf max_bw; //type: uint32
+                                YLeaf adjust_interval; //type: uint32
+                                YLeaf adjust_threshold; //type: uint8
 
 
 
@@ -2452,6 +2545,7 @@ class Mpls : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -2465,10 +2559,11 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enabled; //type: boolean
-                                    Value overflow_threshold; //type: uint8
-                                    Value trigger_event_count; //type: uint16
 
+
+                                    YLeaf enabled; //type: boolean
+                                    YLeaf overflow_threshold; //type: uint8
+                                    YLeaf trigger_event_count; //type: uint16
 
 
 
@@ -2488,10 +2583,11 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enabled; //type: boolean
-                                    Value overflow_threshold; //type: uint8
-                                    Value trigger_event_count; //type: uint16
 
+
+                                    YLeaf enabled; //type: boolean
+                                    YLeaf overflow_threshold; //type: uint8
+                                    YLeaf trigger_event_count; //type: uint16
 
 
 
@@ -2520,6 +2616,7 @@ class Mpls : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -2533,10 +2630,11 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enabled; //type: boolean
-                                    Value underflow_threshold; //type: uint8
-                                    Value trigger_event_count; //type: uint16
 
+
+                                    YLeaf enabled; //type: boolean
+                                    YLeaf underflow_threshold; //type: uint8
+                                    YLeaf trigger_event_count; //type: uint16
 
 
 
@@ -2556,10 +2654,11 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enabled; //type: boolean
-                                    Value underflow_threshold; //type: uint8
-                                    Value trigger_event_count; //type: uint16
 
+
+                                    YLeaf enabled; //type: boolean
+                                    YLeaf underflow_threshold; //type: uint8
+                                    YLeaf trigger_event_count; //type: uint16
 
 
 
@@ -2605,6 +2704,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -2618,8 +2718,9 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination; //type: string
 
+
+                            YLeaf destination; //type: string
 
 
 
@@ -2639,8 +2740,9 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination; //type: string
 
+
+                            YLeaf destination; //type: string
 
 
 
@@ -2660,9 +2762,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config::name)
-                            Value name;
 
+
+                            //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config::name)
+                            YLeaf name;
 
                         class Config : public Entity
                         {
@@ -2677,20 +2780,20 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
-                                Value path_computation_method; //type: PathComputationMethodIdentity
-                                Value use_cspf; //type: boolean
-                                Value cspf_tiebreaker; //type: CspfTieBreakingEnum
-                                Value path_computation_server; //type: string
+
+
+                                YLeaf name; //type: string
+                                YLeaf path_computation_method; //type: PathComputationMethodIdentity
+                                YLeaf use_cspf; //type: boolean
+                                YLeaf cspf_tiebreaker; //type: CspfTieBreakingEnum
+                                YLeaf path_computation_server; //type: string
                                 //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::name)
-                                Value explicit_path_name;
-                                Value preference; //type: uint8
-                                Value setup_priority; //type: uint8
-                                Value hold_priority; //type: uint8
-                                Value retry_timer; //type: uint16
+                                YLeaf explicit_path_name;
+                                YLeaf preference; //type: uint8
+                                YLeaf setup_priority; //type: uint8
+                                YLeaf hold_priority; //type: uint8
+                                YLeaf retry_timer; //type: uint16
 
-
-                                class CspfTieBreakingEnum;
 
 
                         }; // Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config
@@ -2709,20 +2812,20 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
-                                Value path_computation_method; //type: PathComputationMethodIdentity
-                                Value use_cspf; //type: boolean
-                                Value cspf_tiebreaker; //type: CspfTieBreakingEnum
-                                Value path_computation_server; //type: string
+
+
+                                YLeaf name; //type: string
+                                YLeaf path_computation_method; //type: PathComputationMethodIdentity
+                                YLeaf use_cspf; //type: boolean
+                                YLeaf cspf_tiebreaker; //type: CspfTieBreakingEnum
+                                YLeaf path_computation_server; //type: string
                                 //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::name)
-                                Value explicit_path_name;
-                                Value preference; //type: uint8
-                                Value setup_priority; //type: uint8
-                                Value hold_priority; //type: uint8
-                                Value retry_timer; //type: uint16
+                                YLeaf explicit_path_name;
+                                YLeaf preference; //type: uint8
+                                YLeaf setup_priority; //type: uint8
+                                YLeaf hold_priority; //type: uint8
+                                YLeaf retry_timer; //type: uint16
 
-
-                                class CspfTieBreakingEnum;
 
 
                         }; // Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::State
@@ -2743,6 +2846,7 @@ class Mpls : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class CandidateSecondaryPath : public Entity
                             {
                                 public:
@@ -2756,9 +2860,10 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    //type: leafref (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::Config::secondary_path)
-                                    Value secondary_path;
 
+
+                                    //type: leafref (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::Config::secondary_path)
+                                    YLeaf secondary_path;
 
                                 class Config : public Entity
                                 {
@@ -2773,10 +2878,11 @@ class Mpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::name)
-                                        Value secondary_path;
-                                        Value priority; //type: uint16
 
+
+                                        //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::name)
+                                        YLeaf secondary_path;
+                                        YLeaf priority; //type: uint16
 
 
 
@@ -2796,11 +2902,12 @@ class Mpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::name)
-                                        Value secondary_path;
-                                        Value priority; //type: uint16
-                                        Value active; //type: boolean
 
+
+                                        //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::name)
+                                        YLeaf secondary_path;
+                                        YLeaf priority; //type: uint16
+                                        YLeaf active; //type: boolean
 
 
 
@@ -2835,6 +2942,7 @@ class Mpls : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -2848,13 +2956,14 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList exclude_group;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList include_all_group;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList include_any_group;
 
+
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList exclude_group;
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList include_all_group;
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList include_any_group;
 
 
 
@@ -2874,13 +2983,14 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList exclude_group;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList include_all_group;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList include_any_group;
 
+
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList exclude_group;
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList include_all_group;
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList include_any_group;
 
 
 
@@ -2916,9 +3026,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::name)
-                            Value name;
 
+
+                            //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::name)
+                            YLeaf name;
 
                         class Config : public Entity
                         {
@@ -2933,20 +3044,20 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
-                                Value path_computation_method; //type: PathComputationMethodIdentity
-                                Value use_cspf; //type: boolean
-                                Value cspf_tiebreaker; //type: CspfTieBreakingEnum
-                                Value path_computation_server; //type: string
+
+
+                                YLeaf name; //type: string
+                                YLeaf path_computation_method; //type: PathComputationMethodIdentity
+                                YLeaf use_cspf; //type: boolean
+                                YLeaf cspf_tiebreaker; //type: CspfTieBreakingEnum
+                                YLeaf path_computation_server; //type: string
                                 //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::name)
-                                Value explicit_path_name;
-                                Value preference; //type: uint8
-                                Value setup_priority; //type: uint8
-                                Value hold_priority; //type: uint8
-                                Value retry_timer; //type: uint16
+                                YLeaf explicit_path_name;
+                                YLeaf preference; //type: uint8
+                                YLeaf setup_priority; //type: uint8
+                                YLeaf hold_priority; //type: uint8
+                                YLeaf retry_timer; //type: uint16
 
-
-                                class CspfTieBreakingEnum;
 
 
                         }; // Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config
@@ -2965,20 +3076,20 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
-                                Value path_computation_method; //type: PathComputationMethodIdentity
-                                Value use_cspf; //type: boolean
-                                Value cspf_tiebreaker; //type: CspfTieBreakingEnum
-                                Value path_computation_server; //type: string
+
+
+                                YLeaf name; //type: string
+                                YLeaf path_computation_method; //type: PathComputationMethodIdentity
+                                YLeaf use_cspf; //type: boolean
+                                YLeaf cspf_tiebreaker; //type: CspfTieBreakingEnum
+                                YLeaf path_computation_server; //type: string
                                 //type: string (refers to openconfig_mpls::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::name)
-                                Value explicit_path_name;
-                                Value preference; //type: uint8
-                                Value setup_priority; //type: uint8
-                                Value hold_priority; //type: uint8
-                                Value retry_timer; //type: uint16
+                                YLeaf explicit_path_name;
+                                YLeaf preference; //type: uint8
+                                YLeaf setup_priority; //type: uint8
+                                YLeaf hold_priority; //type: uint8
+                                YLeaf retry_timer; //type: uint16
 
-
-                                class CspfTieBreakingEnum;
 
 
                         }; // Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::State
@@ -2999,6 +3110,7 @@ class Mpls : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3012,13 +3124,14 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList exclude_group;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList include_all_group;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList include_any_group;
 
+
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList exclude_group;
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList include_all_group;
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList include_any_group;
 
 
 
@@ -3038,13 +3151,14 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList exclude_group;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList include_all_group;
-                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
-                                    ValueList include_any_group;
 
+
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList exclude_group;
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList include_all_group;
+                                    //type: list of  leafref (refers to openconfig_mpls::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::admin_group_name)
+                                    YLeafList include_any_group;
 
 
 
@@ -3106,6 +3220,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class PathSetupProtocol : public Entity
             {
                 public:
@@ -3119,6 +3234,7 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Ldp : public Entity
@@ -3136,6 +3252,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Tunnel : public Entity
                     {
                         public:
@@ -3149,9 +3266,10 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value tunnel_type; //type: TunnelTypeEnum
-                            Value ldp_type; //type: LdpTypeEnum
 
+
+                            YLeaf tunnel_type; //type: TunnelTypeEnum
+                            YLeaf ldp_type; //type: LdpTypeEnum
 
                         class P2PLsp : public Entity
                         {
@@ -3166,8 +3284,9 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                ValueList fec_address; //type: list of  string
 
+
+                                YLeafList fec_address; //type: list of  string
 
 
 
@@ -3187,6 +3306,7 @@ class Mpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
+
 
 
 
@@ -3211,6 +3331,7 @@ class Mpls : public Entity
 
 
 
+
                         }; // Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Mp2MpLsp
 
 
@@ -3218,7 +3339,6 @@ class Mpls : public Entity
                             std::unique_ptr<openconfig_mpls::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2MpLsp> p2mp_lsp;
                             std::unique_ptr<openconfig_mpls::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp> p2p_lsp;
                             class LdpTypeEnum;
-                            class TunnelTypeEnum;
 
 
                     }; // Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel
@@ -3245,6 +3365,7 @@ class Mpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Tunnel : public Entity
                     {
                         public:
@@ -3258,8 +3379,9 @@ class Mpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value tunnel_type; //type: TunnelTypeEnum
 
+
+                            YLeaf tunnel_type; //type: TunnelTypeEnum
 
                         class P2PLsp : public Entity
                         {
@@ -3276,6 +3398,7 @@ class Mpls : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Fec : public Entity
                             {
                                 public:
@@ -3289,8 +3412,9 @@ class Mpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value fec_address; //type: string
 
+
+                                    YLeaf fec_address; //type: string
 
                                 class Config : public Entity
                                 {
@@ -3305,8 +3429,9 @@ class Mpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fec_address; //type: string
 
+
+                                        YLeaf fec_address; //type: string
 
 
 
@@ -3326,8 +3451,9 @@ class Mpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fec_address; //type: string
 
+
+                                        YLeaf fec_address; //type: string
 
 
 
@@ -3349,6 +3475,7 @@ class Mpls : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Config : public Entity
                                     {
                                         public:
@@ -3362,13 +3489,14 @@ class Mpls : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value type; //type: TypeEnum
-                                            Value node_flag; //type: boolean
-                                            Value last_hop_behavior; //type: LastHopBehaviorEnum
 
 
-                                            class LastHopBehaviorEnum;
+                                            YLeaf type; //type: TypeEnum
+                                            YLeaf node_flag; //type: boolean
+                                            YLeaf last_hop_behavior; //type: LastHopBehaviorEnum
+
                                             class TypeEnum;
+                                            class LastHopBehaviorEnum;
 
 
                                     }; // Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config
@@ -3387,13 +3515,14 @@ class Mpls : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value type; //type: TypeEnum
-                                            Value node_flag; //type: boolean
-                                            Value last_hop_behavior; //type: LastHopBehaviorEnum
 
 
-                                            class LastHopBehaviorEnum;
+                                            YLeaf type; //type: TypeEnum
+                                            YLeaf node_flag; //type: boolean
+                                            YLeaf last_hop_behavior; //type: LastHopBehaviorEnum
+
                                             class TypeEnum;
+                                            class LastHopBehaviorEnum;
 
 
                                     }; // Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State
@@ -3421,7 +3550,6 @@ class Mpls : public Entity
 
 
                             std::unique_ptr<openconfig_mpls::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp> p2p_lsp;
-                            class TunnelTypeEnum;
 
 
                     }; // Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel
@@ -3461,6 +3589,7 @@ class Mpls : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LabelSwitchedPath : public Entity
             {
                 public:
@@ -3474,8 +3603,9 @@ class Mpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class Ingress : public Entity
                 {
@@ -3490,13 +3620,12 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value next_hop; //type: string
-                        Value incoming_label; //type: one of uint32, enumeration
-                        Value push_label; //type: one of uint32, enumeration
 
 
-                        class MplsLabelEnum;
-                        class MplsLabelEnum;
+                        YLeaf next_hop; //type: string
+                        YLeaf incoming_label; //type: one of uint32, enumeration
+                        YLeaf push_label; //type: one of uint32, enumeration
+
 
 
                 }; // Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress
@@ -3515,13 +3644,12 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value next_hop; //type: string
-                        Value incoming_label; //type: one of uint32, enumeration
-                        Value push_label; //type: one of uint32, enumeration
 
 
-                        class MplsLabelEnum;
-                        class MplsLabelEnum;
+                        YLeaf next_hop; //type: string
+                        YLeaf incoming_label; //type: one of uint32, enumeration
+                        YLeaf push_label; //type: one of uint32, enumeration
+
 
 
                 }; // Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit
@@ -3540,13 +3668,12 @@ class Mpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value next_hop; //type: string
-                        Value incoming_label; //type: one of uint32, enumeration
-                        Value push_label; //type: one of uint32, enumeration
 
 
-                        class MplsLabelEnum;
-                        class MplsLabelEnum;
+                        YLeaf next_hop; //type: string
+                        YLeaf incoming_label; //type: one of uint32, enumeration
+                        YLeaf push_label; //type: one of uint32, enumeration
+
 
 
                 }; // Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress
@@ -3620,187 +3747,187 @@ class ExternallyQueriedIdentity : public openconfig_mpls::PathComputationMethodI
 class MplsSrlgFloodingTypeEnum : public Enum
 {
     public:
-        static const Enum::Value FLOODED_SRLG;
-        static const Enum::Value STATIC_SRLG;
+        static const Enum::YLeaf FLOODED_SRLG;
+        static const Enum::YLeaf STATIC_SRLG;
 
 };
 
 class MplsHopTypeEnum : public Enum
 {
     public:
-        static const Enum::Value LOOSE;
-        static const Enum::Value STRICT;
+        static const Enum::YLeaf LOOSE;
+        static const Enum::YLeaf STRICT;
 
 };
 
 class CspfTieBreakingEnum : public Enum
 {
     public:
-        static const Enum::Value RANDOM;
-        static const Enum::Value LEAST_FILL;
-        static const Enum::Value MOST_FILL;
+        static const Enum::YLeaf RANDOM;
+        static const Enum::YLeaf LEAST_FILL;
+        static const Enum::YLeaf MOST_FILL;
 
 };
 
 class TeMetricTypeEnum : public Enum
 {
     public:
-        static const Enum::Value IGP;
+        static const Enum::YLeaf IGP;
 
 };
 
 class TeBandwidthTypeEnum : public Enum
 {
     public:
-        static const Enum::Value SPECIFIED;
-        static const Enum::Value AUTO;
+        static const Enum::YLeaf SPECIFIED;
+        static const Enum::YLeaf AUTO;
 
 };
 
 class Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdTypeEnum : public Enum
 {
     public:
-        static const Enum::Value DELTA;
-        static const Enum::Value THRESHOLD_CROSSED;
+        static const Enum::YLeaf DELTA;
+        static const Enum::YLeaf THRESHOLD_CROSSED;
 
 };
 
 class Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum : public Enum
 {
     public:
-        static const Enum::Value MIRRORED_UP_DOWN;
-        static const Enum::Value SEPARATE_UP_DOWN;
+        static const Enum::YLeaf MIRRORED_UP_DOWN;
+        static const Enum::YLeaf SEPARATE_UP_DOWN;
 
 };
 
 class Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdTypeEnum : public Enum
 {
     public:
-        static const Enum::Value DELTA;
-        static const Enum::Value THRESHOLD_CROSSED;
+        static const Enum::YLeaf DELTA;
+        static const Enum::YLeaf THRESHOLD_CROSSED;
 
 };
 
 class Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdSpecificationEnum : public Enum
 {
     public:
-        static const Enum::Value MIRRORED_UP_DOWN;
-        static const Enum::Value SEPARATE_UP_DOWN;
+        static const Enum::YLeaf MIRRORED_UP_DOWN;
+        static const Enum::YLeaf SEPARATE_UP_DOWN;
 
 };
 
 class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdTypeEnum : public Enum
 {
     public:
-        static const Enum::Value DELTA;
-        static const Enum::Value THRESHOLD_CROSSED;
+        static const Enum::YLeaf DELTA;
+        static const Enum::YLeaf THRESHOLD_CROSSED;
 
 };
 
 class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum : public Enum
 {
     public:
-        static const Enum::Value MIRRORED_UP_DOWN;
-        static const Enum::Value SEPARATE_UP_DOWN;
+        static const Enum::YLeaf MIRRORED_UP_DOWN;
+        static const Enum::YLeaf SEPARATE_UP_DOWN;
 
 };
 
 class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdTypeEnum : public Enum
 {
     public:
-        static const Enum::Value DELTA;
-        static const Enum::Value THRESHOLD_CROSSED;
+        static const Enum::YLeaf DELTA;
+        static const Enum::YLeaf THRESHOLD_CROSSED;
 
 };
 
 class Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecificationEnum : public Enum
 {
     public:
-        static const Enum::Value MIRRORED_UP_DOWN;
-        static const Enum::Value SEPARATE_UP_DOWN;
+        static const Enum::YLeaf MIRRORED_UP_DOWN;
+        static const Enum::YLeaf SEPARATE_UP_DOWN;
 
 };
 
 class Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::StatusEnum : public Enum
 {
     public:
-        static const Enum::Value UP;
-        static const Enum::Value DOWN;
+        static const Enum::YLeaf UP;
+        static const Enum::YLeaf DOWN;
 
 };
 
 class Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum : public Enum
 {
     public:
-        static const Enum::Value SOURCE;
-        static const Enum::Value TRANSIT;
-        static const Enum::Value DESTINATION;
+        static const Enum::YLeaf SOURCE;
+        static const Enum::YLeaf TRANSIT;
+        static const Enum::YLeaf DESTINATION;
 
 };
 
 class Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::NeighborStatusEnum : public Enum
 {
     public:
-        static const Enum::Value UP;
-        static const Enum::Value DOWN;
+        static const Enum::YLeaf UP;
+        static const Enum::YLeaf DOWN;
 
 };
 
 class Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::AdvertiseEnum : public Enum
 {
     public:
-        static const Enum::Value PROTECTED;
-        static const Enum::Value UNPROTECTED;
+        static const Enum::YLeaf PROTECTED;
+        static const Enum::YLeaf UNPROTECTED;
 
 };
 
 class Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::AdvertiseEnum : public Enum
 {
     public:
-        static const Enum::Value PROTECTED;
-        static const Enum::Value UNPROTECTED;
+        static const Enum::YLeaf PROTECTED;
+        static const Enum::YLeaf UNPROTECTED;
 
 };
 
 class Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::LdpTypeEnum : public Enum
 {
     public:
-        static const Enum::Value BASIC;
-        static const Enum::Value TARGETED;
+        static const Enum::YLeaf BASIC;
+        static const Enum::YLeaf TARGETED;
 
 };
 
 class Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::TypeEnum : public Enum
 {
     public:
-        static const Enum::Value INDEX;
-        static const Enum::Value ABSOLUTE;
+        static const Enum::YLeaf INDEX;
+        static const Enum::YLeaf ABSOLUTE;
 
 };
 
 class Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum : public Enum
 {
     public:
-        static const Enum::Value EXPLICIT_NULL;
-        static const Enum::Value UNCHANGED;
-        static const Enum::Value PHP;
+        static const Enum::YLeaf EXPLICIT_NULL;
+        static const Enum::YLeaf UNCHANGED;
+        static const Enum::YLeaf PHP;
 
 };
 
 class Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::TypeEnum : public Enum
 {
     public:
-        static const Enum::Value INDEX;
-        static const Enum::Value ABSOLUTE;
+        static const Enum::YLeaf INDEX;
+        static const Enum::YLeaf ABSOLUTE;
 
 };
 
 class Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum : public Enum
 {
     public:
-        static const Enum::Value EXPLICIT_NULL;
-        static const Enum::Value UNCHANGED;
-        static const Enum::Value PHP;
+        static const Enum::YLeaf EXPLICIT_NULL;
+        static const Enum::YLeaf UNCHANGED;
+        static const Enum::YLeaf PHP;
 
 };
 

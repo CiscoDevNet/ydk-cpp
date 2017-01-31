@@ -14,45 +14,45 @@ namespace Cisco_IOS_XR_controller_optics_cfg {
 class ThresholdEnum : public Enum
 {
     public:
-        static const Enum::Value low;
-        static const Enum::Value high;
+        static const Enum::YLeaf low;
+        static const Enum::YLeaf high;
 
 };
 
 class OpticsFecEnum : public Enum
 {
     public:
-        static const Enum::Value fec_none;
-        static const Enum::Value fec_h15;
-        static const Enum::Value fec_h25;
-        static const Enum::Value fec_h15_de;
-        static const Enum::Value fec_h25_de;
+        static const Enum::YLeaf fec_none;
+        static const Enum::YLeaf fec_h15;
+        static const Enum::YLeaf fec_h25;
+        static const Enum::YLeaf fec_h15_de;
+        static const Enum::YLeaf fec_h25_de;
 
 };
 
 class OpticsLoopbackEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value internal;
-        static const Enum::Value line;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf internal;
+        static const Enum::YLeaf line;
 
 };
 
 class OpticsDwdmCarrierGridEnum : public Enum
 {
     public:
-        static const Enum::Value Y_50g_hz_grid;
-        static const Enum::Value Y_100mhz_grid;
+        static const Enum::YLeaf Y_50g_hz_grid;
+        static const Enum::YLeaf Y_100mhz_grid;
 
 };
 
 class OpticsDwdmCarrierParamEnum : public Enum
 {
     public:
-        static const Enum::Value itu_ch;
-        static const Enum::Value wavelength;
-        static const Enum::Value frequency;
+        static const Enum::YLeaf itu_ch;
+        static const Enum::YLeaf wavelength;
+        static const Enum::YLeaf frequency;
 
 };
 

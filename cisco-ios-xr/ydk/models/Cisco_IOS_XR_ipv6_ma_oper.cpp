@@ -55,7 +55,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Li
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -167,7 +167,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Ad
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -270,7 +270,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_oper
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(line_state.operation)
-	|| (link_local_address !=  nullptr && is_set(link_local_address->operation));
+	|| (link_local_address !=  nullptr && link_local_address->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_segment_path() const
@@ -287,7 +287,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -428,7 +428,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -541,7 +541,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -650,7 +650,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -724,17 +724,17 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::has_data() const
 {
-    for (auto const & leaf : common.getValues())
+    for (auto const & leaf : common.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : inbound.getValues())
+    for (auto const & leaf : inbound.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : outbound.getValues())
+    for (auto const & leaf : outbound.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -744,22 +744,25 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::has_operation() const
 {
-    for (auto const & leaf : common.getValues())
+    for (auto const & leaf : common.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : inbound.getValues())
+    for (auto const & leaf : inbound.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : outbound.getValues())
+    for (auto const & leaf : outbound.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(common.operation)
+	|| is_set(inbound.operation)
+	|| is_set(outbound.operation);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::get_segment_path() const
@@ -776,7 +779,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -878,7 +881,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -979,7 +982,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1075,7 +1078,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1156,8 +1159,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && is_set(input->operation))
-	|| (output !=  nullptr && is_set(output->operation));
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::get_segment_path() const
@@ -1174,7 +1177,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1292,7 +1295,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1364,7 +1367,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1436,7 +1439,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1508,7 +1511,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1580,7 +1583,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1655,7 +1658,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1747,7 +1750,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1847,7 +1850,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2016,16 +2019,16 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 	|| is_set(mtu.operation)
 	|| is_set(operation_state.operation)
 	|| is_set(rg_id_exists.operation)
-	|| (access_control_list !=  nullptr && is_set(access_control_list->operation))
-	|| (bgp_pa !=  nullptr && is_set(bgp_pa->operation))
-	|| (caps_utime !=  nullptr && is_set(caps_utime->operation))
-	|| (fwd_dis_utime !=  nullptr && is_set(fwd_dis_utime->operation))
-	|| (fwd_en_utime !=  nullptr && is_set(fwd_en_utime->operation))
-	|| (idb_utime !=  nullptr && is_set(idb_utime->operation))
-	|| (link_local_address !=  nullptr && is_set(link_local_address->operation))
-	|| (multi_access_control_list !=  nullptr && is_set(multi_access_control_list->operation))
-	|| (rpf !=  nullptr && is_set(rpf->operation))
-	|| (utime !=  nullptr && is_set(utime->operation));
+	|| (access_control_list !=  nullptr && access_control_list->has_operation())
+	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
+	|| (caps_utime !=  nullptr && caps_utime->has_operation())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_operation())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_operation())
+	|| (idb_utime !=  nullptr && idb_utime->has_operation())
+	|| (link_local_address !=  nullptr && link_local_address->has_operation())
+	|| (multi_access_control_list !=  nullptr && multi_access_control_list->has_operation())
+	|| (rpf !=  nullptr && rpf->has_operation())
+	|| (utime !=  nullptr && utime->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::get_segment_path() const
@@ -2042,7 +2045,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::Gl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2477,7 +2480,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2590,7 +2593,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::Glo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2702,7 +2705,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::Glo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2805,7 +2808,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBri
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(line_state.operation)
-	|| (link_local_address !=  nullptr && is_set(link_local_address->operation));
+	|| (link_local_address !=  nullptr && link_local_address->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::get_segment_path() const
@@ -2822,7 +2825,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::Glo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2963,7 +2966,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3076,7 +3079,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3185,7 +3188,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3259,17 +3262,17 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccess
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::has_data() const
 {
-    for (auto const & leaf : common.getValues())
+    for (auto const & leaf : common.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : inbound.getValues())
+    for (auto const & leaf : inbound.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : outbound.getValues())
+    for (auto const & leaf : outbound.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3279,22 +3282,25 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiA
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::has_operation() const
 {
-    for (auto const & leaf : common.getValues())
+    for (auto const & leaf : common.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : inbound.getValues())
+    for (auto const & leaf : inbound.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : outbound.getValues())
+    for (auto const & leaf : outbound.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(common.operation)
+	|| is_set(inbound.operation)
+	|| is_set(outbound.operation);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::get_segment_path() const
@@ -3311,7 +3317,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3413,7 +3419,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3514,7 +3520,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3610,7 +3616,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3691,8 +3697,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && is_set(input->operation))
-	|| (output !=  nullptr && is_set(output->operation));
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::get_segment_path() const
@@ -3709,7 +3715,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3827,7 +3833,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3899,7 +3905,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3971,7 +3977,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4043,7 +4049,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4115,7 +4121,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4190,7 +4196,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4282,7 +4288,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4382,7 +4388,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4551,16 +4557,16 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_op
 	|| is_set(mtu.operation)
 	|| is_set(operation_state.operation)
 	|| is_set(rg_id_exists.operation)
-	|| (access_control_list !=  nullptr && is_set(access_control_list->operation))
-	|| (bgp_pa !=  nullptr && is_set(bgp_pa->operation))
-	|| (caps_utime !=  nullptr && is_set(caps_utime->operation))
-	|| (fwd_dis_utime !=  nullptr && is_set(fwd_dis_utime->operation))
-	|| (fwd_en_utime !=  nullptr && is_set(fwd_en_utime->operation))
-	|| (idb_utime !=  nullptr && is_set(idb_utime->operation))
-	|| (link_local_address !=  nullptr && is_set(link_local_address->operation))
-	|| (multi_access_control_list !=  nullptr && is_set(multi_access_control_list->operation))
-	|| (rpf !=  nullptr && is_set(rpf->operation))
-	|| (utime !=  nullptr && is_set(utime->operation));
+	|| (access_control_list !=  nullptr && access_control_list->has_operation())
+	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
+	|| (caps_utime !=  nullptr && caps_utime->has_operation())
+	|| (fwd_dis_utime !=  nullptr && fwd_dis_utime->has_operation())
+	|| (fwd_en_utime !=  nullptr && fwd_en_utime->has_operation())
+	|| (idb_utime !=  nullptr && idb_utime->has_operation())
+	|| (link_local_address !=  nullptr && link_local_address->has_operation())
+	|| (multi_access_control_list !=  nullptr && multi_access_control_list->has_operation())
+	|| (rpf !=  nullptr && rpf->has_operation())
+	|| (utime !=  nullptr && utime->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_segment_path() const
@@ -4577,7 +4583,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5012,7 +5018,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5118,10 +5124,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (briefs !=  nullptr && is_set(briefs->operation))
-	|| (details !=  nullptr && is_set(details->operation))
-	|| (global_briefs !=  nullptr && is_set(global_briefs->operation))
-	|| (global_details !=  nullptr && is_set(global_details->operation));
+	|| (briefs !=  nullptr && briefs->has_operation())
+	|| (details !=  nullptr && details->has_operation())
+	|| (global_briefs !=  nullptr && global_briefs->has_operation())
+	|| (global_details !=  nullptr && global_details->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_segment_path() const
@@ -5138,7 +5144,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5317,7 +5323,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5424,7 +5430,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5520,7 +5526,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5616,7 +5622,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5712,7 +5718,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5807,10 +5813,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Summary::has_operation() const
 {
     return is_set(operation)
 	|| is_set(if_up_down_basecaps_up.operation)
-	|| (if_down_down !=  nullptr && is_set(if_down_down->operation))
-	|| (if_shutdown_down !=  nullptr && is_set(if_shutdown_down->operation))
-	|| (if_up_down !=  nullptr && is_set(if_up_down->operation))
-	|| (if_up_up !=  nullptr && is_set(if_up_up->operation));
+	|| (if_down_down !=  nullptr && if_down_down->has_operation())
+	|| (if_shutdown_down !=  nullptr && if_shutdown_down->has_operation())
+	|| (if_up_down !=  nullptr && if_up_down->has_operation())
+	|| (if_up_up !=  nullptr && if_up_up->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Summary::get_segment_path() const
@@ -5827,7 +5833,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5990,8 +5996,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::has_data() const
 bool Ipv6Network::Nodes::Node::InterfaceData::has_operation() const
 {
     return is_set(operation)
-	|| (summary !=  nullptr && is_set(summary->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (summary !=  nullptr && summary->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::get_segment_path() const
@@ -6008,7 +6014,7 @@ EntityPath Ipv6Network::Nodes::Node::InterfaceData::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6119,7 +6125,7 @@ bool Ipv6Network::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (interface_data !=  nullptr && is_set(interface_data->operation));
+	|| (interface_data !=  nullptr && interface_data->has_operation());
 }
 
 std::string Ipv6Network::Nodes::Node::get_segment_path() const
@@ -6333,7 +6339,7 @@ bool Ipv6Network::has_data() const
 bool Ipv6Network::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Ipv6Network::get_segment_path() const
@@ -6350,7 +6356,7 @@ EntityPath Ipv6Network::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -6414,19 +6420,19 @@ std::unique_ptr<Entity> Ipv6Network::clone_ptr()
     return std::make_unique<Ipv6Network>();
 }
 
-const Enum::Value Ipv6MaOperStateEnum::oper_up {1, "oper-up"};
-const Enum::Value Ipv6MaOperStateEnum::oper_down {2, "oper-down"};
+const Enum::YLeaf Ipv6MaOperStateEnum::oper_up {1, "oper-up"};
+const Enum::YLeaf Ipv6MaOperStateEnum::oper_down {2, "oper-down"};
 
-const Enum::Value Ipv6MaIfLineStateEnum::down {1, "down"};
-const Enum::Value Ipv6MaIfLineStateEnum::up {2, "up"};
-const Enum::Value Ipv6MaIfLineStateEnum::unknown {3, "unknown"};
-const Enum::Value Ipv6MaIfLineStateEnum::error {4, "error"};
+const Enum::YLeaf Ipv6MaIfLineStateEnum::down {1, "down"};
+const Enum::YLeaf Ipv6MaIfLineStateEnum::up {2, "up"};
+const Enum::YLeaf Ipv6MaIfLineStateEnum::unknown {3, "unknown"};
+const Enum::YLeaf Ipv6MaIfLineStateEnum::error {4, "error"};
 
-const Enum::Value Ipv6MaIfAddrStateEnum::active {1, "active"};
-const Enum::Value Ipv6MaIfAddrStateEnum::deprecated {2, "deprecated"};
-const Enum::Value Ipv6MaIfAddrStateEnum::duplicate {3, "duplicate"};
-const Enum::Value Ipv6MaIfAddrStateEnum::inaccessible {4, "inaccessible"};
-const Enum::Value Ipv6MaIfAddrStateEnum::tentative {5, "tentative"};
+const Enum::YLeaf Ipv6MaIfAddrStateEnum::active {1, "active"};
+const Enum::YLeaf Ipv6MaIfAddrStateEnum::deprecated {2, "deprecated"};
+const Enum::YLeaf Ipv6MaIfAddrStateEnum::duplicate {3, "duplicate"};
+const Enum::YLeaf Ipv6MaIfAddrStateEnum::inaccessible {4, "inaccessible"};
+const Enum::YLeaf Ipv6MaIfAddrStateEnum::tentative {5, "tentative"};
 
 
 }

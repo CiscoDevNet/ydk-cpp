@@ -388,9 +388,9 @@ bool Exception::has_operation() const
 	|| is_set(packet_memory.operation)
 	|| is_set(sparse.operation)
 	|| is_set(sparse_size.operation)
-	|| (choice1 !=  nullptr && is_set(choice1->operation))
-	|| (choice2 !=  nullptr && is_set(choice2->operation))
-	|| (choice3 !=  nullptr && is_set(choice3->operation));
+	|| (choice1 !=  nullptr && choice1->has_operation())
+	|| (choice2 !=  nullptr && choice2->has_operation())
+	|| (choice3 !=  nullptr && choice3->has_operation());
 }
 
 std::string Exception::get_segment_path() const
@@ -407,7 +407,7 @@ EntityPath Exception::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

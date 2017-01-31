@@ -45,7 +45,7 @@ ydk::path::RpcImpl::RpcImpl(SchemaNodeImpl* sn, struct ly_ctx* ctx) : m_sn{sn}
 
     if(!dnode){
         BOOST_LOG_TRIVIAL(error) << "Cannot find DataNode with path " << sn->path();
-        BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Illegal state"});
+        BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Illegal state"});
     }
 
     m_input_dn = new DataNodeImpl{nullptr, dnode};

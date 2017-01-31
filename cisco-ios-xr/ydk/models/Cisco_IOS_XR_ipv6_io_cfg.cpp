@@ -220,8 +220,8 @@ bool Ipv6Configuration::has_operation() const
 	|| is_set(ipv6_pmtu_enable.operation)
 	|| is_set(ipv6_pmtu_time_out.operation)
 	|| is_set(ipv6_source_route.operation)
-	|| (ipv6_assembler !=  nullptr && is_set(ipv6_assembler->operation))
-	|| (ipv6icmp !=  nullptr && is_set(ipv6icmp->operation));
+	|| (ipv6_assembler !=  nullptr && ipv6_assembler->has_operation())
+	|| (ipv6icmp !=  nullptr && ipv6icmp->has_operation());
 }
 
 std::string Ipv6Configuration::get_segment_path() const
@@ -238,7 +238,7 @@ EntityPath Ipv6Configuration::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

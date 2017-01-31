@@ -26,6 +26,7 @@ class PlatformQos : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class PlatformQos : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class PlatformQos : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class BundleInterfaces : public Entity
             {
@@ -72,6 +75,7 @@ class PlatformQos : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BundleInterface : public Entity
                 {
                     public:
@@ -85,8 +89,9 @@ class PlatformQos : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class MemberInterfaces : public Entity
                     {
@@ -103,6 +108,7 @@ class PlatformQos : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class MemberInterface : public Entity
                         {
                             public:
@@ -116,8 +122,9 @@ class PlatformQos : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
 
+
+                                YLeaf interface_name; //type: string
 
                             class BundleInput : public Entity
                             {
@@ -134,6 +141,7 @@ class PlatformQos : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Header : public Entity
                                 {
                                     public:
@@ -147,11 +155,12 @@ class PlatformQos : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
-                                        Value policy_name; //type: string
-                                        Value direction; //type: string
-                                        Value classes; //type: uint16
 
+
+                                        YLeaf interface_name; //type: string
+                                        YLeaf policy_name; //type: string
+                                        YLeaf direction; //type: string
+                                        YLeaf classes; //type: uint16
 
 
 
@@ -173,6 +182,7 @@ class PlatformQos : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class InterfaceConfigRate : public Entity
                                     {
                                         public:
@@ -186,11 +196,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceConfigRate
@@ -209,11 +219,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceProgramRate
@@ -232,11 +242,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::PortShaperRate
@@ -265,6 +275,7 @@ class PlatformQos : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class QosShowPclassSt : public Entity
                                     {
                                         public:
@@ -278,9 +289,10 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value class_level; //type: uint8
-                                            Value class_name; //type: string
 
+
+                                            YLeaf class_level; //type: uint8
+                                            YLeaf class_name; //type: string
 
                                         class Queue : public Entity
                                         {
@@ -295,9 +307,10 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value queue_id; //type: uint32
-                                                Value queue_type; //type: string
 
+
+                                                YLeaf queue_id; //type: uint32
+                                                YLeaf queue_type; //type: string
 
 
 
@@ -319,6 +332,7 @@ class PlatformQos : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Pir : public Entity
                                             {
                                                 public:
@@ -332,11 +346,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir
@@ -355,11 +369,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs
@@ -385,8 +399,9 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value excess_weight; //type: uint16
 
+
+                                                YLeaf excess_weight; //type: uint16
 
                                             class CommittedWeight : public Entity
                                             {
@@ -401,11 +416,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight
@@ -424,8 +439,9 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value excess_ratio; //type: uint16
 
+
+                                                    YLeaf excess_ratio; //type: uint16
 
                                                 class Bandwidth : public Entity
                                                 {
@@ -440,11 +456,11 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value value_; //type: uint32
-                                                        Value unit; //type: QosUnitEnum
 
 
-                                                        class QosUnitEnum;
+                                                        YLeaf value_; //type: uint32
+                                                        YLeaf unit; //type: QosUnitEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth
@@ -463,11 +479,11 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value value_; //type: uint32
-                                                        Value unit; //type: QosUnitEnum
 
 
-                                                        class QosUnitEnum;
+                                                        YLeaf value_; //type: uint32
+                                                        YLeaf unit; //type: QosUnitEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth
@@ -500,9 +516,10 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value policer_id; //type: uint32
-                                                Value policer_type; //type: TbAlgorithmEnum
 
+
+                                                YLeaf policer_id; //type: uint32
+                                                YLeaf policer_type; //type: TbAlgorithmEnum
 
                                             class Cir : public Entity
                                             {
@@ -517,11 +534,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir
@@ -540,11 +557,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs
@@ -552,7 +569,6 @@ class PlatformQos : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs> cbs;
                                                 std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir> cir;
-                                                class TbAlgorithmEnum;
 
 
                                         }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police
@@ -573,6 +589,7 @@ class PlatformQos : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MarkOnly : public Entity
                                             {
                                                 public:
@@ -586,8 +603,9 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value action_type; //type: ActionEnum
 
+
+                                                    YLeaf action_type; //type: ActionEnum
 
                                                 class MarkDetail : public Entity
                                                 {
@@ -602,18 +620,17 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value mark_value; //type: uint8
-                                                        Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                        class ActionOpcodeEnum;
+                                                        YLeaf mark_value; //type: uint8
+                                                        YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail> > mark_detail;
-                                                    class ActionEnum;
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly
@@ -632,8 +649,9 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value action_type; //type: ActionEnum
 
+
+                                                    YLeaf action_type; //type: ActionEnum
 
                                                 class MarkDetail : public Entity
                                                 {
@@ -648,18 +666,17 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value mark_value; //type: uint8
-                                                        Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                        class ActionOpcodeEnum;
+                                                        YLeaf mark_value; //type: uint8
+                                                        YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail> > mark_detail;
-                                                    class ActionEnum;
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform
@@ -678,8 +695,9 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value action_type; //type: ActionEnum
 
+
+                                                    YLeaf action_type; //type: ActionEnum
 
                                                 class MarkDetail : public Entity
                                                 {
@@ -694,18 +712,17 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value mark_value; //type: uint8
-                                                        Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                        class ActionOpcodeEnum;
+                                                        YLeaf mark_value; //type: uint8
+                                                        YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail> > mark_detail;
-                                                    class ActionEnum;
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed
@@ -758,6 +775,7 @@ class PlatformQos : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Header : public Entity
                                 {
                                     public:
@@ -771,11 +789,12 @@ class PlatformQos : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
-                                        Value policy_name; //type: string
-                                        Value direction; //type: string
-                                        Value classes; //type: uint16
 
+
+                                        YLeaf interface_name; //type: string
+                                        YLeaf policy_name; //type: string
+                                        YLeaf direction; //type: string
+                                        YLeaf classes; //type: uint16
 
 
 
@@ -797,6 +816,7 @@ class PlatformQos : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class InterfaceConfigRate : public Entity
                                     {
                                         public:
@@ -810,11 +830,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceConfigRate
@@ -833,11 +853,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceProgramRate
@@ -856,11 +876,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::PortShaperRate
@@ -889,6 +909,7 @@ class PlatformQos : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class QosShowPclassSt : public Entity
                                     {
                                         public:
@@ -902,9 +923,10 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value class_level; //type: uint8
-                                            Value class_name; //type: string
 
+
+                                            YLeaf class_level; //type: uint8
+                                            YLeaf class_name; //type: string
 
                                         class Queue : public Entity
                                         {
@@ -919,9 +941,10 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value queue_id; //type: uint32
-                                                Value queue_type; //type: string
 
+
+                                                YLeaf queue_id; //type: uint32
+                                                YLeaf queue_type; //type: string
 
 
 
@@ -943,6 +966,7 @@ class PlatformQos : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Pir : public Entity
                                             {
                                                 public:
@@ -956,11 +980,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir
@@ -979,11 +1003,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs
@@ -1009,8 +1033,9 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value excess_weight; //type: uint16
 
+
+                                                YLeaf excess_weight; //type: uint16
 
                                             class CommittedWeight : public Entity
                                             {
@@ -1025,11 +1050,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight
@@ -1048,8 +1073,9 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value excess_ratio; //type: uint16
 
+
+                                                    YLeaf excess_ratio; //type: uint16
 
                                                 class Bandwidth : public Entity
                                                 {
@@ -1064,11 +1090,11 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value value_; //type: uint32
-                                                        Value unit; //type: QosUnitEnum
 
 
-                                                        class QosUnitEnum;
+                                                        YLeaf value_; //type: uint32
+                                                        YLeaf unit; //type: QosUnitEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth
@@ -1087,11 +1113,11 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value value_; //type: uint32
-                                                        Value unit; //type: QosUnitEnum
 
 
-                                                        class QosUnitEnum;
+                                                        YLeaf value_; //type: uint32
+                                                        YLeaf unit; //type: QosUnitEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth
@@ -1124,9 +1150,10 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value policer_id; //type: uint32
-                                                Value policer_type; //type: TbAlgorithmEnum
 
+
+                                                YLeaf policer_id; //type: uint32
+                                                YLeaf policer_type; //type: TbAlgorithmEnum
 
                                             class Cir : public Entity
                                             {
@@ -1141,11 +1168,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir
@@ -1164,11 +1191,11 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs
@@ -1176,7 +1203,6 @@ class PlatformQos : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs> cbs;
                                                 std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir> cir;
-                                                class TbAlgorithmEnum;
 
 
                                         }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police
@@ -1197,6 +1223,7 @@ class PlatformQos : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MarkOnly : public Entity
                                             {
                                                 public:
@@ -1210,8 +1237,9 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value action_type; //type: ActionEnum
 
+
+                                                    YLeaf action_type; //type: ActionEnum
 
                                                 class MarkDetail : public Entity
                                                 {
@@ -1226,18 +1254,17 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value mark_value; //type: uint8
-                                                        Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                        class ActionOpcodeEnum;
+                                                        YLeaf mark_value; //type: uint8
+                                                        YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail> > mark_detail;
-                                                    class ActionEnum;
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly
@@ -1256,8 +1283,9 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value action_type; //type: ActionEnum
 
+
+                                                    YLeaf action_type; //type: ActionEnum
 
                                                 class MarkDetail : public Entity
                                                 {
@@ -1272,18 +1300,17 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value mark_value; //type: uint8
-                                                        Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                        class ActionOpcodeEnum;
+                                                        YLeaf mark_value; //type: uint8
+                                                        YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail> > mark_detail;
-                                                    class ActionEnum;
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform
@@ -1302,8 +1329,9 @@ class PlatformQos : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value action_type; //type: ActionEnum
 
+
+                                                    YLeaf action_type; //type: ActionEnum
 
                                                 class MarkDetail : public Entity
                                                 {
@@ -1318,18 +1346,17 @@ class PlatformQos : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value mark_value; //type: uint8
-                                                        Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                        class ActionOpcodeEnum;
+                                                        YLeaf mark_value; //type: uint8
+                                                        YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                                 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail> > mark_detail;
-                                                    class ActionEnum;
 
 
                                             }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed
@@ -1405,16 +1432,17 @@ class PlatformQos : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value max_policy_maps; //type: uint32
-                    Value max_policy_hierarchy; //type: uint32
-                    Value max_policy_name_length; //type: uint32
-                    Value max_classes_per_policy; //type: uint32
-                    Value max_police_actions_per_class; //type: uint32
-                    Value max_marking_actions_per_class; //type: uint32
-                    Value max_matches_per_class; //type: uint32
-                    Value max_classmap_name_length; //type: uint32
-                    Value max_bundle_members; //type: uint32
 
+
+                    YLeaf max_policy_maps; //type: uint32
+                    YLeaf max_policy_hierarchy; //type: uint32
+                    YLeaf max_policy_name_length; //type: uint32
+                    YLeaf max_classes_per_policy; //type: uint32
+                    YLeaf max_police_actions_per_class; //type: uint32
+                    YLeaf max_marking_actions_per_class; //type: uint32
+                    YLeaf max_matches_per_class; //type: uint32
+                    YLeaf max_classmap_name_length; //type: uint32
+                    YLeaf max_bundle_members; //type: uint32
 
 
 
@@ -1436,6 +1464,7 @@ class PlatformQos : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -1449,8 +1478,9 @@ class PlatformQos : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class Output : public Entity
                     {
@@ -1467,6 +1497,7 @@ class PlatformQos : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Header : public Entity
                         {
                             public:
@@ -1480,11 +1511,12 @@ class PlatformQos : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value policy_name; //type: string
-                                Value direction; //type: string
-                                Value classes; //type: uint16
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf policy_name; //type: string
+                                YLeaf direction; //type: string
+                                YLeaf classes; //type: uint16
 
 
 
@@ -1506,6 +1538,7 @@ class PlatformQos : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class InterfaceConfigRate : public Entity
                             {
                                 public:
@@ -1519,11 +1552,11 @@ class PlatformQos : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value value_; //type: uint32
-                                    Value unit; //type: QosUnitEnum
 
 
-                                    class QosUnitEnum;
+                                    YLeaf value_; //type: uint32
+                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                             }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate
@@ -1542,11 +1575,11 @@ class PlatformQos : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value value_; //type: uint32
-                                    Value unit; //type: QosUnitEnum
 
 
-                                    class QosUnitEnum;
+                                    YLeaf value_; //type: uint32
+                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                             }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate
@@ -1565,11 +1598,11 @@ class PlatformQos : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value value_; //type: uint32
-                                    Value unit; //type: QosUnitEnum
 
 
-                                    class QosUnitEnum;
+                                    YLeaf value_; //type: uint32
+                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                             }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate
@@ -1598,6 +1631,7 @@ class PlatformQos : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class QosShowPclassSt : public Entity
                             {
                                 public:
@@ -1611,9 +1645,10 @@ class PlatformQos : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value class_level; //type: uint8
-                                    Value class_name; //type: string
 
+
+                                    YLeaf class_level; //type: uint8
+                                    YLeaf class_name; //type: string
 
                                 class Queue : public Entity
                                 {
@@ -1628,9 +1663,10 @@ class PlatformQos : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value queue_id; //type: uint32
-                                        Value queue_type; //type: string
 
+
+                                        YLeaf queue_id; //type: uint32
+                                        YLeaf queue_type; //type: string
 
 
 
@@ -1652,6 +1688,7 @@ class PlatformQos : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Pir : public Entity
                                     {
                                         public:
@@ -1665,11 +1702,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir
@@ -1688,11 +1725,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs
@@ -1718,8 +1755,9 @@ class PlatformQos : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value excess_weight; //type: uint16
 
+
+                                        YLeaf excess_weight; //type: uint16
 
                                     class CommittedWeight : public Entity
                                     {
@@ -1734,11 +1772,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight
@@ -1757,8 +1795,9 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value excess_ratio; //type: uint16
 
+
+                                            YLeaf excess_ratio; //type: uint16
 
                                         class Bandwidth : public Entity
                                         {
@@ -1773,11 +1812,11 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value value_; //type: uint32
-                                                Value unit; //type: QosUnitEnum
 
 
-                                                class QosUnitEnum;
+                                                YLeaf value_; //type: uint32
+                                                YLeaf unit; //type: QosUnitEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth
@@ -1796,11 +1835,11 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value value_; //type: uint32
-                                                Value unit; //type: QosUnitEnum
 
 
-                                                class QosUnitEnum;
+                                                YLeaf value_; //type: uint32
+                                                YLeaf unit; //type: QosUnitEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth
@@ -1833,9 +1872,10 @@ class PlatformQos : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value policer_id; //type: uint32
-                                        Value policer_type; //type: TbAlgorithmEnum
 
+
+                                        YLeaf policer_id; //type: uint32
+                                        YLeaf policer_type; //type: TbAlgorithmEnum
 
                                     class Cir : public Entity
                                     {
@@ -1850,11 +1890,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir
@@ -1873,11 +1913,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs
@@ -1885,7 +1925,6 @@ class PlatformQos : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs> cbs;
                                         std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir> cir;
-                                        class TbAlgorithmEnum;
 
 
                                 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police
@@ -1906,6 +1945,7 @@ class PlatformQos : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class MarkOnly : public Entity
                                     {
                                         public:
@@ -1919,8 +1959,9 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value action_type; //type: ActionEnum
 
+
+                                            YLeaf action_type; //type: ActionEnum
 
                                         class MarkDetail : public Entity
                                         {
@@ -1935,18 +1976,17 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value mark_value; //type: uint8
-                                                Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                class ActionOpcodeEnum;
+                                                YLeaf mark_value; //type: uint8
+                                                YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail
 
 
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail> > mark_detail;
-                                            class ActionEnum;
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly
@@ -1965,8 +2005,9 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value action_type; //type: ActionEnum
 
+
+                                            YLeaf action_type; //type: ActionEnum
 
                                         class MarkDetail : public Entity
                                         {
@@ -1981,18 +2022,17 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value mark_value; //type: uint8
-                                                Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                class ActionOpcodeEnum;
+                                                YLeaf mark_value; //type: uint8
+                                                YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail
 
 
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail> > mark_detail;
-                                            class ActionEnum;
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform
@@ -2011,8 +2051,9 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value action_type; //type: ActionEnum
 
+
+                                            YLeaf action_type; //type: ActionEnum
 
                                         class MarkDetail : public Entity
                                         {
@@ -2027,18 +2068,17 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value mark_value; //type: uint8
-                                                Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                class ActionOpcodeEnum;
+                                                YLeaf mark_value; //type: uint8
+                                                YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail
 
 
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail> > mark_detail;
-                                            class ActionEnum;
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed
@@ -2091,6 +2131,7 @@ class PlatformQos : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Header : public Entity
                         {
                             public:
@@ -2104,11 +2145,12 @@ class PlatformQos : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value policy_name; //type: string
-                                Value direction; //type: string
-                                Value classes; //type: uint16
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf policy_name; //type: string
+                                YLeaf direction; //type: string
+                                YLeaf classes; //type: uint16
 
 
 
@@ -2130,6 +2172,7 @@ class PlatformQos : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class InterfaceConfigRate : public Entity
                             {
                                 public:
@@ -2143,11 +2186,11 @@ class PlatformQos : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value value_; //type: uint32
-                                    Value unit; //type: QosUnitEnum
 
 
-                                    class QosUnitEnum;
+                                    YLeaf value_; //type: uint32
+                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                             }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceConfigRate
@@ -2166,11 +2209,11 @@ class PlatformQos : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value value_; //type: uint32
-                                    Value unit; //type: QosUnitEnum
 
 
-                                    class QosUnitEnum;
+                                    YLeaf value_; //type: uint32
+                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                             }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceProgramRate
@@ -2189,11 +2232,11 @@ class PlatformQos : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value value_; //type: uint32
-                                    Value unit; //type: QosUnitEnum
 
 
-                                    class QosUnitEnum;
+                                    YLeaf value_; //type: uint32
+                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                             }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::PortShaperRate
@@ -2222,6 +2265,7 @@ class PlatformQos : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class QosShowPclassSt : public Entity
                             {
                                 public:
@@ -2235,9 +2279,10 @@ class PlatformQos : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value class_level; //type: uint8
-                                    Value class_name; //type: string
 
+
+                                    YLeaf class_level; //type: uint8
+                                    YLeaf class_name; //type: string
 
                                 class Queue : public Entity
                                 {
@@ -2252,9 +2297,10 @@ class PlatformQos : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value queue_id; //type: uint32
-                                        Value queue_type; //type: string
 
+
+                                        YLeaf queue_id; //type: uint32
+                                        YLeaf queue_type; //type: string
 
 
 
@@ -2276,6 +2322,7 @@ class PlatformQos : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Pir : public Entity
                                     {
                                         public:
@@ -2289,11 +2336,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir
@@ -2312,11 +2359,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs
@@ -2342,8 +2389,9 @@ class PlatformQos : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value excess_weight; //type: uint16
 
+
+                                        YLeaf excess_weight; //type: uint16
 
                                     class CommittedWeight : public Entity
                                     {
@@ -2358,11 +2406,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight
@@ -2381,8 +2429,9 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value excess_ratio; //type: uint16
 
+
+                                            YLeaf excess_ratio; //type: uint16
 
                                         class Bandwidth : public Entity
                                         {
@@ -2397,11 +2446,11 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value value_; //type: uint32
-                                                Value unit; //type: QosUnitEnum
 
 
-                                                class QosUnitEnum;
+                                                YLeaf value_; //type: uint32
+                                                YLeaf unit; //type: QosUnitEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth
@@ -2420,11 +2469,11 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value value_; //type: uint32
-                                                Value unit; //type: QosUnitEnum
 
 
-                                                class QosUnitEnum;
+                                                YLeaf value_; //type: uint32
+                                                YLeaf unit; //type: QosUnitEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth
@@ -2457,9 +2506,10 @@ class PlatformQos : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value policer_id; //type: uint32
-                                        Value policer_type; //type: TbAlgorithmEnum
 
+
+                                        YLeaf policer_id; //type: uint32
+                                        YLeaf policer_type; //type: TbAlgorithmEnum
 
                                     class Cir : public Entity
                                     {
@@ -2474,11 +2524,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir
@@ -2497,11 +2547,11 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value value_; //type: uint32
-                                            Value unit; //type: QosUnitEnum
 
 
-                                            class QosUnitEnum;
+                                            YLeaf value_; //type: uint32
+                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs
@@ -2509,7 +2559,6 @@ class PlatformQos : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs> cbs;
                                         std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir> cir;
-                                        class TbAlgorithmEnum;
 
 
                                 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police
@@ -2530,6 +2579,7 @@ class PlatformQos : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class MarkOnly : public Entity
                                     {
                                         public:
@@ -2543,8 +2593,9 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value action_type; //type: ActionEnum
 
+
+                                            YLeaf action_type; //type: ActionEnum
 
                                         class MarkDetail : public Entity
                                         {
@@ -2559,18 +2610,17 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value mark_value; //type: uint8
-                                                Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                class ActionOpcodeEnum;
+                                                YLeaf mark_value; //type: uint8
+                                                YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail
 
 
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail> > mark_detail;
-                                            class ActionEnum;
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly
@@ -2589,8 +2639,9 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value action_type; //type: ActionEnum
 
+
+                                            YLeaf action_type; //type: ActionEnum
 
                                         class MarkDetail : public Entity
                                         {
@@ -2605,18 +2656,17 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value mark_value; //type: uint8
-                                                Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                class ActionOpcodeEnum;
+                                                YLeaf mark_value; //type: uint8
+                                                YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail
 
 
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail> > mark_detail;
-                                            class ActionEnum;
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform
@@ -2635,8 +2685,9 @@ class PlatformQos : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value action_type; //type: ActionEnum
 
+
+                                            YLeaf action_type; //type: ActionEnum
 
                                         class MarkDetail : public Entity
                                         {
@@ -2651,18 +2702,17 @@ class PlatformQos : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value mark_value; //type: uint8
-                                                Value action_opcode; //type: ActionOpcodeEnum
 
 
-                                                class ActionOpcodeEnum;
+                                                YLeaf mark_value; //type: uint8
+                                                YLeaf action_opcode; //type: ActionOpcodeEnum
+
 
 
                                         }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail
 
 
                                             std::vector<std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail> > mark_detail;
-                                            class ActionEnum;
 
 
                                     }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed
@@ -2748,6 +2798,7 @@ class PlatformQosEa : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -2763,6 +2814,7 @@ class PlatformQosEa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -2776,8 +2828,9 @@ class PlatformQosEa : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class BundleInterfaces : public Entity
             {
@@ -2794,6 +2847,7 @@ class PlatformQosEa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BundleInterface : public Entity
                 {
                     public:
@@ -2807,8 +2861,9 @@ class PlatformQosEa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class MemberInterfaces : public Entity
                     {
@@ -2825,6 +2880,7 @@ class PlatformQosEa : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class MemberInterface : public Entity
                         {
                             public:
@@ -2838,8 +2894,9 @@ class PlatformQosEa : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
 
+
+                                YLeaf interface_name; //type: string
 
                             class BundleOutput : public Entity
                             {
@@ -2854,6 +2911,7 @@ class PlatformQosEa : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                                 class Details : public Entity
@@ -2871,6 +2929,7 @@ class PlatformQosEa : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Header : public Entity
                                     {
                                         public:
@@ -2884,11 +2943,12 @@ class PlatformQosEa : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_name; //type: string
-                                            Value policy_name; //type: string
-                                            Value direction; //type: string
-                                            Value classes; //type: uint16
 
+
+                                            YLeaf interface_name; //type: string
+                                            YLeaf policy_name; //type: string
+                                            YLeaf direction; //type: string
+                                            YLeaf classes; //type: uint16
 
 
 
@@ -2908,19 +2968,20 @@ class PlatformQosEa : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value policy_name; //type: string
-                                            Value hierarchical_depth; //type: uint8
-                                            Value interface_type; //type: string
-                                            Value interface_rate; //type: uint32
-                                            Value port_shaper_rate; //type: uint32
-                                            Value interface_handle; //type: string
-                                            Value under_line_interface_handle; //type: string
-                                            Value bundle_id; //type: uint16
-                                            Value uidb_index; //type: uint16
-                                            Value qos_interface_handle; //type: uint64
-                                            Value port; //type: uint32
-                                            Value policy_map_id; //type: uint16
 
+
+                                            YLeaf policy_name; //type: string
+                                            YLeaf hierarchical_depth; //type: uint8
+                                            YLeaf interface_type; //type: string
+                                            YLeaf interface_rate; //type: uint32
+                                            YLeaf port_shaper_rate; //type: uint32
+                                            YLeaf interface_handle; //type: string
+                                            YLeaf under_line_interface_handle; //type: string
+                                            YLeaf bundle_id; //type: uint16
+                                            YLeaf uidb_index; //type: uint16
+                                            YLeaf qos_interface_handle; //type: uint64
+                                            YLeaf port; //type: uint32
+                                            YLeaf policy_map_id; //type: uint16
 
 
 
@@ -2942,6 +3003,7 @@ class PlatformQosEa : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class QosShowEaPclassSt : public Entity
                                         {
                                             public:
@@ -2955,13 +3017,14 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value index_; //type: uint16
-                                                Value class_level; //type: uint8
-                                                Value class_name; //type: string
-                                                Value policy_name; //type: string
-                                                Value node_flags; //type: string
-                                                Value stats_flags; //type: string
 
+
+                                                YLeaf index_; //type: uint16
+                                                YLeaf class_level; //type: uint8
+                                                YLeaf class_name; //type: string
+                                                YLeaf policy_name; //type: string
+                                                YLeaf node_flags; //type: string
+                                                YLeaf stats_flags; //type: string
 
                                             class Config : public Entity
                                             {
@@ -2976,8 +3039,9 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value node_config; //type: string
 
+
+                                                    YLeaf node_config; //type: string
 
                                                 class Police : public Entity
                                                 {
@@ -2992,9 +3056,10 @@ class PlatformQosEa : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value color_aware; //type: boolean
-                                                        Value policer_type; //type: TbAlgorithmEnum
 
+
+                                                        YLeaf color_aware; //type: boolean
+                                                        YLeaf policer_type; //type: TbAlgorithmEnum
 
                                                     class Cir : public Entity
                                                     {
@@ -3009,11 +3074,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir
@@ -3032,11 +3097,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs
@@ -3044,7 +3109,6 @@ class PlatformQosEa : public Entity
 
                                                         std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs> cbs;
                                                         std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir> cir;
-                                                        class TbAlgorithmEnum;
 
 
                                                 }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police
@@ -3065,6 +3129,7 @@ class PlatformQosEa : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Pir : public Entity
                                                     {
                                                         public:
@@ -3078,11 +3143,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir
@@ -3101,11 +3166,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs
@@ -3131,8 +3196,9 @@ class PlatformQosEa : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value excess_ratio; //type: uint16
 
+
+                                                        YLeaf excess_ratio; //type: uint16
 
                                                     class Bandwidth : public Entity
                                                     {
@@ -3147,11 +3213,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth
@@ -3170,11 +3236,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth
@@ -3208,8 +3274,9 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value stats_id; //type: uint32
 
+
+                                                    YLeaf stats_id; //type: uint32
 
                                                 class Queue : public Entity
                                                 {
@@ -3224,11 +3291,12 @@ class PlatformQosEa : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value queue_id; //type: uint32
-                                                        Value commit_tx; //type: uint32
-                                                        Value excess_tx; //type: uint32
-                                                        Value drop; //type: uint32
 
+
+                                                        YLeaf queue_id; //type: uint32
+                                                        YLeaf commit_tx; //type: uint32
+                                                        YLeaf excess_tx; //type: uint32
+                                                        YLeaf drop; //type: uint32
 
 
 
@@ -3248,11 +3316,12 @@ class PlatformQosEa : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value token_bucket_id; //type: uint32
-                                                        Value conform; //type: uint32
-                                                        Value exceed; //type: uint32
-                                                        Value violate; //type: uint32
 
+
+                                                        YLeaf token_bucket_id; //type: uint32
+                                                        YLeaf conform; //type: uint32
+                                                        YLeaf exceed; //type: uint32
+                                                        YLeaf violate; //type: uint32
 
 
 
@@ -3308,6 +3377,7 @@ class PlatformQosEa : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Details : public Entity
                                 {
                                     public:
@@ -3323,6 +3393,7 @@ class PlatformQosEa : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Header : public Entity
                                     {
                                         public:
@@ -3336,11 +3407,12 @@ class PlatformQosEa : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_name; //type: string
-                                            Value policy_name; //type: string
-                                            Value direction; //type: string
-                                            Value classes; //type: uint16
 
+
+                                            YLeaf interface_name; //type: string
+                                            YLeaf policy_name; //type: string
+                                            YLeaf direction; //type: string
+                                            YLeaf classes; //type: uint16
 
 
 
@@ -3360,19 +3432,20 @@ class PlatformQosEa : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value policy_name; //type: string
-                                            Value hierarchical_depth; //type: uint8
-                                            Value interface_type; //type: string
-                                            Value interface_rate; //type: uint32
-                                            Value port_shaper_rate; //type: uint32
-                                            Value interface_handle; //type: string
-                                            Value under_line_interface_handle; //type: string
-                                            Value bundle_id; //type: uint16
-                                            Value uidb_index; //type: uint16
-                                            Value qos_interface_handle; //type: uint64
-                                            Value port; //type: uint32
-                                            Value policy_map_id; //type: uint16
 
+
+                                            YLeaf policy_name; //type: string
+                                            YLeaf hierarchical_depth; //type: uint8
+                                            YLeaf interface_type; //type: string
+                                            YLeaf interface_rate; //type: uint32
+                                            YLeaf port_shaper_rate; //type: uint32
+                                            YLeaf interface_handle; //type: string
+                                            YLeaf under_line_interface_handle; //type: string
+                                            YLeaf bundle_id; //type: uint16
+                                            YLeaf uidb_index; //type: uint16
+                                            YLeaf qos_interface_handle; //type: uint64
+                                            YLeaf port; //type: uint32
+                                            YLeaf policy_map_id; //type: uint16
 
 
 
@@ -3394,6 +3467,7 @@ class PlatformQosEa : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class QosShowEaPclassSt : public Entity
                                         {
                                             public:
@@ -3407,13 +3481,14 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value index_; //type: uint16
-                                                Value class_level; //type: uint8
-                                                Value class_name; //type: string
-                                                Value policy_name; //type: string
-                                                Value node_flags; //type: string
-                                                Value stats_flags; //type: string
 
+
+                                                YLeaf index_; //type: uint16
+                                                YLeaf class_level; //type: uint8
+                                                YLeaf class_name; //type: string
+                                                YLeaf policy_name; //type: string
+                                                YLeaf node_flags; //type: string
+                                                YLeaf stats_flags; //type: string
 
                                             class Config : public Entity
                                             {
@@ -3428,8 +3503,9 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value node_config; //type: string
 
+
+                                                    YLeaf node_config; //type: string
 
                                                 class Police : public Entity
                                                 {
@@ -3444,9 +3520,10 @@ class PlatformQosEa : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value color_aware; //type: boolean
-                                                        Value policer_type; //type: TbAlgorithmEnum
 
+
+                                                        YLeaf color_aware; //type: boolean
+                                                        YLeaf policer_type; //type: TbAlgorithmEnum
 
                                                     class Cir : public Entity
                                                     {
@@ -3461,11 +3538,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir
@@ -3484,11 +3561,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs
@@ -3496,7 +3573,6 @@ class PlatformQosEa : public Entity
 
                                                         std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs> cbs;
                                                         std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir> cir;
-                                                        class TbAlgorithmEnum;
 
 
                                                 }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police
@@ -3517,6 +3593,7 @@ class PlatformQosEa : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Pir : public Entity
                                                     {
                                                         public:
@@ -3530,11 +3607,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir
@@ -3553,11 +3630,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs
@@ -3583,8 +3660,9 @@ class PlatformQosEa : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value excess_ratio; //type: uint16
 
+
+                                                        YLeaf excess_ratio; //type: uint16
 
                                                     class Bandwidth : public Entity
                                                     {
@@ -3599,11 +3677,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth
@@ -3622,11 +3700,11 @@ class PlatformQosEa : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value value_; //type: uint32
-                                                            Value unit; //type: QosUnitEnum
 
 
-                                                            class QosUnitEnum;
+                                                            YLeaf value_; //type: uint32
+                                                            YLeaf unit; //type: QosUnitEnum
+
 
 
                                                     }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth
@@ -3660,8 +3738,9 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value stats_id; //type: uint32
 
+
+                                                    YLeaf stats_id; //type: uint32
 
                                                 class Queue : public Entity
                                                 {
@@ -3676,11 +3755,12 @@ class PlatformQosEa : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value queue_id; //type: uint32
-                                                        Value commit_tx; //type: uint32
-                                                        Value excess_tx; //type: uint32
-                                                        Value drop; //type: uint32
 
+
+                                                        YLeaf queue_id; //type: uint32
+                                                        YLeaf commit_tx; //type: uint32
+                                                        YLeaf excess_tx; //type: uint32
+                                                        YLeaf drop; //type: uint32
 
 
 
@@ -3700,11 +3780,12 @@ class PlatformQosEa : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value token_bucket_id; //type: uint32
-                                                        Value conform; //type: uint32
-                                                        Value exceed; //type: uint32
-                                                        Value violate; //type: uint32
 
+
+                                                        YLeaf token_bucket_id; //type: uint32
+                                                        YLeaf conform; //type: uint32
+                                                        YLeaf exceed; //type: uint32
+                                                        YLeaf violate; //type: uint32
 
 
 
@@ -3785,6 +3866,7 @@ class PlatformQosEa : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -3798,8 +3880,9 @@ class PlatformQosEa : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
 
+
+                        YLeaf interface_name; //type: string
 
                     class Output : public Entity
                     {
@@ -3814,6 +3897,7 @@ class PlatformQosEa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                         class Details : public Entity
@@ -3831,6 +3915,7 @@ class PlatformQosEa : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Header : public Entity
                             {
                                 public:
@@ -3844,11 +3929,12 @@ class PlatformQosEa : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value policy_name; //type: string
-                                    Value direction; //type: string
-                                    Value classes; //type: uint16
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf policy_name; //type: string
+                                    YLeaf direction; //type: string
+                                    YLeaf classes; //type: uint16
 
 
 
@@ -3868,19 +3954,20 @@ class PlatformQosEa : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value policy_name; //type: string
-                                    Value hierarchical_depth; //type: uint8
-                                    Value interface_type; //type: string
-                                    Value interface_rate; //type: uint32
-                                    Value port_shaper_rate; //type: uint32
-                                    Value interface_handle; //type: string
-                                    Value under_line_interface_handle; //type: string
-                                    Value bundle_id; //type: uint16
-                                    Value uidb_index; //type: uint16
-                                    Value qos_interface_handle; //type: uint64
-                                    Value port; //type: uint32
-                                    Value policy_map_id; //type: uint16
 
+
+                                    YLeaf policy_name; //type: string
+                                    YLeaf hierarchical_depth; //type: uint8
+                                    YLeaf interface_type; //type: string
+                                    YLeaf interface_rate; //type: uint32
+                                    YLeaf port_shaper_rate; //type: uint32
+                                    YLeaf interface_handle; //type: string
+                                    YLeaf under_line_interface_handle; //type: string
+                                    YLeaf bundle_id; //type: uint16
+                                    YLeaf uidb_index; //type: uint16
+                                    YLeaf qos_interface_handle; //type: uint64
+                                    YLeaf port; //type: uint32
+                                    YLeaf policy_map_id; //type: uint16
 
 
 
@@ -3902,6 +3989,7 @@ class PlatformQosEa : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class QosShowEaPclassSt : public Entity
                                 {
                                     public:
@@ -3915,13 +4003,14 @@ class PlatformQosEa : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint16
-                                        Value class_level; //type: uint8
-                                        Value class_name; //type: string
-                                        Value policy_name; //type: string
-                                        Value node_flags; //type: string
-                                        Value stats_flags; //type: string
 
+
+                                        YLeaf index_; //type: uint16
+                                        YLeaf class_level; //type: uint8
+                                        YLeaf class_name; //type: string
+                                        YLeaf policy_name; //type: string
+                                        YLeaf node_flags; //type: string
+                                        YLeaf stats_flags; //type: string
 
                                     class Config : public Entity
                                     {
@@ -3936,8 +4025,9 @@ class PlatformQosEa : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_config; //type: string
 
+
+                                            YLeaf node_config; //type: string
 
                                         class Police : public Entity
                                         {
@@ -3952,9 +4042,10 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value color_aware; //type: boolean
-                                                Value policer_type; //type: TbAlgorithmEnum
 
+
+                                                YLeaf color_aware; //type: boolean
+                                                YLeaf policer_type; //type: TbAlgorithmEnum
 
                                             class Cir : public Entity
                                             {
@@ -3969,11 +4060,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir
@@ -3992,11 +4083,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs
@@ -4004,7 +4095,6 @@ class PlatformQosEa : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs> cbs;
                                                 std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir> cir;
-                                                class TbAlgorithmEnum;
 
 
                                         }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police
@@ -4025,6 +4115,7 @@ class PlatformQosEa : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Pir : public Entity
                                             {
                                                 public:
@@ -4038,11 +4129,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir
@@ -4061,11 +4152,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs
@@ -4091,8 +4182,9 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value excess_ratio; //type: uint16
 
+
+                                                YLeaf excess_ratio; //type: uint16
 
                                             class Bandwidth : public Entity
                                             {
@@ -4107,11 +4199,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth
@@ -4130,11 +4222,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth
@@ -4168,8 +4260,9 @@ class PlatformQosEa : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value stats_id; //type: uint32
 
+
+                                            YLeaf stats_id; //type: uint32
 
                                         class Queue : public Entity
                                         {
@@ -4184,11 +4277,12 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value queue_id; //type: uint32
-                                                Value commit_tx; //type: uint32
-                                                Value excess_tx; //type: uint32
-                                                Value drop; //type: uint32
 
+
+                                                YLeaf queue_id; //type: uint32
+                                                YLeaf commit_tx; //type: uint32
+                                                YLeaf excess_tx; //type: uint32
+                                                YLeaf drop; //type: uint32
 
 
 
@@ -4208,11 +4302,12 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value token_bucket_id; //type: uint32
-                                                Value conform; //type: uint32
-                                                Value exceed; //type: uint32
-                                                Value violate; //type: uint32
 
+
+                                                YLeaf token_bucket_id; //type: uint32
+                                                YLeaf conform; //type: uint32
+                                                YLeaf exceed; //type: uint32
+                                                YLeaf violate; //type: uint32
 
 
 
@@ -4268,6 +4363,7 @@ class PlatformQosEa : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Details : public Entity
                         {
                             public:
@@ -4283,6 +4379,7 @@ class PlatformQosEa : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Header : public Entity
                             {
                                 public:
@@ -4296,11 +4393,12 @@ class PlatformQosEa : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value policy_name; //type: string
-                                    Value direction; //type: string
-                                    Value classes; //type: uint16
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf policy_name; //type: string
+                                    YLeaf direction; //type: string
+                                    YLeaf classes; //type: uint16
 
 
 
@@ -4320,19 +4418,20 @@ class PlatformQosEa : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value policy_name; //type: string
-                                    Value hierarchical_depth; //type: uint8
-                                    Value interface_type; //type: string
-                                    Value interface_rate; //type: uint32
-                                    Value port_shaper_rate; //type: uint32
-                                    Value interface_handle; //type: string
-                                    Value under_line_interface_handle; //type: string
-                                    Value bundle_id; //type: uint16
-                                    Value uidb_index; //type: uint16
-                                    Value qos_interface_handle; //type: uint64
-                                    Value port; //type: uint32
-                                    Value policy_map_id; //type: uint16
 
+
+                                    YLeaf policy_name; //type: string
+                                    YLeaf hierarchical_depth; //type: uint8
+                                    YLeaf interface_type; //type: string
+                                    YLeaf interface_rate; //type: uint32
+                                    YLeaf port_shaper_rate; //type: uint32
+                                    YLeaf interface_handle; //type: string
+                                    YLeaf under_line_interface_handle; //type: string
+                                    YLeaf bundle_id; //type: uint16
+                                    YLeaf uidb_index; //type: uint16
+                                    YLeaf qos_interface_handle; //type: uint64
+                                    YLeaf port; //type: uint32
+                                    YLeaf policy_map_id; //type: uint16
 
 
 
@@ -4354,6 +4453,7 @@ class PlatformQosEa : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class QosShowEaPclassSt : public Entity
                                 {
                                     public:
@@ -4367,13 +4467,14 @@ class PlatformQosEa : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value index_; //type: uint16
-                                        Value class_level; //type: uint8
-                                        Value class_name; //type: string
-                                        Value policy_name; //type: string
-                                        Value node_flags; //type: string
-                                        Value stats_flags; //type: string
 
+
+                                        YLeaf index_; //type: uint16
+                                        YLeaf class_level; //type: uint8
+                                        YLeaf class_name; //type: string
+                                        YLeaf policy_name; //type: string
+                                        YLeaf node_flags; //type: string
+                                        YLeaf stats_flags; //type: string
 
                                     class Config : public Entity
                                     {
@@ -4388,8 +4489,9 @@ class PlatformQosEa : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value node_config; //type: string
 
+
+                                            YLeaf node_config; //type: string
 
                                         class Police : public Entity
                                         {
@@ -4404,9 +4506,10 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value color_aware; //type: boolean
-                                                Value policer_type; //type: TbAlgorithmEnum
 
+
+                                                YLeaf color_aware; //type: boolean
+                                                YLeaf policer_type; //type: TbAlgorithmEnum
 
                                             class Cir : public Entity
                                             {
@@ -4421,11 +4524,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir
@@ -4444,11 +4547,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs
@@ -4456,7 +4559,6 @@ class PlatformQosEa : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs> cbs;
                                                 std::unique_ptr<Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir> cir;
-                                                class TbAlgorithmEnum;
 
 
                                         }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police
@@ -4477,6 +4579,7 @@ class PlatformQosEa : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Pir : public Entity
                                             {
                                                 public:
@@ -4490,11 +4593,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir
@@ -4513,11 +4616,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs
@@ -4543,8 +4646,9 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value excess_ratio; //type: uint16
 
+
+                                                YLeaf excess_ratio; //type: uint16
 
                                             class Bandwidth : public Entity
                                             {
@@ -4559,11 +4663,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth
@@ -4582,11 +4686,11 @@ class PlatformQosEa : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value value_; //type: uint32
-                                                    Value unit; //type: QosUnitEnum
 
 
-                                                    class QosUnitEnum;
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf unit; //type: QosUnitEnum
+
 
 
                                             }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth
@@ -4620,8 +4724,9 @@ class PlatformQosEa : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value stats_id; //type: uint32
 
+
+                                            YLeaf stats_id; //type: uint32
 
                                         class Queue : public Entity
                                         {
@@ -4636,11 +4741,12 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value queue_id; //type: uint32
-                                                Value commit_tx; //type: uint32
-                                                Value excess_tx; //type: uint32
-                                                Value drop; //type: uint32
 
+
+                                                YLeaf queue_id; //type: uint32
+                                                YLeaf commit_tx; //type: uint32
+                                                YLeaf excess_tx; //type: uint32
+                                                YLeaf drop; //type: uint32
 
 
 
@@ -4660,11 +4766,12 @@ class PlatformQosEa : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value token_bucket_id; //type: uint32
-                                                Value conform; //type: uint32
-                                                Value exceed; //type: uint32
-                                                Value violate; //type: uint32
 
+
+                                                YLeaf token_bucket_id; //type: uint32
+                                                YLeaf conform; //type: uint32
+                                                YLeaf exceed; //type: uint32
+                                                YLeaf violate; //type: uint32
 
 
 
@@ -4740,131 +4847,131 @@ class PlatformQosEa : public Entity
 class WredEnum : public Enum
 {
     public:
-        static const Enum::Value wred_cos_cmd;
-        static const Enum::Value wred_dscp_cmd;
-        static const Enum::Value wred_precedence_cmd;
-        static const Enum::Value wred_discard_class_cmd;
-        static const Enum::Value wred_mpls_exp_cmd;
-        static const Enum::Value red_with_user_min_max;
-        static const Enum::Value red_with_default_min_max;
-        static const Enum::Value wred_dei_cmd;
-        static const Enum::Value wred_ecn_cmd;
-        static const Enum::Value wred_invalid_cmd;
+        static const Enum::YLeaf wred_cos_cmd;
+        static const Enum::YLeaf wred_dscp_cmd;
+        static const Enum::YLeaf wred_precedence_cmd;
+        static const Enum::YLeaf wred_discard_class_cmd;
+        static const Enum::YLeaf wred_mpls_exp_cmd;
+        static const Enum::YLeaf red_with_user_min_max;
+        static const Enum::YLeaf red_with_default_min_max;
+        static const Enum::YLeaf wred_dei_cmd;
+        static const Enum::YLeaf wred_ecn_cmd;
+        static const Enum::YLeaf wred_invalid_cmd;
 
 };
 
 class ActionOpcodeEnum : public Enum
 {
     public:
-        static const Enum::Value precedence;
-        static const Enum::Value dscp;
-        static const Enum::Value discard_class;
-        static const Enum::Value qos_group;
-        static const Enum::Value cos_inner;
-        static const Enum::Value cos;
-        static const Enum::Value exp_top;
-        static const Enum::Value exp_imp;
-        static const Enum::Value tunnel_precedence;
-        static const Enum::Value tunnel_dscp;
-        static const Enum::Value itag_dei;
-        static const Enum::Value itag_cos;
-        static const Enum::Value cos_imposition;
-        static const Enum::Value dei_imposition;
-        static const Enum::Value dei;
-        static const Enum::Value no_marking;
+        static const Enum::YLeaf precedence;
+        static const Enum::YLeaf dscp;
+        static const Enum::YLeaf discard_class;
+        static const Enum::YLeaf qos_group;
+        static const Enum::YLeaf cos_inner;
+        static const Enum::YLeaf cos;
+        static const Enum::YLeaf exp_top;
+        static const Enum::YLeaf exp_imp;
+        static const Enum::YLeaf tunnel_precedence;
+        static const Enum::YLeaf tunnel_dscp;
+        static const Enum::YLeaf itag_dei;
+        static const Enum::YLeaf itag_cos;
+        static const Enum::YLeaf cos_imposition;
+        static const Enum::YLeaf dei_imposition;
+        static const Enum::YLeaf dei;
+        static const Enum::YLeaf no_marking;
 
 };
 
 class TbAlgorithmEnum : public Enum
 {
     public:
-        static const Enum::Value inactive;
-        static const Enum::Value single;
-        static const Enum::Value single_rate_tcm;
-        static const Enum::Value two_rate_tcm;
-        static const Enum::Value mef_tcm;
-        static const Enum::Value dummy;
+        static const Enum::YLeaf inactive;
+        static const Enum::YLeaf single;
+        static const Enum::YLeaf single_rate_tcm;
+        static const Enum::YLeaf two_rate_tcm;
+        static const Enum::YLeaf mef_tcm;
+        static const Enum::YLeaf dummy;
 
 };
 
 class PolicyParamUnitEnum : public Enum
 {
     public:
-        static const Enum::Value policy_param_unit_invalid;
-        static const Enum::Value policy_param_unit_bytes;
-        static const Enum::Value policy_param_unit_kbytes;
-        static const Enum::Value policy_param_unit_mbytes;
-        static const Enum::Value policy_param_unit_gbytes;
-        static const Enum::Value policy_param_unit_bitsps;
-        static const Enum::Value policy_param_unit_kbitsps;
-        static const Enum::Value policy_param_unit_mbitsps;
-        static const Enum::Value policy_param_unit_gbitsps;
-        static const Enum::Value policy_param_unit_cells_ps;
-        static const Enum::Value policy_param_unit_packets_ps;
-        static const Enum::Value policy_param_unit_us;
-        static const Enum::Value policy_param_unit_ms;
-        static const Enum::Value policy_param_unit_seconds;
-        static const Enum::Value policy_param_unit_packets;
-        static const Enum::Value policy_param_unit_cells;
-        static const Enum::Value policy_param_unit_percent;
-        static const Enum::Value policy_param_unit_per_thousand;
-        static const Enum::Value policy_param_unit_per_million;
-        static const Enum::Value policy_param_unit_hz;
-        static const Enum::Value policy_param_unit_khz;
-        static const Enum::Value policy_param_unit_mhz;
-        static const Enum::Value policy_param_unit_ratio;
-        static const Enum::Value policy_param_unit_max;
+        static const Enum::YLeaf policy_param_unit_invalid;
+        static const Enum::YLeaf policy_param_unit_bytes;
+        static const Enum::YLeaf policy_param_unit_kbytes;
+        static const Enum::YLeaf policy_param_unit_mbytes;
+        static const Enum::YLeaf policy_param_unit_gbytes;
+        static const Enum::YLeaf policy_param_unit_bitsps;
+        static const Enum::YLeaf policy_param_unit_kbitsps;
+        static const Enum::YLeaf policy_param_unit_mbitsps;
+        static const Enum::YLeaf policy_param_unit_gbitsps;
+        static const Enum::YLeaf policy_param_unit_cells_ps;
+        static const Enum::YLeaf policy_param_unit_packets_ps;
+        static const Enum::YLeaf policy_param_unit_us;
+        static const Enum::YLeaf policy_param_unit_ms;
+        static const Enum::YLeaf policy_param_unit_seconds;
+        static const Enum::YLeaf policy_param_unit_packets;
+        static const Enum::YLeaf policy_param_unit_cells;
+        static const Enum::YLeaf policy_param_unit_percent;
+        static const Enum::YLeaf policy_param_unit_per_thousand;
+        static const Enum::YLeaf policy_param_unit_per_million;
+        static const Enum::YLeaf policy_param_unit_hz;
+        static const Enum::YLeaf policy_param_unit_khz;
+        static const Enum::YLeaf policy_param_unit_mhz;
+        static const Enum::YLeaf policy_param_unit_ratio;
+        static const Enum::YLeaf policy_param_unit_max;
 
 };
 
 class ActionEnum : public Enum
 {
     public:
-        static const Enum::Value police_transmit;
-        static const Enum::Value police_set_transmit;
-        static const Enum::Value police_drop;
-        static const Enum::Value police_unknown;
+        static const Enum::YLeaf police_transmit;
+        static const Enum::YLeaf police_set_transmit;
+        static const Enum::YLeaf police_drop;
+        static const Enum::YLeaf police_unknown;
 
 };
 
 class CacStateEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value admit;
-        static const Enum::Value redirect;
-        static const Enum::Value ubrl;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf admit;
+        static const Enum::YLeaf redirect;
+        static const Enum::YLeaf ubrl;
 
 };
 
 class QosUnitEnum : public Enum
 {
     public:
-        static const Enum::Value invalid;
-        static const Enum::Value bytes;
-        static const Enum::Value kilobytes;
-        static const Enum::Value megabytes;
-        static const Enum::Value gigabytes;
-        static const Enum::Value bps;
-        static const Enum::Value kbps;
-        static const Enum::Value mbps;
-        static const Enum::Value gbps;
-        static const Enum::Value cells_per_second;
-        static const Enum::Value packets_per_second;
-        static const Enum::Value microsecond;
-        static const Enum::Value millisecond;
-        static const Enum::Value packets;
-        static const Enum::Value cells;
-        static const Enum::Value percentage;
-        static const Enum::Value ratio;
+        static const Enum::YLeaf invalid;
+        static const Enum::YLeaf bytes;
+        static const Enum::YLeaf kilobytes;
+        static const Enum::YLeaf megabytes;
+        static const Enum::YLeaf gigabytes;
+        static const Enum::YLeaf bps;
+        static const Enum::YLeaf kbps;
+        static const Enum::YLeaf mbps;
+        static const Enum::YLeaf gbps;
+        static const Enum::YLeaf cells_per_second;
+        static const Enum::YLeaf packets_per_second;
+        static const Enum::YLeaf microsecond;
+        static const Enum::YLeaf millisecond;
+        static const Enum::YLeaf packets;
+        static const Enum::YLeaf cells;
+        static const Enum::YLeaf percentage;
+        static const Enum::YLeaf ratio;
 
 };
 
 class PolicyStateEnum : public Enum
 {
     public:
-        static const Enum::Value active;
-        static const Enum::Value suspended;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf suspended;
 
 };
 

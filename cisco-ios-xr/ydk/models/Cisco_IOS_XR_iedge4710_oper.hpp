@@ -26,6 +26,7 @@ class Subscriber : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Manager : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Subscriber : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Nodes : public Entity
@@ -56,6 +58,7 @@ class Subscriber : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -69,8 +72,9 @@ class Subscriber : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_name; //type: string
 
+
+                    YLeaf node_name; //type: string
 
                 class Statistics : public Entity
                 {
@@ -85,6 +89,7 @@ class Subscriber : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class Aaa : public Entity
@@ -102,6 +107,7 @@ class Subscriber : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class AggregateAccounting : public Entity
                         {
                             public:
@@ -115,12 +121,13 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value active_sessions; //type: uint32
-                                Value started_sessions; //type: uint64
-                                Value stopped_sessions; //type: uint64
-                                Value policy_plane_errored_requests; //type: uint64
-                                Value policy_plane_unknown_requests; //type: uint64
 
+
+                                YLeaf active_sessions; //type: uint32
+                                YLeaf started_sessions; //type: uint64
+                                YLeaf stopped_sessions; //type: uint64
+                                YLeaf policy_plane_errored_requests; //type: uint64
+                                YLeaf policy_plane_unknown_requests; //type: uint64
 
                             class Start : public Entity
                             {
@@ -135,13 +142,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -161,13 +169,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -187,13 +196,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -213,13 +223,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -239,13 +250,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -265,13 +277,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value quota_exhausts; //type: uint32
-                                    Value denied_requests; //type: uint32
-                                    Value accepted_requests; //type: uint32
-                                    Value total_quota_of_requests; //type: uint32
-                                    Value remaining_quota_of_requests; //type: uint32
-                                    Value low_water_mark_quota_of_requests; //type: uint32
 
+
+                                    YLeaf quota_exhausts; //type: uint32
+                                    YLeaf denied_requests; //type: uint32
+                                    YLeaf accepted_requests; //type: uint32
+                                    YLeaf total_quota_of_requests; //type: uint32
+                                    YLeaf remaining_quota_of_requests; //type: uint32
+                                    YLeaf low_water_mark_quota_of_requests; //type: uint32
 
 
 
@@ -302,15 +315,16 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_requests; //type: uint64
-                                Value accepted_requests; //type: uint64
-                                Value successful_requests; //type: uint64
-                                Value rejected_requests; //type: uint64
-                                Value unreachable_requests; //type: uint64
-                                Value errored_requests; //type: uint64
-                                Value incomplete_requests; //type: uint64
-                                Value terminated_requests; //type: uint64
 
+
+                                YLeaf sent_requests; //type: uint64
+                                YLeaf accepted_requests; //type: uint64
+                                YLeaf successful_requests; //type: uint64
+                                YLeaf rejected_requests; //type: uint64
+                                YLeaf unreachable_requests; //type: uint64
+                                YLeaf errored_requests; //type: uint64
+                                YLeaf incomplete_requests; //type: uint64
+                                YLeaf terminated_requests; //type: uint64
 
 
 
@@ -330,11 +344,12 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_request_successes; //type: uint64
-                                Value send_request_failures; //type: uint64
-                                Value receive_response_successes; //type: uint64
-                                Value receive_response_failures; //type: uint64
 
+
+                                YLeaf send_request_successes; //type: uint64
+                                YLeaf send_request_failures; //type: uint64
+                                YLeaf receive_response_successes; //type: uint64
+                                YLeaf receive_response_failures; //type: uint64
 
 
 
@@ -354,15 +369,16 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_requests; //type: uint64
-                                Value accepted_requests; //type: uint64
-                                Value successful_requests; //type: uint64
-                                Value rejected_requests; //type: uint64
-                                Value unreachable_requests; //type: uint64
-                                Value errored_requests; //type: uint64
-                                Value incomplete_requests; //type: uint64
-                                Value terminated_requests; //type: uint64
 
+
+                                YLeaf sent_requests; //type: uint64
+                                YLeaf accepted_requests; //type: uint64
+                                YLeaf successful_requests; //type: uint64
+                                YLeaf rejected_requests; //type: uint64
+                                YLeaf unreachable_requests; //type: uint64
+                                YLeaf errored_requests; //type: uint64
+                                YLeaf incomplete_requests; //type: uint64
+                                YLeaf terminated_requests; //type: uint64
 
 
 
@@ -382,17 +398,18 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value unknown_account_cmd_resps; //type: uint64
-                                Value unknown_service_cmd_resps; //type: uint64
-                                Value unknown_cmd_resps; //type: uint64
-                                Value attr_list_retrieve_failure_resps; //type: uint64
-                                Value resp_send_failure; //type: uint64
-                                Value internal_err_resps; //type: uint64
-                                Value service_profile_push_failure_resps; //type: uint64
-                                Value no_cmd_resps; //type: uint64
-                                Value no_session_found_resps; //type: uint64
-                                Value no_session_peer_resps; //type: uint64
 
+
+                                YLeaf unknown_account_cmd_resps; //type: uint64
+                                YLeaf unknown_service_cmd_resps; //type: uint64
+                                YLeaf unknown_cmd_resps; //type: uint64
+                                YLeaf attr_list_retrieve_failure_resps; //type: uint64
+                                YLeaf resp_send_failure; //type: uint64
+                                YLeaf internal_err_resps; //type: uint64
+                                YLeaf service_profile_push_failure_resps; //type: uint64
+                                YLeaf no_cmd_resps; //type: uint64
+                                YLeaf no_session_found_resps; //type: uint64
+                                YLeaf no_session_peer_resps; //type: uint64
 
                             class AccountLogon : public Entity
                             {
@@ -407,10 +424,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -430,10 +448,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -453,10 +472,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -476,10 +496,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -499,10 +520,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -522,10 +544,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -545,10 +568,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -568,10 +592,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -604,15 +629,16 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_requests; //type: uint64
-                                Value accepted_requests; //type: uint64
-                                Value successful_requests; //type: uint64
-                                Value rejected_requests; //type: uint64
-                                Value unreachable_requests; //type: uint64
-                                Value errored_requests; //type: uint64
-                                Value incomplete_requests; //type: uint64
-                                Value terminated_requests; //type: uint64
 
+
+                                YLeaf sent_requests; //type: uint64
+                                YLeaf accepted_requests; //type: uint64
+                                YLeaf successful_requests; //type: uint64
+                                YLeaf rejected_requests; //type: uint64
+                                YLeaf unreachable_requests; //type: uint64
+                                YLeaf errored_requests; //type: uint64
+                                YLeaf incomplete_requests; //type: uint64
+                                YLeaf terminated_requests; //type: uint64
 
 
 
@@ -632,15 +658,16 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sent_requests; //type: uint64
-                                Value accepted_requests; //type: uint64
-                                Value successful_requests; //type: uint64
-                                Value rejected_requests; //type: uint64
-                                Value unreachable_requests; //type: uint64
-                                Value errored_requests; //type: uint64
-                                Value incomplete_requests; //type: uint64
-                                Value terminated_requests; //type: uint64
 
+
+                                YLeaf sent_requests; //type: uint64
+                                YLeaf accepted_requests; //type: uint64
+                                YLeaf successful_requests; //type: uint64
+                                YLeaf rejected_requests; //type: uint64
+                                YLeaf unreachable_requests; //type: uint64
+                                YLeaf errored_requests; //type: uint64
+                                YLeaf incomplete_requests; //type: uint64
+                                YLeaf terminated_requests; //type: uint64
 
 
 
@@ -660,12 +687,13 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value active_sessions; //type: uint32
-                                Value started_sessions; //type: uint64
-                                Value stopped_sessions; //type: uint64
-                                Value policy_plane_errored_requests; //type: uint64
-                                Value policy_plane_unknown_requests; //type: uint64
 
+
+                                YLeaf active_sessions; //type: uint32
+                                YLeaf started_sessions; //type: uint64
+                                YLeaf stopped_sessions; //type: uint64
+                                YLeaf policy_plane_errored_requests; //type: uint64
+                                YLeaf policy_plane_unknown_requests; //type: uint64
 
                             class Start : public Entity
                             {
@@ -680,13 +708,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -706,13 +735,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -732,13 +762,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -758,13 +789,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -784,13 +816,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value errored_requests; //type: uint64
-                                    Value aaa_errored_requests; //type: uint64
-                                    Value aaa_sent_requests; //type: uint64
-                                    Value aaa_succeeded_responses; //type: uint64
-                                    Value aaa_failed_responses; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf errored_requests; //type: uint64
+                                    YLeaf aaa_errored_requests; //type: uint64
+                                    YLeaf aaa_sent_requests; //type: uint64
+                                    YLeaf aaa_succeeded_responses; //type: uint64
+                                    YLeaf aaa_failed_responses; //type: uint64
 
 
 
@@ -810,13 +843,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value quota_exhausts; //type: uint32
-                                    Value denied_requests; //type: uint32
-                                    Value accepted_requests; //type: uint32
-                                    Value total_quota_of_requests; //type: uint32
-                                    Value remaining_quota_of_requests; //type: uint32
-                                    Value low_water_mark_quota_of_requests; //type: uint32
 
+
+                                    YLeaf quota_exhausts; //type: uint32
+                                    YLeaf denied_requests; //type: uint32
+                                    YLeaf accepted_requests; //type: uint32
+                                    YLeaf total_quota_of_requests; //type: uint32
+                                    YLeaf remaining_quota_of_requests; //type: uint32
+                                    YLeaf low_water_mark_quota_of_requests; //type: uint32
 
 
 
@@ -847,11 +881,12 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_request_successes; //type: uint64
-                                Value send_request_failures; //type: uint64
-                                Value receive_response_successes; //type: uint64
-                                Value receive_response_failures; //type: uint64
 
+
+                                YLeaf send_request_successes; //type: uint64
+                                YLeaf send_request_failures; //type: uint64
+                                YLeaf receive_response_successes; //type: uint64
+                                YLeaf receive_response_failures; //type: uint64
 
 
 
@@ -871,17 +906,18 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value unknown_account_cmd_resps; //type: uint64
-                                Value unknown_service_cmd_resps; //type: uint64
-                                Value unknown_cmd_resps; //type: uint64
-                                Value attr_list_retrieve_failure_resps; //type: uint64
-                                Value resp_send_failure; //type: uint64
-                                Value internal_err_resps; //type: uint64
-                                Value service_profile_push_failure_resps; //type: uint64
-                                Value no_cmd_resps; //type: uint64
-                                Value no_session_found_resps; //type: uint64
-                                Value no_session_peer_resps; //type: uint64
 
+
+                                YLeaf unknown_account_cmd_resps; //type: uint64
+                                YLeaf unknown_service_cmd_resps; //type: uint64
+                                YLeaf unknown_cmd_resps; //type: uint64
+                                YLeaf attr_list_retrieve_failure_resps; //type: uint64
+                                YLeaf resp_send_failure; //type: uint64
+                                YLeaf internal_err_resps; //type: uint64
+                                YLeaf service_profile_push_failure_resps; //type: uint64
+                                YLeaf no_cmd_resps; //type: uint64
+                                YLeaf no_session_found_resps; //type: uint64
+                                YLeaf no_session_peer_resps; //type: uint64
 
                             class AccountLogon : public Entity
                             {
@@ -896,10 +932,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -919,10 +956,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -942,10 +980,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -965,10 +1004,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -988,10 +1028,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -1011,10 +1052,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -1034,10 +1076,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -1057,10 +1100,11 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value received_requests; //type: uint64
-                                    Value acknowledged_requests; //type: uint64
-                                    Value non_acknowledged_requests; //type: uint64
 
+
+                                    YLeaf received_requests; //type: uint64
+                                    YLeaf acknowledged_requests; //type: uint64
+                                    YLeaf non_acknowledged_requests; //type: uint64
 
 
 
@@ -1108,26 +1152,27 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value no_subscriber_control_policy_on_interface; //type: uint64
-                            Value no_class_match_in_start_request; //type: uint64
-                            Value nas_port_attribute_format_warnings; //type: uint64
-                            Value nas_port_id_attribute_format_warnings; //type: uint64
-                            Value destination_station_id_attribute_format_warnings; //type: uint64
-                            Value calling_station_id_attribute_format_warnings; //type: uint64
-                            Value username_attribute_format_warnings; //type: uint64
-                            Value install_user_profiles; //type: uint64
-                            Value user_profile_install_errors; //type: uint64
-                            Value user_profile_removals; //type: uint64
-                            Value user_profile_errors; //type: uint64
-                            Value sess_disc_quota_exhausts; //type: uint64
-                            Value sess_disc_no_quota; //type: uint64
-                            Value sess_disc_quota_avail; //type: uint64
-                            Value sess_disc_recon_ip; //type: uint64
-                            Value sess_disc_none_started; //type: uint64
-                            Value sess_disc_quota; //type: uint32
-                            Value sess_disc_quota_remaining; //type: uint32
-                            Value sess_disc_q_count; //type: uint32
 
+
+                            YLeaf no_subscriber_control_policy_on_interface; //type: uint64
+                            YLeaf no_class_match_in_start_request; //type: uint64
+                            YLeaf nas_port_attribute_format_warnings; //type: uint64
+                            YLeaf nas_port_id_attribute_format_warnings; //type: uint64
+                            YLeaf destination_station_id_attribute_format_warnings; //type: uint64
+                            YLeaf calling_station_id_attribute_format_warnings; //type: uint64
+                            YLeaf username_attribute_format_warnings; //type: uint64
+                            YLeaf install_user_profiles; //type: uint64
+                            YLeaf user_profile_install_errors; //type: uint64
+                            YLeaf user_profile_removals; //type: uint64
+                            YLeaf user_profile_errors; //type: uint64
+                            YLeaf sess_disc_quota_exhausts; //type: uint64
+                            YLeaf sess_disc_no_quota; //type: uint64
+                            YLeaf sess_disc_quota_avail; //type: uint64
+                            YLeaf sess_disc_recon_ip; //type: uint64
+                            YLeaf sess_disc_none_started; //type: uint64
+                            YLeaf sess_disc_quota; //type: uint32
+                            YLeaf sess_disc_quota_remaining; //type: uint32
+                            YLeaf sess_disc_q_count; //type: uint32
 
 
 
@@ -1147,59 +1192,60 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value txlist_send_triggered; //type: uint32
-                            Value txlist_send_failed; //type: uint32
-                            Value txlist_send_failed_notactive; //type: uint32
-                            Value actual_txlist_sent; //type: uint32
-                            Value alreadyin_txlist; //type: uint32
-                            Value txlist_encode; //type: uint32
-                            Value txlist_encode_fail; //type: uint32
-                            Value create_update_encode; //type: uint32
-                            Value delete_encode; //type: uint32
-                            Value create_upd_clean_callback; //type: uint32
-                            Value delete_clean_callback; //type: uint32
-                            Value slave_recv_entry; //type: uint32
-                            Value slave_decode_fail; //type: uint32
-                            Value slave_create_update; //type: uint32
-                            Value slave_delete; //type: uint32
-                            Value srg_context_malloc; //type: uint32
-                            Value srg_context_free; //type: uint32
-                            Value sod_count; //type: uint32
-                            Value eod_count; //type: uint32
-                            Value sod_eod_replay_req_count; //type: uint32
-                            Value sod_eod_dirty_mark_count; //type: uint32
-                            Value sod_eod_dirty_delete_count; //type: uint32
-                            Value ack_to_srg; //type: uint32
-                            Value nack_to_srg; //type: uint32
-                            Value nack_to_srg_fail_cnt; //type: uint32
-                            Value txlist_remove_all; //type: uint32
-                            Value txlist_del_sync; //type: uint32
-                            Value txlist_del_sync_notlinked; //type: uint32
-                            Value txlist_del_app; //type: uint32
-                            Value txlist_del_app_notlinked; //type: uint32
-                            Value txlist_clean_invalid_state; //type: uint32
-                            Value txlist_remove_all_internal_error; //type: uint32
-                            Value is_srg_flow_control_enabled; //type: boolean
-                            Value max_inflight_sessoin_count; //type: uint32
-                            Value flow_control_resume_threshold; //type: uint32
-                            Value inflight_session_count; //type: uint32
-                            Value inflight_add_count; //type: uint32
-                            Value inflight_under_run_count; //type: uint32
-                            Value inflight_alloc_fails; //type: uint32
-                            Value inflight_insert_failures; //type: uint32
-                            Value inflight_deletes; //type: uint32
-                            Value inflight_not_found; //type: uint32
-                            Value inflight_delete_failures; //type: uint32
-                            Value total_pause_count; //type: uint32
-                            Value total_resume_count; //type: uint32
-                            Value total_dont_send_to_txlist; //type: uint32
-                            Value total_srg_not_master; //type: uint32
-                            Value total_master_eoms_pending; //type: uint32
-                            Value last_pause_period; //type: uint64
-                            Value total_pause_time; //type: uint64
-                            Value last_pause_time; //type: uint64
-                            Value last_resume_time; //type: uint64
 
+
+                            YLeaf txlist_send_triggered; //type: uint32
+                            YLeaf txlist_send_failed; //type: uint32
+                            YLeaf txlist_send_failed_notactive; //type: uint32
+                            YLeaf actual_txlist_sent; //type: uint32
+                            YLeaf alreadyin_txlist; //type: uint32
+                            YLeaf txlist_encode; //type: uint32
+                            YLeaf txlist_encode_fail; //type: uint32
+                            YLeaf create_update_encode; //type: uint32
+                            YLeaf delete_encode; //type: uint32
+                            YLeaf create_upd_clean_callback; //type: uint32
+                            YLeaf delete_clean_callback; //type: uint32
+                            YLeaf slave_recv_entry; //type: uint32
+                            YLeaf slave_decode_fail; //type: uint32
+                            YLeaf slave_create_update; //type: uint32
+                            YLeaf slave_delete; //type: uint32
+                            YLeaf srg_context_malloc; //type: uint32
+                            YLeaf srg_context_free; //type: uint32
+                            YLeaf sod_count; //type: uint32
+                            YLeaf eod_count; //type: uint32
+                            YLeaf sod_eod_replay_req_count; //type: uint32
+                            YLeaf sod_eod_dirty_mark_count; //type: uint32
+                            YLeaf sod_eod_dirty_delete_count; //type: uint32
+                            YLeaf ack_to_srg; //type: uint32
+                            YLeaf nack_to_srg; //type: uint32
+                            YLeaf nack_to_srg_fail_cnt; //type: uint32
+                            YLeaf txlist_remove_all; //type: uint32
+                            YLeaf txlist_del_sync; //type: uint32
+                            YLeaf txlist_del_sync_notlinked; //type: uint32
+                            YLeaf txlist_del_app; //type: uint32
+                            YLeaf txlist_del_app_notlinked; //type: uint32
+                            YLeaf txlist_clean_invalid_state; //type: uint32
+                            YLeaf txlist_remove_all_internal_error; //type: uint32
+                            YLeaf is_srg_flow_control_enabled; //type: boolean
+                            YLeaf max_inflight_sessoin_count; //type: uint32
+                            YLeaf flow_control_resume_threshold; //type: uint32
+                            YLeaf inflight_session_count; //type: uint32
+                            YLeaf inflight_add_count; //type: uint32
+                            YLeaf inflight_under_run_count; //type: uint32
+                            YLeaf inflight_alloc_fails; //type: uint32
+                            YLeaf inflight_insert_failures; //type: uint32
+                            YLeaf inflight_deletes; //type: uint32
+                            YLeaf inflight_not_found; //type: uint32
+                            YLeaf inflight_delete_failures; //type: uint32
+                            YLeaf total_pause_count; //type: uint32
+                            YLeaf total_resume_count; //type: uint32
+                            YLeaf total_dont_send_to_txlist; //type: uint32
+                            YLeaf total_srg_not_master; //type: uint32
+                            YLeaf total_master_eoms_pending; //type: uint32
+                            YLeaf last_pause_period; //type: uint64
+                            YLeaf total_pause_time; //type: uint64
+                            YLeaf last_pause_time; //type: uint64
+                            YLeaf last_resume_time; //type: uint64
 
 
 
@@ -1247,6 +1293,7 @@ class Subscriber : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Nodes : public Entity
         {
             public:
@@ -1262,6 +1309,7 @@ class Subscriber : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -1275,8 +1323,9 @@ class Subscriber : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_name; //type: string
 
+
+                    YLeaf node_name; //type: string
 
                 class AuthorSummaries : public Entity
                 {
@@ -1293,6 +1342,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AuthorSummary : public Entity
                     {
                         public:
@@ -1306,8 +1356,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value author_state; //type: SubscriberAuthorStateFilterFlagEnum
 
+
+                            YLeaf author_state; //type: SubscriberAuthorStateFilterFlagEnum
 
                         class StateXr : public Entity
                         {
@@ -1324,6 +1375,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -1337,14 +1389,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -1364,14 +1417,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -1391,14 +1445,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -1428,6 +1483,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -1441,13 +1497,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -1467,13 +1524,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -1493,13 +1551,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -1516,7 +1575,6 @@ class Subscriber : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr> address_family_xr;
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr> state_xr;
-                            class SubscriberAuthorStateFilterFlagEnum;
 
 
                     }; // Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary
@@ -1543,6 +1601,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class StateXr : public Entity
                     {
                         public:
@@ -1558,6 +1617,7 @@ class Subscriber : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Pppoe : public Entity
                         {
                             public:
@@ -1571,14 +1631,15 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value initialized_sessions; //type: uint32
-                                Value connecting_sessions; //type: uint32
-                                Value connected_sessions; //type: uint32
-                                Value activated_sessions; //type: uint32
-                                Value idle_sessions; //type: uint32
-                                Value disconnecting_sessions; //type: uint32
-                                Value end_sessions; //type: uint32
 
+
+                                YLeaf initialized_sessions; //type: uint32
+                                YLeaf connecting_sessions; //type: uint32
+                                YLeaf connected_sessions; //type: uint32
+                                YLeaf activated_sessions; //type: uint32
+                                YLeaf idle_sessions; //type: uint32
+                                YLeaf disconnecting_sessions; //type: uint32
+                                YLeaf end_sessions; //type: uint32
 
 
 
@@ -1598,14 +1659,15 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value initialized_sessions; //type: uint32
-                                Value connecting_sessions; //type: uint32
-                                Value connected_sessions; //type: uint32
-                                Value activated_sessions; //type: uint32
-                                Value idle_sessions; //type: uint32
-                                Value disconnecting_sessions; //type: uint32
-                                Value end_sessions; //type: uint32
 
+
+                                YLeaf initialized_sessions; //type: uint32
+                                YLeaf connecting_sessions; //type: uint32
+                                YLeaf connected_sessions; //type: uint32
+                                YLeaf activated_sessions; //type: uint32
+                                YLeaf idle_sessions; //type: uint32
+                                YLeaf disconnecting_sessions; //type: uint32
+                                YLeaf end_sessions; //type: uint32
 
 
 
@@ -1625,14 +1687,15 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value initialized_sessions; //type: uint32
-                                Value connecting_sessions; //type: uint32
-                                Value connected_sessions; //type: uint32
-                                Value activated_sessions; //type: uint32
-                                Value idle_sessions; //type: uint32
-                                Value disconnecting_sessions; //type: uint32
-                                Value end_sessions; //type: uint32
 
+
+                                YLeaf initialized_sessions; //type: uint32
+                                YLeaf connecting_sessions; //type: uint32
+                                YLeaf connected_sessions; //type: uint32
+                                YLeaf activated_sessions; //type: uint32
+                                YLeaf idle_sessions; //type: uint32
+                                YLeaf disconnecting_sessions; //type: uint32
+                                YLeaf end_sessions; //type: uint32
 
 
 
@@ -1662,6 +1725,7 @@ class Subscriber : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Pppoe : public Entity
                         {
                             public:
@@ -1675,13 +1739,14 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value in_progress_sessions; //type: uint32
-                                Value ipv4_only_sessions; //type: uint32
-                                Value ipv6_only_sessions; //type: uint32
-                                Value dual_part_up_sessions; //type: uint32
-                                Value dual_up_sessions; //type: uint32
-                                Value lac_sessions; //type: uint32
 
+
+                                YLeaf in_progress_sessions; //type: uint32
+                                YLeaf ipv4_only_sessions; //type: uint32
+                                YLeaf ipv6_only_sessions; //type: uint32
+                                YLeaf dual_part_up_sessions; //type: uint32
+                                YLeaf dual_up_sessions; //type: uint32
+                                YLeaf lac_sessions; //type: uint32
 
 
 
@@ -1701,13 +1766,14 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value in_progress_sessions; //type: uint32
-                                Value ipv4_only_sessions; //type: uint32
-                                Value ipv6_only_sessions; //type: uint32
-                                Value dual_part_up_sessions; //type: uint32
-                                Value dual_up_sessions; //type: uint32
-                                Value lac_sessions; //type: uint32
 
+
+                                YLeaf in_progress_sessions; //type: uint32
+                                YLeaf ipv4_only_sessions; //type: uint32
+                                YLeaf ipv6_only_sessions; //type: uint32
+                                YLeaf dual_part_up_sessions; //type: uint32
+                                YLeaf dual_up_sessions; //type: uint32
+                                YLeaf lac_sessions; //type: uint32
 
 
 
@@ -1727,13 +1793,14 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value in_progress_sessions; //type: uint32
-                                Value ipv4_only_sessions; //type: uint32
-                                Value ipv6_only_sessions; //type: uint32
-                                Value dual_part_up_sessions; //type: uint32
-                                Value dual_up_sessions; //type: uint32
-                                Value lac_sessions; //type: uint32
 
+
+                                YLeaf in_progress_sessions; //type: uint32
+                                YLeaf ipv4_only_sessions; //type: uint32
+                                YLeaf ipv6_only_sessions; //type: uint32
+                                YLeaf dual_part_up_sessions; //type: uint32
+                                YLeaf dual_up_sessions; //type: uint32
+                                YLeaf lac_sessions; //type: uint32
 
 
 
@@ -1770,6 +1837,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class MacSummary : public Entity
                     {
                         public:
@@ -1783,8 +1851,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mac_address; //type: string
 
+
+                            YLeaf mac_address; //type: string
 
                         class StateXr : public Entity
                         {
@@ -1801,6 +1870,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -1814,14 +1884,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -1841,14 +1912,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -1868,14 +1940,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -1905,6 +1978,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -1918,13 +1992,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -1944,13 +2019,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -1970,13 +2046,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2019,6 +2096,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class InterfaceSummary : public Entity
                     {
                         public:
@@ -2032,8 +2110,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
                         class StateXr : public Entity
                         {
@@ -2050,6 +2129,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -2063,14 +2143,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2090,14 +2171,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2117,14 +2199,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2154,6 +2237,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -2167,13 +2251,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2193,13 +2278,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2219,13 +2305,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2268,6 +2355,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AuthenticationSummary : public Entity
                     {
                         public:
@@ -2281,8 +2369,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value authentication_state; //type: SubscriberAuthenStateFilterFlagEnum
 
+
+                            YLeaf authentication_state; //type: SubscriberAuthenStateFilterFlagEnum
 
                         class StateXr : public Entity
                         {
@@ -2299,6 +2388,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -2312,14 +2402,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2339,14 +2430,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2366,14 +2458,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2403,6 +2496,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -2416,13 +2510,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2442,13 +2537,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2468,13 +2564,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2491,7 +2588,6 @@ class Subscriber : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr> address_family_xr;
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr> state_xr;
-                            class SubscriberAuthenStateFilterFlagEnum;
 
 
                     }; // Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary
@@ -2518,6 +2614,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class StateSummary : public Entity
                     {
                         public:
@@ -2531,8 +2628,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value state; //type: SubscriberStateFilterFlagEnum
 
+
+                            YLeaf state; //type: SubscriberStateFilterFlagEnum
 
                         class StateXr : public Entity
                         {
@@ -2549,6 +2647,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -2562,14 +2661,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2589,14 +2689,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2616,14 +2717,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2653,6 +2755,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -2666,13 +2769,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2692,13 +2796,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2718,13 +2823,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2741,7 +2847,6 @@ class Subscriber : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr> address_family_xr;
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr> state_xr;
-                            class SubscriberStateFilterFlagEnum;
 
 
                     }; // Subscriber::Session::Nodes::Node::StateSummaries::StateSummary
@@ -2768,6 +2873,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Ipv4AddressVrfSummary : public Entity
                     {
                         public:
@@ -2781,9 +2887,10 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_name; //type: string
-                            Value address; //type: string
 
+
+                            YLeaf vrf_name; //type: string
+                            YLeaf address; //type: string
 
                         class StateXr : public Entity
                         {
@@ -2800,6 +2907,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -2813,14 +2921,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2840,14 +2949,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2867,14 +2977,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -2904,6 +3015,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -2917,13 +3029,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2943,13 +3056,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -2969,13 +3083,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3018,6 +3133,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AddressFamilySummary : public Entity
                     {
                         public:
@@ -3031,8 +3147,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address_family; //type: SubscriberAddressFamilyFilterFlagEnum
 
+
+                            YLeaf address_family; //type: SubscriberAddressFamilyFilterFlagEnum
 
                         class StateXr : public Entity
                         {
@@ -3049,6 +3166,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -3062,14 +3180,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3089,14 +3208,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3116,14 +3236,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3153,6 +3274,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -3166,13 +3288,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3192,13 +3315,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3218,13 +3342,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3241,7 +3366,6 @@ class Subscriber : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr> address_family_xr;
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr> state_xr;
-                            class SubscriberAddressFamilyFilterFlagEnum;
 
 
                     }; // Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary
@@ -3268,6 +3392,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class UsernameSummary : public Entity
                     {
                         public:
@@ -3281,8 +3406,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value username; //type: string
 
+
+                            YLeaf username; //type: string
 
                         class StateXr : public Entity
                         {
@@ -3299,6 +3425,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -3312,14 +3439,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3339,14 +3467,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3366,14 +3495,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3403,6 +3533,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -3416,13 +3547,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3442,13 +3574,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3468,13 +3601,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3517,6 +3651,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AccessInterfaceSummary : public Entity
                     {
                         public:
@@ -3530,8 +3665,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
                         class StateXr : public Entity
                         {
@@ -3548,6 +3684,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -3561,14 +3698,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3588,14 +3726,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3615,14 +3754,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3652,6 +3792,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -3665,13 +3806,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3691,13 +3833,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3717,13 +3860,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3766,6 +3910,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Ipv4AddressSummary : public Entity
                     {
                         public:
@@ -3779,8 +3924,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
                         class StateXr : public Entity
                         {
@@ -3797,6 +3943,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -3810,14 +3957,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3837,14 +3985,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3864,14 +4013,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -3901,6 +4051,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -3914,13 +4065,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3940,13 +4092,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -3966,13 +4119,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -4015,6 +4169,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class VrfSummary : public Entity
                     {
                         public:
@@ -4028,8 +4183,9 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_name; //type: string
 
+
+                            YLeaf vrf_name; //type: string
 
                         class StateXr : public Entity
                         {
@@ -4046,6 +4202,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -4059,14 +4216,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -4086,14 +4244,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -4113,14 +4272,15 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value initialized_sessions; //type: uint32
-                                    Value connecting_sessions; //type: uint32
-                                    Value connected_sessions; //type: uint32
-                                    Value activated_sessions; //type: uint32
-                                    Value idle_sessions; //type: uint32
-                                    Value disconnecting_sessions; //type: uint32
-                                    Value end_sessions; //type: uint32
 
+
+                                    YLeaf initialized_sessions; //type: uint32
+                                    YLeaf connecting_sessions; //type: uint32
+                                    YLeaf connected_sessions; //type: uint32
+                                    YLeaf activated_sessions; //type: uint32
+                                    YLeaf idle_sessions; //type: uint32
+                                    YLeaf disconnecting_sessions; //type: uint32
+                                    YLeaf end_sessions; //type: uint32
 
 
 
@@ -4150,6 +4310,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pppoe : public Entity
                             {
                                 public:
@@ -4163,13 +4324,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -4189,13 +4351,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -4215,13 +4378,14 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value in_progress_sessions; //type: uint32
-                                    Value ipv4_only_sessions; //type: uint32
-                                    Value ipv6_only_sessions; //type: uint32
-                                    Value dual_part_up_sessions; //type: uint32
-                                    Value dual_up_sessions; //type: uint32
-                                    Value lac_sessions; //type: uint32
 
+
+                                    YLeaf in_progress_sessions; //type: uint32
+                                    YLeaf ipv4_only_sessions; //type: uint32
+                                    YLeaf ipv6_only_sessions; //type: uint32
+                                    YLeaf dual_part_up_sessions; //type: uint32
+                                    YLeaf dual_up_sessions; //type: uint32
+                                    YLeaf lac_sessions; //type: uint32
 
 
 
@@ -4264,6 +4428,7 @@ class Subscriber : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Session_ : public Entity
                     {
                         public:
@@ -4277,40 +4442,41 @@ class Subscriber : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value session_id; //type: string
-                            Value session_type; //type: IedgeOperSessionEnum
-                            Value pppoe_sub_type; //type: IedgePppSubEnum
-                            Value interface_name; //type: string
-                            Value vrf_name; //type: string
-                            Value circuit_id; //type: string
-                            Value remote_id; //type: string
-                            Value lns_address; //type: string
-                            Value lac_address; //type: string
-                            Value tunnel_client_authentication_id; //type: string
-                            Value tunnel_server_authentication_id; //type: string
-                            Value session_ip_address; //type: string
-                            Value session_ipv6_address; //type: string
-                            Value session_ipv6_prefix; //type: string
-                            Value delegated_ipv6_prefix; //type: string
-                            Value ipv6_interface_id; //type: string
-                            Value mac_address; //type: string
-                            Value account_session_id; //type: string
-                            Value nas_port; //type: string
-                            Value username; //type: string
-                            Value clientname; //type: string
-                            Value formattedname; //type: string
-                            Value is_session_authentic; //type: boolean
-                            Value is_session_author; //type: boolean
-                            Value session_state; //type: IedgeOperSessionStateEnum
-                            Value session_creation_time; //type: string
-                            Value idle_state_change_time; //type: string
-                            Value total_session_idle_time; //type: uint32
-                            Value access_interface_name; //type: string
-                            Value pending_callbacks; //type: uint64
-                            Value af_up_status; //type: uint32
-                            Value session_ipv4_state; //type: IedgeOperSessionAfStateEnum
-                            Value session_ipv6_state; //type: IedgeOperSessionAfStateEnum
 
+
+                            YLeaf session_id; //type: string
+                            YLeaf session_type; //type: IedgeOperSessionEnum
+                            YLeaf pppoe_sub_type; //type: IedgePppSubEnum
+                            YLeaf interface_name; //type: string
+                            YLeaf vrf_name; //type: string
+                            YLeaf circuit_id; //type: string
+                            YLeaf remote_id; //type: string
+                            YLeaf lns_address; //type: string
+                            YLeaf lac_address; //type: string
+                            YLeaf tunnel_client_authentication_id; //type: string
+                            YLeaf tunnel_server_authentication_id; //type: string
+                            YLeaf session_ip_address; //type: string
+                            YLeaf session_ipv6_address; //type: string
+                            YLeaf session_ipv6_prefix; //type: string
+                            YLeaf delegated_ipv6_prefix; //type: string
+                            YLeaf ipv6_interface_id; //type: string
+                            YLeaf mac_address; //type: string
+                            YLeaf account_session_id; //type: string
+                            YLeaf nas_port; //type: string
+                            YLeaf username; //type: string
+                            YLeaf clientname; //type: string
+                            YLeaf formattedname; //type: string
+                            YLeaf is_session_authentic; //type: boolean
+                            YLeaf is_session_author; //type: boolean
+                            YLeaf session_state; //type: IedgeOperSessionStateEnum
+                            YLeaf session_creation_time; //type: string
+                            YLeaf idle_state_change_time; //type: string
+                            YLeaf total_session_idle_time; //type: uint32
+                            YLeaf access_interface_name; //type: string
+                            YLeaf pending_callbacks; //type: uint64
+                            YLeaf af_up_status; //type: uint32
+                            YLeaf session_ipv4_state; //type: IedgeOperSessionAfStateEnum
+                            YLeaf session_ipv6_state; //type: IedgeOperSessionAfStateEnum
 
                         class Accounting : public Entity
                         {
@@ -4327,6 +4493,7 @@ class Subscriber : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AccountingSession : public Entity
                             {
                                 public:
@@ -4340,22 +4507,23 @@ class Subscriber : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value accounting_state_rc; //type: uint32
-                                    Value accounting_stop_state; //type: uint32
-                                    Value record_context_name; //type: string
-                                    Value method_list_name; //type: string
-                                    Value account_session_id; //type: string
-                                    Value accounting_start_time; //type: string
-                                    Value is_interim_accounting_enabled; //type: boolean
-                                    Value interim_interval; //type: uint32
-                                    Value last_successful_interim_update_time; //type: string
-                                    Value next_interim_update_attempt_time; //type: uint32
-                                    Value last_interim_update_attempt_time; //type: string
-                                    Value sent_interim_updates; //type: uint32
-                                    Value accepted_interim_updates; //type: uint32
-                                    Value rejected_interim_updates; //type: uint32
-                                    Value sent_interim_update_failures; //type: uint32
 
+
+                                    YLeaf accounting_state_rc; //type: uint32
+                                    YLeaf accounting_stop_state; //type: uint32
+                                    YLeaf record_context_name; //type: string
+                                    YLeaf method_list_name; //type: string
+                                    YLeaf account_session_id; //type: string
+                                    YLeaf accounting_start_time; //type: string
+                                    YLeaf is_interim_accounting_enabled; //type: boolean
+                                    YLeaf interim_interval; //type: uint32
+                                    YLeaf last_successful_interim_update_time; //type: string
+                                    YLeaf next_interim_update_attempt_time; //type: uint32
+                                    YLeaf last_interim_update_attempt_time; //type: string
+                                    YLeaf sent_interim_updates; //type: uint32
+                                    YLeaf accepted_interim_updates; //type: uint32
+                                    YLeaf rejected_interim_updates; //type: uint32
+                                    YLeaf sent_interim_update_failures; //type: uint32
 
 
 
@@ -4381,62 +4549,58 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ipv4mtu; //type: uint32
-                                Value ipv4_unnumbered; //type: string
-                                Value authorization_service_type; //type: AaaAuthServiceEnum
-                                Value tunnel_client_endpoint; //type: string
-                                Value tunnel_server_endpoint; //type: string
-                                Value tunnel_tos_setting; //type: uint32
-                                Value tunnel_medium; //type: AaaTunnelMediumEnum
-                                Value tunnel_preference; //type: uint32
-                                Value tunnel_client_authentication_id; //type: string
-                                Value tunnel_protocol; //type: AaaTunnelProtoEnum
-                                Value actual_data_rate_upstream; //type: uint32
-                                Value actual_data_rate_downstream; //type: uint32
-                                Value attainable_data_rate_upstream; //type: uint32
-                                Value attainable_data_rate_downstream; //type: uint32
-                                Value pool_address; //type: string
-                                Value circuit_id; //type: string
-                                Value connection_receive_speed; //type: uint32
-                                Value connection_transmission_speed; //type: uint32
-                                Value destination_station_id; //type: string
-                                Value primary_dns_server_address; //type: string
-                                Value secondary_dns_server_address; //type: string
-                                Value formatted_calling_station_id; //type: string
-                                Value interface_name; //type: string
-                                Value interface_type; //type: AaaInterfaceEnum
-                                Value interim_accounting_interval; //type: uint32
-                                Value ingress_access_list; //type: string
-                                Value egress_access_list; //type: string
-                                Value ip_netmask; //type: string
-                                Value is_interworking_functionality; //type: boolean
-                                Value max_interleaving_delay_downstream; //type: uint32
-                                Value max_interleaving_delay_upstream; //type: uint32
-                                Value max_data_rate_upstream; //type: uint32
-                                Value max_data_rate_downstream; //type: uint32
-                                Value min_data_rate_downstream; //type: uint32
-                                Value min_data_rate_downstream_low_power; //type: uint32
-                                Value min_data_rate_upstream_low_power; //type: uint32
-                                Value primary_net_bios_server_address; //type: string
-                                Value secondary_net_bios_server_address; //type: string
-                                Value parent_interface_name; //type: string
-                                Value remote_id; //type: string
-                                Value route; //type: string
-                                Value session_timeout; //type: uint32
-                                Value strict_rpf_packets; //type: uint32
-                                Value accounting_session_id; //type: string
-                                Value upstream_parameterized_qos_policy; //type: string
-                                Value downstream_parameterized_qos_policy; //type: string
-                                Value upstream_qos_policy; //type: string
-                                Value downstream_qos_policy; //type: string
-                                Value session_termination_cause; //type: AaaTerminateCauseEnum
 
 
-                                class AaaAuthServiceEnum;
-                                class AaaInterfaceEnum;
-                                class AaaTerminateCauseEnum;
-                                class AaaTunnelMediumEnum;
-                                class AaaTunnelProtoEnum;
+                                YLeaf ipv4mtu; //type: uint32
+                                YLeaf ipv4_unnumbered; //type: string
+                                YLeaf authorization_service_type; //type: AaaAuthServiceEnum
+                                YLeaf tunnel_client_endpoint; //type: string
+                                YLeaf tunnel_server_endpoint; //type: string
+                                YLeaf tunnel_tos_setting; //type: uint32
+                                YLeaf tunnel_medium; //type: AaaTunnelMediumEnum
+                                YLeaf tunnel_preference; //type: uint32
+                                YLeaf tunnel_client_authentication_id; //type: string
+                                YLeaf tunnel_protocol; //type: AaaTunnelProtoEnum
+                                YLeaf actual_data_rate_upstream; //type: uint32
+                                YLeaf actual_data_rate_downstream; //type: uint32
+                                YLeaf attainable_data_rate_upstream; //type: uint32
+                                YLeaf attainable_data_rate_downstream; //type: uint32
+                                YLeaf pool_address; //type: string
+                                YLeaf circuit_id; //type: string
+                                YLeaf connection_receive_speed; //type: uint32
+                                YLeaf connection_transmission_speed; //type: uint32
+                                YLeaf destination_station_id; //type: string
+                                YLeaf primary_dns_server_address; //type: string
+                                YLeaf secondary_dns_server_address; //type: string
+                                YLeaf formatted_calling_station_id; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf interface_type; //type: AaaInterfaceEnum
+                                YLeaf interim_accounting_interval; //type: uint32
+                                YLeaf ingress_access_list; //type: string
+                                YLeaf egress_access_list; //type: string
+                                YLeaf ip_netmask; //type: string
+                                YLeaf is_interworking_functionality; //type: boolean
+                                YLeaf max_interleaving_delay_downstream; //type: uint32
+                                YLeaf max_interleaving_delay_upstream; //type: uint32
+                                YLeaf max_data_rate_upstream; //type: uint32
+                                YLeaf max_data_rate_downstream; //type: uint32
+                                YLeaf min_data_rate_downstream; //type: uint32
+                                YLeaf min_data_rate_downstream_low_power; //type: uint32
+                                YLeaf min_data_rate_upstream_low_power; //type: uint32
+                                YLeaf primary_net_bios_server_address; //type: string
+                                YLeaf secondary_net_bios_server_address; //type: string
+                                YLeaf parent_interface_name; //type: string
+                                YLeaf remote_id; //type: string
+                                YLeaf route; //type: string
+                                YLeaf session_timeout; //type: uint32
+                                YLeaf strict_rpf_packets; //type: uint32
+                                YLeaf accounting_session_id; //type: string
+                                YLeaf upstream_parameterized_qos_policy; //type: string
+                                YLeaf downstream_parameterized_qos_policy; //type: string
+                                YLeaf upstream_qos_policy; //type: string
+                                YLeaf downstream_qos_policy; //type: string
+                                YLeaf session_termination_cause; //type: AaaTerminateCauseEnum
+
 
 
                         }; // Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes
@@ -4455,17 +4619,18 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mpc_protocol; //type: boolean
-                                Value mobility_ipv4_address; //type: string
-                                Value mobility_default_ipv4_gateway; //type: string
-                                Value mobility_dns_server; //type: string
-                                Value mobility_dhcp_server; //type: string
-                                Value mobility_ipv4_netmask; //type: string
-                                Value domain_name; //type: string
-                                Value uplink_gre_key; //type: string
-                                Value downlink_gre_key; //type: string
-                                Value lease_time; //type: string
 
+
+                                YLeaf mpc_protocol; //type: boolean
+                                YLeaf mobility_ipv4_address; //type: string
+                                YLeaf mobility_default_ipv4_gateway; //type: string
+                                YLeaf mobility_dns_server; //type: string
+                                YLeaf mobility_dhcp_server; //type: string
+                                YLeaf mobility_ipv4_netmask; //type: string
+                                YLeaf domain_name; //type: string
+                                YLeaf uplink_gre_key; //type: string
+                                YLeaf downlink_gre_key; //type: string
+                                YLeaf lease_time; //type: string
 
 
 
@@ -4485,12 +4650,13 @@ class Subscriber : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value request_acked; //type: boolean
-                                Value request_time; //type: string
-                                Value coa_request_attributes; //type: string
-                                Value reply_time; //type: string
-                                Value coa_reply_attributes; //type: string
 
+
+                                YLeaf request_acked; //type: boolean
+                                YLeaf request_time; //type: string
+                                YLeaf coa_request_attributes; //type: string
+                                YLeaf reply_time; //type: string
+                                YLeaf coa_reply_attributes; //type: string
 
 
 
@@ -4501,11 +4667,6 @@ class Subscriber : public Entity
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes> mobility_attributes;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization> > session_change_of_authorization;
                             std::unique_ptr<Cisco_IOS_XR_iedge4710_oper::Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes> user_profile_attributes;
-                            class IedgePppSubEnum;
-                            class IedgeOperSessionAfStateEnum;
-                            class IedgeOperSessionAfStateEnum;
-                            class IedgeOperSessionStateEnum;
-                            class IedgeOperSessionEnum;
 
 
                     }; // Subscriber::Session::Nodes::Node::Sessions::Session_
@@ -4569,6 +4730,7 @@ class IedgeLicenseManager : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -4584,6 +4746,7 @@ class IedgeLicenseManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -4597,8 +4760,9 @@ class IedgeLicenseManager : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value nodeid; //type: string
 
+
+                YLeaf nodeid; //type: string
 
             class IedgeLicenseManagerSummary : public Entity
             {
@@ -4613,11 +4777,12 @@ class IedgeLicenseManager : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value session_limit; //type: uint32
-                    Value session_threshold; //type: uint32
-                    Value session_license_count; //type: uint32
-                    Value session_count; //type: uint32
 
+
+                    YLeaf session_limit; //type: uint32
+                    YLeaf session_threshold; //type: uint32
+                    YLeaf session_license_count; //type: uint32
+                    YLeaf session_count; //type: uint32
 
 
 
@@ -4645,203 +4810,203 @@ class IedgeLicenseManager : public Entity
 class AaaTunnelProtoEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value pptp;
-        static const Enum::Value l2f;
-        static const Enum::Value l2tp;
-        static const Enum::Value atmp;
-        static const Enum::Value vtp;
-        static const Enum::Value ah;
-        static const Enum::Value ip_over_ip;
-        static const Enum::Value minimum_ip_over_ip;
-        static const Enum::Value esp;
-        static const Enum::Value gre;
-        static const Enum::Value bay_dvs;
-        static const Enum::Value ip_in_ip;
-        static const Enum::Value vlan;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf pptp;
+        static const Enum::YLeaf l2f;
+        static const Enum::YLeaf l2tp;
+        static const Enum::YLeaf atmp;
+        static const Enum::YLeaf vtp;
+        static const Enum::YLeaf ah;
+        static const Enum::YLeaf ip_over_ip;
+        static const Enum::YLeaf minimum_ip_over_ip;
+        static const Enum::YLeaf esp;
+        static const Enum::YLeaf gre;
+        static const Enum::YLeaf bay_dvs;
+        static const Enum::YLeaf ip_in_ip;
+        static const Enum::YLeaf vlan;
 
 };
 
 class AaaTerminateCauseEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value user_request;
-        static const Enum::Value lost_carrier;
-        static const Enum::Value lost_service;
-        static const Enum::Value idle_timeout;
-        static const Enum::Value session_timeout;
-        static const Enum::Value admin_reset;
-        static const Enum::Value admin_reboot;
-        static const Enum::Value port_error;
-        static const Enum::Value nas_error;
-        static const Enum::Value nas_request;
-        static const Enum::Value nas_reboot;
-        static const Enum::Value port_unneeded;
-        static const Enum::Value port_preempted;
-        static const Enum::Value port_suspended;
-        static const Enum::Value service_unavailable;
-        static const Enum::Value callback;
-        static const Enum::Value user_error;
-        static const Enum::Value host_request;
-        static const Enum::Value supplicant_restart;
-        static const Enum::Value reauthorization_failure;
-        static const Enum::Value port_reinitialized;
-        static const Enum::Value admin_disabled;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf user_request;
+        static const Enum::YLeaf lost_carrier;
+        static const Enum::YLeaf lost_service;
+        static const Enum::YLeaf idle_timeout;
+        static const Enum::YLeaf session_timeout;
+        static const Enum::YLeaf admin_reset;
+        static const Enum::YLeaf admin_reboot;
+        static const Enum::YLeaf port_error;
+        static const Enum::YLeaf nas_error;
+        static const Enum::YLeaf nas_request;
+        static const Enum::YLeaf nas_reboot;
+        static const Enum::YLeaf port_unneeded;
+        static const Enum::YLeaf port_preempted;
+        static const Enum::YLeaf port_suspended;
+        static const Enum::YLeaf service_unavailable;
+        static const Enum::YLeaf callback;
+        static const Enum::YLeaf user_error;
+        static const Enum::YLeaf host_request;
+        static const Enum::YLeaf supplicant_restart;
+        static const Enum::YLeaf reauthorization_failure;
+        static const Enum::YLeaf port_reinitialized;
+        static const Enum::YLeaf admin_disabled;
 
 };
 
 class SubscriberAuthorStateFilterFlagEnum : public Enum
 {
     public:
-        static const Enum::Value un_authorized;
-        static const Enum::Value authorized;
+        static const Enum::YLeaf un_authorized;
+        static const Enum::YLeaf authorized;
 
 };
 
 class IedgeOperSessionStateEnum : public Enum
 {
     public:
-        static const Enum::Value initialize;
-        static const Enum::Value connecting;
-        static const Enum::Value connected;
-        static const Enum::Value activated;
-        static const Enum::Value idle;
-        static const Enum::Value disconnecting;
-        static const Enum::Value end;
+        static const Enum::YLeaf initialize;
+        static const Enum::YLeaf connecting;
+        static const Enum::YLeaf connected;
+        static const Enum::YLeaf activated;
+        static const Enum::YLeaf idle;
+        static const Enum::YLeaf disconnecting;
+        static const Enum::YLeaf end;
 
 };
 
 class IedgeOperSessionAfStateEnum : public Enum
 {
     public:
-        static const Enum::Value not_started;
-        static const Enum::Value down;
-        static const Enum::Value up_pending;
-        static const Enum::Value up;
+        static const Enum::YLeaf not_started;
+        static const Enum::YLeaf down;
+        static const Enum::YLeaf up_pending;
+        static const Enum::YLeaf up;
 
 };
 
 class SubscriberStateFilterFlagEnum : public Enum
 {
     public:
-        static const Enum::Value initializing;
-        static const Enum::Value connecting;
-        static const Enum::Value connected;
-        static const Enum::Value activated;
-        static const Enum::Value idle;
-        static const Enum::Value disconnecting;
-        static const Enum::Value end;
+        static const Enum::YLeaf initializing;
+        static const Enum::YLeaf connecting;
+        static const Enum::YLeaf connected;
+        static const Enum::YLeaf activated;
+        static const Enum::YLeaf idle;
+        static const Enum::YLeaf disconnecting;
+        static const Enum::YLeaf end;
 
 };
 
 class AaaAuthServiceEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value login;
-        static const Enum::Value framed;
-        static const Enum::Value callback_login;
-        static const Enum::Value callback_framed;
-        static const Enum::Value outbound;
-        static const Enum::Value administrator;
-        static const Enum::Value prompt;
-        static const Enum::Value authentication_only;
-        static const Enum::Value callback_nas_prompt;
-        static const Enum::Value call_check;
-        static const Enum::Value callback_administrator;
-        static const Enum::Value voice;
-        static const Enum::Value fax;
-        static const Enum::Value modem_relay;
-        static const Enum::Value eap_over_udp;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf login;
+        static const Enum::YLeaf framed;
+        static const Enum::YLeaf callback_login;
+        static const Enum::YLeaf callback_framed;
+        static const Enum::YLeaf outbound;
+        static const Enum::YLeaf administrator;
+        static const Enum::YLeaf prompt;
+        static const Enum::YLeaf authentication_only;
+        static const Enum::YLeaf callback_nas_prompt;
+        static const Enum::YLeaf call_check;
+        static const Enum::YLeaf callback_administrator;
+        static const Enum::YLeaf voice;
+        static const Enum::YLeaf fax;
+        static const Enum::YLeaf modem_relay;
+        static const Enum::YLeaf eap_over_udp;
 
 };
 
 class AaaInterfaceEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value primary_rate;
-        static const Enum::Value basic_rate;
-        static const Enum::Value serial;
-        static const Enum::Value asynchronous;
-        static const Enum::Value vty;
-        static const Enum::Value atm;
-        static const Enum::Value ethernet;
-        static const Enum::Value ppp_over_atm;
-        static const Enum::Value pppoe_over_atm;
-        static const Enum::Value pppoe_over_ethernet;
-        static const Enum::Value ppp_over_vlan;
-        static const Enum::Value ppp_over_qinq;
-        static const Enum::Value v120;
-        static const Enum::Value v110;
-        static const Enum::Value piafs;
-        static const Enum::Value x75;
-        static const Enum::Value ip_sec;
-        static const Enum::Value other;
-        static const Enum::Value virtual_pppoe_over_ethernet;
-        static const Enum::Value virtual_pppoe_over_vlan;
-        static const Enum::Value virtual_pppoe_over_qinq;
-        static const Enum::Value ipo_e_over_ethernet;
-        static const Enum::Value ipo_e_over_vlan;
-        static const Enum::Value ipo_e_over_qinq;
-        static const Enum::Value virtual_i_po_e_over_ethernet;
-        static const Enum::Value virtual_i_po_e_over_vlan;
-        static const Enum::Value virtual_i_po_e_over_qinq;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf primary_rate;
+        static const Enum::YLeaf basic_rate;
+        static const Enum::YLeaf serial;
+        static const Enum::YLeaf asynchronous;
+        static const Enum::YLeaf vty;
+        static const Enum::YLeaf atm;
+        static const Enum::YLeaf ethernet;
+        static const Enum::YLeaf ppp_over_atm;
+        static const Enum::YLeaf pppoe_over_atm;
+        static const Enum::YLeaf pppoe_over_ethernet;
+        static const Enum::YLeaf ppp_over_vlan;
+        static const Enum::YLeaf ppp_over_qinq;
+        static const Enum::YLeaf v120;
+        static const Enum::YLeaf v110;
+        static const Enum::YLeaf piafs;
+        static const Enum::YLeaf x75;
+        static const Enum::YLeaf ip_sec;
+        static const Enum::YLeaf other;
+        static const Enum::YLeaf virtual_pppoe_over_ethernet;
+        static const Enum::YLeaf virtual_pppoe_over_vlan;
+        static const Enum::YLeaf virtual_pppoe_over_qinq;
+        static const Enum::YLeaf ipo_e_over_ethernet;
+        static const Enum::YLeaf ipo_e_over_vlan;
+        static const Enum::YLeaf ipo_e_over_qinq;
+        static const Enum::YLeaf virtual_i_po_e_over_ethernet;
+        static const Enum::YLeaf virtual_i_po_e_over_vlan;
+        static const Enum::YLeaf virtual_i_po_e_over_qinq;
 
 };
 
 class SubscriberAuthenStateFilterFlagEnum : public Enum
 {
     public:
-        static const Enum::Value un_authenticated;
-        static const Enum::Value authenticated;
+        static const Enum::YLeaf un_authenticated;
+        static const Enum::YLeaf authenticated;
 
 };
 
 class IedgeOperSessionEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value pppoe;
-        static const Enum::Value ppp;
-        static const Enum::Value ip_packet_trigger;
-        static const Enum::Value ip_packet_dhcp_trigger;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf pppoe;
+        static const Enum::YLeaf ppp;
+        static const Enum::YLeaf ip_packet_trigger;
+        static const Enum::YLeaf ip_packet_dhcp_trigger;
 
 };
 
 class AaaTunnelMediumEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
-        static const Enum::Value nsap;
-        static const Enum::Value hdlc;
-        static const Enum::Value bbn;
-        static const Enum::Value all802;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
+        static const Enum::YLeaf nsap;
+        static const Enum::YLeaf hdlc;
+        static const Enum::YLeaf bbn;
+        static const Enum::YLeaf all802;
 
 };
 
 class IedgePppSubEnum : public Enum
 {
     public:
-        static const Enum::Value pta;
-        static const Enum::Value lac;
+        static const Enum::YLeaf pta;
+        static const Enum::YLeaf lac;
 
 };
 
 class SubscriberAddressFamilyFilterFlagEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4_only;
-        static const Enum::Value ipv6_only;
-        static const Enum::Value ipv4_all;
-        static const Enum::Value ipv6_all;
-        static const Enum::Value dual_all;
-        static const Enum::Value dual_part_up;
-        static const Enum::Value dual_up;
-        static const Enum::Value lac;
+        static const Enum::YLeaf ipv4_only;
+        static const Enum::YLeaf ipv6_only;
+        static const Enum::YLeaf ipv4_all;
+        static const Enum::YLeaf ipv6_all;
+        static const Enum::YLeaf dual_all;
+        static const Enum::YLeaf dual_part_up;
+        static const Enum::YLeaf dual_up;
+        static const Enum::YLeaf lac;
 
 };
 

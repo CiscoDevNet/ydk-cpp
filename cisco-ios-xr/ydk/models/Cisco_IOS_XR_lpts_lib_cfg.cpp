@@ -46,7 +46,7 @@ EntityPath Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -138,7 +138,7 @@ EntityPath Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -229,7 +229,7 @@ bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_operation() const
 {
     return is_set(operation)
 	|| is_set(acl_name.operation)
-	|| (ipv4vrf_names !=  nullptr && is_set(ipv4vrf_names->operation));
+	|| (ipv4vrf_names !=  nullptr && ipv4vrf_names->has_operation());
 }
 
 std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_segment_path() const
@@ -434,7 +434,7 @@ Lpts::Ipolicer::Flows::Flow::Precedences::~Precedences()
 
 bool Lpts::Ipolicer::Flows::Flow::Precedences::has_data() const
 {
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -444,12 +444,13 @@ bool Lpts::Ipolicer::Flows::Flow::Precedences::has_data() const
 
 bool Lpts::Ipolicer::Flows::Flow::Precedences::has_operation() const
 {
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(precedence.operation);
 }
 
 std::string Lpts::Ipolicer::Flows::Flow::Precedences::get_segment_path() const
@@ -466,7 +467,7 @@ EntityPath Lpts::Ipolicer::Flows::Flow::Precedences::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -540,7 +541,7 @@ bool Lpts::Ipolicer::Flows::Flow::has_operation() const
     return is_set(operation)
 	|| is_set(flow_type.operation)
 	|| is_set(rate.operation)
-	|| (precedences !=  nullptr && is_set(precedences->operation));
+	|| (precedences !=  nullptr && precedences->has_operation());
 }
 
 std::string Lpts::Ipolicer::Flows::Flow::get_segment_path() const
@@ -768,8 +769,8 @@ bool Lpts::Ipolicer::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (flows !=  nullptr && is_set(flows->operation))
-	|| (ipv4acls !=  nullptr && is_set(ipv4acls->operation));
+	|| (flows !=  nullptr && flows->has_operation())
+	|| (ipv4acls !=  nullptr && ipv4acls->has_operation());
 }
 
 std::string Lpts::Ipolicer::get_segment_path() const
@@ -1486,7 +1487,7 @@ bool Lpts::Punt::Flowtrap::Exclude::has_data() const
 bool Lpts::Punt::Flowtrap::Exclude::has_operation() const
 {
     return is_set(operation)
-	|| (interface_names !=  nullptr && is_set(interface_names->operation));
+	|| (interface_names !=  nullptr && interface_names->has_operation());
 }
 
 std::string Lpts::Punt::Flowtrap::Exclude::get_segment_path() const
@@ -1631,9 +1632,9 @@ bool Lpts::Punt::Flowtrap::has_operation() const
 	|| is_set(routing_protocols_enable.operation)
 	|| is_set(sample_prob.operation)
 	|| is_set(subscriber_interfaces.operation)
-	|| (exclude !=  nullptr && is_set(exclude->operation))
-	|| (penalty_rates !=  nullptr && is_set(penalty_rates->operation))
-	|| (penalty_timeouts !=  nullptr && is_set(penalty_timeouts->operation));
+	|| (exclude !=  nullptr && exclude->has_operation())
+	|| (penalty_rates !=  nullptr && penalty_rates->has_operation())
+	|| (penalty_timeouts !=  nullptr && penalty_timeouts->has_operation());
 }
 
 std::string Lpts::Punt::Flowtrap::get_segment_path() const
@@ -1835,7 +1836,7 @@ bool Lpts::Punt::has_data() const
 bool Lpts::Punt::has_operation() const
 {
     return is_set(operation)
-	|| (flowtrap !=  nullptr && is_set(flowtrap->operation));
+	|| (flowtrap !=  nullptr && flowtrap->has_operation());
 }
 
 std::string Lpts::Punt::get_segment_path() const
@@ -1938,8 +1939,8 @@ bool Lpts::has_data() const
 bool Lpts::has_operation() const
 {
     return is_set(operation)
-	|| (ipolicer !=  nullptr && is_set(ipolicer->operation))
-	|| (punt !=  nullptr && is_set(punt->operation));
+	|| (ipolicer !=  nullptr && ipolicer->has_operation())
+	|| (punt !=  nullptr && punt->has_operation());
 }
 
 std::string Lpts::get_segment_path() const
@@ -1956,7 +1957,7 @@ EntityPath Lpts::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

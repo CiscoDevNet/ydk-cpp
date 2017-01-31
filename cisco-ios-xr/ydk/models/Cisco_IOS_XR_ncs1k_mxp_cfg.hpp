@@ -26,6 +26,7 @@ class HardwareModule : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Node : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class HardwareModule : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value location; //type: string
 
+
+            YLeaf location; //type: string
 
         class Slice : public Entity
         {
@@ -55,9 +57,10 @@ class HardwareModule : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value slice_id; //type: string
-                Value lldp; //type: boolean
 
+
+                YLeaf slice_id; //type: string
+                YLeaf lldp; //type: boolean
 
             class Values : public Entity
             {
@@ -72,15 +75,13 @@ class HardwareModule : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value client_rate; //type: ClientDataRateEnum
-                    Value trunk_rate; //type: TrunkDataRateEnum
-                    Value fec; //type: FecEnum
-                    Value encrypted; //type: boolean
 
 
-                    class ClientDataRateEnum;
-                    class FecEnum;
-                    class TrunkDataRateEnum;
+                    YLeaf client_rate; //type: ClientDataRateEnum
+                    YLeaf trunk_rate; //type: TrunkDataRateEnum
+                    YLeaf fec; //type: FecEnum
+                    YLeaf encrypted; //type: boolean
+
 
 
             }; // HardwareModule::Node::Slice::Values
@@ -107,26 +108,26 @@ class HardwareModule : public Entity
 class ClientDataRateEnum : public Enum
 {
     public:
-        static const Enum::Value ten_gig;
-        static const Enum::Value forty_gig;
-        static const Enum::Value hundred_gig;
+        static const Enum::YLeaf ten_gig;
+        static const Enum::YLeaf forty_gig;
+        static const Enum::YLeaf hundred_gig;
 
 };
 
 class TrunkDataRateEnum : public Enum
 {
     public:
-        static const Enum::Value hundred_gig;
-        static const Enum::Value two_hundred_gig;
-        static const Enum::Value two_hundred_fifty_gig;
+        static const Enum::YLeaf hundred_gig;
+        static const Enum::YLeaf two_hundred_gig;
+        static const Enum::YLeaf two_hundred_fifty_gig;
 
 };
 
 class FecEnum : public Enum
 {
     public:
-        static const Enum::Value sd7;
-        static const Enum::Value sd20;
+        static const Enum::YLeaf sd7;
+        static const Enum::YLeaf sd20;
 
 };
 

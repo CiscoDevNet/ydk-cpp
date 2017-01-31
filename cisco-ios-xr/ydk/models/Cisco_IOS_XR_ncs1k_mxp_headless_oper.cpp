@@ -52,7 +52,7 @@ EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -146,7 +146,7 @@ bool HeadlessFuncData::OtnPortNames::OtnPortName::has_operation() const
 	|| is_set(headless_end_time.operation)
 	|| is_set(headless_start_time.operation)
 	|| is_set(started_stateful.operation)
-	|| (otn_statistics !=  nullptr && is_set(otn_statistics->operation));
+	|| (otn_statistics !=  nullptr && otn_statistics->has_operation());
 }
 
 std::string HeadlessFuncData::OtnPortNames::OtnPortName::get_segment_path() const
@@ -479,7 +479,7 @@ EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistic
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -708,7 +708,7 @@ bool HeadlessFuncData::EthernetPortNames::EthernetPortName::has_operation() cons
 	|| is_set(headless_end_time.operation)
 	|| is_set(headless_start_time.operation)
 	|| is_set(started_stateful.operation)
-	|| (ether_statistics !=  nullptr && is_set(ether_statistics->operation));
+	|| (ether_statistics !=  nullptr && ether_statistics->has_operation());
 }
 
 std::string HeadlessFuncData::EthernetPortNames::EthernetPortName::get_segment_path() const
@@ -942,8 +942,8 @@ bool HeadlessFuncData::has_data() const
 bool HeadlessFuncData::has_operation() const
 {
     return is_set(operation)
-	|| (ethernet_port_names !=  nullptr && is_set(ethernet_port_names->operation))
-	|| (otn_port_names !=  nullptr && is_set(otn_port_names->operation));
+	|| (ethernet_port_names !=  nullptr && ethernet_port_names->has_operation())
+	|| (otn_port_names !=  nullptr && otn_port_names->has_operation());
 }
 
 std::string HeadlessFuncData::get_segment_path() const
@@ -960,7 +960,7 @@ EntityPath HeadlessFuncData::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

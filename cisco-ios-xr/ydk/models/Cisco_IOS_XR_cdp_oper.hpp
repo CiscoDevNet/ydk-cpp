@@ -26,6 +26,7 @@ class Cdp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Cdp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Cdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Neighbors : public Entity
             {
@@ -70,6 +73,7 @@ class Cdp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Details : public Entity
@@ -87,6 +91,7 @@ class Cdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Detail : public Entity
                     {
                         public:
@@ -100,9 +105,10 @@ class Cdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value device_id; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf device_id; //type: string
 
                         class CdpNeighbor : public Entity
                         {
@@ -117,14 +123,15 @@ class Cdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value receiving_interface_name; //type: string
-                                Value device_id; //type: string
-                                Value port_id; //type: string
-                                Value header_version; //type: uint8
-                                Value hold_time; //type: uint16
-                                Value capabilities; //type: string
-                                Value platform; //type: string
 
+
+                                YLeaf receiving_interface_name; //type: string
+                                YLeaf device_id; //type: string
+                                YLeaf port_id; //type: string
+                                YLeaf header_version; //type: uint8
+                                YLeaf hold_time; //type: uint16
+                                YLeaf capabilities; //type: string
+                                YLeaf platform; //type: string
 
                             class Detail_ : public Entity
                             {
@@ -139,12 +146,13 @@ class Cdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value version; //type: string
-                                    Value vtp_domain; //type: string
-                                    Value native_vlan; //type: uint32
-                                    Value duplex; //type: CdpDuplexEnum
-                                    Value system_name; //type: string
 
+
+                                    YLeaf version; //type: string
+                                    YLeaf vtp_domain; //type: string
+                                    YLeaf native_vlan; //type: uint32
+                                    YLeaf duplex; //type: CdpDuplexEnum
+                                    YLeaf system_name; //type: string
 
                                 class NetworkAddresses : public Entity
                                 {
@@ -159,6 +167,7 @@ class Cdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class CdpAddrEntry : public Entity
@@ -176,6 +185,7 @@ class Cdp : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Address : public Entity
                                         {
                                             public:
@@ -189,12 +199,12 @@ class Cdp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_type; //type: CdpL3AddrProtocolEnum
-                                                Value ipv4_address; //type: string
-                                                Value ipv6_address; //type: string
 
 
-                                                class CdpL3AddrProtocolEnum;
+                                                YLeaf address_type; //type: CdpL3AddrProtocolEnum
+                                                YLeaf ipv4_address; //type: string
+                                                YLeaf ipv6_address; //type: string
+
 
 
                                         }; // Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address
@@ -227,6 +237,7 @@ class Cdp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class CdpProtHelloEntry : public Entity
                                     {
                                         public:
@@ -240,8 +251,9 @@ class Cdp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value hello_message; //type: string
 
+
+                                            YLeaf hello_message; //type: string
 
 
 
@@ -256,7 +268,6 @@ class Cdp : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses> network_addresses;
                                     std::unique_ptr<Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList> protocol_hello_list;
-                                    class CdpDuplexEnum;
 
 
                             }; // Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_
@@ -295,6 +306,7 @@ class Cdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Device : public Entity
                     {
                         public:
@@ -308,8 +320,9 @@ class Cdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value device_id; //type: string
 
+
+                            YLeaf device_id; //type: string
 
                         class CdpNeighbor : public Entity
                         {
@@ -324,14 +337,15 @@ class Cdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value receiving_interface_name; //type: string
-                                Value device_id; //type: string
-                                Value port_id; //type: string
-                                Value header_version; //type: uint8
-                                Value hold_time; //type: uint16
-                                Value capabilities; //type: string
-                                Value platform; //type: string
 
+
+                                YLeaf receiving_interface_name; //type: string
+                                YLeaf device_id; //type: string
+                                YLeaf port_id; //type: string
+                                YLeaf header_version; //type: uint8
+                                YLeaf hold_time; //type: uint16
+                                YLeaf capabilities; //type: string
+                                YLeaf platform; //type: string
 
                             class Detail : public Entity
                             {
@@ -346,12 +360,13 @@ class Cdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value version; //type: string
-                                    Value vtp_domain; //type: string
-                                    Value native_vlan; //type: uint32
-                                    Value duplex; //type: CdpDuplexEnum
-                                    Value system_name; //type: string
 
+
+                                    YLeaf version; //type: string
+                                    YLeaf vtp_domain; //type: string
+                                    YLeaf native_vlan; //type: uint32
+                                    YLeaf duplex; //type: CdpDuplexEnum
+                                    YLeaf system_name; //type: string
 
                                 class NetworkAddresses : public Entity
                                 {
@@ -366,6 +381,7 @@ class Cdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class CdpAddrEntry : public Entity
@@ -383,6 +399,7 @@ class Cdp : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Address : public Entity
                                         {
                                             public:
@@ -396,12 +413,12 @@ class Cdp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_type; //type: CdpL3AddrProtocolEnum
-                                                Value ipv4_address; //type: string
-                                                Value ipv6_address; //type: string
 
 
-                                                class CdpL3AddrProtocolEnum;
+                                                YLeaf address_type; //type: CdpL3AddrProtocolEnum
+                                                YLeaf ipv4_address; //type: string
+                                                YLeaf ipv6_address; //type: string
+
 
 
                                         }; // Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address
@@ -434,6 +451,7 @@ class Cdp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class CdpProtHelloEntry : public Entity
                                     {
                                         public:
@@ -447,8 +465,9 @@ class Cdp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value hello_message; //type: string
 
+
+                                            YLeaf hello_message; //type: string
 
 
 
@@ -463,7 +482,6 @@ class Cdp : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses> network_addresses;
                                     std::unique_ptr<Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList> protocol_hello_list;
-                                    class CdpDuplexEnum;
 
 
                             }; // Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail
@@ -502,6 +520,7 @@ class Cdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Summary : public Entity
                     {
                         public:
@@ -515,9 +534,10 @@ class Cdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value device_id; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf device_id; //type: string
 
                         class CdpNeighbor : public Entity
                         {
@@ -532,14 +552,15 @@ class Cdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value receiving_interface_name; //type: string
-                                Value device_id; //type: string
-                                Value port_id; //type: string
-                                Value header_version; //type: uint8
-                                Value hold_time; //type: uint16
-                                Value capabilities; //type: string
-                                Value platform; //type: string
 
+
+                                YLeaf receiving_interface_name; //type: string
+                                YLeaf device_id; //type: string
+                                YLeaf port_id; //type: string
+                                YLeaf header_version; //type: uint8
+                                YLeaf hold_time; //type: uint16
+                                YLeaf capabilities; //type: string
+                                YLeaf platform; //type: string
 
                             class Detail : public Entity
                             {
@@ -554,12 +575,13 @@ class Cdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value version; //type: string
-                                    Value vtp_domain; //type: string
-                                    Value native_vlan; //type: uint32
-                                    Value duplex; //type: CdpDuplexEnum
-                                    Value system_name; //type: string
 
+
+                                    YLeaf version; //type: string
+                                    YLeaf vtp_domain; //type: string
+                                    YLeaf native_vlan; //type: uint32
+                                    YLeaf duplex; //type: CdpDuplexEnum
+                                    YLeaf system_name; //type: string
 
                                 class NetworkAddresses : public Entity
                                 {
@@ -574,6 +596,7 @@ class Cdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                                     class CdpAddrEntry : public Entity
@@ -591,6 +614,7 @@ class Cdp : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Address : public Entity
                                         {
                                             public:
@@ -604,12 +628,12 @@ class Cdp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address_type; //type: CdpL3AddrProtocolEnum
-                                                Value ipv4_address; //type: string
-                                                Value ipv6_address; //type: string
 
 
-                                                class CdpL3AddrProtocolEnum;
+                                                YLeaf address_type; //type: CdpL3AddrProtocolEnum
+                                                YLeaf ipv4_address; //type: string
+                                                YLeaf ipv6_address; //type: string
+
 
 
                                         }; // Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address
@@ -642,6 +666,7 @@ class Cdp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class CdpProtHelloEntry : public Entity
                                     {
                                         public:
@@ -655,8 +680,9 @@ class Cdp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value hello_message; //type: string
 
+
+                                            YLeaf hello_message; //type: string
 
 
 
@@ -671,7 +697,6 @@ class Cdp : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses> network_addresses;
                                     std::unique_ptr<Cisco_IOS_XR_cdp_oper::Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList> protocol_hello_list;
-                                    class CdpDuplexEnum;
 
 
                             }; // Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
@@ -716,21 +741,22 @@ class Cdp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value received_packets; //type: uint32
-                    Value received_packets_v1; //type: uint32
-                    Value received_packets_v2; //type: uint32
-                    Value transmitted_packets; //type: uint32
-                    Value transmitted_packets_v1; //type: uint32
-                    Value transmitted_packets_v2; //type: uint32
-                    Value header_errors; //type: uint32
-                    Value checksum_errors; //type: uint32
-                    Value encapsulation_errors; //type: uint32
-                    Value bad_packet_errors; //type: uint32
-                    Value out_of_memory_errors; //type: uint32
-                    Value truncated_packet_errors; //type: uint32
-                    Value header_version_errors; //type: uint32
-                    Value open_file_errors; //type: uint32
 
+
+                    YLeaf received_packets; //type: uint32
+                    YLeaf received_packets_v1; //type: uint32
+                    YLeaf received_packets_v2; //type: uint32
+                    YLeaf transmitted_packets; //type: uint32
+                    YLeaf transmitted_packets_v1; //type: uint32
+                    YLeaf transmitted_packets_v2; //type: uint32
+                    YLeaf header_errors; //type: uint32
+                    YLeaf checksum_errors; //type: uint32
+                    YLeaf encapsulation_errors; //type: uint32
+                    YLeaf bad_packet_errors; //type: uint32
+                    YLeaf out_of_memory_errors; //type: uint32
+                    YLeaf truncated_packet_errors; //type: uint32
+                    YLeaf header_version_errors; //type: uint32
+                    YLeaf open_file_errors; //type: uint32
 
 
 
@@ -752,6 +778,7 @@ class Cdp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -765,12 +792,13 @@ class Cdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value interface_name_xr; //type: string
-                        Value basecaps_state; //type: uint32
-                        Value cdp_protocol_state; //type: uint32
-                        Value interface_encaps; //type: string
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf interface_name_xr; //type: string
+                        YLeaf basecaps_state; //type: uint32
+                        YLeaf cdp_protocol_state; //type: uint32
+                        YLeaf interface_encaps; //type: string
 
 
 
@@ -806,17 +834,17 @@ class Cdp : public Entity
 class CdpDuplexEnum : public Enum
 {
     public:
-        static const Enum::Value cdp_dplx_none;
-        static const Enum::Value cdp_dplx_half;
-        static const Enum::Value cdp_dplx_full;
+        static const Enum::YLeaf cdp_dplx_none;
+        static const Enum::YLeaf cdp_dplx_half;
+        static const Enum::YLeaf cdp_dplx_full;
 
 };
 
 class CdpL3AddrProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 

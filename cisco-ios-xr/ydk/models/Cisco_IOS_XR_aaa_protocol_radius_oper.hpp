@@ -26,6 +26,7 @@ class Radius : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Radius : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Radius : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Client : public Entity
             {
@@ -70,10 +73,11 @@ class Radius : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value unknown_authentication_responses; //type: uint32
-                    Value authentication_nas_id; //type: string
-                    Value unknown_accounting_responses; //type: uint32
 
+
+                    YLeaf unknown_authentication_responses; //type: uint32
+                    YLeaf authentication_nas_id; //type: string
+                    YLeaf unknown_accounting_responses; //type: uint32
 
 
 
@@ -95,6 +99,7 @@ class Radius : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Hosts : public Entity
                 {
                     public:
@@ -110,6 +115,7 @@ class Radius : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Host : public Entity
                     {
                         public:
@@ -123,10 +129,11 @@ class Radius : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip_address; //type: string
-                            Value auth_port_number; //type: uint32
-                            Value acct_port_number; //type: uint32
 
+
+                            YLeaf ip_address; //type: string
+                            YLeaf auth_port_number; //type: uint32
+                            YLeaf acct_port_number; //type: uint32
 
                         class Time : public Entity
                         {
@@ -141,9 +148,10 @@ class Radius : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value value_; //type: uint32
-                                Value is_computed; //type: boolean
 
+
+                                YLeaf value_; //type: uint32
+                                YLeaf is_computed; //type: boolean
 
 
 
@@ -163,9 +171,10 @@ class Radius : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value value_; //type: uint32
-                                Value is_computed; //type: boolean
 
+
+                                YLeaf value_; //type: uint32
+                                YLeaf is_computed; //type: boolean
 
 
 
@@ -206,6 +215,7 @@ class Radius : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AuthenticationGroup : public Entity
                 {
                     public:
@@ -219,11 +229,12 @@ class Radius : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value server_address; //type: string
-                        Value port; //type: uint32
-                        Value ip_address; //type: string
-                        Value family; //type: string
 
+
+                        YLeaf server_address; //type: string
+                        YLeaf port; //type: uint32
+                        YLeaf ip_address; //type: string
+                        YLeaf family; //type: string
 
                     class Authentication_ : public Entity
                     {
@@ -238,25 +249,26 @@ class Radius : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value access_requests; //type: uint32
-                            Value pending_access_requests; //type: uint32
-                            Value access_request_retransmits; //type: uint32
-                            Value access_accepts; //type: uint32
-                            Value access_rejects; //type: uint32
-                            Value access_challenges; //type: uint32
-                            Value access_timeouts; //type: uint32
-                            Value bad_access_responses; //type: uint32
-                            Value bad_access_authenticators; //type: uint32
-                            Value unknown_access_types; //type: uint32
-                            Value dropped_access_responses; //type: uint32
-                            Value rtt; //type: uint32
-                            Value authen_response_time; //type: uint32
-                            Value authen_transaction_successess; //type: uint32
-                            Value authen_transaction_failure; //type: uint32
-                            Value authen_unexpected_responses; //type: uint32
-                            Value authen_server_error_responses; //type: uint32
-                            Value authen_incorrect_responses; //type: uint32
 
+
+                            YLeaf access_requests; //type: uint32
+                            YLeaf pending_access_requests; //type: uint32
+                            YLeaf access_request_retransmits; //type: uint32
+                            YLeaf access_accepts; //type: uint32
+                            YLeaf access_rejects; //type: uint32
+                            YLeaf access_challenges; //type: uint32
+                            YLeaf access_timeouts; //type: uint32
+                            YLeaf bad_access_responses; //type: uint32
+                            YLeaf bad_access_authenticators; //type: uint32
+                            YLeaf unknown_access_types; //type: uint32
+                            YLeaf dropped_access_responses; //type: uint32
+                            YLeaf rtt; //type: uint32
+                            YLeaf authen_response_time; //type: uint32
+                            YLeaf authen_transaction_successess; //type: uint32
+                            YLeaf authen_transaction_failure; //type: uint32
+                            YLeaf authen_unexpected_responses; //type: uint32
+                            YLeaf authen_server_error_responses; //type: uint32
+                            YLeaf authen_incorrect_responses; //type: uint32
 
 
 
@@ -290,6 +302,7 @@ class Radius : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AccountingGroup : public Entity
                 {
                     public:
@@ -303,11 +316,12 @@ class Radius : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value server_address; //type: string
-                        Value port; //type: uint32
-                        Value ip_address; //type: string
-                        Value family; //type: string
 
+
+                        YLeaf server_address; //type: string
+                        YLeaf port; //type: uint32
+                        YLeaf ip_address; //type: string
+                        YLeaf family; //type: string
 
                     class Accounting_ : public Entity
                     {
@@ -322,23 +336,24 @@ class Radius : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value requests; //type: uint32
-                            Value pending_requests; //type: uint32
-                            Value retransmits; //type: uint32
-                            Value responses; //type: uint32
-                            Value timeouts; //type: uint32
-                            Value bad_responses; //type: uint32
-                            Value bad_authenticators; //type: uint32
-                            Value unknown_packet_types; //type: uint32
-                            Value dropped_responses; //type: uint32
-                            Value rtt; //type: uint32
-                            Value acct_unexpected_responses; //type: uint32
-                            Value acct_server_error_responses; //type: uint32
-                            Value acct_incorrect_responses; //type: uint32
-                            Value acct_response_time; //type: uint32
-                            Value acct_transaction_successess; //type: uint32
-                            Value acct_transaction_failure; //type: uint32
 
+
+                            YLeaf requests; //type: uint32
+                            YLeaf pending_requests; //type: uint32
+                            YLeaf retransmits; //type: uint32
+                            YLeaf responses; //type: uint32
+                            YLeaf timeouts; //type: uint32
+                            YLeaf bad_responses; //type: uint32
+                            YLeaf bad_authenticators; //type: uint32
+                            YLeaf unknown_packet_types; //type: uint32
+                            YLeaf dropped_responses; //type: uint32
+                            YLeaf rtt; //type: uint32
+                            YLeaf acct_unexpected_responses; //type: uint32
+                            YLeaf acct_server_error_responses; //type: uint32
+                            YLeaf acct_incorrect_responses; //type: uint32
+                            YLeaf acct_response_time; //type: uint32
+                            YLeaf acct_transaction_successess; //type: uint32
+                            YLeaf acct_transaction_failure; //type: uint32
 
 
 
@@ -372,6 +387,7 @@ class Radius : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ServerGroup : public Entity
                 {
                     public:
@@ -385,12 +401,13 @@ class Radius : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value server_group_name; //type: string
-                        Value groups; //type: uint32
-                        Value vrf_name; //type: string
-                        Value dead_time; //type: uint32
-                        Value servers; //type: uint32
 
+
+                        YLeaf server_group_name; //type: string
+                        YLeaf groups; //type: uint32
+                        YLeaf vrf_name; //type: string
+                        YLeaf dead_time; //type: uint32
+                        YLeaf servers; //type: uint32
 
                     class ServerGroup_ : public Entity
                     {
@@ -405,13 +422,14 @@ class Radius : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value server_address; //type: string
-                            Value authentication_port; //type: uint32
-                            Value accounting_port; //type: uint32
-                            Value is_private; //type: boolean
-                            Value ip_address; //type: string
-                            Value family; //type: string
 
+
+                            YLeaf server_address; //type: string
+                            YLeaf authentication_port; //type: uint32
+                            YLeaf accounting_port; //type: uint32
+                            YLeaf is_private; //type: boolean
+                            YLeaf ip_address; //type: string
+                            YLeaf family; //type: string
 
                         class Accounting : public Entity
                         {
@@ -426,23 +444,24 @@ class Radius : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value requests; //type: uint32
-                                Value pending_requests; //type: uint32
-                                Value retransmits; //type: uint32
-                                Value responses; //type: uint32
-                                Value timeouts; //type: uint32
-                                Value bad_responses; //type: uint32
-                                Value bad_authenticators; //type: uint32
-                                Value unknown_packet_types; //type: uint32
-                                Value dropped_responses; //type: uint32
-                                Value rtt; //type: uint32
-                                Value acct_unexpected_responses; //type: uint32
-                                Value acct_server_error_responses; //type: uint32
-                                Value acct_incorrect_responses; //type: uint32
-                                Value acct_response_time; //type: uint32
-                                Value acct_transaction_successess; //type: uint32
-                                Value acct_transaction_failure; //type: uint32
 
+
+                                YLeaf requests; //type: uint32
+                                YLeaf pending_requests; //type: uint32
+                                YLeaf retransmits; //type: uint32
+                                YLeaf responses; //type: uint32
+                                YLeaf timeouts; //type: uint32
+                                YLeaf bad_responses; //type: uint32
+                                YLeaf bad_authenticators; //type: uint32
+                                YLeaf unknown_packet_types; //type: uint32
+                                YLeaf dropped_responses; //type: uint32
+                                YLeaf rtt; //type: uint32
+                                YLeaf acct_unexpected_responses; //type: uint32
+                                YLeaf acct_server_error_responses; //type: uint32
+                                YLeaf acct_incorrect_responses; //type: uint32
+                                YLeaf acct_response_time; //type: uint32
+                                YLeaf acct_transaction_successess; //type: uint32
+                                YLeaf acct_transaction_failure; //type: uint32
 
 
 
@@ -462,25 +481,26 @@ class Radius : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value access_requests; //type: uint32
-                                Value pending_access_requests; //type: uint32
-                                Value access_request_retransmits; //type: uint32
-                                Value access_accepts; //type: uint32
-                                Value access_rejects; //type: uint32
-                                Value access_challenges; //type: uint32
-                                Value access_timeouts; //type: uint32
-                                Value bad_access_responses; //type: uint32
-                                Value bad_access_authenticators; //type: uint32
-                                Value unknown_access_types; //type: uint32
-                                Value dropped_access_responses; //type: uint32
-                                Value rtt; //type: uint32
-                                Value authen_response_time; //type: uint32
-                                Value authen_transaction_successess; //type: uint32
-                                Value authen_transaction_failure; //type: uint32
-                                Value authen_unexpected_responses; //type: uint32
-                                Value authen_server_error_responses; //type: uint32
-                                Value authen_incorrect_responses; //type: uint32
 
+
+                                YLeaf access_requests; //type: uint32
+                                YLeaf pending_access_requests; //type: uint32
+                                YLeaf access_request_retransmits; //type: uint32
+                                YLeaf access_accepts; //type: uint32
+                                YLeaf access_rejects; //type: uint32
+                                YLeaf access_challenges; //type: uint32
+                                YLeaf access_timeouts; //type: uint32
+                                YLeaf bad_access_responses; //type: uint32
+                                YLeaf bad_access_authenticators; //type: uint32
+                                YLeaf unknown_access_types; //type: uint32
+                                YLeaf dropped_access_responses; //type: uint32
+                                YLeaf rtt; //type: uint32
+                                YLeaf authen_response_time; //type: uint32
+                                YLeaf authen_transaction_successess; //type: uint32
+                                YLeaf authen_transaction_failure; //type: uint32
+                                YLeaf authen_unexpected_responses; //type: uint32
+                                YLeaf authen_server_error_responses; //type: uint32
+                                YLeaf authen_incorrect_responses; //type: uint32
 
 
 
@@ -500,15 +520,16 @@ class Radius : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value author_requests; //type: uint32
-                                Value author_request_timeouts; //type: uint32
-                                Value author_unexpected_responses; //type: uint32
-                                Value author_server_error_responses; //type: uint32
-                                Value author_incorrect_responses; //type: uint32
-                                Value author_response_time; //type: uint32
-                                Value author_transaction_successess; //type: uint32
-                                Value author_transaction_failure; //type: uint32
 
+
+                                YLeaf author_requests; //type: uint32
+                                YLeaf author_request_timeouts; //type: uint32
+                                YLeaf author_unexpected_responses; //type: uint32
+                                YLeaf author_server_error_responses; //type: uint32
+                                YLeaf author_incorrect_responses; //type: uint32
+                                YLeaf author_response_time; //type: uint32
+                                YLeaf author_transaction_successess; //type: uint32
+                                YLeaf author_transaction_failure; //type: uint32
 
 
 
@@ -548,9 +569,10 @@ class Radius : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value disconnected_invalid_requests; //type: uint32
-                    Value invalid_coa_requests; //type: uint32
 
+
+                    YLeaf disconnected_invalid_requests; //type: uint32
+                    YLeaf invalid_coa_requests; //type: uint32
 
 
 

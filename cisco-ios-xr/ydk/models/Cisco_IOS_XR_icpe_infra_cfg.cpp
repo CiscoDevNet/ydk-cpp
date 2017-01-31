@@ -52,7 +52,7 @@ EntityPath NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -154,7 +154,7 @@ EntityPath NvSatellites::NvSatellite::CandidateFabricPorts::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -258,7 +258,7 @@ EntityPath NvSatellites::NvSatellite::ConnectionInfo::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -343,7 +343,7 @@ EntityPath NvSatellites::NvSatellite::Redundancy::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -459,9 +459,9 @@ bool NvSatellites::NvSatellite::has_operation() const
 	|| is_set(type.operation)
 	|| is_set(upgrade_on_connect.operation)
 	|| is_set(vrf.operation)
-	|| (candidate_fabric_ports !=  nullptr && is_set(candidate_fabric_ports->operation))
-	|| (connection_info !=  nullptr && is_set(connection_info->operation))
-	|| (redundancy !=  nullptr && is_set(redundancy->operation));
+	|| (candidate_fabric_ports !=  nullptr && candidate_fabric_ports->has_operation())
+	|| (connection_info !=  nullptr && connection_info->has_operation())
+	|| (redundancy !=  nullptr && redundancy->has_operation());
 }
 
 std::string NvSatellites::NvSatellite::get_segment_path() const
@@ -694,7 +694,7 @@ EntityPath NvSatellites::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -878,7 +878,7 @@ bool NvSatelliteGlobal::has_data() const
 bool NvSatelliteGlobal::has_operation() const
 {
     return is_set(operation)
-	|| (chassis_mac !=  nullptr && is_set(chassis_mac->operation));
+	|| (chassis_mac !=  nullptr && chassis_mac->has_operation());
 }
 
 std::string NvSatelliteGlobal::get_segment_path() const
@@ -895,7 +895,7 @@ EntityPath NvSatelliteGlobal::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

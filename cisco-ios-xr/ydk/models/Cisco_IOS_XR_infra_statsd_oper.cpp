@@ -73,7 +73,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -210,7 +210,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Cache::Protocols::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -416,7 +416,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -707,7 +707,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Cache::DataRate::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -952,7 +952,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Cache::GenericCounters::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1208,10 +1208,10 @@ bool InfraStatistics::Interfaces::Interface::Cache::has_data() const
 bool InfraStatistics::Interfaces::Interface::Cache::has_operation() const
 {
     return is_set(operation)
-	|| (data_rate !=  nullptr && is_set(data_rate->operation))
-	|| (generic_counters !=  nullptr && is_set(generic_counters->operation))
-	|| (interfaces_mib_counters !=  nullptr && is_set(interfaces_mib_counters->operation))
-	|| (protocols !=  nullptr && is_set(protocols->operation));
+	|| (data_rate !=  nullptr && data_rate->has_operation())
+	|| (generic_counters !=  nullptr && generic_counters->has_operation())
+	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_operation())
+	|| (protocols !=  nullptr && protocols->has_operation());
 }
 
 std::string InfraStatistics::Interfaces::Interface::Cache::get_segment_path() const
@@ -1228,7 +1228,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Cache::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1425,7 +1425,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1562,7 +1562,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Latest::Protocols::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1768,7 +1768,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2059,7 +2059,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Latest::DataRate::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2304,7 +2304,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Latest::GenericCounters::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2560,10 +2560,10 @@ bool InfraStatistics::Interfaces::Interface::Latest::has_data() const
 bool InfraStatistics::Interfaces::Interface::Latest::has_operation() const
 {
     return is_set(operation)
-	|| (data_rate !=  nullptr && is_set(data_rate->operation))
-	|| (generic_counters !=  nullptr && is_set(generic_counters->operation))
-	|| (interfaces_mib_counters !=  nullptr && is_set(interfaces_mib_counters->operation))
-	|| (protocols !=  nullptr && is_set(protocols->operation));
+	|| (data_rate !=  nullptr && data_rate->has_operation())
+	|| (generic_counters !=  nullptr && generic_counters->has_operation())
+	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_operation())
+	|| (protocols !=  nullptr && protocols->has_operation());
 }
 
 std::string InfraStatistics::Interfaces::Interface::Latest::get_segment_path() const
@@ -2580,7 +2580,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Latest::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2777,7 +2777,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2914,7 +2914,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Total::Protocols::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3120,7 +3120,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3411,7 +3411,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Total::DataRate::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3656,7 +3656,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Total::GenericCounters::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3912,10 +3912,10 @@ bool InfraStatistics::Interfaces::Interface::Total::has_data() const
 bool InfraStatistics::Interfaces::Interface::Total::has_operation() const
 {
     return is_set(operation)
-	|| (data_rate !=  nullptr && is_set(data_rate->operation))
-	|| (generic_counters !=  nullptr && is_set(generic_counters->operation))
-	|| (interfaces_mib_counters !=  nullptr && is_set(interfaces_mib_counters->operation))
-	|| (protocols !=  nullptr && is_set(protocols->operation));
+	|| (data_rate !=  nullptr && data_rate->has_operation())
+	|| (generic_counters !=  nullptr && generic_counters->has_operation())
+	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_operation())
+	|| (protocols !=  nullptr && protocols->has_operation());
 }
 
 std::string InfraStatistics::Interfaces::Interface::Total::get_segment_path() const
@@ -3932,7 +3932,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Total::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4129,7 +4129,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Protocols::Protocol::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4266,7 +4266,7 @@ EntityPath InfraStatistics::Interfaces::Interface::Protocols::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4472,7 +4472,7 @@ EntityPath InfraStatistics::Interfaces::Interface::InterfacesMibCounters::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4763,7 +4763,7 @@ EntityPath InfraStatistics::Interfaces::Interface::DataRate::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5008,7 +5008,7 @@ EntityPath InfraStatistics::Interfaces::Interface::GenericCounters::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5283,13 +5283,13 @@ bool InfraStatistics::Interfaces::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (cache !=  nullptr && is_set(cache->operation))
-	|| (data_rate !=  nullptr && is_set(data_rate->operation))
-	|| (generic_counters !=  nullptr && is_set(generic_counters->operation))
-	|| (interfaces_mib_counters !=  nullptr && is_set(interfaces_mib_counters->operation))
-	|| (latest !=  nullptr && is_set(latest->operation))
-	|| (protocols !=  nullptr && is_set(protocols->operation))
-	|| (total !=  nullptr && is_set(total->operation));
+	|| (cache !=  nullptr && cache->has_operation())
+	|| (data_rate !=  nullptr && data_rate->has_operation())
+	|| (generic_counters !=  nullptr && generic_counters->has_operation())
+	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_operation())
+	|| (latest !=  nullptr && latest->has_operation())
+	|| (protocols !=  nullptr && protocols->has_operation())
+	|| (total !=  nullptr && total->has_operation());
 }
 
 std::string InfraStatistics::Interfaces::Interface::get_segment_path() const
@@ -5641,7 +5641,7 @@ bool InfraStatistics::has_data() const
 bool InfraStatistics::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string InfraStatistics::get_segment_path() const
@@ -5658,7 +5658,7 @@ EntityPath InfraStatistics::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

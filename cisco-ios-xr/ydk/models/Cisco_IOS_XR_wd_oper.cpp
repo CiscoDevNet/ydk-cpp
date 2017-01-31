@@ -49,7 +49,7 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -145,7 +145,7 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -226,8 +226,8 @@ bool Watchdog::Nodes::Node::ThresholdMemory::Default_::has_data() const
 bool Watchdog::Nodes::Node::ThresholdMemory::Default_::has_operation() const
 {
     return is_set(operation)
-	|| (configured_memory !=  nullptr && is_set(configured_memory->operation))
-	|| (memory !=  nullptr && is_set(memory->operation));
+	|| (configured_memory !=  nullptr && configured_memory->has_operation())
+	|| (memory !=  nullptr && memory->has_operation());
 }
 
 std::string Watchdog::Nodes::Node::ThresholdMemory::Default_::get_segment_path() const
@@ -244,7 +244,7 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::Default_::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -371,7 +371,7 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::Configured::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -452,8 +452,8 @@ bool Watchdog::Nodes::Node::ThresholdMemory::has_data() const
 bool Watchdog::Nodes::Node::ThresholdMemory::has_operation() const
 {
     return is_set(operation)
-	|| (configured !=  nullptr && is_set(configured->operation))
-	|| (default_ !=  nullptr && is_set(default_->operation));
+	|| (configured !=  nullptr && configured->has_operation())
+	|| (default_ !=  nullptr && default_->has_operation());
 }
 
 std::string Watchdog::Nodes::Node::ThresholdMemory::get_segment_path() const
@@ -470,7 +470,7 @@ EntityPath Watchdog::Nodes::Node::ThresholdMemory::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -597,7 +597,7 @@ EntityPath Watchdog::Nodes::Node::MemoryState::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -690,7 +690,7 @@ EntityPath Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -781,7 +781,7 @@ EntityPath Watchdog::Nodes::Node::OverloadState::LastThrottle::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -877,7 +877,7 @@ bool Watchdog::Nodes::Node::OverloadState::has_operation() const
 	|| is_set(configured_wdsysmon_throttle.operation)
 	|| is_set(default_wdsysmon_throttle.operation)
 	|| is_set(overload_control_notification.operation)
-	|| (current_throttle !=  nullptr && is_set(current_throttle->operation));
+	|| (current_throttle !=  nullptr && current_throttle->has_operation());
 }
 
 std::string Watchdog::Nodes::Node::OverloadState::get_segment_path() const
@@ -894,7 +894,7 @@ EntityPath Watchdog::Nodes::Node::OverloadState::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1033,9 +1033,9 @@ bool Watchdog::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (memory_state !=  nullptr && is_set(memory_state->operation))
-	|| (overload_state !=  nullptr && is_set(overload_state->operation))
-	|| (threshold_memory !=  nullptr && is_set(threshold_memory->operation));
+	|| (memory_state !=  nullptr && memory_state->has_operation())
+	|| (overload_state !=  nullptr && overload_state->has_operation())
+	|| (threshold_memory !=  nullptr && threshold_memory->has_operation());
 }
 
 std::string Watchdog::Nodes::Node::get_segment_path() const
@@ -1295,7 +1295,7 @@ bool Watchdog::has_data() const
 bool Watchdog::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Watchdog::get_segment_path() const
@@ -1312,7 +1312,7 @@ EntityPath Watchdog::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1376,14 +1376,14 @@ std::unique_ptr<Entity> Watchdog::clone_ptr()
     return std::make_unique<Watchdog>();
 }
 
-const Enum::Value MemoryStateEnum::unknown {0, "unknown"};
-const Enum::Value MemoryStateEnum::normal {1, "normal"};
-const Enum::Value MemoryStateEnum::minor {2, "minor"};
-const Enum::Value MemoryStateEnum::severe {3, "severe"};
-const Enum::Value MemoryStateEnum::critical {4, "critical"};
+const Enum::YLeaf MemoryStateEnum::unknown {0, "unknown"};
+const Enum::YLeaf MemoryStateEnum::normal {1, "normal"};
+const Enum::YLeaf MemoryStateEnum::minor {2, "minor"};
+const Enum::YLeaf MemoryStateEnum::severe {3, "severe"};
+const Enum::YLeaf MemoryStateEnum::critical {4, "critical"};
 
-const Enum::Value OverloadCtrlNotifEnum::disabled {0, "disabled"};
-const Enum::Value OverloadCtrlNotifEnum::enabled {1, "enabled"};
+const Enum::YLeaf OverloadCtrlNotifEnum::disabled {0, "disabled"};
+const Enum::YLeaf OverloadCtrlNotifEnum::enabled {1, "enabled"};
 
 
 }

@@ -58,7 +58,7 @@ EntityPath IpExplicitPaths::Paths::Path::Name::Hops::Hop::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -170,7 +170,7 @@ EntityPath IpExplicitPaths::Paths::Path::Name::Hops::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -264,7 +264,7 @@ bool IpExplicitPaths::Paths::Path::Name::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(disable.operation)
-	|| (hops !=  nullptr && is_set(hops->operation));
+	|| (hops !=  nullptr && hops->has_operation());
 }
 
 std::string IpExplicitPaths::Paths::Path::Name::get_segment_path() const
@@ -281,7 +281,7 @@ EntityPath IpExplicitPaths::Paths::Path::Name::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -404,7 +404,7 @@ EntityPath IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -516,7 +516,7 @@ EntityPath IpExplicitPaths::Paths::Path::Identifier::Hops::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -610,7 +610,7 @@ bool IpExplicitPaths::Paths::Path::Identifier::has_operation() const
     return is_set(operation)
 	|| is_set(id.operation)
 	|| is_set(disable.operation)
-	|| (hops !=  nullptr && is_set(hops->operation));
+	|| (hops !=  nullptr && hops->has_operation());
 }
 
 std::string IpExplicitPaths::Paths::Path::Identifier::get_segment_path() const
@@ -627,7 +627,7 @@ EntityPath IpExplicitPaths::Paths::Path::Identifier::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -981,7 +981,7 @@ bool IpExplicitPaths::has_data() const
 bool IpExplicitPaths::has_operation() const
 {
     return is_set(operation)
-	|| (paths !=  nullptr && is_set(paths->operation));
+	|| (paths !=  nullptr && paths->has_operation());
 }
 
 std::string IpExplicitPaths::get_segment_path() const
@@ -998,7 +998,7 @@ EntityPath IpExplicitPaths::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1062,17 +1062,17 @@ std::unique_ptr<Entity> IpExplicitPaths::clone_ptr()
     return std::make_unique<IpExplicitPaths>();
 }
 
-const Enum::Value IpIepPathEnum::identifier {1, "identifier"};
-const Enum::Value IpIepPathEnum::name {2, "name"};
+const Enum::YLeaf IpIepPathEnum::identifier {1, "identifier"};
+const Enum::YLeaf IpIepPathEnum::name {2, "name"};
 
-const Enum::Value IpIepHopEnum::next_strict {2, "next-strict"};
-const Enum::Value IpIepHopEnum::next_loose {3, "next-loose"};
-const Enum::Value IpIepHopEnum::exclude {4, "exclude"};
-const Enum::Value IpIepHopEnum::exclude_srlg {5, "exclude-srlg"};
-const Enum::Value IpIepHopEnum::next_label {6, "next-label"};
+const Enum::YLeaf IpIepHopEnum::next_strict {2, "next-strict"};
+const Enum::YLeaf IpIepHopEnum::next_loose {3, "next-loose"};
+const Enum::YLeaf IpIepHopEnum::exclude {4, "exclude"};
+const Enum::YLeaf IpIepHopEnum::exclude_srlg {5, "exclude-srlg"};
+const Enum::YLeaf IpIepHopEnum::next_label {6, "next-label"};
 
-const Enum::Value IpIepNumEnum::unnumbered {1, "unnumbered"};
-const Enum::Value IpIepNumEnum::numbered {2, "numbered"};
+const Enum::YLeaf IpIepNumEnum::unnumbered {1, "unnumbered"};
+const Enum::YLeaf IpIepNumEnum::numbered {2, "numbered"};
 
 
 }

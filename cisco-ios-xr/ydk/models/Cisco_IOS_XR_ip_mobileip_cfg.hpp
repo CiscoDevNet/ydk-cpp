@@ -26,6 +26,7 @@ class MobileIp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Domains : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class MobileIp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Domain : public Entity
         {
             public:
@@ -54,9 +56,10 @@ class MobileIp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value domain_name; //type: string
-                Value enable; //type: empty
 
+
+                YLeaf domain_name; //type: string
+                YLeaf enable; //type: empty
 
             class Mags : public Entity
             {
@@ -73,6 +76,7 @@ class MobileIp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Mag : public Entity
                 {
                     public:
@@ -86,8 +90,9 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value mag_name; //type: string
 
+
+                        YLeaf mag_name; //type: string
 
 
 
@@ -115,6 +120,7 @@ class MobileIp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Nai : public Entity
                 {
                     public:
@@ -128,15 +134,15 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value nai_name; //type: string
-                        Value lma; //type: string
-                        Value apn; //type: string
-                        Value customer; //type: string
-                        Value service; //type: ServiceTypeEnum
-                        Value network; //type: string
 
 
-                        class ServiceTypeEnum;
+                        YLeaf nai_name; //type: string
+                        YLeaf lma; //type: string
+                        YLeaf apn; //type: string
+                        YLeaf customer; //type: string
+                        YLeaf service; //type: ServiceTypeEnum
+                        YLeaf network; //type: string
+
 
 
                 }; // MobileIp::Domains::Domain::Nais::Nai
@@ -161,9 +167,10 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value spi; //type: string
-                    Value key; //type: string
 
+
+                    YLeaf spi; //type: string
+                    YLeaf key; //type: string
 
 
 
@@ -185,6 +192,7 @@ class MobileIp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Lma : public Entity
                 {
                     public:
@@ -198,8 +206,9 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lma_name; //type: string
 
+
+                        YLeaf lma_name; //type: string
 
 
 
@@ -242,6 +251,7 @@ class MobileIp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Lma : public Entity
         {
             public:
@@ -255,19 +265,20 @@ class MobileIp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value lma_name; //type: string
-                Value domain_name; //type: string
-                Value generate; //type: empty
-                Value mobile_route_ad; //type: uint32
-                Value ani; //type: empty
-                Value multipath; //type: empty
-                Value dynamic; //type: empty
-                Value enforce; //type: empty
-                Value default_profile; //type: string
-                Value interface; //type: string
-                Value mobile_map; //type: string
-                Value pgw_subs_cont; //type: empty
 
+
+                YLeaf lma_name; //type: string
+                YLeaf domain_name; //type: string
+                YLeaf generate; //type: empty
+                YLeaf mobile_route_ad; //type: uint32
+                YLeaf ani; //type: empty
+                YLeaf multipath; //type: empty
+                YLeaf dynamic; //type: empty
+                YLeaf enforce; //type: empty
+                YLeaf default_profile; //type: string
+                YLeaf interface; //type: string
+                YLeaf mobile_map; //type: string
+                YLeaf pgw_subs_cont; //type: empty
 
             class BindingRevocationAttributes : public Entity
             {
@@ -282,8 +293,9 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value retry; //type: uint32
 
+
+                    YLeaf retry; //type: uint32
 
                 class Delay : public Entity
                 {
@@ -298,9 +310,10 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
 
+
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
 
 
 
@@ -326,11 +339,11 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lma_rat; //type: LmaRatEnum
-                    Value priority_value; //type: uint32
 
 
-                    class LmaRatEnum;
+                    YLeaf lma_rat; //type: LmaRatEnum
+                    YLeaf priority_value; //type: uint32
+
 
 
             }; // MobileIp::Lmas::Lma::RatAttributes
@@ -349,10 +362,11 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value retries; //type: uint32
-                    Value timeout; //type: uint32
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf retries; //type: uint32
+                    YLeaf timeout; //type: uint32
 
 
 
@@ -374,6 +388,7 @@ class MobileIp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Lmaipv6Address : public Entity
                 {
                     public:
@@ -387,8 +402,9 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
 
+
+                        YLeaf address; //type: string
 
 
 
@@ -414,8 +430,9 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value maximum; //type: uint32
 
+
+                    YLeaf maximum; //type: uint32
 
 
 
@@ -435,9 +452,10 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value redist_type; //type: int32
-                    Value redist_sub_type; //type: int32
 
+
+                    YLeaf redist_type; //type: int32
+                    YLeaf redist_sub_type; //type: int32
 
 
 
@@ -457,9 +475,10 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value value_; //type: uint32
-                    Value force; //type: int32
 
+
+                    YLeaf value_; //type: uint32
+                    YLeaf force; //type: int32
 
 
 
@@ -481,6 +500,7 @@ class MobileIp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Lmaipv4Address : public Entity
                 {
                     public:
@@ -494,8 +514,9 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
 
+
+                        YLeaf address; //type: string
 
 
 
@@ -523,6 +544,7 @@ class MobileIp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Role : public Entity
                 {
                     public:
@@ -536,10 +558,10 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lma_role; //type: LmaRoleEnum
 
 
-                        class LmaRoleEnum;
+                        YLeaf lma_role; //type: LmaRoleEnum
+
 
 
                 }; // MobileIp::Lmas::Lma::Roles::Role
@@ -564,12 +586,13 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value refresh_time; //type: uint32
-                    Value delete_wait_interval; //type: uint32
-                    Value create_wait_interval; //type: uint32
-                    Value max_life_time; //type: uint32
-                    Value maximum; //type: uint32
 
+
+                    YLeaf refresh_time; //type: uint32
+                    YLeaf delete_wait_interval; //type: uint32
+                    YLeaf create_wait_interval; //type: uint32
+                    YLeaf max_life_time; //type: uint32
+                    YLeaf maximum; //type: uint32
 
 
 
@@ -589,9 +612,10 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: int32
-                    Value interim_interval; //type: int32
 
+
+                    YLeaf enable; //type: int32
+                    YLeaf interim_interval; //type: int32
 
 
 
@@ -613,6 +637,7 @@ class MobileIp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Mag : public Entity
                 {
                     public:
@@ -626,13 +651,14 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value mag_name; //type: string
-                        Value domain_name; //type: string
-                        Value encap_option; //type: EncapOptEnum
-                        Value ipv4_address; //type: string
-                        Value ipv6_address; //type: string
-                        Value tunnel; //type: string
 
+
+                        YLeaf mag_name; //type: string
+                        YLeaf domain_name; //type: string
+                        YLeaf encap_option; //type: EncapOptEnum
+                        YLeaf ipv4_address; //type: string
+                        YLeaf ipv6_address; //type: string
+                        YLeaf tunnel; //type: string
 
                     class AuthenticateOption : public Entity
                     {
@@ -647,9 +673,10 @@ class MobileIp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value spi; //type: string
-                            Value key; //type: string
 
+
+                            YLeaf spi; //type: string
+                            YLeaf key; //type: string
 
 
 
@@ -669,9 +696,10 @@ class MobileIp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value force; //type: int32
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf force; //type: int32
 
 
 
@@ -680,7 +708,6 @@ class MobileIp : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption> authenticate_option;
                         std::unique_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags::Mag::Dscp> dscp;
-                        class EncapOptEnum;
 
 
                 }; // MobileIp::Lmas::Lma::Mags::Mag
@@ -705,9 +732,10 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mtu; //type: uint32
-                    Value acl; //type: string
 
+
+                    YLeaf mtu; //type: uint32
+                    YLeaf acl; //type: string
 
 
 
@@ -729,6 +757,7 @@ class MobileIp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Service : public Entity
                 {
                     public:
@@ -742,15 +771,16 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lma_service; //type: LmaServiceEnum
-                        Value ignore; //type: empty
-                        Value mnp_customer; //type: uint32
-                        Value mnp_ipv4_lmn; //type: uint32
-                        Value mnp_ipv6_lmn; //type: uint32
-                        Value mnp_lmn; //type: uint32
-                        Value mnp_ipv4_customer; //type: uint32
-                        Value mnp_ipv6_customer; //type: uint32
 
+
+                        YLeaf lma_service; //type: LmaServiceEnum
+                        YLeaf ignore; //type: empty
+                        YLeaf mnp_customer; //type: uint32
+                        YLeaf mnp_ipv4_lmn; //type: uint32
+                        YLeaf mnp_ipv6_lmn; //type: uint32
+                        YLeaf mnp_lmn; //type: uint32
+                        YLeaf mnp_ipv4_customer; //type: uint32
+                        YLeaf mnp_ipv6_customer; //type: uint32
 
                     class Customers : public Entity
                     {
@@ -767,6 +797,7 @@ class MobileIp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Customer : public Entity
                         {
                             public:
@@ -780,17 +811,18 @@ class MobileIp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value customer_name; //type: string
-                                Value vrf_name; //type: string
-                                Value mnp_customer; //type: uint32
-                                Value mnp_ipv4_lmn; //type: uint32
-                                Value mnp_ipv6_lmn; //type: uint32
-                                Value mnp_lmn; //type: uint32
-                                Value mnp_ipv4_customer; //type: uint32
-                                Value mnp_ipv6_customer; //type: uint32
-                                Value mobile_route_ad; //type: uint32
-                                Value bandwidth_aggregate; //type: int32
 
+
+                                YLeaf customer_name; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf mnp_customer; //type: uint32
+                                YLeaf mnp_ipv4_lmn; //type: uint32
+                                YLeaf mnp_ipv6_lmn; //type: uint32
+                                YLeaf mnp_lmn; //type: uint32
+                                YLeaf mnp_ipv4_customer; //type: uint32
+                                YLeaf mnp_ipv6_customer; //type: uint32
+                                YLeaf mobile_route_ad; //type: uint32
+                                YLeaf bandwidth_aggregate; //type: int32
 
                             class AuthenticateOption : public Entity
                             {
@@ -805,9 +837,10 @@ class MobileIp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value spi; //type: string
-                                    Value key; //type: string
 
+
+                                    YLeaf spi; //type: string
+                                    YLeaf key; //type: string
 
 
 
@@ -827,10 +860,11 @@ class MobileIp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interval; //type: uint32
-                                    Value retries; //type: uint32
-                                    Value timeout; //type: uint32
 
+
+                                    YLeaf interval; //type: uint32
+                                    YLeaf retries; //type: uint32
+                                    YLeaf timeout; //type: uint32
 
 
 
@@ -852,6 +886,7 @@ class MobileIp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Transport : public Entity
                                 {
                                     public:
@@ -865,10 +900,11 @@ class MobileIp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value vrf_name; //type: string
-                                        Value ipv4_address; //type: string
-                                        Value ipv6_address; //type: string
 
+
+                                        YLeaf vrf_name; //type: string
+                                        YLeaf ipv4_address; //type: string
+                                        YLeaf ipv6_address; //type: string
 
 
 
@@ -894,8 +930,9 @@ class MobileIp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value unauthorize; //type: empty
 
+
+                                    YLeaf unauthorize; //type: empty
 
                                 class Authorizes : public Entity
                                 {
@@ -912,6 +949,7 @@ class MobileIp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Authorize : public Entity
                                     {
                                         public:
@@ -925,8 +963,9 @@ class MobileIp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
 
+
+                                            YLeaf name; //type: string
 
                                         class PoolAttributes : public Entity
                                         {
@@ -941,6 +980,7 @@ class MobileIp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
+
 
 
                                             class MobileNode : public Entity
@@ -958,6 +998,7 @@ class MobileIp : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Ipv4Pool : public Entity
                                                 {
                                                     public:
@@ -971,9 +1012,10 @@ class MobileIp : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value start_address; //type: string
-                                                        Value pool_prefix; //type: uint32
 
+
+                                                        YLeaf start_address; //type: string
+                                                        YLeaf pool_prefix; //type: uint32
 
 
 
@@ -993,9 +1035,10 @@ class MobileIp : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value start_address; //type: string
-                                                        Value pool_prefix; //type: uint32
 
+
+                                                        YLeaf start_address; //type: string
+                                                        YLeaf pool_prefix; //type: uint32
 
 
 
@@ -1024,6 +1067,7 @@ class MobileIp : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Mripv4Pools : public Entity
                                                 {
                                                     public:
@@ -1039,6 +1083,7 @@ class MobileIp : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Mripv4Pool : public Entity
                                                     {
                                                         public:
@@ -1052,10 +1097,11 @@ class MobileIp : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value start_address; //type: string
-                                                            Value pool_prefix; //type: uint32
-                                                            Value network_prefix; //type: uint32
 
+
+                                                            YLeaf start_address; //type: string
+                                                            YLeaf pool_prefix; //type: uint32
+                                                            YLeaf network_prefix; //type: uint32
 
 
 
@@ -1083,6 +1129,7 @@ class MobileIp : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Mripv6Pool : public Entity
                                                     {
                                                         public:
@@ -1096,10 +1143,11 @@ class MobileIp : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value start_address; //type: string
-                                                            Value pool_prefix; //type: uint32
-                                                            Value network_prefix; //type: uint32
 
+
+                                                            YLeaf start_address; //type: string
+                                                            YLeaf pool_prefix; //type: uint32
+                                                            YLeaf network_prefix; //type: uint32
 
 
 
@@ -1157,9 +1205,10 @@ class MobileIp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value gre_key_type; //type: int32
-                                    Value gre_key_value; //type: int32
 
+
+                                    YLeaf gre_key_type; //type: int32
+                                    YLeaf gre_key_value; //type: int32
 
 
 
@@ -1179,8 +1228,9 @@ class MobileIp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_life_time; //type: uint32
 
+
+                                    YLeaf max_life_time; //type: uint32
 
 
 
@@ -1205,7 +1255,6 @@ class MobileIp : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers> customers;
-                        class LmaServiceEnum;
 
 
                 }; // MobileIp::Lmas::Lma::Services::Service
@@ -1230,9 +1279,10 @@ class MobileIp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value validity_window; //type: uint32
-                    Value ignore; //type: int32
 
+
+                    YLeaf validity_window; //type: uint32
+                    YLeaf ignore; //type: int32
 
 
 
@@ -1254,6 +1304,7 @@ class MobileIp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Network : public Entity
                 {
                     public:
@@ -1267,8 +1318,9 @@ class MobileIp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lma_network; //type: string
 
+
+                        YLeaf lma_network; //type: string
 
                     class PoolAttributes : public Entity
                     {
@@ -1283,6 +1335,7 @@ class MobileIp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                         class MobileNode : public Entity
@@ -1300,6 +1353,7 @@ class MobileIp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Ipv4Pool : public Entity
                             {
                                 public:
@@ -1313,9 +1367,10 @@ class MobileIp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value start_address; //type: string
-                                    Value pool_prefix; //type: uint32
 
+
+                                    YLeaf start_address; //type: string
+                                    YLeaf pool_prefix; //type: uint32
 
 
 
@@ -1335,9 +1390,10 @@ class MobileIp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value start_address; //type: string
-                                    Value pool_prefix; //type: uint32
 
+
+                                    YLeaf start_address; //type: string
+                                    YLeaf pool_prefix; //type: uint32
 
 
 
@@ -1366,6 +1422,7 @@ class MobileIp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Mripv6Pools : public Entity
                             {
                                 public:
@@ -1381,6 +1438,7 @@ class MobileIp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Mripv6Pool : public Entity
                                 {
                                     public:
@@ -1394,10 +1452,11 @@ class MobileIp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_address; //type: string
-                                        Value pool_prefix; //type: uint32
-                                        Value network_prefix; //type: uint32
 
+
+                                        YLeaf start_address; //type: string
+                                        YLeaf pool_prefix; //type: uint32
+                                        YLeaf network_prefix; //type: uint32
 
 
 
@@ -1425,6 +1484,7 @@ class MobileIp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Mripv4Pool : public Entity
                                 {
                                     public:
@@ -1438,10 +1498,11 @@ class MobileIp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value start_address; //type: string
-                                        Value pool_prefix; //type: uint32
-                                        Value network_prefix; //type: uint32
 
+
+                                        YLeaf start_address; //type: string
+                                        YLeaf pool_prefix; //type: uint32
+                                        YLeaf network_prefix; //type: uint32
 
 
 
@@ -1517,51 +1578,51 @@ class MobileIp : public Entity
 class LmaRatEnum : public Enum
 {
     public:
-        static const Enum::Value virtual_;
-        static const Enum::Value ppp;
-        static const Enum::Value ethernet;
-        static const Enum::Value wlan;
-        static const Enum::Value wi_max;
-        static const Enum::Value Y_3gppgeran;
-        static const Enum::Value Y_3gpputran;
-        static const Enum::Value Y_3gppeutran;
-        static const Enum::Value Y_3gpp2ehrpd;
-        static const Enum::Value Y_3gpp2hrpd;
-        static const Enum::Value Y_3gpp21rtt;
-        static const Enum::Value Y_3gpp2umb;
+        static const Enum::YLeaf virtual_;
+        static const Enum::YLeaf ppp;
+        static const Enum::YLeaf ethernet;
+        static const Enum::YLeaf wlan;
+        static const Enum::YLeaf wi_max;
+        static const Enum::YLeaf Y_3gppgeran;
+        static const Enum::YLeaf Y_3gpputran;
+        static const Enum::YLeaf Y_3gppeutran;
+        static const Enum::YLeaf Y_3gpp2ehrpd;
+        static const Enum::YLeaf Y_3gpp2hrpd;
+        static const Enum::YLeaf Y_3gpp21rtt;
+        static const Enum::YLeaf Y_3gpp2umb;
 
 };
 
 class ServiceTypeEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
-        static const Enum::Value dual;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
+        static const Enum::YLeaf dual;
 
 };
 
 class LmaServiceEnum : public Enum
 {
     public:
-        static const Enum::Value service_mll;
+        static const Enum::YLeaf service_mll;
 
 };
 
 class EncapOptEnum : public Enum
 {
     public:
-        static const Enum::Value greipv4;
-        static const Enum::Value greipv6;
-        static const Enum::Value mgreipv4;
-        static const Enum::Value mgreipv6;
+        static const Enum::YLeaf greipv4;
+        static const Enum::YLeaf greipv6;
+        static const Enum::YLeaf mgreipv4;
+        static const Enum::YLeaf mgreipv6;
 
 };
 
 class LmaRoleEnum : public Enum
 {
     public:
-        static const Enum::Value Y_3gma;
+        static const Enum::YLeaf Y_3gma;
 
 };
 

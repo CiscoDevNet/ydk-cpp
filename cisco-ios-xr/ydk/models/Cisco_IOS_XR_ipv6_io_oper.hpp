@@ -26,6 +26,7 @@ class Ipv6Io : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Ipv6Io : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Ipv6Io : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Statistics : public Entity
             {
@@ -70,6 +73,7 @@ class Ipv6Io : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Traffic : public Entity
@@ -87,6 +91,7 @@ class Ipv6Io : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Ipv6 : public Entity
                     {
                         public:
@@ -100,38 +105,39 @@ class Ipv6Io : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value total_packets; //type: uint32
-                            Value local_destination_packets; //type: uint32
-                            Value format_errors; //type: uint32
-                            Value truncated_packets; //type: uint32
-                            Value hop_count_exceeded_packets; //type: uint32
-                            Value bad_source_address_packets; //type: uint32
-                            Value bad_header_packets; //type: uint32
-                            Value unknown_option_type_packets; //type: uint32
-                            Value unknown_protocol_packets; //type: uint32
-                            Value fragments; //type: uint32
-                            Value reassembled_packets; //type: uint32
-                            Value reassembly_timeouts; //type: uint32
-                            Value reassembly_failures; //type: uint32
-                            Value reassembly_maximum_drops; //type: uint32
-                            Value generated_packets; //type: uint32
-                            Value forwarded_packets; //type: uint32
-                            Value source_routed_packets; //type: uint32
-                            Value fragmented_packets; //type: uint32
-                            Value fragment_count; //type: uint32
-                            Value fragment_failures; //type: uint32
-                            Value no_route_packets; //type: uint32
-                            Value too_big_packets; //type: uint32
-                            Value received_multicast_packets; //type: uint32
-                            Value sent_multicast_packets; //type: uint32
-                            Value miscellaneous_drops; //type: uint32
-                            Value lisp_v4_encap_packets; //type: uint32
-                            Value lisp_v4_decap_packets; //type: uint32
-                            Value lisp_v6_encap_packets; //type: uint32
-                            Value lisp_v6_decap_packets; //type: uint32
-                            Value lisp_encap_errors; //type: uint32
-                            Value lisp_decap_errors; //type: uint32
 
+
+                            YLeaf total_packets; //type: uint32
+                            YLeaf local_destination_packets; //type: uint32
+                            YLeaf format_errors; //type: uint32
+                            YLeaf truncated_packets; //type: uint32
+                            YLeaf hop_count_exceeded_packets; //type: uint32
+                            YLeaf bad_source_address_packets; //type: uint32
+                            YLeaf bad_header_packets; //type: uint32
+                            YLeaf unknown_option_type_packets; //type: uint32
+                            YLeaf unknown_protocol_packets; //type: uint32
+                            YLeaf fragments; //type: uint32
+                            YLeaf reassembled_packets; //type: uint32
+                            YLeaf reassembly_timeouts; //type: uint32
+                            YLeaf reassembly_failures; //type: uint32
+                            YLeaf reassembly_maximum_drops; //type: uint32
+                            YLeaf generated_packets; //type: uint32
+                            YLeaf forwarded_packets; //type: uint32
+                            YLeaf source_routed_packets; //type: uint32
+                            YLeaf fragmented_packets; //type: uint32
+                            YLeaf fragment_count; //type: uint32
+                            YLeaf fragment_failures; //type: uint32
+                            YLeaf no_route_packets; //type: uint32
+                            YLeaf too_big_packets; //type: uint32
+                            YLeaf received_multicast_packets; //type: uint32
+                            YLeaf sent_multicast_packets; //type: uint32
+                            YLeaf miscellaneous_drops; //type: uint32
+                            YLeaf lisp_v4_encap_packets; //type: uint32
+                            YLeaf lisp_v4_decap_packets; //type: uint32
+                            YLeaf lisp_v6_encap_packets; //type: uint32
+                            YLeaf lisp_v6_decap_packets; //type: uint32
+                            YLeaf lisp_encap_errors; //type: uint32
+                            YLeaf lisp_decap_errors; //type: uint32
 
 
 
@@ -151,45 +157,46 @@ class Ipv6Io : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value total_messages; //type: uint32
-                            Value too_short_error_messages; //type: uint32
-                            Value checksum_error_messages; //type: uint32
-                            Value unknown_error_type_messages; //type: uint32
-                            Value output_messages; //type: uint32
-                            Value sent_rate_limited_packets; //type: uint32
-                            Value sent_unreachable_routing_messages; //type: uint32
-                            Value sent_unreachable_admin_messages; //type: uint32
-                            Value sent_unreachable_neighbor_messages; //type: uint32
-                            Value sent_unreachable_address_messages; //type: uint32
-                            Value sent_unreachable_port_messages; //type: uint32
-                            Value received_unreachable_routing_messages; //type: uint32
-                            Value received_unreachable_admin_messages; //type: uint32
-                            Value received_unreachable_neighbor_messages; //type: uint32
-                            Value received_unreachable_address_messages; //type: uint32
-                            Value received_unreachable_port_messages; //type: uint32
-                            Value sent_hop_count_expired_messages; //type: uint32
-                            Value sent_reassembly_timeouts; //type: uint32
-                            Value received_hop_count_expired_messages; //type: uint32
-                            Value received_reassembly_timeouts; //type: uint32
-                            Value sent_too_big_messages; //type: uint32
-                            Value received_too_big_messages; //type: uint32
-                            Value sent_parameter_error_messages; //type: uint32
-                            Value sent_parameter_header_messages; //type: uint32
-                            Value sent_parameter_option_messages; //type: uint32
-                            Value received_parameter_error_messages; //type: uint32
-                            Value received_parameter_header_messages; //type: uint32
-                            Value received_parameter_option_messages; //type: uint32
-                            Value sent_echo_request_messages; //type: uint32
-                            Value sent_echo_reply_messages; //type: uint32
-                            Value received_echo_request_messages; //type: uint32
-                            Value received_echo_reply_messages; //type: uint32
-                            Value sent_unknown_timeout_messages; //type: uint32
-                            Value received_unknown_timeout_messages; //type: uint32
-                            Value sent_parameter_unknown_type_messages; //type: uint32
-                            Value received_parameter_unknown_type_messages; //type: uint32
-                            Value sent_unreachable_unknown_type_messages; //type: uint32
-                            Value received_unreachable_unknown_type_messages; //type: uint32
 
+
+                            YLeaf total_messages; //type: uint32
+                            YLeaf too_short_error_messages; //type: uint32
+                            YLeaf checksum_error_messages; //type: uint32
+                            YLeaf unknown_error_type_messages; //type: uint32
+                            YLeaf output_messages; //type: uint32
+                            YLeaf sent_rate_limited_packets; //type: uint32
+                            YLeaf sent_unreachable_routing_messages; //type: uint32
+                            YLeaf sent_unreachable_admin_messages; //type: uint32
+                            YLeaf sent_unreachable_neighbor_messages; //type: uint32
+                            YLeaf sent_unreachable_address_messages; //type: uint32
+                            YLeaf sent_unreachable_port_messages; //type: uint32
+                            YLeaf received_unreachable_routing_messages; //type: uint32
+                            YLeaf received_unreachable_admin_messages; //type: uint32
+                            YLeaf received_unreachable_neighbor_messages; //type: uint32
+                            YLeaf received_unreachable_address_messages; //type: uint32
+                            YLeaf received_unreachable_port_messages; //type: uint32
+                            YLeaf sent_hop_count_expired_messages; //type: uint32
+                            YLeaf sent_reassembly_timeouts; //type: uint32
+                            YLeaf received_hop_count_expired_messages; //type: uint32
+                            YLeaf received_reassembly_timeouts; //type: uint32
+                            YLeaf sent_too_big_messages; //type: uint32
+                            YLeaf received_too_big_messages; //type: uint32
+                            YLeaf sent_parameter_error_messages; //type: uint32
+                            YLeaf sent_parameter_header_messages; //type: uint32
+                            YLeaf sent_parameter_option_messages; //type: uint32
+                            YLeaf received_parameter_error_messages; //type: uint32
+                            YLeaf received_parameter_header_messages; //type: uint32
+                            YLeaf received_parameter_option_messages; //type: uint32
+                            YLeaf sent_echo_request_messages; //type: uint32
+                            YLeaf sent_echo_reply_messages; //type: uint32
+                            YLeaf received_echo_request_messages; //type: uint32
+                            YLeaf received_echo_reply_messages; //type: uint32
+                            YLeaf sent_unknown_timeout_messages; //type: uint32
+                            YLeaf received_unknown_timeout_messages; //type: uint32
+                            YLeaf sent_parameter_unknown_type_messages; //type: uint32
+                            YLeaf received_parameter_unknown_type_messages; //type: uint32
+                            YLeaf sent_unreachable_unknown_type_messages; //type: uint32
+                            YLeaf received_unreachable_unknown_type_messages; //type: uint32
 
 
 
@@ -209,17 +216,18 @@ class Ipv6Io : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sent_router_solicitation_messages; //type: uint32
-                            Value sent_router_advertisement_messages; //type: uint32
-                            Value sent_neighbor_solicitation_messages; //type: uint32
-                            Value sent_neighbor_advertisement_messages; //type: uint32
-                            Value sent_redirect_messages; //type: uint32
-                            Value received_router_solicitation_messages; //type: uint32
-                            Value received_router_advertisement_messages; //type: uint32
-                            Value received_neighbor_solicitation_messages; //type: uint32
-                            Value received_neighbor_advertisement_messages; //type: uint32
-                            Value received_redirect_messages; //type: uint32
 
+
+                            YLeaf sent_router_solicitation_messages; //type: uint32
+                            YLeaf sent_router_advertisement_messages; //type: uint32
+                            YLeaf sent_neighbor_solicitation_messages; //type: uint32
+                            YLeaf sent_neighbor_advertisement_messages; //type: uint32
+                            YLeaf sent_redirect_messages; //type: uint32
+                            YLeaf received_router_solicitation_messages; //type: uint32
+                            YLeaf received_router_advertisement_messages; //type: uint32
+                            YLeaf received_neighbor_solicitation_messages; //type: uint32
+                            YLeaf received_neighbor_advertisement_messages; //type: uint32
+                            YLeaf received_redirect_messages; //type: uint32
 
 
 

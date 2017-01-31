@@ -26,6 +26,7 @@ class HwModule : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class SliceIds : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class HwModule : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SliceId : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class HwModule : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value slice_num; //type: int32
 
+
+                YLeaf slice_num; //type: int32
 
             class SliceInfo : public Entity
             {
@@ -70,16 +73,17 @@ class HwModule : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value slice_id; //type: uint32
-                    Value client_rate; //type: uint32
-                    Value trunk_rate; //type: uint32
-                    Value hardware_status; //type: HwModuleSliceStatusEnum
-                    Value dp_fpga_fw_type; //type: string
-                    Value dp_fpga_fw_ver; //type: string
-                    Value need_upg; //type: uint32
-                    Value encryption_supported; //type: boolean
-                    Value lldp_drop_status; //type: boolean
 
+
+                    YLeaf slice_id; //type: uint32
+                    YLeaf client_rate; //type: uint32
+                    YLeaf trunk_rate; //type: uint32
+                    YLeaf hardware_status; //type: HwModuleSliceStatusEnum
+                    YLeaf dp_fpga_fw_type; //type: string
+                    YLeaf dp_fpga_fw_ver; //type: string
+                    YLeaf need_upg; //type: uint32
+                    YLeaf encryption_supported; //type: boolean
+                    YLeaf lldp_drop_status; //type: boolean
 
                 class ClientPort : public Entity
                 {
@@ -94,9 +98,10 @@ class HwModule : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value client_name; //type: string
-                        Value if_index; //type: uint32
 
+
+                        YLeaf client_name; //type: string
+                        YLeaf if_index; //type: uint32
 
                     class TrunkPort : public Entity
                     {
@@ -111,10 +116,11 @@ class HwModule : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value trunk_name; //type: string
-                            Value if_index; //type: uint32
-                            Value percentage; //type: string
 
+
+                            YLeaf trunk_name; //type: string
+                            YLeaf if_index; //type: uint32
+                            YLeaf percentage; //type: string
 
 
 
@@ -128,7 +134,6 @@ class HwModule : public Entity
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ncs1k_mxp_oper::HwModule::SliceIds::SliceId::SliceInfo::ClientPort> > client_port;
-                    class HwModuleSliceStatusEnum;
 
 
             }; // HwModule::SliceIds::SliceId::SliceInfo
@@ -161,6 +166,7 @@ class HwModule : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SliceInfo : public Entity
         {
             public:
@@ -174,16 +180,17 @@ class HwModule : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value slice_id; //type: uint32
-                Value client_rate; //type: uint32
-                Value trunk_rate; //type: uint32
-                Value hardware_status; //type: HwModuleSliceStatusEnum
-                Value dp_fpga_fw_type; //type: string
-                Value dp_fpga_fw_ver; //type: string
-                Value need_upg; //type: uint32
-                Value encryption_supported; //type: boolean
-                Value lldp_drop_status; //type: boolean
 
+
+                YLeaf slice_id; //type: uint32
+                YLeaf client_rate; //type: uint32
+                YLeaf trunk_rate; //type: uint32
+                YLeaf hardware_status; //type: HwModuleSliceStatusEnum
+                YLeaf dp_fpga_fw_type; //type: string
+                YLeaf dp_fpga_fw_ver; //type: string
+                YLeaf need_upg; //type: uint32
+                YLeaf encryption_supported; //type: boolean
+                YLeaf lldp_drop_status; //type: boolean
 
             class ClientPort : public Entity
             {
@@ -198,9 +205,10 @@ class HwModule : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value client_name; //type: string
-                    Value if_index; //type: uint32
 
+
+                    YLeaf client_name; //type: string
+                    YLeaf if_index; //type: uint32
 
                 class TrunkPort : public Entity
                 {
@@ -215,10 +223,11 @@ class HwModule : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value trunk_name; //type: string
-                        Value if_index; //type: uint32
-                        Value percentage; //type: string
 
+
+                        YLeaf trunk_name; //type: string
+                        YLeaf if_index; //type: uint32
+                        YLeaf percentage; //type: string
 
 
 
@@ -232,7 +241,6 @@ class HwModule : public Entity
 
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ncs1k_mxp_oper::HwModule::SliceAll::SliceInfo::ClientPort> > client_port;
-                class HwModuleSliceStatusEnum;
 
 
         }; // HwModule::SliceAll::SliceInfo
@@ -254,12 +262,12 @@ class HwModule : public Entity
 class HwModuleSliceStatusEnum : public Enum
 {
     public:
-        static const Enum::Value not_provisioned;
-        static const Enum::Value provisioning_in_progress;
-        static const Enum::Value provisioned;
-        static const Enum::Value provisioning_failed;
-        static const Enum::Value provisioning_scheduled;
-        static const Enum::Value reprovisioning_aborted;
+        static const Enum::YLeaf not_provisioned;
+        static const Enum::YLeaf provisioning_in_progress;
+        static const Enum::YLeaf provisioned;
+        static const Enum::YLeaf provisioning_failed;
+        static const Enum::YLeaf provisioning_scheduled;
+        static const Enum::YLeaf reprovisioning_aborted;
 
 };
 

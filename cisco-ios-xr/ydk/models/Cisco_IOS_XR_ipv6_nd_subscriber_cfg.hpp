@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_ipv6_nd_subscriber_cfg {
 class Ipv6NdHopLimitEnum : public Enum
 {
     public:
-        static const Enum::Value unspecified;
+        static const Enum::YLeaf unspecified;
 
 };
 
 class Ipv6NdRouterPrefTemplateEnum : public Enum
 {
     public:
-        static const Enum::Value high;
-        static const Enum::Value medium;
-        static const Enum::Value low;
+        static const Enum::YLeaf high;
+        static const Enum::YLeaf medium;
+        static const Enum::YLeaf low;
 
 };
 

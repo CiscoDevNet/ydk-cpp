@@ -26,6 +26,7 @@ class PlatformLptspIfib : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class PlatformLptspIfib : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class PlatformLptspIfib : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Police : public Entity
             {
@@ -72,6 +75,7 @@ class PlatformLptspIfib : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PoliceInfo : public Entity
                 {
                     public:
@@ -85,20 +89,21 @@ class PlatformLptspIfib : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value avgrate; //type: uint32
-                        Value burst; //type: uint32
-                        Value static_avgrate; //type: uint32
-                        Value avgrate_type; //type: string
-                        Value flow_type; //type: string
-                        Value accepted_stats; //type: uint64
-                        Value dropped_stats; //type: uint64
-                        Value policer; //type: uint32
-                        Value iptos_value; //type: uint8
-                        Value change_type; //type: uint8
-                        Value acl_config; //type: uint8
-                        Value acl_str; //type: string
-                        Value np; //type: uint8
 
+
+                        YLeaf avgrate; //type: uint32
+                        YLeaf burst; //type: uint32
+                        YLeaf static_avgrate; //type: uint32
+                        YLeaf avgrate_type; //type: string
+                        YLeaf flow_type; //type: string
+                        YLeaf accepted_stats; //type: uint64
+                        YLeaf dropped_stats; //type: uint64
+                        YLeaf policer; //type: uint32
+                        YLeaf iptos_value; //type: uint8
+                        YLeaf change_type; //type: uint8
+                        YLeaf acl_config; //type: uint8
+                        YLeaf acl_str; //type: string
+                        YLeaf np; //type: uint8
 
 
 
@@ -124,11 +129,12 @@ class PlatformLptspIfib : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value accepted; //type: uint64
-                    Value dropped; //type: uint64
-                    Value clear_ts; //type: uint64
-                    Value no_stats_mem_err; //type: uint64
 
+
+                    YLeaf accepted; //type: uint64
+                    YLeaf dropped; //type: uint64
+                    YLeaf clear_ts; //type: uint64
+                    YLeaf no_stats_mem_err; //type: uint64
 
 
 

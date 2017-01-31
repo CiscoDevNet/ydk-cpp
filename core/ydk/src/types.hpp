@@ -34,6 +34,15 @@
 #include <vector>
 #include <utility>
 
+namespace std
+{
+template<typename T, typename ...Args>
+std::unique_ptr<T> make_unique( Args&& ...args )
+{
+    return std::unique_ptr<T>( new T( std::forward<Args>(args)... ) );
+}
+}
+
 namespace ydk
 {
 
@@ -66,21 +75,16 @@ class Entity;
 class LeafData
 {
   public:
-	LeafData(std::string value, EditOperation operation);
+	LeafData(std::string value, EditOperation operation, bool is_set);
+	~LeafData();
 
-	inline bool operator == (LeafData & other) const
-	{
-	    return value == other.value && operation == other.operation;
-	}
-
-	inline bool operator == (const LeafData & other) const
-	{
-	    return value == other.value && operation == other.operation;
-	}
+	bool operator == (LeafData & other) const;
+	bool operator == (const LeafData & other) const;
 
   public:
 	std::string value;
 	EditOperation operation;
+	bool is_set;
 };
 
 struct EntityPath {
@@ -122,7 +126,7 @@ class Entity {
     //
     // @param[in] parent The ancestor relative to which the path is calculated or nullptr
     // @return EntityPath
-    // @throws YDKInvalidArgumentException if the parent is invalid
+    // @throws YCPPInvalidArgumentError if the parent is invalid
     virtual EntityPath get_entity_path(Entity* ancestor) const = 0;
     virtual std::string get_segment_path() const = 0;
 
@@ -188,13 +192,13 @@ class Identity {
 
 class Enum {
   public:
-	class Value {
+	class YLeaf {
 	  public:
-		Value(int value, std::string name)
+		YLeaf(int value, std::string name)
 			: value(value), name(name)
 		{
 		}
-		~Value(){}
+		~YLeaf(){}
 
 		int value;
 		std::string name;
@@ -226,17 +230,17 @@ enum class YType {
 	decimal64
 };
 
-class Value
+class YLeaf
 {
   public:
-	Value(YType type, std::string name);
-	~Value();
+	YLeaf(YType type, std::string name);
+	~YLeaf();
 
-    Value(const Value& val);
-    Value(Value&& val);
+    YLeaf(const YLeaf& val);
+    YLeaf(YLeaf&& val);
 
-    Value& operator=(const Value& val)=delete;
-    Value& operator=(Value&& val)=delete;
+    YLeaf& operator=(const YLeaf& val)=delete;
+    YLeaf& operator=(YLeaf&& val)=delete;
 
 	const std::string get() const;
 	std::pair<std::string, LeafData> get_name_leafdata() const;
@@ -244,19 +248,21 @@ class Value
 	void operator = (uint8 val);
 	void operator = (uint32 val);
 	void operator = (uint64 val);
+	void operator = (long val);
 	void operator = (int8 val);
 	void operator = (int32 val);
 	void operator = (int64 val);
+	void operator = (double val);
 	void operator = (Empty val);
 	void operator = (Identity val);
 	void operator = (Bits val);
 	void operator = (std::string val);
-	void operator = (Enum::Value val);
+	void operator = (Enum::YLeaf val);
 	void operator = (Decimal64 val);
 
 	operator std::string() const;
-	bool operator == (Value & other) const;
-	bool operator == (const Value & other) const;
+	bool operator == (YLeaf & other) const;
+	bool operator == (const YLeaf & other) const;
 
 	bool & operator [] (std::string key);
 
@@ -274,49 +280,51 @@ class Value
 	Bits bits_value;
 };
 
-class ValueList {
+class YLeafList {
   public:
-	ValueList(YType type, std::string name);
-	~ValueList();
+	YLeafList(YType type, std::string name);
+	~YLeafList();
 
-    ValueList(const ValueList& val);
-    ValueList(ValueList&& val);
+    YLeafList(const YLeafList& val);
+    YLeafList(YLeafList&& val);
 
-    ValueList& operator=(const ValueList& val);
-    ValueList& operator=(ValueList&& val);
+    YLeafList& operator=(const YLeafList& val);
+    YLeafList& operator=(YLeafList&& val);
 
 	void append(uint8 val);
 	void append(uint32 val);
 	void append(uint64 val);
+	void append(long val);
 	void append(int8 val);
 	void append(int32 val);
 	void append(int64 val);
+	void append(double val);
 	void append(Empty val);
 	void append(Identity val);
 	void append(Bits val);
 	void append(std::string val);
-	void append(Enum::Value val);
+	void append(Enum::YLeaf val);
 	void append(Decimal64 val);
 
-	Value & operator [] (size_t index);
+	YLeaf & operator [] (size_t index);
 
 	operator std::string() const;
-	bool operator == (ValueList & other) const;
-	bool operator == (const ValueList & other) const;
+	bool operator == (YLeafList & other) const;
+	bool operator == (const YLeafList & other) const;
 
 	std::vector<std::pair<std::string, LeafData> > get_name_leafdata() const;
-	std::vector<Value> getValues() const;
+	std::vector<YLeaf> getYLeafs() const;
 
   public:
 	EditOperation operation;
 
   private:
-	std::vector<Value> values;
+	std::vector<YLeaf> values;
 	YType type;
 	std::string name;
 };
 
-std::ostream& operator<< (std::ostream& stream, const Value& value);
+std::ostream& operator<< (std::ostream& stream, const YLeaf& value);
 
 enum class EncodingFormat {
 	XML,
@@ -324,6 +332,12 @@ enum class EncodingFormat {
 };
 
 std::string to_string(EditOperation operation);
+
+enum class Protocol
+{
+	restconf,
+	netconf
+};
 }
 
 #endif /* _TYPES_HPP_ */

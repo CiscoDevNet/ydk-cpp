@@ -46,7 +46,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -134,7 +134,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -222,7 +222,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -310,7 +310,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -398,7 +398,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -486,7 +486,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -571,7 +571,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -633,7 +633,7 @@ PolicyManager::ClassMaps::ClassMap::Match::Flow::~Flow()
 
 bool PolicyManager::ClassMaps::ClassMap::Match::Flow::has_data() const
 {
-    for (auto const & leaf : flow_key.getValues())
+    for (auto const & leaf : flow_key.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -643,13 +643,14 @@ bool PolicyManager::ClassMaps::ClassMap::Match::Flow::has_data() const
 
 bool PolicyManager::ClassMaps::ClassMap::Match::Flow::has_operation() const
 {
-    for (auto const & leaf : flow_key.getValues())
+    for (auto const & leaf : flow_key.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (flow_cache !=  nullptr && is_set(flow_cache->operation));
+	|| is_set(flow_key.operation)
+	|| (flow_cache !=  nullptr && flow_cache->has_operation());
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::Flow::get_segment_path() const
@@ -666,7 +667,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::Flow::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -843,207 +844,207 @@ bool PolicyManager::ClassMaps::ClassMap::Match::has_data() const
         if(source_address_ipv6[index]->has_data())
             return true;
     }
-    for (auto const & leaf : circuit_id.getValues())
+    for (auto const & leaf : circuit_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : circuit_id_regex.getValues())
+    for (auto const & leaf : circuit_id_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : cos.getValues())
+    for (auto const & leaf : cos.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : destination_port.getValues())
+    for (auto const & leaf : destination_port.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : dhcp_client_id.getValues())
+    for (auto const & leaf : dhcp_client_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : dhcp_client_id_regex.getValues())
+    for (auto const & leaf : dhcp_client_id_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : discard_class.getValues())
+    for (auto const & leaf : discard_class.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : dscp.getValues())
+    for (auto const & leaf : dscp.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ethertype.getValues())
+    for (auto const & leaf : ethertype.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : flow_tag.getValues())
+    for (auto const & leaf : flow_tag.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : fragment_type.getValues())
+    for (auto const & leaf : fragment_type.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : frame_relay_dlci.getValues())
+    for (auto const & leaf : frame_relay_dlci.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : icmpv4_code.getValues())
+    for (auto const & leaf : icmpv4_code.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : icmpv4_type.getValues())
+    for (auto const & leaf : icmpv4_type.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : icmpv6_code.getValues())
+    for (auto const & leaf : icmpv6_code.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : icmpv6_type.getValues())
+    for (auto const & leaf : icmpv6_type.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : inner_cos.getValues())
+    for (auto const & leaf : inner_cos.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : inner_vlan.getValues())
+    for (auto const & leaf : inner_vlan.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv4_dscp.getValues())
+    for (auto const & leaf : ipv4_dscp.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv4_packet_length.getValues())
+    for (auto const & leaf : ipv4_packet_length.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv4_precedence.getValues())
+    for (auto const & leaf : ipv4_precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv6_dscp.getValues())
+    for (auto const & leaf : ipv6_dscp.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv6_packet_length.getValues())
+    for (auto const & leaf : ipv6_packet_length.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv6_precedence.getValues())
+    for (auto const & leaf : ipv6_precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mpls_experimental_imposition.getValues())
+    for (auto const & leaf : mpls_experimental_imposition.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mpls_experimental_topmost.getValues())
+    for (auto const & leaf : mpls_experimental_topmost.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : packet_length.getValues())
+    for (auto const & leaf : packet_length.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : protocol.getValues())
+    for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : qos_group.getValues())
+    for (auto const & leaf : qos_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_id.getValues())
+    for (auto const & leaf : remote_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_id_regex.getValues())
+    for (auto const & leaf : remote_id_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : service_name.getValues())
+    for (auto const & leaf : service_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : service_name_regex.getValues())
+    for (auto const & leaf : service_name_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : source_port.getValues())
+    for (auto const & leaf : source_port.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : timer.getValues())
+    for (auto const & leaf : timer.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : timer_regex.getValues())
+    for (auto const & leaf : timer_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : traffic_class.getValues())
+    for (auto const & leaf : traffic_class.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : user_name.getValues())
+    for (auto const & leaf : user_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : user_name_regex.getValues())
+    for (auto const & leaf : user_name_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : vlan.getValues())
+    for (auto const & leaf : vlan.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1104,207 +1105,207 @@ bool PolicyManager::ClassMaps::ClassMap::Match::has_operation() const
         if(source_address_ipv6[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : circuit_id.getValues())
+    for (auto const & leaf : circuit_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : circuit_id_regex.getValues())
+    for (auto const & leaf : circuit_id_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : cos.getValues())
+    for (auto const & leaf : cos.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : destination_port.getValues())
+    for (auto const & leaf : destination_port.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : dhcp_client_id.getValues())
+    for (auto const & leaf : dhcp_client_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : dhcp_client_id_regex.getValues())
+    for (auto const & leaf : dhcp_client_id_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : discard_class.getValues())
+    for (auto const & leaf : discard_class.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : dscp.getValues())
+    for (auto const & leaf : dscp.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ethertype.getValues())
+    for (auto const & leaf : ethertype.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : flow_tag.getValues())
+    for (auto const & leaf : flow_tag.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : fragment_type.getValues())
+    for (auto const & leaf : fragment_type.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : frame_relay_dlci.getValues())
+    for (auto const & leaf : frame_relay_dlci.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : icmpv4_code.getValues())
+    for (auto const & leaf : icmpv4_code.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : icmpv4_type.getValues())
+    for (auto const & leaf : icmpv4_type.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : icmpv6_code.getValues())
+    for (auto const & leaf : icmpv6_code.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : icmpv6_type.getValues())
+    for (auto const & leaf : icmpv6_type.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : inner_cos.getValues())
+    for (auto const & leaf : inner_cos.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : inner_vlan.getValues())
+    for (auto const & leaf : inner_vlan.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv4_dscp.getValues())
+    for (auto const & leaf : ipv4_dscp.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv4_packet_length.getValues())
+    for (auto const & leaf : ipv4_packet_length.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv4_precedence.getValues())
+    for (auto const & leaf : ipv4_precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv6_dscp.getValues())
+    for (auto const & leaf : ipv6_dscp.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv6_packet_length.getValues())
+    for (auto const & leaf : ipv6_packet_length.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv6_precedence.getValues())
+    for (auto const & leaf : ipv6_precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mpls_experimental_imposition.getValues())
+    for (auto const & leaf : mpls_experimental_imposition.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mpls_experimental_topmost.getValues())
+    for (auto const & leaf : mpls_experimental_topmost.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : packet_length.getValues())
+    for (auto const & leaf : packet_length.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : protocol.getValues())
+    for (auto const & leaf : protocol.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : qos_group.getValues())
+    for (auto const & leaf : qos_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_id.getValues())
+    for (auto const & leaf : remote_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_id_regex.getValues())
+    for (auto const & leaf : remote_id_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : service_name.getValues())
+    for (auto const & leaf : service_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : service_name_regex.getValues())
+    for (auto const & leaf : service_name_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : source_port.getValues())
+    for (auto const & leaf : source_port.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : timer.getValues())
+    for (auto const & leaf : timer.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : timer_regex.getValues())
+    for (auto const & leaf : timer_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : traffic_class.getValues())
+    for (auto const & leaf : traffic_class.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : user_name.getValues())
+    for (auto const & leaf : user_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : user_name_regex.getValues())
+    for (auto const & leaf : user_name_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : vlan.getValues())
+    for (auto const & leaf : vlan.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -1315,23 +1316,64 @@ bool PolicyManager::ClassMaps::ClassMap::Match::has_operation() const
 	|| is_set(authen_status.operation)
 	|| is_set(cac_admit.operation)
 	|| is_set(cac_unadmit.operation)
+	|| is_set(circuit_id.operation)
+	|| is_set(circuit_id_regex.operation)
+	|| is_set(cos.operation)
 	|| is_set(dei.operation)
 	|| is_set(dei_inner.operation)
 	|| is_set(destination_mac.operation)
+	|| is_set(destination_port.operation)
+	|| is_set(dhcp_client_id.operation)
+	|| is_set(dhcp_client_id_regex.operation)
+	|| is_set(discard_class.operation)
+	|| is_set(dscp.operation)
 	|| is_set(ethernet_services_acl.operation)
+	|| is_set(ethertype.operation)
+	|| is_set(flow_tag.operation)
 	|| is_set(fr_de.operation)
+	|| is_set(fragment_type.operation)
+	|| is_set(frame_relay_dlci.operation)
+	|| is_set(icmpv4_code.operation)
+	|| is_set(icmpv4_type.operation)
+	|| is_set(icmpv6_code.operation)
+	|| is_set(icmpv6_type.operation)
+	|| is_set(inner_cos.operation)
+	|| is_set(inner_vlan.operation)
 	|| is_set(ipv4_acl.operation)
+	|| is_set(ipv4_dscp.operation)
+	|| is_set(ipv4_packet_length.operation)
+	|| is_set(ipv4_precedence.operation)
 	|| is_set(ipv6_acl.operation)
+	|| is_set(ipv6_dscp.operation)
+	|| is_set(ipv6_packet_length.operation)
+	|| is_set(ipv6_precedence.operation)
 	|| is_set(mpls_disposition_ipv4_access_list.operation)
 	|| is_set(mpls_disposition_ipv6_access_list.operation)
+	|| is_set(mpls_experimental_imposition.operation)
+	|| is_set(mpls_experimental_topmost.operation)
+	|| is_set(packet_length.operation)
+	|| is_set(precedence.operation)
+	|| is_set(protocol.operation)
+	|| is_set(qos_group.operation)
+	|| is_set(remote_id.operation)
+	|| is_set(remote_id_regex.operation)
+	|| is_set(service_name.operation)
+	|| is_set(service_name_regex.operation)
 	|| is_set(source_mac.operation)
+	|| is_set(source_port.operation)
 	|| is_set(tcp_flag.operation)
+	|| is_set(timer.operation)
+	|| is_set(timer_regex.operation)
+	|| is_set(traffic_class.operation)
+	|| is_set(user_name.operation)
+	|| is_set(user_name_regex.operation)
+	|| is_set(vlan.operation)
 	|| is_set(vpls_broadcast.operation)
 	|| is_set(vpls_control.operation)
 	|| is_set(vpls_known.operation)
 	|| is_set(vpls_multicast.operation)
 	|| is_set(vpls_unknown.operation)
-	|| (flow !=  nullptr && is_set(flow->operation));
+	|| (flow !=  nullptr && flow->has_operation());
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::get_segment_path() const
@@ -1348,7 +1390,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::Match::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1956,7 +1998,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2044,7 +2086,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2132,7 +2174,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2220,7 +2262,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2308,7 +2350,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2396,7 +2438,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2458,7 +2500,7 @@ PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::~Flow()
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::has_data() const
 {
-    for (auto const & leaf : flow_tag.getValues())
+    for (auto const & leaf : flow_tag.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2468,12 +2510,13 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::has_data() const
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::has_operation() const
 {
-    for (auto const & leaf : flow_tag.getValues())
+    for (auto const & leaf : flow_tag.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(flow_tag.operation);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_segment_path() const
@@ -2490,7 +2533,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2640,207 +2683,207 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::has_data() const
         if(source_address_ipv6[index]->has_data())
             return true;
     }
-    for (auto const & leaf : circuit_id.getValues())
+    for (auto const & leaf : circuit_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : circuit_id_regex.getValues())
+    for (auto const & leaf : circuit_id_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : cos.getValues())
+    for (auto const & leaf : cos.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : destination_port.getValues())
+    for (auto const & leaf : destination_port.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : dhcp_client_id.getValues())
+    for (auto const & leaf : dhcp_client_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : dhcp_client_id_regex.getValues())
+    for (auto const & leaf : dhcp_client_id_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : discard_class.getValues())
+    for (auto const & leaf : discard_class.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : dscp.getValues())
+    for (auto const & leaf : dscp.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ethertype.getValues())
+    for (auto const & leaf : ethertype.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : flow_tag.getValues())
+    for (auto const & leaf : flow_tag.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : fragment_type.getValues())
+    for (auto const & leaf : fragment_type.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : frame_relay_dlci.getValues())
+    for (auto const & leaf : frame_relay_dlci.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : icmpv4_code.getValues())
+    for (auto const & leaf : icmpv4_code.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : icmpv4_type.getValues())
+    for (auto const & leaf : icmpv4_type.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : icmpv6_code.getValues())
+    for (auto const & leaf : icmpv6_code.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : icmpv6_type.getValues())
+    for (auto const & leaf : icmpv6_type.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : inner_cos.getValues())
+    for (auto const & leaf : inner_cos.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : inner_vlan.getValues())
+    for (auto const & leaf : inner_vlan.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv4_dscp.getValues())
+    for (auto const & leaf : ipv4_dscp.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv4_packet_length.getValues())
+    for (auto const & leaf : ipv4_packet_length.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv4_precedence.getValues())
+    for (auto const & leaf : ipv4_precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv6_dscp.getValues())
+    for (auto const & leaf : ipv6_dscp.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv6_packet_length.getValues())
+    for (auto const & leaf : ipv6_packet_length.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv6_precedence.getValues())
+    for (auto const & leaf : ipv6_precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mpls_experimental_imposition.getValues())
+    for (auto const & leaf : mpls_experimental_imposition.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mpls_experimental_topmost.getValues())
+    for (auto const & leaf : mpls_experimental_topmost.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : packet_length.getValues())
+    for (auto const & leaf : packet_length.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : protocol.getValues())
+    for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : qos_group.getValues())
+    for (auto const & leaf : qos_group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_id.getValues())
+    for (auto const & leaf : remote_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : remote_id_regex.getValues())
+    for (auto const & leaf : remote_id_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : service_name.getValues())
+    for (auto const & leaf : service_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : service_name_regex.getValues())
+    for (auto const & leaf : service_name_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : source_port.getValues())
+    for (auto const & leaf : source_port.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : timer.getValues())
+    for (auto const & leaf : timer.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : timer_regex.getValues())
+    for (auto const & leaf : timer_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : traffic_class.getValues())
+    for (auto const & leaf : traffic_class.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : user_name.getValues())
+    for (auto const & leaf : user_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : user_name_regex.getValues())
+    for (auto const & leaf : user_name_regex.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : vlan.getValues())
+    for (auto const & leaf : vlan.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2897,230 +2940,271 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::has_operation() const
         if(source_address_ipv6[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : circuit_id.getValues())
+    for (auto const & leaf : circuit_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : circuit_id_regex.getValues())
+    for (auto const & leaf : circuit_id_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : cos.getValues())
+    for (auto const & leaf : cos.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : destination_port.getValues())
+    for (auto const & leaf : destination_port.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : dhcp_client_id.getValues())
+    for (auto const & leaf : dhcp_client_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : dhcp_client_id_regex.getValues())
+    for (auto const & leaf : dhcp_client_id_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : discard_class.getValues())
+    for (auto const & leaf : discard_class.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : dscp.getValues())
+    for (auto const & leaf : dscp.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ethertype.getValues())
+    for (auto const & leaf : ethertype.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : flow_tag.getValues())
+    for (auto const & leaf : flow_tag.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : fragment_type.getValues())
+    for (auto const & leaf : fragment_type.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : frame_relay_dlci.getValues())
+    for (auto const & leaf : frame_relay_dlci.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : icmpv4_code.getValues())
+    for (auto const & leaf : icmpv4_code.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : icmpv4_type.getValues())
+    for (auto const & leaf : icmpv4_type.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : icmpv6_code.getValues())
+    for (auto const & leaf : icmpv6_code.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : icmpv6_type.getValues())
+    for (auto const & leaf : icmpv6_type.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : inner_cos.getValues())
+    for (auto const & leaf : inner_cos.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : inner_vlan.getValues())
+    for (auto const & leaf : inner_vlan.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv4_dscp.getValues())
+    for (auto const & leaf : ipv4_dscp.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv4_packet_length.getValues())
+    for (auto const & leaf : ipv4_packet_length.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv4_precedence.getValues())
+    for (auto const & leaf : ipv4_precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv6_dscp.getValues())
+    for (auto const & leaf : ipv6_dscp.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv6_packet_length.getValues())
+    for (auto const & leaf : ipv6_packet_length.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv6_precedence.getValues())
+    for (auto const & leaf : ipv6_precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mpls_experimental_imposition.getValues())
+    for (auto const & leaf : mpls_experimental_imposition.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mpls_experimental_topmost.getValues())
+    for (auto const & leaf : mpls_experimental_topmost.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : packet_length.getValues())
+    for (auto const & leaf : packet_length.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : protocol.getValues())
+    for (auto const & leaf : protocol.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : qos_group.getValues())
+    for (auto const & leaf : qos_group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_id.getValues())
+    for (auto const & leaf : remote_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : remote_id_regex.getValues())
+    for (auto const & leaf : remote_id_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : service_name.getValues())
+    for (auto const & leaf : service_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : service_name_regex.getValues())
+    for (auto const & leaf : service_name_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : source_port.getValues())
+    for (auto const & leaf : source_port.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : timer.getValues())
+    for (auto const & leaf : timer.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : timer_regex.getValues())
+    for (auto const & leaf : timer_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : traffic_class.getValues())
+    for (auto const & leaf : traffic_class.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : user_name.getValues())
+    for (auto const & leaf : user_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : user_name_regex.getValues())
+    for (auto const & leaf : user_name_regex.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : vlan.getValues())
+    for (auto const & leaf : vlan.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(authen_status.operation)
+	|| is_set(circuit_id.operation)
+	|| is_set(circuit_id_regex.operation)
+	|| is_set(cos.operation)
 	|| is_set(dei.operation)
 	|| is_set(dei_inner.operation)
 	|| is_set(destination_mac.operation)
+	|| is_set(destination_port.operation)
+	|| is_set(dhcp_client_id.operation)
+	|| is_set(dhcp_client_id_regex.operation)
+	|| is_set(discard_class.operation)
+	|| is_set(dscp.operation)
 	|| is_set(ethernet_services_acl.operation)
+	|| is_set(ethertype.operation)
+	|| is_set(flow_tag.operation)
 	|| is_set(fr_de.operation)
+	|| is_set(fragment_type.operation)
+	|| is_set(frame_relay_dlci.operation)
+	|| is_set(icmpv4_code.operation)
+	|| is_set(icmpv4_type.operation)
+	|| is_set(icmpv6_code.operation)
+	|| is_set(icmpv6_type.operation)
+	|| is_set(inner_cos.operation)
+	|| is_set(inner_vlan.operation)
 	|| is_set(ipv4_acl.operation)
+	|| is_set(ipv4_dscp.operation)
+	|| is_set(ipv4_packet_length.operation)
+	|| is_set(ipv4_precedence.operation)
 	|| is_set(ipv6_acl.operation)
+	|| is_set(ipv6_dscp.operation)
+	|| is_set(ipv6_packet_length.operation)
+	|| is_set(ipv6_precedence.operation)
 	|| is_set(mpls_disposition_ipv4_access_list.operation)
 	|| is_set(mpls_disposition_ipv6_access_list.operation)
+	|| is_set(mpls_experimental_imposition.operation)
+	|| is_set(mpls_experimental_topmost.operation)
+	|| is_set(packet_length.operation)
+	|| is_set(precedence.operation)
+	|| is_set(protocol.operation)
+	|| is_set(qos_group.operation)
+	|| is_set(remote_id.operation)
+	|| is_set(remote_id_regex.operation)
+	|| is_set(service_name.operation)
+	|| is_set(service_name_regex.operation)
 	|| is_set(source_mac.operation)
+	|| is_set(source_port.operation)
 	|| is_set(tcp_flag.operation)
+	|| is_set(timer.operation)
+	|| is_set(timer_regex.operation)
+	|| is_set(traffic_class.operation)
+	|| is_set(user_name.operation)
+	|| is_set(user_name_regex.operation)
+	|| is_set(vlan.operation)
 	|| is_set(vpls_broadcast.operation)
 	|| is_set(vpls_control.operation)
 	|| is_set(vpls_known.operation)
 	|| is_set(vpls_multicast.operation)
 	|| is_set(vpls_unknown.operation)
-	|| (flow !=  nullptr && is_set(flow->operation));
+	|| (flow !=  nullptr && flow->has_operation());
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::get_segment_path() const
@@ -3137,7 +3221,7 @@ EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3729,8 +3813,8 @@ bool PolicyManager::ClassMaps::ClassMap::has_operation() const
 	|| is_set(class_map_mode_match_all.operation)
 	|| is_set(class_map_mode_match_any.operation)
 	|| is_set(description.operation)
-	|| (match !=  nullptr && is_set(match->operation))
-	|| (match_not !=  nullptr && is_set(match_not->operation));
+	|| (match !=  nullptr && match->has_operation())
+	|| (match_not !=  nullptr && match_not->has_operation());
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::get_segment_path() const
@@ -4004,7 +4088,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Acti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4089,7 +4173,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Auth
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4178,7 +4262,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Auth
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4276,7 +4360,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Deac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4364,7 +4448,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4449,7 +4533,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Stop
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4538,12 +4622,12 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::has_operat
 	|| is_set(action_sequence_number.operation)
 	|| is_set(disconnect.operation)
 	|| is_set(monitor.operation)
-	|| (activate_dynamic_template !=  nullptr && is_set(activate_dynamic_template->operation))
-	|| (authenticate !=  nullptr && is_set(authenticate->operation))
-	|| (authorize !=  nullptr && is_set(authorize->operation))
-	|| (deactivate_dynamic_template !=  nullptr && is_set(deactivate_dynamic_template->operation))
-	|| (set_timer !=  nullptr && is_set(set_timer->operation))
-	|| (stop_timer !=  nullptr && is_set(stop_timer->operation));
+	|| (activate_dynamic_template !=  nullptr && activate_dynamic_template->has_operation())
+	|| (authenticate !=  nullptr && authenticate->has_operation())
+	|| (authorize !=  nullptr && authorize->has_operation())
+	|| (deactivate_dynamic_template !=  nullptr && deactivate_dynamic_template->has_operation())
+	|| (set_timer !=  nullptr && set_timer->has_operation())
+	|| (stop_timer !=  nullptr && stop_timer->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_segment_path() const
@@ -4560,7 +4644,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4804,7 +4888,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4936,7 +5020,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5055,7 +5139,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5143,7 +5227,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5219,8 +5303,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::has_data() cons
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::has_operation() const
 {
     return is_set(operation)
-	|| (burst !=  nullptr && is_set(burst->operation))
-	|| (rate !=  nullptr && is_set(rate->operation));
+	|| (burst !=  nullptr && burst->has_operation())
+	|| (rate !=  nullptr && rate->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_segment_path() const
@@ -5237,7 +5321,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5361,7 +5445,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5449,7 +5533,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaini
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5537,7 +5621,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5625,7 +5709,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5713,7 +5797,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5801,7 +5885,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeTh
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5886,9 +5970,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::has_operation() c
 {
     return is_set(operation)
 	|| is_set(pfc_pause_set.operation)
-	|| (pfc_buffer_size !=  nullptr && is_set(pfc_buffer_size->operation))
-	|| (pfc_pause_threshold !=  nullptr && is_set(pfc_pause_threshold->operation))
-	|| (pfc_resume_threshold !=  nullptr && is_set(pfc_resume_threshold->operation));
+	|| (pfc_buffer_size !=  nullptr && pfc_buffer_size->has_operation())
+	|| (pfc_pause_threshold !=  nullptr && pfc_pause_threshold->has_operation())
+	|| (pfc_resume_threshold !=  nullptr && pfc_resume_threshold->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_segment_path() const
@@ -5905,7 +5989,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6041,27 +6125,27 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::~RandomDetect
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::has_data() const
 {
-    for (auto const & leaf : cos.getValues())
+    for (auto const & leaf : cos.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : discard_class.getValues())
+    for (auto const & leaf : discard_class.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : dscp.getValues())
+    for (auto const & leaf : dscp.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mpls_exp.getValues())
+    for (auto const & leaf : mpls_exp.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6076,27 +6160,27 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::has_data
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::has_operation() const
 {
-    for (auto const & leaf : cos.getValues())
+    for (auto const & leaf : cos.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : discard_class.getValues())
+    for (auto const & leaf : discard_class.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : dscp.getValues())
+    for (auto const & leaf : dscp.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mpls_exp.getValues())
+    for (auto const & leaf : mpls_exp.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -6106,8 +6190,13 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::has_oper
 	|| is_set(threshold_max_value.operation)
 	|| is_set(threshold_min_units.operation)
 	|| is_set(threshold_min_value.operation)
+	|| is_set(cos.operation)
 	|| is_set(dei.operation)
-	|| is_set(ecn.operation);
+	|| is_set(discard_class.operation)
+	|| is_set(dscp.operation)
+	|| is_set(ecn.operation)
+	|| is_set(mpls_exp.operation)
+	|| is_set(precedence.operation);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::get_segment_path() const
@@ -6124,7 +6213,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6310,7 +6399,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6478,7 +6567,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6566,7 +6655,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6654,7 +6743,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6742,7 +6831,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurs
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6878,7 +6967,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7036,7 +7125,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction:
     return is_set(operation)
 	|| is_set(drop.operation)
 	|| is_set(transmit.operation)
-	|| (set !=  nullptr && is_set(set->operation));
+	|| (set !=  nullptr && set->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::get_segment_path() const
@@ -7053,7 +7142,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7212,7 +7301,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7370,7 +7459,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::
     return is_set(operation)
 	|| is_set(drop.operation)
 	|| is_set(transmit.operation)
-	|| (set !=  nullptr && is_set(set->operation));
+	|| (set !=  nullptr && set->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::get_segment_path() const
@@ -7387,7 +7476,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7546,7 +7635,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7704,7 +7793,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction:
     return is_set(operation)
 	|| is_set(drop.operation)
 	|| is_set(transmit.operation)
-	|| (set !=  nullptr && is_set(set->operation));
+	|| (set !=  nullptr && set->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::get_segment_path() const
@@ -7721,7 +7810,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7845,13 +7934,13 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::has_data() con
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::has_operation() const
 {
     return is_set(operation)
-	|| (burst !=  nullptr && is_set(burst->operation))
-	|| (conform_action !=  nullptr && is_set(conform_action->operation))
-	|| (exceed_action !=  nullptr && is_set(exceed_action->operation))
-	|| (peak_burst !=  nullptr && is_set(peak_burst->operation))
-	|| (peak_rate !=  nullptr && is_set(peak_rate->operation))
-	|| (rate !=  nullptr && is_set(rate->operation))
-	|| (violate_action !=  nullptr && is_set(violate_action->operation));
+	|| (burst !=  nullptr && burst->has_operation())
+	|| (conform_action !=  nullptr && conform_action->has_operation())
+	|| (exceed_action !=  nullptr && exceed_action->has_operation())
+	|| (peak_burst !=  nullptr && peak_burst->has_operation())
+	|| (peak_rate !=  nullptr && peak_rate->has_operation())
+	|| (rate !=  nullptr && rate->has_operation())
+	|| (violate_action !=  nullptr && violate_action->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_segment_path() const
@@ -7868,7 +7957,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8107,7 +8196,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8195,7 +8284,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8283,7 +8372,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8363,8 +8452,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::has_operatio
 {
     return is_set(operation)
 	|| is_set(flow_idle_timeout.operation)
-	|| (flow_rate !=  nullptr && is_set(flow_rate->operation))
-	|| (rate !=  nullptr && is_set(rate->operation));
+	|| (flow_rate !=  nullptr && flow_rate->has_operation())
+	|| (rate !=  nullptr && rate->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_segment_path() const
@@ -8381,7 +8470,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8516,7 +8605,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8617,7 +8706,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Ra
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8710,7 +8799,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Me
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8786,8 +8875,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::has_data
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::has_operation() const
 {
     return is_set(operation)
-	|| (media_packet !=  nullptr && is_set(media_packet->operation))
-	|| (rate !=  nullptr && is_set(rate->operation));
+	|| (media_packet !=  nullptr && media_packet->has_operation())
+	|| (rate !=  nullptr && rate->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::get_segment_path() const
@@ -8804,7 +8893,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8928,7 +9017,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9019,7 +9108,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Ty
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9099,7 +9188,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::has_oper
 {
     return is_set(operation)
 	|| is_set(severity.operation)
-	|| (type !=  nullptr && is_set(type->operation));
+	|| (type !=  nullptr && type->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::get_segment_path() const
@@ -9116,7 +9205,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9231,7 +9320,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9334,7 +9423,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9410,8 +9499,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::has_
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::has_operation() const
 {
     return is_set(operation)
-	|| (trigger_type !=  nullptr && is_set(trigger_type->operation))
-	|| (trigger_value !=  nullptr && is_set(trigger_value->operation));
+	|| (trigger_type !=  nullptr && trigger_type->has_operation())
+	|| (trigger_value !=  nullptr && trigger_value->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::get_segment_path() const
@@ -9428,7 +9517,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9564,9 +9653,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::has_operation()
 	|| is_set(criterion_mrv.operation)
 	|| is_set(criterion_packet_rate.operation)
 	|| is_set(descrition.operation)
-	|| (action !=  nullptr && is_set(action->operation))
-	|| (alarm !=  nullptr && is_set(alarm->operation))
-	|| (threshold !=  nullptr && is_set(threshold->operation));
+	|| (action !=  nullptr && action->has_operation())
+	|| (alarm !=  nullptr && alarm->has_operation())
+	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_segment_path() const
@@ -9583,7 +9672,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9763,7 +9852,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::Next
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9843,7 +9932,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::has_operat
 {
     return is_set(operation)
 	|| is_set(default_.operation)
-	|| (next_hop !=  nullptr && is_set(next_hop->operation));
+	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get_segment_path() const
@@ -9860,7 +9949,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9969,7 +10058,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10154,20 +10243,20 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::has_operation() const
 	|| is_set(pbr_transmit.operation)
 	|| is_set(priority_level.operation)
 	|| is_set(service_fragment.operation)
-	|| (bandwidth_remaining !=  nullptr && is_set(bandwidth_remaining->operation))
-	|| (cac_local !=  nullptr && is_set(cac_local->operation))
-	|| (flow_params !=  nullptr && is_set(flow_params->operation))
-	|| (metrics_ipcbr !=  nullptr && is_set(metrics_ipcbr->operation))
-	|| (min_bandwidth !=  nullptr && is_set(min_bandwidth->operation))
-	|| (pbr_forward !=  nullptr && is_set(pbr_forward->operation))
-	|| (pfc !=  nullptr && is_set(pfc->operation))
-	|| (police !=  nullptr && is_set(police->operation))
-	|| (queue_limit !=  nullptr && is_set(queue_limit->operation))
-	|| (react !=  nullptr && is_set(react->operation))
-	|| (service_function_path !=  nullptr && is_set(service_function_path->operation))
-	|| (service_policy !=  nullptr && is_set(service_policy->operation))
-	|| (set !=  nullptr && is_set(set->operation))
-	|| (shape !=  nullptr && is_set(shape->operation));
+	|| (bandwidth_remaining !=  nullptr && bandwidth_remaining->has_operation())
+	|| (cac_local !=  nullptr && cac_local->has_operation())
+	|| (flow_params !=  nullptr && flow_params->has_operation())
+	|| (metrics_ipcbr !=  nullptr && metrics_ipcbr->has_operation())
+	|| (min_bandwidth !=  nullptr && min_bandwidth->has_operation())
+	|| (pbr_forward !=  nullptr && pbr_forward->has_operation())
+	|| (pfc !=  nullptr && pfc->has_operation())
+	|| (police !=  nullptr && police->has_operation())
+	|| (queue_limit !=  nullptr && queue_limit->has_operation())
+	|| (react !=  nullptr && react->has_operation())
+	|| (service_function_path !=  nullptr && service_function_path->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
+	|| (set !=  nullptr && set->has_operation())
+	|| (shape !=  nullptr && shape->has_operation());
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_segment_path() const
@@ -10184,7 +10273,7 @@ EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10929,8 +11018,8 @@ bool PolicyManager::has_data() const
 bool PolicyManager::has_operation() const
 {
     return is_set(operation)
-	|| (class_maps !=  nullptr && is_set(class_maps->operation))
-	|| (policy_maps !=  nullptr && is_set(policy_maps->operation));
+	|| (class_maps !=  nullptr && class_maps->has_operation())
+	|| (policy_maps !=  nullptr && policy_maps->has_operation());
 }
 
 std::string PolicyManager::get_segment_path() const
@@ -10947,7 +11036,7 @@ EntityPath PolicyManager::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -11034,49 +11123,49 @@ std::unique_ptr<Entity> PolicyManager::clone_ptr()
     return std::make_unique<PolicyManager>();
 }
 
-const Enum::Value EventTypeEnum::account_logoff {0, "account-logoff"};
-const Enum::Value EventTypeEnum::account_logon {1, "account-logon"};
-const Enum::Value EventTypeEnum::authentication_failure {2, "authentication-failure"};
-const Enum::Value EventTypeEnum::authentication_no_response {3, "authentication-no-response"};
-const Enum::Value EventTypeEnum::authorization_failure {4, "authorization-failure"};
-const Enum::Value EventTypeEnum::authorization_no_response {5, "authorization-no-response"};
-const Enum::Value EventTypeEnum::credit_exhausted {6, "credit-exhausted"};
-const Enum::Value EventTypeEnum::exception {7, "exception"};
-const Enum::Value EventTypeEnum::idle_timeout {8, "idle-timeout"};
-const Enum::Value EventTypeEnum::quota_depleted {9, "quota-depleted"};
-const Enum::Value EventTypeEnum::service_start {10, "service-start"};
-const Enum::Value EventTypeEnum::service_stop {11, "service-stop"};
-const Enum::Value EventTypeEnum::session_activate {12, "session-activate"};
-const Enum::Value EventTypeEnum::session_start {13, "session-start"};
-const Enum::Value EventTypeEnum::session_stop {14, "session-stop"};
-const Enum::Value EventTypeEnum::timer_expiry {15, "timer-expiry"};
+const Enum::YLeaf EventTypeEnum::account_logoff {0, "account-logoff"};
+const Enum::YLeaf EventTypeEnum::account_logon {1, "account-logon"};
+const Enum::YLeaf EventTypeEnum::authentication_failure {2, "authentication-failure"};
+const Enum::YLeaf EventTypeEnum::authentication_no_response {3, "authentication-no-response"};
+const Enum::YLeaf EventTypeEnum::authorization_failure {4, "authorization-failure"};
+const Enum::YLeaf EventTypeEnum::authorization_no_response {5, "authorization-no-response"};
+const Enum::YLeaf EventTypeEnum::credit_exhausted {6, "credit-exhausted"};
+const Enum::YLeaf EventTypeEnum::exception {7, "exception"};
+const Enum::YLeaf EventTypeEnum::idle_timeout {8, "idle-timeout"};
+const Enum::YLeaf EventTypeEnum::quota_depleted {9, "quota-depleted"};
+const Enum::YLeaf EventTypeEnum::service_start {10, "service-start"};
+const Enum::YLeaf EventTypeEnum::service_stop {11, "service-stop"};
+const Enum::YLeaf EventTypeEnum::session_activate {12, "session-activate"};
+const Enum::YLeaf EventTypeEnum::session_start {13, "session-start"};
+const Enum::YLeaf EventTypeEnum::session_stop {14, "session-stop"};
+const Enum::YLeaf EventTypeEnum::timer_expiry {15, "timer-expiry"};
 
-const Enum::Value ClassMapTypeEnum::qos {1, "qos"};
-const Enum::Value ClassMapTypeEnum::traffic {3, "traffic"};
-const Enum::Value ClassMapTypeEnum::control {4, "control"};
+const Enum::YLeaf ClassMapTypeEnum::qos {1, "qos"};
+const Enum::YLeaf ClassMapTypeEnum::traffic {3, "traffic"};
+const Enum::YLeaf ClassMapTypeEnum::control {4, "control"};
 
-const Enum::Value ExecutionStrategyEnum::do_all {0, "do-all"};
-const Enum::Value ExecutionStrategyEnum::do_until_failure {1, "do-until-failure"};
-const Enum::Value ExecutionStrategyEnum::do_until_success {2, "do-until-success"};
+const Enum::YLeaf ExecutionStrategyEnum::do_all {0, "do-all"};
+const Enum::YLeaf ExecutionStrategyEnum::do_until_failure {1, "do-until-failure"};
+const Enum::YLeaf ExecutionStrategyEnum::do_until_success {2, "do-until-success"};
 
-const Enum::Value AuthorizeIdentifierEnum::circuit_id {0, "circuit-id"};
-const Enum::Value AuthorizeIdentifierEnum::dhcp_client_id {1, "dhcp-client-id"};
-const Enum::Value AuthorizeIdentifierEnum::remote_id {2, "remote-id"};
-const Enum::Value AuthorizeIdentifierEnum::source_address_ipv4 {3, "source-address-ipv4"};
-const Enum::Value AuthorizeIdentifierEnum::source_address_ipv6 {4, "source-address-ipv6"};
-const Enum::Value AuthorizeIdentifierEnum::source_address_mac {5, "source-address-mac"};
-const Enum::Value AuthorizeIdentifierEnum::username {6, "username"};
+const Enum::YLeaf AuthorizeIdentifierEnum::circuit_id {0, "circuit-id"};
+const Enum::YLeaf AuthorizeIdentifierEnum::dhcp_client_id {1, "dhcp-client-id"};
+const Enum::YLeaf AuthorizeIdentifierEnum::remote_id {2, "remote-id"};
+const Enum::YLeaf AuthorizeIdentifierEnum::source_address_ipv4 {3, "source-address-ipv4"};
+const Enum::YLeaf AuthorizeIdentifierEnum::source_address_ipv6 {4, "source-address-ipv6"};
+const Enum::YLeaf AuthorizeIdentifierEnum::source_address_mac {5, "source-address-mac"};
+const Enum::YLeaf AuthorizeIdentifierEnum::username {6, "username"};
 
-const Enum::Value PmapClassMapTypeEnum::qos {1, "qos"};
-const Enum::Value PmapClassMapTypeEnum::traffic {2, "traffic"};
-const Enum::Value PmapClassMapTypeEnum::subscriber_control {3, "subscriber-control"};
+const Enum::YLeaf PmapClassMapTypeEnum::qos {1, "qos"};
+const Enum::YLeaf PmapClassMapTypeEnum::traffic {2, "traffic"};
+const Enum::YLeaf PmapClassMapTypeEnum::subscriber_control {3, "subscriber-control"};
 
-const Enum::Value PolicyMapTypeEnum::qos {1, "qos"};
-const Enum::Value PolicyMapTypeEnum::pbr {2, "pbr"};
-const Enum::Value PolicyMapTypeEnum::traffic {3, "traffic"};
-const Enum::Value PolicyMapTypeEnum::subscriber_control {4, "subscriber-control"};
-const Enum::Value PolicyMapTypeEnum::redirect {6, "redirect"};
-const Enum::Value PolicyMapTypeEnum::flow_monitor {7, "flow-monitor"};
+const Enum::YLeaf PolicyMapTypeEnum::qos {1, "qos"};
+const Enum::YLeaf PolicyMapTypeEnum::pbr {2, "pbr"};
+const Enum::YLeaf PolicyMapTypeEnum::traffic {3, "traffic"};
+const Enum::YLeaf PolicyMapTypeEnum::subscriber_control {4, "subscriber-control"};
+const Enum::YLeaf PolicyMapTypeEnum::redirect {6, "redirect"};
+const Enum::YLeaf PolicyMapTypeEnum::flow_monitor {7, "flow-monitor"};
 
 
 }

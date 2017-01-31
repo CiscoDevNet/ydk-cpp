@@ -216,8 +216,8 @@ bool IpUdp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(receive_q.operation)
-	|| (directory !=  nullptr && is_set(directory->operation))
-	|| (num_thread !=  nullptr && is_set(num_thread->operation));
+	|| (directory !=  nullptr && directory->has_operation())
+	|| (num_thread !=  nullptr && num_thread->has_operation());
 }
 
 std::string IpUdp::get_segment_path() const
@@ -234,7 +234,7 @@ EntityPath IpUdp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

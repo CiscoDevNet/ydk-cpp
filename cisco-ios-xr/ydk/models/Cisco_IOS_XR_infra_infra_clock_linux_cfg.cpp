@@ -114,7 +114,7 @@ bool Clock::has_data() const
 bool Clock::has_operation() const
 {
     return is_set(operation)
-	|| (time_zone !=  nullptr && is_set(time_zone->operation));
+	|| (time_zone !=  nullptr && time_zone->has_operation());
 }
 
 std::string Clock::get_segment_path() const
@@ -131,7 +131,7 @@ EntityPath Clock::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

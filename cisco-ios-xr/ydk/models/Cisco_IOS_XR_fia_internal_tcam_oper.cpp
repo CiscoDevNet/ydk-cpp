@@ -49,7 +49,7 @@ EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -164,7 +164,7 @@ EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -305,7 +305,7 @@ EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -418,7 +418,7 @@ EntityPath Controller::Dpa::Nodes::Node::InternalTcamResources::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -509,7 +509,7 @@ bool Controller::Dpa::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (internal_tcam_resources !=  nullptr && is_set(internal_tcam_resources->operation));
+	|| (internal_tcam_resources !=  nullptr && internal_tcam_resources->has_operation());
 }
 
 std::string Controller::Dpa::Nodes::Node::get_segment_path() const
@@ -723,7 +723,7 @@ bool Controller::Dpa::has_data() const
 bool Controller::Dpa::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Controller::Dpa::get_segment_path() const
@@ -824,7 +824,7 @@ bool Controller::has_data() const
 bool Controller::has_operation() const
 {
     return is_set(operation)
-	|| (dpa !=  nullptr && is_set(dpa->operation));
+	|| (dpa !=  nullptr && dpa->has_operation());
 }
 
 std::string Controller::get_segment_path() const
@@ -841,7 +841,7 @@ EntityPath Controller::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

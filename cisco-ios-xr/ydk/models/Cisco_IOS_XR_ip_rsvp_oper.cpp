@@ -46,7 +46,7 @@ EntityPath RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::Interfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1028,10 +1028,10 @@ bool RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::has_operati
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_segment_path() const
@@ -1206,7 +1206,7 @@ bool RsvpStandby::SessionBriefs::SessionBrief::Session::has_data() const
 bool RsvpStandby::SessionBriefs::SessionBrief::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string RsvpStandby::SessionBriefs::SessionBrief::Session::get_segment_path() const
@@ -1341,7 +1341,7 @@ bool RsvpStandby::SessionBriefs::SessionBrief::has_operation() const
 	|| is_set(rs_bs.operation)
 	|| is_set(session_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string RsvpStandby::SessionBriefs::SessionBrief::get_segment_path() const
@@ -2008,10 +2008,10 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::has_operation
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::get_segment_path() const
@@ -2186,7 +2186,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::Session::has_data() const
 bool RsvpStandby::PsbDetaileds::PsbDetailed::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::Session::get_segment_path() const
@@ -2568,8 +2568,8 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::has_operatio
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::get_segment_path() const
@@ -2698,7 +2698,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::has_data() const
 bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::get_segment_path() const
@@ -2918,7 +2918,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::has_operation() c
     return is_set(operation)
 	|| is_set(reservation_priority.operation)
 	|| is_set(setup_priority.operation)
-	|| (sess_attribute_flags !=  nullptr && is_set(sess_attribute_flags->operation));
+	|| (sess_attribute_flags !=  nullptr && sess_attribute_flags->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::get_segment_path() const
@@ -3366,8 +3366,8 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::has_operation()
 {
     return is_set(operation)
 	|| is_set(tspec_type.operation)
-	|| (g709otn_tspec !=  nullptr && is_set(g709otn_tspec->operation))
-	|| (intsrv_tspec !=  nullptr && is_set(intsrv_tspec->operation));
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::get_segment_path() const
@@ -4223,7 +4223,7 @@ RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4233,12 +4233,13 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLa
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -4326,7 +4327,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLa
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_segment_path() const
@@ -4423,7 +4424,7 @@ RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabe
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4433,12 +4434,13 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstrea
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -4526,7 +4528,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstrea
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_segment_path() const
@@ -4623,7 +4625,7 @@ RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::Gener
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4633,12 +4635,13 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_segment_path() const
@@ -4726,7 +4729,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::get_segment_path() const
@@ -4823,7 +4826,7 @@ RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel:
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4833,12 +4836,13 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamL
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -4926,7 +4930,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamL
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_segment_path() const
@@ -5023,7 +5027,7 @@ RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::Ge
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5033,12 +5037,13 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabe
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -5126,7 +5131,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabe
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_segment_path() const
@@ -5223,7 +5228,7 @@ RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::General
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5233,12 +5238,13 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::Ge
 
 bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_segment_path() const
@@ -5326,7 +5332,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::ha
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::get_segment_path() const
@@ -5482,12 +5488,12 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::has_operation() const
 	|| is_set(outgoing_downstream_label.operation)
 	|| is_set(outgoing_upstream_label.operation)
 	|| is_set(recovery_label.operation)
-	|| (generic_local_downstream_label !=  nullptr && is_set(generic_local_downstream_label->operation))
-	|| (generic_local_upstream_label !=  nullptr && is_set(generic_local_upstream_label->operation))
-	|| (generic_merge_point_label !=  nullptr && is_set(generic_merge_point_label->operation))
-	|| (generic_outgoing_downstream_label !=  nullptr && is_set(generic_outgoing_downstream_label->operation))
-	|| (generic_outgoing_upstream_label !=  nullptr && is_set(generic_outgoing_upstream_label->operation))
-	|| (generic_recovery_label !=  nullptr && is_set(generic_recovery_label->operation));
+	|| (generic_local_downstream_label !=  nullptr && generic_local_downstream_label->has_operation())
+	|| (generic_local_upstream_label !=  nullptr && generic_local_upstream_label->has_operation())
+	|| (generic_merge_point_label !=  nullptr && generic_merge_point_label->has_operation())
+	|| (generic_outgoing_downstream_label !=  nullptr && generic_outgoing_downstream_label->has_operation())
+	|| (generic_outgoing_upstream_label !=  nullptr && generic_outgoing_upstream_label->has_operation())
+	|| (generic_recovery_label !=  nullptr && generic_recovery_label->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::get_segment_path() const
@@ -6040,8 +6046,8 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::has_operation() const
 {
     return is_set(operation)
 	|| is_set(output_interface.operation)
-	|| (policy_flags !=  nullptr && is_set(policy_flags->operation))
-	|| (policy_query_flags !=  nullptr && is_set(policy_query_flags->operation));
+	|| (policy_flags !=  nullptr && policy_flags->has_operation())
+	|| (policy_query_flags !=  nullptr && policy_query_flags->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::get_segment_path() const
@@ -6379,8 +6385,8 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::InEro::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ero_type.operation)
-	|| (ipv4ero_sub_object !=  nullptr && is_set(ipv4ero_sub_object->operation))
-	|| (unnumbered_ero_sub_object !=  nullptr && is_set(unnumbered_ero_sub_object->operation));
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::InEro::get_segment_path() const
@@ -6718,8 +6724,8 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ero_type.operation)
-	|| (ipv4ero_sub_object !=  nullptr && is_set(ipv4ero_sub_object->operation))
-	|| (unnumbered_ero_sub_object !=  nullptr && is_set(unnumbered_ero_sub_object->operation));
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::get_segment_path() const
@@ -6994,21 +7000,21 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (class_type !=  nullptr && is_set(class_type->operation))
-	|| (expiry_time !=  nullptr && is_set(expiry_time->operation))
-	|| (generic_traffic_spec !=  nullptr && is_set(generic_traffic_spec->operation))
-	|| (header !=  nullptr && is_set(header->operation))
-	|| (hop !=  nullptr && is_set(hop->operation))
-	|| (label_info !=  nullptr && is_set(label_info->operation))
-	|| (path_flags !=  nullptr && is_set(path_flags->operation))
-	|| (policy_flags !=  nullptr && is_set(policy_flags->operation))
-	|| (policy_query_flags !=  nullptr && is_set(policy_query_flags->operation))
-	|| (policy_source_info !=  nullptr && is_set(policy_source_info->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (session_attribute !=  nullptr && is_set(session_attribute->operation))
-	|| (template_ !=  nullptr && is_set(template_->operation))
-	|| (traffic_spec !=  nullptr && is_set(traffic_spec->operation));
+	|| (class_type !=  nullptr && class_type->has_operation())
+	|| (expiry_time !=  nullptr && expiry_time->has_operation())
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation())
+	|| (header !=  nullptr && header->has_operation())
+	|| (hop !=  nullptr && hop->has_operation())
+	|| (label_info !=  nullptr && label_info->has_operation())
+	|| (path_flags !=  nullptr && path_flags->has_operation())
+	|| (policy_flags !=  nullptr && policy_flags->has_operation())
+	|| (policy_query_flags !=  nullptr && policy_query_flags->has_operation())
+	|| (policy_source_info !=  nullptr && policy_source_info->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (session_attribute !=  nullptr && session_attribute->has_operation())
+	|| (template_ !=  nullptr && template_->has_operation())
+	|| (traffic_spec !=  nullptr && traffic_spec->has_operation());
 }
 
 std::string RsvpStandby::PsbDetaileds::PsbDetailed::get_segment_path() const
@@ -7905,8 +7911,8 @@ bool RsvpStandby::FrrSummary::has_data() const
 bool RsvpStandby::FrrSummary::has_operation() const
 {
     return is_set(operation)
-	|| (path_states !=  nullptr && is_set(path_states->operation))
-	|| (reservation_states !=  nullptr && is_set(reservation_states->operation));
+	|| (path_states !=  nullptr && path_states->has_operation())
+	|| (reservation_states !=  nullptr && reservation_states->has_operation());
 }
 
 std::string RsvpStandby::FrrSummary::get_segment_path() const
@@ -8274,7 +8280,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::has_operation() co
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::get_segment_path() const
@@ -8783,10 +8789,10 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::has_operation
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::get_segment_path() const
@@ -8961,7 +8967,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::Session::has_data() const
 bool RsvpStandby::RsbDetaileds::RsbDetailed::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::Session::get_segment_path() const
@@ -9423,8 +9429,8 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::has_operation()
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::get_segment_path() const
@@ -9553,7 +9559,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::Filter::has_data() const
 bool RsvpStandby::RsbDetaileds::RsbDetailed::Filter::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::Filter::get_segment_path() const
@@ -10373,7 +10379,7 @@ RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10383,12 +10389,13 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLa
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -10476,7 +10483,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLa
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_segment_path() const
@@ -10573,7 +10580,7 @@ RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabe
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10583,12 +10590,13 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstrea
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -10676,7 +10684,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstrea
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_segment_path() const
@@ -10773,7 +10781,7 @@ RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::Gener
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10783,12 +10791,13 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_segment_path() const
@@ -10876,7 +10885,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::get_segment_path() const
@@ -10973,7 +10982,7 @@ RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel:
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10983,12 +10992,13 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamL
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -11076,7 +11086,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamL
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_segment_path() const
@@ -11173,7 +11183,7 @@ RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::Ge
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11183,12 +11193,13 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabe
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -11276,7 +11287,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabe
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_segment_path() const
@@ -11373,7 +11384,7 @@ RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::General
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11383,12 +11394,13 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::Ge
 
 bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_segment_path() const
@@ -11476,7 +11488,7 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::ha
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::get_segment_path() const
@@ -11632,12 +11644,12 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::has_operation() const
 	|| is_set(outgoing_downstream_label.operation)
 	|| is_set(outgoing_upstream_label.operation)
 	|| is_set(recovery_label.operation)
-	|| (generic_local_downstream_label !=  nullptr && is_set(generic_local_downstream_label->operation))
-	|| (generic_local_upstream_label !=  nullptr && is_set(generic_local_upstream_label->operation))
-	|| (generic_merge_point_label !=  nullptr && is_set(generic_merge_point_label->operation))
-	|| (generic_outgoing_downstream_label !=  nullptr && is_set(generic_outgoing_downstream_label->operation))
-	|| (generic_outgoing_upstream_label !=  nullptr && is_set(generic_outgoing_upstream_label->operation))
-	|| (generic_recovery_label !=  nullptr && is_set(generic_recovery_label->operation));
+	|| (generic_local_downstream_label !=  nullptr && generic_local_downstream_label->has_operation())
+	|| (generic_local_upstream_label !=  nullptr && generic_local_upstream_label->has_operation())
+	|| (generic_merge_point_label !=  nullptr && generic_merge_point_label->has_operation())
+	|| (generic_outgoing_downstream_label !=  nullptr && generic_outgoing_downstream_label->has_operation())
+	|| (generic_outgoing_upstream_label !=  nullptr && generic_outgoing_upstream_label->has_operation())
+	|| (generic_recovery_label !=  nullptr && generic_recovery_label->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::get_segment_path() const
@@ -11998,20 +12010,20 @@ bool RsvpStandby::RsbDetaileds::RsbDetailed::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (expiry_time !=  nullptr && is_set(expiry_time->operation))
-	|| (filter !=  nullptr && is_set(filter->operation))
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (header !=  nullptr && is_set(header->operation))
-	|| (hop !=  nullptr && is_set(hop->operation))
-	|| (label_info !=  nullptr && is_set(label_info->operation))
-	|| (policy_flags !=  nullptr && is_set(policy_flags->operation))
-	|| (policy_query_flags !=  nullptr && is_set(policy_query_flags->operation))
-	|| (policy_sources !=  nullptr && is_set(policy_sources->operation))
-	|| (rsb_flags !=  nullptr && is_set(rsb_flags->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (style !=  nullptr && is_set(style->operation));
+	|| (expiry_time !=  nullptr && expiry_time->has_operation())
+	|| (filter !=  nullptr && filter->has_operation())
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (header !=  nullptr && header->has_operation())
+	|| (hop !=  nullptr && hop->has_operation())
+	|| (label_info !=  nullptr && label_info->has_operation())
+	|| (policy_flags !=  nullptr && policy_flags->has_operation())
+	|| (policy_query_flags !=  nullptr && policy_query_flags->has_operation())
+	|| (policy_sources !=  nullptr && policy_sources->has_operation())
+	|| (rsb_flags !=  nullptr && rsb_flags->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (style !=  nullptr && style->has_operation());
 }
 
 std::string RsvpStandby::RsbDetaileds::RsbDetailed::get_segment_path() const
@@ -12613,7 +12625,7 @@ EntityPath RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformati
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12739,7 +12751,7 @@ EntityPath RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformati
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12849,8 +12861,8 @@ bool RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::ha
 {
     return is_set(operation)
 	|| is_set(dste_mode.operation)
-	|| (pre_standard_dste_interface !=  nullptr && is_set(pre_standard_dste_interface->operation))
-	|| (standard_dste_interface !=  nullptr && is_set(standard_dste_interface->operation));
+	|| (pre_standard_dste_interface !=  nullptr && pre_standard_dste_interface->has_operation())
+	|| (standard_dste_interface !=  nullptr && standard_dste_interface->has_operation());
 }
 
 std::string RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::get_segment_path() const
@@ -12867,7 +12879,7 @@ EntityPath RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformati
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12998,7 +13010,7 @@ bool RsvpStandby::InterfaceSummaries::InterfaceSummary::has_operation() const
 	|| is_set(paths_out.operation)
 	|| is_set(reservations_in.operation)
 	|| is_set(reservations_out.operation)
-	|| (bandwidth_information !=  nullptr && is_set(bandwidth_information->operation));
+	|| (bandwidth_information !=  nullptr && bandwidth_information->has_operation());
 }
 
 std::string RsvpStandby::InterfaceSummaries::InterfaceSummary::get_segment_path() const
@@ -13516,7 +13528,7 @@ EntityPath RsvpStandby::AuthenticationDetails::AuthenticationDetail::AuthCompact
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13640,7 +13652,7 @@ EntityPath RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13725,7 +13737,7 @@ bool RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::Se
 {
     return is_set(operation)
 	|| is_set(sequence.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_segment_path() const
@@ -13742,7 +13754,7 @@ EntityPath RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13890,7 +13902,7 @@ EntityPath RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14030,7 +14042,7 @@ RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::Receive
 
 bool RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::has_data() const
 {
-    for (auto const & leaf : sequence_window.getValues())
+    for (auto const & leaf : sequence_window.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14043,16 +14055,17 @@ bool RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::Re
 
 bool RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::has_operation() const
 {
-    for (auto const & leaf : sequence_window.getValues())
+    for (auto const & leaf : sequence_window.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(sequence.operation)
+	|| is_set(sequence_window.operation)
 	|| is_set(sequence_window_count.operation)
 	|| is_set(sequence_window_size.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_segment_path() const
@@ -14069,7 +14082,7 @@ EntityPath RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14183,8 +14196,8 @@ bool RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ha
 {
     return is_set(operation)
 	|| is_set(auth_direction.operation)
-	|| (receive_info !=  nullptr && is_set(receive_info->operation))
-	|| (send_info !=  nullptr && is_set(send_info->operation));
+	|| (receive_info !=  nullptr && receive_info->has_operation())
+	|| (send_info !=  nullptr && send_info->has_operation());
 }
 
 std::string RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_segment_path() const
@@ -14201,7 +14214,7 @@ EntityPath RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14346,8 +14359,8 @@ bool RsvpStandby::AuthenticationDetails::AuthenticationDetail::has_operation() c
 	|| is_set(key_status.operation)
 	|| is_set(lifetime.operation)
 	|| is_set(lifetime_left.operation)
-	|| (auth_compact !=  nullptr && is_set(auth_compact->operation))
-	|| (direction_info !=  nullptr && is_set(direction_info->operation));
+	|| (auth_compact !=  nullptr && auth_compact->has_operation())
+	|| (direction_info !=  nullptr && direction_info->has_operation());
 }
 
 std::string RsvpStandby::AuthenticationDetails::AuthenticationDetail::get_segment_path() const
@@ -15027,10 +15040,10 @@ bool RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::has_operation() con
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::get_segment_path() const
@@ -15205,7 +15218,7 @@ bool RsvpStandby::RsbBriefs::RsbBrief::Session::has_data() const
 bool RsvpStandby::RsbBriefs::RsbBrief::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string RsvpStandby::RsbBriefs::RsbBrief::Session::get_segment_path() const
@@ -15630,7 +15643,7 @@ bool RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::get_segment_path() const
@@ -16017,8 +16030,8 @@ bool RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::has_operation() const
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::get_segment_path() const
@@ -16147,7 +16160,7 @@ bool RsvpStandby::RsbBriefs::RsbBrief::Filter::has_data() const
 bool RsvpStandby::RsbBriefs::RsbBrief::Filter::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string RsvpStandby::RsbBriefs::RsbBrief::Filter::get_segment_path() const
@@ -16310,12 +16323,12 @@ bool RsvpStandby::RsbBriefs::RsbBrief::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (filter !=  nullptr && is_set(filter->operation))
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (style !=  nullptr && is_set(style->operation));
+	|| (filter !=  nullptr && filter->has_operation())
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (style !=  nullptr && style->has_operation());
 }
 
 std::string RsvpStandby::RsbBriefs::RsbBrief::get_segment_path() const
@@ -17284,8 +17297,8 @@ bool RsvpStandby::OpenConfig::has_data() const
 bool RsvpStandby::OpenConfig::has_operation() const
 {
     return is_set(operation)
-	|| (global_counters !=  nullptr && is_set(global_counters->operation))
-	|| (interface_counters !=  nullptr && is_set(interface_counters->operation));
+	|| (global_counters !=  nullptr && global_counters->has_operation())
+	|| (interface_counters !=  nullptr && interface_counters->has_operation());
 }
 
 std::string RsvpStandby::OpenConfig::get_segment_path() const
@@ -17459,7 +17472,7 @@ EntityPath RsvpStandby::Counters::InterfaceMessages::InterfaceMessage::ReceivedM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17635,7 +17648,7 @@ EntityPath RsvpStandby::Counters::InterfaceMessages::InterfaceMessage::Transmitt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17811,7 +17824,7 @@ EntityPath RsvpStandby::Counters::InterfaceMessages::InterfaceMessage::BundleRec
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17987,7 +18000,7 @@ EntityPath RsvpStandby::Counters::InterfaceMessages::InterfaceMessage::BundleTra
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18141,10 +18154,10 @@ bool RsvpStandby::Counters::InterfaceMessages::InterfaceMessage::has_operation()
 	|| is_set(out_of_order_messages.operation)
 	|| is_set(rate_limited_messages.operation)
 	|| is_set(retransmitted_messages.operation)
-	|| (bundle_received_messages !=  nullptr && is_set(bundle_received_messages->operation))
-	|| (bundle_transmitted_messages !=  nullptr && is_set(bundle_transmitted_messages->operation))
-	|| (received_messages !=  nullptr && is_set(received_messages->operation))
-	|| (transmitted_messages !=  nullptr && is_set(transmitted_messages->operation));
+	|| (bundle_received_messages !=  nullptr && bundle_received_messages->has_operation())
+	|| (bundle_transmitted_messages !=  nullptr && bundle_transmitted_messages->has_operation())
+	|| (received_messages !=  nullptr && received_messages->has_operation())
+	|| (transmitted_messages !=  nullptr && transmitted_messages->has_operation());
 }
 
 std::string RsvpStandby::Counters::InterfaceMessages::InterfaceMessage::get_segment_path() const
@@ -19171,10 +19184,10 @@ bool RsvpStandby::Counters::MessageSummary::has_operation() const
 	|| is_set(out_of_order_messages.operation)
 	|| is_set(rate_limited_messages.operation)
 	|| is_set(retransmitted_messages.operation)
-	|| (bundle_received_messages !=  nullptr && is_set(bundle_received_messages->operation))
-	|| (bundle_transmitted_messages !=  nullptr && is_set(bundle_transmitted_messages->operation))
-	|| (received_messages !=  nullptr && is_set(received_messages->operation))
-	|| (transmitted_messages !=  nullptr && is_set(transmitted_messages->operation));
+	|| (bundle_received_messages !=  nullptr && bundle_received_messages->has_operation())
+	|| (bundle_transmitted_messages !=  nullptr && bundle_transmitted_messages->has_operation())
+	|| (received_messages !=  nullptr && received_messages->has_operation())
+	|| (transmitted_messages !=  nullptr && transmitted_messages->has_operation());
 }
 
 std::string RsvpStandby::Counters::MessageSummary::get_segment_path() const
@@ -19382,7 +19395,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Forwarded::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19486,7 +19499,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::LocallyDest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19590,7 +19603,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Dropped::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19694,7 +19707,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Accesses::Access::Total::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19794,10 +19807,10 @@ bool RsvpStandby::Counters::PrefixFiltering::Accesses::Access::has_operation() c
 {
     return is_set(operation)
 	|| is_set(access_list_name.operation)
-	|| (dropped !=  nullptr && is_set(dropped->operation))
-	|| (forwarded !=  nullptr && is_set(forwarded->operation))
-	|| (locally_destined !=  nullptr && is_set(locally_destined->operation))
-	|| (total !=  nullptr && is_set(total->operation));
+	|| (dropped !=  nullptr && dropped->has_operation())
+	|| (forwarded !=  nullptr && forwarded->has_operation())
+	|| (locally_destined !=  nullptr && locally_destined->has_operation())
+	|| (total !=  nullptr && total->has_operation());
 }
 
 std::string RsvpStandby::Counters::PrefixFiltering::Accesses::Access::get_segment_path() const
@@ -20729,12 +20742,12 @@ bool RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::has_data() con
 bool RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::has_operation() const
 {
     return is_set(operation)
-	|| (default_action_dropped !=  nullptr && is_set(default_action_dropped->operation))
-	|| (default_action_processed !=  nullptr && is_set(default_action_processed->operation))
-	|| (dropped !=  nullptr && is_set(dropped->operation))
-	|| (forwarded !=  nullptr && is_set(forwarded->operation))
-	|| (locally_destined !=  nullptr && is_set(locally_destined->operation))
-	|| (total !=  nullptr && is_set(total->operation));
+	|| (default_action_dropped !=  nullptr && default_action_dropped->has_operation())
+	|| (default_action_processed !=  nullptr && default_action_processed->has_operation())
+	|| (dropped !=  nullptr && dropped->has_operation())
+	|| (forwarded !=  nullptr && forwarded->has_operation())
+	|| (locally_destined !=  nullptr && locally_destined->has_operation())
+	|| (total !=  nullptr && total->has_operation());
 }
 
 std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Summary::get_segment_path() const
@@ -20973,7 +20986,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21077,7 +21090,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21181,7 +21194,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21285,7 +21298,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21389,7 +21402,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21493,7 +21506,7 @@ EntityPath RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Inte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21603,12 +21616,12 @@ bool RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface:
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (default_action_dropped !=  nullptr && is_set(default_action_dropped->operation))
-	|| (default_action_processed !=  nullptr && is_set(default_action_processed->operation))
-	|| (dropped !=  nullptr && is_set(dropped->operation))
-	|| (forwarded !=  nullptr && is_set(forwarded->operation))
-	|| (locally_destined !=  nullptr && is_set(locally_destined->operation))
-	|| (total !=  nullptr && is_set(total->operation));
+	|| (default_action_dropped !=  nullptr && default_action_dropped->has_operation())
+	|| (default_action_processed !=  nullptr && default_action_processed->has_operation())
+	|| (dropped !=  nullptr && dropped->has_operation())
+	|| (forwarded !=  nullptr && forwarded->has_operation())
+	|| (locally_destined !=  nullptr && locally_destined->has_operation())
+	|| (total !=  nullptr && total->has_operation());
 }
 
 std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_segment_path() const
@@ -21942,8 +21955,8 @@ bool RsvpStandby::Counters::PrefixFiltering::Interfaces::has_data() const
 bool RsvpStandby::Counters::PrefixFiltering::Interfaces::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string RsvpStandby::Counters::PrefixFiltering::Interfaces::get_segment_path() const
@@ -22072,8 +22085,8 @@ bool RsvpStandby::Counters::PrefixFiltering::has_data() const
 bool RsvpStandby::Counters::PrefixFiltering::has_operation() const
 {
     return is_set(operation)
-	|| (accesses !=  nullptr && is_set(accesses->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (accesses !=  nullptr && accesses->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string RsvpStandby::Counters::PrefixFiltering::get_segment_path() const
@@ -22478,8 +22491,8 @@ bool RsvpStandby::Counters::OutOfResource::Interfaces::has_data() const
 bool RsvpStandby::Counters::OutOfResource::Interfaces::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string RsvpStandby::Counters::OutOfResource::Interfaces::get_segment_path() const
@@ -22603,7 +22616,7 @@ bool RsvpStandby::Counters::OutOfResource::has_data() const
 bool RsvpStandby::Counters::OutOfResource::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string RsvpStandby::Counters::OutOfResource::get_segment_path() const
@@ -23544,15 +23557,15 @@ bool RsvpStandby::Counters::has_data() const
 bool RsvpStandby::Counters::has_operation() const
 {
     return is_set(operation)
-	|| (database !=  nullptr && is_set(database->operation))
-	|| (event_syncs !=  nullptr && is_set(event_syncs->operation))
-	|| (interface_events !=  nullptr && is_set(interface_events->operation))
-	|| (interface_messages !=  nullptr && is_set(interface_messages->operation))
-	|| (issu !=  nullptr && is_set(issu->operation))
-	|| (message_summary !=  nullptr && is_set(message_summary->operation))
-	|| (nsr !=  nullptr && is_set(nsr->operation))
-	|| (out_of_resource !=  nullptr && is_set(out_of_resource->operation))
-	|| (prefix_filtering !=  nullptr && is_set(prefix_filtering->operation));
+	|| (database !=  nullptr && database->has_operation())
+	|| (event_syncs !=  nullptr && event_syncs->has_operation())
+	|| (interface_events !=  nullptr && interface_events->has_operation())
+	|| (interface_messages !=  nullptr && interface_messages->has_operation())
+	|| (issu !=  nullptr && issu->has_operation())
+	|| (message_summary !=  nullptr && message_summary->has_operation())
+	|| (nsr !=  nullptr && nsr->has_operation())
+	|| (out_of_resource !=  nullptr && out_of_resource->has_operation())
+	|| (prefix_filtering !=  nullptr && prefix_filtering->has_operation());
 }
 
 std::string RsvpStandby::Counters::get_segment_path() const
@@ -23866,7 +23879,7 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23992,7 +24005,7 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24102,8 +24115,8 @@ bool RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::h
 {
     return is_set(operation)
 	|| is_set(dste_mode.operation)
-	|| (pre_standard_dste_interface !=  nullptr && is_set(pre_standard_dste_interface->operation))
-	|| (standard_dste_interface !=  nullptr && is_set(standard_dste_interface->operation));
+	|| (pre_standard_dste_interface !=  nullptr && pre_standard_dste_interface->has_operation())
+	|| (standard_dste_interface !=  nullptr && standard_dste_interface->has_operation());
 }
 
 std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_segment_path() const
@@ -24120,7 +24133,7 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::BandwidthInformat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24279,7 +24292,7 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::Flags::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24417,7 +24430,7 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::Ex
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24502,7 +24515,7 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::Ne
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24591,7 +24604,7 @@ bool RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::has_oper
 	|| is_set(message_ids.operation)
 	|| is_set(neighbor_address.operation)
 	|| is_set(outgoing_states.operation)
-	|| (expiry_time !=  nullptr && is_set(expiry_time->operation));
+	|| (expiry_time !=  nullptr && expiry_time->has_operation());
 }
 
 std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_segment_path() const
@@ -24608,7 +24621,7 @@ EntityPath RsvpStandby::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24826,8 +24839,8 @@ bool RsvpStandby::InterfaceDetaileds::InterfaceDetailed::has_operation() const
 	|| is_set(signalling_ip_tos.operation)
 	|| is_set(summary_refresh_max_size.operation)
 	|| is_set(summary_refresh_timer_state.operation)
-	|| (bandwidth_information !=  nullptr && is_set(bandwidth_information->operation))
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (bandwidth_information !=  nullptr && bandwidth_information->has_operation())
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string RsvpStandby::InterfaceDetaileds::InterfaceDetailed::get_segment_path() const
@@ -25509,8 +25522,8 @@ bool RsvpStandby::GracefulRestart::has_operation() const
 	|| is_set(pending_states.operation)
 	|| is_set(recovery_time.operation)
 	|| is_set(restart_time.operation)
-	|| (recovery_time_left !=  nullptr && is_set(recovery_time_left->operation))
-	|| (recovery_timer_exp_time !=  nullptr && is_set(recovery_timer_exp_time->operation));
+	|| (recovery_time_left !=  nullptr && recovery_time_left->has_operation())
+	|| (recovery_timer_exp_time !=  nullptr && recovery_timer_exp_time->has_operation());
 }
 
 std::string RsvpStandby::GracefulRestart::get_segment_path() const
@@ -25945,7 +25958,7 @@ EntityPath RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDet
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26050,7 +26063,7 @@ bool RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::h
 	|| is_set(instance_type.operation)
 	|| is_set(source_address_xr.operation)
 	|| is_set(source_instance.operation)
-	|| (last_message_sent_time !=  nullptr && is_set(last_message_sent_time->operation));
+	|| (last_message_sent_time !=  nullptr && last_message_sent_time->has_operation());
 }
 
 std::string RsvpStandby::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_segment_path() const
@@ -26343,7 +26356,7 @@ EntityPath RsvpStandby::InterfaceNeighborDetails::InterfaceNeighborDetail::Inter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26915,8 +26928,8 @@ bool RsvpStandby::Nsr::Status::has_operation() const
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (idt_status !=  nullptr && is_set(idt_status->operation))
-	|| (previous_idt_status !=  nullptr && is_set(previous_idt_status->operation));
+	|| (idt_status !=  nullptr && idt_status->has_operation())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_operation());
 }
 
 std::string RsvpStandby::Nsr::Status::get_segment_path() const
@@ -27045,7 +27058,7 @@ bool RsvpStandby::Nsr::has_data() const
 bool RsvpStandby::Nsr::has_operation() const
 {
     return is_set(operation)
-	|| (status !=  nullptr && is_set(status->operation));
+	|| (status !=  nullptr && status->has_operation());
 }
 
 std::string RsvpStandby::Nsr::get_segment_path() const
@@ -27395,8 +27408,8 @@ bool RsvpStandby::Summary::IssuStatus::has_operation() const
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (idt_status !=  nullptr && is_set(idt_status->operation))
-	|| (previous_idt_status !=  nullptr && is_set(previous_idt_status->operation));
+	|| (idt_status !=  nullptr && idt_status->has_operation())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_operation());
 }
 
 std::string RsvpStandby::Summary::IssuStatus::get_segment_path() const
@@ -27774,8 +27787,8 @@ bool RsvpStandby::Summary::NsrStatus::has_operation() const
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (idt_status !=  nullptr && is_set(idt_status->operation))
-	|| (previous_idt_status !=  nullptr && is_set(previous_idt_status->operation));
+	|| (idt_status !=  nullptr && idt_status->has_operation())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_operation());
 }
 
 std::string RsvpStandby::Summary::NsrStatus::get_segment_path() const
@@ -28041,9 +28054,9 @@ bool RsvpStandby::Summary::has_operation() const
     return is_set(operation)
 	|| is_set(interfaces.operation)
 	|| is_set(ls_ps.operation)
-	|| (database_counters !=  nullptr && is_set(database_counters->operation))
-	|| (issu_status !=  nullptr && is_set(issu_status->operation))
-	|| (nsr_status !=  nullptr && is_set(nsr_status->operation));
+	|| (database_counters !=  nullptr && database_counters->has_operation())
+	|| (issu_status !=  nullptr && issu_status->has_operation())
+	|| (nsr_status !=  nullptr && nsr_status->has_operation());
 }
 
 std::string RsvpStandby::Summary::get_segment_path() const
@@ -28603,10 +28616,10 @@ bool RsvpStandby::Frrs::Frr::Session::RsvpSession::has_operation() const
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string RsvpStandby::Frrs::Frr::Session::RsvpSession::get_segment_path() const
@@ -28781,7 +28794,7 @@ bool RsvpStandby::Frrs::Frr::Session::has_data() const
 bool RsvpStandby::Frrs::Frr::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string RsvpStandby::Frrs::Frr::Session::get_segment_path() const
@@ -29007,8 +29020,8 @@ bool RsvpStandby::Frrs::Frr::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string RsvpStandby::Frrs::Frr::get_segment_path() const
@@ -29708,10 +29721,10 @@ bool RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::has_operati
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string RsvpStandby::RequestBriefs::RequestBrief::Session::RsvpSession::get_segment_path() const
@@ -29886,7 +29899,7 @@ bool RsvpStandby::RequestBriefs::RequestBrief::Session::has_data() const
 bool RsvpStandby::RequestBriefs::RequestBrief::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string RsvpStandby::RequestBriefs::RequestBrief::Session::get_segment_path() const
@@ -30311,7 +30324,7 @@ bool RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::has_operation() 
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string RsvpStandby::RequestBriefs::RequestBrief::GenericFlowSpec::get_segment_path() const
@@ -30618,8 +30631,8 @@ bool RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::has_operation
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string RsvpStandby::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_segment_path() const
@@ -30748,7 +30761,7 @@ bool RsvpStandby::RequestBriefs::RequestBrief::Filter::has_data() const
 bool RsvpStandby::RequestBriefs::RequestBrief::Filter::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string RsvpStandby::RequestBriefs::RequestBrief::Filter::get_segment_path() const
@@ -30991,12 +31004,12 @@ bool RsvpStandby::RequestBriefs::RequestBrief::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (filter !=  nullptr && is_set(filter->operation))
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (style !=  nullptr && is_set(style->operation));
+	|| (filter !=  nullptr && filter->has_operation())
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (style !=  nullptr && style->has_operation());
 }
 
 std::string RsvpStandby::RequestBriefs::RequestBrief::get_segment_path() const
@@ -31783,10 +31796,10 @@ bool RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::has_opera
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string RsvpStandby::RequestDetails::RequestDetail::Session::RsvpSession::get_segment_path() const
@@ -31961,7 +31974,7 @@ bool RsvpStandby::RequestDetails::RequestDetail::Session::has_data() const
 bool RsvpStandby::RequestDetails::RequestDetail::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string RsvpStandby::RequestDetails::RequestDetail::Session::get_segment_path() const
@@ -32386,7 +32399,7 @@ bool RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::has_operation(
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string RsvpStandby::RequestDetails::RequestDetail::GenericFlowSpec::get_segment_path() const
@@ -32693,8 +32706,8 @@ bool RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::has_operati
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string RsvpStandby::RequestDetails::RequestDetail::Filter::RsvpFilter::get_segment_path() const
@@ -32823,7 +32836,7 @@ bool RsvpStandby::RequestDetails::RequestDetail::Filter::has_data() const
 bool RsvpStandby::RequestDetails::RequestDetail::Filter::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string RsvpStandby::RequestDetails::RequestDetail::Filter::get_segment_path() const
@@ -34132,18 +34145,18 @@ bool RsvpStandby::RequestDetails::RequestDetail::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (filter !=  nullptr && is_set(filter->operation))
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (header !=  nullptr && is_set(header->operation))
-	|| (hop !=  nullptr && is_set(hop->operation))
-	|| (policy_flags !=  nullptr && is_set(policy_flags->operation))
-	|| (policy_query_flags !=  nullptr && is_set(policy_query_flags->operation))
-	|| (policy_sources !=  nullptr && is_set(policy_sources->operation))
-	|| (req_flags !=  nullptr && is_set(req_flags->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (style !=  nullptr && is_set(style->operation));
+	|| (filter !=  nullptr && filter->has_operation())
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (header !=  nullptr && header->has_operation())
+	|| (hop !=  nullptr && hop->has_operation())
+	|| (policy_flags !=  nullptr && policy_flags->has_operation())
+	|| (policy_query_flags !=  nullptr && policy_query_flags->has_operation())
+	|| (policy_sources !=  nullptr && policy_sources->has_operation())
+	|| (req_flags !=  nullptr && req_flags->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (style !=  nullptr && style->has_operation());
 }
 
 std::string RsvpStandby::RequestDetails::RequestDetail::get_segment_path() const
@@ -34746,7 +34759,7 @@ EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34872,7 +34885,7 @@ EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34982,8 +34995,8 @@ bool RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::has_ope
 {
     return is_set(operation)
 	|| is_set(dste_mode.operation)
-	|| (pre_standard_dste_interface !=  nullptr && is_set(pre_standard_dste_interface->operation))
-	|| (standard_dste_interface !=  nullptr && is_set(standard_dste_interface->operation));
+	|| (pre_standard_dste_interface !=  nullptr && pre_standard_dste_interface->has_operation())
+	|| (standard_dste_interface !=  nullptr && standard_dste_interface->has_operation());
 }
 
 std::string RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::get_segment_path() const
@@ -35000,7 +35013,7 @@ EntityPath RsvpStandby::InterfaceBriefs::InterfaceBrief::BandwidthInformation::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35119,7 +35132,7 @@ bool RsvpStandby::InterfaceBriefs::InterfaceBrief::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(interface_name_xr.operation)
-	|| (bandwidth_information !=  nullptr && is_set(bandwidth_information->operation));
+	|| (bandwidth_information !=  nullptr && bandwidth_information->has_operation());
 }
 
 std::string RsvpStandby::InterfaceBriefs::InterfaceBrief::get_segment_path() const
@@ -35741,10 +35754,10 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSessi
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_segment_path() const
@@ -35919,7 +35932,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::has_data(
 bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::Session::get_segment_path() const
@@ -36033,7 +36046,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::Compact::has_operation() co
 	|| is_set(ps_bs.operation)
 	|| is_set(requests.operation)
 	|| is_set(rs_bs.operation)
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::Compact::get_segment_path() const
@@ -36225,7 +36238,7 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLa
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -36235,12 +36248,13 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Generi
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_segment_path() const
@@ -36328,7 +36342,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Generi
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_segment_path() const
@@ -36771,8 +36785,8 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Generi
 {
     return is_set(operation)
 	|| is_set(tspec_type.operation)
-	|| (g709otn_tspec !=  nullptr && is_set(g709otn_tspec->operation))
-	|| (intsrv_tspec !=  nullptr && is_set(intsrv_tspec->operation));
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_segment_path() const
@@ -37088,7 +37102,7 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::has_data() const
 {
-    for (auto const & leaf : extended_id.getValues())
+    for (auto const & leaf : extended_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -37101,12 +37115,13 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Associ
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::has_operation() const
 {
-    for (auto const & leaf : extended_id.getValues())
+    for (auto const & leaf : extended_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(extended_id.operation)
 	|| is_set(global_source.operation)
 	|| is_set(id.operation)
 	|| is_set(source.operation)
@@ -37209,7 +37224,7 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::has_data() const
 {
-    for (auto const & leaf : extended_id.getValues())
+    for (auto const & leaf : extended_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -37222,12 +37237,13 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Associ
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::has_operation() const
 {
-    for (auto const & leaf : extended_id.getValues())
+    for (auto const & leaf : extended_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(extended_id.operation)
 	|| is_set(global_source.operation)
 	|| is_set(id.operation)
 	|| is_set(source.operation)
@@ -37354,10 +37370,10 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Associ
 {
     return is_set(operation)
 	|| is_set(association_type.operation)
-	|| (extended_ipv4 !=  nullptr && is_set(extended_ipv4->operation))
-	|| (extended_ipv6 !=  nullptr && is_set(extended_ipv6->operation))
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (extended_ipv4 !=  nullptr && extended_ipv4->has_operation())
+	|| (extended_ipv6 !=  nullptr && extended_ipv6->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_segment_path() const
@@ -37798,8 +37814,8 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protec
 	|| is_set(o.operation)
 	|| is_set(p.operation)
 	|| is_set(s.operation)
-	|| (link_flags !=  nullptr && is_set(link_flags->operation))
-	|| (lsp_flags !=  nullptr && is_set(lsp_flags->operation));
+	|| (link_flags !=  nullptr && link_flags->has_operation())
+	|| (lsp_flags !=  nullptr && lsp_flags->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_segment_path() const
@@ -38168,8 +38184,8 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Revers
 {
     return is_set(operation)
 	|| is_set(tspec_type.operation)
-	|| (g709otn_tspec !=  nullptr && is_set(g709otn_tspec->operation))
-	|| (intsrv_tspec !=  nullptr && is_set(intsrv_tspec->operation));
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_segment_path() const
@@ -38507,8 +38523,8 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Revers
 {
     return is_set(operation)
 	|| is_set(ero_type.operation)
-	|| (ipv4ero_sub_object !=  nullptr && is_set(ipv4ero_sub_object->operation))
-	|| (unnumbered_ero_sub_object !=  nullptr && is_set(unnumbered_ero_sub_object->operation));
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_segment_path() const
@@ -38628,7 +38644,7 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp:
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_data() const
 {
-    for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getValues())
+    for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -38638,12 +38654,13 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Revers
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_operation() const
 {
-    for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getValues())
+    for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(rsvp_mgmt_rev_lsp_unsupported_subobj.operation);
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_segment_path() const
@@ -38747,7 +38764,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Revers
             return true;
     }
     return is_set(operation)
-	|| (generic_traffic_spec !=  nullptr && is_set(generic_traffic_spec->operation));
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_segment_path() const
@@ -39109,8 +39126,8 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::h
 {
     return is_set(operation)
 	|| is_set(ero_type.operation)
-	|| (ipv4ero_sub_object !=  nullptr && is_set(ipv4ero_sub_object->operation))
-	|| (unnumbered_ero_sub_object !=  nullptr && is_set(unnumbered_ero_sub_object->operation));
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_segment_path() const
@@ -39355,7 +39372,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::I
 {
     return is_set(operation)
 	|| is_set(rro_address.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_segment_path() const
@@ -39539,7 +39556,7 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelR
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_data() const
 {
-    for (auto const & leaf : variable_length_label.getValues())
+    for (auto const & leaf : variable_length_label.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -39551,7 +39568,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::L
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_operation() const
 {
-    for (auto const & leaf : variable_length_label.getValues())
+    for (auto const & leaf : variable_length_label.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -39559,7 +39576,8 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::L
     return is_set(operation)
 	|| is_set(is_label_variable_length.operation)
 	|| is_set(label.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| is_set(variable_length_label.operation)
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_segment_path() const
@@ -39795,7 +39813,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::U
     return is_set(operation)
 	|| is_set(interface_address.operation)
 	|| is_set(interface_id.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_segment_path() const
@@ -39897,7 +39915,7 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRr
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_data() const
 {
-    for (auto const & leaf : srl_gs.getValues())
+    for (auto const & leaf : srl_gs.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -39907,12 +39925,13 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::S
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_operation() const
 {
-    for (auto const & leaf : srl_gs.getValues())
+    for (auto const & leaf : srl_gs.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(srl_gs.operation);
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_segment_path() const
@@ -40015,10 +40034,10 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::h
 {
     return is_set(operation)
 	|| is_set(rro_type.operation)
-	|| (ipv4rro_sub_object !=  nullptr && is_set(ipv4rro_sub_object->operation))
-	|| (label_rro_sub_object !=  nullptr && is_set(label_rro_sub_object->operation))
-	|| (srlg_rro_sub_object !=  nullptr && is_set(srlg_rro_sub_object->operation))
-	|| (unnumbered_rro_sub_object !=  nullptr && is_set(unnumbered_rro_sub_object->operation));
+	|| (ipv4rro_sub_object !=  nullptr && ipv4rro_sub_object->has_operation())
+	|| (label_rro_sub_object !=  nullptr && label_rro_sub_object->has_operation())
+	|| (srlg_rro_sub_object !=  nullptr && srlg_rro_sub_object->has_operation())
+	|| (unnumbered_rro_sub_object !=  nullptr && unnumbered_rro_sub_object->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_segment_path() const
@@ -40281,12 +40300,12 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::has_op
 	|| is_set(p2mp_sub_group_origin.operation)
 	|| is_set(sub_group_id.operation)
 	|| is_set(tunnel_name.operation)
-	|| (association !=  nullptr && is_set(association->operation))
-	|| (generic_in_label !=  nullptr && is_set(generic_in_label->operation))
-	|| (generic_traffic_spec !=  nullptr && is_set(generic_traffic_spec->operation))
-	|| (protection !=  nullptr && is_set(protection->operation))
-	|| (reverse_lsp !=  nullptr && is_set(reverse_lsp->operation))
-	|| (traffic_spec !=  nullptr && is_set(traffic_spec->operation));
+	|| (association !=  nullptr && association->has_operation())
+	|| (generic_in_label !=  nullptr && generic_in_label->has_operation())
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation())
+	|| (protection !=  nullptr && protection->has_operation())
+	|| (reverse_lsp !=  nullptr && reverse_lsp->has_operation())
+	|| (traffic_spec !=  nullptr && traffic_spec->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_segment_path() const
@@ -40615,7 +40634,7 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutL
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -40625,12 +40644,13 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generi
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_segment_path() const
@@ -40718,7 +40738,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generi
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_segment_path() const
@@ -41068,7 +41088,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Generi
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_segment_path() const
@@ -41290,7 +41310,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::I
 {
     return is_set(operation)
 	|| is_set(rro_address.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_segment_path() const
@@ -41474,7 +41494,7 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelR
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_data() const
 {
-    for (auto const & leaf : variable_length_label.getValues())
+    for (auto const & leaf : variable_length_label.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -41486,7 +41506,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::L
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_operation() const
 {
-    for (auto const & leaf : variable_length_label.getValues())
+    for (auto const & leaf : variable_length_label.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -41494,7 +41514,8 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::L
     return is_set(operation)
 	|| is_set(is_label_variable_length.operation)
 	|| is_set(label.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| is_set(variable_length_label.operation)
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_segment_path() const
@@ -41730,7 +41751,7 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::U
     return is_set(operation)
 	|| is_set(interface_address.operation)
 	|| is_set(interface_id.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_segment_path() const
@@ -41832,7 +41853,7 @@ RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRr
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_data() const
 {
-    for (auto const & leaf : srl_gs.getValues())
+    for (auto const & leaf : srl_gs.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -41842,12 +41863,13 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::S
 
 bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_operation() const
 {
-    for (auto const & leaf : srl_gs.getValues())
+    for (auto const & leaf : srl_gs.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(srl_gs.operation);
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_segment_path() const
@@ -41950,10 +41972,10 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::h
 {
     return is_set(operation)
 	|| is_set(rro_type.operation)
-	|| (ipv4rro_sub_object !=  nullptr && is_set(ipv4rro_sub_object->operation))
-	|| (label_rro_sub_object !=  nullptr && is_set(label_rro_sub_object->operation))
-	|| (srlg_rro_sub_object !=  nullptr && is_set(srlg_rro_sub_object->operation))
-	|| (unnumbered_rro_sub_object !=  nullptr && is_set(unnumbered_rro_sub_object->operation));
+	|| (ipv4rro_sub_object !=  nullptr && ipv4rro_sub_object->has_operation())
+	|| (label_rro_sub_object !=  nullptr && label_rro_sub_object->has_operation())
+	|| (srlg_rro_sub_object !=  nullptr && srlg_rro_sub_object->has_operation())
+	|| (unnumbered_rro_sub_object !=  nullptr && unnumbered_rro_sub_object->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_segment_path() const
@@ -42173,9 +42195,9 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_op
 	|| is_set(is_valid.operation)
 	|| is_set(out_interface.operation)
 	|| is_set(out_label.operation)
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (generic_out_label !=  nullptr && is_set(generic_out_label->operation));
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (generic_out_label !=  nullptr && generic_out_label->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_segment_path() const
@@ -42569,8 +42591,8 @@ bool RsvpStandby::SessionDetaileds::SessionDetailed::has_operation() const
 	|| is_set(protocol.operation)
 	|| is_set(session_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (compact !=  nullptr && is_set(compact->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation));
+	|| (compact !=  nullptr && compact->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation());
 }
 
 std::string RsvpStandby::SessionDetaileds::SessionDetailed::get_segment_path() const
@@ -42880,7 +42902,7 @@ EntityPath RsvpStandby::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42968,7 +42990,7 @@ EntityPath RsvpStandby::HelloInstanceDetails::HelloInstanceDetail::Communication
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43111,8 +43133,8 @@ bool RsvpStandby::HelloInstanceDetails::HelloInstanceDetail::has_operation() con
 	|| is_set(source_address_xr.operation)
 	|| is_set(source_instance.operation)
 	|| is_set(total_communication_lost.operation)
-	|| (communication_lost_time !=  nullptr && is_set(communication_lost_time->operation))
-	|| (up_time !=  nullptr && is_set(up_time->operation));
+	|| (communication_lost_time !=  nullptr && communication_lost_time->has_operation())
+	|| (up_time !=  nullptr && up_time->has_operation());
 }
 
 std::string RsvpStandby::HelloInstanceDetails::HelloInstanceDetail::get_segment_path() const
@@ -43471,7 +43493,7 @@ EntityPath RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeigh
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43559,7 +43581,7 @@ EntityPath RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::RestartTime
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43647,7 +43669,7 @@ EntityPath RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::RestartTime
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43735,7 +43757,7 @@ EntityPath RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43823,7 +43845,7 @@ EntityPath RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43911,7 +43933,7 @@ EntityPath RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43999,7 +44021,7 @@ EntityPath RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::LostCommuni
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44107,27 +44129,27 @@ bool RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::has_data() const
         if(up_time[index]->has_data())
             return true;
     }
-    for (auto const & leaf : interface_neighbor.getValues())
+    for (auto const & leaf : interface_neighbor.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : local_node_address.getValues())
+    for (auto const & leaf : local_node_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lost_communication_reason.getValues())
+    for (auto const & leaf : lost_communication_reason.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lost_communication_total.getValues())
+    for (auto const & leaf : lost_communication_total.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : neighbor_hello_state.getValues())
+    for (auto const & leaf : neighbor_hello_state.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -44162,27 +44184,27 @@ bool RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::has_operation() c
         if(up_time[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : interface_neighbor.getValues())
+    for (auto const & leaf : interface_neighbor.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : local_node_address.getValues())
+    for (auto const & leaf : local_node_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lost_communication_reason.getValues())
+    for (auto const & leaf : lost_communication_reason.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lost_communication_total.getValues())
+    for (auto const & leaf : lost_communication_total.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : neighbor_hello_state.getValues())
+    for (auto const & leaf : neighbor_hello_state.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -44190,20 +44212,25 @@ bool RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::has_operation() c
     return is_set(operation)
 	|| is_set(neighbor_address.operation)
 	|| is_set(hello_interval.operation)
+	|| is_set(interface_neighbor.operation)
 	|| is_set(is_gr_enabled.operation)
 	|| is_set(is_recovery_timer_running.operation)
 	|| is_set(is_restart_timer_running.operation)
+	|| is_set(local_node_address.operation)
+	|| is_set(lost_communication_reason.operation)
+	|| is_set(lost_communication_total.operation)
 	|| is_set(missed_hellos.operation)
+	|| is_set(neighbor_hello_state.operation)
 	|| is_set(node_address.operation)
 	|| is_set(pending_states.operation)
 	|| is_set(recovery_time.operation)
 	|| is_set(restart_state.operation)
 	|| is_set(restart_time.operation)
-	|| (global_neighbor_flags !=  nullptr && is_set(global_neighbor_flags->operation))
-	|| (recovery_time_left !=  nullptr && is_set(recovery_time_left->operation))
-	|| (recovery_timer_exp_time !=  nullptr && is_set(recovery_timer_exp_time->operation))
-	|| (restart_time_left !=  nullptr && is_set(restart_time_left->operation))
-	|| (restart_timer_expiry_time !=  nullptr && is_set(restart_timer_expiry_time->operation));
+	|| (global_neighbor_flags !=  nullptr && global_neighbor_flags->has_operation())
+	|| (recovery_time_left !=  nullptr && recovery_time_left->has_operation())
+	|| (recovery_timer_exp_time !=  nullptr && recovery_timer_exp_time->has_operation())
+	|| (restart_time_left !=  nullptr && restart_time_left->has_operation())
+	|| (restart_timer_expiry_time !=  nullptr && restart_timer_expiry_time->has_operation());
 }
 
 std::string RsvpStandby::GlobalNeighborDetails::GlobalNeighborDetail::get_segment_path() const
@@ -45044,10 +45071,10 @@ bool RsvpStandby::PsbBriefs::PsbBrief::Session::RsvpSession::has_operation() con
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string RsvpStandby::PsbBriefs::PsbBrief::Session::RsvpSession::get_segment_path() const
@@ -45222,7 +45249,7 @@ bool RsvpStandby::PsbBriefs::PsbBrief::Session::has_data() const
 bool RsvpStandby::PsbBriefs::PsbBrief::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string RsvpStandby::PsbBriefs::PsbBrief::Session::get_segment_path() const
@@ -45604,8 +45631,8 @@ bool RsvpStandby::PsbBriefs::PsbBrief::Template_::RsvpFilter::has_operation() co
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string RsvpStandby::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_segment_path() const
@@ -45734,7 +45761,7 @@ bool RsvpStandby::PsbBriefs::PsbBrief::Template_::has_data() const
 bool RsvpStandby::PsbBriefs::PsbBrief::Template_::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string RsvpStandby::PsbBriefs::PsbBrief::Template_::get_segment_path() const
@@ -45954,7 +45981,7 @@ bool RsvpStandby::PsbBriefs::PsbBrief::SessionAttribute::has_operation() const
     return is_set(operation)
 	|| is_set(reservation_priority.operation)
 	|| is_set(setup_priority.operation)
-	|| (sess_attribute_flags !=  nullptr && is_set(sess_attribute_flags->operation));
+	|| (sess_attribute_flags !=  nullptr && sess_attribute_flags->has_operation());
 }
 
 std::string RsvpStandby::PsbBriefs::PsbBrief::SessionAttribute::get_segment_path() const
@@ -46402,8 +46429,8 @@ bool RsvpStandby::PsbBriefs::PsbBrief::GenericTrafficSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(tspec_type.operation)
-	|| (g709otn_tspec !=  nullptr && is_set(g709otn_tspec->operation))
-	|| (intsrv_tspec !=  nullptr && is_set(intsrv_tspec->operation));
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
 std::string RsvpStandby::PsbBriefs::PsbBrief::GenericTrafficSpec::get_segment_path() const
@@ -46594,12 +46621,12 @@ bool RsvpStandby::PsbBriefs::PsbBrief::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (generic_traffic_spec !=  nullptr && is_set(generic_traffic_spec->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (session_attribute !=  nullptr && is_set(session_attribute->operation))
-	|| (template_ !=  nullptr && is_set(template_->operation))
-	|| (traffic_spec !=  nullptr && is_set(traffic_spec->operation));
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (session_attribute !=  nullptr && session_attribute->has_operation())
+	|| (template_ !=  nullptr && template_->has_operation())
+	|| (traffic_spec !=  nullptr && traffic_spec->has_operation());
 }
 
 std::string RsvpStandby::PsbBriefs::PsbBrief::get_segment_path() const
@@ -47000,7 +47027,7 @@ EntityPath RsvpStandby::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47088,7 +47115,7 @@ EntityPath RsvpStandby::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47176,7 +47203,7 @@ EntityPath RsvpStandby::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47260,22 +47287,22 @@ bool RsvpStandby::GlobalNeighborBriefs::GlobalNeighborBrief::has_data() const
         if(up_time[index]->has_data())
             return true;
     }
-    for (auto const & leaf : local_node_address.getValues())
+    for (auto const & leaf : local_node_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lost_communication_reason.getValues())
+    for (auto const & leaf : lost_communication_reason.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lost_communication_total.getValues())
+    for (auto const & leaf : lost_communication_total.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : neighbor_hello_state.getValues())
+    for (auto const & leaf : neighbor_hello_state.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -47299,22 +47326,22 @@ bool RsvpStandby::GlobalNeighborBriefs::GlobalNeighborBrief::has_operation() con
         if(up_time[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : local_node_address.getValues())
+    for (auto const & leaf : local_node_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lost_communication_reason.getValues())
+    for (auto const & leaf : lost_communication_reason.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lost_communication_total.getValues())
+    for (auto const & leaf : lost_communication_total.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : neighbor_hello_state.getValues())
+    for (auto const & leaf : neighbor_hello_state.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -47322,9 +47349,13 @@ bool RsvpStandby::GlobalNeighborBriefs::GlobalNeighborBrief::has_operation() con
     return is_set(operation)
 	|| is_set(neighbor_address.operation)
 	|| is_set(is_gr_enabled.operation)
+	|| is_set(local_node_address.operation)
+	|| is_set(lost_communication_reason.operation)
+	|| is_set(lost_communication_total.operation)
+	|| is_set(neighbor_hello_state.operation)
 	|| is_set(node_address.operation)
 	|| is_set(restart_state.operation)
-	|| (global_neighbor_flags !=  nullptr && is_set(global_neighbor_flags->operation));
+	|| (global_neighbor_flags !=  nullptr && global_neighbor_flags->has_operation());
 }
 
 std::string RsvpStandby::GlobalNeighborBriefs::GlobalNeighborBrief::get_segment_path() const
@@ -47764,34 +47795,34 @@ bool RsvpStandby::has_data() const
 bool RsvpStandby::has_operation() const
 {
     return is_set(operation)
-	|| (authentication_briefs !=  nullptr && is_set(authentication_briefs->operation))
-	|| (authentication_details !=  nullptr && is_set(authentication_details->operation))
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (frr_summary !=  nullptr && is_set(frr_summary->operation))
-	|| (frrs !=  nullptr && is_set(frrs->operation))
-	|| (global_neighbor_briefs !=  nullptr && is_set(global_neighbor_briefs->operation))
-	|| (global_neighbor_details !=  nullptr && is_set(global_neighbor_details->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (hello_instance_briefs !=  nullptr && is_set(hello_instance_briefs->operation))
-	|| (hello_instance_details !=  nullptr && is_set(hello_instance_details->operation))
-	|| (hello_interface_instance_briefs !=  nullptr && is_set(hello_interface_instance_briefs->operation))
-	|| (hello_interface_instance_details !=  nullptr && is_set(hello_interface_instance_details->operation))
-	|| (interface_briefs !=  nullptr && is_set(interface_briefs->operation))
-	|| (interface_detaileds !=  nullptr && is_set(interface_detaileds->operation))
-	|| (interface_neighbor_briefs !=  nullptr && is_set(interface_neighbor_briefs->operation))
-	|| (interface_neighbor_details !=  nullptr && is_set(interface_neighbor_details->operation))
-	|| (interface_summaries !=  nullptr && is_set(interface_summaries->operation))
-	|| (nsr !=  nullptr && is_set(nsr->operation))
-	|| (open_config !=  nullptr && is_set(open_config->operation))
-	|| (psb_briefs !=  nullptr && is_set(psb_briefs->operation))
-	|| (psb_detaileds !=  nullptr && is_set(psb_detaileds->operation))
-	|| (request_briefs !=  nullptr && is_set(request_briefs->operation))
-	|| (request_details !=  nullptr && is_set(request_details->operation))
-	|| (rsb_briefs !=  nullptr && is_set(rsb_briefs->operation))
-	|| (rsb_detaileds !=  nullptr && is_set(rsb_detaileds->operation))
-	|| (session_briefs !=  nullptr && is_set(session_briefs->operation))
-	|| (session_detaileds !=  nullptr && is_set(session_detaileds->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (authentication_briefs !=  nullptr && authentication_briefs->has_operation())
+	|| (authentication_details !=  nullptr && authentication_details->has_operation())
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (frr_summary !=  nullptr && frr_summary->has_operation())
+	|| (frrs !=  nullptr && frrs->has_operation())
+	|| (global_neighbor_briefs !=  nullptr && global_neighbor_briefs->has_operation())
+	|| (global_neighbor_details !=  nullptr && global_neighbor_details->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (hello_instance_briefs !=  nullptr && hello_instance_briefs->has_operation())
+	|| (hello_instance_details !=  nullptr && hello_instance_details->has_operation())
+	|| (hello_interface_instance_briefs !=  nullptr && hello_interface_instance_briefs->has_operation())
+	|| (hello_interface_instance_details !=  nullptr && hello_interface_instance_details->has_operation())
+	|| (interface_briefs !=  nullptr && interface_briefs->has_operation())
+	|| (interface_detaileds !=  nullptr && interface_detaileds->has_operation())
+	|| (interface_neighbor_briefs !=  nullptr && interface_neighbor_briefs->has_operation())
+	|| (interface_neighbor_details !=  nullptr && interface_neighbor_details->has_operation())
+	|| (interface_summaries !=  nullptr && interface_summaries->has_operation())
+	|| (nsr !=  nullptr && nsr->has_operation())
+	|| (open_config !=  nullptr && open_config->has_operation())
+	|| (psb_briefs !=  nullptr && psb_briefs->has_operation())
+	|| (psb_detaileds !=  nullptr && psb_detaileds->has_operation())
+	|| (request_briefs !=  nullptr && request_briefs->has_operation())
+	|| (request_details !=  nullptr && request_details->has_operation())
+	|| (rsb_briefs !=  nullptr && rsb_briefs->has_operation())
+	|| (rsb_detaileds !=  nullptr && rsb_detaileds->has_operation())
+	|| (session_briefs !=  nullptr && session_briefs->has_operation())
+	|| (session_detaileds !=  nullptr && session_detaileds->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string RsvpStandby::get_segment_path() const
@@ -47808,7 +47839,7 @@ EntityPath RsvpStandby::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -48543,7 +48574,7 @@ EntityPath Rsvp::ControllerSummaries::ControllerSummary::BandwidthInformation::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48669,7 +48700,7 @@ EntityPath Rsvp::ControllerSummaries::ControllerSummary::BandwidthInformation::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48779,8 +48810,8 @@ bool Rsvp::ControllerSummaries::ControllerSummary::BandwidthInformation::has_ope
 {
     return is_set(operation)
 	|| is_set(dste_mode.operation)
-	|| (pre_standard_dste_interface !=  nullptr && is_set(pre_standard_dste_interface->operation))
-	|| (standard_dste_interface !=  nullptr && is_set(standard_dste_interface->operation));
+	|| (pre_standard_dste_interface !=  nullptr && pre_standard_dste_interface->has_operation())
+	|| (standard_dste_interface !=  nullptr && standard_dste_interface->has_operation());
 }
 
 std::string Rsvp::ControllerSummaries::ControllerSummary::BandwidthInformation::get_segment_path() const
@@ -48797,7 +48828,7 @@ EntityPath Rsvp::ControllerSummaries::ControllerSummary::BandwidthInformation::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48928,7 +48959,7 @@ bool Rsvp::ControllerSummaries::ControllerSummary::has_operation() const
 	|| is_set(paths_out.operation)
 	|| is_set(reservations_in.operation)
 	|| is_set(reservations_out.operation)
-	|| (bandwidth_information !=  nullptr && is_set(bandwidth_information->operation));
+	|| (bandwidth_information !=  nullptr && bandwidth_information->has_operation());
 }
 
 std::string Rsvp::ControllerSummaries::ControllerSummary::get_segment_path() const
@@ -49416,8 +49447,8 @@ bool Rsvp::Issu::Status::has_operation() const
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (idt_status !=  nullptr && is_set(idt_status->operation))
-	|| (previous_idt_status !=  nullptr && is_set(previous_idt_status->operation));
+	|| (idt_status !=  nullptr && idt_status->has_operation())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_operation());
 }
 
 std::string Rsvp::Issu::Status::get_segment_path() const
@@ -49546,7 +49577,7 @@ bool Rsvp::Issu::has_data() const
 bool Rsvp::Issu::has_operation() const
 {
     return is_set(operation)
-	|| (status !=  nullptr && is_set(status->operation));
+	|| (status !=  nullptr && status->has_operation());
 }
 
 std::string Rsvp::Issu::get_segment_path() const
@@ -49676,7 +49707,7 @@ EntityPath Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49802,7 +49833,7 @@ EntityPath Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49912,8 +49943,8 @@ bool Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::has_op
 {
     return is_set(operation)
 	|| is_set(dste_mode.operation)
-	|| (pre_standard_dste_interface !=  nullptr && is_set(pre_standard_dste_interface->operation))
-	|| (standard_dste_interface !=  nullptr && is_set(standard_dste_interface->operation));
+	|| (pre_standard_dste_interface !=  nullptr && pre_standard_dste_interface->has_operation())
+	|| (standard_dste_interface !=  nullptr && standard_dste_interface->has_operation());
 }
 
 std::string Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::get_segment_path() const
@@ -49930,7 +49961,7 @@ EntityPath Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50089,7 +50120,7 @@ EntityPath Rsvp::ControllerDetaileds::ControllerDetailed::Flags::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50227,7 +50258,7 @@ EntityPath Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50312,7 +50343,7 @@ EntityPath Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50401,7 +50432,7 @@ bool Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::has_operation
 	|| is_set(message_ids.operation)
 	|| is_set(neighbor_address.operation)
 	|| is_set(outgoing_states.operation)
-	|| (expiry_time !=  nullptr && is_set(expiry_time->operation));
+	|| (expiry_time !=  nullptr && expiry_time->has_operation());
 }
 
 std::string Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::get_segment_path() const
@@ -50418,7 +50449,7 @@ EntityPath Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50636,8 +50667,8 @@ bool Rsvp::ControllerDetaileds::ControllerDetailed::has_operation() const
 	|| is_set(signalling_ip_tos.operation)
 	|| is_set(summary_refresh_max_size.operation)
 	|| is_set(summary_refresh_timer_state.operation)
-	|| (bandwidth_information !=  nullptr && is_set(bandwidth_information->operation))
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (bandwidth_information !=  nullptr && bandwidth_information->has_operation())
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Rsvp::ControllerDetaileds::ControllerDetailed::get_segment_path() const
@@ -51172,7 +51203,7 @@ EntityPath Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::PreSta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51298,7 +51329,7 @@ EntityPath Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::Standa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51408,8 +51439,8 @@ bool Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::has_operatio
 {
     return is_set(operation)
 	|| is_set(dste_mode.operation)
-	|| (pre_standard_dste_interface !=  nullptr && is_set(pre_standard_dste_interface->operation))
-	|| (standard_dste_interface !=  nullptr && is_set(standard_dste_interface->operation));
+	|| (pre_standard_dste_interface !=  nullptr && pre_standard_dste_interface->has_operation())
+	|| (standard_dste_interface !=  nullptr && standard_dste_interface->has_operation());
 }
 
 std::string Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::get_segment_path() const
@@ -51426,7 +51457,7 @@ EntityPath Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51545,7 +51576,7 @@ bool Rsvp::ControllerBriefs::ControllerBrief::has_operation() const
     return is_set(operation)
 	|| is_set(controller_name.operation)
 	|| is_set(interface_name_xr.operation)
-	|| (bandwidth_information !=  nullptr && is_set(bandwidth_information->operation));
+	|| (bandwidth_information !=  nullptr && bandwidth_information->has_operation());
 }
 
 std::string Rsvp::ControllerBriefs::ControllerBrief::get_segment_path() const
@@ -52167,10 +52198,10 @@ bool Rsvp::PxsbDetails::PxsbDetail::Session::RsvpSession::has_operation() const
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::PxsbDetails::PxsbDetail::Session::RsvpSession::get_segment_path() const
@@ -52345,7 +52376,7 @@ bool Rsvp::PxsbDetails::PxsbDetail::Session::has_data() const
 bool Rsvp::PxsbDetails::PxsbDetail::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::PxsbDetails::PxsbDetail::Session::get_segment_path() const
@@ -52727,8 +52758,8 @@ bool Rsvp::PxsbDetails::PxsbDetail::Template_::RsvpFilter::has_operation() const
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string Rsvp::PxsbDetails::PxsbDetail::Template_::RsvpFilter::get_segment_path() const
@@ -52857,7 +52888,7 @@ bool Rsvp::PxsbDetails::PxsbDetail::Template_::has_data() const
 bool Rsvp::PxsbDetails::PxsbDetail::Template_::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string Rsvp::PxsbDetails::PxsbDetail::Template_::get_segment_path() const
@@ -53295,8 +53326,8 @@ bool Rsvp::PxsbDetails::PxsbDetail::GenericTrafficSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(tspec_type.operation)
-	|| (g709otn_tspec !=  nullptr && is_set(g709otn_tspec->operation))
-	|| (intsrv_tspec !=  nullptr && is_set(intsrv_tspec->operation));
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
 std::string Rsvp::PxsbDetails::PxsbDetail::GenericTrafficSpec::get_segment_path() const
@@ -53711,13 +53742,13 @@ bool Rsvp::PxsbDetails::PxsbDetail::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (generic_traffic_spec !=  nullptr && is_set(generic_traffic_spec->operation))
-	|| (hop !=  nullptr && is_set(hop->operation))
-	|| (rsvp_header !=  nullptr && is_set(rsvp_header->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (template_ !=  nullptr && is_set(template_->operation))
-	|| (traffic_spec !=  nullptr && is_set(traffic_spec->operation));
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation())
+	|| (hop !=  nullptr && hop->has_operation())
+	|| (rsvp_header !=  nullptr && rsvp_header->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (template_ !=  nullptr && template_->has_operation())
+	|| (traffic_spec !=  nullptr && traffic_spec->has_operation());
 }
 
 std::string Rsvp::PxsbDetails::PxsbDetail::get_segment_path() const
@@ -54532,10 +54563,10 @@ bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::has_operation() const
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::get_segment_path() const
@@ -54710,7 +54741,7 @@ bool Rsvp::RxsbDetails::RxsbDetail::Session::has_data() const
 bool Rsvp::RxsbDetails::RxsbDetail::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::RxsbDetails::RxsbDetail::Session::get_segment_path() const
@@ -55172,8 +55203,8 @@ bool Rsvp::RxsbDetails::RxsbDetail::Filter::RsvpFilter::has_operation() const
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string Rsvp::RxsbDetails::RxsbDetail::Filter::RsvpFilter::get_segment_path() const
@@ -55302,7 +55333,7 @@ bool Rsvp::RxsbDetails::RxsbDetail::Filter::has_data() const
 bool Rsvp::RxsbDetails::RxsbDetail::Filter::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string Rsvp::RxsbDetails::RxsbDetail::Filter::get_segment_path() const
@@ -55647,7 +55678,7 @@ bool Rsvp::RxsbDetails::RxsbDetail::GenericFlowSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string Rsvp::RxsbDetails::RxsbDetail::GenericFlowSpec::get_segment_path() const
@@ -56044,14 +56075,14 @@ bool Rsvp::RxsbDetails::RxsbDetail::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (filter !=  nullptr && is_set(filter->operation))
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (hop !=  nullptr && is_set(hop->operation))
-	|| (rsvp_header !=  nullptr && is_set(rsvp_header->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (style !=  nullptr && is_set(style->operation));
+	|| (filter !=  nullptr && filter->has_operation())
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (hop !=  nullptr && hop->has_operation())
+	|| (rsvp_header !=  nullptr && rsvp_header->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (style !=  nullptr && style->has_operation());
 }
 
 std::string Rsvp::RxsbDetails::RxsbDetail::get_segment_path() const
@@ -56503,7 +56534,7 @@ EntityPath Rsvp::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeigh
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57485,10 +57516,10 @@ bool Rsvp::SessionBriefs::SessionBrief::Session::RsvpSession::has_operation() co
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::SessionBriefs::SessionBrief::Session::RsvpSession::get_segment_path() const
@@ -57663,7 +57694,7 @@ bool Rsvp::SessionBriefs::SessionBrief::Session::has_data() const
 bool Rsvp::SessionBriefs::SessionBrief::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::SessionBriefs::SessionBrief::Session::get_segment_path() const
@@ -57798,7 +57829,7 @@ bool Rsvp::SessionBriefs::SessionBrief::has_operation() const
 	|| is_set(rs_bs.operation)
 	|| is_set(session_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string Rsvp::SessionBriefs::SessionBrief::get_segment_path() const
@@ -58465,10 +58496,10 @@ bool Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::has_operation() cons
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::get_segment_path() const
@@ -58643,7 +58674,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::Session::has_data() const
 bool Rsvp::PsbDetaileds::PsbDetailed::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::Session::get_segment_path() const
@@ -59025,8 +59056,8 @@ bool Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::has_operation() con
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::get_segment_path() const
@@ -59155,7 +59186,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::Template_::has_data() const
 bool Rsvp::PsbDetaileds::PsbDetailed::Template_::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::Template_::get_segment_path() const
@@ -59375,7 +59406,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute::has_operation() const
     return is_set(operation)
 	|| is_set(reservation_priority.operation)
 	|| is_set(setup_priority.operation)
-	|| (sess_attribute_flags !=  nullptr && is_set(sess_attribute_flags->operation));
+	|| (sess_attribute_flags !=  nullptr && sess_attribute_flags->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute::get_segment_path() const
@@ -59823,8 +59854,8 @@ bool Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(tspec_type.operation)
-	|| (g709otn_tspec !=  nullptr && is_set(g709otn_tspec->operation))
-	|| (intsrv_tspec !=  nullptr && is_set(intsrv_tspec->operation));
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::get_segment_path() const
@@ -60680,7 +60711,7 @@ Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::General
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -60690,12 +60721,13 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::Ge
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -60783,7 +60815,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::ha
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_segment_path() const
@@ -60880,7 +60912,7 @@ Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::Gene
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -60890,12 +60922,13 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel:
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -60983,7 +61016,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel:
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_segment_path() const
@@ -61080,7 +61113,7 @@ Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedL
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -61090,12 +61123,13 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::General
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_segment_path() const
@@ -61183,7 +61217,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::has_ope
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::get_segment_path() const
@@ -61280,7 +61314,7 @@ Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::Genera
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -61290,12 +61324,13 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::G
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -61383,7 +61418,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::h
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_segment_path() const
@@ -61480,7 +61515,7 @@ Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::Generaliz
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -61490,12 +61525,13 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::Gene
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -61583,7 +61619,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::has_
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_segment_path() const
@@ -61680,7 +61716,7 @@ Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLab
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -61690,12 +61726,13 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::Generaliz
 
 bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_segment_path() const
@@ -61783,7 +61820,7 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::has_opera
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::get_segment_path() const
@@ -61939,12 +61976,12 @@ bool Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::has_operation() const
 	|| is_set(outgoing_downstream_label.operation)
 	|| is_set(outgoing_upstream_label.operation)
 	|| is_set(recovery_label.operation)
-	|| (generic_local_downstream_label !=  nullptr && is_set(generic_local_downstream_label->operation))
-	|| (generic_local_upstream_label !=  nullptr && is_set(generic_local_upstream_label->operation))
-	|| (generic_merge_point_label !=  nullptr && is_set(generic_merge_point_label->operation))
-	|| (generic_outgoing_downstream_label !=  nullptr && is_set(generic_outgoing_downstream_label->operation))
-	|| (generic_outgoing_upstream_label !=  nullptr && is_set(generic_outgoing_upstream_label->operation))
-	|| (generic_recovery_label !=  nullptr && is_set(generic_recovery_label->operation));
+	|| (generic_local_downstream_label !=  nullptr && generic_local_downstream_label->has_operation())
+	|| (generic_local_upstream_label !=  nullptr && generic_local_upstream_label->has_operation())
+	|| (generic_merge_point_label !=  nullptr && generic_merge_point_label->has_operation())
+	|| (generic_outgoing_downstream_label !=  nullptr && generic_outgoing_downstream_label->has_operation())
+	|| (generic_outgoing_upstream_label !=  nullptr && generic_outgoing_upstream_label->has_operation())
+	|| (generic_recovery_label !=  nullptr && generic_recovery_label->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::get_segment_path() const
@@ -62497,8 +62534,8 @@ bool Rsvp::PsbDetaileds::PsbDetailed::Pfc::has_operation() const
 {
     return is_set(operation)
 	|| is_set(output_interface.operation)
-	|| (policy_flags !=  nullptr && is_set(policy_flags->operation))
-	|| (policy_query_flags !=  nullptr && is_set(policy_query_flags->operation));
+	|| (policy_flags !=  nullptr && policy_flags->has_operation())
+	|| (policy_query_flags !=  nullptr && policy_query_flags->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::Pfc::get_segment_path() const
@@ -62836,8 +62873,8 @@ bool Rsvp::PsbDetaileds::PsbDetailed::InEro::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ero_type.operation)
-	|| (ipv4ero_sub_object !=  nullptr && is_set(ipv4ero_sub_object->operation))
-	|| (unnumbered_ero_sub_object !=  nullptr && is_set(unnumbered_ero_sub_object->operation));
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::InEro::get_segment_path() const
@@ -63175,8 +63212,8 @@ bool Rsvp::PsbDetaileds::PsbDetailed::OutEro::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ero_type.operation)
-	|| (ipv4ero_sub_object !=  nullptr && is_set(ipv4ero_sub_object->operation))
-	|| (unnumbered_ero_sub_object !=  nullptr && is_set(unnumbered_ero_sub_object->operation));
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::OutEro::get_segment_path() const
@@ -63451,21 +63488,21 @@ bool Rsvp::PsbDetaileds::PsbDetailed::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (class_type !=  nullptr && is_set(class_type->operation))
-	|| (expiry_time !=  nullptr && is_set(expiry_time->operation))
-	|| (generic_traffic_spec !=  nullptr && is_set(generic_traffic_spec->operation))
-	|| (header !=  nullptr && is_set(header->operation))
-	|| (hop !=  nullptr && is_set(hop->operation))
-	|| (label_info !=  nullptr && is_set(label_info->operation))
-	|| (path_flags !=  nullptr && is_set(path_flags->operation))
-	|| (policy_flags !=  nullptr && is_set(policy_flags->operation))
-	|| (policy_query_flags !=  nullptr && is_set(policy_query_flags->operation))
-	|| (policy_source_info !=  nullptr && is_set(policy_source_info->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (session_attribute !=  nullptr && is_set(session_attribute->operation))
-	|| (template_ !=  nullptr && is_set(template_->operation))
-	|| (traffic_spec !=  nullptr && is_set(traffic_spec->operation));
+	|| (class_type !=  nullptr && class_type->has_operation())
+	|| (expiry_time !=  nullptr && expiry_time->has_operation())
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation())
+	|| (header !=  nullptr && header->has_operation())
+	|| (hop !=  nullptr && hop->has_operation())
+	|| (label_info !=  nullptr && label_info->has_operation())
+	|| (path_flags !=  nullptr && path_flags->has_operation())
+	|| (policy_flags !=  nullptr && policy_flags->has_operation())
+	|| (policy_query_flags !=  nullptr && policy_query_flags->has_operation())
+	|| (policy_source_info !=  nullptr && policy_source_info->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (session_attribute !=  nullptr && session_attribute->has_operation())
+	|| (template_ !=  nullptr && template_->has_operation())
+	|| (traffic_spec !=  nullptr && traffic_spec->has_operation());
 }
 
 std::string Rsvp::PsbDetaileds::PsbDetailed::get_segment_path() const
@@ -64362,8 +64399,8 @@ bool Rsvp::FrrSummary::has_data() const
 bool Rsvp::FrrSummary::has_operation() const
 {
     return is_set(operation)
-	|| (path_states !=  nullptr && is_set(path_states->operation))
-	|| (reservation_states !=  nullptr && is_set(reservation_states->operation));
+	|| (path_states !=  nullptr && path_states->has_operation())
+	|| (reservation_states !=  nullptr && reservation_states->has_operation());
 }
 
 std::string Rsvp::FrrSummary::get_segment_path() const
@@ -64731,7 +64768,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec::get_segment_path() const
@@ -65240,10 +65277,10 @@ bool Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::has_operation() cons
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::get_segment_path() const
@@ -65418,7 +65455,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::Session::has_data() const
 bool Rsvp::RsbDetaileds::RsbDetailed::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::Session::get_segment_path() const
@@ -65880,8 +65917,8 @@ bool Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::has_operation() const
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::get_segment_path() const
@@ -66010,7 +66047,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::Filter::has_data() const
 bool Rsvp::RsbDetaileds::RsbDetailed::Filter::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::Filter::get_segment_path() const
@@ -66830,7 +66867,7 @@ Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::General
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -66840,12 +66877,13 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::Ge
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -66933,7 +66971,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::ha
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_segment_path() const
@@ -67030,7 +67068,7 @@ Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::Gene
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -67040,12 +67078,13 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel:
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -67133,7 +67172,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel:
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_segment_path() const
@@ -67230,7 +67269,7 @@ Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedL
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -67240,12 +67279,13 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::General
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_segment_path() const
@@ -67333,7 +67373,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::has_ope
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::get_segment_path() const
@@ -67430,7 +67470,7 @@ Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::Genera
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -67440,12 +67480,13 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::G
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -67533,7 +67574,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::h
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_segment_path() const
@@ -67630,7 +67671,7 @@ Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::Generaliz
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -67640,12 +67681,13 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::Gene
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_segment_path() const
@@ -67733,7 +67775,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::has_
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_segment_path() const
@@ -67830,7 +67872,7 @@ Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLab
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -67840,12 +67882,13 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::Generaliz
 
 bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_segment_path() const
@@ -67933,7 +67976,7 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::has_opera
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::get_segment_path() const
@@ -68089,12 +68132,12 @@ bool Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::has_operation() const
 	|| is_set(outgoing_downstream_label.operation)
 	|| is_set(outgoing_upstream_label.operation)
 	|| is_set(recovery_label.operation)
-	|| (generic_local_downstream_label !=  nullptr && is_set(generic_local_downstream_label->operation))
-	|| (generic_local_upstream_label !=  nullptr && is_set(generic_local_upstream_label->operation))
-	|| (generic_merge_point_label !=  nullptr && is_set(generic_merge_point_label->operation))
-	|| (generic_outgoing_downstream_label !=  nullptr && is_set(generic_outgoing_downstream_label->operation))
-	|| (generic_outgoing_upstream_label !=  nullptr && is_set(generic_outgoing_upstream_label->operation))
-	|| (generic_recovery_label !=  nullptr && is_set(generic_recovery_label->operation));
+	|| (generic_local_downstream_label !=  nullptr && generic_local_downstream_label->has_operation())
+	|| (generic_local_upstream_label !=  nullptr && generic_local_upstream_label->has_operation())
+	|| (generic_merge_point_label !=  nullptr && generic_merge_point_label->has_operation())
+	|| (generic_outgoing_downstream_label !=  nullptr && generic_outgoing_downstream_label->has_operation())
+	|| (generic_outgoing_upstream_label !=  nullptr && generic_outgoing_upstream_label->has_operation())
+	|| (generic_recovery_label !=  nullptr && generic_recovery_label->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::get_segment_path() const
@@ -68455,20 +68498,20 @@ bool Rsvp::RsbDetaileds::RsbDetailed::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (expiry_time !=  nullptr && is_set(expiry_time->operation))
-	|| (filter !=  nullptr && is_set(filter->operation))
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (header !=  nullptr && is_set(header->operation))
-	|| (hop !=  nullptr && is_set(hop->operation))
-	|| (label_info !=  nullptr && is_set(label_info->operation))
-	|| (policy_flags !=  nullptr && is_set(policy_flags->operation))
-	|| (policy_query_flags !=  nullptr && is_set(policy_query_flags->operation))
-	|| (policy_sources !=  nullptr && is_set(policy_sources->operation))
-	|| (rsb_flags !=  nullptr && is_set(rsb_flags->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (style !=  nullptr && is_set(style->operation));
+	|| (expiry_time !=  nullptr && expiry_time->has_operation())
+	|| (filter !=  nullptr && filter->has_operation())
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (header !=  nullptr && header->has_operation())
+	|| (hop !=  nullptr && hop->has_operation())
+	|| (label_info !=  nullptr && label_info->has_operation())
+	|| (policy_flags !=  nullptr && policy_flags->has_operation())
+	|| (policy_query_flags !=  nullptr && policy_query_flags->has_operation())
+	|| (policy_sources !=  nullptr && policy_sources->has_operation())
+	|| (rsb_flags !=  nullptr && rsb_flags->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (style !=  nullptr && style->has_operation());
 }
 
 std::string Rsvp::RsbDetaileds::RsbDetailed::get_segment_path() const
@@ -69070,7 +69113,7 @@ EntityPath Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::Pre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69196,7 +69239,7 @@ EntityPath Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69306,8 +69349,8 @@ bool Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::has_opera
 {
     return is_set(operation)
 	|| is_set(dste_mode.operation)
-	|| (pre_standard_dste_interface !=  nullptr && is_set(pre_standard_dste_interface->operation))
-	|| (standard_dste_interface !=  nullptr && is_set(standard_dste_interface->operation));
+	|| (pre_standard_dste_interface !=  nullptr && pre_standard_dste_interface->has_operation())
+	|| (standard_dste_interface !=  nullptr && standard_dste_interface->has_operation());
 }
 
 std::string Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::get_segment_path() const
@@ -69324,7 +69367,7 @@ EntityPath Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69455,7 +69498,7 @@ bool Rsvp::InterfaceSummaries::InterfaceSummary::has_operation() const
 	|| is_set(paths_out.operation)
 	|| is_set(reservations_in.operation)
 	|| is_set(reservations_out.operation)
-	|| (bandwidth_information !=  nullptr && is_set(bandwidth_information->operation));
+	|| (bandwidth_information !=  nullptr && bandwidth_information->has_operation());
 }
 
 std::string Rsvp::InterfaceSummaries::InterfaceSummary::get_segment_path() const
@@ -69973,7 +70016,7 @@ EntityPath Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70097,7 +70140,7 @@ EntityPath Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::Sen
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70182,7 +70225,7 @@ bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo:
 {
     return is_set(operation)
 	|| is_set(sequence.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_segment_path() const
@@ -70199,7 +70242,7 @@ EntityPath Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::Sen
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70347,7 +70390,7 @@ EntityPath Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::Rec
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70487,7 +70530,7 @@ Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::~
 
 bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::has_data() const
 {
-    for (auto const & leaf : sequence_window.getValues())
+    for (auto const & leaf : sequence_window.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -70500,16 +70543,17 @@ bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveIn
 
 bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::has_operation() const
 {
-    for (auto const & leaf : sequence_window.getValues())
+    for (auto const & leaf : sequence_window.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(sequence.operation)
+	|| is_set(sequence_window.operation)
 	|| is_set(sequence_window_count.operation)
 	|| is_set(sequence_window_size.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_segment_path() const
@@ -70526,7 +70570,7 @@ EntityPath Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::Rec
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70640,8 +70684,8 @@ bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::has_opera
 {
     return is_set(operation)
 	|| is_set(auth_direction.operation)
-	|| (receive_info !=  nullptr && is_set(receive_info->operation))
-	|| (send_info !=  nullptr && is_set(send_info->operation));
+	|| (receive_info !=  nullptr && receive_info->has_operation())
+	|| (send_info !=  nullptr && send_info->has_operation());
 }
 
 std::string Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_segment_path() const
@@ -70658,7 +70702,7 @@ EntityPath Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70803,8 +70847,8 @@ bool Rsvp::AuthenticationDetails::AuthenticationDetail::has_operation() const
 	|| is_set(key_status.operation)
 	|| is_set(lifetime.operation)
 	|| is_set(lifetime_left.operation)
-	|| (auth_compact !=  nullptr && is_set(auth_compact->operation))
-	|| (direction_info !=  nullptr && is_set(direction_info->operation));
+	|| (auth_compact !=  nullptr && auth_compact->has_operation())
+	|| (direction_info !=  nullptr && direction_info->has_operation());
 }
 
 std::string Rsvp::AuthenticationDetails::AuthenticationDetail::get_segment_path() const
@@ -71484,10 +71528,10 @@ bool Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::has_operation() const
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::get_segment_path() const
@@ -71662,7 +71706,7 @@ bool Rsvp::RsbBriefs::RsbBrief::Session::has_data() const
 bool Rsvp::RsbBriefs::RsbBrief::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::RsbBriefs::RsbBrief::Session::get_segment_path() const
@@ -72087,7 +72131,7 @@ bool Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::get_segment_path() const
@@ -72474,8 +72518,8 @@ bool Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::has_operation() const
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::get_segment_path() const
@@ -72604,7 +72648,7 @@ bool Rsvp::RsbBriefs::RsbBrief::Filter::has_data() const
 bool Rsvp::RsbBriefs::RsbBrief::Filter::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string Rsvp::RsbBriefs::RsbBrief::Filter::get_segment_path() const
@@ -72767,12 +72811,12 @@ bool Rsvp::RsbBriefs::RsbBrief::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (filter !=  nullptr && is_set(filter->operation))
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (style !=  nullptr && is_set(style->operation));
+	|| (filter !=  nullptr && filter->has_operation())
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (style !=  nullptr && style->has_operation());
 }
 
 std::string Rsvp::RsbBriefs::RsbBrief::get_segment_path() const
@@ -73741,8 +73785,8 @@ bool Rsvp::OpenConfig::has_data() const
 bool Rsvp::OpenConfig::has_operation() const
 {
     return is_set(operation)
-	|| (global_counters !=  nullptr && is_set(global_counters->operation))
-	|| (interface_counters !=  nullptr && is_set(interface_counters->operation));
+	|| (global_counters !=  nullptr && global_counters->has_operation())
+	|| (interface_counters !=  nullptr && interface_counters->has_operation());
 }
 
 std::string Rsvp::OpenConfig::get_segment_path() const
@@ -73916,7 +73960,7 @@ EntityPath Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74092,7 +74136,7 @@ EntityPath Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74268,7 +74312,7 @@ EntityPath Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74444,7 +74488,7 @@ EntityPath Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmitte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74598,10 +74642,10 @@ bool Rsvp::Counters::InterfaceMessages::InterfaceMessage::has_operation() const
 	|| is_set(out_of_order_messages.operation)
 	|| is_set(rate_limited_messages.operation)
 	|| is_set(retransmitted_messages.operation)
-	|| (bundle_received_messages !=  nullptr && is_set(bundle_received_messages->operation))
-	|| (bundle_transmitted_messages !=  nullptr && is_set(bundle_transmitted_messages->operation))
-	|| (received_messages !=  nullptr && is_set(received_messages->operation))
-	|| (transmitted_messages !=  nullptr && is_set(transmitted_messages->operation));
+	|| (bundle_received_messages !=  nullptr && bundle_received_messages->has_operation())
+	|| (bundle_transmitted_messages !=  nullptr && bundle_transmitted_messages->has_operation())
+	|| (received_messages !=  nullptr && received_messages->has_operation())
+	|| (transmitted_messages !=  nullptr && transmitted_messages->has_operation());
 }
 
 std::string Rsvp::Counters::InterfaceMessages::InterfaceMessage::get_segment_path() const
@@ -75628,10 +75672,10 @@ bool Rsvp::Counters::MessageSummary::has_operation() const
 	|| is_set(out_of_order_messages.operation)
 	|| is_set(rate_limited_messages.operation)
 	|| is_set(retransmitted_messages.operation)
-	|| (bundle_received_messages !=  nullptr && is_set(bundle_received_messages->operation))
-	|| (bundle_transmitted_messages !=  nullptr && is_set(bundle_transmitted_messages->operation))
-	|| (received_messages !=  nullptr && is_set(received_messages->operation))
-	|| (transmitted_messages !=  nullptr && is_set(transmitted_messages->operation));
+	|| (bundle_received_messages !=  nullptr && bundle_received_messages->has_operation())
+	|| (bundle_transmitted_messages !=  nullptr && bundle_transmitted_messages->has_operation())
+	|| (received_messages !=  nullptr && received_messages->has_operation())
+	|| (transmitted_messages !=  nullptr && transmitted_messages->has_operation());
 }
 
 std::string Rsvp::Counters::MessageSummary::get_segment_path() const
@@ -75839,7 +75883,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75943,7 +75987,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76047,7 +76091,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76151,7 +76195,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Accesses::Access::Total::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76251,10 +76295,10 @@ bool Rsvp::Counters::PrefixFiltering::Accesses::Access::has_operation() const
 {
     return is_set(operation)
 	|| is_set(access_list_name.operation)
-	|| (dropped !=  nullptr && is_set(dropped->operation))
-	|| (forwarded !=  nullptr && is_set(forwarded->operation))
-	|| (locally_destined !=  nullptr && is_set(locally_destined->operation))
-	|| (total !=  nullptr && is_set(total->operation));
+	|| (dropped !=  nullptr && dropped->has_operation())
+	|| (forwarded !=  nullptr && forwarded->has_operation())
+	|| (locally_destined !=  nullptr && locally_destined->has_operation())
+	|| (total !=  nullptr && total->has_operation());
 }
 
 std::string Rsvp::Counters::PrefixFiltering::Accesses::Access::get_segment_path() const
@@ -77186,12 +77230,12 @@ bool Rsvp::Counters::PrefixFiltering::Interfaces::Summary::has_data() const
 bool Rsvp::Counters::PrefixFiltering::Interfaces::Summary::has_operation() const
 {
     return is_set(operation)
-	|| (default_action_dropped !=  nullptr && is_set(default_action_dropped->operation))
-	|| (default_action_processed !=  nullptr && is_set(default_action_processed->operation))
-	|| (dropped !=  nullptr && is_set(dropped->operation))
-	|| (forwarded !=  nullptr && is_set(forwarded->operation))
-	|| (locally_destined !=  nullptr && is_set(locally_destined->operation))
-	|| (total !=  nullptr && is_set(total->operation));
+	|| (default_action_dropped !=  nullptr && default_action_dropped->has_operation())
+	|| (default_action_processed !=  nullptr && default_action_processed->has_operation())
+	|| (dropped !=  nullptr && dropped->has_operation())
+	|| (forwarded !=  nullptr && forwarded->has_operation())
+	|| (locally_destined !=  nullptr && locally_destined->has_operation())
+	|| (total !=  nullptr && total->has_operation());
 }
 
 std::string Rsvp::Counters::PrefixFiltering::Interfaces::Summary::get_segment_path() const
@@ -77430,7 +77474,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77534,7 +77578,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77638,7 +77682,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77742,7 +77786,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77846,7 +77890,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77950,7 +77994,7 @@ EntityPath Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78060,12 +78104,12 @@ bool Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::has_op
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (default_action_dropped !=  nullptr && is_set(default_action_dropped->operation))
-	|| (default_action_processed !=  nullptr && is_set(default_action_processed->operation))
-	|| (dropped !=  nullptr && is_set(dropped->operation))
-	|| (forwarded !=  nullptr && is_set(forwarded->operation))
-	|| (locally_destined !=  nullptr && is_set(locally_destined->operation))
-	|| (total !=  nullptr && is_set(total->operation));
+	|| (default_action_dropped !=  nullptr && default_action_dropped->has_operation())
+	|| (default_action_processed !=  nullptr && default_action_processed->has_operation())
+	|| (dropped !=  nullptr && dropped->has_operation())
+	|| (forwarded !=  nullptr && forwarded->has_operation())
+	|| (locally_destined !=  nullptr && locally_destined->has_operation())
+	|| (total !=  nullptr && total->has_operation());
 }
 
 std::string Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_segment_path() const
@@ -78399,8 +78443,8 @@ bool Rsvp::Counters::PrefixFiltering::Interfaces::has_data() const
 bool Rsvp::Counters::PrefixFiltering::Interfaces::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Rsvp::Counters::PrefixFiltering::Interfaces::get_segment_path() const
@@ -78529,8 +78573,8 @@ bool Rsvp::Counters::PrefixFiltering::has_data() const
 bool Rsvp::Counters::PrefixFiltering::has_operation() const
 {
     return is_set(operation)
-	|| (accesses !=  nullptr && is_set(accesses->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (accesses !=  nullptr && accesses->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string Rsvp::Counters::PrefixFiltering::get_segment_path() const
@@ -78935,8 +78979,8 @@ bool Rsvp::Counters::OutOfResource::Interfaces::has_data() const
 bool Rsvp::Counters::OutOfResource::Interfaces::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Rsvp::Counters::OutOfResource::Interfaces::get_segment_path() const
@@ -79060,7 +79104,7 @@ bool Rsvp::Counters::OutOfResource::has_data() const
 bool Rsvp::Counters::OutOfResource::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string Rsvp::Counters::OutOfResource::get_segment_path() const
@@ -80001,15 +80045,15 @@ bool Rsvp::Counters::has_data() const
 bool Rsvp::Counters::has_operation() const
 {
     return is_set(operation)
-	|| (database !=  nullptr && is_set(database->operation))
-	|| (event_syncs !=  nullptr && is_set(event_syncs->operation))
-	|| (interface_events !=  nullptr && is_set(interface_events->operation))
-	|| (interface_messages !=  nullptr && is_set(interface_messages->operation))
-	|| (issu !=  nullptr && is_set(issu->operation))
-	|| (message_summary !=  nullptr && is_set(message_summary->operation))
-	|| (nsr !=  nullptr && is_set(nsr->operation))
-	|| (out_of_resource !=  nullptr && is_set(out_of_resource->operation))
-	|| (prefix_filtering !=  nullptr && is_set(prefix_filtering->operation));
+	|| (database !=  nullptr && database->has_operation())
+	|| (event_syncs !=  nullptr && event_syncs->has_operation())
+	|| (interface_events !=  nullptr && interface_events->has_operation())
+	|| (interface_messages !=  nullptr && interface_messages->has_operation())
+	|| (issu !=  nullptr && issu->has_operation())
+	|| (message_summary !=  nullptr && message_summary->has_operation())
+	|| (nsr !=  nullptr && nsr->has_operation())
+	|| (out_of_resource !=  nullptr && out_of_resource->has_operation())
+	|| (prefix_filtering !=  nullptr && prefix_filtering->has_operation());
 }
 
 std::string Rsvp::Counters::get_segment_path() const
@@ -80323,7 +80367,7 @@ EntityPath Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::Pr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80449,7 +80493,7 @@ EntityPath Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80559,8 +80603,8 @@ bool Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::has_oper
 {
     return is_set(operation)
 	|| is_set(dste_mode.operation)
-	|| (pre_standard_dste_interface !=  nullptr && is_set(pre_standard_dste_interface->operation))
-	|| (standard_dste_interface !=  nullptr && is_set(standard_dste_interface->operation));
+	|| (pre_standard_dste_interface !=  nullptr && pre_standard_dste_interface->has_operation())
+	|| (standard_dste_interface !=  nullptr && standard_dste_interface->has_operation());
 }
 
 std::string Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_segment_path() const
@@ -80577,7 +80621,7 @@ EntityPath Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80736,7 +80780,7 @@ EntityPath Rsvp::InterfaceDetaileds::InterfaceDetailed::Flags::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80874,7 +80918,7 @@ EntityPath Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80959,7 +81003,7 @@ EntityPath Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81048,7 +81092,7 @@ bool Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::has_operation()
 	|| is_set(message_ids.operation)
 	|| is_set(neighbor_address.operation)
 	|| is_set(outgoing_states.operation)
-	|| (expiry_time !=  nullptr && is_set(expiry_time->operation));
+	|| (expiry_time !=  nullptr && expiry_time->has_operation());
 }
 
 std::string Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_segment_path() const
@@ -81065,7 +81109,7 @@ EntityPath Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81283,8 +81327,8 @@ bool Rsvp::InterfaceDetaileds::InterfaceDetailed::has_operation() const
 	|| is_set(signalling_ip_tos.operation)
 	|| is_set(summary_refresh_max_size.operation)
 	|| is_set(summary_refresh_timer_state.operation)
-	|| (bandwidth_information !=  nullptr && is_set(bandwidth_information->operation))
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (bandwidth_information !=  nullptr && bandwidth_information->has_operation())
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Rsvp::InterfaceDetaileds::InterfaceDetailed::get_segment_path() const
@@ -81966,8 +82010,8 @@ bool Rsvp::GracefulRestart::has_operation() const
 	|| is_set(pending_states.operation)
 	|| is_set(recovery_time.operation)
 	|| is_set(restart_time.operation)
-	|| (recovery_time_left !=  nullptr && is_set(recovery_time_left->operation))
-	|| (recovery_timer_exp_time !=  nullptr && is_set(recovery_timer_exp_time->operation));
+	|| (recovery_time_left !=  nullptr && recovery_time_left->has_operation())
+	|| (recovery_timer_exp_time !=  nullptr && recovery_timer_exp_time->has_operation());
 }
 
 std::string Rsvp::GracefulRestart::get_segment_path() const
@@ -82402,7 +82446,7 @@ EntityPath Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::La
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82507,7 +82551,7 @@ bool Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::has_oper
 	|| is_set(instance_type.operation)
 	|| is_set(source_address_xr.operation)
 	|| is_set(source_instance.operation)
-	|| (last_message_sent_time !=  nullptr && is_set(last_message_sent_time->operation));
+	|| (last_message_sent_time !=  nullptr && last_message_sent_time->has_operation());
 }
 
 std::string Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_segment_path() const
@@ -82800,7 +82844,7 @@ EntityPath Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNei
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83372,8 +83416,8 @@ bool Rsvp::Nsr::Status::has_operation() const
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (idt_status !=  nullptr && is_set(idt_status->operation))
-	|| (previous_idt_status !=  nullptr && is_set(previous_idt_status->operation));
+	|| (idt_status !=  nullptr && idt_status->has_operation())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_operation());
 }
 
 std::string Rsvp::Nsr::Status::get_segment_path() const
@@ -83502,7 +83546,7 @@ bool Rsvp::Nsr::has_data() const
 bool Rsvp::Nsr::has_operation() const
 {
     return is_set(operation)
-	|| (status !=  nullptr && is_set(status->operation));
+	|| (status !=  nullptr && status->has_operation());
 }
 
 std::string Rsvp::Nsr::get_segment_path() const
@@ -83852,8 +83896,8 @@ bool Rsvp::Summary::IssuStatus::has_operation() const
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (idt_status !=  nullptr && is_set(idt_status->operation))
-	|| (previous_idt_status !=  nullptr && is_set(previous_idt_status->operation));
+	|| (idt_status !=  nullptr && idt_status->has_operation())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_operation());
 }
 
 std::string Rsvp::Summary::IssuStatus::get_segment_path() const
@@ -84231,8 +84275,8 @@ bool Rsvp::Summary::NsrStatus::has_operation() const
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (idt_status !=  nullptr && is_set(idt_status->operation))
-	|| (previous_idt_status !=  nullptr && is_set(previous_idt_status->operation));
+	|| (idt_status !=  nullptr && idt_status->has_operation())
+	|| (previous_idt_status !=  nullptr && previous_idt_status->has_operation());
 }
 
 std::string Rsvp::Summary::NsrStatus::get_segment_path() const
@@ -84498,9 +84542,9 @@ bool Rsvp::Summary::has_operation() const
     return is_set(operation)
 	|| is_set(interfaces.operation)
 	|| is_set(ls_ps.operation)
-	|| (database_counters !=  nullptr && is_set(database_counters->operation))
-	|| (issu_status !=  nullptr && is_set(issu_status->operation))
-	|| (nsr_status !=  nullptr && is_set(nsr_status->operation));
+	|| (database_counters !=  nullptr && database_counters->has_operation())
+	|| (issu_status !=  nullptr && issu_status->has_operation())
+	|| (nsr_status !=  nullptr && nsr_status->has_operation());
 }
 
 std::string Rsvp::Summary::get_segment_path() const
@@ -85060,10 +85104,10 @@ bool Rsvp::Frrs::Frr::Session::RsvpSession::has_operation() const
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::Frrs::Frr::Session::RsvpSession::get_segment_path() const
@@ -85238,7 +85282,7 @@ bool Rsvp::Frrs::Frr::Session::has_data() const
 bool Rsvp::Frrs::Frr::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::Frrs::Frr::Session::get_segment_path() const
@@ -85464,8 +85508,8 @@ bool Rsvp::Frrs::Frr::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string Rsvp::Frrs::Frr::get_segment_path() const
@@ -86165,10 +86209,10 @@ bool Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::has_operation() co
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::get_segment_path() const
@@ -86343,7 +86387,7 @@ bool Rsvp::RequestBriefs::RequestBrief::Session::has_data() const
 bool Rsvp::RequestBriefs::RequestBrief::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::RequestBriefs::RequestBrief::Session::get_segment_path() const
@@ -86768,7 +86812,7 @@ bool Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::get_segment_path() const
@@ -87075,8 +87119,8 @@ bool Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::has_operation() cons
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_segment_path() const
@@ -87205,7 +87249,7 @@ bool Rsvp::RequestBriefs::RequestBrief::Filter::has_data() const
 bool Rsvp::RequestBriefs::RequestBrief::Filter::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string Rsvp::RequestBriefs::RequestBrief::Filter::get_segment_path() const
@@ -87448,12 +87492,12 @@ bool Rsvp::RequestBriefs::RequestBrief::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (filter !=  nullptr && is_set(filter->operation))
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (style !=  nullptr && is_set(style->operation));
+	|| (filter !=  nullptr && filter->has_operation())
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (style !=  nullptr && style->has_operation());
 }
 
 std::string Rsvp::RequestBriefs::RequestBrief::get_segment_path() const
@@ -88240,10 +88284,10 @@ bool Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::has_operation() 
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::get_segment_path() const
@@ -88418,7 +88462,7 @@ bool Rsvp::RequestDetails::RequestDetail::Session::has_data() const
 bool Rsvp::RequestDetails::RequestDetail::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::RequestDetails::RequestDetail::Session::get_segment_path() const
@@ -88843,7 +88887,7 @@ bool Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_segment_path() const
@@ -89150,8 +89194,8 @@ bool Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::has_operation() co
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_segment_path() const
@@ -89280,7 +89324,7 @@ bool Rsvp::RequestDetails::RequestDetail::Filter::has_data() const
 bool Rsvp::RequestDetails::RequestDetail::Filter::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string Rsvp::RequestDetails::RequestDetail::Filter::get_segment_path() const
@@ -90589,18 +90633,18 @@ bool Rsvp::RequestDetails::RequestDetail::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (filter !=  nullptr && is_set(filter->operation))
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (header !=  nullptr && is_set(header->operation))
-	|| (hop !=  nullptr && is_set(hop->operation))
-	|| (policy_flags !=  nullptr && is_set(policy_flags->operation))
-	|| (policy_query_flags !=  nullptr && is_set(policy_query_flags->operation))
-	|| (policy_sources !=  nullptr && is_set(policy_sources->operation))
-	|| (req_flags !=  nullptr && is_set(req_flags->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (style !=  nullptr && is_set(style->operation));
+	|| (filter !=  nullptr && filter->has_operation())
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (header !=  nullptr && header->has_operation())
+	|| (hop !=  nullptr && hop->has_operation())
+	|| (policy_flags !=  nullptr && policy_flags->has_operation())
+	|| (policy_query_flags !=  nullptr && policy_query_flags->has_operation())
+	|| (policy_sources !=  nullptr && policy_sources->has_operation())
+	|| (req_flags !=  nullptr && req_flags->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (style !=  nullptr && style->has_operation());
 }
 
 std::string Rsvp::RequestDetails::RequestDetail::get_segment_path() const
@@ -91203,7 +91247,7 @@ EntityPath Rsvp::InterfaceBriefs::InterfaceBrief::BandwidthInformation::PreStand
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91329,7 +91373,7 @@ EntityPath Rsvp::InterfaceBriefs::InterfaceBrief::BandwidthInformation::Standard
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91439,8 +91483,8 @@ bool Rsvp::InterfaceBriefs::InterfaceBrief::BandwidthInformation::has_operation(
 {
     return is_set(operation)
 	|| is_set(dste_mode.operation)
-	|| (pre_standard_dste_interface !=  nullptr && is_set(pre_standard_dste_interface->operation))
-	|| (standard_dste_interface !=  nullptr && is_set(standard_dste_interface->operation));
+	|| (pre_standard_dste_interface !=  nullptr && pre_standard_dste_interface->has_operation())
+	|| (standard_dste_interface !=  nullptr && standard_dste_interface->has_operation());
 }
 
 std::string Rsvp::InterfaceBriefs::InterfaceBrief::BandwidthInformation::get_segment_path() const
@@ -91457,7 +91501,7 @@ EntityPath Rsvp::InterfaceBriefs::InterfaceBrief::BandwidthInformation::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91576,7 +91620,7 @@ bool Rsvp::InterfaceBriefs::InterfaceBrief::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(interface_name_xr.operation)
-	|| (bandwidth_information !=  nullptr && is_set(bandwidth_information->operation));
+	|| (bandwidth_information !=  nullptr && bandwidth_information->has_operation());
 }
 
 std::string Rsvp::InterfaceBriefs::InterfaceBrief::get_segment_path() const
@@ -92198,10 +92242,10 @@ bool Rsvp::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::has
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::Compact::Session::RsvpSession::get_segment_path() const
@@ -92376,7 +92420,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::Compact::Session::has_data() const
 bool Rsvp::SessionDetaileds::SessionDetailed::Compact::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::Compact::Session::get_segment_path() const
@@ -92490,7 +92534,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::Compact::has_operation() const
 	|| is_set(ps_bs.operation)
 	|| is_set(requests.operation)
 	|| is_set(rs_bs.operation)
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::Compact::get_segment_path() const
@@ -92682,7 +92726,7 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::Ge
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -92692,12 +92736,13 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabe
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::GeneralizedLabel::get_segment_path() const
@@ -92785,7 +92830,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabe
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericInLabel::get_segment_path() const
@@ -93228,8 +93273,8 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTraffi
 {
     return is_set(operation)
 	|| is_set(tspec_type.operation)
-	|| (g709otn_tspec !=  nullptr && is_set(g709otn_tspec->operation))
-	|| (intsrv_tspec !=  nullptr && is_set(intsrv_tspec->operation));
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::GenericTrafficSpec::get_segment_path() const
@@ -93545,7 +93590,7 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Exten
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::has_data() const
 {
-    for (auto const & leaf : extended_id.getValues())
+    for (auto const & leaf : extended_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -93558,12 +93603,13 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv4::has_operation() const
 {
-    for (auto const & leaf : extended_id.getValues())
+    for (auto const & leaf : extended_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(extended_id.operation)
 	|| is_set(global_source.operation)
 	|| is_set(id.operation)
 	|| is_set(source.operation)
@@ -93666,7 +93712,7 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::Exten
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::has_data() const
 {
-    for (auto const & leaf : extended_id.getValues())
+    for (auto const & leaf : extended_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -93679,12 +93725,13 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::ExtendedIpv6::has_operation() const
 {
-    for (auto const & leaf : extended_id.getValues())
+    for (auto const & leaf : extended_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(extended_id.operation)
 	|| is_set(global_source.operation)
 	|| is_set(id.operation)
 	|| is_set(source.operation)
@@ -93811,10 +93858,10 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::
 {
     return is_set(operation)
 	|| is_set(association_type.operation)
-	|| (extended_ipv4 !=  nullptr && is_set(extended_ipv4->operation))
-	|| (extended_ipv6 !=  nullptr && is_set(extended_ipv6->operation))
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (extended_ipv4 !=  nullptr && extended_ipv4->has_operation())
+	|| (extended_ipv6 !=  nullptr && extended_ipv6->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Association::get_segment_path() const
@@ -94255,8 +94302,8 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::h
 	|| is_set(o.operation)
 	|| is_set(p.operation)
 	|| is_set(s.operation)
-	|| (link_flags !=  nullptr && is_set(link_flags->operation))
-	|| (lsp_flags !=  nullptr && is_set(lsp_flags->operation));
+	|| (link_flags !=  nullptr && link_flags->has_operation())
+	|| (lsp_flags !=  nullptr && lsp_flags->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Protection::get_segment_path() const
@@ -94625,8 +94672,8 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::G
 {
     return is_set(operation)
 	|| is_set(tspec_type.operation)
-	|| (g709otn_tspec !=  nullptr && is_set(g709otn_tspec->operation))
-	|| (intsrv_tspec !=  nullptr && is_set(intsrv_tspec->operation));
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::GenericTrafficSpec::get_segment_path() const
@@ -94964,8 +95011,8 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::E
 {
     return is_set(operation)
 	|| is_set(ero_type.operation)
-	|| (ipv4ero_sub_object !=  nullptr && is_set(ipv4ero_sub_object->operation))
-	|| (unnumbered_ero_sub_object !=  nullptr && is_set(unnumbered_ero_sub_object->operation));
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::Ero::get_segment_path() const
@@ -95085,7 +95132,7 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupS
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_data() const
 {
-    for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getValues())
+    for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -95095,12 +95142,13 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::U
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::has_operation() const
 {
-    for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getValues())
+    for (auto const & leaf : rsvp_mgmt_rev_lsp_unsupported_subobj.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(rsvp_mgmt_rev_lsp_unsupported_subobj.operation);
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::UnsupSubObject::get_segment_path() const
@@ -95204,7 +95252,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::h
             return true;
     }
     return is_set(operation)
-	|| (generic_traffic_spec !=  nullptr && is_set(generic_traffic_spec->operation));
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::ReverseLsp::get_segment_path() const
@@ -95566,8 +95614,8 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::has_oper
 {
     return is_set(operation)
 	|| is_set(ero_type.operation)
-	|| (ipv4ero_sub_object !=  nullptr && is_set(ipv4ero_sub_object->operation))
-	|| (unnumbered_ero_sub_object !=  nullptr && is_set(unnumbered_ero_sub_object->operation));
+	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
+	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Ero::get_segment_path() const
@@ -95812,7 +95860,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroS
 {
     return is_set(operation)
 	|| is_set(rro_address.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Ipv4RroSubObject::get_segment_path() const
@@ -95996,7 +96044,7 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubOb
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_data() const
 {
-    for (auto const & leaf : variable_length_label.getValues())
+    for (auto const & leaf : variable_length_label.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -96008,7 +96056,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRro
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::has_operation() const
 {
-    for (auto const & leaf : variable_length_label.getValues())
+    for (auto const & leaf : variable_length_label.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -96016,7 +96064,8 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRro
     return is_set(operation)
 	|| is_set(is_label_variable_length.operation)
 	|| is_set(label.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| is_set(variable_length_label.operation)
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::LabelRroSubObject::get_segment_path() const
@@ -96252,7 +96301,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::Unnumber
     return is_set(operation)
 	|| is_set(interface_address.operation)
 	|| is_set(interface_id.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::UnnumberedRroSubObject::get_segment_path() const
@@ -96354,7 +96403,7 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObj
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_data() const
 {
-    for (auto const & leaf : srl_gs.getValues())
+    for (auto const & leaf : srl_gs.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -96364,12 +96413,13 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroS
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::has_operation() const
 {
-    for (auto const & leaf : srl_gs.getValues())
+    for (auto const & leaf : srl_gs.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(srl_gs.operation);
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::SrlgRroSubObject::get_segment_path() const
@@ -96472,10 +96522,10 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::has_oper
 {
     return is_set(operation)
 	|| is_set(rro_type.operation)
-	|| (ipv4rro_sub_object !=  nullptr && is_set(ipv4rro_sub_object->operation))
-	|| (label_rro_sub_object !=  nullptr && is_set(label_rro_sub_object->operation))
-	|| (srlg_rro_sub_object !=  nullptr && is_set(srlg_rro_sub_object->operation))
-	|| (unnumbered_rro_sub_object !=  nullptr && is_set(unnumbered_rro_sub_object->operation));
+	|| (ipv4rro_sub_object !=  nullptr && ipv4rro_sub_object->has_operation())
+	|| (label_rro_sub_object !=  nullptr && label_rro_sub_object->has_operation())
+	|| (srlg_rro_sub_object !=  nullptr && srlg_rro_sub_object->has_operation())
+	|| (unnumbered_rro_sub_object !=  nullptr && unnumbered_rro_sub_object->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::Rro::get_segment_path() const
@@ -96738,12 +96788,12 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::has_operation
 	|| is_set(p2mp_sub_group_origin.operation)
 	|| is_set(sub_group_id.operation)
 	|| is_set(tunnel_name.operation)
-	|| (association !=  nullptr && is_set(association->operation))
-	|| (generic_in_label !=  nullptr && is_set(generic_in_label->operation))
-	|| (generic_traffic_spec !=  nullptr && is_set(generic_traffic_spec->operation))
-	|| (protection !=  nullptr && is_set(protection->operation))
-	|| (reverse_lsp !=  nullptr && is_set(reverse_lsp->operation))
-	|| (traffic_spec !=  nullptr && is_set(traffic_spec->operation));
+	|| (association !=  nullptr && association->has_operation())
+	|| (generic_in_label !=  nullptr && generic_in_label->has_operation())
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation())
+	|| (protection !=  nullptr && protection->has_operation())
+	|| (reverse_lsp !=  nullptr && reverse_lsp->has_operation())
+	|| (traffic_spec !=  nullptr && traffic_spec->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::PsbInfo::get_segment_path() const
@@ -97072,7 +97122,7 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::G
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_data() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -97082,12 +97132,13 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLab
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::has_operation() const
 {
-    for (auto const & leaf : value_.getValues())
+    for (auto const & leaf : value_.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(value_.operation);
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::GeneralizedLabel::get_segment_path() const
@@ -97175,7 +97226,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLab
 {
     return is_set(operation)
 	|| is_set(generic_label_type.operation)
-	|| (generalized_label !=  nullptr && is_set(generalized_label->operation));
+	|| (generalized_label !=  nullptr && generalized_label->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericOutLabel::get_segment_path() const
@@ -97525,7 +97576,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSp
 {
     return is_set(operation)
 	|| is_set(flow_spec_type.operation)
-	|| (g709otn_flow_spec !=  nullptr && is_set(g709otn_flow_spec->operation));
+	|| (g709otn_flow_spec !=  nullptr && g709otn_flow_spec->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::GenericFlowSpec::get_segment_path() const
@@ -97747,7 +97798,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroS
 {
     return is_set(operation)
 	|| is_set(rro_address.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Ipv4RroSubObject::get_segment_path() const
@@ -97931,7 +97982,7 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubOb
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_data() const
 {
-    for (auto const & leaf : variable_length_label.getValues())
+    for (auto const & leaf : variable_length_label.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -97943,7 +97994,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRro
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::has_operation() const
 {
-    for (auto const & leaf : variable_length_label.getValues())
+    for (auto const & leaf : variable_length_label.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -97951,7 +98002,8 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRro
     return is_set(operation)
 	|| is_set(is_label_variable_length.operation)
 	|| is_set(label.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| is_set(variable_length_label.operation)
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::LabelRroSubObject::get_segment_path() const
@@ -98187,7 +98239,7 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::Unnumber
     return is_set(operation)
 	|| is_set(interface_address.operation)
 	|| is_set(interface_id.operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::UnnumberedRroSubObject::get_segment_path() const
@@ -98289,7 +98341,7 @@ Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObj
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_data() const
 {
-    for (auto const & leaf : srl_gs.getValues())
+    for (auto const & leaf : srl_gs.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -98299,12 +98351,13 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroS
 
 bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::has_operation() const
 {
-    for (auto const & leaf : srl_gs.getValues())
+    for (auto const & leaf : srl_gs.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(srl_gs.operation);
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::SrlgRroSubObject::get_segment_path() const
@@ -98407,10 +98460,10 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::has_oper
 {
     return is_set(operation)
 	|| is_set(rro_type.operation)
-	|| (ipv4rro_sub_object !=  nullptr && is_set(ipv4rro_sub_object->operation))
-	|| (label_rro_sub_object !=  nullptr && is_set(label_rro_sub_object->operation))
-	|| (srlg_rro_sub_object !=  nullptr && is_set(srlg_rro_sub_object->operation))
-	|| (unnumbered_rro_sub_object !=  nullptr && is_set(unnumbered_rro_sub_object->operation));
+	|| (ipv4rro_sub_object !=  nullptr && ipv4rro_sub_object->has_operation())
+	|| (label_rro_sub_object !=  nullptr && label_rro_sub_object->has_operation())
+	|| (srlg_rro_sub_object !=  nullptr && srlg_rro_sub_object->has_operation())
+	|| (unnumbered_rro_sub_object !=  nullptr && unnumbered_rro_sub_object->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::Rro::get_segment_path() const
@@ -98630,9 +98683,9 @@ bool Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::has_operation
 	|| is_set(is_valid.operation)
 	|| is_set(out_interface.operation)
 	|| is_set(out_label.operation)
-	|| (flow_spec !=  nullptr && is_set(flow_spec->operation))
-	|| (generic_flow_spec !=  nullptr && is_set(generic_flow_spec->operation))
-	|| (generic_out_label !=  nullptr && is_set(generic_out_label->operation));
+	|| (flow_spec !=  nullptr && flow_spec->has_operation())
+	|| (generic_flow_spec !=  nullptr && generic_flow_spec->has_operation())
+	|| (generic_out_label !=  nullptr && generic_out_label->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::PsbRsbInfo::RsbInfo::get_segment_path() const
@@ -99026,8 +99079,8 @@ bool Rsvp::SessionDetaileds::SessionDetailed::has_operation() const
 	|| is_set(protocol.operation)
 	|| is_set(session_type.operation)
 	|| is_set(vrf_name.operation)
-	|| (compact !=  nullptr && is_set(compact->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation));
+	|| (compact !=  nullptr && compact->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation());
 }
 
 std::string Rsvp::SessionDetaileds::SessionDetailed::get_segment_path() const
@@ -99337,7 +99390,7 @@ EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::UpTime::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99425,7 +99478,7 @@ EntityPath Rsvp::HelloInstanceDetails::HelloInstanceDetail::CommunicationLostTim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99568,8 +99621,8 @@ bool Rsvp::HelloInstanceDetails::HelloInstanceDetail::has_operation() const
 	|| is_set(source_address_xr.operation)
 	|| is_set(source_instance.operation)
 	|| is_set(total_communication_lost.operation)
-	|| (communication_lost_time !=  nullptr && is_set(communication_lost_time->operation))
-	|| (up_time !=  nullptr && is_set(up_time->operation));
+	|| (communication_lost_time !=  nullptr && communication_lost_time->has_operation())
+	|| (up_time !=  nullptr && up_time->has_operation());
 }
 
 std::string Rsvp::HelloInstanceDetails::HelloInstanceDetail::get_segment_path() const
@@ -99928,7 +99981,7 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::GlobalNeighborFlag
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100016,7 +100069,7 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimeLeft::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100104,7 +100157,7 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RestartTimerExpiry
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100192,7 +100245,7 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimeLeft::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100280,7 +100333,7 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::RecoveryTimerExpTi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100368,7 +100421,7 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::UpTime::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100456,7 +100509,7 @@ EntityPath Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::LostCommunicationT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100564,27 +100617,27 @@ bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::has_data() const
         if(up_time[index]->has_data())
             return true;
     }
-    for (auto const & leaf : interface_neighbor.getValues())
+    for (auto const & leaf : interface_neighbor.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : local_node_address.getValues())
+    for (auto const & leaf : local_node_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lost_communication_reason.getValues())
+    for (auto const & leaf : lost_communication_reason.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lost_communication_total.getValues())
+    for (auto const & leaf : lost_communication_total.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : neighbor_hello_state.getValues())
+    for (auto const & leaf : neighbor_hello_state.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -100619,27 +100672,27 @@ bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::has_operation() const
         if(up_time[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : interface_neighbor.getValues())
+    for (auto const & leaf : interface_neighbor.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : local_node_address.getValues())
+    for (auto const & leaf : local_node_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lost_communication_reason.getValues())
+    for (auto const & leaf : lost_communication_reason.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lost_communication_total.getValues())
+    for (auto const & leaf : lost_communication_total.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : neighbor_hello_state.getValues())
+    for (auto const & leaf : neighbor_hello_state.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -100647,20 +100700,25 @@ bool Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::has_operation() const
     return is_set(operation)
 	|| is_set(neighbor_address.operation)
 	|| is_set(hello_interval.operation)
+	|| is_set(interface_neighbor.operation)
 	|| is_set(is_gr_enabled.operation)
 	|| is_set(is_recovery_timer_running.operation)
 	|| is_set(is_restart_timer_running.operation)
+	|| is_set(local_node_address.operation)
+	|| is_set(lost_communication_reason.operation)
+	|| is_set(lost_communication_total.operation)
 	|| is_set(missed_hellos.operation)
+	|| is_set(neighbor_hello_state.operation)
 	|| is_set(node_address.operation)
 	|| is_set(pending_states.operation)
 	|| is_set(recovery_time.operation)
 	|| is_set(restart_state.operation)
 	|| is_set(restart_time.operation)
-	|| (global_neighbor_flags !=  nullptr && is_set(global_neighbor_flags->operation))
-	|| (recovery_time_left !=  nullptr && is_set(recovery_time_left->operation))
-	|| (recovery_timer_exp_time !=  nullptr && is_set(recovery_timer_exp_time->operation))
-	|| (restart_time_left !=  nullptr && is_set(restart_time_left->operation))
-	|| (restart_timer_expiry_time !=  nullptr && is_set(restart_timer_expiry_time->operation));
+	|| (global_neighbor_flags !=  nullptr && global_neighbor_flags->has_operation())
+	|| (recovery_time_left !=  nullptr && recovery_time_left->has_operation())
+	|| (recovery_timer_exp_time !=  nullptr && recovery_timer_exp_time->has_operation())
+	|| (restart_time_left !=  nullptr && restart_time_left->has_operation())
+	|| (restart_timer_expiry_time !=  nullptr && restart_timer_expiry_time->has_operation());
 }
 
 std::string Rsvp::GlobalNeighborDetails::GlobalNeighborDetail::get_segment_path() const
@@ -101501,10 +101559,10 @@ bool Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::has_operation() const
 {
     return is_set(operation)
 	|| is_set(session_type.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv4_lsp_session !=  nullptr && is_set(ipv4_lsp_session->operation))
-	|| (ipv4_p2mp_lsp_session !=  nullptr && is_set(ipv4_p2mp_lsp_session->operation))
-	|| (ipv4_uni_session !=  nullptr && is_set(ipv4_uni_session->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv4_lsp_session !=  nullptr && ipv4_lsp_session->has_operation())
+	|| (ipv4_p2mp_lsp_session !=  nullptr && ipv4_p2mp_lsp_session->has_operation())
+	|| (ipv4_uni_session !=  nullptr && ipv4_uni_session->has_operation());
 }
 
 std::string Rsvp::PsbBriefs::PsbBrief::Session::RsvpSession::get_segment_path() const
@@ -101679,7 +101737,7 @@ bool Rsvp::PsbBriefs::PsbBrief::Session::has_data() const
 bool Rsvp::PsbBriefs::PsbBrief::Session::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_session !=  nullptr && is_set(rsvp_session->operation));
+	|| (rsvp_session !=  nullptr && rsvp_session->has_operation());
 }
 
 std::string Rsvp::PsbBriefs::PsbBrief::Session::get_segment_path() const
@@ -102061,8 +102119,8 @@ bool Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::has_operation() const
 {
     return is_set(operation)
 	|| is_set(filter_type.operation)
-	|| (p2mp_ipv4_session !=  nullptr && is_set(p2mp_ipv4_session->operation))
-	|| (udp_ipv4_session !=  nullptr && is_set(udp_ipv4_session->operation));
+	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation())
+	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_operation());
 }
 
 std::string Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::get_segment_path() const
@@ -102191,7 +102249,7 @@ bool Rsvp::PsbBriefs::PsbBrief::Template_::has_data() const
 bool Rsvp::PsbBriefs::PsbBrief::Template_::has_operation() const
 {
     return is_set(operation)
-	|| (rsvp_filter !=  nullptr && is_set(rsvp_filter->operation));
+	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
 std::string Rsvp::PsbBriefs::PsbBrief::Template_::get_segment_path() const
@@ -102411,7 +102469,7 @@ bool Rsvp::PsbBriefs::PsbBrief::SessionAttribute::has_operation() const
     return is_set(operation)
 	|| is_set(reservation_priority.operation)
 	|| is_set(setup_priority.operation)
-	|| (sess_attribute_flags !=  nullptr && is_set(sess_attribute_flags->operation));
+	|| (sess_attribute_flags !=  nullptr && sess_attribute_flags->has_operation());
 }
 
 std::string Rsvp::PsbBriefs::PsbBrief::SessionAttribute::get_segment_path() const
@@ -102859,8 +102917,8 @@ bool Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(tspec_type.operation)
-	|| (g709otn_tspec !=  nullptr && is_set(g709otn_tspec->operation))
-	|| (intsrv_tspec !=  nullptr && is_set(intsrv_tspec->operation));
+	|| (g709otn_tspec !=  nullptr && g709otn_tspec->has_operation())
+	|| (intsrv_tspec !=  nullptr && intsrv_tspec->has_operation());
 }
 
 std::string Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec::get_segment_path() const
@@ -103051,12 +103109,12 @@ bool Rsvp::PsbBriefs::PsbBrief::has_operation() const
 	|| is_set(sub_group_id.operation)
 	|| is_set(sub_group_origin.operation)
 	|| is_set(vrf_name.operation)
-	|| (generic_traffic_spec !=  nullptr && is_set(generic_traffic_spec->operation))
-	|| (s2l_sub_lsp !=  nullptr && is_set(s2l_sub_lsp->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (session_attribute !=  nullptr && is_set(session_attribute->operation))
-	|| (template_ !=  nullptr && is_set(template_->operation))
-	|| (traffic_spec !=  nullptr && is_set(traffic_spec->operation));
+	|| (generic_traffic_spec !=  nullptr && generic_traffic_spec->has_operation())
+	|| (s2l_sub_lsp !=  nullptr && s2l_sub_lsp->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (session_attribute !=  nullptr && session_attribute->has_operation())
+	|| (template_ !=  nullptr && template_->has_operation())
+	|| (traffic_spec !=  nullptr && traffic_spec->has_operation());
 }
 
 std::string Rsvp::PsbBriefs::PsbBrief::get_segment_path() const
@@ -103457,7 +103515,7 @@ EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::GlobalNeighborFlags:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103545,7 +103603,7 @@ EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::UpTime::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103633,7 +103691,7 @@ EntityPath Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103717,22 +103775,22 @@ bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::has_data() const
         if(up_time[index]->has_data())
             return true;
     }
-    for (auto const & leaf : local_node_address.getValues())
+    for (auto const & leaf : local_node_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lost_communication_reason.getValues())
+    for (auto const & leaf : lost_communication_reason.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lost_communication_total.getValues())
+    for (auto const & leaf : lost_communication_total.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : neighbor_hello_state.getValues())
+    for (auto const & leaf : neighbor_hello_state.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -103756,22 +103814,22 @@ bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::has_operation() const
         if(up_time[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : local_node_address.getValues())
+    for (auto const & leaf : local_node_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lost_communication_reason.getValues())
+    for (auto const & leaf : lost_communication_reason.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lost_communication_total.getValues())
+    for (auto const & leaf : lost_communication_total.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : neighbor_hello_state.getValues())
+    for (auto const & leaf : neighbor_hello_state.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -103779,9 +103837,13 @@ bool Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::has_operation() const
     return is_set(operation)
 	|| is_set(neighbor_address.operation)
 	|| is_set(is_gr_enabled.operation)
+	|| is_set(local_node_address.operation)
+	|| is_set(lost_communication_reason.operation)
+	|| is_set(lost_communication_total.operation)
+	|| is_set(neighbor_hello_state.operation)
 	|| is_set(node_address.operation)
 	|| is_set(restart_state.operation)
-	|| (global_neighbor_flags !=  nullptr && is_set(global_neighbor_flags->operation));
+	|| (global_neighbor_flags !=  nullptr && global_neighbor_flags->has_operation());
 }
 
 std::string Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::get_segment_path() const
@@ -104256,41 +104318,41 @@ bool Rsvp::has_data() const
 bool Rsvp::has_operation() const
 {
     return is_set(operation)
-	|| (authentication_briefs !=  nullptr && is_set(authentication_briefs->operation))
-	|| (authentication_details !=  nullptr && is_set(authentication_details->operation))
-	|| (bw_pool_info !=  nullptr && is_set(bw_pool_info->operation))
-	|| (controller_briefs !=  nullptr && is_set(controller_briefs->operation))
-	|| (controller_detaileds !=  nullptr && is_set(controller_detaileds->operation))
-	|| (controller_summaries !=  nullptr && is_set(controller_summaries->operation))
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (frr_summary !=  nullptr && is_set(frr_summary->operation))
-	|| (frrs !=  nullptr && is_set(frrs->operation))
-	|| (global_neighbor_briefs !=  nullptr && is_set(global_neighbor_briefs->operation))
-	|| (global_neighbor_details !=  nullptr && is_set(global_neighbor_details->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (hello_instance_briefs !=  nullptr && is_set(hello_instance_briefs->operation))
-	|| (hello_instance_details !=  nullptr && is_set(hello_instance_details->operation))
-	|| (hello_interface_instance_briefs !=  nullptr && is_set(hello_interface_instance_briefs->operation))
-	|| (hello_interface_instance_details !=  nullptr && is_set(hello_interface_instance_details->operation))
-	|| (interface_briefs !=  nullptr && is_set(interface_briefs->operation))
-	|| (interface_detaileds !=  nullptr && is_set(interface_detaileds->operation))
-	|| (interface_neighbor_briefs !=  nullptr && is_set(interface_neighbor_briefs->operation))
-	|| (interface_neighbor_details !=  nullptr && is_set(interface_neighbor_details->operation))
-	|| (interface_summaries !=  nullptr && is_set(interface_summaries->operation))
-	|| (issu !=  nullptr && is_set(issu->operation))
-	|| (nsr !=  nullptr && is_set(nsr->operation))
-	|| (open_config !=  nullptr && is_set(open_config->operation))
-	|| (psb_briefs !=  nullptr && is_set(psb_briefs->operation))
-	|| (psb_detaileds !=  nullptr && is_set(psb_detaileds->operation))
-	|| (pxsb_details !=  nullptr && is_set(pxsb_details->operation))
-	|| (request_briefs !=  nullptr && is_set(request_briefs->operation))
-	|| (request_details !=  nullptr && is_set(request_details->operation))
-	|| (rsb_briefs !=  nullptr && is_set(rsb_briefs->operation))
-	|| (rsb_detaileds !=  nullptr && is_set(rsb_detaileds->operation))
-	|| (rxsb_details !=  nullptr && is_set(rxsb_details->operation))
-	|| (session_briefs !=  nullptr && is_set(session_briefs->operation))
-	|| (session_detaileds !=  nullptr && is_set(session_detaileds->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (authentication_briefs !=  nullptr && authentication_briefs->has_operation())
+	|| (authentication_details !=  nullptr && authentication_details->has_operation())
+	|| (bw_pool_info !=  nullptr && bw_pool_info->has_operation())
+	|| (controller_briefs !=  nullptr && controller_briefs->has_operation())
+	|| (controller_detaileds !=  nullptr && controller_detaileds->has_operation())
+	|| (controller_summaries !=  nullptr && controller_summaries->has_operation())
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (frr_summary !=  nullptr && frr_summary->has_operation())
+	|| (frrs !=  nullptr && frrs->has_operation())
+	|| (global_neighbor_briefs !=  nullptr && global_neighbor_briefs->has_operation())
+	|| (global_neighbor_details !=  nullptr && global_neighbor_details->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (hello_instance_briefs !=  nullptr && hello_instance_briefs->has_operation())
+	|| (hello_instance_details !=  nullptr && hello_instance_details->has_operation())
+	|| (hello_interface_instance_briefs !=  nullptr && hello_interface_instance_briefs->has_operation())
+	|| (hello_interface_instance_details !=  nullptr && hello_interface_instance_details->has_operation())
+	|| (interface_briefs !=  nullptr && interface_briefs->has_operation())
+	|| (interface_detaileds !=  nullptr && interface_detaileds->has_operation())
+	|| (interface_neighbor_briefs !=  nullptr && interface_neighbor_briefs->has_operation())
+	|| (interface_neighbor_details !=  nullptr && interface_neighbor_details->has_operation())
+	|| (interface_summaries !=  nullptr && interface_summaries->has_operation())
+	|| (issu !=  nullptr && issu->has_operation())
+	|| (nsr !=  nullptr && nsr->has_operation())
+	|| (open_config !=  nullptr && open_config->has_operation())
+	|| (psb_briefs !=  nullptr && psb_briefs->has_operation())
+	|| (psb_detaileds !=  nullptr && psb_detaileds->has_operation())
+	|| (pxsb_details !=  nullptr && pxsb_details->has_operation())
+	|| (request_briefs !=  nullptr && request_briefs->has_operation())
+	|| (request_details !=  nullptr && request_details->has_operation())
+	|| (rsb_briefs !=  nullptr && rsb_briefs->has_operation())
+	|| (rsb_detaileds !=  nullptr && rsb_detaileds->has_operation())
+	|| (rxsb_details !=  nullptr && rxsb_details->has_operation())
+	|| (session_briefs !=  nullptr && session_briefs->has_operation())
+	|| (session_detaileds !=  nullptr && session_detaileds->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Rsvp::get_segment_path() const
@@ -104307,7 +104369,7 @@ EntityPath Rsvp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -105153,126 +105215,126 @@ std::unique_ptr<Entity> Rsvp::clone_ptr()
     return std::make_unique<Rsvp>();
 }
 
-const Enum::Value RsvpMgmtAssociationEnum::none {0, "none"};
-const Enum::Value RsvpMgmtAssociationEnum::ipv4 {1, "ipv4"};
-const Enum::Value RsvpMgmtAssociationEnum::ipv6 {2, "ipv6"};
-const Enum::Value RsvpMgmtAssociationEnum::extended_ipv4 {3, "extended-ipv4"};
-const Enum::Value RsvpMgmtAssociationEnum::extended_ipv6 {4, "extended-ipv6"};
+const Enum::YLeaf RsvpMgmtAssociationEnum::none {0, "none"};
+const Enum::YLeaf RsvpMgmtAssociationEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf RsvpMgmtAssociationEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf RsvpMgmtAssociationEnum::extended_ipv4 {3, "extended-ipv4"};
+const Enum::YLeaf RsvpMgmtAssociationEnum::extended_ipv6 {4, "extended-ipv6"};
 
-const Enum::Value RsvpMgmtEroSubobjEnum::rsvp_mgmt_ero_type_ipv4 {1, "rsvp-mgmt-ero-type-ipv4"};
-const Enum::Value RsvpMgmtEroSubobjEnum::rsvp_mgmt_ero_type_un_num {4, "rsvp-mgmt-ero-type-un-num"};
+const Enum::YLeaf RsvpMgmtEroSubobjEnum::rsvp_mgmt_ero_type_ipv4 {1, "rsvp-mgmt-ero-type-ipv4"};
+const Enum::YLeaf RsvpMgmtEroSubobjEnum::rsvp_mgmt_ero_type_un_num {4, "rsvp-mgmt-ero-type-un-num"};
 
-const Enum::Value RsvpMgmtQosServiceEnumEnum::rsvp_mgmt_qos_unknown {0, "rsvp-mgmt-qos-unknown"};
-const Enum::Value RsvpMgmtQosServiceEnumEnum::rsvp_mgmt_qos_guaranteed {3, "rsvp-mgmt-qos-guaranteed"};
-const Enum::Value RsvpMgmtQosServiceEnumEnum::rsvp_mgmt_qos_controlled_load {5, "rsvp-mgmt-qos-controlled-load"};
-const Enum::Value RsvpMgmtQosServiceEnumEnum::rsvp_mgmt_qos_qualitative {6, "rsvp-mgmt-qos-qualitative"};
+const Enum::YLeaf RsvpMgmtQosServiceEnumEnum::rsvp_mgmt_qos_unknown {0, "rsvp-mgmt-qos-unknown"};
+const Enum::YLeaf RsvpMgmtQosServiceEnumEnum::rsvp_mgmt_qos_guaranteed {3, "rsvp-mgmt-qos-guaranteed"};
+const Enum::YLeaf RsvpMgmtQosServiceEnumEnum::rsvp_mgmt_qos_controlled_load {5, "rsvp-mgmt-qos-controlled-load"};
+const Enum::YLeaf RsvpMgmtQosServiceEnumEnum::rsvp_mgmt_qos_qualitative {6, "rsvp-mgmt-qos-qualitative"};
 
-const Enum::Value RsvpMgmtHelloInstanceEnum::active {0, "active"};
-const Enum::Value RsvpMgmtHelloInstanceEnum::passive {1, "passive"};
+const Enum::YLeaf RsvpMgmtHelloInstanceEnum::active {0, "active"};
+const Enum::YLeaf RsvpMgmtHelloInstanceEnum::passive {1, "passive"};
 
-const Enum::Value IgpteLibBwModelEnum::rdm {0, "rdm"};
-const Enum::Value IgpteLibBwModelEnum::mam {1, "mam"};
-const Enum::Value IgpteLibBwModelEnum::not_set {2, "not-set"};
+const Enum::YLeaf IgpteLibBwModelEnum::rdm {0, "rdm"};
+const Enum::YLeaf IgpteLibBwModelEnum::mam {1, "mam"};
+const Enum::YLeaf IgpteLibBwModelEnum::not_set {2, "not-set"};
 
-const Enum::Value RsvpMgmtFrrStateEnumEnum::ready_state {0, "ready-state"};
-const Enum::Value RsvpMgmtFrrStateEnumEnum::pending_state {1, "pending-state"};
-const Enum::Value RsvpMgmtFrrStateEnumEnum::active_state {2, "active-state"};
+const Enum::YLeaf RsvpMgmtFrrStateEnumEnum::ready_state {0, "ready-state"};
+const Enum::YLeaf RsvpMgmtFrrStateEnumEnum::pending_state {1, "pending-state"};
+const Enum::YLeaf RsvpMgmtFrrStateEnumEnum::active_state {2, "active-state"};
 
-const Enum::Value RsvpProcNsrNotReadyReasonEnum::collab_time_out {0, "collab-time-out"};
-const Enum::Value RsvpProcNsrNotReadyReasonEnum::collab_conntection_idt {1, "collab-conntection-idt"};
-const Enum::Value RsvpProcNsrNotReadyReasonEnum::nsr_peer_not_connected {2, "nsr-peer-not-connected"};
-const Enum::Value RsvpProcNsrNotReadyReasonEnum::nsr_peer_not_in_sync {3, "nsr-peer-not-in-sync"};
+const Enum::YLeaf RsvpProcNsrNotReadyReasonEnum::collab_time_out {0, "collab-time-out"};
+const Enum::YLeaf RsvpProcNsrNotReadyReasonEnum::collab_conntection_idt {1, "collab-conntection-idt"};
+const Enum::YLeaf RsvpProcNsrNotReadyReasonEnum::nsr_peer_not_connected {2, "nsr-peer-not-connected"};
+const Enum::YLeaf RsvpProcNsrNotReadyReasonEnum::nsr_peer_not_in_sync {3, "nsr-peer-not-in-sync"};
 
-const Enum::Value RsvpMgmtDsteModesEnum::pre_standard {1, "pre-standard"};
-const Enum::Value RsvpMgmtDsteModesEnum::standard {3, "standard"};
+const Enum::YLeaf RsvpMgmtDsteModesEnum::pre_standard {1, "pre-standard"};
+const Enum::YLeaf RsvpMgmtDsteModesEnum::standard {3, "standard"};
 
-const Enum::Value RsvpMgmtRestartStateEnum::done {0, "done"};
-const Enum::Value RsvpMgmtRestartStateEnum::recovery {1, "recovery"};
-const Enum::Value RsvpMgmtRestartStateEnum::abort {2, "abort"};
+const Enum::YLeaf RsvpMgmtRestartStateEnum::done {0, "done"};
+const Enum::YLeaf RsvpMgmtRestartStateEnum::recovery {1, "recovery"};
+const Enum::YLeaf RsvpMgmtRestartStateEnum::abort {2, "abort"};
 
-const Enum::Value RsvpMgmtReservationTypeEnumEnum::rsvp_mgmt_ff_option {10, "rsvp-mgmt-ff-option"};
-const Enum::Value RsvpMgmtReservationTypeEnumEnum::rsvp_mgmt_wf_option {17, "rsvp-mgmt-wf-option"};
-const Enum::Value RsvpMgmtReservationTypeEnumEnum::rsvp_mgmt_se_option {18, "rsvp-mgmt-se-option"};
+const Enum::YLeaf RsvpMgmtReservationTypeEnumEnum::rsvp_mgmt_ff_option {10, "rsvp-mgmt-ff-option"};
+const Enum::YLeaf RsvpMgmtReservationTypeEnumEnum::rsvp_mgmt_wf_option {17, "rsvp-mgmt-wf-option"};
+const Enum::YLeaf RsvpMgmtReservationTypeEnumEnum::rsvp_mgmt_se_option {18, "rsvp-mgmt-se-option"};
 
-const Enum::Value RsvpMgmtTspecEnum::g709otn {5, "g709otn"};
-const Enum::Value RsvpMgmtTspecEnum::intsrv {12, "intsrv"};
+const Enum::YLeaf RsvpMgmtTspecEnum::g709otn {5, "g709otn"};
+const Enum::YLeaf RsvpMgmtTspecEnum::intsrv {12, "intsrv"};
 
-const Enum::Value RsvpMgmtAuthDirectionEnum::rsvp_mgmt_auth_direction_send {0, "rsvp-mgmt-auth-direction-send"};
-const Enum::Value RsvpMgmtAuthDirectionEnum::rsvp_mgmt_auth_direction_recv {1, "rsvp-mgmt-auth-direction-recv"};
+const Enum::YLeaf RsvpMgmtAuthDirectionEnum::rsvp_mgmt_auth_direction_send {0, "rsvp-mgmt-auth-direction-send"};
+const Enum::YLeaf RsvpMgmtAuthDirectionEnum::rsvp_mgmt_auth_direction_recv {1, "rsvp-mgmt-auth-direction-recv"};
 
-const Enum::Value RsvpMgmtFilterEnum::rsvp_mgmt_filter_type_ipv4 {1, "rsvp-mgmt-filter-type-ipv4"};
-const Enum::Value RsvpMgmtFilterEnum::rsvp_mgmt_filter_type_p2mp_lsp_ipv4 {12, "rsvp-mgmt-filter-type-p2mp-lsp-ipv4"};
+const Enum::YLeaf RsvpMgmtFilterEnum::rsvp_mgmt_filter_type_ipv4 {1, "rsvp-mgmt-filter-type-ipv4"};
+const Enum::YLeaf RsvpMgmtFilterEnum::rsvp_mgmt_filter_type_p2mp_lsp_ipv4 {12, "rsvp-mgmt-filter-type-p2mp-lsp-ipv4"};
 
-const Enum::Value RsvpProcRoleEnum::unknown {0, "unknown"};
-const Enum::Value RsvpProcRoleEnum::v1_active {1, "v1-active"};
-const Enum::Value RsvpProcRoleEnum::v1_standby {2, "v1-standby"};
-const Enum::Value RsvpProcRoleEnum::v2_active {3, "v2-active"};
-const Enum::Value RsvpProcRoleEnum::v2_standby {4, "v2-standby"};
-const Enum::Value RsvpProcRoleEnum::v1_active_post_big_bang {5, "v1-active-post-big-bang"};
-const Enum::Value RsvpProcRoleEnum::v1_standby_post_big_bang {6, "v1-standby-post-big-bang"};
-const Enum::Value RsvpProcRoleEnum::count {7, "count"};
+const Enum::YLeaf RsvpProcRoleEnum::unknown {0, "unknown"};
+const Enum::YLeaf RsvpProcRoleEnum::v1_active {1, "v1-active"};
+const Enum::YLeaf RsvpProcRoleEnum::v1_standby {2, "v1-standby"};
+const Enum::YLeaf RsvpProcRoleEnum::v2_active {3, "v2-active"};
+const Enum::YLeaf RsvpProcRoleEnum::v2_standby {4, "v2-standby"};
+const Enum::YLeaf RsvpProcRoleEnum::v1_active_post_big_bang {5, "v1-active-post-big-bang"};
+const Enum::YLeaf RsvpProcRoleEnum::v1_standby_post_big_bang {6, "v1-standby-post-big-bang"};
+const Enum::YLeaf RsvpProcRoleEnum::count {7, "count"};
 
-const Enum::Value RsvpSessionEnum::ipv4 {1, "ipv4"};
-const Enum::Value RsvpSessionEnum::p2p_lsp_ipv4 {7, "p2p-lsp-ipv4"};
-const Enum::Value RsvpSessionEnum::ouni_ipv4 {9, "ouni-ipv4"};
-const Enum::Value RsvpSessionEnum::p2mp_lsp_ipv4 {13, "p2mp-lsp-ipv4"};
+const Enum::YLeaf RsvpSessionEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf RsvpSessionEnum::p2p_lsp_ipv4 {7, "p2p-lsp-ipv4"};
+const Enum::YLeaf RsvpSessionEnum::ouni_ipv4 {9, "ouni-ipv4"};
+const Enum::YLeaf RsvpSessionEnum::p2mp_lsp_ipv4 {13, "p2mp-lsp-ipv4"};
 
-const Enum::Value RsvpMgmtHelloStateEnum::hello_state_init {0, "hello-state-init"};
-const Enum::Value RsvpMgmtHelloStateEnum::hello_state_up {1, "hello-state-up"};
-const Enum::Value RsvpMgmtHelloStateEnum::hello_state_down {2, "hello-state-down"};
+const Enum::YLeaf RsvpMgmtHelloStateEnum::hello_state_init {0, "hello-state-init"};
+const Enum::YLeaf RsvpMgmtHelloStateEnum::hello_state_up {1, "hello-state-up"};
+const Enum::YLeaf RsvpMgmtHelloStateEnum::hello_state_down {2, "hello-state-down"};
 
-const Enum::Value RsvpMgmtFlowSpecEnum::g709otn {5, "g709otn"};
+const Enum::YLeaf RsvpMgmtFlowSpecEnum::g709otn {5, "g709otn"};
 
-const Enum::Value RsvpMgmtHelloInstanceOwnerEnum::mpls_graceful_restart {0, "mpls-graceful-restart"};
-const Enum::Value RsvpMgmtHelloInstanceOwnerEnum::mpls_ouni {1, "mpls-ouni"};
+const Enum::YLeaf RsvpMgmtHelloInstanceOwnerEnum::mpls_graceful_restart {0, "mpls-graceful-restart"};
+const Enum::YLeaf RsvpMgmtHelloInstanceOwnerEnum::mpls_ouni {1, "mpls-ouni"};
 
-const Enum::Value RsvpMgmtRroSubobjEnum::ipv4rro_type {1, "ipv4rro-type"};
-const Enum::Value RsvpMgmtRroSubobjEnum::label_rro_type {3, "label-rro-type"};
-const Enum::Value RsvpMgmtRroSubobjEnum::unnumbered_rro_type {4, "unnumbered-rro-type"};
-const Enum::Value RsvpMgmtRroSubobjEnum::srlg_rro_type {34, "srlg-rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobjEnum::ipv4rro_type {1, "ipv4rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobjEnum::label_rro_type {3, "label-rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobjEnum::unnumbered_rro_type {4, "unnumbered-rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobjEnum::srlg_rro_type {34, "srlg-rro-type"};
 
-const Enum::Value RsvpMgmtSessionEnum::rsvp_mgmt_session_type_udp_ipv4 {1, "rsvp-mgmt-session-type-udp-ipv4"};
-const Enum::Value RsvpMgmtSessionEnum::rsvp_mgmt_session_type_lsp_ipv4 {7, "rsvp-mgmt-session-type-lsp-ipv4"};
-const Enum::Value RsvpMgmtSessionEnum::rsvp_mgmt_session_type_uni_ipv4 {9, "rsvp-mgmt-session-type-uni-ipv4"};
-const Enum::Value RsvpMgmtSessionEnum::rsvp_mgmt_session_type_p2mp_lsp_ipv4 {13, "rsvp-mgmt-session-type-p2mp-lsp-ipv4"};
+const Enum::YLeaf RsvpMgmtSessionEnum::rsvp_mgmt_session_type_udp_ipv4 {1, "rsvp-mgmt-session-type-udp-ipv4"};
+const Enum::YLeaf RsvpMgmtSessionEnum::rsvp_mgmt_session_type_lsp_ipv4 {7, "rsvp-mgmt-session-type-lsp-ipv4"};
+const Enum::YLeaf RsvpMgmtSessionEnum::rsvp_mgmt_session_type_uni_ipv4 {9, "rsvp-mgmt-session-type-uni-ipv4"};
+const Enum::YLeaf RsvpMgmtSessionEnum::rsvp_mgmt_session_type_p2mp_lsp_ipv4 {13, "rsvp-mgmt-session-type-p2mp-lsp-ipv4"};
 
-const Enum::Value RsvpMgmtHelloDownReasonEnum::not_applicable {0, "not-applicable"};
-const Enum::Value RsvpMgmtHelloDownReasonEnum::wrong_destination_instance {1, "wrong-destination-instance"};
-const Enum::Value RsvpMgmtHelloDownReasonEnum::wrong_source_instance {2, "wrong-source-instance"};
-const Enum::Value RsvpMgmtHelloDownReasonEnum::hello_missed {3, "hello-missed"};
-const Enum::Value RsvpMgmtHelloDownReasonEnum::interface_down {4, "interface-down"};
-const Enum::Value RsvpMgmtHelloDownReasonEnum::neighbor_disabled_hello {5, "neighbor-disabled-hello"};
-const Enum::Value RsvpMgmtHelloDownReasonEnum::control_channel_down {6, "control-channel-down"};
+const Enum::YLeaf RsvpMgmtHelloDownReasonEnum::not_applicable {0, "not-applicable"};
+const Enum::YLeaf RsvpMgmtHelloDownReasonEnum::wrong_destination_instance {1, "wrong-destination-instance"};
+const Enum::YLeaf RsvpMgmtHelloDownReasonEnum::wrong_source_instance {2, "wrong-source-instance"};
+const Enum::YLeaf RsvpMgmtHelloDownReasonEnum::hello_missed {3, "hello-missed"};
+const Enum::YLeaf RsvpMgmtHelloDownReasonEnum::interface_down {4, "interface-down"};
+const Enum::YLeaf RsvpMgmtHelloDownReasonEnum::neighbor_disabled_hello {5, "neighbor-disabled-hello"};
+const Enum::YLeaf RsvpMgmtHelloDownReasonEnum::control_channel_down {6, "control-channel-down"};
 
-const Enum::Value RsvpMgmtGenericLabelEnum::rsvp_mgmt_label_type_gmpls {2, "rsvp-mgmt-label-type-gmpls"};
+const Enum::YLeaf RsvpMgmtGenericLabelEnum::rsvp_mgmt_label_type_gmpls {2, "rsvp-mgmt-label-type-gmpls"};
 
-const Enum::Value RsvpMgmtGrAppEnum::ouni {0, "ouni"};
-const Enum::Value RsvpMgmtGrAppEnum::gmpls {1, "gmpls"};
+const Enum::YLeaf RsvpMgmtGrAppEnum::ouni {0, "ouni"};
+const Enum::YLeaf RsvpMgmtGrAppEnum::gmpls {1, "gmpls"};
 
-const Enum::Value RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_not_cfg {0, "rsvp-mgmt-auth-cs-not-cfg"};
-const Enum::Value RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_completed {1, "rsvp-mgmt-auth-cs-completed"};
-const Enum::Value RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_in_progress {2, "rsvp-mgmt-auth-cs-in-progress"};
-const Enum::Value RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_failure {3, "rsvp-mgmt-auth-cs-failure"};
-const Enum::Value RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_not_supported {4, "rsvp-mgmt-auth-cs-not-supported"};
+const Enum::YLeaf RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_not_cfg {0, "rsvp-mgmt-auth-cs-not-cfg"};
+const Enum::YLeaf RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_completed {1, "rsvp-mgmt-auth-cs-completed"};
+const Enum::YLeaf RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_in_progress {2, "rsvp-mgmt-auth-cs-in-progress"};
+const Enum::YLeaf RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_failure {3, "rsvp-mgmt-auth-cs-failure"};
+const Enum::YLeaf RsvpMgmtAuthChallengeStatusEnum::rsvp_mgmt_auth_cs_not_supported {4, "rsvp-mgmt-auth-cs-not-supported"};
 
-const Enum::Value RsvpMgmtAuthKiEnum::rsvp_mgmt_auth_ki_type_none {0, "rsvp-mgmt-auth-ki-type-none"};
-const Enum::Value RsvpMgmtAuthKiEnum::rsvp_mgmt_auth_ki_type_global {1, "rsvp-mgmt-auth-ki-type-global"};
-const Enum::Value RsvpMgmtAuthKiEnum::rsvp_mgmt_auth_ki_type_interface {2, "rsvp-mgmt-auth-ki-type-interface"};
-const Enum::Value RsvpMgmtAuthKiEnum::rsvp_mgmt_auth_ki_type_neighbor {3, "rsvp-mgmt-auth-ki-type-neighbor"};
+const Enum::YLeaf RsvpMgmtAuthKiEnum::rsvp_mgmt_auth_ki_type_none {0, "rsvp-mgmt-auth-ki-type-none"};
+const Enum::YLeaf RsvpMgmtAuthKiEnum::rsvp_mgmt_auth_ki_type_global {1, "rsvp-mgmt-auth-ki-type-global"};
+const Enum::YLeaf RsvpMgmtAuthKiEnum::rsvp_mgmt_auth_ki_type_interface {2, "rsvp-mgmt-auth-ki-type-interface"};
+const Enum::YLeaf RsvpMgmtAuthKiEnum::rsvp_mgmt_auth_ki_type_neighbor {3, "rsvp-mgmt-auth-ki-type-neighbor"};
 
-const Enum::Value RsvpTimerStateEnum::rsvp_timer_running_and_sleeping {1, "rsvp-timer-running-and-sleeping"};
-const Enum::Value RsvpTimerStateEnum::rsvp_timer_running {2, "rsvp-timer-running"};
-const Enum::Value RsvpTimerStateEnum::rsvp_timer_not_running {3, "rsvp-timer-not-running"};
+const Enum::YLeaf RsvpTimerStateEnum::rsvp_timer_running_and_sleeping {1, "rsvp-timer-running-and-sleeping"};
+const Enum::YLeaf RsvpTimerStateEnum::rsvp_timer_running {2, "rsvp-timer-running"};
+const Enum::YLeaf RsvpTimerStateEnum::rsvp_timer_not_running {3, "rsvp-timer-not-running"};
 
-const Enum::Value RsvpSyncStatusEnum::not_ready {0, "not-ready"};
-const Enum::Value RsvpSyncStatusEnum::ready {1, "ready"};
+const Enum::YLeaf RsvpSyncStatusEnum::not_ready {0, "not-ready"};
+const Enum::YLeaf RsvpSyncStatusEnum::ready {1, "ready"};
 
-const Enum::Value RsvpModeEnum::send {0, "send"};
-const Enum::Value RsvpModeEnum::receive {1, "receive"};
+const Enum::YLeaf RsvpModeEnum::send {0, "send"};
+const Enum::YLeaf RsvpModeEnum::receive {1, "receive"};
 
-const Enum::Value RsvpMgmtEroSubobjStatusEnum::rsvp_mgmt_ero_status_not_available {0, "rsvp-mgmt-ero-status-not-available"};
-const Enum::Value RsvpMgmtEroSubobjStatusEnum::rsvp_mgmt_ero_status_available {1, "rsvp-mgmt-ero-status-available"};
-const Enum::Value RsvpMgmtEroSubobjStatusEnum::rsvp_mgmt_ero_status_bw_not_available {2, "rsvp-mgmt-ero-status-bw-not-available"};
+const Enum::YLeaf RsvpMgmtEroSubobjStatusEnum::rsvp_mgmt_ero_status_not_available {0, "rsvp-mgmt-ero-status-not-available"};
+const Enum::YLeaf RsvpMgmtEroSubobjStatusEnum::rsvp_mgmt_ero_status_available {1, "rsvp-mgmt-ero-status-available"};
+const Enum::YLeaf RsvpMgmtEroSubobjStatusEnum::rsvp_mgmt_ero_status_bw_not_available {2, "rsvp-mgmt-ero-status-bw-not-available"};
 
 
 }

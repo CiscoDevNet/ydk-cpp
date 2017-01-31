@@ -24,8 +24,9 @@ class RoutingPolicy : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value editor; //type: string
 
+
+        YLeaf editor; //type: string
 
     class RoutePolicies : public Entity
     {
@@ -42,6 +43,7 @@ class RoutingPolicy : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RoutePolicy : public Entity
         {
             public:
@@ -55,9 +57,10 @@ class RoutingPolicy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value route_policy_name; //type: string
-                Value rpl_route_policy; //type: string
 
+
+                YLeaf route_policy_name; //type: string
+                YLeaf rpl_route_policy; //type: string
 
 
 
@@ -85,6 +88,7 @@ class RoutingPolicy : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class PrefixSets : public Entity
         {
             public:
@@ -100,6 +104,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class PrefixSet : public Entity
             {
                 public:
@@ -113,9 +118,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rpl_prefix_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rpl_prefix_set; //type: string
 
 
 
@@ -143,6 +149,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ExtendedCommunityOpaqueSet : public Entity
             {
                 public:
@@ -156,9 +163,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rpl_extended_community_opaque_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rpl_extended_community_opaque_set; //type: string
 
 
 
@@ -186,6 +194,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class OspfAreaSet : public Entity
             {
                 public:
@@ -199,9 +208,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rplospf_area_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rplospf_area_set; //type: string
 
 
 
@@ -229,6 +239,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ExtendedCommunityCostSet : public Entity
             {
                 public:
@@ -242,9 +253,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rpl_extended_community_cost_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rpl_extended_community_cost_set; //type: string
 
 
 
@@ -272,6 +284,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ExtendedCommunitySooSet : public Entity
             {
                 public:
@@ -285,9 +298,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rpl_extended_community_soo_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rpl_extended_community_soo_set; //type: string
 
 
 
@@ -315,6 +329,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ExtendedCommunitySegNhSet : public Entity
             {
                 public:
@@ -328,9 +343,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rpl_extended_community_seg_nh_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rpl_extended_community_seg_nh_set; //type: string
 
 
 
@@ -358,6 +374,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RdSet : public Entity
             {
                 public:
@@ -371,9 +388,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rplrd_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rplrd_set; //type: string
 
 
 
@@ -399,8 +417,9 @@ class RoutingPolicy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value policy_global_set; //type: string
 
+
+                YLeaf policy_global_set; //type: string
 
 
 
@@ -422,6 +441,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ExtendedCommunityBandwidthSet : public Entity
             {
                 public:
@@ -435,9 +455,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rpl_extended_community_bandwidth_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rpl_extended_community_bandwidth_set; //type: string
 
 
 
@@ -465,6 +486,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class CommunitySet : public Entity
             {
                 public:
@@ -478,9 +500,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rpl_community_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rpl_community_set; //type: string
 
 
 
@@ -508,6 +531,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class AsPathSet : public Entity
             {
                 public:
@@ -521,9 +545,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rplas_path_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rplas_path_set; //type: string
 
 
 
@@ -551,6 +576,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TagSet : public Entity
             {
                 public:
@@ -564,9 +590,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rpl_tag_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rpl_tag_set; //type: string
 
 
 
@@ -594,6 +621,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ExtendedCommunityRtSet : public Entity
             {
                 public:
@@ -607,9 +635,10 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value set_name; //type: string
-                    Value rpl_extended_community_rt_set; //type: string
 
+
+                    YLeaf set_name; //type: string
+                    YLeaf rpl_extended_community_rt_set; //type: string
 
 
 
@@ -653,9 +682,10 @@ class RoutingPolicy : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value maximum_lines_of_policy; //type: int32
-            Value maximum_number_of_policies; //type: int32
 
+
+            YLeaf maximum_lines_of_policy; //type: int32
+            YLeaf maximum_number_of_policies; //type: int32
 
 
 

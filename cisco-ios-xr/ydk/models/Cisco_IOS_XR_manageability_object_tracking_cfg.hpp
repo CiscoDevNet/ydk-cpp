@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_manageability_object_tracking_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_manageability_object_tracking_cfg {
@@ -28,6 +27,7 @@ class ObjectTrackings : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class ObjectTracking : public Entity
     {
         public:
@@ -41,15 +41,16 @@ class ObjectTrackings : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value track_name; //type: string
-            Value delay_up; //type: uint32
-            Value enable; //type: empty
-            Value delay_down; //type: uint32
-            Value type_interface_enable; //type: empty
-            Value type_route_enable; //type: empty
-            Value type_boolean_list_and_enable; //type: empty
-            Value type_boolean_list_or_enable; //type: empty
 
+
+            YLeaf track_name; //type: string
+            YLeaf delay_up; //type: uint32
+            YLeaf enable; //type: empty
+            YLeaf delay_down; //type: uint32
+            YLeaf type_interface_enable; //type: empty
+            YLeaf type_route_enable; //type: empty
+            YLeaf type_boolean_list_and_enable; //type: empty
+            YLeaf type_boolean_list_or_enable; //type: empty
 
         class TypeInterface : public Entity
         {
@@ -64,8 +65,9 @@ class ObjectTrackings : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface; //type: string
 
+
+                YLeaf interface; //type: string
 
 
 
@@ -87,6 +89,7 @@ class ObjectTrackings : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ThresholdWeight : public Entity
             {
                 public:
@@ -100,6 +103,7 @@ class ObjectTrackings : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class ThresholdLimits : public Entity
@@ -117,6 +121,7 @@ class ObjectTrackings : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ThresholdUpValues : public Entity
                     {
                         public:
@@ -132,6 +137,7 @@ class ObjectTrackings : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ThresholdUpValue : public Entity
                         {
                             public:
@@ -145,9 +151,10 @@ class ObjectTrackings : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value up; //type: int32
-                                Value threshold_down; //type: int32
 
+
+                                YLeaf up; //type: int32
+                                YLeaf threshold_down; //type: int32
 
 
 
@@ -187,6 +194,7 @@ class ObjectTrackings : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Object : public Entity
                 {
                     public:
@@ -200,9 +208,10 @@ class ObjectTrackings : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object; //type: string
-                        Value object_weight; //type: int32
 
+
+                        YLeaf object; //type: string
+                        YLeaf object_weight; //type: int32
 
 
 
@@ -230,6 +239,7 @@ class ObjectTrackings : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ThresholdLimits : public Entity
                 {
                     public:
@@ -243,6 +253,7 @@ class ObjectTrackings : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class ThresholdUpValues : public Entity
@@ -260,6 +271,7 @@ class ObjectTrackings : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ThresholdUpValue : public Entity
                         {
                             public:
@@ -273,9 +285,10 @@ class ObjectTrackings : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value up; //type: int32
-                                Value threshold_down; //type: int32
 
+
+                                YLeaf up; //type: int32
+                                YLeaf threshold_down; //type: int32
 
 
 
@@ -315,6 +328,7 @@ class ObjectTrackings : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Object : public Entity
                 {
                     public:
@@ -328,9 +342,10 @@ class ObjectTrackings : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object; //type: string
-                        Value object_weight; //type: int32
 
+
+                        YLeaf object; //type: string
+                        YLeaf object_weight; //type: int32
 
 
 
@@ -365,8 +380,9 @@ class ObjectTrackings : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf; //type: string
 
+
+                YLeaf vrf; //type: string
 
             class IpAddress : public Entity
             {
@@ -381,9 +397,10 @@ class ObjectTrackings : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address; //type: string
-                    Value mask; //type: string
 
+
+                    YLeaf address; //type: string
+                    YLeaf mask; //type: string
 
 
 
@@ -411,6 +428,7 @@ class ObjectTrackings : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class OrObjects : public Entity
             {
                 public:
@@ -426,6 +444,7 @@ class ObjectTrackings : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OrObject : public Entity
                 {
                     public:
@@ -439,11 +458,11 @@ class ObjectTrackings : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object; //type: string
-                        Value object_sign; //type: ObjectTrackingBooleanSignEnum
 
 
-                        class ObjectTrackingBooleanSignEnum;
+                        YLeaf object; //type: string
+                        YLeaf object_sign; //type: ObjectTrackingBooleanSignEnum
+
 
 
                 }; // ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject
@@ -470,6 +489,7 @@ class ObjectTrackings : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AndObject : public Entity
                 {
                     public:
@@ -483,11 +503,11 @@ class ObjectTrackings : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value object_name; //type: string
-                        Value object_sign; //type: ObjectTrackingBooleanSignEnum
 
 
-                        class ObjectTrackingBooleanSignEnum;
+                        YLeaf object_name; //type: string
+                        YLeaf object_sign; //type: ObjectTrackingBooleanSignEnum
+
 
 
                 }; // ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject

@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_lpts_punt_flowtrap_cfg {
 class LptsPuntFlowtrapProtoIdEnum : public Enum
 {
     public:
-        static const Enum::Value default_;
-        static const Enum::Value arp;
-        static const Enum::Value icmp;
-        static const Enum::Value dhcp;
-        static const Enum::Value pppoe;
-        static const Enum::Value ppp;
-        static const Enum::Value igmp;
-        static const Enum::Value ipv4;
-        static const Enum::Value l2tp;
-        static const Enum::Value unclassified;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf arp;
+        static const Enum::YLeaf icmp;
+        static const Enum::YLeaf dhcp;
+        static const Enum::YLeaf pppoe;
+        static const Enum::YLeaf ppp;
+        static const Enum::YLeaf igmp;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf l2tp;
+        static const Enum::YLeaf unclassified;
 
 };
 

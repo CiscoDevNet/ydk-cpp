@@ -55,7 +55,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -162,7 +162,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -281,7 +281,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::B
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -401,7 +401,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -514,7 +514,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -681,7 +681,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -864,7 +864,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::has
     return is_set(operation)
 	|| is_set(sham_link_state.operation)
 	|| is_set(sham_link_suppress_hello.operation)
-	|| (sham_link_retransmission !=  nullptr && is_set(sham_link_retransmission->operation));
+	|| (sham_link_retransmission !=  nullptr && sham_link_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::get_segment_path() const
@@ -881,7 +881,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1060,7 +1060,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::has_operation() const
 	|| is_set(sham_link_transmission_delay.operation)
 	|| is_set(sham_link_wait_interval.operation)
 	|| is_set(virtual_link_authentication_spi.operation)
-	|| (sham_link_neighbor !=  nullptr && is_set(sham_link_neighbor->operation));
+	|| (sham_link_neighbor !=  nullptr && sham_link_neighbor->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::get_segment_path() const
@@ -1077,7 +1077,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1327,7 +1327,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1497,7 +1497,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1710,7 +1710,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1835,7 +1835,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2009,7 +2009,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2207,8 +2207,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(router_la_bits.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_segment_path() const
@@ -2225,7 +2225,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2430,7 +2430,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2604,7 +2604,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2777,7 +2777,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2874,7 +2874,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2984,9 +2984,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
     }
     return is_set(operation)
 	|| is_set(router_la_bits.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation))
-	|| (rpf_path !=  nullptr && is_set(rpf_path->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation())
+	|| (rpf_path !=  nullptr && rpf_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_segment_path() const
@@ -3003,7 +3003,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3202,7 +3202,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3376,7 +3376,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3532,7 +3532,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::Ne
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::has_data() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3543,14 +3543,15 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::has_operation() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| is_set(neighbor_router.operation)
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_segment_path() const
@@ -3567,7 +3568,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3718,7 +3719,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3892,7 +3893,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4063,8 +4064,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_segment_path() const
@@ -4081,7 +4082,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4241,7 +4242,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4415,7 +4416,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4580,8 +4581,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 {
     return is_set(operation)
 	|| is_set(lsa_router_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_segment_path() const
@@ -4598,7 +4599,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4748,7 +4749,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4922,7 +4923,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5108,8 +5109,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_segment_path() const
@@ -5126,7 +5127,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5311,7 +5312,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5485,7 +5486,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5671,8 +5672,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_segment_path() const
@@ -5689,7 +5690,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5874,7 +5875,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6048,7 +6049,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6230,7 +6231,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6353,8 +6354,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(router_priority.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_segment_path() const
@@ -6371,7 +6372,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6577,7 +6578,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6751,7 +6752,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6933,7 +6934,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7044,8 +7045,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(reference_advertised_router.operation)
 	|| is_set(reference_lsa_id.operation)
 	|| is_set(reference_type.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_segment_path() const
@@ -7062,7 +7063,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7248,7 +7249,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7422,7 +7423,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7590,8 +7591,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
     return is_set(operation)
 	|| is_set(grace_period.operation)
 	|| is_set(grace_reason.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_segment_path() const
@@ -7608,7 +7609,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7763,7 +7764,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7937,7 +7938,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8114,8 +8115,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_segment_path() const
@@ -8132,7 +8133,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8302,7 +8303,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8476,7 +8477,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8653,8 +8654,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_segment_path() const
@@ -8671,7 +8672,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8841,7 +8842,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9015,7 +9016,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9192,8 +9193,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_segment_path() const
@@ -9210,7 +9211,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9380,7 +9381,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9554,7 +9555,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9731,8 +9732,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_segment_path() const
@@ -9749,7 +9750,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9950,20 +9951,20 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInf
 {
     return is_set(operation)
 	|| is_set(lsa_info_type.operation)
-	|| (external_lsa_type !=  nullptr && is_set(external_lsa_type->operation))
-	|| (grace_lsa !=  nullptr && is_set(grace_lsa->operation))
-	|| (inter_area_prefix_lsa_type !=  nullptr && is_set(inter_area_prefix_lsa_type->operation))
-	|| (inter_area_router_lsa_type !=  nullptr && is_set(inter_area_router_lsa_type->operation))
-	|| (intra_area_prefix_lsa_type !=  nullptr && is_set(intra_area_prefix_lsa_type->operation))
-	|| (link_lsa_type !=  nullptr && is_set(link_lsa_type->operation))
-	|| (lsa_summary_info !=  nullptr && is_set(lsa_summary_info->operation))
-	|| (network_lsa_type !=  nullptr && is_set(network_lsa_type->operation))
-	|| (nssalsa_type !=  nullptr && is_set(nssalsa_type->operation))
-	|| (router_lsa_type !=  nullptr && is_set(router_lsa_type->operation))
-	|| (unknown_area_lsa_type !=  nullptr && is_set(unknown_area_lsa_type->operation))
-	|| (unknown_aslsa_type !=  nullptr && is_set(unknown_aslsa_type->operation))
-	|| (unknown_link_lsa_type !=  nullptr && is_set(unknown_link_lsa_type->operation))
-	|| (unknown_lsa_type !=  nullptr && is_set(unknown_lsa_type->operation));
+	|| (external_lsa_type !=  nullptr && external_lsa_type->has_operation())
+	|| (grace_lsa !=  nullptr && grace_lsa->has_operation())
+	|| (inter_area_prefix_lsa_type !=  nullptr && inter_area_prefix_lsa_type->has_operation())
+	|| (inter_area_router_lsa_type !=  nullptr && inter_area_router_lsa_type->has_operation())
+	|| (intra_area_prefix_lsa_type !=  nullptr && intra_area_prefix_lsa_type->has_operation())
+	|| (link_lsa_type !=  nullptr && link_lsa_type->has_operation())
+	|| (lsa_summary_info !=  nullptr && lsa_summary_info->has_operation())
+	|| (network_lsa_type !=  nullptr && network_lsa_type->has_operation())
+	|| (nssalsa_type !=  nullptr && nssalsa_type->has_operation())
+	|| (router_lsa_type !=  nullptr && router_lsa_type->has_operation())
+	|| (unknown_area_lsa_type !=  nullptr && unknown_area_lsa_type->has_operation())
+	|| (unknown_aslsa_type !=  nullptr && unknown_aslsa_type->has_operation())
+	|| (unknown_link_lsa_type !=  nullptr && unknown_link_lsa_type->has_operation())
+	|| (unknown_lsa_type !=  nullptr && unknown_lsa_type->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_segment_path() const
@@ -9980,7 +9981,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10384,7 +10385,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::has_op
 	|| is_set(interface_name.operation)
 	|| is_set(ls_id.operation)
 	|| is_set(ls_type.operation)
-	|| (lsa_info !=  nullptr && is_set(lsa_info->operation));
+	|| (lsa_info !=  nullptr && lsa_info->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::get_segment_path() const
@@ -10401,7 +10402,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10531,7 +10532,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10656,7 +10657,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10830,7 +10831,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11028,8 +11029,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(router_la_bits.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_segment_path() const
@@ -11046,7 +11047,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11251,7 +11252,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11425,7 +11426,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11598,7 +11599,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11695,7 +11696,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11805,9 +11806,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
     }
     return is_set(operation)
 	|| is_set(router_la_bits.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation))
-	|| (rpf_path !=  nullptr && is_set(rpf_path->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation())
+	|| (rpf_path !=  nullptr && rpf_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_segment_path() const
@@ -11824,7 +11825,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12023,7 +12024,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12197,7 +12198,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12353,7 +12354,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::Lsa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::has_data() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -12364,14 +12365,15 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::has_operation() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| is_set(neighbor_router.operation)
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_segment_path() const
@@ -12388,7 +12390,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12539,7 +12541,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12713,7 +12715,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12884,8 +12886,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_segment_path() const
@@ -12902,7 +12904,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13062,7 +13064,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13236,7 +13238,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13401,8 +13403,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 {
     return is_set(operation)
 	|| is_set(lsa_router_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_segment_path() const
@@ -13419,7 +13421,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13569,7 +13571,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13743,7 +13745,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13929,8 +13931,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_segment_path() const
@@ -13947,7 +13949,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14132,7 +14134,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14306,7 +14308,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14492,8 +14494,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_segment_path() const
@@ -14510,7 +14512,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14695,7 +14697,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14869,7 +14871,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15051,7 +15053,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15174,8 +15176,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(router_priority.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_segment_path() const
@@ -15192,7 +15194,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15398,7 +15400,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15572,7 +15574,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15754,7 +15756,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15865,8 +15867,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(reference_advertised_router.operation)
 	|| is_set(reference_lsa_id.operation)
 	|| is_set(reference_type.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_segment_path() const
@@ -15883,7 +15885,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16069,7 +16071,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16243,7 +16245,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16411,8 +16413,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
     return is_set(operation)
 	|| is_set(grace_period.operation)
 	|| is_set(grace_reason.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_segment_path() const
@@ -16429,7 +16431,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16584,7 +16586,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16758,7 +16760,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16935,8 +16937,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_segment_path() const
@@ -16953,7 +16955,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17123,7 +17125,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17297,7 +17299,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17474,8 +17476,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_segment_path() const
@@ -17492,7 +17494,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17662,7 +17664,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17836,7 +17838,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18013,8 +18015,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_segment_path() const
@@ -18031,7 +18033,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18201,7 +18203,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18375,7 +18377,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18552,8 +18554,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_segment_path() const
@@ -18570,7 +18572,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18771,20 +18773,20 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 {
     return is_set(operation)
 	|| is_set(lsa_info_type.operation)
-	|| (external_lsa_type !=  nullptr && is_set(external_lsa_type->operation))
-	|| (grace_lsa !=  nullptr && is_set(grace_lsa->operation))
-	|| (inter_area_prefix_lsa_type !=  nullptr && is_set(inter_area_prefix_lsa_type->operation))
-	|| (inter_area_router_lsa_type !=  nullptr && is_set(inter_area_router_lsa_type->operation))
-	|| (intra_area_prefix_lsa_type !=  nullptr && is_set(intra_area_prefix_lsa_type->operation))
-	|| (link_lsa_type !=  nullptr && is_set(link_lsa_type->operation))
-	|| (lsa_summary_info !=  nullptr && is_set(lsa_summary_info->operation))
-	|| (network_lsa_type !=  nullptr && is_set(network_lsa_type->operation))
-	|| (nssalsa_type !=  nullptr && is_set(nssalsa_type->operation))
-	|| (router_lsa_type !=  nullptr && is_set(router_lsa_type->operation))
-	|| (unknown_area_lsa_type !=  nullptr && is_set(unknown_area_lsa_type->operation))
-	|| (unknown_aslsa_type !=  nullptr && is_set(unknown_aslsa_type->operation))
-	|| (unknown_link_lsa_type !=  nullptr && is_set(unknown_link_lsa_type->operation))
-	|| (unknown_lsa_type !=  nullptr && is_set(unknown_lsa_type->operation));
+	|| (external_lsa_type !=  nullptr && external_lsa_type->has_operation())
+	|| (grace_lsa !=  nullptr && grace_lsa->has_operation())
+	|| (inter_area_prefix_lsa_type !=  nullptr && inter_area_prefix_lsa_type->has_operation())
+	|| (inter_area_router_lsa_type !=  nullptr && inter_area_router_lsa_type->has_operation())
+	|| (intra_area_prefix_lsa_type !=  nullptr && intra_area_prefix_lsa_type->has_operation())
+	|| (link_lsa_type !=  nullptr && link_lsa_type->has_operation())
+	|| (lsa_summary_info !=  nullptr && lsa_summary_info->has_operation())
+	|| (network_lsa_type !=  nullptr && network_lsa_type->has_operation())
+	|| (nssalsa_type !=  nullptr && nssalsa_type->has_operation())
+	|| (router_lsa_type !=  nullptr && router_lsa_type->has_operation())
+	|| (unknown_area_lsa_type !=  nullptr && unknown_area_lsa_type->has_operation())
+	|| (unknown_aslsa_type !=  nullptr && unknown_aslsa_type->has_operation())
+	|| (unknown_link_lsa_type !=  nullptr && unknown_link_lsa_type->has_operation())
+	|| (unknown_lsa_type !=  nullptr && unknown_lsa_type->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::get_segment_path() const
@@ -18801,7 +18803,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19205,7 +19207,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 	|| is_set(interface_name.operation)
 	|| is_set(ls_id.operation)
 	|| is_set(ls_type.operation)
-	|| (lsa_info !=  nullptr && is_set(lsa_info->operation));
+	|| (lsa_info !=  nullptr && lsa_info->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::get_segment_path() const
@@ -19222,7 +19224,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19352,7 +19354,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19444,8 +19446,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::has_data() const
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::has_operation() const
 {
     return is_set(operation)
-	|| (lsa_internal_table !=  nullptr && is_set(lsa_internal_table->operation))
-	|| (lsa_table !=  nullptr && is_set(lsa_table->operation));
+	|| (lsa_internal_table !=  nullptr && lsa_internal_table->has_operation())
+	|| (lsa_table !=  nullptr && lsa_table->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::get_segment_path() const
@@ -19462,7 +19464,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19634,7 +19636,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19805,7 +19807,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19907,7 +19909,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20129,8 +20131,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ha
 	|| is_set(ospf_interface_state.operation)
 	|| is_set(transmission_delay.operation)
 	|| is_set(wait_interval.operation)
-	|| (active_interface !=  nullptr && is_set(active_interface->operation))
-	|| (interface_bfd !=  nullptr && is_set(interface_bfd->operation));
+	|| (active_interface !=  nullptr && active_interface->has_operation())
+	|| (interface_bfd !=  nullptr && interface_bfd->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::get_segment_path() const
@@ -20147,7 +20149,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20501,7 +20503,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20629,7 +20631,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistributio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20761,7 +20763,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20871,7 +20873,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20981,7 +20983,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21110,7 +21112,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21226,7 +21228,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Route
 	|| is_set(interface_name.operation)
 	|| is_set(route_path_id.operation)
 	|| is_set(route_path_next_hop.operation)
-	|| (route_backup_path !=  nullptr && is_set(route_backup_path->operation));
+	|| (route_backup_path !=  nullptr && route_backup_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::get_segment_path() const
@@ -21243,7 +21245,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21364,8 +21366,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::has_o
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (route_extended_community !=  nullptr && is_set(route_extended_community->operation))
-	|| (route_topology !=  nullptr && is_set(route_topology->operation));
+	|| (route_extended_community !=  nullptr && route_extended_community->has_operation())
+	|| (route_topology !=  nullptr && route_topology->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::get_segment_path() const
@@ -21382,7 +21384,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21546,7 +21548,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21659,7 +21661,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Reque
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21787,7 +21789,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Reque
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21930,7 +21932,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22097,7 +22099,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22280,7 +22282,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::ha
     return is_set(operation)
 	|| is_set(is_virtual_link_hello_suppressed.operation)
 	|| is_set(virtual_link_state.operation)
-	|| (virtual_link_retransmission !=  nullptr && is_set(virtual_link_retransmission->operation));
+	|| (virtual_link_retransmission !=  nullptr && virtual_link_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::get_segment_path() const
@@ -22297,7 +22299,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22467,7 +22469,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::has_operation() const
 	|| is_set(virtual_link_state.operation)
 	|| is_set(virtual_link_wait_interval.operation)
 	|| is_set(virual_link_transmission_delay.operation)
-	|| (virtual_link_neighbor !=  nullptr && is_set(virtual_link_neighbor->operation));
+	|| (virtual_link_neighbor !=  nullptr && virtual_link_neighbor->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::get_segment_path() const
@@ -22484,7 +22486,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22719,7 +22721,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22831,7 +22833,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22943,7 +22945,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23079,7 +23081,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23254,7 +23256,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23385,7 +23387,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23581,7 +23583,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23791,7 +23793,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::Ne
 	|| is_set(pending_events.operation)
 	|| is_set(poll_interval.operation)
 	|| is_set(state_changes.operation)
-	|| (neighbor_retransmission !=  nullptr && is_set(neighbor_retransmission->operation));
+	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::get_segment_path() const
@@ -23808,7 +23810,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23964,7 +23966,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24080,8 +24082,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::Ne
 	|| is_set(neighbor_state.operation)
 	|| is_set(neighbor_up_time.operation)
 	|| is_set(neighbor_virtual_link_id.operation)
-	|| (neighbor_bfd_info !=  nullptr && is_set(neighbor_bfd_info->operation))
-	|| (neighbor_detail !=  nullptr && is_set(neighbor_detail->operation));
+	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
+	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::get_segment_path() const
@@ -24098,7 +24100,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24291,7 +24293,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24410,7 +24412,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24527,7 +24529,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24640,7 +24642,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24768,7 +24770,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24911,7 +24913,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25078,7 +25080,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Ne
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25288,7 +25290,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Neighbor
 	|| is_set(pending_events.operation)
 	|| is_set(poll_interval.operation)
 	|| is_set(state_changes.operation)
-	|| (neighbor_retransmission !=  nullptr && is_set(neighbor_retransmission->operation));
+	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Neighbor::NeighborDetail::get_segment_path() const
@@ -25305,7 +25307,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Ne
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25461,7 +25463,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Ne
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25577,8 +25579,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Neighbor
 	|| is_set(neighbor_state.operation)
 	|| is_set(neighbor_up_time.operation)
 	|| is_set(neighbor_virtual_link_id.operation)
-	|| (neighbor_bfd_info !=  nullptr && is_set(neighbor_bfd_info->operation))
-	|| (neighbor_detail !=  nullptr && is_set(neighbor_detail->operation));
+	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
+	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Neighbor::get_segment_path() const
@@ -25595,7 +25597,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Ne
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25788,7 +25790,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25940,7 +25942,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26111,7 +26113,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26213,7 +26215,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26435,8 +26437,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::Interfa
 	|| is_set(ospf_interface_state.operation)
 	|| is_set(transmission_delay.operation)
 	|| is_set(wait_interval.operation)
-	|| (active_interface !=  nullptr && is_set(active_interface->operation))
-	|| (interface_bfd !=  nullptr && is_set(interface_bfd->operation));
+	|| (active_interface !=  nullptr && active_interface->has_operation())
+	|| (interface_bfd !=  nullptr && interface_bfd->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::Interface::get_segment_path() const
@@ -26453,7 +26455,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26807,7 +26809,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26920,7 +26922,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::F
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27032,7 +27034,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::F
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27144,7 +27146,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::F
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27280,7 +27282,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::F
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27455,7 +27457,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27568,7 +27570,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionLis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27680,7 +27682,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionLis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27792,7 +27794,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionLis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27946,7 +27948,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionLis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28151,7 +28153,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionLis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28276,7 +28278,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28450,7 +28452,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28648,8 +28650,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(router_la_bits.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_segment_path() const
@@ -28666,7 +28668,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28871,7 +28873,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29045,7 +29047,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29218,7 +29220,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29315,7 +29317,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29425,9 +29427,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
     }
     return is_set(operation)
 	|| is_set(router_la_bits.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation))
-	|| (rpf_path !=  nullptr && is_set(rpf_path->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation())
+	|| (rpf_path !=  nullptr && rpf_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_segment_path() const
@@ -29444,7 +29446,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29643,7 +29645,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29817,7 +29819,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29973,7 +29975,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::has_data() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -29984,14 +29986,15 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::has_operation() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| is_set(neighbor_router.operation)
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_segment_path() const
@@ -30008,7 +30011,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30159,7 +30162,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30333,7 +30336,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30504,8 +30507,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_segment_path() const
@@ -30522,7 +30525,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30682,7 +30685,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30856,7 +30859,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31021,8 +31024,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 {
     return is_set(operation)
 	|| is_set(lsa_router_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_segment_path() const
@@ -31039,7 +31042,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31189,7 +31192,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31363,7 +31366,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31549,8 +31552,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_segment_path() const
@@ -31567,7 +31570,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31752,7 +31755,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31926,7 +31929,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32112,8 +32115,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_segment_path() const
@@ -32130,7 +32133,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32315,7 +32318,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32489,7 +32492,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32671,7 +32674,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32794,8 +32797,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(router_priority.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_segment_path() const
@@ -32812,7 +32815,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33018,7 +33021,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33192,7 +33195,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33374,7 +33377,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33485,8 +33488,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(reference_advertised_router.operation)
 	|| is_set(reference_lsa_id.operation)
 	|| is_set(reference_type.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_segment_path() const
@@ -33503,7 +33506,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33689,7 +33692,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33863,7 +33866,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34031,8 +34034,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
     return is_set(operation)
 	|| is_set(grace_period.operation)
 	|| is_set(grace_reason.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_segment_path() const
@@ -34049,7 +34052,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34204,7 +34207,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34378,7 +34381,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34555,8 +34558,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_segment_path() const
@@ -34573,7 +34576,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34743,7 +34746,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34917,7 +34920,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35094,8 +35097,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_segment_path() const
@@ -35112,7 +35115,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35282,7 +35285,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35456,7 +35459,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35633,8 +35636,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_segment_path() const
@@ -35651,7 +35654,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35821,7 +35824,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35995,7 +35998,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36172,8 +36175,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_segment_path() const
@@ -36190,7 +36193,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36391,20 +36394,20 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 {
     return is_set(operation)
 	|| is_set(lsa_info_type.operation)
-	|| (external_lsa_type !=  nullptr && is_set(external_lsa_type->operation))
-	|| (grace_lsa !=  nullptr && is_set(grace_lsa->operation))
-	|| (inter_area_prefix_lsa_type !=  nullptr && is_set(inter_area_prefix_lsa_type->operation))
-	|| (inter_area_router_lsa_type !=  nullptr && is_set(inter_area_router_lsa_type->operation))
-	|| (intra_area_prefix_lsa_type !=  nullptr && is_set(intra_area_prefix_lsa_type->operation))
-	|| (link_lsa_type !=  nullptr && is_set(link_lsa_type->operation))
-	|| (lsa_summary_info !=  nullptr && is_set(lsa_summary_info->operation))
-	|| (network_lsa_type !=  nullptr && is_set(network_lsa_type->operation))
-	|| (nssalsa_type !=  nullptr && is_set(nssalsa_type->operation))
-	|| (router_lsa_type !=  nullptr && is_set(router_lsa_type->operation))
-	|| (unknown_area_lsa_type !=  nullptr && is_set(unknown_area_lsa_type->operation))
-	|| (unknown_aslsa_type !=  nullptr && is_set(unknown_aslsa_type->operation))
-	|| (unknown_link_lsa_type !=  nullptr && is_set(unknown_link_lsa_type->operation))
-	|| (unknown_lsa_type !=  nullptr && is_set(unknown_lsa_type->operation));
+	|| (external_lsa_type !=  nullptr && external_lsa_type->has_operation())
+	|| (grace_lsa !=  nullptr && grace_lsa->has_operation())
+	|| (inter_area_prefix_lsa_type !=  nullptr && inter_area_prefix_lsa_type->has_operation())
+	|| (inter_area_router_lsa_type !=  nullptr && inter_area_router_lsa_type->has_operation())
+	|| (intra_area_prefix_lsa_type !=  nullptr && intra_area_prefix_lsa_type->has_operation())
+	|| (link_lsa_type !=  nullptr && link_lsa_type->has_operation())
+	|| (lsa_summary_info !=  nullptr && lsa_summary_info->has_operation())
+	|| (network_lsa_type !=  nullptr && network_lsa_type->has_operation())
+	|| (nssalsa_type !=  nullptr && nssalsa_type->has_operation())
+	|| (router_lsa_type !=  nullptr && router_lsa_type->has_operation())
+	|| (unknown_area_lsa_type !=  nullptr && unknown_area_lsa_type->has_operation())
+	|| (unknown_aslsa_type !=  nullptr && unknown_aslsa_type->has_operation())
+	|| (unknown_link_lsa_type !=  nullptr && unknown_link_lsa_type->has_operation())
+	|| (unknown_lsa_type !=  nullptr && unknown_lsa_type->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::get_segment_path() const
@@ -36421,7 +36424,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36825,7 +36828,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 	|| is_set(interface_name.operation)
 	|| is_set(ls_id.operation)
 	|| is_set(ls_type.operation)
-	|| (lsa_info !=  nullptr && is_set(lsa_info->operation));
+	|| (lsa_info !=  nullptr && lsa_info->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::get_segment_path() const
@@ -36842,7 +36845,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36972,7 +36975,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37097,7 +37100,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37271,7 +37274,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37469,8 +37472,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(router_la_bits.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_segment_path() const
@@ -37487,7 +37490,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37692,7 +37695,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37866,7 +37869,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38039,7 +38042,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38136,7 +38139,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38246,9 +38249,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
     }
     return is_set(operation)
 	|| is_set(router_la_bits.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation))
-	|| (rpf_path !=  nullptr && is_set(rpf_path->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation())
+	|| (rpf_path !=  nullptr && rpf_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_segment_path() const
@@ -38265,7 +38268,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38464,7 +38467,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38638,7 +38641,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38794,7 +38797,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::has_data() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -38805,14 +38808,15 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::has_operation() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| is_set(neighbor_router.operation)
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_segment_path() const
@@ -38829,7 +38833,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38980,7 +38984,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39154,7 +39158,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39325,8 +39329,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_segment_path() const
@@ -39343,7 +39347,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39503,7 +39507,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39677,7 +39681,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39842,8 +39846,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 {
     return is_set(operation)
 	|| is_set(lsa_router_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_segment_path() const
@@ -39860,7 +39864,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40010,7 +40014,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40184,7 +40188,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40370,8 +40374,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_segment_path() const
@@ -40388,7 +40392,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40573,7 +40577,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40747,7 +40751,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40933,8 +40937,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_segment_path() const
@@ -40951,7 +40955,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41136,7 +41140,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41310,7 +41314,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41492,7 +41496,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41615,8 +41619,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(router_priority.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_segment_path() const
@@ -41633,7 +41637,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41839,7 +41843,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42013,7 +42017,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42195,7 +42199,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42306,8 +42310,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(reference_advertised_router.operation)
 	|| is_set(reference_lsa_id.operation)
 	|| is_set(reference_type.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_segment_path() const
@@ -42324,7 +42328,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42510,7 +42514,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42684,7 +42688,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42852,8 +42856,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
     return is_set(operation)
 	|| is_set(grace_period.operation)
 	|| is_set(grace_reason.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_segment_path() const
@@ -42870,7 +42874,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43025,7 +43029,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43199,7 +43203,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43376,8 +43380,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_segment_path() const
@@ -43394,7 +43398,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43564,7 +43568,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43738,7 +43742,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43915,8 +43919,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_segment_path() const
@@ -43933,7 +43937,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44103,7 +44107,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44277,7 +44281,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44454,8 +44458,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_segment_path() const
@@ -44472,7 +44476,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44642,7 +44646,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44816,7 +44820,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44993,8 +44997,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_segment_path() const
@@ -45011,7 +45015,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45212,20 +45216,20 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 {
     return is_set(operation)
 	|| is_set(lsa_info_type.operation)
-	|| (external_lsa_type !=  nullptr && is_set(external_lsa_type->operation))
-	|| (grace_lsa !=  nullptr && is_set(grace_lsa->operation))
-	|| (inter_area_prefix_lsa_type !=  nullptr && is_set(inter_area_prefix_lsa_type->operation))
-	|| (inter_area_router_lsa_type !=  nullptr && is_set(inter_area_router_lsa_type->operation))
-	|| (intra_area_prefix_lsa_type !=  nullptr && is_set(intra_area_prefix_lsa_type->operation))
-	|| (link_lsa_type !=  nullptr && is_set(link_lsa_type->operation))
-	|| (lsa_summary_info !=  nullptr && is_set(lsa_summary_info->operation))
-	|| (network_lsa_type !=  nullptr && is_set(network_lsa_type->operation))
-	|| (nssalsa_type !=  nullptr && is_set(nssalsa_type->operation))
-	|| (router_lsa_type !=  nullptr && is_set(router_lsa_type->operation))
-	|| (unknown_area_lsa_type !=  nullptr && is_set(unknown_area_lsa_type->operation))
-	|| (unknown_aslsa_type !=  nullptr && is_set(unknown_aslsa_type->operation))
-	|| (unknown_link_lsa_type !=  nullptr && is_set(unknown_link_lsa_type->operation))
-	|| (unknown_lsa_type !=  nullptr && is_set(unknown_lsa_type->operation));
+	|| (external_lsa_type !=  nullptr && external_lsa_type->has_operation())
+	|| (grace_lsa !=  nullptr && grace_lsa->has_operation())
+	|| (inter_area_prefix_lsa_type !=  nullptr && inter_area_prefix_lsa_type->has_operation())
+	|| (inter_area_router_lsa_type !=  nullptr && inter_area_router_lsa_type->has_operation())
+	|| (intra_area_prefix_lsa_type !=  nullptr && intra_area_prefix_lsa_type->has_operation())
+	|| (link_lsa_type !=  nullptr && link_lsa_type->has_operation())
+	|| (lsa_summary_info !=  nullptr && lsa_summary_info->has_operation())
+	|| (network_lsa_type !=  nullptr && network_lsa_type->has_operation())
+	|| (nssalsa_type !=  nullptr && nssalsa_type->has_operation())
+	|| (router_lsa_type !=  nullptr && router_lsa_type->has_operation())
+	|| (unknown_area_lsa_type !=  nullptr && unknown_area_lsa_type->has_operation())
+	|| (unknown_aslsa_type !=  nullptr && unknown_aslsa_type->has_operation())
+	|| (unknown_link_lsa_type !=  nullptr && unknown_link_lsa_type->has_operation())
+	|| (unknown_lsa_type !=  nullptr && unknown_lsa_type->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::get_segment_path() const
@@ -45242,7 +45246,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45646,7 +45650,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInter
 	|| is_set(interface_name.operation)
 	|| is_set(ls_id.operation)
 	|| is_set(ls_type.operation)
-	|| (lsa_info !=  nullptr && is_set(lsa_info->operation));
+	|| (lsa_info !=  nullptr && lsa_info->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::get_segment_path() const
@@ -45663,7 +45667,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45793,7 +45797,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::Ls
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45885,8 +45889,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::has_data
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::has_operation() const
 {
     return is_set(operation)
-	|| (lsa_internal_table !=  nullptr && is_set(lsa_internal_table->operation))
-	|| (lsa_table !=  nullptr && is_set(lsa_table->operation));
+	|| (lsa_internal_table !=  nullptr && lsa_internal_table->has_operation())
+	|| (lsa_table !=  nullptr && lsa_table->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::get_segment_path() const
@@ -45903,7 +45907,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46004,22 +46008,22 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::Databa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_data() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -46029,27 +46033,31 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::D
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_operation() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(deleted_lsa.operation)
+	|| is_set(lsa.operation)
+	|| is_set(lsa_checksum.operation)
+	|| is_set(max_age_lsa.operation);
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_segment_path() const
@@ -46066,7 +46074,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46145,22 +46153,22 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::Databa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_data() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -46170,27 +46178,31 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::D
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_operation() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(deleted_lsa.operation)
+	|| is_set(lsa.operation)
+	|| is_set(lsa_checksum.operation)
+	|| is_set(max_age_lsa.operation);
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_segment_path() const
@@ -46207,7 +46219,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46296,7 +46308,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::D
 {
     return is_set(operation)
 	|| is_set(lsa_area_id.operation)
-	|| (area_database_summary !=  nullptr && is_set(area_database_summary->operation));
+	|| (area_database_summary !=  nullptr && area_database_summary->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_segment_path() const
@@ -46313,7 +46325,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46419,7 +46431,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::D
     return is_set(operation)
 	|| is_set(database_router_id.operation)
 	|| is_set(is_opaque_database_capable.operation)
-	|| (database_counters !=  nullptr && is_set(database_counters->operation));
+	|| (database_counters !=  nullptr && database_counters->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::get_segment_path() const
@@ -46436,7 +46448,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46556,7 +46568,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::h
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::has_operation() const
 {
     return is_set(operation)
-	|| (database_summary !=  nullptr && is_set(database_summary->operation));
+	|| (database_summary !=  nullptr && database_summary->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::get_segment_path() const
@@ -46573,7 +46585,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46701,15 +46713,15 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::has_operation() const
 {
     return is_set(operation)
 	|| is_set(area_id.operation)
-	|| (database_summary_table !=  nullptr && is_set(database_summary_table->operation))
-	|| (database_table !=  nullptr && is_set(database_table->operation))
-	|| (flood_list_table !=  nullptr && is_set(flood_list_table->operation))
-	|| (interface_brief_table !=  nullptr && is_set(interface_brief_table->operation))
-	|| (interface_table !=  nullptr && is_set(interface_table->operation))
-	|| (neighbor_detail_table !=  nullptr && is_set(neighbor_detail_table->operation))
-	|| (neighbor_table !=  nullptr && is_set(neighbor_table->operation))
-	|| (request_list_table !=  nullptr && is_set(request_list_table->operation))
-	|| (retransmission_list_table !=  nullptr && is_set(retransmission_list_table->operation));
+	|| (database_summary_table !=  nullptr && database_summary_table->has_operation())
+	|| (database_table !=  nullptr && database_table->has_operation())
+	|| (flood_list_table !=  nullptr && flood_list_table->has_operation())
+	|| (interface_brief_table !=  nullptr && interface_brief_table->has_operation())
+	|| (interface_table !=  nullptr && interface_table->has_operation())
+	|| (neighbor_detail_table !=  nullptr && neighbor_detail_table->has_operation())
+	|| (neighbor_table !=  nullptr && neighbor_table->has_operation())
+	|| (request_list_table !=  nullptr && request_list_table->has_operation())
+	|| (retransmission_list_table !=  nullptr && retransmission_list_table->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::get_segment_path() const
@@ -46726,7 +46738,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47020,7 +47032,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Areas::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47130,7 +47142,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47231,7 +47243,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47345,7 +47357,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47461,7 +47473,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::Route
 	|| is_set(interface_name.operation)
 	|| is_set(route_path_id.operation)
 	|| is_set(route_path_next_hop.operation)
-	|| (route_backup_path !=  nullptr && is_set(route_backup_path->operation));
+	|| (route_backup_path !=  nullptr && route_backup_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath::get_segment_path() const
@@ -47478,7 +47490,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47607,7 +47619,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::has_o
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(route_area_id.operation)
-	|| (route_topology !=  nullptr && is_set(route_topology->operation));
+	|| (route_topology !=  nullptr && route_topology->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::get_segment_path() const
@@ -47624,7 +47636,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47796,7 +47808,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47900,7 +47912,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas::ProtocolArea::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48001,7 +48013,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas::ProtocolArea::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48124,7 +48136,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48234,7 +48246,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRout
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48353,7 +48365,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRout
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48469,7 +48481,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::Rou
 	|| is_set(interface_name.operation)
 	|| is_set(route_path_id.operation)
 	|| is_set(route_path_next_hop.operation)
-	|| (route_backup_path !=  nullptr && is_set(route_backup_path->operation));
+	|| (route_backup_path !=  nullptr && route_backup_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath::get_segment_path() const
@@ -48486,7 +48498,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRout
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48602,7 +48614,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::has
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (route_topology !=  nullptr && is_set(route_topology->operation));
+	|| (route_topology !=  nullptr && route_topology->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::get_segment_path() const
@@ -48619,7 +48631,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRout
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48760,7 +48772,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48876,7 +48888,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Protocol::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48984,7 +48996,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::Pr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49072,7 +49084,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49153,7 +49165,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::has_oper
             return true;
     }
     return is_set(operation)
-	|| (primary_domain_id !=  nullptr && is_set(primary_domain_id->operation));
+	|| (primary_domain_id !=  nullptr && primary_domain_id->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::get_segment_path() const
@@ -49170,7 +49182,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49297,7 +49309,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49385,7 +49397,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49473,7 +49485,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49561,7 +49573,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49649,7 +49661,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49738,8 +49750,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigge
 	|| is_set(trigger.operation)
 	|| is_set(unset_reason.operation)
 	|| is_set(wait_for_bgp.operation)
-	|| (start_time !=  nullptr && is_set(start_time->operation))
-	|| (unset_time !=  nullptr && is_set(unset_time->operation));
+	|| (start_time !=  nullptr && start_time->has_operation())
+	|| (unset_time !=  nullptr && unset_time->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::get_segment_path() const
@@ -49756,7 +49768,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49931,9 +49943,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::has_op
 	|| is_set(set_reason.operation)
 	|| is_set(summary_lsa_metric.operation)
 	|| is_set(unset_reason.operation)
-	|| (abr_resume_time !=  nullptr && is_set(abr_resume_time->operation))
-	|| (start_time !=  nullptr && is_set(start_time->operation))
-	|| (unset_time !=  nullptr && is_set(unset_time->operation));
+	|| (abr_resume_time !=  nullptr && abr_resume_time->has_operation())
+	|| (start_time !=  nullptr && start_time->has_operation())
+	|| (unset_time !=  nullptr && unset_time->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::get_segment_path() const
@@ -49950,7 +49962,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50168,7 +50180,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::IpfrrTiebrea
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50407,7 +50419,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::has_operation() co
 	|| is_set(spf_maximum_time.operation)
 	|| is_set(spf_start_time.operation)
 	|| is_set(stub_areas.operation)
-	|| (domain_id !=  nullptr && is_set(domain_id->operation));
+	|| (domain_id !=  nullptr && domain_id->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::get_segment_path() const
@@ -50424,7 +50436,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50849,7 +50861,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Route::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50975,9 +50987,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Summary::has_data() const
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Summary::has_operation() const
 {
     return is_set(operation)
-	|| (ospfv3 !=  nullptr && is_set(ospfv3->operation))
-	|| (protocol !=  nullptr && is_set(protocol->operation))
-	|| (route !=  nullptr && is_set(route->operation));
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (protocol !=  nullptr && protocol->has_operation())
+	|| (route !=  nullptr && route->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::Summary::get_segment_path() const
@@ -50994,7 +51006,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::Summary::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51150,7 +51162,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51262,7 +51274,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51374,7 +51386,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51528,7 +51540,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51733,7 +51745,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51837,7 +51849,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::Tim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51921,7 +51933,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::has_opera
 	|| is_set(computed_checksum.operation)
 	|| is_set(received_checksum.operation)
 	|| is_set(received_data.operation)
-	|| (timestamp !=  nullptr && is_set(timestamp->operation));
+	|| (timestamp !=  nullptr && timestamp->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::get_segment_path() const
@@ -51938,7 +51950,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52063,7 +52075,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52144,22 +52156,22 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::Da
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_data() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -52169,27 +52181,31 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummar
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_operation() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(deleted_lsa.operation)
+	|| is_set(lsa.operation)
+	|| is_set(lsa_checksum.operation)
+	|| is_set(max_age_lsa.operation);
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_segment_path() const
@@ -52206,7 +52222,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::Database
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52285,22 +52301,22 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::Ar
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_data() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -52310,27 +52326,31 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummar
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_operation() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(deleted_lsa.operation)
+	|| is_set(lsa.operation)
+	|| is_set(lsa_checksum.operation)
+	|| is_set(max_age_lsa.operation);
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_segment_path() const
@@ -52347,7 +52367,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::Database
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52436,7 +52456,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummar
 {
     return is_set(operation)
 	|| is_set(lsa_area_id.operation)
-	|| (area_database_summary !=  nullptr && is_set(area_database_summary->operation));
+	|| (area_database_summary !=  nullptr && area_database_summary->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_segment_path() const
@@ -52453,7 +52473,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::Database
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52559,7 +52579,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummar
     return is_set(operation)
 	|| is_set(database_router_id.operation)
 	|| is_set(is_opaque_database_capable.operation)
-	|| (database_counters !=  nullptr && is_set(database_counters->operation));
+	|| (database_counters !=  nullptr && database_counters->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::get_segment_path() const
@@ -52576,7 +52596,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::Database
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52696,7 +52716,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::has_data() con
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::has_operation() const
 {
     return is_set(operation)
-	|| (database_summary !=  nullptr && is_set(database_summary->operation));
+	|| (database_summary !=  nullptr && database_summary->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::get_segment_path() const
@@ -52713,7 +52733,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52877,7 +52897,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53087,7 +53107,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::Neig
 	|| is_set(pending_events.operation)
 	|| is_set(poll_interval.operation)
 	|| is_set(state_changes.operation)
-	|| (neighbor_retransmission !=  nullptr && is_set(neighbor_retransmission->operation));
+	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::get_segment_path() const
@@ -53104,7 +53124,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53260,7 +53280,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53376,8 +53396,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::has_
 	|| is_set(neighbor_state.operation)
 	|| is_set(neighbor_up_time.operation)
 	|| is_set(neighbor_virtual_link_id.operation)
-	|| (neighbor_bfd_info !=  nullptr && is_set(neighbor_bfd_info->operation))
-	|| (neighbor_detail !=  nullptr && is_set(neighbor_detail->operation));
+	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
+	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::get_segment_path() const
@@ -53394,7 +53414,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53587,7 +53607,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53706,7 +53726,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::Ipf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53838,7 +53858,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53971,7 +53991,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54090,7 +54110,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::In
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54207,7 +54227,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54374,7 +54394,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::Ne
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54584,7 +54604,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::Neighbor
 	|| is_set(pending_events.operation)
 	|| is_set(poll_interval.operation)
 	|| is_set(state_changes.operation)
-	|| (neighbor_retransmission !=  nullptr && is_set(neighbor_retransmission->operation));
+	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::get_segment_path() const
@@ -54601,7 +54621,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::Ne
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54757,7 +54777,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::Ne
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54873,8 +54893,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::Neighbor
 	|| is_set(neighbor_state.operation)
 	|| is_set(neighbor_up_time.operation)
 	|| is_set(neighbor_virtual_link_id.operation)
-	|| (neighbor_bfd_info !=  nullptr && is_set(neighbor_bfd_info->operation))
-	|| (neighbor_detail !=  nullptr && is_set(neighbor_detail->operation));
+	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
+	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::get_segment_path() const
@@ -54891,7 +54911,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::Ne
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55084,7 +55104,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55290,30 +55310,30 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (area_informations !=  nullptr && is_set(area_informations->operation))
-	|| (areas !=  nullptr && is_set(areas->operation))
-	|| (bad_checksums !=  nullptr && is_set(bad_checksums->operation))
-	|| (border_routers !=  nullptr && is_set(border_routers->operation))
-	|| (connected_routes !=  nullptr && is_set(connected_routes->operation))
-	|| (database_summary_table !=  nullptr && is_set(database_summary_table->operation))
-	|| (database_table !=  nullptr && is_set(database_table->operation))
-	|| (external_routes !=  nullptr && is_set(external_routes->operation))
-	|| (fast_reroutes !=  nullptr && is_set(fast_reroutes->operation))
-	|| (flood_list_process_table !=  nullptr && is_set(flood_list_process_table->operation))
-	|| (interface_brief_process_table !=  nullptr && is_set(interface_brief_process_table->operation))
-	|| (interface_process_table !=  nullptr && is_set(interface_process_table->operation))
-	|| (internal_routes !=  nullptr && is_set(internal_routes->operation))
-	|| (neighbor_detail_process_table !=  nullptr && is_set(neighbor_detail_process_table->operation))
-	|| (neighbor_process_table !=  nullptr && is_set(neighbor_process_table->operation))
-	|| (protocol_areas !=  nullptr && is_set(protocol_areas->operation))
-	|| (redistributions !=  nullptr && is_set(redistributions->operation))
-	|| (request_list_process_table !=  nullptr && is_set(request_list_process_table->operation))
-	|| (retransmission_list_process_table !=  nullptr && is_set(retransmission_list_process_table->operation))
-	|| (route_summary !=  nullptr && is_set(route_summary->operation))
-	|| (sham_link_table !=  nullptr && is_set(sham_link_table->operation))
-	|| (summary !=  nullptr && is_set(summary->operation))
-	|| (summary_prefixes !=  nullptr && is_set(summary_prefixes->operation))
-	|| (virtual_link !=  nullptr && is_set(virtual_link->operation));
+	|| (area_informations !=  nullptr && area_informations->has_operation())
+	|| (areas !=  nullptr && areas->has_operation())
+	|| (bad_checksums !=  nullptr && bad_checksums->has_operation())
+	|| (border_routers !=  nullptr && border_routers->has_operation())
+	|| (connected_routes !=  nullptr && connected_routes->has_operation())
+	|| (database_summary_table !=  nullptr && database_summary_table->has_operation())
+	|| (database_table !=  nullptr && database_table->has_operation())
+	|| (external_routes !=  nullptr && external_routes->has_operation())
+	|| (fast_reroutes !=  nullptr && fast_reroutes->has_operation())
+	|| (flood_list_process_table !=  nullptr && flood_list_process_table->has_operation())
+	|| (interface_brief_process_table !=  nullptr && interface_brief_process_table->has_operation())
+	|| (interface_process_table !=  nullptr && interface_process_table->has_operation())
+	|| (internal_routes !=  nullptr && internal_routes->has_operation())
+	|| (neighbor_detail_process_table !=  nullptr && neighbor_detail_process_table->has_operation())
+	|| (neighbor_process_table !=  nullptr && neighbor_process_table->has_operation())
+	|| (protocol_areas !=  nullptr && protocol_areas->has_operation())
+	|| (redistributions !=  nullptr && redistributions->has_operation())
+	|| (request_list_process_table !=  nullptr && request_list_process_table->has_operation())
+	|| (retransmission_list_process_table !=  nullptr && retransmission_list_process_table->has_operation())
+	|| (route_summary !=  nullptr && route_summary->has_operation())
+	|| (sham_link_table !=  nullptr && sham_link_table->has_operation())
+	|| (summary !=  nullptr && summary->has_operation())
+	|| (summary_prefixes !=  nullptr && summary_prefixes->has_operation())
+	|| (virtual_link !=  nullptr && virtual_link->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::get_segment_path() const
@@ -55330,7 +55350,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::Vrf::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55969,7 +55989,7 @@ EntityPath Ospfv3::Processes::Process::Vrfs::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56082,7 +56102,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56189,7 +56209,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56308,7 +56328,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56428,7 +56448,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56541,7 +56561,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::BorderRouters::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56708,7 +56728,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56891,7 +56911,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::ha
     return is_set(operation)
 	|| is_set(sham_link_state.operation)
 	|| is_set(sham_link_suppress_hello.operation)
-	|| (sham_link_retransmission !=  nullptr && is_set(sham_link_retransmission->operation));
+	|| (sham_link_retransmission !=  nullptr && sham_link_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::get_segment_path() const
@@ -56908,7 +56928,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57087,7 +57107,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::has_operation() cons
 	|| is_set(sham_link_transmission_delay.operation)
 	|| is_set(sham_link_wait_interval.operation)
 	|| is_set(virtual_link_authentication_spi.operation)
-	|| (sham_link_neighbor !=  nullptr && is_set(sham_link_neighbor->operation));
+	|| (sham_link_neighbor !=  nullptr && sham_link_neighbor->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::get_segment_path() const
@@ -57104,7 +57124,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57354,7 +57374,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInforma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57524,7 +57544,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInforma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57737,7 +57757,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::AreaInformations::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57862,7 +57882,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58036,7 +58056,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58234,8 +58254,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(router_la_bits.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_segment_path() const
@@ -58252,7 +58272,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58457,7 +58477,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58631,7 +58651,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58804,7 +58824,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58901,7 +58921,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59011,9 +59031,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
     }
     return is_set(operation)
 	|| is_set(router_la_bits.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation))
-	|| (rpf_path !=  nullptr && is_set(rpf_path->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation())
+	|| (rpf_path !=  nullptr && rpf_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_segment_path() const
@@ -59030,7 +59050,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59229,7 +59249,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59403,7 +59423,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59559,7 +59579,7 @@ Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::N
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::has_data() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -59570,14 +59590,15 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::has_operation() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| is_set(neighbor_router.operation)
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_segment_path() const
@@ -59594,7 +59615,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59745,7 +59766,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59919,7 +59940,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60090,8 +60111,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_segment_path() const
@@ -60108,7 +60129,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60268,7 +60289,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60442,7 +60463,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60607,8 +60628,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 {
     return is_set(operation)
 	|| is_set(lsa_router_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_segment_path() const
@@ -60625,7 +60646,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60775,7 +60796,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60949,7 +60970,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61135,8 +61156,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_segment_path() const
@@ -61153,7 +61174,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61338,7 +61359,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61512,7 +61533,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61698,8 +61719,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_segment_path() const
@@ -61716,7 +61737,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61901,7 +61922,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62075,7 +62096,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62257,7 +62278,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62380,8 +62401,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(router_priority.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_segment_path() const
@@ -62398,7 +62419,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62604,7 +62625,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62778,7 +62799,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62960,7 +62981,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63071,8 +63092,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(reference_advertised_router.operation)
 	|| is_set(reference_lsa_id.operation)
 	|| is_set(reference_type.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_segment_path() const
@@ -63089,7 +63110,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63275,7 +63296,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63449,7 +63470,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63617,8 +63638,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
     return is_set(operation)
 	|| is_set(grace_period.operation)
 	|| is_set(grace_reason.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_segment_path() const
@@ -63635,7 +63656,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63790,7 +63811,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63964,7 +63985,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64141,8 +64162,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_segment_path() const
@@ -64159,7 +64180,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64329,7 +64350,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64503,7 +64524,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64680,8 +64701,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_segment_path() const
@@ -64698,7 +64719,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64868,7 +64889,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65042,7 +65063,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65219,8 +65240,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_segment_path() const
@@ -65237,7 +65258,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65407,7 +65428,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65581,7 +65602,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65758,8 +65779,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_segment_path() const
@@ -65776,7 +65797,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65977,20 +65998,20 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaIn
 {
     return is_set(operation)
 	|| is_set(lsa_info_type.operation)
-	|| (external_lsa_type !=  nullptr && is_set(external_lsa_type->operation))
-	|| (grace_lsa !=  nullptr && is_set(grace_lsa->operation))
-	|| (inter_area_prefix_lsa_type !=  nullptr && is_set(inter_area_prefix_lsa_type->operation))
-	|| (inter_area_router_lsa_type !=  nullptr && is_set(inter_area_router_lsa_type->operation))
-	|| (intra_area_prefix_lsa_type !=  nullptr && is_set(intra_area_prefix_lsa_type->operation))
-	|| (link_lsa_type !=  nullptr && is_set(link_lsa_type->operation))
-	|| (lsa_summary_info !=  nullptr && is_set(lsa_summary_info->operation))
-	|| (network_lsa_type !=  nullptr && is_set(network_lsa_type->operation))
-	|| (nssalsa_type !=  nullptr && is_set(nssalsa_type->operation))
-	|| (router_lsa_type !=  nullptr && is_set(router_lsa_type->operation))
-	|| (unknown_area_lsa_type !=  nullptr && is_set(unknown_area_lsa_type->operation))
-	|| (unknown_aslsa_type !=  nullptr && is_set(unknown_aslsa_type->operation))
-	|| (unknown_link_lsa_type !=  nullptr && is_set(unknown_link_lsa_type->operation))
-	|| (unknown_lsa_type !=  nullptr && is_set(unknown_lsa_type->operation));
+	|| (external_lsa_type !=  nullptr && external_lsa_type->has_operation())
+	|| (grace_lsa !=  nullptr && grace_lsa->has_operation())
+	|| (inter_area_prefix_lsa_type !=  nullptr && inter_area_prefix_lsa_type->has_operation())
+	|| (inter_area_router_lsa_type !=  nullptr && inter_area_router_lsa_type->has_operation())
+	|| (intra_area_prefix_lsa_type !=  nullptr && intra_area_prefix_lsa_type->has_operation())
+	|| (link_lsa_type !=  nullptr && link_lsa_type->has_operation())
+	|| (lsa_summary_info !=  nullptr && lsa_summary_info->has_operation())
+	|| (network_lsa_type !=  nullptr && network_lsa_type->has_operation())
+	|| (nssalsa_type !=  nullptr && nssalsa_type->has_operation())
+	|| (router_lsa_type !=  nullptr && router_lsa_type->has_operation())
+	|| (unknown_area_lsa_type !=  nullptr && unknown_area_lsa_type->has_operation())
+	|| (unknown_aslsa_type !=  nullptr && unknown_aslsa_type->has_operation())
+	|| (unknown_link_lsa_type !=  nullptr && unknown_link_lsa_type->has_operation())
+	|| (unknown_lsa_type !=  nullptr && unknown_lsa_type->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_segment_path() const
@@ -66007,7 +66028,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66411,7 +66432,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::has_o
 	|| is_set(interface_name.operation)
 	|| is_set(ls_id.operation)
 	|| is_set(ls_type.operation)
-	|| (lsa_info !=  nullptr && is_set(lsa_info->operation));
+	|| (lsa_info !=  nullptr && lsa_info->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::get_segment_path() const
@@ -66428,7 +66449,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66558,7 +66579,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66683,7 +66704,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66857,7 +66878,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67055,8 +67076,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(router_la_bits.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_segment_path() const
@@ -67073,7 +67094,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67278,7 +67299,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67452,7 +67473,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67625,7 +67646,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67722,7 +67743,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67832,9 +67853,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
     }
     return is_set(operation)
 	|| is_set(router_la_bits.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation))
-	|| (rpf_path !=  nullptr && is_set(rpf_path->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation())
+	|| (rpf_path !=  nullptr && rpf_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_segment_path() const
@@ -67851,7 +67872,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68050,7 +68071,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68224,7 +68245,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68380,7 +68401,7 @@ Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::Ls
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::has_data() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -68391,14 +68412,15 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::has_operation() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| is_set(neighbor_router.operation)
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_segment_path() const
@@ -68415,7 +68437,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68566,7 +68588,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68740,7 +68762,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68911,8 +68933,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_segment_path() const
@@ -68929,7 +68951,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69089,7 +69111,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69263,7 +69285,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69428,8 +69450,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 {
     return is_set(operation)
 	|| is_set(lsa_router_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_segment_path() const
@@ -69446,7 +69468,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69596,7 +69618,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69770,7 +69792,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69956,8 +69978,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_segment_path() const
@@ -69974,7 +69996,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70159,7 +70181,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70333,7 +70355,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70519,8 +70541,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_segment_path() const
@@ -70537,7 +70559,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70722,7 +70744,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70896,7 +70918,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71078,7 +71100,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71201,8 +71223,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(router_priority.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_segment_path() const
@@ -71219,7 +71241,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71425,7 +71447,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71599,7 +71621,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71781,7 +71803,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71892,8 +71914,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(reference_advertised_router.operation)
 	|| is_set(reference_lsa_id.operation)
 	|| is_set(reference_type.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_segment_path() const
@@ -71910,7 +71932,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72096,7 +72118,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72270,7 +72292,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72438,8 +72460,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
     return is_set(operation)
 	|| is_set(grace_period.operation)
 	|| is_set(grace_reason.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_segment_path() const
@@ -72456,7 +72478,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72611,7 +72633,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72785,7 +72807,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -72962,8 +72984,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_segment_path() const
@@ -72980,7 +73002,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73150,7 +73172,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73324,7 +73346,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73501,8 +73523,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_segment_path() const
@@ -73519,7 +73541,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73689,7 +73711,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73863,7 +73885,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74040,8 +74062,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_segment_path() const
@@ -74058,7 +74080,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74228,7 +74250,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74402,7 +74424,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74579,8 +74601,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_segment_path() const
@@ -74597,7 +74619,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74798,20 +74820,20 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 {
     return is_set(operation)
 	|| is_set(lsa_info_type.operation)
-	|| (external_lsa_type !=  nullptr && is_set(external_lsa_type->operation))
-	|| (grace_lsa !=  nullptr && is_set(grace_lsa->operation))
-	|| (inter_area_prefix_lsa_type !=  nullptr && is_set(inter_area_prefix_lsa_type->operation))
-	|| (inter_area_router_lsa_type !=  nullptr && is_set(inter_area_router_lsa_type->operation))
-	|| (intra_area_prefix_lsa_type !=  nullptr && is_set(intra_area_prefix_lsa_type->operation))
-	|| (link_lsa_type !=  nullptr && is_set(link_lsa_type->operation))
-	|| (lsa_summary_info !=  nullptr && is_set(lsa_summary_info->operation))
-	|| (network_lsa_type !=  nullptr && is_set(network_lsa_type->operation))
-	|| (nssalsa_type !=  nullptr && is_set(nssalsa_type->operation))
-	|| (router_lsa_type !=  nullptr && is_set(router_lsa_type->operation))
-	|| (unknown_area_lsa_type !=  nullptr && is_set(unknown_area_lsa_type->operation))
-	|| (unknown_aslsa_type !=  nullptr && is_set(unknown_aslsa_type->operation))
-	|| (unknown_link_lsa_type !=  nullptr && is_set(unknown_link_lsa_type->operation))
-	|| (unknown_lsa_type !=  nullptr && is_set(unknown_lsa_type->operation));
+	|| (external_lsa_type !=  nullptr && external_lsa_type->has_operation())
+	|| (grace_lsa !=  nullptr && grace_lsa->has_operation())
+	|| (inter_area_prefix_lsa_type !=  nullptr && inter_area_prefix_lsa_type->has_operation())
+	|| (inter_area_router_lsa_type !=  nullptr && inter_area_router_lsa_type->has_operation())
+	|| (intra_area_prefix_lsa_type !=  nullptr && intra_area_prefix_lsa_type->has_operation())
+	|| (link_lsa_type !=  nullptr && link_lsa_type->has_operation())
+	|| (lsa_summary_info !=  nullptr && lsa_summary_info->has_operation())
+	|| (network_lsa_type !=  nullptr && network_lsa_type->has_operation())
+	|| (nssalsa_type !=  nullptr && nssalsa_type->has_operation())
+	|| (router_lsa_type !=  nullptr && router_lsa_type->has_operation())
+	|| (unknown_area_lsa_type !=  nullptr && unknown_area_lsa_type->has_operation())
+	|| (unknown_aslsa_type !=  nullptr && unknown_aslsa_type->has_operation())
+	|| (unknown_link_lsa_type !=  nullptr && unknown_link_lsa_type->has_operation())
+	|| (unknown_lsa_type !=  nullptr && unknown_lsa_type->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::get_segment_path() const
@@ -74828,7 +74850,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75232,7 +75254,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Ls
 	|| is_set(interface_name.operation)
 	|| is_set(ls_id.operation)
 	|| is_set(ls_type.operation)
-	|| (lsa_info !=  nullptr && is_set(lsa_info->operation));
+	|| (lsa_info !=  nullptr && lsa_info->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTable::Lsa::get_segment_path() const
@@ -75249,7 +75271,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75379,7 +75401,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaInternalTab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75471,8 +75493,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::has_data() const
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::has_operation() const
 {
     return is_set(operation)
-	|| (lsa_internal_table !=  nullptr && is_set(lsa_internal_table->operation))
-	|| (lsa_table !=  nullptr && is_set(lsa_table->operation));
+	|| (lsa_internal_table !=  nullptr && lsa_internal_table->has_operation())
+	|| (lsa_table !=  nullptr && lsa_table->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::get_segment_path() const
@@ -75489,7 +75511,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75661,7 +75683,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InterfaceProcessTable::Interf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75832,7 +75854,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InterfaceProcessTable::Interf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75934,7 +75956,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InterfaceProcessTable::Interf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76156,8 +76178,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::InterfaceProcessTable::Interface::h
 	|| is_set(ospf_interface_state.operation)
 	|| is_set(transmission_delay.operation)
 	|| is_set(wait_interval.operation)
-	|| (active_interface !=  nullptr && is_set(active_interface->operation))
-	|| (interface_bfd !=  nullptr && is_set(interface_bfd->operation));
+	|| (active_interface !=  nullptr && active_interface->has_operation())
+	|| (interface_bfd !=  nullptr && interface_bfd->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::InterfaceProcessTable::Interface::get_segment_path() const
@@ -76174,7 +76196,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InterfaceProcessTable::Interf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76528,7 +76550,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InterfaceProcessTable::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76656,7 +76678,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Redistributions::Redistributi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76788,7 +76810,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Redistributions::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76898,7 +76920,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77008,7 +77030,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77137,7 +77159,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77253,7 +77275,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute::Rout
 	|| is_set(interface_name.operation)
 	|| is_set(route_path_id.operation)
 	|| is_set(route_path_next_hop.operation)
-	|| (route_backup_path !=  nullptr && is_set(route_backup_path->operation));
+	|| (route_backup_path !=  nullptr && route_backup_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute::RoutePath::get_segment_path() const
@@ -77270,7 +77292,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77391,8 +77413,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute::has_
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (route_extended_community !=  nullptr && is_set(route_extended_community->operation))
-	|| (route_topology !=  nullptr && is_set(route_topology->operation));
+	|| (route_extended_community !=  nullptr && route_extended_community->has_operation())
+	|| (route_topology !=  nullptr && route_topology->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute::get_segment_path() const
@@ -77409,7 +77431,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::ExternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77573,7 +77595,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ExternalRoutes::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77686,7 +77708,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::RequestListProcessTable::Requ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77814,7 +77836,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::RequestListProcessTable::Requ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77957,7 +77979,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::RequestListProcessTable::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78124,7 +78146,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::VirtualLink::VirtualLinkNeigh
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78307,7 +78329,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::VirtualLink::VirtualLinkNeighbor::h
     return is_set(operation)
 	|| is_set(is_virtual_link_hello_suppressed.operation)
 	|| is_set(virtual_link_state.operation)
-	|| (virtual_link_retransmission !=  nullptr && is_set(virtual_link_retransmission->operation));
+	|| (virtual_link_retransmission !=  nullptr && virtual_link_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VirtualLink::VirtualLinkNeighbor::get_segment_path() const
@@ -78324,7 +78346,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::VirtualLink::VirtualLinkNeigh
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78494,7 +78516,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::VirtualLink::has_operation() const
 	|| is_set(virtual_link_state.operation)
 	|| is_set(virtual_link_wait_interval.operation)
 	|| is_set(virual_link_transmission_delay.operation)
-	|| (virtual_link_neighbor !=  nullptr && is_set(virtual_link_neighbor->operation));
+	|| (virtual_link_neighbor !=  nullptr && virtual_link_neighbor->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VirtualLink::get_segment_path() const
@@ -78511,7 +78533,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::VirtualLink::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78746,7 +78768,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::FloodListProcessTable::Flood:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78858,7 +78880,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::FloodListProcessTable::Flood:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78970,7 +78992,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::FloodListProcessTable::Flood:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79106,7 +79128,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::FloodListProcessTable::Flood:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79281,7 +79303,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::FloodListProcessTable::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79412,7 +79434,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::RouteSummary::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79608,7 +79630,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborDetailTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79818,7 +79840,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborDetailTable::N
 	|| is_set(pending_events.operation)
 	|| is_set(poll_interval.operation)
 	|| is_set(state_changes.operation)
-	|| (neighbor_retransmission !=  nullptr && is_set(neighbor_retransmission->operation));
+	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::get_segment_path() const
@@ -79835,7 +79857,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborDetailTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79991,7 +80013,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborDetailTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80107,8 +80129,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborDetailTable::N
 	|| is_set(neighbor_state.operation)
 	|| is_set(neighbor_up_time.operation)
 	|| is_set(neighbor_virtual_link_id.operation)
-	|| (neighbor_bfd_info !=  nullptr && is_set(neighbor_bfd_info->operation))
-	|| (neighbor_detail !=  nullptr && is_set(neighbor_detail->operation));
+	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
+	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborDetailTable::NeighborDetail::get_segment_path() const
@@ -80125,7 +80147,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborDetailTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80318,7 +80340,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborDetailTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80437,7 +80459,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::InterfaceBriefTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80554,7 +80576,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::InterfaceBriefTa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80667,7 +80689,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::RequestListTable
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80795,7 +80817,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::RequestListTable
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80938,7 +80960,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::RequestListTable
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81105,7 +81127,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborTable::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81315,7 +81337,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborTable::Neighbo
 	|| is_set(pending_events.operation)
 	|| is_set(poll_interval.operation)
 	|| is_set(state_changes.operation)
-	|| (neighbor_retransmission !=  nullptr && is_set(neighbor_retransmission->operation));
+	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborTable::Neighbor::NeighborDetail::get_segment_path() const
@@ -81332,7 +81354,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborTable::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81488,7 +81510,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborTable::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81604,8 +81626,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborTable::Neighbo
 	|| is_set(neighbor_state.operation)
 	|| is_set(neighbor_up_time.operation)
 	|| is_set(neighbor_virtual_link_id.operation)
-	|| (neighbor_bfd_info !=  nullptr && is_set(neighbor_bfd_info->operation))
-	|| (neighbor_detail !=  nullptr && is_set(neighbor_detail->operation));
+	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
+	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborTable::Neighbor::get_segment_path() const
@@ -81622,7 +81644,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborTable::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81815,7 +81837,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::NeighborTable::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81967,7 +81989,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::InterfaceTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82138,7 +82160,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::InterfaceTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82240,7 +82262,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::InterfaceTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82462,8 +82484,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::InterfaceTable::Interf
 	|| is_set(ospf_interface_state.operation)
 	|| is_set(transmission_delay.operation)
 	|| is_set(wait_interval.operation)
-	|| (active_interface !=  nullptr && is_set(active_interface->operation))
-	|| (interface_bfd !=  nullptr && is_set(interface_bfd->operation));
+	|| (active_interface !=  nullptr && active_interface->has_operation())
+	|| (interface_bfd !=  nullptr && interface_bfd->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::InterfaceTable::Interface::get_segment_path() const
@@ -82480,7 +82502,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::InterfaceTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82834,7 +82856,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::InterfaceTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82947,7 +82969,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::FloodListTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83059,7 +83081,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::FloodListTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83171,7 +83193,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::FloodListTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83307,7 +83329,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::FloodListTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83482,7 +83504,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::FloodListTable::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83595,7 +83617,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::RetransmissionLi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83707,7 +83729,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::RetransmissionLi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83819,7 +83841,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::RetransmissionLi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83973,7 +83995,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::RetransmissionLi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84178,7 +84200,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::RetransmissionLi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84303,7 +84325,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84477,7 +84499,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84675,8 +84697,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(router_la_bits.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_segment_path() const
@@ -84693,7 +84715,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84898,7 +84920,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85072,7 +85094,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85245,7 +85267,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85342,7 +85364,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85452,9 +85474,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
     }
     return is_set(operation)
 	|| is_set(router_la_bits.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation))
-	|| (rpf_path !=  nullptr && is_set(rpf_path->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation())
+	|| (rpf_path !=  nullptr && rpf_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_segment_path() const
@@ -85471,7 +85493,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85670,7 +85692,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85844,7 +85866,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86000,7 +86022,7 @@ Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Ls
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::has_data() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -86011,14 +86033,15 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::has_operation() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| is_set(neighbor_router.operation)
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_segment_path() const
@@ -86035,7 +86058,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86186,7 +86209,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86360,7 +86383,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86531,8 +86554,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_segment_path() const
@@ -86549,7 +86572,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86709,7 +86732,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86883,7 +86906,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87048,8 +87071,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 {
     return is_set(operation)
 	|| is_set(lsa_router_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_segment_path() const
@@ -87066,7 +87089,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87216,7 +87239,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87390,7 +87413,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87576,8 +87599,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_segment_path() const
@@ -87594,7 +87617,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87779,7 +87802,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87953,7 +87976,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88139,8 +88162,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_segment_path() const
@@ -88157,7 +88180,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88342,7 +88365,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88516,7 +88539,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88698,7 +88721,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88821,8 +88844,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(router_priority.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_segment_path() const
@@ -88839,7 +88862,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89045,7 +89068,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89219,7 +89242,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89401,7 +89424,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89512,8 +89535,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(reference_advertised_router.operation)
 	|| is_set(reference_lsa_id.operation)
 	|| is_set(reference_type.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_segment_path() const
@@ -89530,7 +89553,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89716,7 +89739,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89890,7 +89913,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90058,8 +90081,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
     return is_set(operation)
 	|| is_set(grace_period.operation)
 	|| is_set(grace_reason.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_segment_path() const
@@ -90076,7 +90099,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90231,7 +90254,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90405,7 +90428,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90582,8 +90605,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_segment_path() const
@@ -90600,7 +90623,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90770,7 +90793,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90944,7 +90967,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91121,8 +91144,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_segment_path() const
@@ -91139,7 +91162,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91309,7 +91332,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91483,7 +91506,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91660,8 +91683,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_segment_path() const
@@ -91678,7 +91701,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91848,7 +91871,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92022,7 +92045,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92199,8 +92222,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_segment_path() const
@@ -92217,7 +92240,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92418,20 +92441,20 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 {
     return is_set(operation)
 	|| is_set(lsa_info_type.operation)
-	|| (external_lsa_type !=  nullptr && is_set(external_lsa_type->operation))
-	|| (grace_lsa !=  nullptr && is_set(grace_lsa->operation))
-	|| (inter_area_prefix_lsa_type !=  nullptr && is_set(inter_area_prefix_lsa_type->operation))
-	|| (inter_area_router_lsa_type !=  nullptr && is_set(inter_area_router_lsa_type->operation))
-	|| (intra_area_prefix_lsa_type !=  nullptr && is_set(intra_area_prefix_lsa_type->operation))
-	|| (link_lsa_type !=  nullptr && is_set(link_lsa_type->operation))
-	|| (lsa_summary_info !=  nullptr && is_set(lsa_summary_info->operation))
-	|| (network_lsa_type !=  nullptr && is_set(network_lsa_type->operation))
-	|| (nssalsa_type !=  nullptr && is_set(nssalsa_type->operation))
-	|| (router_lsa_type !=  nullptr && is_set(router_lsa_type->operation))
-	|| (unknown_area_lsa_type !=  nullptr && is_set(unknown_area_lsa_type->operation))
-	|| (unknown_aslsa_type !=  nullptr && is_set(unknown_aslsa_type->operation))
-	|| (unknown_link_lsa_type !=  nullptr && is_set(unknown_link_lsa_type->operation))
-	|| (unknown_lsa_type !=  nullptr && is_set(unknown_lsa_type->operation));
+	|| (external_lsa_type !=  nullptr && external_lsa_type->has_operation())
+	|| (grace_lsa !=  nullptr && grace_lsa->has_operation())
+	|| (inter_area_prefix_lsa_type !=  nullptr && inter_area_prefix_lsa_type->has_operation())
+	|| (inter_area_router_lsa_type !=  nullptr && inter_area_router_lsa_type->has_operation())
+	|| (intra_area_prefix_lsa_type !=  nullptr && intra_area_prefix_lsa_type->has_operation())
+	|| (link_lsa_type !=  nullptr && link_lsa_type->has_operation())
+	|| (lsa_summary_info !=  nullptr && lsa_summary_info->has_operation())
+	|| (network_lsa_type !=  nullptr && network_lsa_type->has_operation())
+	|| (nssalsa_type !=  nullptr && nssalsa_type->has_operation())
+	|| (router_lsa_type !=  nullptr && router_lsa_type->has_operation())
+	|| (unknown_area_lsa_type !=  nullptr && unknown_area_lsa_type->has_operation())
+	|| (unknown_aslsa_type !=  nullptr && unknown_aslsa_type->has_operation())
+	|| (unknown_link_lsa_type !=  nullptr && unknown_link_lsa_type->has_operation())
+	|| (unknown_lsa_type !=  nullptr && unknown_lsa_type->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::get_segment_path() const
@@ -92448,7 +92471,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92852,7 +92875,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTabl
 	|| is_set(interface_name.operation)
 	|| is_set(ls_id.operation)
 	|| is_set(ls_type.operation)
-	|| (lsa_info !=  nullptr && is_set(lsa_info->operation));
+	|| (lsa_info !=  nullptr && lsa_info->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::get_segment_path() const
@@ -92869,7 +92892,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92999,7 +93022,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93124,7 +93147,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93298,7 +93321,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93496,8 +93519,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(router_la_bits.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_segment_path() const
@@ -93514,7 +93537,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93719,7 +93742,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93893,7 +93916,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94066,7 +94089,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94163,7 +94186,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94273,9 +94296,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
     }
     return is_set(operation)
 	|| is_set(router_la_bits.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation))
-	|| (rpf_path !=  nullptr && is_set(rpf_path->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation())
+	|| (rpf_path !=  nullptr && rpf_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_segment_path() const
@@ -94292,7 +94315,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94491,7 +94514,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94665,7 +94688,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94821,7 +94844,7 @@ Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalT
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::has_data() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -94832,14 +94855,15 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::has_operation() const
 {
-    for (auto const & leaf : neighbor_router.getValues())
+    for (auto const & leaf : neighbor_router.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| is_set(neighbor_router.operation)
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_segment_path() const
@@ -94856,7 +94880,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95007,7 +95031,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95181,7 +95205,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95352,8 +95376,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_segment_path() const
@@ -95370,7 +95394,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95530,7 +95554,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95704,7 +95728,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95869,8 +95893,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 {
     return is_set(operation)
 	|| is_set(lsa_router_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_segment_path() const
@@ -95887,7 +95911,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96037,7 +96061,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96211,7 +96235,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96397,8 +96421,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_segment_path() const
@@ -96415,7 +96439,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96600,7 +96624,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96774,7 +96798,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96960,8 +96984,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(prefix_length.operation)
 	|| is_set(priority.operation)
 	|| is_set(tos_cost.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_segment_path() const
@@ -96978,7 +97002,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97163,7 +97187,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97337,7 +97361,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97519,7 +97543,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97642,8 +97666,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(router_priority.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_segment_path() const
@@ -97660,7 +97684,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97866,7 +97890,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98040,7 +98064,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98222,7 +98246,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98333,8 +98357,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(reference_advertised_router.operation)
 	|| is_set(reference_lsa_id.operation)
 	|| is_set(reference_type.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_segment_path() const
@@ -98351,7 +98375,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98537,7 +98561,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98711,7 +98735,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98879,8 +98903,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
     return is_set(operation)
 	|| is_set(grace_period.operation)
 	|| is_set(grace_reason.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_segment_path() const
@@ -98897,7 +98921,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99052,7 +99076,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99226,7 +99250,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99403,8 +99427,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_segment_path() const
@@ -99421,7 +99445,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99591,7 +99615,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99765,7 +99789,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99942,8 +99966,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_segment_path() const
@@ -99960,7 +99984,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100130,7 +100154,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100304,7 +100328,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100481,8 +100505,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_segment_path() const
@@ -100499,7 +100523,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100669,7 +100693,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100843,7 +100867,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -101020,8 +101044,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(is_virtual_link.operation)
 	|| is_set(sham_link_id.operation)
 	|| is_set(virtual_link_id.operation)
-	|| (lsa_detail !=  nullptr && is_set(lsa_detail->operation))
-	|| (lsa_header !=  nullptr && is_set(lsa_header->operation));
+	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
+	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_segment_path() const
@@ -101038,7 +101062,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -101239,20 +101263,20 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 {
     return is_set(operation)
 	|| is_set(lsa_info_type.operation)
-	|| (external_lsa_type !=  nullptr && is_set(external_lsa_type->operation))
-	|| (grace_lsa !=  nullptr && is_set(grace_lsa->operation))
-	|| (inter_area_prefix_lsa_type !=  nullptr && is_set(inter_area_prefix_lsa_type->operation))
-	|| (inter_area_router_lsa_type !=  nullptr && is_set(inter_area_router_lsa_type->operation))
-	|| (intra_area_prefix_lsa_type !=  nullptr && is_set(intra_area_prefix_lsa_type->operation))
-	|| (link_lsa_type !=  nullptr && is_set(link_lsa_type->operation))
-	|| (lsa_summary_info !=  nullptr && is_set(lsa_summary_info->operation))
-	|| (network_lsa_type !=  nullptr && is_set(network_lsa_type->operation))
-	|| (nssalsa_type !=  nullptr && is_set(nssalsa_type->operation))
-	|| (router_lsa_type !=  nullptr && is_set(router_lsa_type->operation))
-	|| (unknown_area_lsa_type !=  nullptr && is_set(unknown_area_lsa_type->operation))
-	|| (unknown_aslsa_type !=  nullptr && is_set(unknown_aslsa_type->operation))
-	|| (unknown_link_lsa_type !=  nullptr && is_set(unknown_link_lsa_type->operation))
-	|| (unknown_lsa_type !=  nullptr && is_set(unknown_lsa_type->operation));
+	|| (external_lsa_type !=  nullptr && external_lsa_type->has_operation())
+	|| (grace_lsa !=  nullptr && grace_lsa->has_operation())
+	|| (inter_area_prefix_lsa_type !=  nullptr && inter_area_prefix_lsa_type->has_operation())
+	|| (inter_area_router_lsa_type !=  nullptr && inter_area_router_lsa_type->has_operation())
+	|| (intra_area_prefix_lsa_type !=  nullptr && intra_area_prefix_lsa_type->has_operation())
+	|| (link_lsa_type !=  nullptr && link_lsa_type->has_operation())
+	|| (lsa_summary_info !=  nullptr && lsa_summary_info->has_operation())
+	|| (network_lsa_type !=  nullptr && network_lsa_type->has_operation())
+	|| (nssalsa_type !=  nullptr && nssalsa_type->has_operation())
+	|| (router_lsa_type !=  nullptr && router_lsa_type->has_operation())
+	|| (unknown_area_lsa_type !=  nullptr && unknown_area_lsa_type->has_operation())
+	|| (unknown_aslsa_type !=  nullptr && unknown_aslsa_type->has_operation())
+	|| (unknown_link_lsa_type !=  nullptr && unknown_link_lsa_type->has_operation())
+	|| (unknown_lsa_type !=  nullptr && unknown_lsa_type->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::get_segment_path() const
@@ -101269,7 +101293,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -101673,7 +101697,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 	|| is_set(interface_name.operation)
 	|| is_set(ls_id.operation)
 	|| is_set(ls_type.operation)
-	|| (lsa_info !=  nullptr && is_set(lsa_info->operation));
+	|| (lsa_info !=  nullptr && lsa_info->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::get_segment_path() const
@@ -101690,7 +101714,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -101820,7 +101844,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::L
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -101912,8 +101936,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::has_dat
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::has_operation() const
 {
     return is_set(operation)
-	|| (lsa_internal_table !=  nullptr && is_set(lsa_internal_table->operation))
-	|| (lsa_table !=  nullptr && is_set(lsa_table->operation));
+	|| (lsa_internal_table !=  nullptr && lsa_internal_table->has_operation())
+	|| (lsa_table !=  nullptr && lsa_table->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::get_segment_path() const
@@ -101930,7 +101954,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -102031,22 +102055,22 @@ Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::Datab
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_data() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -102056,27 +102080,31 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_operation() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(deleted_lsa.operation)
+	|| is_set(lsa.operation)
+	|| is_set(lsa_checksum.operation)
+	|| is_set(max_age_lsa.operation);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_segment_path() const
@@ -102093,7 +102121,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -102172,22 +102200,22 @@ Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::Datab
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_data() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -102197,27 +102225,31 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_operation() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(deleted_lsa.operation)
+	|| is_set(lsa.operation)
+	|| is_set(lsa_checksum.operation)
+	|| is_set(max_age_lsa.operation);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_segment_path() const
@@ -102234,7 +102266,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -102323,7 +102355,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
 {
     return is_set(operation)
 	|| is_set(lsa_area_id.operation)
-	|| (area_database_summary !=  nullptr && is_set(area_database_summary->operation));
+	|| (area_database_summary !=  nullptr && area_database_summary->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_segment_path() const
@@ -102340,7 +102372,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -102446,7 +102478,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
     return is_set(operation)
 	|| is_set(database_router_id.operation)
 	|| is_set(is_opaque_database_capable.operation)
-	|| (database_counters !=  nullptr && is_set(database_counters->operation));
+	|| (database_counters !=  nullptr && database_counters->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::get_segment_path() const
@@ -102463,7 +102495,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -102583,7 +102615,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::has_operation() const
 {
     return is_set(operation)
-	|| (database_summary !=  nullptr && is_set(database_summary->operation));
+	|| (database_summary !=  nullptr && database_summary->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::get_segment_path() const
@@ -102600,7 +102632,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -102728,15 +102760,15 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::has_operation() const
 {
     return is_set(operation)
 	|| is_set(area_id.operation)
-	|| (database_summary_table !=  nullptr && is_set(database_summary_table->operation))
-	|| (database_table !=  nullptr && is_set(database_table->operation))
-	|| (flood_list_table !=  nullptr && is_set(flood_list_table->operation))
-	|| (interface_brief_table !=  nullptr && is_set(interface_brief_table->operation))
-	|| (interface_table !=  nullptr && is_set(interface_table->operation))
-	|| (neighbor_detail_table !=  nullptr && is_set(neighbor_detail_table->operation))
-	|| (neighbor_table !=  nullptr && is_set(neighbor_table->operation))
-	|| (request_list_table !=  nullptr && is_set(request_list_table->operation))
-	|| (retransmission_list_table !=  nullptr && is_set(retransmission_list_table->operation));
+	|| (database_summary_table !=  nullptr && database_summary_table->has_operation())
+	|| (database_table !=  nullptr && database_table->has_operation())
+	|| (flood_list_table !=  nullptr && flood_list_table->has_operation())
+	|| (interface_brief_table !=  nullptr && interface_brief_table->has_operation())
+	|| (interface_table !=  nullptr && interface_table->has_operation())
+	|| (neighbor_detail_table !=  nullptr && neighbor_detail_table->has_operation())
+	|| (neighbor_table !=  nullptr && neighbor_table->has_operation())
+	|| (request_list_table !=  nullptr && request_list_table->has_operation())
+	|| (retransmission_list_table !=  nullptr && retransmission_list_table->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::get_segment_path() const
@@ -102753,7 +102785,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103047,7 +103079,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103157,7 +103189,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103258,7 +103290,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103372,7 +103404,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103488,7 +103520,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::Rout
 	|| is_set(interface_name.operation)
 	|| is_set(route_path_id.operation)
 	|| is_set(route_path_next_hop.operation)
-	|| (route_backup_path !=  nullptr && is_set(route_backup_path->operation));
+	|| (route_backup_path !=  nullptr && route_backup_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::get_segment_path() const
@@ -103505,7 +103537,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103634,7 +103666,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::has_
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
 	|| is_set(route_area_id.operation)
-	|| (route_topology !=  nullptr && is_set(route_topology->operation));
+	|| (route_topology !=  nullptr && route_topology->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::get_segment_path() const
@@ -103651,7 +103683,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103823,7 +103855,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -103927,7 +103959,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -104028,7 +104060,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -104151,7 +104183,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -104261,7 +104293,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -104380,7 +104412,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -104496,7 +104528,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::Ro
 	|| is_set(interface_name.operation)
 	|| is_set(route_path_id.operation)
 	|| is_set(route_path_next_hop.operation)
-	|| (route_backup_path !=  nullptr && is_set(route_backup_path->operation));
+	|| (route_backup_path !=  nullptr && route_backup_path->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::get_segment_path() const
@@ -104513,7 +104545,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -104629,7 +104661,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::ha
     return is_set(operation)
 	|| is_set(prefix.operation)
 	|| is_set(prefix_length.operation)
-	|| (route_topology !=  nullptr && is_set(route_topology->operation));
+	|| (route_topology !=  nullptr && route_topology->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::get_segment_path() const
@@ -104646,7 +104678,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -104787,7 +104819,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -104903,7 +104935,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105011,7 +105043,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105099,7 +105131,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105180,7 +105212,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::has_ope
             return true;
     }
     return is_set(operation)
-	|| (primary_domain_id !=  nullptr && is_set(primary_domain_id->operation));
+	|| (primary_domain_id !=  nullptr && primary_domain_id->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::get_segment_path() const
@@ -105197,7 +105229,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105324,7 +105356,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105412,7 +105444,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105500,7 +105532,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105588,7 +105620,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105676,7 +105708,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105765,8 +105797,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigg
 	|| is_set(trigger.operation)
 	|| is_set(unset_reason.operation)
 	|| is_set(wait_for_bgp.operation)
-	|| (start_time !=  nullptr && is_set(start_time->operation))
-	|| (unset_time !=  nullptr && is_set(unset_time->operation));
+	|| (start_time !=  nullptr && start_time->has_operation())
+	|| (unset_time !=  nullptr && unset_time->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::get_segment_path() const
@@ -105783,7 +105815,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -105958,9 +105990,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::has_o
 	|| is_set(set_reason.operation)
 	|| is_set(summary_lsa_metric.operation)
 	|| is_set(unset_reason.operation)
-	|| (abr_resume_time !=  nullptr && is_set(abr_resume_time->operation))
-	|| (start_time !=  nullptr && is_set(start_time->operation))
-	|| (unset_time !=  nullptr && is_set(unset_time->operation));
+	|| (abr_resume_time !=  nullptr && abr_resume_time->has_operation())
+	|| (start_time !=  nullptr && start_time->has_operation())
+	|| (unset_time !=  nullptr && unset_time->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::get_segment_path() const
@@ -105977,7 +106009,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -106195,7 +106227,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -106434,7 +106466,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::has_operation() c
 	|| is_set(spf_maximum_time.operation)
 	|| is_set(spf_start_time.operation)
 	|| is_set(stub_areas.operation)
-	|| (domain_id !=  nullptr && is_set(domain_id->operation));
+	|| (domain_id !=  nullptr && domain_id->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::get_segment_path() const
@@ -106451,7 +106483,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -106876,7 +106908,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Route::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -107002,9 +107034,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::has_data() const
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::has_operation() const
 {
     return is_set(operation)
-	|| (ospfv3 !=  nullptr && is_set(ospfv3->operation))
-	|| (protocol !=  nullptr && is_set(protocol->operation))
-	|| (route !=  nullptr && is_set(route->operation));
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (protocol !=  nullptr && protocol->has_operation())
+	|| (route !=  nullptr && route->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::get_segment_path() const
@@ -107021,7 +107053,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -107177,7 +107209,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -107289,7 +107321,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -107401,7 +107433,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -107555,7 +107587,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -107760,7 +107792,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTabl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -107864,7 +107896,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Ti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -107948,7 +107980,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::has_oper
 	|| is_set(computed_checksum.operation)
 	|| is_set(received_checksum.operation)
 	|| is_set(received_data.operation)
-	|| (timestamp !=  nullptr && is_set(timestamp->operation));
+	|| (timestamp !=  nullptr && timestamp->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::get_segment_path() const
@@ -107965,7 +107997,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -108090,7 +108122,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::BadChecksums::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -108171,22 +108203,22 @@ Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::D
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_data() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -108196,27 +108228,31 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_operation() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(deleted_lsa.operation)
+	|| is_set(lsa.operation)
+	|| is_set(lsa_checksum.operation)
+	|| is_set(max_age_lsa.operation);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_segment_path() const
@@ -108233,7 +108269,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::Databas
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -108312,22 +108348,22 @@ Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::A
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_data() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -108337,27 +108373,31 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_operation() const
 {
-    for (auto const & leaf : deleted_lsa.getValues())
+    for (auto const & leaf : deleted_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa.getValues())
+    for (auto const & leaf : lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : lsa_checksum.getValues())
+    for (auto const & leaf : lsa_checksum.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : max_age_lsa.getValues())
+    for (auto const & leaf : max_age_lsa.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(deleted_lsa.operation)
+	|| is_set(lsa.operation)
+	|| is_set(lsa_checksum.operation)
+	|| is_set(max_age_lsa.operation);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_segment_path() const
@@ -108374,7 +108414,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::Databas
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -108463,7 +108503,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
 {
     return is_set(operation)
 	|| is_set(lsa_area_id.operation)
-	|| (area_database_summary !=  nullptr && is_set(area_database_summary->operation));
+	|| (area_database_summary !=  nullptr && area_database_summary->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_segment_path() const
@@ -108480,7 +108520,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::Databas
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -108586,7 +108626,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
     return is_set(operation)
 	|| is_set(database_router_id.operation)
 	|| is_set(is_opaque_database_capable.operation)
-	|| (database_counters !=  nullptr && is_set(database_counters->operation));
+	|| (database_counters !=  nullptr && database_counters->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::get_segment_path() const
@@ -108603,7 +108643,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::Databas
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -108723,7 +108763,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::has_data() co
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::has_operation() const
 {
     return is_set(operation)
-	|| (database_summary !=  nullptr && is_set(database_summary->operation));
+	|| (database_summary !=  nullptr && database_summary->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::get_segment_path() const
@@ -108740,7 +108780,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -108904,7 +108944,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -109114,7 +109154,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::Nei
 	|| is_set(pending_events.operation)
 	|| is_set(poll_interval.operation)
 	|| is_set(state_changes.operation)
-	|| (neighbor_retransmission !=  nullptr && is_set(neighbor_retransmission->operation));
+	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::get_segment_path() const
@@ -109131,7 +109171,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -109287,7 +109327,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -109403,8 +109443,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::has
 	|| is_set(neighbor_state.operation)
 	|| is_set(neighbor_up_time.operation)
 	|| is_set(neighbor_virtual_link_id.operation)
-	|| (neighbor_bfd_info !=  nullptr && is_set(neighbor_bfd_info->operation))
-	|| (neighbor_detail !=  nullptr && is_set(neighbor_detail->operation));
+	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
+	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::get_segment_path() const
@@ -109421,7 +109461,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -109614,7 +109654,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -109733,7 +109773,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -109865,7 +109905,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -109998,7 +110038,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::FastReroutes::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -110117,7 +110157,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -110234,7 +110274,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -110401,7 +110441,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -110611,7 +110651,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::Neighbo
 	|| is_set(pending_events.operation)
 	|| is_set(poll_interval.operation)
 	|| is_set(state_changes.operation)
-	|| (neighbor_retransmission !=  nullptr && is_set(neighbor_retransmission->operation));
+	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::get_segment_path() const
@@ -110628,7 +110668,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -110784,7 +110824,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -110900,8 +110940,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::Neighbo
 	|| is_set(neighbor_state.operation)
 	|| is_set(neighbor_up_time.operation)
 	|| is_set(neighbor_virtual_link_id.operation)
-	|| (neighbor_bfd_info !=  nullptr && is_set(neighbor_bfd_info->operation))
-	|| (neighbor_detail !=  nullptr && is_set(neighbor_detail->operation));
+	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
+	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::get_segment_path() const
@@ -110918,7 +110958,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -111111,7 +111151,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -111313,30 +111353,30 @@ bool Ospfv3::Processes::Process::DefaultVrf::has_data() const
 bool Ospfv3::Processes::Process::DefaultVrf::has_operation() const
 {
     return is_set(operation)
-	|| (area_informations !=  nullptr && is_set(area_informations->operation))
-	|| (areas !=  nullptr && is_set(areas->operation))
-	|| (bad_checksums !=  nullptr && is_set(bad_checksums->operation))
-	|| (border_routers !=  nullptr && is_set(border_routers->operation))
-	|| (connected_routes !=  nullptr && is_set(connected_routes->operation))
-	|| (database_summary_table !=  nullptr && is_set(database_summary_table->operation))
-	|| (database_table !=  nullptr && is_set(database_table->operation))
-	|| (external_routes !=  nullptr && is_set(external_routes->operation))
-	|| (fast_reroutes !=  nullptr && is_set(fast_reroutes->operation))
-	|| (flood_list_process_table !=  nullptr && is_set(flood_list_process_table->operation))
-	|| (interface_brief_process_table !=  nullptr && is_set(interface_brief_process_table->operation))
-	|| (interface_process_table !=  nullptr && is_set(interface_process_table->operation))
-	|| (internal_routes !=  nullptr && is_set(internal_routes->operation))
-	|| (neighbor_detail_process_table !=  nullptr && is_set(neighbor_detail_process_table->operation))
-	|| (neighbor_process_table !=  nullptr && is_set(neighbor_process_table->operation))
-	|| (protocol_areas !=  nullptr && is_set(protocol_areas->operation))
-	|| (redistributions !=  nullptr && is_set(redistributions->operation))
-	|| (request_list_process_table !=  nullptr && is_set(request_list_process_table->operation))
-	|| (retransmission_list_process_table !=  nullptr && is_set(retransmission_list_process_table->operation))
-	|| (route_summary !=  nullptr && is_set(route_summary->operation))
-	|| (sham_link_table !=  nullptr && is_set(sham_link_table->operation))
-	|| (summary !=  nullptr && is_set(summary->operation))
-	|| (summary_prefixes !=  nullptr && is_set(summary_prefixes->operation))
-	|| (virtual_link !=  nullptr && is_set(virtual_link->operation));
+	|| (area_informations !=  nullptr && area_informations->has_operation())
+	|| (areas !=  nullptr && areas->has_operation())
+	|| (bad_checksums !=  nullptr && bad_checksums->has_operation())
+	|| (border_routers !=  nullptr && border_routers->has_operation())
+	|| (connected_routes !=  nullptr && connected_routes->has_operation())
+	|| (database_summary_table !=  nullptr && database_summary_table->has_operation())
+	|| (database_table !=  nullptr && database_table->has_operation())
+	|| (external_routes !=  nullptr && external_routes->has_operation())
+	|| (fast_reroutes !=  nullptr && fast_reroutes->has_operation())
+	|| (flood_list_process_table !=  nullptr && flood_list_process_table->has_operation())
+	|| (interface_brief_process_table !=  nullptr && interface_brief_process_table->has_operation())
+	|| (interface_process_table !=  nullptr && interface_process_table->has_operation())
+	|| (internal_routes !=  nullptr && internal_routes->has_operation())
+	|| (neighbor_detail_process_table !=  nullptr && neighbor_detail_process_table->has_operation())
+	|| (neighbor_process_table !=  nullptr && neighbor_process_table->has_operation())
+	|| (protocol_areas !=  nullptr && protocol_areas->has_operation())
+	|| (redistributions !=  nullptr && redistributions->has_operation())
+	|| (request_list_process_table !=  nullptr && request_list_process_table->has_operation())
+	|| (retransmission_list_process_table !=  nullptr && retransmission_list_process_table->has_operation())
+	|| (route_summary !=  nullptr && route_summary->has_operation())
+	|| (sham_link_table !=  nullptr && sham_link_table->has_operation())
+	|| (summary !=  nullptr && summary->has_operation())
+	|| (summary_prefixes !=  nullptr && summary_prefixes->has_operation())
+	|| (virtual_link !=  nullptr && virtual_link->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::get_segment_path() const
@@ -111353,7 +111393,7 @@ EntityPath Ospfv3::Processes::Process::DefaultVrf::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -111975,8 +112015,8 @@ bool Ospfv3::Processes::Process::has_operation() const
 {
     return is_set(operation)
 	|| is_set(process_name.operation)
-	|| (default_vrf !=  nullptr && is_set(default_vrf->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (default_vrf !=  nullptr && default_vrf->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Ospfv3::Processes::Process::get_segment_path() const
@@ -112213,7 +112253,7 @@ bool Ospfv3::has_data() const
 bool Ospfv3::has_operation() const
 {
     return is_set(operation)
-	|| (processes !=  nullptr && is_set(processes->operation));
+	|| (processes !=  nullptr && processes->has_operation());
 }
 
 std::string Ospfv3::get_segment_path() const
@@ -112230,7 +112270,7 @@ EntityPath Ospfv3::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -112294,169 +112334,169 @@ std::unique_ptr<Entity> Ospfv3::clone_ptr()
     return std::make_unique<Ospfv3>();
 }
 
-const Enum::Value Ospfv3LsaEnum::link_lsa {8, "link-lsa"};
-const Enum::Value Ospfv3LsaEnum::grace_lsa {11, "grace-lsa"};
-const Enum::Value Ospfv3LsaEnum::router {8193, "router"};
-const Enum::Value Ospfv3LsaEnum::network {8194, "network"};
-const Enum::Value Ospfv3LsaEnum::inter_area_prefix {8195, "inter-area-prefix"};
-const Enum::Value Ospfv3LsaEnum::inter_area_router {8196, "inter-area-router"};
-const Enum::Value Ospfv3LsaEnum::nssa_external {8199, "nssa-external"};
-const Enum::Value Ospfv3LsaEnum::intra_area_prefix {8201, "intra-area-prefix"};
-const Enum::Value Ospfv3LsaEnum::external {16389, "external"};
-const Enum::Value Ospfv3LsaEnum::opaque_link {32768, "opaque-link"};
-const Enum::Value Ospfv3LsaEnum::opaque_area {40960, "opaque-area"};
-const Enum::Value Ospfv3LsaEnum::opaque_as {49152, "opaque-as"};
-const Enum::Value Ospfv3LsaEnum::unknown {57344, "unknown"};
+const Enum::YLeaf Ospfv3LsaEnum::link_lsa {8, "link-lsa"};
+const Enum::YLeaf Ospfv3LsaEnum::grace_lsa {11, "grace-lsa"};
+const Enum::YLeaf Ospfv3LsaEnum::router {8193, "router"};
+const Enum::YLeaf Ospfv3LsaEnum::network {8194, "network"};
+const Enum::YLeaf Ospfv3LsaEnum::inter_area_prefix {8195, "inter-area-prefix"};
+const Enum::YLeaf Ospfv3LsaEnum::inter_area_router {8196, "inter-area-router"};
+const Enum::YLeaf Ospfv3LsaEnum::nssa_external {8199, "nssa-external"};
+const Enum::YLeaf Ospfv3LsaEnum::intra_area_prefix {8201, "intra-area-prefix"};
+const Enum::YLeaf Ospfv3LsaEnum::external {16389, "external"};
+const Enum::YLeaf Ospfv3LsaEnum::opaque_link {32768, "opaque-link"};
+const Enum::YLeaf Ospfv3LsaEnum::opaque_area {40960, "opaque-area"};
+const Enum::YLeaf Ospfv3LsaEnum::opaque_as {49152, "opaque-as"};
+const Enum::YLeaf Ospfv3LsaEnum::unknown {57344, "unknown"};
 
-const Enum::Value ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
-const Enum::Value ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
-const Enum::Value ImStateEnumEnum::im_state_down {2, "im-state-down"};
-const Enum::Value ImStateEnumEnum::im_state_up {3, "im-state-up"};
-const Enum::Value ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
-const Enum::Value ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
-const Enum::Value ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
-const Enum::Value ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
-const Enum::Value ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
-const Enum::Value ImStateEnumEnum::im_state_last {18, "im-state-last"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_last {18, "im-state-last"};
 
-const Enum::Value Ospfv3GracefulShutdownStateEnum::init {0, "init"};
-const Enum::Value Ospfv3GracefulShutdownStateEnum::normal {1, "normal"};
-const Enum::Value Ospfv3GracefulShutdownStateEnum::flushing {2, "flushing"};
-const Enum::Value Ospfv3GracefulShutdownStateEnum::empty_hellos {3, "empty-hellos"};
-const Enum::Value Ospfv3GracefulShutdownStateEnum::quiet {4, "quiet"};
+const Enum::YLeaf Ospfv3GracefulShutdownStateEnum::init {0, "init"};
+const Enum::YLeaf Ospfv3GracefulShutdownStateEnum::normal {1, "normal"};
+const Enum::YLeaf Ospfv3GracefulShutdownStateEnum::flushing {2, "flushing"};
+const Enum::YLeaf Ospfv3GracefulShutdownStateEnum::empty_hellos {3, "empty-hellos"};
+const Enum::YLeaf Ospfv3GracefulShutdownStateEnum::quiet {4, "quiet"};
 
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_lsasum_type {0, "mgmt-lsa-lsasum-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_link_type {8, "mgmt-lsa-link-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_gr_type {11, "mgmt-lsa-gr-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_rtr_type {8193, "mgmt-lsa-rtr-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_net_type {8194, "mgmt-lsa-net-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_iapfx_type {8195, "mgmt-lsa-iapfx-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_iartr_type {8196, "mgmt-lsa-iartr-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_nssaext_type {8199, "mgmt-lsa-nssaext-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_prefix_type {8201, "mgmt-lsa-prefix-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_ext_type {16389, "mgmt-lsa-ext-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_unk_link_type {32768, "mgmt-lsa-unk-link-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_unk_area_type {40960, "mgmt-lsa-unk-area-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_unk_as_type {49152, "mgmt-lsa-unk-as-type"};
-const Enum::Value Ospfv3LsaInfoTypesEnum::mgmt_lsa_unk_type {57344, "mgmt-lsa-unk-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_lsasum_type {0, "mgmt-lsa-lsasum-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_link_type {8, "mgmt-lsa-link-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_gr_type {11, "mgmt-lsa-gr-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_rtr_type {8193, "mgmt-lsa-rtr-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_net_type {8194, "mgmt-lsa-net-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_iapfx_type {8195, "mgmt-lsa-iapfx-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_iartr_type {8196, "mgmt-lsa-iartr-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_nssaext_type {8199, "mgmt-lsa-nssaext-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_prefix_type {8201, "mgmt-lsa-prefix-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_ext_type {16389, "mgmt-lsa-ext-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_unk_link_type {32768, "mgmt-lsa-unk-link-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_unk_area_type {40960, "mgmt-lsa-unk-area-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_unk_as_type {49152, "mgmt-lsa-unk-as-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypesEnum::mgmt_lsa_unk_type {57344, "mgmt-lsa-unk-type"};
 
-const Enum::Value Ospfv3GracefulRestartReasonEnum::grace_reason_unknown {0, "grace-reason-unknown"};
-const Enum::Value Ospfv3GracefulRestartReasonEnum::grace_reason_software_restart {1, "grace-reason-software-restart"};
-const Enum::Value Ospfv3GracefulRestartReasonEnum::grace_reason_software_upgrade {2, "grace-reason-software-upgrade"};
-const Enum::Value Ospfv3GracefulRestartReasonEnum::grace_reason_switchover {3, "grace-reason-switchover"};
+const Enum::YLeaf Ospfv3GracefulRestartReasonEnum::grace_reason_unknown {0, "grace-reason-unknown"};
+const Enum::YLeaf Ospfv3GracefulRestartReasonEnum::grace_reason_software_restart {1, "grace-reason-software-restart"};
+const Enum::YLeaf Ospfv3GracefulRestartReasonEnum::grace_reason_software_upgrade {2, "grace-reason-software-upgrade"};
+const Enum::YLeaf Ospfv3GracefulRestartReasonEnum::grace_reason_switchover {3, "grace-reason-switchover"};
 
-const Enum::Value IpfrrTbrkrEnum::downstream {0, "downstream"};
-const Enum::Value IpfrrTbrkrEnum::line_card_disjoint {1, "line-card-disjoint"};
-const Enum::Value IpfrrTbrkrEnum::backup_metric {2, "backup-metric"};
-const Enum::Value IpfrrTbrkrEnum::node_protect {3, "node-protect"};
-const Enum::Value IpfrrTbrkrEnum::primary_path {4, "primary-path"};
-const Enum::Value IpfrrTbrkrEnum::secondary_path {5, "secondary-path"};
-const Enum::Value IpfrrTbrkrEnum::srlg_disjoint {6, "srlg-disjoint"};
-const Enum::Value IpfrrTbrkrEnum::tunnel {7, "tunnel"};
+const Enum::YLeaf IpfrrTbrkrEnum::downstream {0, "downstream"};
+const Enum::YLeaf IpfrrTbrkrEnum::line_card_disjoint {1, "line-card-disjoint"};
+const Enum::YLeaf IpfrrTbrkrEnum::backup_metric {2, "backup-metric"};
+const Enum::YLeaf IpfrrTbrkrEnum::node_protect {3, "node-protect"};
+const Enum::YLeaf IpfrrTbrkrEnum::primary_path {4, "primary-path"};
+const Enum::YLeaf IpfrrTbrkrEnum::secondary_path {5, "secondary-path"};
+const Enum::YLeaf IpfrrTbrkrEnum::srlg_disjoint {6, "srlg-disjoint"};
+const Enum::YLeaf IpfrrTbrkrEnum::tunnel {7, "tunnel"};
 
-const Enum::Value Ospfv3InterfaceEnum::none {0, "none"};
-const Enum::Value Ospfv3InterfaceEnum::broadcast {1, "broadcast"};
-const Enum::Value Ospfv3InterfaceEnum::non_broadcast {2, "non-broadcast"};
-const Enum::Value Ospfv3InterfaceEnum::point_to_point {3, "point-to-point"};
-const Enum::Value Ospfv3InterfaceEnum::point_to_multipoint {4, "point-to-multipoint"};
-const Enum::Value Ospfv3InterfaceEnum::point_to_multipoint_non_broadcast {5, "point-to-multipoint-non-broadcast"};
-const Enum::Value Ospfv3InterfaceEnum::virtual_link {6, "virtual-link"};
-const Enum::Value Ospfv3InterfaceEnum::loopback_interface {7, "loopback-interface"};
-const Enum::Value Ospfv3InterfaceEnum::mpls_traffic_engineering {8, "mpls-traffic-engineering"};
-const Enum::Value Ospfv3InterfaceEnum::sham_link {9, "sham-link"};
+const Enum::YLeaf Ospfv3InterfaceEnum::none {0, "none"};
+const Enum::YLeaf Ospfv3InterfaceEnum::broadcast {1, "broadcast"};
+const Enum::YLeaf Ospfv3InterfaceEnum::non_broadcast {2, "non-broadcast"};
+const Enum::YLeaf Ospfv3InterfaceEnum::point_to_point {3, "point-to-point"};
+const Enum::YLeaf Ospfv3InterfaceEnum::point_to_multipoint {4, "point-to-multipoint"};
+const Enum::YLeaf Ospfv3InterfaceEnum::point_to_multipoint_non_broadcast {5, "point-to-multipoint-non-broadcast"};
+const Enum::YLeaf Ospfv3InterfaceEnum::virtual_link {6, "virtual-link"};
+const Enum::YLeaf Ospfv3InterfaceEnum::loopback_interface {7, "loopback-interface"};
+const Enum::YLeaf Ospfv3InterfaceEnum::mpls_traffic_engineering {8, "mpls-traffic-engineering"};
+const Enum::YLeaf Ospfv3InterfaceEnum::sham_link {9, "sham-link"};
 
-const Enum::Value StubRouterTriggerEnum::on_proc_migration {0, "on-proc-migration"};
-const Enum::Value StubRouterTriggerEnum::on_proc_restart {1, "on-proc-restart"};
-const Enum::Value StubRouterTriggerEnum::on_switchover {2, "on-switchover"};
-const Enum::Value StubRouterTriggerEnum::on_startup {3, "on-startup"};
-const Enum::Value StubRouterTriggerEnum::always {4, "always"};
-const Enum::Value StubRouterTriggerEnum::none {5, "none"};
+const Enum::YLeaf StubRouterTriggerEnum::on_proc_migration {0, "on-proc-migration"};
+const Enum::YLeaf StubRouterTriggerEnum::on_proc_restart {1, "on-proc-restart"};
+const Enum::YLeaf StubRouterTriggerEnum::on_switchover {2, "on-switchover"};
+const Enum::YLeaf StubRouterTriggerEnum::on_startup {3, "on-startup"};
+const Enum::YLeaf StubRouterTriggerEnum::always {4, "always"};
+const Enum::YLeaf StubRouterTriggerEnum::none {5, "none"};
 
-const Enum::Value OspfLsaSyncStateEnum::none {0, "none"};
-const Enum::Value OspfLsaSyncStateEnum::out_of_sync {1, "out-of-sync"};
-const Enum::Value OspfLsaSyncStateEnum::in_sync {2, "in-sync"};
-const Enum::Value OspfLsaSyncStateEnum::nsr_ack_pending {3, "nsr-ack-pending"};
+const Enum::YLeaf OspfLsaSyncStateEnum::none {0, "none"};
+const Enum::YLeaf OspfLsaSyncStateEnum::out_of_sync {1, "out-of-sync"};
+const Enum::YLeaf OspfLsaSyncStateEnum::in_sync {2, "in-sync"};
+const Enum::YLeaf OspfLsaSyncStateEnum::nsr_ack_pending {3, "nsr-ack-pending"};
 
-const Enum::Value Ospfv3DefaultMetricEnum::type_none {0, "type-none"};
-const Enum::Value Ospfv3DefaultMetricEnum::type1 {1, "type1"};
-const Enum::Value Ospfv3DefaultMetricEnum::type2 {2, "type2"};
+const Enum::YLeaf Ospfv3DefaultMetricEnum::type_none {0, "type-none"};
+const Enum::YLeaf Ospfv3DefaultMetricEnum::type1 {1, "type1"};
+const Enum::YLeaf Ospfv3DefaultMetricEnum::type2 {2, "type2"};
 
-const Enum::Value Ospfv3NeighborStateEnum::neigbhor_down {0, "neigbhor-down"};
-const Enum::Value Ospfv3NeighborStateEnum::attempt {1, "attempt"};
-const Enum::Value Ospfv3NeighborStateEnum::init {2, "init"};
-const Enum::Value Ospfv3NeighborStateEnum::two_way {3, "two-way"};
-const Enum::Value Ospfv3NeighborStateEnum::exstart {4, "exstart"};
-const Enum::Value Ospfv3NeighborStateEnum::exchange {5, "exchange"};
-const Enum::Value Ospfv3NeighborStateEnum::loading {6, "loading"};
-const Enum::Value Ospfv3NeighborStateEnum::full {7, "full"};
-const Enum::Value Ospfv3NeighborStateEnum::sc_virtual {8, "sc-virtual"};
+const Enum::YLeaf Ospfv3NeighborStateEnum::neigbhor_down {0, "neigbhor-down"};
+const Enum::YLeaf Ospfv3NeighborStateEnum::attempt {1, "attempt"};
+const Enum::YLeaf Ospfv3NeighborStateEnum::init {2, "init"};
+const Enum::YLeaf Ospfv3NeighborStateEnum::two_way {3, "two-way"};
+const Enum::YLeaf Ospfv3NeighborStateEnum::exstart {4, "exstart"};
+const Enum::YLeaf Ospfv3NeighborStateEnum::exchange {5, "exchange"};
+const Enum::YLeaf Ospfv3NeighborStateEnum::loading {6, "loading"};
+const Enum::YLeaf Ospfv3NeighborStateEnum::full {7, "full"};
+const Enum::YLeaf Ospfv3NeighborStateEnum::sc_virtual {8, "sc-virtual"};
 
-const Enum::Value PrefixPriorityEnum::critical {0, "critical"};
-const Enum::Value PrefixPriorityEnum::high {1, "high"};
-const Enum::Value PrefixPriorityEnum::medium {2, "medium"};
-const Enum::Value PrefixPriorityEnum::low {3, "low"};
+const Enum::YLeaf PrefixPriorityEnum::critical {0, "critical"};
+const Enum::YLeaf PrefixPriorityEnum::high {1, "high"};
+const Enum::YLeaf PrefixPriorityEnum::medium {2, "medium"};
+const Enum::YLeaf PrefixPriorityEnum::low {3, "low"};
 
-const Enum::Value StubRouterExitReasonEnum::none {0, "none"};
-const Enum::Value StubRouterExitReasonEnum::bgp {1, "bgp"};
-const Enum::Value StubRouterExitReasonEnum::timer {2, "timer"};
-const Enum::Value StubRouterExitReasonEnum::configuration {3, "configuration"};
-const Enum::Value StubRouterExitReasonEnum::cleared {4, "cleared"};
-const Enum::Value StubRouterExitReasonEnum::override {5, "override"};
+const Enum::YLeaf StubRouterExitReasonEnum::none {0, "none"};
+const Enum::YLeaf StubRouterExitReasonEnum::bgp {1, "bgp"};
+const Enum::YLeaf StubRouterExitReasonEnum::timer {2, "timer"};
+const Enum::YLeaf StubRouterExitReasonEnum::configuration {3, "configuration"};
+const Enum::YLeaf StubRouterExitReasonEnum::cleared {4, "cleared"};
+const Enum::YLeaf StubRouterExitReasonEnum::override {5, "override"};
 
-const Enum::Value Ospfv3Lsa1Enum::link {8, "link"};
-const Enum::Value Ospfv3Lsa1Enum::grace {11, "grace"};
-const Enum::Value Ospfv3Lsa1Enum::router {8193, "router"};
-const Enum::Value Ospfv3Lsa1Enum::network {8194, "network"};
-const Enum::Value Ospfv3Lsa1Enum::inter_area_prefix {8195, "inter-area-prefix"};
-const Enum::Value Ospfv3Lsa1Enum::inter_area_router {8196, "inter-area-router"};
-const Enum::Value Ospfv3Lsa1Enum::mospf {8198, "mospf"};
-const Enum::Value Ospfv3Lsa1Enum::type7_external {8199, "type7-external"};
-const Enum::Value Ospfv3Lsa1Enum::lsa_prefix {8201, "lsa-prefix"};
-const Enum::Value Ospfv3Lsa1Enum::as_external {16389, "as-external"};
-const Enum::Value Ospfv3Lsa1Enum::unknown_link {32768, "unknown-link"};
-const Enum::Value Ospfv3Lsa1Enum::unknown_area {40960, "unknown-area"};
-const Enum::Value Ospfv3Lsa1Enum::unknown_as {49152, "unknown-as"};
-const Enum::Value Ospfv3Lsa1Enum::unknown_type {57344, "unknown-type"};
+const Enum::YLeaf Ospfv3Lsa1Enum::link {8, "link"};
+const Enum::YLeaf Ospfv3Lsa1Enum::grace {11, "grace"};
+const Enum::YLeaf Ospfv3Lsa1Enum::router {8193, "router"};
+const Enum::YLeaf Ospfv3Lsa1Enum::network {8194, "network"};
+const Enum::YLeaf Ospfv3Lsa1Enum::inter_area_prefix {8195, "inter-area-prefix"};
+const Enum::YLeaf Ospfv3Lsa1Enum::inter_area_router {8196, "inter-area-router"};
+const Enum::YLeaf Ospfv3Lsa1Enum::mospf {8198, "mospf"};
+const Enum::YLeaf Ospfv3Lsa1Enum::type7_external {8199, "type7-external"};
+const Enum::YLeaf Ospfv3Lsa1Enum::lsa_prefix {8201, "lsa-prefix"};
+const Enum::YLeaf Ospfv3Lsa1Enum::as_external {16389, "as-external"};
+const Enum::YLeaf Ospfv3Lsa1Enum::unknown_link {32768, "unknown-link"};
+const Enum::YLeaf Ospfv3Lsa1Enum::unknown_area {40960, "unknown-area"};
+const Enum::YLeaf Ospfv3Lsa1Enum::unknown_as {49152, "unknown-as"};
+const Enum::YLeaf Ospfv3Lsa1Enum::unknown_type {57344, "unknown-type"};
 
-const Enum::Value StubRouterModeEnum::rbit {0, "rbit"};
-const Enum::Value StubRouterModeEnum::v6bit {1, "v6bit"};
-const Enum::Value StubRouterModeEnum::max_metric {2, "max-metric"};
-const Enum::Value StubRouterModeEnum::none {3, "none"};
+const Enum::YLeaf StubRouterModeEnum::rbit {0, "rbit"};
+const Enum::YLeaf StubRouterModeEnum::v6bit {1, "v6bit"};
+const Enum::YLeaf StubRouterModeEnum::max_metric {2, "max-metric"};
+const Enum::YLeaf StubRouterModeEnum::none {3, "none"};
 
-const Enum::Value StubRouterAbrOffReasonEnum::init_delay {2, "init-delay"};
-const Enum::Value StubRouterAbrOffReasonEnum::no_neighbor {3, "no-neighbor"};
-const Enum::Value StubRouterAbrOffReasonEnum::no_full_neighbor {4, "no-full-neighbor"};
-const Enum::Value StubRouterAbrOffReasonEnum::new_neighbor {5, "new-neighbor"};
-const Enum::Value StubRouterAbrOffReasonEnum::full_neighbor {6, "full-neighbor"};
+const Enum::YLeaf StubRouterAbrOffReasonEnum::init_delay {2, "init-delay"};
+const Enum::YLeaf StubRouterAbrOffReasonEnum::no_neighbor {3, "no-neighbor"};
+const Enum::YLeaf StubRouterAbrOffReasonEnum::no_full_neighbor {4, "no-full-neighbor"};
+const Enum::YLeaf StubRouterAbrOffReasonEnum::new_neighbor {5, "new-neighbor"};
+const Enum::YLeaf StubRouterAbrOffReasonEnum::full_neighbor {6, "full-neighbor"};
 
-const Enum::Value Ospfv3AreaRangeStatusEnum::advertise {1, "advertise"};
-const Enum::Value Ospfv3AreaRangeStatusEnum::do_not_advertise {2, "do-not-advertise"};
+const Enum::YLeaf Ospfv3AreaRangeStatusEnum::advertise {1, "advertise"};
+const Enum::YLeaf Ospfv3AreaRangeStatusEnum::do_not_advertise {2, "do-not-advertise"};
 
-const Enum::Value Ospfv3InterfaceStateEnum::down {0, "down"};
-const Enum::Value Ospfv3InterfaceStateEnum::loopback {1, "loopback"};
-const Enum::Value Ospfv3InterfaceStateEnum::waiting {2, "waiting"};
-const Enum::Value Ospfv3InterfaceStateEnum::point_to_multipoint {3, "point-to-multipoint"};
-const Enum::Value Ospfv3InterfaceStateEnum::point_to_point {4, "point-to-point"};
-const Enum::Value Ospfv3InterfaceStateEnum::designated_router {5, "designated-router"};
-const Enum::Value Ospfv3InterfaceStateEnum::backup_designated_router {6, "backup-designated-router"};
-const Enum::Value Ospfv3InterfaceStateEnum::other_designated_router {7, "other-designated-router"};
+const Enum::YLeaf Ospfv3InterfaceStateEnum::down {0, "down"};
+const Enum::YLeaf Ospfv3InterfaceStateEnum::loopback {1, "loopback"};
+const Enum::YLeaf Ospfv3InterfaceStateEnum::waiting {2, "waiting"};
+const Enum::YLeaf Ospfv3InterfaceStateEnum::point_to_multipoint {3, "point-to-multipoint"};
+const Enum::YLeaf Ospfv3InterfaceStateEnum::point_to_point {4, "point-to-point"};
+const Enum::YLeaf Ospfv3InterfaceStateEnum::designated_router {5, "designated-router"};
+const Enum::YLeaf Ospfv3InterfaceStateEnum::backup_designated_router {6, "backup-designated-router"};
+const Enum::YLeaf Ospfv3InterfaceStateEnum::other_designated_router {7, "other-designated-router"};
 
-const Enum::Value Ospfv3LinkEnum::link_router {1, "link-router"};
-const Enum::Value Ospfv3LinkEnum::link_trans_net {2, "link-trans-net"};
-const Enum::Value Ospfv3LinkEnum::link_virtual_link {4, "link-virtual-link"};
+const Enum::YLeaf Ospfv3LinkEnum::link_router {1, "link-router"};
+const Enum::YLeaf Ospfv3LinkEnum::link_trans_net {2, "link-trans-net"};
+const Enum::YLeaf Ospfv3LinkEnum::link_virtual_link {4, "link-virtual-link"};
 
-const Enum::Value Ospfv3BorderRouteEnum::abr {1, "abr"};
-const Enum::Value Ospfv3BorderRouteEnum::asbr {2, "asbr"};
-const Enum::Value Ospfv3BorderRouteEnum::abr_asbr {3, "abr-asbr"};
+const Enum::YLeaf Ospfv3BorderRouteEnum::abr {1, "abr"};
+const Enum::YLeaf Ospfv3BorderRouteEnum::asbr {2, "asbr"};
+const Enum::YLeaf Ospfv3BorderRouteEnum::abr_asbr {3, "abr-asbr"};
 
 
 }

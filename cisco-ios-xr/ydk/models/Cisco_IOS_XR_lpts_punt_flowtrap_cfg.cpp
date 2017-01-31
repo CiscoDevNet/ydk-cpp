@@ -8,16 +8,16 @@ namespace ydk {
 namespace Cisco_IOS_XR_lpts_punt_flowtrap_cfg {
 
 
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::default_ {0, "default"};
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::arp {1, "arp"};
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::icmp {2, "icmp"};
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::dhcp {3, "dhcp"};
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::pppoe {4, "pppoe"};
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::ppp {5, "ppp"};
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::igmp {6, "igmp"};
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::ipv4 {7, "ipv4"};
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::l2tp {8, "l2tp"};
-const Enum::Value LptsPuntFlowtrapProtoIdEnum::unclassified {9, "unclassified"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::default_ {0, "default"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::arp {1, "arp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::icmp {2, "icmp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::dhcp {3, "dhcp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::pppoe {4, "pppoe"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::ppp {5, "ppp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::igmp {6, "igmp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::ipv4 {7, "ipv4"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::l2tp {8, "l2tp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::unclassified {9, "unclassified"};
 
 
 }

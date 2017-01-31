@@ -46,7 +46,7 @@ EntityPath ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -117,7 +117,7 @@ bool ActiveNodes::ActiveNode::Ltrace::has_data() const
 bool ActiveNodes::ActiveNode::Ltrace::has_operation() const
 {
     return is_set(operation)
-	|| (allocation_params !=  nullptr && is_set(allocation_params->operation));
+	|| (allocation_params !=  nullptr && allocation_params->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::Ltrace::get_segment_path() const
@@ -134,7 +134,7 @@ EntityPath ActiveNodes::ActiveNode::Ltrace::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -235,7 +235,7 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLoca
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -327,7 +327,7 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLoca
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -418,7 +418,7 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable
 {
     return is_set(operation)
 	|| is_set(id1.operation)
-	|| (nps !=  nullptr && is_set(nps->operation));
+	|| (nps !=  nullptr && nps->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_segment_path() const
@@ -435,7 +435,7 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLoca
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -545,7 +545,7 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -623,7 +623,7 @@ ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::~Pr
 
 bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::has_data() const
 {
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -633,12 +633,13 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences
 
 bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::has_operation() const
 {
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(precedence.operation);
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_segment_path() const
@@ -655,7 +656,7 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Prece
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -729,7 +730,7 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::has_operati
     return is_set(operation)
 	|| is_set(flow_type.operation)
 	|| is_set(rate.operation)
-	|| (precedences !=  nullptr && is_set(precedences->operation));
+	|| (precedences !=  nullptr && precedences->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_segment_path() const
@@ -746,7 +747,7 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -861,7 +862,7 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -952,7 +953,7 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (flows !=  nullptr && is_set(flows->operation));
+	|| (flows !=  nullptr && flows->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_segment_path() const
@@ -969,7 +970,7 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1060,8 +1061,8 @@ bool ActiveNodes::ActiveNode::LptsLocal::has_data() const
 bool ActiveNodes::ActiveNode::LptsLocal::has_operation() const
 {
     return is_set(operation)
-	|| (ipolicer_local !=  nullptr && is_set(ipolicer_local->operation))
-	|| (ipolicer_local_tables !=  nullptr && is_set(ipolicer_local_tables->operation));
+	|| (ipolicer_local !=  nullptr && ipolicer_local->has_operation())
+	|| (ipolicer_local_tables !=  nullptr && ipolicer_local_tables->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::get_segment_path() const
@@ -1078,7 +1079,7 @@ EntityPath ActiveNodes::ActiveNode::LptsLocal::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1205,7 +1206,7 @@ EntityPath ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1281,7 +1282,7 @@ bool ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::has_dat
 bool ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::has_operation() const
 {
     return is_set(operation)
-	|| (memory_threshold !=  nullptr && is_set(memory_threshold->operation));
+	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_segment_path() const
@@ -1298,7 +1299,7 @@ EntityPath ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1402,7 +1403,7 @@ EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::Memor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1478,7 +1479,7 @@ bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_data() 
 bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_operation() const
 {
     return is_set(operation)
-	|| (memory_threshold !=  nullptr && is_set(memory_threshold->operation));
+	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_segment_path() const
@@ -1495,7 +1496,7 @@ EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1598,10 +1599,10 @@ bool ActiveNodes::ActiveNode::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && is_set(cisco_ios_xr_watchd_cfg_watchdog_node_threshold->operation))
-	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && is_set(cisco_ios_xr_wd_cfg_watchdog_node_threshold->operation))
-	|| (lpts_local !=  nullptr && is_set(lpts_local->operation))
-	|| (ltrace !=  nullptr && is_set(ltrace->operation));
+	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_watchd_cfg_watchdog_node_threshold->has_operation())
+	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold->has_operation())
+	|| (lpts_local !=  nullptr && lpts_local->has_operation())
+	|| (ltrace !=  nullptr && ltrace->has_operation());
 }
 
 std::string ActiveNodes::ActiveNode::get_segment_path() const
@@ -1797,7 +1798,7 @@ EntityPath ActiveNodes::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1902,7 +1903,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1973,7 +1974,7 @@ bool PreconfiguredNodes::PreconfiguredNode::Ltrace::has_data() const
 bool PreconfiguredNodes::PreconfiguredNode::Ltrace::has_operation() const
 {
     return is_set(operation)
-	|| (allocation_params !=  nullptr && is_set(allocation_params->operation));
+	|| (allocation_params !=  nullptr && allocation_params->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::Ltrace::get_segment_path() const
@@ -1990,7 +1991,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::Ltrace::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2091,7 +2092,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2183,7 +2184,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2274,7 +2275,7 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::Ipol
 {
     return is_set(operation)
 	|| is_set(id1.operation)
-	|| (nps !=  nullptr && is_set(nps->operation));
+	|| (nps !=  nullptr && nps->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_segment_path() const
@@ -2291,7 +2292,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2401,7 +2402,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2479,7 +2480,7 @@ PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Pr
 
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::has_data() const
 {
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2489,12 +2490,13 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flo
 
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::has_operation() const
 {
-    for (auto const & leaf : precedence.getValues())
+    for (auto const & leaf : precedence.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(precedence.operation);
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_segment_path() const
@@ -2511,7 +2513,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flow
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2585,7 +2587,7 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flo
     return is_set(operation)
 	|| is_set(flow_type.operation)
 	|| is_set(rate.operation)
-	|| (precedences !=  nullptr && is_set(precedences->operation));
+	|| (precedences !=  nullptr && precedences->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_segment_path() const
@@ -2602,7 +2604,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flow
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2717,7 +2719,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flow
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2808,7 +2810,7 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::has_operat
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (flows !=  nullptr && is_set(flows->operation));
+	|| (flows !=  nullptr && flows->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_segment_path() const
@@ -2825,7 +2827,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2916,8 +2918,8 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::has_data() const
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::has_operation() const
 {
     return is_set(operation)
-	|| (ipolicer_local !=  nullptr && is_set(ipolicer_local->operation))
-	|| (ipolicer_local_tables !=  nullptr && is_set(ipolicer_local_tables->operation));
+	|| (ipolicer_local !=  nullptr && ipolicer_local->has_operation())
+	|| (ipolicer_local_tables !=  nullptr && ipolicer_local_tables->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_segment_path() const
@@ -2934,7 +2936,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3061,7 +3063,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3137,7 +3139,7 @@ bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThre
 bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::has_operation() const
 {
     return is_set(operation)
-	|| (memory_threshold !=  nullptr && is_set(memory_threshold->operation));
+	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::get_segment_path() const
@@ -3154,7 +3156,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3258,7 +3260,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeTh
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3334,7 +3336,7 @@ bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshol
 bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_operation() const
 {
     return is_set(operation)
-	|| (memory_threshold !=  nullptr && is_set(memory_threshold->operation));
+	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::get_segment_path() const
@@ -3351,7 +3353,7 @@ EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeTh
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3454,10 +3456,10 @@ bool PreconfiguredNodes::PreconfiguredNode::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && is_set(cisco_ios_xr_watchd_cfg_watchdog_node_threshold->operation))
-	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && is_set(cisco_ios_xr_wd_cfg_watchdog_node_threshold->operation))
-	|| (lpts_local !=  nullptr && is_set(lpts_local->operation))
-	|| (ltrace !=  nullptr && is_set(ltrace->operation));
+	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_watchd_cfg_watchdog_node_threshold->has_operation())
+	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold->has_operation())
+	|| (lpts_local !=  nullptr && lpts_local->has_operation())
+	|| (ltrace !=  nullptr && ltrace->has_operation());
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::get_segment_path() const
@@ -3653,7 +3655,7 @@ EntityPath PreconfiguredNodes::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

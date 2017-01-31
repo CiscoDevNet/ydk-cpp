@@ -133,7 +133,7 @@ bool SyslogService::Timestamps::Log::LogDatetime::has_data() const
 bool SyslogService::Timestamps::Log::LogDatetime::has_operation() const
 {
     return is_set(operation)
-	|| (log_datetime_value !=  nullptr && is_set(log_datetime_value->operation));
+	|| (log_datetime_value !=  nullptr && log_datetime_value->has_operation());
 }
 
 std::string SyslogService::Timestamps::Log::LogDatetime::get_segment_path() const
@@ -241,7 +241,7 @@ bool SyslogService::Timestamps::Log::has_operation() const
     return is_set(operation)
 	|| is_set(log_timestamp_disable.operation)
 	|| is_set(log_uptime.operation)
-	|| (log_datetime !=  nullptr && is_set(log_datetime->operation));
+	|| (log_datetime !=  nullptr && log_datetime->has_operation());
 }
 
 std::string SyslogService::Timestamps::Log::get_segment_path() const
@@ -456,7 +456,7 @@ bool SyslogService::Timestamps::Debug::DebugDatetime::has_data() const
 bool SyslogService::Timestamps::Debug::DebugDatetime::has_operation() const
 {
     return is_set(operation)
-	|| (datetime_value !=  nullptr && is_set(datetime_value->operation));
+	|| (datetime_value !=  nullptr && datetime_value->has_operation());
 }
 
 std::string SyslogService::Timestamps::Debug::DebugDatetime::get_segment_path() const
@@ -564,7 +564,7 @@ bool SyslogService::Timestamps::Debug::has_operation() const
     return is_set(operation)
 	|| is_set(debug_timestamp_disable.operation)
 	|| is_set(debug_uptime.operation)
-	|| (debug_datetime !=  nullptr && is_set(debug_datetime->operation));
+	|| (debug_datetime !=  nullptr && debug_datetime->has_operation());
 }
 
 std::string SyslogService::Timestamps::Debug::get_segment_path() const
@@ -684,8 +684,8 @@ bool SyslogService::Timestamps::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (debug !=  nullptr && is_set(debug->operation))
-	|| (log !=  nullptr && is_set(log->operation));
+	|| (debug !=  nullptr && debug->has_operation())
+	|| (log !=  nullptr && log->has_operation());
 }
 
 std::string SyslogService::Timestamps::get_segment_path() const
@@ -814,7 +814,7 @@ bool SyslogService::has_data() const
 bool SyslogService::has_operation() const
 {
     return is_set(operation)
-	|| (timestamps !=  nullptr && is_set(timestamps->operation));
+	|| (timestamps !=  nullptr && timestamps->has_operation());
 }
 
 std::string SyslogService::get_segment_path() const
@@ -831,7 +831,7 @@ EntityPath SyslogService::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1040,7 +1040,7 @@ bool Syslog::MonitorLogging::has_operation() const
 {
     return is_set(operation)
 	|| is_set(logging_level.operation)
-	|| (monitor_discriminator !=  nullptr && is_set(monitor_discriminator->operation));
+	|| (monitor_discriminator !=  nullptr && monitor_discriminator->has_operation());
 }
 
 std::string Syslog::MonitorLogging::get_segment_path() const
@@ -1521,7 +1521,7 @@ bool Syslog::BufferedLogging::has_operation() const
     return is_set(operation)
 	|| is_set(buffer_size.operation)
 	|| is_set(logging_level.operation)
-	|| (buffered_discriminator !=  nullptr && is_set(buffered_discriminator->operation));
+	|| (buffered_discriminator !=  nullptr && buffered_discriminator->has_operation());
 }
 
 std::string Syslog::BufferedLogging::get_segment_path() const
@@ -1649,7 +1649,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityPort::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1749,7 +1749,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6Discriminator::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1854,7 +1854,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::Ipv6S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1941,7 +1941,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::Ipv6SeverityLevels::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2042,9 +2042,9 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::has_operation() const
 {
     return is_set(operation)
 	|| is_set(address.operation)
-	|| (ipv6_discriminator !=  nullptr && is_set(ipv6_discriminator->operation))
-	|| (ipv6_severity_levels !=  nullptr && is_set(ipv6_severity_levels->operation))
-	|| (ipv6_severity_port !=  nullptr && is_set(ipv6_severity_port->operation));
+	|| (ipv6_discriminator !=  nullptr && ipv6_discriminator->has_operation())
+	|| (ipv6_severity_levels !=  nullptr && ipv6_severity_levels->has_operation())
+	|| (ipv6_severity_port !=  nullptr && ipv6_severity_port->has_operation());
 }
 
 std::string Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_segment_path() const
@@ -2061,7 +2061,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::Ipv6::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2217,7 +2217,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv6S::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2318,7 +2318,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostN
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2405,7 +2405,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2521,7 +2521,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameDiscriminator::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2629,7 +2629,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2714,9 +2714,9 @@ bool Syslog::HostServer::Vrfs::Vrf::Hosts::Host::has_operation() const
 {
     return is_set(operation)
 	|| is_set(host_name.operation)
-	|| (host_name_discriminator !=  nullptr && is_set(host_name_discriminator->operation))
-	|| (host_name_severities !=  nullptr && is_set(host_name_severities->operation))
-	|| (host_severity_port !=  nullptr && is_set(host_severity_port->operation));
+	|| (host_name_discriminator !=  nullptr && host_name_discriminator->has_operation())
+	|| (host_name_severities !=  nullptr && host_name_severities->has_operation())
+	|| (host_severity_port !=  nullptr && host_severity_port->has_operation());
 }
 
 std::string Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_segment_path() const
@@ -2733,7 +2733,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2889,7 +2889,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Hosts::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2990,7 +2990,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::Ipv4S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3077,7 +3077,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityLevels::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3181,7 +3181,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4SeverityPort::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3281,7 +3281,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::Ipv4Discriminator::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3386,9 +3386,9 @@ bool Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::has_operation() const
 {
     return is_set(operation)
 	|| is_set(address.operation)
-	|| (ipv4_discriminator !=  nullptr && is_set(ipv4_discriminator->operation))
-	|| (ipv4_severity_levels !=  nullptr && is_set(ipv4_severity_levels->operation))
-	|| (ipv4_severity_port !=  nullptr && is_set(ipv4_severity_port->operation));
+	|| (ipv4_discriminator !=  nullptr && ipv4_discriminator->has_operation())
+	|| (ipv4_severity_levels !=  nullptr && ipv4_severity_levels->has_operation())
+	|| (ipv4_severity_port !=  nullptr && ipv4_severity_port->has_operation());
 }
 
 std::string Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_segment_path() const
@@ -3405,7 +3405,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::Ipv4::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3561,7 +3561,7 @@ EntityPath Syslog::HostServer::Vrfs::Vrf::Ipv4S::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3662,9 +3662,9 @@ bool Syslog::HostServer::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (hosts !=  nullptr && is_set(hosts->operation))
-	|| (ipv4s !=  nullptr && is_set(ipv4s->operation))
-	|| (ipv6s !=  nullptr && is_set(ipv6s->operation));
+	|| (hosts !=  nullptr && hosts->has_operation())
+	|| (ipv4s !=  nullptr && ipv4s->has_operation())
+	|| (ipv6s !=  nullptr && ipv6s->has_operation());
 }
 
 std::string Syslog::HostServer::Vrfs::Vrf::get_segment_path() const
@@ -3924,7 +3924,7 @@ bool Syslog::HostServer::has_data() const
 bool Syslog::HostServer::has_operation() const
 {
     return is_set(operation)
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Syslog::HostServer::get_segment_path() const
@@ -4149,7 +4149,7 @@ bool Syslog::ConsoleLogging::has_operation() const
 {
     return is_set(operation)
 	|| is_set(logging_level.operation)
-	|| (console_discriminator !=  nullptr && is_set(console_discriminator->operation));
+	|| (console_discriminator !=  nullptr && console_discriminator->has_operation());
 }
 
 std::string Syslog::ConsoleLogging::get_segment_path() const
@@ -4275,7 +4275,7 @@ EntityPath Syslog::Files::File::FileSpecification::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4368,7 +4368,7 @@ EntityPath Syslog::Files::File::FileLogAttributes::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4468,7 +4468,7 @@ EntityPath Syslog::Files::File::FileLogDiscriminator::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4573,9 +4573,9 @@ bool Syslog::Files::File::has_operation() const
 {
     return is_set(operation)
 	|| is_set(file_name.operation)
-	|| (file_log_attributes !=  nullptr && is_set(file_log_attributes->operation))
-	|| (file_log_discriminator !=  nullptr && is_set(file_log_discriminator->operation))
-	|| (file_specification !=  nullptr && is_set(file_specification->operation));
+	|| (file_log_attributes !=  nullptr && file_log_attributes->has_operation())
+	|| (file_log_discriminator !=  nullptr && file_log_discriminator->has_operation())
+	|| (file_specification !=  nullptr && file_specification->has_operation());
 }
 
 std::string Syslog::Files::File::get_segment_path() const
@@ -5127,9 +5127,9 @@ bool Syslog::Ipv4::has_data() const
 bool Syslog::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (dscp !=  nullptr && is_set(dscp->operation))
-	|| (precedence !=  nullptr && is_set(precedence->operation))
-	|| (tos !=  nullptr && is_set(tos->operation));
+	|| (dscp !=  nullptr && dscp->has_operation())
+	|| (precedence !=  nullptr && precedence->has_operation())
+	|| (tos !=  nullptr && tos->has_operation());
 }
 
 std::string Syslog::Ipv4::get_segment_path() const
@@ -5696,9 +5696,9 @@ bool Syslog::Ipv6::has_data() const
 bool Syslog::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (dscp !=  nullptr && is_set(dscp->operation))
-	|| (precedence !=  nullptr && is_set(precedence->operation))
-	|| (traffic_class !=  nullptr && is_set(traffic_class->operation));
+	|| (dscp !=  nullptr && dscp->has_operation())
+	|| (precedence !=  nullptr && precedence->has_operation())
+	|| (traffic_class !=  nullptr && traffic_class->has_operation());
 }
 
 std::string Syslog::Ipv6::get_segment_path() const
@@ -5859,7 +5859,7 @@ EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceV
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5946,7 +5946,7 @@ EntityPath Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceV
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6037,7 +6037,7 @@ bool Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::
 {
     return is_set(operation)
 	|| is_set(src_interface_name_value.operation)
-	|| (source_interface_vrfs !=  nullptr && is_set(source_interface_vrfs->operation));
+	|| (source_interface_vrfs !=  nullptr && source_interface_vrfs->has_operation());
 }
 
 std::string Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_segment_path() const
@@ -6251,7 +6251,7 @@ bool Syslog::SourceInterfaceTable::has_data() const
 bool Syslog::SourceInterfaceTable::has_operation() const
 {
     return is_set(operation)
-	|| (source_interface_values !=  nullptr && is_set(source_interface_values->operation));
+	|| (source_interface_values !=  nullptr && source_interface_values->has_operation());
 }
 
 std::string Syslog::SourceInterfaceTable::get_segment_path() const
@@ -6560,7 +6560,7 @@ EntityPath Syslog::Correlator::Rules::Rule::Definition::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6796,7 +6796,7 @@ EntityPath Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6893,7 +6893,7 @@ EntityPath Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7000,7 +7000,7 @@ EntityPath Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7091,8 +7091,8 @@ bool Syslog::Correlator::Rules::Rule::NonStateful::has_operation() const
 	|| is_set(context_correlation.operation)
 	|| is_set(timeout.operation)
 	|| is_set(timeout_root_cause.operation)
-	|| (non_root_causes !=  nullptr && is_set(non_root_causes->operation))
-	|| (root_cause !=  nullptr && is_set(root_cause->operation));
+	|| (non_root_causes !=  nullptr && non_root_causes->has_operation())
+	|| (root_cause !=  nullptr && root_cause->has_operation());
 }
 
 std::string Syslog::Correlator::Rules::Rule::NonStateful::get_segment_path() const
@@ -7109,7 +7109,7 @@ EntityPath Syslog::Correlator::Rules::Rule::NonStateful::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7251,7 +7251,7 @@ EntityPath Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCaus
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7348,7 +7348,7 @@ EntityPath Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7455,7 +7455,7 @@ EntityPath Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7552,8 +7552,8 @@ bool Syslog::Correlator::Rules::Rule::Stateful::has_operation() const
 	|| is_set(reparent.operation)
 	|| is_set(timeout.operation)
 	|| is_set(timeout_root_cause.operation)
-	|| (non_root_causes !=  nullptr && is_set(non_root_causes->operation))
-	|| (root_cause !=  nullptr && is_set(root_cause->operation));
+	|| (non_root_causes !=  nullptr && non_root_causes->has_operation())
+	|| (root_cause !=  nullptr && root_cause->has_operation());
 }
 
 std::string Syslog::Correlator::Rules::Rule::Stateful::get_segment_path() const
@@ -7570,7 +7570,7 @@ EntityPath Syslog::Correlator::Rules::Rule::Stateful::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7693,7 +7693,7 @@ Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::~Contexts()
 
 bool Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::has_data() const
 {
-    for (auto const & leaf : context.getValues())
+    for (auto const & leaf : context.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7703,12 +7703,13 @@ bool Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::has_data() const
 
 bool Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::has_operation() const
 {
-    for (auto const & leaf : context.getValues())
+    for (auto const & leaf : context.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(context.operation);
 }
 
 std::string Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_segment_path() const
@@ -7725,7 +7726,7 @@ EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7783,7 +7784,7 @@ Syslog::Correlator::Rules::Rule::ApplyTo::Locations::~Locations()
 
 bool Syslog::Correlator::Rules::Rule::ApplyTo::Locations::has_data() const
 {
-    for (auto const & leaf : location.getValues())
+    for (auto const & leaf : location.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7793,12 +7794,13 @@ bool Syslog::Correlator::Rules::Rule::ApplyTo::Locations::has_data() const
 
 bool Syslog::Correlator::Rules::Rule::ApplyTo::Locations::has_operation() const
 {
-    for (auto const & leaf : location.getValues())
+    for (auto const & leaf : location.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(location.operation);
 }
 
 std::string Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_segment_path() const
@@ -7815,7 +7817,7 @@ EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7891,8 +7893,8 @@ bool Syslog::Correlator::Rules::Rule::ApplyTo::has_operation() const
 {
     return is_set(operation)
 	|| is_set(all_of_router.operation)
-	|| (contexts !=  nullptr && is_set(contexts->operation))
-	|| (locations !=  nullptr && is_set(locations->operation));
+	|| (contexts !=  nullptr && contexts->has_operation())
+	|| (locations !=  nullptr && locations->has_operation());
 }
 
 std::string Syslog::Correlator::Rules::Rule::ApplyTo::get_segment_path() const
@@ -7909,7 +7911,7 @@ EntityPath Syslog::Correlator::Rules::Rule::ApplyTo::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8035,7 +8037,7 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8122,7 +8124,7 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8223,7 +8225,7 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8310,7 +8312,7 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8406,8 +8408,8 @@ bool Syslog::Correlator::Rules::Rule::AppliedTo::has_operation() const
 {
     return is_set(operation)
 	|| is_set(all.operation)
-	|| (contexts !=  nullptr && is_set(contexts->operation))
-	|| (locations !=  nullptr && is_set(locations->operation));
+	|| (contexts !=  nullptr && contexts->has_operation())
+	|| (locations !=  nullptr && locations->has_operation());
 }
 
 std::string Syslog::Correlator::Rules::Rule::AppliedTo::get_segment_path() const
@@ -8424,7 +8426,7 @@ EntityPath Syslog::Correlator::Rules::Rule::AppliedTo::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8560,11 +8562,11 @@ bool Syslog::Correlator::Rules::Rule::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (applied_to !=  nullptr && is_set(applied_to->operation))
-	|| (apply_to !=  nullptr && is_set(apply_to->operation))
-	|| (definition !=  nullptr && is_set(definition->operation))
-	|| (non_stateful !=  nullptr && is_set(non_stateful->operation))
-	|| (stateful !=  nullptr && is_set(stateful->operation));
+	|| (applied_to !=  nullptr && applied_to->has_operation())
+	|| (apply_to !=  nullptr && apply_to->has_operation())
+	|| (definition !=  nullptr && definition->has_operation())
+	|| (non_stateful !=  nullptr && non_stateful->has_operation())
+	|| (stateful !=  nullptr && stateful->has_operation());
 }
 
 std::string Syslog::Correlator::Rules::Rule::get_segment_path() const
@@ -8884,7 +8886,7 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8971,7 +8973,7 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9072,7 +9074,7 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9159,7 +9161,7 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9260,7 +9262,7 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9347,7 +9349,7 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9443,8 +9445,8 @@ bool Syslog::Correlator::RuleSets::RuleSet::AppliedTo::has_operation() const
 {
     return is_set(operation)
 	|| is_set(all.operation)
-	|| (contexts !=  nullptr && is_set(contexts->operation))
-	|| (locations !=  nullptr && is_set(locations->operation));
+	|| (contexts !=  nullptr && contexts->has_operation())
+	|| (locations !=  nullptr && locations->has_operation());
 }
 
 std::string Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_segment_path() const
@@ -9461,7 +9463,7 @@ EntityPath Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9582,8 +9584,8 @@ bool Syslog::Correlator::RuleSets::RuleSet::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (applied_to !=  nullptr && is_set(applied_to->operation))
-	|| (rulenames !=  nullptr && is_set(rulenames->operation));
+	|| (applied_to !=  nullptr && applied_to->has_operation())
+	|| (rulenames !=  nullptr && rulenames->has_operation());
 }
 
 std::string Syslog::Correlator::RuleSets::RuleSet::get_segment_path() const
@@ -9829,8 +9831,8 @@ bool Syslog::Correlator::has_operation() const
 {
     return is_set(operation)
 	|| is_set(buffer_size.operation)
-	|| (rule_sets !=  nullptr && is_set(rule_sets->operation))
-	|| (rules !=  nullptr && is_set(rules->operation));
+	|| (rule_sets !=  nullptr && rule_sets->has_operation())
+	|| (rules !=  nullptr && rules->has_operation());
 }
 
 std::string Syslog::Correlator::get_segment_path() const
@@ -9973,7 +9975,7 @@ EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10060,7 +10062,7 @@ EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10151,7 +10153,7 @@ bool Syslog::Suppression::Rules::Rule::AppliedTo::has_operation() const
 {
     return is_set(operation)
 	|| is_set(all.operation)
-	|| (sources !=  nullptr && is_set(sources->operation));
+	|| (sources !=  nullptr && sources->has_operation());
 }
 
 std::string Syslog::Suppression::Rules::Rule::AppliedTo::get_segment_path() const
@@ -10168,7 +10170,7 @@ EntityPath Syslog::Suppression::Rules::Rule::AppliedTo::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10277,7 +10279,7 @@ EntityPath Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10374,7 +10376,7 @@ EntityPath Syslog::Suppression::Rules::Rule::AlarmCauses::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10473,8 +10475,8 @@ bool Syslog::Suppression::Rules::Rule::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(all_alarms.operation)
-	|| (alarm_causes !=  nullptr && is_set(alarm_causes->operation))
-	|| (applied_to !=  nullptr && is_set(applied_to->operation));
+	|| (alarm_causes !=  nullptr && alarm_causes->has_operation())
+	|| (applied_to !=  nullptr && applied_to->has_operation());
 }
 
 std::string Syslog::Suppression::Rules::Rule::get_segment_path() const
@@ -10716,7 +10718,7 @@ bool Syslog::Suppression::has_data() const
 bool Syslog::Suppression::has_operation() const
 {
     return is_set(operation)
-	|| (rules !=  nullptr && is_set(rules->operation));
+	|| (rules !=  nullptr && rules->has_operation());
 }
 
 std::string Syslog::Suppression::get_segment_path() const
@@ -10900,21 +10902,21 @@ bool Syslog::has_operation() const
 	|| is_set(host_name_prefix.operation)
 	|| is_set(local_log_file_size.operation)
 	|| is_set(suppress_duplicates.operation)
-	|| (alarm_logger !=  nullptr && is_set(alarm_logger->operation))
-	|| (archive !=  nullptr && is_set(archive->operation))
-	|| (buffered_logging !=  nullptr && is_set(buffered_logging->operation))
-	|| (console_logging !=  nullptr && is_set(console_logging->operation))
-	|| (correlator !=  nullptr && is_set(correlator->operation))
-	|| (files !=  nullptr && is_set(files->operation))
-	|| (history_logging !=  nullptr && is_set(history_logging->operation))
-	|| (host_server !=  nullptr && is_set(host_server->operation))
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation))
-	|| (logging_facilities !=  nullptr && is_set(logging_facilities->operation))
-	|| (monitor_logging !=  nullptr && is_set(monitor_logging->operation))
-	|| (source_interface_table !=  nullptr && is_set(source_interface_table->operation))
-	|| (suppression !=  nullptr && is_set(suppression->operation))
-	|| (trap_logging !=  nullptr && is_set(trap_logging->operation));
+	|| (alarm_logger !=  nullptr && alarm_logger->has_operation())
+	|| (archive !=  nullptr && archive->has_operation())
+	|| (buffered_logging !=  nullptr && buffered_logging->has_operation())
+	|| (console_logging !=  nullptr && console_logging->has_operation())
+	|| (correlator !=  nullptr && correlator->has_operation())
+	|| (files !=  nullptr && files->has_operation())
+	|| (history_logging !=  nullptr && history_logging->has_operation())
+	|| (host_server !=  nullptr && host_server->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (logging_facilities !=  nullptr && logging_facilities->has_operation())
+	|| (monitor_logging !=  nullptr && monitor_logging->has_operation())
+	|| (source_interface_table !=  nullptr && source_interface_table->has_operation())
+	|| (suppression !=  nullptr && suppression->has_operation())
+	|| (trap_logging !=  nullptr && trap_logging->has_operation());
 }
 
 std::string Syslog::get_segment_path() const
@@ -10931,7 +10933,7 @@ EntityPath Syslog::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -11337,104 +11339,104 @@ std::unique_ptr<Entity> Syslog::clone_ptr()
     return std::make_unique<Syslog>();
 }
 
-const Enum::Value LogSeverityEnum::emergency {0, "emergency"};
-const Enum::Value LogSeverityEnum::alert {1, "alert"};
-const Enum::Value LogSeverityEnum::critical {2, "critical"};
-const Enum::Value LogSeverityEnum::error {3, "error"};
-const Enum::Value LogSeverityEnum::warning {4, "warning"};
-const Enum::Value LogSeverityEnum::notice {5, "notice"};
-const Enum::Value LogSeverityEnum::informational {6, "informational"};
-const Enum::Value LogSeverityEnum::debug {7, "debug"};
+const Enum::YLeaf LogSeverityEnum::emergency {0, "emergency"};
+const Enum::YLeaf LogSeverityEnum::alert {1, "alert"};
+const Enum::YLeaf LogSeverityEnum::critical {2, "critical"};
+const Enum::YLeaf LogSeverityEnum::error {3, "error"};
+const Enum::YLeaf LogSeverityEnum::warning {4, "warning"};
+const Enum::YLeaf LogSeverityEnum::notice {5, "notice"};
+const Enum::YLeaf LogSeverityEnum::informational {6, "informational"};
+const Enum::YLeaf LogSeverityEnum::debug {7, "debug"};
 
-const Enum::Value FacilityEnum::kern {0, "kern"};
-const Enum::Value FacilityEnum::user {8, "user"};
-const Enum::Value FacilityEnum::mail {16, "mail"};
-const Enum::Value FacilityEnum::daemon {24, "daemon"};
-const Enum::Value FacilityEnum::auth {32, "auth"};
-const Enum::Value FacilityEnum::syslog {40, "syslog"};
-const Enum::Value FacilityEnum::lpr {48, "lpr"};
-const Enum::Value FacilityEnum::news {56, "news"};
-const Enum::Value FacilityEnum::uucp {64, "uucp"};
-const Enum::Value FacilityEnum::cron {72, "cron"};
-const Enum::Value FacilityEnum::authpriv {80, "authpriv"};
-const Enum::Value FacilityEnum::ftp {88, "ftp"};
-const Enum::Value FacilityEnum::local0 {128, "local0"};
-const Enum::Value FacilityEnum::local1 {136, "local1"};
-const Enum::Value FacilityEnum::local2 {144, "local2"};
-const Enum::Value FacilityEnum::local3 {152, "local3"};
-const Enum::Value FacilityEnum::local4 {160, "local4"};
-const Enum::Value FacilityEnum::local5 {168, "local5"};
-const Enum::Value FacilityEnum::local6 {176, "local6"};
-const Enum::Value FacilityEnum::local7 {184, "local7"};
-const Enum::Value FacilityEnum::sys9 {192, "sys9"};
-const Enum::Value FacilityEnum::sys10 {200, "sys10"};
-const Enum::Value FacilityEnum::sys11 {208, "sys11"};
-const Enum::Value FacilityEnum::sys12 {216, "sys12"};
-const Enum::Value FacilityEnum::sys13 {224, "sys13"};
-const Enum::Value FacilityEnum::sys14 {232, "sys14"};
+const Enum::YLeaf FacilityEnum::kern {0, "kern"};
+const Enum::YLeaf FacilityEnum::user {8, "user"};
+const Enum::YLeaf FacilityEnum::mail {16, "mail"};
+const Enum::YLeaf FacilityEnum::daemon {24, "daemon"};
+const Enum::YLeaf FacilityEnum::auth {32, "auth"};
+const Enum::YLeaf FacilityEnum::syslog {40, "syslog"};
+const Enum::YLeaf FacilityEnum::lpr {48, "lpr"};
+const Enum::YLeaf FacilityEnum::news {56, "news"};
+const Enum::YLeaf FacilityEnum::uucp {64, "uucp"};
+const Enum::YLeaf FacilityEnum::cron {72, "cron"};
+const Enum::YLeaf FacilityEnum::authpriv {80, "authpriv"};
+const Enum::YLeaf FacilityEnum::ftp {88, "ftp"};
+const Enum::YLeaf FacilityEnum::local0 {128, "local0"};
+const Enum::YLeaf FacilityEnum::local1 {136, "local1"};
+const Enum::YLeaf FacilityEnum::local2 {144, "local2"};
+const Enum::YLeaf FacilityEnum::local3 {152, "local3"};
+const Enum::YLeaf FacilityEnum::local4 {160, "local4"};
+const Enum::YLeaf FacilityEnum::local5 {168, "local5"};
+const Enum::YLeaf FacilityEnum::local6 {176, "local6"};
+const Enum::YLeaf FacilityEnum::local7 {184, "local7"};
+const Enum::YLeaf FacilityEnum::sys9 {192, "sys9"};
+const Enum::YLeaf FacilityEnum::sys10 {200, "sys10"};
+const Enum::YLeaf FacilityEnum::sys11 {208, "sys11"};
+const Enum::YLeaf FacilityEnum::sys12 {216, "sys12"};
+const Enum::YLeaf FacilityEnum::sys13 {224, "sys13"};
+const Enum::YLeaf FacilityEnum::sys14 {232, "sys14"};
 
-const Enum::Value LogCollectFrequencyEnum::weekly {1, "weekly"};
-const Enum::Value LogCollectFrequencyEnum::daily {2, "daily"};
+const Enum::YLeaf LogCollectFrequencyEnum::weekly {1, "weekly"};
+const Enum::YLeaf LogCollectFrequencyEnum::daily {2, "daily"};
 
-const Enum::Value LoggingPrecedenceValueEnum::routine {0, "routine"};
-const Enum::Value LoggingPrecedenceValueEnum::priority {1, "priority"};
-const Enum::Value LoggingPrecedenceValueEnum::immediate {2, "immediate"};
-const Enum::Value LoggingPrecedenceValueEnum::flash {3, "flash"};
-const Enum::Value LoggingPrecedenceValueEnum::flash_override {4, "flash-override"};
-const Enum::Value LoggingPrecedenceValueEnum::critical {5, "critical"};
-const Enum::Value LoggingPrecedenceValueEnum::internet {6, "internet"};
-const Enum::Value LoggingPrecedenceValueEnum::network {7, "network"};
+const Enum::YLeaf LoggingPrecedenceValueEnum::routine {0, "routine"};
+const Enum::YLeaf LoggingPrecedenceValueEnum::priority {1, "priority"};
+const Enum::YLeaf LoggingPrecedenceValueEnum::immediate {2, "immediate"};
+const Enum::YLeaf LoggingPrecedenceValueEnum::flash {3, "flash"};
+const Enum::YLeaf LoggingPrecedenceValueEnum::flash_override {4, "flash-override"};
+const Enum::YLeaf LoggingPrecedenceValueEnum::critical {5, "critical"};
+const Enum::YLeaf LoggingPrecedenceValueEnum::internet {6, "internet"};
+const Enum::YLeaf LoggingPrecedenceValueEnum::network {7, "network"};
 
-const Enum::Value LoggingTosEnum::precedence {0, "precedence"};
-const Enum::Value LoggingTosEnum::dscp {1, "dscp"};
+const Enum::YLeaf LoggingTosEnum::precedence {0, "precedence"};
+const Enum::YLeaf LoggingTosEnum::dscp {1, "dscp"};
 
-const Enum::Value LoggingLevelsEnum::emergency {0, "emergency"};
-const Enum::Value LoggingLevelsEnum::alert {1, "alert"};
-const Enum::Value LoggingLevelsEnum::critical {2, "critical"};
-const Enum::Value LoggingLevelsEnum::error {3, "error"};
-const Enum::Value LoggingLevelsEnum::warning {4, "warning"};
-const Enum::Value LoggingLevelsEnum::notice {5, "notice"};
-const Enum::Value LoggingLevelsEnum::info {6, "info"};
-const Enum::Value LoggingLevelsEnum::debug {7, "debug"};
-const Enum::Value LoggingLevelsEnum::disable {15, "disable"};
+const Enum::YLeaf LoggingLevelsEnum::emergency {0, "emergency"};
+const Enum::YLeaf LoggingLevelsEnum::alert {1, "alert"};
+const Enum::YLeaf LoggingLevelsEnum::critical {2, "critical"};
+const Enum::YLeaf LoggingLevelsEnum::error {3, "error"};
+const Enum::YLeaf LoggingLevelsEnum::warning {4, "warning"};
+const Enum::YLeaf LoggingLevelsEnum::notice {5, "notice"};
+const Enum::YLeaf LoggingLevelsEnum::info {6, "info"};
+const Enum::YLeaf LoggingLevelsEnum::debug {7, "debug"};
+const Enum::YLeaf LoggingLevelsEnum::disable {15, "disable"};
 
-const Enum::Value LoggingPrecedenceEnum::precedence {0, "precedence"};
+const Enum::YLeaf LoggingPrecedenceEnum::precedence {0, "precedence"};
 
-const Enum::Value LoggingDscpValueEnum::default_ {0, "default"};
-const Enum::Value LoggingDscpValueEnum::af11 {10, "af11"};
-const Enum::Value LoggingDscpValueEnum::af12 {12, "af12"};
-const Enum::Value LoggingDscpValueEnum::af13 {14, "af13"};
-const Enum::Value LoggingDscpValueEnum::af21 {18, "af21"};
-const Enum::Value LoggingDscpValueEnum::af22 {20, "af22"};
-const Enum::Value LoggingDscpValueEnum::af23 {22, "af23"};
-const Enum::Value LoggingDscpValueEnum::af31 {26, "af31"};
-const Enum::Value LoggingDscpValueEnum::af32 {28, "af32"};
-const Enum::Value LoggingDscpValueEnum::af33 {30, "af33"};
-const Enum::Value LoggingDscpValueEnum::af41 {34, "af41"};
-const Enum::Value LoggingDscpValueEnum::af42 {36, "af42"};
-const Enum::Value LoggingDscpValueEnum::af43 {38, "af43"};
-const Enum::Value LoggingDscpValueEnum::ef {46, "ef"};
-const Enum::Value LoggingDscpValueEnum::cs1 {8, "cs1"};
-const Enum::Value LoggingDscpValueEnum::cs2 {16, "cs2"};
-const Enum::Value LoggingDscpValueEnum::cs3 {24, "cs3"};
-const Enum::Value LoggingDscpValueEnum::cs4 {32, "cs4"};
-const Enum::Value LoggingDscpValueEnum::cs5 {40, "cs5"};
-const Enum::Value LoggingDscpValueEnum::cs6 {48, "cs6"};
-const Enum::Value LoggingDscpValueEnum::cs7 {56, "cs7"};
+const Enum::YLeaf LoggingDscpValueEnum::default_ {0, "default"};
+const Enum::YLeaf LoggingDscpValueEnum::af11 {10, "af11"};
+const Enum::YLeaf LoggingDscpValueEnum::af12 {12, "af12"};
+const Enum::YLeaf LoggingDscpValueEnum::af13 {14, "af13"};
+const Enum::YLeaf LoggingDscpValueEnum::af21 {18, "af21"};
+const Enum::YLeaf LoggingDscpValueEnum::af22 {20, "af22"};
+const Enum::YLeaf LoggingDscpValueEnum::af23 {22, "af23"};
+const Enum::YLeaf LoggingDscpValueEnum::af31 {26, "af31"};
+const Enum::YLeaf LoggingDscpValueEnum::af32 {28, "af32"};
+const Enum::YLeaf LoggingDscpValueEnum::af33 {30, "af33"};
+const Enum::YLeaf LoggingDscpValueEnum::af41 {34, "af41"};
+const Enum::YLeaf LoggingDscpValueEnum::af42 {36, "af42"};
+const Enum::YLeaf LoggingDscpValueEnum::af43 {38, "af43"};
+const Enum::YLeaf LoggingDscpValueEnum::ef {46, "ef"};
+const Enum::YLeaf LoggingDscpValueEnum::cs1 {8, "cs1"};
+const Enum::YLeaf LoggingDscpValueEnum::cs2 {16, "cs2"};
+const Enum::YLeaf LoggingDscpValueEnum::cs3 {24, "cs3"};
+const Enum::YLeaf LoggingDscpValueEnum::cs4 {32, "cs4"};
+const Enum::YLeaf LoggingDscpValueEnum::cs5 {40, "cs5"};
+const Enum::YLeaf LoggingDscpValueEnum::cs6 {48, "cs6"};
+const Enum::YLeaf LoggingDscpValueEnum::cs7 {56, "cs7"};
 
-const Enum::Value LogMessageSeverityEnum::emergency {0, "emergency"};
-const Enum::Value LogMessageSeverityEnum::alert {1, "alert"};
-const Enum::Value LogMessageSeverityEnum::critical {2, "critical"};
-const Enum::Value LogMessageSeverityEnum::error {3, "error"};
-const Enum::Value LogMessageSeverityEnum::warning {4, "warning"};
-const Enum::Value LogMessageSeverityEnum::notice {5, "notice"};
-const Enum::Value LogMessageSeverityEnum::informational {6, "informational"};
-const Enum::Value LogMessageSeverityEnum::debug {7, "debug"};
+const Enum::YLeaf LogMessageSeverityEnum::emergency {0, "emergency"};
+const Enum::YLeaf LogMessageSeverityEnum::alert {1, "alert"};
+const Enum::YLeaf LogMessageSeverityEnum::critical {2, "critical"};
+const Enum::YLeaf LogMessageSeverityEnum::error {3, "error"};
+const Enum::YLeaf LogMessageSeverityEnum::warning {4, "warning"};
+const Enum::YLeaf LogMessageSeverityEnum::notice {5, "notice"};
+const Enum::YLeaf LogMessageSeverityEnum::informational {6, "informational"};
+const Enum::YLeaf LogMessageSeverityEnum::debug {7, "debug"};
 
-const Enum::Value TimeInfoEnum::disable {0, "disable"};
-const Enum::Value TimeInfoEnum::enable {1, "enable"};
+const Enum::YLeaf TimeInfoEnum::disable {0, "disable"};
+const Enum::YLeaf TimeInfoEnum::enable {1, "enable"};
 
-const Enum::Value LoggingDscpEnum::dscp {1, "dscp"};
+const Enum::YLeaf LoggingDscpEnum::dscp {1, "dscp"};
 
 
 }

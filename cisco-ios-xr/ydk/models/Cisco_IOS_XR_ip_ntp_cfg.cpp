@@ -67,7 +67,7 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -197,7 +197,7 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -310,7 +310,7 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -438,7 +438,7 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -573,7 +573,7 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -686,7 +686,7 @@ EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -782,8 +782,8 @@ bool Ntp::PeerVrfs::PeerVrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (peer_ipv4s !=  nullptr && is_set(peer_ipv4s->operation))
-	|| (peer_ipv6s !=  nullptr && is_set(peer_ipv6s->operation));
+	|| (peer_ipv4s !=  nullptr && peer_ipv4s->has_operation())
+	|| (peer_ipv6s !=  nullptr && peer_ipv6s->has_operation());
 }
 
 std::string Ntp::PeerVrfs::PeerVrf::get_segment_path() const
@@ -1785,8 +1785,8 @@ bool Ntp::Authentication::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (keies !=  nullptr && is_set(keies->operation))
-	|| (trusted_keies !=  nullptr && is_set(trusted_keies->operation));
+	|| (keies !=  nullptr && keies->has_operation())
+	|| (trusted_keies !=  nullptr && trusted_keies->has_operation());
 }
 
 std::string Ntp::Authentication::get_segment_path() const
@@ -2009,7 +2009,7 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2096,7 +2096,7 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2206,7 +2206,7 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2308,7 +2308,7 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2400,8 +2400,8 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_da
 bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_operation() const
 {
     return is_set(operation)
-	|| (multicast_clients !=  nullptr && is_set(multicast_clients->operation))
-	|| (multicast_servers !=  nullptr && is_set(multicast_servers->operation));
+	|| (multicast_clients !=  nullptr && multicast_clients->has_operation())
+	|| (multicast_servers !=  nullptr && multicast_servers->has_operation());
 }
 
 std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_segment_path() const
@@ -2418,7 +2418,7 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2545,7 +2545,7 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2625,7 +2625,7 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_op
 {
     return is_set(operation)
 	|| is_set(broadcast_client.operation)
-	|| (broadcast !=  nullptr && is_set(broadcast->operation));
+	|| (broadcast !=  nullptr && broadcast->has_operation());
 }
 
 std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_segment_path() const
@@ -2642,7 +2642,7 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2743,8 +2743,8 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::has_operation() const
     return is_set(operation)
 	|| is_set(interface.operation)
 	|| is_set(disable.operation)
-	|| (interface_broadcast !=  nullptr && is_set(interface_broadcast->operation))
-	|| (interface_multicast !=  nullptr && is_set(interface_multicast->operation));
+	|| (interface_broadcast !=  nullptr && interface_broadcast->has_operation())
+	|| (interface_multicast !=  nullptr && interface_multicast->has_operation());
 }
 
 std::string Ntp::InterfaceTables::InterfaceTable::Interface::get_segment_path() const
@@ -2761,7 +2761,7 @@ EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3119,7 +3119,7 @@ EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3214,7 +3214,7 @@ EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3575,14 +3575,14 @@ bool Ntp::has_operation() const
 	|| is_set(master.operation)
 	|| is_set(max_associations.operation)
 	|| is_set(update_calendar.operation)
-	|| (access_group_tables !=  nullptr && is_set(access_group_tables->operation))
-	|| (authentication !=  nullptr && is_set(authentication->operation))
-	|| (dscp_ipv4 !=  nullptr && is_set(dscp_ipv4->operation))
-	|| (dscp_ipv6 !=  nullptr && is_set(dscp_ipv6->operation))
-	|| (interface_tables !=  nullptr && is_set(interface_tables->operation))
-	|| (passive !=  nullptr && is_set(passive->operation))
-	|| (peer_vrfs !=  nullptr && is_set(peer_vrfs->operation))
-	|| (sources !=  nullptr && is_set(sources->operation));
+	|| (access_group_tables !=  nullptr && access_group_tables->has_operation())
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (dscp_ipv4 !=  nullptr && dscp_ipv4->has_operation())
+	|| (dscp_ipv6 !=  nullptr && dscp_ipv6->has_operation())
+	|| (interface_tables !=  nullptr && interface_tables->has_operation())
+	|| (passive !=  nullptr && passive->has_operation())
+	|| (peer_vrfs !=  nullptr && peer_vrfs->has_operation())
+	|| (sources !=  nullptr && sources->has_operation());
 }
 
 std::string Ntp::get_segment_path() const
@@ -3599,7 +3599,7 @@ EntityPath Ntp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3849,19 +3849,19 @@ std::unique_ptr<Entity> Ntp::clone_ptr()
     return std::make_unique<Ntp>();
 }
 
-const Enum::Value NtpAccessAfEnum::ipv4 {0, "ipv4"};
-const Enum::Value NtpAccessAfEnum::ipv6 {1, "ipv6"};
+const Enum::YLeaf NtpAccessAfEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf NtpAccessAfEnum::ipv6 {1, "ipv6"};
 
-const Enum::Value NtpPeerEnum::peer {0, "peer"};
-const Enum::Value NtpPeerEnum::server {1, "server"};
+const Enum::YLeaf NtpPeerEnum::peer {0, "peer"};
+const Enum::YLeaf NtpPeerEnum::server {1, "server"};
 
-const Enum::Value NtpdscpEnum::ntp_precedence {0, "ntp-precedence"};
-const Enum::Value NtpdscpEnum::ntpdscp {1, "ntpdscp"};
+const Enum::YLeaf NtpdscpEnum::ntp_precedence {0, "ntp-precedence"};
+const Enum::YLeaf NtpdscpEnum::ntpdscp {1, "ntpdscp"};
 
-const Enum::Value NtpAccessEnum::peer {0, "peer"};
-const Enum::Value NtpAccessEnum::serve {1, "serve"};
-const Enum::Value NtpAccessEnum::serve_only {2, "serve-only"};
-const Enum::Value NtpAccessEnum::query_only {3, "query-only"};
+const Enum::YLeaf NtpAccessEnum::peer {0, "peer"};
+const Enum::YLeaf NtpAccessEnum::serve {1, "serve"};
+const Enum::YLeaf NtpAccessEnum::serve_only {2, "serve-only"};
+const Enum::YLeaf NtpAccessEnum::query_only {3, "query-only"};
 
 
 }

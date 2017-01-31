@@ -52,7 +52,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -150,7 +150,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -230,8 +230,8 @@ bool MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::has_operation() co
 {
     return is_set(operation)
 	|| is_set(lsd_client_type.operation)
-	|| (application !=  nullptr && is_set(application->operation))
-	|| (bcdl_agent !=  nullptr && is_set(bcdl_agent->operation));
+	|| (application !=  nullptr && application->has_operation())
+	|| (bcdl_agent !=  nullptr && bcdl_agent->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::get_segment_path() const
@@ -248,7 +248,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -370,7 +370,7 @@ bool MplsLsdNodes::MplsLsdNode::Clients::Client::has_operation() const
 	|| is_set(client_name.operation)
 	|| is_set(client_index.operation)
 	|| is_set(node_id.operation)
-	|| (client_union !=  nullptr && is_set(client_union->operation));
+	|| (client_union !=  nullptr && client_union->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Clients::Client::get_segment_path() const
@@ -387,7 +387,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Clients::Client::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -507,7 +507,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Clients::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -620,7 +620,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -736,7 +736,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::LabelSummary::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -864,7 +864,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -976,7 +976,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1094,7 +1094,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1210,7 +1210,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3Vp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1306,7 +1306,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3Vp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1399,7 +1399,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3Vpn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1490,7 +1490,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3Vp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1586,7 +1586,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3Vp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1685,7 +1685,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Pseudowi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1792,7 +1792,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1895,7 +1895,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubDat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1998,7 +1998,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2120,7 +2120,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Da
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2220,7 +2220,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Pseudowi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2318,7 +2318,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2428,7 +2428,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2508,7 +2508,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Gene
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2594,7 +2594,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2687,7 +2687,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2775,7 +2775,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2866,7 +2866,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2971,7 +2971,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3079,7 +3079,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3167,7 +3167,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefix
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3261,7 +3261,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSeg
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3365,7 +3365,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSeg
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3466,7 +3466,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3559,7 +3559,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBindin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3769,34 +3769,34 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::has_operation(
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::get_segment_path() const
@@ -3813,7 +3813,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4527,7 +4527,7 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::has_operation() con
 {
     return is_set(operation)
 	|| is_set(application_data.operation)
-	|| (key !=  nullptr && is_set(key->operation));
+	|| (key !=  nullptr && key->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::get_segment_path() const
@@ -4544,7 +4544,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4659,7 +4659,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4774,7 +4774,7 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::has_operation() const
 	|| is_set(rewrite_owners.operation)
 	|| is_set(rs_iconnected.operation)
 	|| is_set(vrf_name.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation));
+	|| (label_context !=  nullptr && label_context->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Labels::Label::get_segment_path() const
@@ -4791,7 +4791,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::Label::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4952,7 +4952,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Labels::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5056,7 +5056,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5147,7 +5147,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5232,8 +5232,8 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::Fr
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (head !=  nullptr && is_set(head->operation))
-	|| (midpoint !=  nullptr && is_set(midpoint->operation));
+	|| (head !=  nullptr && head->has_operation())
+	|| (midpoint !=  nullptr && midpoint->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::get_segment_path() const
@@ -5250,7 +5250,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5388,7 +5388,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5497,7 +5497,7 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::ha
 	|| is_set(entry_frr_state.operation)
 	|| is_set(input_label.operation)
 	|| is_set(tunnel_interface.operation)
-	|| (frr_entry_id !=  nullptr && is_set(frr_entry_id->operation));
+	|| (frr_entry_id !=  nullptr && frr_entry_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::get_segment_path() const
@@ -5514,7 +5514,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5665,7 +5665,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5769,7 +5769,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrE
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5860,7 +5860,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrE
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5945,8 +5945,8 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (head !=  nullptr && is_set(head->operation))
-	|| (midpoint !=  nullptr && is_set(midpoint->operation));
+	|| (head !=  nullptr && head->has_operation())
+	|| (midpoint !=  nullptr && midpoint->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::get_segment_path() const
@@ -5963,7 +5963,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrE
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6101,7 +6101,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6210,7 +6210,7 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::has_operat
 	|| is_set(entry_frr_state.operation)
 	|| is_set(input_label.operation)
 	|| is_set(tunnel_interface.operation)
-	|| (frr_entry_id !=  nullptr && is_set(frr_entry_id->operation));
+	|| (frr_entry_id !=  nullptr && frr_entry_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::get_segment_path() const
@@ -6227,7 +6227,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6378,7 +6378,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6488,7 +6488,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6595,7 +6595,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6702,7 +6702,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6812,7 +6812,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6916,7 +6916,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7022,12 +7022,12 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::has_data() const
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::has_operation() const
 {
     return is_set(operation)
-	|| (summary_protected_interfaces !=  nullptr && is_set(summary_protected_interfaces->operation))
-	|| (tunnel_head_summary !=  nullptr && is_set(tunnel_head_summary->operation))
-	|| (tunnel_heads !=  nullptr && is_set(tunnel_heads->operation))
-	|| (tunnel_midpoint_summary !=  nullptr && is_set(tunnel_midpoint_summary->operation))
-	|| (tunnel_midpoints !=  nullptr && is_set(tunnel_midpoints->operation))
-	|| (tunnel_summary !=  nullptr && is_set(tunnel_summary->operation));
+	|| (summary_protected_interfaces !=  nullptr && summary_protected_interfaces->has_operation())
+	|| (tunnel_head_summary !=  nullptr && tunnel_head_summary->has_operation())
+	|| (tunnel_heads !=  nullptr && tunnel_heads->has_operation())
+	|| (tunnel_midpoint_summary !=  nullptr && tunnel_midpoint_summary->has_operation())
+	|| (tunnel_midpoints !=  nullptr && tunnel_midpoints->has_operation())
+	|| (tunnel_summary !=  nullptr && tunnel_summary->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::get_segment_path() const
@@ -7044,7 +7044,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::FrrDatabase::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7263,7 +7263,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7356,7 +7356,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7450,7 +7450,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7557,7 +7557,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7657,7 +7657,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7737,7 +7737,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7832,12 +7832,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::has
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::get_segment_path() const
@@ -7854,7 +7854,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8084,7 +8084,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Ap
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8180,7 +8180,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::has_oper
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::get_segment_path() const
@@ -8197,7 +8197,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8333,7 +8333,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8445,7 +8445,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8563,7 +8563,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8679,7 +8679,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8775,7 +8775,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8868,7 +8868,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8959,7 +8959,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9055,7 +9055,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9154,7 +9154,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9261,7 +9261,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9364,7 +9364,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9467,7 +9467,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9589,7 +9589,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9689,7 +9689,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9787,7 +9787,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9897,7 +9897,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9977,7 +9977,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10063,7 +10063,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10156,7 +10156,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10244,7 +10244,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10335,7 +10335,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10440,7 +10440,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10548,7 +10548,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10636,7 +10636,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10730,7 +10730,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10834,7 +10834,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10935,7 +10935,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11028,7 +11028,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11238,34 +11238,34 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::get_segment_path() const
@@ -11282,7 +11282,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11983,7 +11983,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::has_data() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11993,12 +11993,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::has_operation() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(label_data.operation);
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::get_segment_path() const
@@ -12015,7 +12016,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12091,8 +12092,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 {
     return is_set(operation)
 	|| is_set(rewrite_id_type.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation))
-	|| (local_label_rewrite !=  nullptr && is_set(local_label_rewrite->operation));
+	|| (label_context !=  nullptr && label_context->has_operation())
+	|| (local_label_rewrite !=  nullptr && local_label_rewrite->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::get_segment_path() const
@@ -12109,7 +12110,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12221,7 +12222,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::has_d
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::get_segment_path() const
@@ -12238,7 +12239,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12342,7 +12343,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12435,7 +12436,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12529,7 +12530,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12636,7 +12637,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12736,7 +12737,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12816,7 +12817,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12911,12 +12912,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::F
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::get_segment_path() const
@@ -12933,7 +12934,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13163,7 +13164,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13259,7 +13260,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::h
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::get_segment_path() const
@@ -13276,7 +13277,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13403,7 +13404,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13491,7 +13492,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13588,7 +13589,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::Appl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13694,7 +13695,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13793,7 +13794,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13894,7 +13895,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14023,7 +14024,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14195,7 +14196,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14362,7 +14363,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14539,7 +14540,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14673,7 +14674,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14798,7 +14799,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14940,7 +14941,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15079,7 +15080,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15227,7 +15228,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15296,7 +15297,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15312,12 +15313,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -15336,7 +15338,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15448,8 +15450,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 {
     return is_set(operation)
 	|| is_set(owner_application_type.operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::get_segment_path() const
@@ -15466,7 +15468,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15619,7 +15621,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15747,7 +15749,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15816,7 +15818,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15832,12 +15834,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -15856,7 +15859,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15964,8 +15967,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::has_operation() const
 {
     return is_set(operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::get_segment_path() const
@@ -15982,7 +15985,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16121,7 +16124,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16231,7 +16234,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16366,20 +16369,20 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 {
     return is_set(operation)
 	|| is_set(moi_type.operation)
-	|| (dmtc_data !=  nullptr && is_set(dmtc_data->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (pop_and_lookup_ipv4 !=  nullptr && is_set(pop_and_lookup_ipv4->operation))
-	|| (pop_and_lookup_ipv6 !=  nullptr && is_set(pop_and_lookup_ipv6->operation))
-	|| (pop_and_lookup_tp !=  nullptr && is_set(pop_and_lookup_tp->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (stackv4_data !=  nullptr && is_set(stackv4_data->operation))
-	|| (stackv6_data !=  nullptr && is_set(stackv6_data->operation))
-	|| (te_head_data !=  nullptr && is_set(te_head_data->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation));
+	|| (dmtc_data !=  nullptr && dmtc_data->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (pop_and_lookup_ipv4 !=  nullptr && pop_and_lookup_ipv4->has_operation())
+	|| (pop_and_lookup_ipv6 !=  nullptr && pop_and_lookup_ipv6->has_operation())
+	|| (pop_and_lookup_tp !=  nullptr && pop_and_lookup_tp->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (stackv4_data !=  nullptr && stackv4_data->has_operation())
+	|| (stackv6_data !=  nullptr && stackv6_data->has_operation())
+	|| (te_head_data !=  nullptr && te_head_data->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::get_segment_path() const
@@ -16396,7 +16399,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16784,7 +16787,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::has_operation() const
 {
     return is_set(operation)
-	|| (moi !=  nullptr && is_set(moi->operation));
+	|| (moi !=  nullptr && moi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::get_segment_path() const
@@ -16801,7 +16804,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16895,7 +16898,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::has_operat
             return true;
     }
     return is_set(operation)
-	|| (application_resource !=  nullptr && is_set(application_resource->operation));
+	|| (application_resource !=  nullptr && application_resource->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::get_segment_path() const
@@ -16912,7 +16915,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17092,8 +17095,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::has_operation() 
 	|| is_set(rw_install_age.operation)
 	|| is_set(rw_install_time.operation)
 	|| is_set(rw_updated.operation)
-	|| (fpi_key !=  nullptr && is_set(fpi_key->operation))
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (fpi_key !=  nullptr && fpi_key->has_operation())
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::get_segment_path() const
@@ -17110,7 +17113,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17382,7 +17385,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17489,7 +17492,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17582,7 +17585,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17676,7 +17679,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17783,7 +17786,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17883,7 +17886,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17963,7 +17966,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18058,12 +18061,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi:
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::get_segment_path() const
@@ -18080,7 +18083,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18310,7 +18313,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18406,7 +18409,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::has_
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::get_segment_path() const
@@ -18423,7 +18426,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18559,7 +18562,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18671,7 +18674,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18789,7 +18792,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18905,7 +18908,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19001,7 +19004,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19094,7 +19097,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19185,7 +19188,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19281,7 +19284,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19380,7 +19383,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19487,7 +19490,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19590,7 +19593,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19693,7 +19696,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19815,7 +19818,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19915,7 +19918,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20013,7 +20016,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20123,7 +20126,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20203,7 +20206,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20289,7 +20292,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20382,7 +20385,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20470,7 +20473,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20561,7 +20564,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20666,7 +20669,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20774,7 +20777,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20862,7 +20865,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20956,7 +20959,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21060,7 +21063,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21161,7 +21164,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21254,7 +21257,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21464,34 +21467,34 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::R
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::get_segment_path() const
@@ -21508,7 +21511,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22209,7 +22212,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::Rewrit
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::has_data() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -22219,12 +22222,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::R
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::has_operation() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(label_data.operation);
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::get_segment_path() const
@@ -22241,7 +22245,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22317,8 +22321,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::R
 {
     return is_set(operation)
 	|| is_set(rewrite_id_type.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation))
-	|| (local_label_rewrite !=  nullptr && is_set(local_label_rewrite->operation));
+	|| (label_context !=  nullptr && label_context->has_operation())
+	|| (local_label_rewrite !=  nullptr && local_label_rewrite->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::get_segment_path() const
@@ -22335,7 +22339,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22447,7 +22451,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::h
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::get_segment_path() const
@@ -22464,7 +22468,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Rewrit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22568,7 +22572,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Associ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22661,7 +22665,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Associ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22755,7 +22759,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Associ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22862,7 +22866,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Associ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22962,7 +22966,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Associ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23042,7 +23046,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Associ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23137,12 +23141,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFp
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::get_segment_path() const
@@ -23159,7 +23163,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Associ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23389,7 +23393,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Associ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23485,7 +23489,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFp
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::get_segment_path() const
@@ -23502,7 +23506,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Associ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23629,7 +23633,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23717,7 +23721,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23814,7 +23818,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23920,7 +23924,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24019,7 +24023,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24120,7 +24124,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24249,7 +24253,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24421,7 +24425,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24588,7 +24592,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24765,7 +24769,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24899,7 +24903,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25024,7 +25028,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25166,7 +25170,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25305,7 +25309,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25453,7 +25457,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25522,7 +25526,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArr
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -25538,12 +25542,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArr
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -25562,7 +25567,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25674,8 +25679,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArr
 {
     return is_set(operation)
 	|| is_set(owner_application_type.operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::get_segment_path() const
@@ -25692,7 +25697,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25845,7 +25850,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25973,7 +25978,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26042,7 +26047,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArr
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -26058,12 +26063,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArr
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -26082,7 +26088,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26190,8 +26196,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArr
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::has_operation() const
 {
     return is_set(operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::get_segment_path() const
@@ -26208,7 +26214,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26347,7 +26353,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26457,7 +26463,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26592,20 +26598,20 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArr
 {
     return is_set(operation)
 	|| is_set(moi_type.operation)
-	|| (dmtc_data !=  nullptr && is_set(dmtc_data->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (pop_and_lookup_ipv4 !=  nullptr && is_set(pop_and_lookup_ipv4->operation))
-	|| (pop_and_lookup_ipv6 !=  nullptr && is_set(pop_and_lookup_ipv6->operation))
-	|| (pop_and_lookup_tp !=  nullptr && is_set(pop_and_lookup_tp->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (stackv4_data !=  nullptr && is_set(stackv4_data->operation))
-	|| (stackv6_data !=  nullptr && is_set(stackv6_data->operation))
-	|| (te_head_data !=  nullptr && is_set(te_head_data->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation));
+	|| (dmtc_data !=  nullptr && dmtc_data->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (pop_and_lookup_ipv4 !=  nullptr && pop_and_lookup_ipv4->has_operation())
+	|| (pop_and_lookup_ipv6 !=  nullptr && pop_and_lookup_ipv6->has_operation())
+	|| (pop_and_lookup_tp !=  nullptr && pop_and_lookup_tp->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (stackv4_data !=  nullptr && stackv4_data->has_operation())
+	|| (stackv6_data !=  nullptr && stackv6_data->has_operation())
+	|| (te_head_data !=  nullptr && te_head_data->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::get_segment_path() const
@@ -26622,7 +26628,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27010,7 +27016,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArr
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::has_operation() const
 {
     return is_set(operation)
-	|| (moi !=  nullptr && is_set(moi->operation));
+	|| (moi !=  nullptr && moi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::get_segment_path() const
@@ -27027,7 +27033,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27121,7 +27127,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::has_op
             return true;
     }
     return is_set(operation)
-	|| (application_resource !=  nullptr && is_set(application_resource->operation));
+	|| (application_resource !=  nullptr && application_resource->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::get_segment_path() const
@@ -27138,7 +27144,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27327,8 +27333,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::has_operatio
 	|| is_set(rw_install_age.operation)
 	|| is_set(rw_install_time.operation)
 	|| is_set(rw_updated.operation)
-	|| (fpi_key !=  nullptr && is_set(fpi_key->operation))
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (fpi_key !=  nullptr && fpi_key->has_operation())
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::get_segment_path() const
@@ -27345,7 +27351,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27632,7 +27638,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27739,7 +27745,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27832,7 +27838,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27926,7 +27932,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28033,7 +28039,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28133,7 +28139,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28213,7 +28219,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28308,12 +28314,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::has
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::get_segment_path() const
@@ -28330,7 +28336,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Fp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28560,7 +28566,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::Ap
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28656,7 +28662,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::has_oper
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::get_segment_path() const
@@ -28673,7 +28679,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::FpiKey::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28809,7 +28815,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28921,7 +28927,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29039,7 +29045,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29155,7 +29161,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29251,7 +29257,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29344,7 +29350,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29435,7 +29441,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29531,7 +29537,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29630,7 +29636,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29737,7 +29743,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29840,7 +29846,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29943,7 +29949,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30065,7 +30071,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30165,7 +30171,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30263,7 +30269,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30373,7 +30379,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30453,7 +30459,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30539,7 +30545,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30632,7 +30638,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30720,7 +30726,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30811,7 +30817,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30916,7 +30922,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31024,7 +31030,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31112,7 +31118,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31206,7 +31212,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31310,7 +31316,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31411,7 +31417,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31504,7 +31510,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31714,34 +31720,34 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewri
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::get_segment_path() const
@@ -31758,7 +31764,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32459,7 +32465,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::has_data() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -32469,12 +32475,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewri
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::has_operation() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(label_data.operation);
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::get_segment_path() const
@@ -32491,7 +32498,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32567,8 +32574,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewri
 {
     return is_set(operation)
 	|| is_set(rewrite_id_type.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation))
-	|| (local_label_rewrite !=  nullptr && is_set(local_label_rewrite->operation));
+	|| (label_context !=  nullptr && label_context->has_operation())
+	|| (local_label_rewrite !=  nullptr && local_label_rewrite->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::get_segment_path() const
@@ -32585,7 +32592,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32697,7 +32704,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::has_d
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId::get_segment_path() const
@@ -32714,7 +32721,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::RewriteId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32818,7 +32825,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32911,7 +32918,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33005,7 +33012,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33112,7 +33119,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33212,7 +33219,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33292,7 +33299,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33387,12 +33394,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::F
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::get_segment_path() const
@@ -33409,7 +33416,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33639,7 +33646,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33735,7 +33742,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::h
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::get_segment_path() const
@@ -33752,7 +33759,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Associated
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33879,7 +33886,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::V4Rpf::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33967,7 +33974,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::V6Rpf::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34064,7 +34071,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::Appl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34170,7 +34177,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34269,7 +34276,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34370,7 +34377,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34499,7 +34506,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34671,7 +34678,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34838,7 +34845,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35015,7 +35022,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35149,7 +35156,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35274,7 +35281,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35416,7 +35423,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35555,7 +35562,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35703,7 +35710,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35772,7 +35779,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -35788,12 +35795,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -35812,7 +35820,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35924,8 +35932,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::
 {
     return is_set(operation)
 	|| is_set(owner_application_type.operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::get_segment_path() const
@@ -35942,7 +35950,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36095,7 +36103,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36223,7 +36231,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36292,7 +36300,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -36308,12 +36316,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -36332,7 +36341,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36440,8 +36449,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::has_operation() const
 {
     return is_set(operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::get_segment_path() const
@@ -36458,7 +36467,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36597,7 +36606,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36707,7 +36716,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36842,20 +36851,20 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::
 {
     return is_set(operation)
 	|| is_set(moi_type.operation)
-	|| (dmtc_data !=  nullptr && is_set(dmtc_data->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (pop_and_lookup_ipv4 !=  nullptr && is_set(pop_and_lookup_ipv4->operation))
-	|| (pop_and_lookup_ipv6 !=  nullptr && is_set(pop_and_lookup_ipv6->operation))
-	|| (pop_and_lookup_tp !=  nullptr && is_set(pop_and_lookup_tp->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (stackv4_data !=  nullptr && is_set(stackv4_data->operation))
-	|| (stackv6_data !=  nullptr && is_set(stackv6_data->operation))
-	|| (te_head_data !=  nullptr && is_set(te_head_data->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation));
+	|| (dmtc_data !=  nullptr && dmtc_data->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (pop_and_lookup_ipv4 !=  nullptr && pop_and_lookup_ipv4->has_operation())
+	|| (pop_and_lookup_ipv6 !=  nullptr && pop_and_lookup_ipv6->has_operation())
+	|| (pop_and_lookup_tp !=  nullptr && pop_and_lookup_tp->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (stackv4_data !=  nullptr && stackv4_data->has_operation())
+	|| (stackv6_data !=  nullptr && stackv6_data->has_operation())
+	|| (te_head_data !=  nullptr && te_head_data->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::get_segment_path() const
@@ -36872,7 +36881,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37260,7 +37269,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::has_operation() const
 {
     return is_set(operation)
-	|| (moi !=  nullptr && is_set(moi->operation));
+	|| (moi !=  nullptr && moi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::get_segment_path() const
@@ -37277,7 +37286,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::MoiA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37371,7 +37380,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::has_operat
             return true;
     }
     return is_set(operation)
-	|| (application_resource !=  nullptr && is_set(application_resource->operation));
+	|| (application_resource !=  nullptr && application_resource->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::get_segment_path() const
@@ -37388,7 +37397,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::Mois::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37568,8 +37577,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::has_operation() 
 	|| is_set(rw_install_age.operation)
 	|| is_set(rw_install_time.operation)
 	|| is_set(rw_updated.operation)
-	|| (fpi_key !=  nullptr && is_set(fpi_key->operation))
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (fpi_key !=  nullptr && fpi_key->has_operation())
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::get_segment_path() const
@@ -37586,7 +37595,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::RewriteTe::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37858,7 +37867,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37965,7 +37974,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiK
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38058,7 +38067,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiK
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38152,7 +38161,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiK
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38259,7 +38268,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiK
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38359,7 +38368,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiK
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38439,7 +38448,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiK
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38534,12 +38543,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fp
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::get_segment_path() const
@@ -38556,7 +38565,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiK
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38786,7 +38795,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiK
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38882,7 +38891,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ha
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiKey::get_segment_path() const
@@ -38899,7 +38908,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::FpiK
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39035,7 +39044,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39147,7 +39156,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39265,7 +39274,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39381,7 +39390,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39477,7 +39486,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39570,7 +39579,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39661,7 +39670,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39757,7 +39766,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39856,7 +39865,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39963,7 +39972,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40066,7 +40075,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40169,7 +40178,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40291,7 +40300,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40391,7 +40400,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40489,7 +40498,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40599,7 +40608,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40679,7 +40688,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40765,7 +40774,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40858,7 +40867,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40946,7 +40955,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41037,7 +41046,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41142,7 +41151,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41250,7 +41259,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41338,7 +41347,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41432,7 +41441,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41536,7 +41545,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41637,7 +41646,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41730,7 +41739,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41940,34 +41949,34 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId:
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::get_segment_path() const
@@ -41984,7 +41993,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42685,7 +42694,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::Rewr
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::has_data() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -42695,12 +42704,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId:
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::has_operation() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(label_data.operation);
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::get_segment_path() const
@@ -42717,7 +42727,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42793,8 +42803,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId:
 {
     return is_set(operation)
 	|| is_set(rewrite_id_type.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation))
-	|| (local_label_rewrite !=  nullptr && is_set(local_label_rewrite->operation));
+	|| (label_context !=  nullptr && label_context->has_operation())
+	|| (local_label_rewrite !=  nullptr && local_label_rewrite->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::get_segment_path() const
@@ -42811,7 +42821,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42923,7 +42933,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId:
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::RewriteId::get_segment_path() const
@@ -42940,7 +42950,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Rewr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43044,7 +43054,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Asso
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43137,7 +43147,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Asso
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43231,7 +43241,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Asso
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43338,7 +43348,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Asso
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43438,7 +43448,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Asso
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43518,7 +43528,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Asso
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43613,12 +43623,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Associated
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::get_segment_path() const
@@ -43635,7 +43645,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Asso
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43865,7 +43875,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Asso
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43961,7 +43971,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Associated
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::get_segment_path() const
@@ -43978,7 +43988,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Asso
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44105,7 +44115,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::V4Rp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44193,7 +44203,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::V6Rp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44290,7 +44300,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44396,7 +44406,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44495,7 +44505,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44596,7 +44606,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44725,7 +44735,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44897,7 +44907,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45064,7 +45074,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45241,7 +45251,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45375,7 +45385,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45500,7 +45510,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45642,7 +45652,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45781,7 +45791,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45929,7 +45939,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45998,7 +46008,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiA
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -46014,12 +46024,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiA
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -46038,7 +46049,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46150,8 +46161,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiA
 {
     return is_set(operation)
 	|| is_set(owner_application_type.operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::get_segment_path() const
@@ -46168,7 +46179,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46321,7 +46332,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46449,7 +46460,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46518,7 +46529,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiA
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -46534,12 +46545,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiA
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -46558,7 +46570,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46666,8 +46678,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiA
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::has_operation() const
 {
     return is_set(operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::get_segment_path() const
@@ -46684,7 +46696,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46823,7 +46835,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46933,7 +46945,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47068,20 +47080,20 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiA
 {
     return is_set(operation)
 	|| is_set(moi_type.operation)
-	|| (dmtc_data !=  nullptr && is_set(dmtc_data->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (pop_and_lookup_ipv4 !=  nullptr && is_set(pop_and_lookup_ipv4->operation))
-	|| (pop_and_lookup_ipv6 !=  nullptr && is_set(pop_and_lookup_ipv6->operation))
-	|| (pop_and_lookup_tp !=  nullptr && is_set(pop_and_lookup_tp->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (stackv4_data !=  nullptr && is_set(stackv4_data->operation))
-	|| (stackv6_data !=  nullptr && is_set(stackv6_data->operation))
-	|| (te_head_data !=  nullptr && is_set(te_head_data->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation));
+	|| (dmtc_data !=  nullptr && dmtc_data->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (pop_and_lookup_ipv4 !=  nullptr && pop_and_lookup_ipv4->has_operation())
+	|| (pop_and_lookup_ipv6 !=  nullptr && pop_and_lookup_ipv6->has_operation())
+	|| (pop_and_lookup_tp !=  nullptr && pop_and_lookup_tp->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (stackv4_data !=  nullptr && stackv4_data->has_operation())
+	|| (stackv6_data !=  nullptr && stackv6_data->has_operation())
+	|| (te_head_data !=  nullptr && te_head_data->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::get_segment_path() const
@@ -47098,7 +47110,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47486,7 +47498,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiA
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::has_operation() const
 {
     return is_set(operation)
-	|| (moi !=  nullptr && is_set(moi->operation));
+	|| (moi !=  nullptr && moi->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::get_segment_path() const
@@ -47503,7 +47515,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47597,7 +47609,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::has_
             return true;
     }
     return is_set(operation)
-	|| (application_resource !=  nullptr && is_set(application_resource->operation));
+	|| (application_resource !=  nullptr && application_resource->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois::get_segment_path() const
@@ -47614,7 +47626,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::Mois
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47794,8 +47806,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::has_operat
 	|| is_set(rw_install_age.operation)
 	|| is_set(rw_install_time.operation)
 	|| is_set(rw_updated.operation)
-	|| (fpi_key !=  nullptr && is_set(fpi_key->operation))
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (fpi_key !=  nullptr && fpi_key->has_operation())
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::get_segment_path() const
@@ -47812,7 +47824,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::RewriteLabel::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48084,7 +48096,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48186,10 +48198,10 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::has_data() const
 bool MplsLsdNodes::MplsLsdNode::Rewrite::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_ipv4s !=  nullptr && is_set(rewrite_ipv4s->operation))
-	|| (rewrite_labels !=  nullptr && is_set(rewrite_labels->operation))
-	|| (rewrite_pws !=  nullptr && is_set(rewrite_pws->operation))
-	|| (rewrite_tes !=  nullptr && is_set(rewrite_tes->operation));
+	|| (rewrite_ipv4s !=  nullptr && rewrite_ipv4s->has_operation())
+	|| (rewrite_labels !=  nullptr && rewrite_labels->has_operation())
+	|| (rewrite_pws !=  nullptr && rewrite_pws->has_operation())
+	|| (rewrite_tes !=  nullptr && rewrite_tes->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::get_segment_path() const
@@ -48206,7 +48218,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Rewrite::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48385,7 +48397,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::RewriteSummary::Ipv4Paths::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48497,7 +48509,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::RewriteSummary::Ipv6Paths::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48646,8 +48658,8 @@ bool MplsLsdNodes::MplsLsdNode::RewriteSummary::has_operation() const
 	|| is_set(total_t_ev4_paths.operation)
 	|| is_set(total_te_head_paths.operation)
 	|| is_set(vrf_name_xr.operation)
-	|| (ipv4_paths !=  nullptr && is_set(ipv4_paths->operation))
-	|| (ipv6_paths !=  nullptr && is_set(ipv6_paths->operation));
+	|| (ipv4_paths !=  nullptr && ipv4_paths->has_operation())
+	|| (ipv6_paths !=  nullptr && ipv6_paths->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::RewriteSummary::get_segment_path() const
@@ -48664,7 +48676,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::RewriteSummary::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48889,7 +48901,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48970,12 +48982,12 @@ MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics::~Ap
 
 bool MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics::has_data() const
 {
-    for (auto const & leaf : label_context_count.getValues())
+    for (auto const & leaf : label_context_count.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : label_context_pending_count.getValues())
+    for (auto const & leaf : label_context_pending_count.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -48988,12 +49000,12 @@ bool MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics
 
 bool MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics::has_operation() const
 {
-    for (auto const & leaf : label_context_count.getValues())
+    for (auto const & leaf : label_context_count.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : label_context_pending_count.getValues())
+    for (auto const & leaf : label_context_pending_count.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -49002,7 +49014,9 @@ bool MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics
 	|| is_set(connect_count.operation)
 	|| is_set(interface_enable.operation)
 	|| is_set(interface_enable_pending.operation)
-	|| (connected !=  nullptr && is_set(connected->operation));
+	|| is_set(label_context_count.operation)
+	|| is_set(label_context_pending_count.operation)
+	|| (connected !=  nullptr && connected->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStatistics::get_segment_path() const
@@ -49019,7 +49033,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Applications::Application::ApplicationStat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49179,7 +49193,7 @@ bool MplsLsdNodes::MplsLsdNode::Applications::Application::has_operation() const
 	|| is_set(recovery_time_elapsed_seconds.operation)
 	|| is_set(recovery_time_register_seconds.operation)
 	|| is_set(recovery_time_remaining_seconds.operation)
-	|| (application_statistics !=  nullptr && is_set(application_statistics->operation));
+	|| (application_statistics !=  nullptr && application_statistics->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Applications::Application::get_segment_path() const
@@ -49196,7 +49210,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Applications::Application::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49381,7 +49395,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Applications::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49494,7 +49508,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::LabelSummaryVrf::OwnerCo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49613,7 +49627,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::LabelSummaryVrf::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49741,7 +49755,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49851,7 +49865,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::LabelRange::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49958,7 +49972,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50070,7 +50084,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50222,8 +50236,8 @@ bool MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs::RewriteSummaryVrf::has_opera
 	|| is_set(total_t_ev4_paths.operation)
 	|| is_set(total_te_head_paths.operation)
 	|| is_set(vrf_name_xr.operation)
-	|| (ipv4_paths !=  nullptr && is_set(ipv4_paths->operation))
-	|| (ipv6_paths !=  nullptr && is_set(ipv6_paths->operation));
+	|| (ipv4_paths !=  nullptr && ipv4_paths->has_operation())
+	|| (ipv6_paths !=  nullptr && ipv6_paths->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs::RewriteSummaryVrf::get_segment_path() const
@@ -50240,7 +50254,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs::RewriteSummaryVrf::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50468,7 +50482,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50581,7 +50595,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Interfaces::Interface::ApplicationOwner::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50697,7 +50711,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Interfaces::Interface::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50820,7 +50834,7 @@ EntityPath MplsLsdNodes::MplsLsdNode::Interfaces::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50961,17 +50975,17 @@ bool MplsLsdNodes::MplsLsdNode::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (applications !=  nullptr && is_set(applications->operation))
-	|| (clients !=  nullptr && is_set(clients->operation))
-	|| (frr_database !=  nullptr && is_set(frr_database->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (label_range !=  nullptr && is_set(label_range->operation))
-	|| (label_summary !=  nullptr && is_set(label_summary->operation))
-	|| (label_summary_vrfs !=  nullptr && is_set(label_summary_vrfs->operation))
-	|| (labels !=  nullptr && is_set(labels->operation))
-	|| (rewrite !=  nullptr && is_set(rewrite->operation))
-	|| (rewrite_summary !=  nullptr && is_set(rewrite_summary->operation))
-	|| (rewrite_summary_vrfs !=  nullptr && is_set(rewrite_summary_vrfs->operation));
+	|| (applications !=  nullptr && applications->has_operation())
+	|| (clients !=  nullptr && clients->has_operation())
+	|| (frr_database !=  nullptr && frr_database->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (label_range !=  nullptr && label_range->has_operation())
+	|| (label_summary !=  nullptr && label_summary->has_operation())
+	|| (label_summary_vrfs !=  nullptr && label_summary_vrfs->has_operation())
+	|| (labels !=  nullptr && labels->has_operation())
+	|| (rewrite !=  nullptr && rewrite->has_operation())
+	|| (rewrite_summary !=  nullptr && rewrite_summary->has_operation())
+	|| (rewrite_summary_vrfs !=  nullptr && rewrite_summary_vrfs->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::get_segment_path() const
@@ -51328,7 +51342,7 @@ EntityPath MplsLsdNodes::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -51439,7 +51453,7 @@ EntityPath MplsLsd::Clients::Client::ClientUnion::Application::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51537,7 +51551,7 @@ EntityPath MplsLsd::Clients::Client::ClientUnion::BcdlAgent::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51617,8 +51631,8 @@ bool MplsLsd::Clients::Client::ClientUnion::has_operation() const
 {
     return is_set(operation)
 	|| is_set(lsd_client_type.operation)
-	|| (application !=  nullptr && is_set(application->operation))
-	|| (bcdl_agent !=  nullptr && is_set(bcdl_agent->operation));
+	|| (application !=  nullptr && application->has_operation())
+	|| (bcdl_agent !=  nullptr && bcdl_agent->has_operation());
 }
 
 std::string MplsLsd::Clients::Client::ClientUnion::get_segment_path() const
@@ -51635,7 +51649,7 @@ EntityPath MplsLsd::Clients::Client::ClientUnion::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51757,7 +51771,7 @@ bool MplsLsd::Clients::Client::has_operation() const
 	|| is_set(client_name.operation)
 	|| is_set(client_index.operation)
 	|| is_set(node_id.operation)
-	|| (client_union !=  nullptr && is_set(client_union->operation));
+	|| (client_union !=  nullptr && client_union->has_operation());
 }
 
 std::string MplsLsd::Clients::Client::get_segment_path() const
@@ -52251,7 +52265,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Ipv4Data::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52363,7 +52377,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Ipv6Data::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52481,7 +52495,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Tev4Data::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52597,7 +52611,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Ipv4L3VpnData::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52693,7 +52707,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Ipv6L3VpnData::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52786,7 +52800,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::VrfL3VpnData::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52877,7 +52891,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Cev4L3VpnData::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52973,7 +52987,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Cev6L3VpnData::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53072,7 +53086,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::PseudowireData::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53179,7 +53193,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::LabelBlockData::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53282,7 +53296,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::IpSubData::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53385,7 +53399,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Tev4P2MpData::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53507,7 +53521,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::MldPv4Data::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53607,7 +53621,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::PseudowireHeadEndData::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53705,7 +53719,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::TpData::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53815,7 +53829,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::GenericRoutingEncapsulatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53895,7 +53909,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53981,7 +53995,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::EvpnData::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54074,7 +54088,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Ipv4BlbData::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54162,7 +54176,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::Ipv6BlbData::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54253,7 +54267,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::PiMiPmsiData::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54358,7 +54372,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::PiMsPmsiData::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54466,7 +54480,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54554,7 +54568,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::SrPrefixSegment::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54648,7 +54662,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54752,7 +54766,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54853,7 +54867,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::LabelBlockSrgbData::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54946,7 +54960,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::TeBinding::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55156,34 +55170,34 @@ bool MplsLsd::Labels::Label::LabelContext::Key::has_operation() const
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsd::Labels::Label::LabelContext::Key::get_segment_path() const
@@ -55200,7 +55214,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::Key::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55914,7 +55928,7 @@ bool MplsLsd::Labels::Label::LabelContext::has_operation() const
 {
     return is_set(operation)
 	|| is_set(application_data.operation)
-	|| (key !=  nullptr && is_set(key->operation));
+	|| (key !=  nullptr && key->has_operation());
 }
 
 std::string MplsLsd::Labels::Label::LabelContext::get_segment_path() const
@@ -55931,7 +55945,7 @@ EntityPath MplsLsd::Labels::Label::LabelContext::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56046,7 +56060,7 @@ EntityPath MplsLsd::Labels::Label::ApplicationOwner::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56161,7 +56175,7 @@ bool MplsLsd::Labels::Label::has_operation() const
 	|| is_set(rewrite_owners.operation)
 	|| is_set(rs_iconnected.operation)
 	|| is_set(vrf_name.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation));
+	|| (label_context !=  nullptr && label_context->has_operation());
 }
 
 std::string MplsLsd::Labels::Label::get_segment_path() const
@@ -56443,7 +56457,7 @@ EntityPath MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::He
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56534,7 +56548,7 @@ EntityPath MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Mi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56619,8 +56633,8 @@ bool MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::has_oper
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (head !=  nullptr && is_set(head->operation))
-	|| (midpoint !=  nullptr && is_set(midpoint->operation));
+	|| (head !=  nullptr && head->has_operation())
+	|| (midpoint !=  nullptr && midpoint->has_operation());
 }
 
 std::string MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::get_segment_path() const
@@ -56637,7 +56651,7 @@ EntityPath MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56775,7 +56789,7 @@ EntityPath MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56884,7 +56898,7 @@ bool MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::has_operation() cons
 	|| is_set(entry_frr_state.operation)
 	|| is_set(input_label.operation)
 	|| is_set(tunnel_interface.operation)
-	|| (frr_entry_id !=  nullptr && is_set(frr_entry_id->operation));
+	|| (frr_entry_id !=  nullptr && frr_entry_id->has_operation());
 }
 
 std::string MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::get_segment_path() const
@@ -57156,7 +57170,7 @@ EntityPath MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57247,7 +57261,7 @@ EntityPath MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57332,8 +57346,8 @@ bool MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::has_operation() 
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (head !=  nullptr && is_set(head->operation))
-	|| (midpoint !=  nullptr && is_set(midpoint->operation));
+	|| (head !=  nullptr && head->has_operation())
+	|| (midpoint !=  nullptr && midpoint->has_operation());
 }
 
 std::string MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::get_segment_path() const
@@ -57350,7 +57364,7 @@ EntityPath MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57488,7 +57502,7 @@ EntityPath MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::OutPath::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57597,7 +57611,7 @@ bool MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::has_operation() const
 	|| is_set(entry_frr_state.operation)
 	|| is_set(input_label.operation)
 	|| is_set(tunnel_interface.operation)
-	|| (frr_entry_id !=  nullptr && is_set(frr_entry_id->operation));
+	|| (frr_entry_id !=  nullptr && frr_entry_id->has_operation());
 }
 
 std::string MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::get_segment_path() const
@@ -58409,12 +58423,12 @@ bool MplsLsd::FrrDatabase::has_data() const
 bool MplsLsd::FrrDatabase::has_operation() const
 {
     return is_set(operation)
-	|| (summary_protected_interfaces !=  nullptr && is_set(summary_protected_interfaces->operation))
-	|| (tunnel_head_summary !=  nullptr && is_set(tunnel_head_summary->operation))
-	|| (tunnel_heads !=  nullptr && is_set(tunnel_heads->operation))
-	|| (tunnel_midpoint_summary !=  nullptr && is_set(tunnel_midpoint_summary->operation))
-	|| (tunnel_midpoints !=  nullptr && is_set(tunnel_midpoints->operation))
-	|| (tunnel_summary !=  nullptr && is_set(tunnel_summary->operation));
+	|| (summary_protected_interfaces !=  nullptr && summary_protected_interfaces->has_operation())
+	|| (tunnel_head_summary !=  nullptr && tunnel_head_summary->has_operation())
+	|| (tunnel_heads !=  nullptr && tunnel_heads->has_operation())
+	|| (tunnel_midpoint_summary !=  nullptr && tunnel_midpoint_summary->has_operation())
+	|| (tunnel_midpoints !=  nullptr && tunnel_midpoints->has_operation())
+	|| (tunnel_summary !=  nullptr && tunnel_summary->has_operation());
 }
 
 std::string MplsLsd::FrrDatabase::get_segment_path() const
@@ -58650,7 +58664,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58743,7 +58757,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58837,7 +58851,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58944,7 +58958,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59044,7 +59058,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59124,7 +59138,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtIntfData
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59219,12 +59233,12 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::has_operation() const
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::get_segment_path() const
@@ -59241,7 +59255,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59471,7 +59485,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59567,7 +59581,7 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::get_segment_path() const
@@ -59584,7 +59598,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59720,7 +59734,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59832,7 +59846,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59950,7 +59964,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60066,7 +60080,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60162,7 +60176,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60255,7 +60269,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60346,7 +60360,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60442,7 +60456,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60541,7 +60555,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60648,7 +60662,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60751,7 +60765,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60854,7 +60868,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60976,7 +60990,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61076,7 +61090,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61174,7 +61188,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61284,7 +61298,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61364,7 +61378,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61450,7 +61464,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61543,7 +61557,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61631,7 +61645,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61722,7 +61736,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61827,7 +61841,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61935,7 +61949,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62023,7 +62037,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62117,7 +62131,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62221,7 +62235,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62322,7 +62336,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62415,7 +62429,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62625,34 +62639,34 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContex
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::get_segment_path() const
@@ -62669,7 +62683,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63370,7 +63384,7 @@ MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrit
 
 bool MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::has_data() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -63380,12 +63394,13 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelR
 
 bool MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::has_operation() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(label_data.operation);
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::get_segment_path() const
@@ -63402,7 +63417,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Local
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63478,8 +63493,8 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::has_operati
 {
     return is_set(operation)
 	|| is_set(rewrite_id_type.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation))
-	|| (local_label_rewrite !=  nullptr && is_set(local_label_rewrite->operation));
+	|| (label_context !=  nullptr && label_context->has_operation())
+	|| (local_label_rewrite !=  nullptr && local_label_rewrite->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::get_segment_path() const
@@ -63496,7 +63511,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63608,7 +63623,7 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::has_data() const
 bool MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::get_segment_path() const
@@ -63625,7 +63640,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63729,7 +63744,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelDat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63822,7 +63837,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63916,7 +63931,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64023,7 +64038,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64123,7 +64138,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64203,7 +64218,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64298,12 +64313,12 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::has_operation(
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::get_segment_path() const
@@ -64320,7 +64335,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64550,7 +64565,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64646,7 +64661,7 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::has_operation() con
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::get_segment_path() const
@@ -64663,7 +64678,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64790,7 +64805,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::V4Rpf::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64878,7 +64893,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::V6Rpf::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64975,7 +64990,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65081,7 +65096,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65180,7 +65195,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65281,7 +65296,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65410,7 +65425,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Dat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65582,7 +65597,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Dat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65749,7 +65764,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Dat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65926,7 +65941,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Pseudow
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66060,7 +66075,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66185,7 +66200,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Pseudow
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66327,7 +66342,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66466,7 +66481,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66614,7 +66629,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66683,7 +66698,7 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -66699,12 +66714,13 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -66723,7 +66739,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66835,8 +66851,8 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::
 {
     return is_set(operation)
 	|| is_set(owner_application_type.operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::get_segment_path() const
@@ -66853,7 +66869,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67006,7 +67022,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67134,7 +67150,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67203,7 +67219,7 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -67219,12 +67235,13 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -67243,7 +67260,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67351,8 +67368,8 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::
 bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::has_operation() const
 {
     return is_set(operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::get_segment_path() const
@@ -67369,7 +67386,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67508,7 +67525,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67618,7 +67635,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcDat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67753,20 +67770,20 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::has_operation
 {
     return is_set(operation)
 	|| is_set(moi_type.operation)
-	|| (dmtc_data !=  nullptr && is_set(dmtc_data->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (pop_and_lookup_ipv4 !=  nullptr && is_set(pop_and_lookup_ipv4->operation))
-	|| (pop_and_lookup_ipv6 !=  nullptr && is_set(pop_and_lookup_ipv6->operation))
-	|| (pop_and_lookup_tp !=  nullptr && is_set(pop_and_lookup_tp->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (stackv4_data !=  nullptr && is_set(stackv4_data->operation))
-	|| (stackv6_data !=  nullptr && is_set(stackv6_data->operation))
-	|| (te_head_data !=  nullptr && is_set(te_head_data->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation));
+	|| (dmtc_data !=  nullptr && dmtc_data->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (pop_and_lookup_ipv4 !=  nullptr && pop_and_lookup_ipv4->has_operation())
+	|| (pop_and_lookup_ipv6 !=  nullptr && pop_and_lookup_ipv6->has_operation())
+	|| (pop_and_lookup_tp !=  nullptr && pop_and_lookup_tp->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (stackv4_data !=  nullptr && stackv4_data->has_operation())
+	|| (stackv6_data !=  nullptr && stackv6_data->has_operation())
+	|| (te_head_data !=  nullptr && te_head_data->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::get_segment_path() const
@@ -67783,7 +67800,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68171,7 +68188,7 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::has_data() const
 bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::has_operation() const
 {
     return is_set(operation)
-	|| (moi !=  nullptr && is_set(moi->operation));
+	|| (moi !=  nullptr && moi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::get_segment_path() const
@@ -68188,7 +68205,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68282,7 +68299,7 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::Mois::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (application_resource !=  nullptr && is_set(application_resource->operation));
+	|| (application_resource !=  nullptr && application_resource->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::get_segment_path() const
@@ -68299,7 +68316,7 @@ EntityPath MplsLsd::Rewrite::RewritePws::RewritePw::Mois::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68479,8 +68496,8 @@ bool MplsLsd::Rewrite::RewritePws::RewritePw::has_operation() const
 	|| is_set(rw_install_age.operation)
 	|| is_set(rw_install_time.operation)
 	|| is_set(rw_updated.operation)
-	|| (fpi_key !=  nullptr && is_set(fpi_key->operation))
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (fpi_key !=  nullptr && fpi_key->has_operation())
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewritePws::RewritePw::get_segment_path() const
@@ -69445,12 +69462,12 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::has_operation() c
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::get_segment_path() const
@@ -69793,7 +69810,7 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::get_segment_path() const
@@ -72851,34 +72868,34 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelCo
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LabelContext::get_segment_path() const
@@ -73596,7 +73613,7 @@ MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRe
 
 bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::has_data() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -73606,12 +73623,13 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLa
 
 bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::has_operation() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(label_data.operation);
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::LocalLabelRewrite::get_segment_path() const
@@ -73704,8 +73722,8 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::has_ope
 {
     return is_set(operation)
 	|| is_set(rewrite_id_type.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation))
-	|| (local_label_rewrite !=  nullptr && is_set(local_label_rewrite->operation));
+	|| (label_context !=  nullptr && label_context->has_operation())
+	|| (local_label_rewrite !=  nullptr && local_label_rewrite->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::RewriteId_::get_segment_path() const
@@ -73834,7 +73852,7 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::has_data() const
 bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId::get_segment_path() const
@@ -74524,12 +74542,12 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::has_operat
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::Fpi::get_segment_path() const
@@ -74872,7 +74890,7 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::has_operation()
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi::get_segment_path() const
@@ -76909,7 +76927,7 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Da
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -76925,12 +76943,13 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Da
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -77061,8 +77080,8 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Da
 {
     return is_set(operation)
 	|| is_set(owner_application_type.operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::get_segment_path() const
@@ -77429,7 +77448,7 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Da
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -77445,12 +77464,13 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Da
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -77577,8 +77597,8 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Da
 bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::has_operation() const
 {
     return is_set(operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::get_segment_path() const
@@ -77979,20 +77999,20 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::has_opera
 {
     return is_set(operation)
 	|| is_set(moi_type.operation)
-	|| (dmtc_data !=  nullptr && is_set(dmtc_data->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (pop_and_lookup_ipv4 !=  nullptr && is_set(pop_and_lookup_ipv4->operation))
-	|| (pop_and_lookup_ipv6 !=  nullptr && is_set(pop_and_lookup_ipv6->operation))
-	|| (pop_and_lookup_tp !=  nullptr && is_set(pop_and_lookup_tp->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (stackv4_data !=  nullptr && is_set(stackv4_data->operation))
-	|| (stackv6_data !=  nullptr && is_set(stackv6_data->operation))
-	|| (te_head_data !=  nullptr && is_set(te_head_data->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation));
+	|| (dmtc_data !=  nullptr && dmtc_data->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (pop_and_lookup_ipv4 !=  nullptr && pop_and_lookup_ipv4->has_operation())
+	|| (pop_and_lookup_ipv6 !=  nullptr && pop_and_lookup_ipv6->has_operation())
+	|| (pop_and_lookup_tp !=  nullptr && pop_and_lookup_tp->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (stackv4_data !=  nullptr && stackv4_data->has_operation())
+	|| (stackv6_data !=  nullptr && stackv6_data->has_operation())
+	|| (te_head_data !=  nullptr && te_head_data->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::get_segment_path() const
@@ -78397,7 +78417,7 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::has_data() con
 bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::has_operation() const
 {
     return is_set(operation)
-	|| (moi !=  nullptr && is_set(moi->operation));
+	|| (moi !=  nullptr && moi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::get_segment_path() const
@@ -78508,7 +78528,7 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (application_resource !=  nullptr && is_set(application_resource->operation));
+	|| (application_resource !=  nullptr && application_resource->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::get_segment_path() const
@@ -78714,8 +78734,8 @@ bool MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::has_operation() const
 	|| is_set(rw_install_age.operation)
 	|| is_set(rw_install_time.operation)
 	|| is_set(rw_updated.operation)
-	|| (fpi_key !=  nullptr && is_set(fpi_key->operation))
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (fpi_key !=  nullptr && fpi_key->has_operation())
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::get_segment_path() const
@@ -79126,7 +79146,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::LabelData::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79219,7 +79239,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::TeData::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79313,7 +79333,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::Ipv4Data::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79420,7 +79440,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::Ipv6Data::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79520,7 +79540,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::PwListData::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79600,7 +79620,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::DmtcExtIntfData
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79695,12 +79715,12 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::has_operation() const
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::get_segment_path() const
@@ -79717,7 +79737,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -79947,7 +79967,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80043,7 +80063,7 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::get_segment_path() const
@@ -80060,7 +80080,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80196,7 +80216,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80308,7 +80328,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80426,7 +80446,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80542,7 +80562,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80638,7 +80658,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80731,7 +80751,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80822,7 +80842,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -80918,7 +80938,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81017,7 +81037,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81124,7 +81144,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81227,7 +81247,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81330,7 +81350,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81452,7 +81472,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81552,7 +81572,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81650,7 +81670,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81760,7 +81780,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81840,7 +81860,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -81926,7 +81946,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82019,7 +82039,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82107,7 +82127,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82198,7 +82218,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82303,7 +82323,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82411,7 +82431,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82499,7 +82519,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82593,7 +82613,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82697,7 +82717,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82798,7 +82818,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -82891,7 +82911,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83101,34 +83121,34 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContex
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::get_segment_path() const
@@ -83145,7 +83165,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Label
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83846,7 +83866,7 @@ MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrit
 
 bool MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::has_data() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -83856,12 +83876,13 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelR
 
 bool MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::has_operation() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(label_data.operation);
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::get_segment_path() const
@@ -83878,7 +83899,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Local
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -83954,8 +83975,8 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::has_operati
 {
     return is_set(operation)
 	|| is_set(rewrite_id_type.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation))
-	|| (local_label_rewrite !=  nullptr && is_set(local_label_rewrite->operation));
+	|| (label_context !=  nullptr && label_context->has_operation())
+	|| (local_label_rewrite !=  nullptr && local_label_rewrite->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::get_segment_path() const
@@ -83972,7 +83993,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84084,7 +84105,7 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::has_data() const
 bool MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::get_segment_path() const
@@ -84101,7 +84122,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84205,7 +84226,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::LabelDat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84298,7 +84319,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::TeData::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84392,7 +84413,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::Ipv4Data
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84499,7 +84520,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::Ipv6Data
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84599,7 +84620,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::PwListDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84679,7 +84700,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::DmtcExtI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -84774,12 +84795,12 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::has_operation(
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::get_segment_path() const
@@ -84796,7 +84817,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85026,7 +85047,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationOw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85122,7 +85143,7 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::has_operation() con
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::get_segment_path() const
@@ -85139,7 +85160,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85266,7 +85287,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::V4Rpf::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85354,7 +85375,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::V6Rpf::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85451,7 +85472,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::ApplicationResource::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85557,7 +85578,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85656,7 +85677,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85757,7 +85778,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -85886,7 +85907,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Ipv4Dat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86058,7 +86079,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Ipv6Dat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86225,7 +86246,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Tev4Dat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86402,7 +86423,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Pseudow
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86536,7 +86557,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::IpSubDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86661,7 +86682,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Pseudow
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86803,7 +86824,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PwListD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -86942,7 +86963,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87090,7 +87111,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87159,7 +87180,7 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -87175,12 +87196,13 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -87199,7 +87221,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87311,8 +87333,8 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::
 {
     return is_set(operation)
 	|| is_set(owner_application_type.operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::get_segment_path() const
@@ -87329,7 +87351,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87482,7 +87504,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87610,7 +87632,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87679,7 +87701,7 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -87695,12 +87717,13 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -87719,7 +87742,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87827,8 +87850,8 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::
 bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::has_operation() const
 {
     return is_set(operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::get_segment_path() const
@@ -87845,7 +87868,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -87984,7 +88007,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88094,7 +88117,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcDat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88229,20 +88252,20 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::has_operation
 {
     return is_set(operation)
 	|| is_set(moi_type.operation)
-	|| (dmtc_data !=  nullptr && is_set(dmtc_data->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (pop_and_lookup_ipv4 !=  nullptr && is_set(pop_and_lookup_ipv4->operation))
-	|| (pop_and_lookup_ipv6 !=  nullptr && is_set(pop_and_lookup_ipv6->operation))
-	|| (pop_and_lookup_tp !=  nullptr && is_set(pop_and_lookup_tp->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (stackv4_data !=  nullptr && is_set(stackv4_data->operation))
-	|| (stackv6_data !=  nullptr && is_set(stackv6_data->operation))
-	|| (te_head_data !=  nullptr && is_set(te_head_data->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation));
+	|| (dmtc_data !=  nullptr && dmtc_data->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (pop_and_lookup_ipv4 !=  nullptr && pop_and_lookup_ipv4->has_operation())
+	|| (pop_and_lookup_ipv6 !=  nullptr && pop_and_lookup_ipv6->has_operation())
+	|| (pop_and_lookup_tp !=  nullptr && pop_and_lookup_tp->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (stackv4_data !=  nullptr && stackv4_data->has_operation())
+	|| (stackv6_data !=  nullptr && stackv6_data->has_operation())
+	|| (te_head_data !=  nullptr && te_head_data->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::get_segment_path() const
@@ -88259,7 +88282,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88647,7 +88670,7 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::has_data() const
 bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::has_operation() const
 {
     return is_set(operation)
-	|| (moi !=  nullptr && is_set(moi->operation));
+	|| (moi !=  nullptr && moi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::get_segment_path() const
@@ -88664,7 +88687,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88758,7 +88781,7 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (application_resource !=  nullptr && is_set(application_resource->operation));
+	|| (application_resource !=  nullptr && application_resource->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::get_segment_path() const
@@ -88775,7 +88798,7 @@ EntityPath MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -88955,8 +88978,8 @@ bool MplsLsd::Rewrite::RewriteTes::RewriteTe::has_operation() const
 	|| is_set(rw_install_age.operation)
 	|| is_set(rw_install_time.operation)
 	|| is_set(rw_updated.operation)
-	|| (fpi_key !=  nullptr && is_set(fpi_key->operation))
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (fpi_key !=  nullptr && fpi_key->has_operation())
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::get_segment_path() const
@@ -89352,7 +89375,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::LabelData
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89445,7 +89468,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::TeData::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89539,7 +89562,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv4Data:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89646,7 +89669,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv6Data:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89746,7 +89769,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::PwListDat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89826,7 +89849,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::DmtcExtIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -89921,12 +89944,12 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::has_operation()
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::get_segment_path() const
@@ -89943,7 +89966,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90173,7 +90196,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90269,7 +90292,7 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::has_operation() cons
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::get_segment_path() const
@@ -90286,7 +90309,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90422,7 +90445,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90534,7 +90557,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90652,7 +90675,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90768,7 +90791,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90864,7 +90887,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -90957,7 +90980,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91048,7 +91071,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91144,7 +91167,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91243,7 +91266,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91350,7 +91373,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91453,7 +91476,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91556,7 +91579,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91678,7 +91701,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91778,7 +91801,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91876,7 +91899,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -91986,7 +92009,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92066,7 +92089,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92152,7 +92175,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92245,7 +92268,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92333,7 +92356,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92424,7 +92447,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92529,7 +92552,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92637,7 +92660,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92725,7 +92748,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92819,7 +92842,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -92923,7 +92946,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93024,7 +93047,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93117,7 +93140,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -93327,34 +93350,34 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Label
 {
     return is_set(operation)
 	|| is_set(label_context_type.operation)
-	|| (cev4l3vpn_data !=  nullptr && is_set(cev4l3vpn_data->operation))
-	|| (cev6l3vpn_data !=  nullptr && is_set(cev6l3vpn_data->operation))
-	|| (evpn_data !=  nullptr && is_set(evpn_data->operation))
-	|| (generic_routing_encapsulation !=  nullptr && is_set(generic_routing_encapsulation->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv4blb_data !=  nullptr && is_set(ipv4blb_data->operation))
-	|| (ipv4l3vpn_data !=  nullptr && is_set(ipv4l3vpn_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (ipv6_generic_routing_encapsulation !=  nullptr && is_set(ipv6_generic_routing_encapsulation->operation))
-	|| (ipv6blb_data !=  nullptr && is_set(ipv6blb_data->operation))
-	|| (ipv6l3vpn_data !=  nullptr && is_set(ipv6l3vpn_data->operation))
-	|| (label_block_data !=  nullptr && is_set(label_block_data->operation))
-	|| (label_block_srgb_data !=  nullptr && is_set(label_block_srgb_data->operation))
-	|| (mld_pv4_data !=  nullptr && is_set(mld_pv4_data->operation))
-	|| (next_hop_set_l3vpn !=  nullptr && is_set(next_hop_set_l3vpn->operation))
-	|| (pi_mi_pmsi_data !=  nullptr && is_set(pi_mi_pmsi_data->operation))
-	|| (pi_ms_pmsi_data !=  nullptr && is_set(pi_ms_pmsi_data->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (sr_adj_segment_ipv4 !=  nullptr && is_set(sr_adj_segment_ipv4->operation))
-	|| (sr_adj_segment_ipv6 !=  nullptr && is_set(sr_adj_segment_ipv6->operation))
-	|| (sr_prefix_segment !=  nullptr && is_set(sr_prefix_segment->operation))
-	|| (te_binding !=  nullptr && is_set(te_binding->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation))
-	|| (tev4p2mp_data !=  nullptr && is_set(tev4p2mp_data->operation))
-	|| (tp_data !=  nullptr && is_set(tp_data->operation))
-	|| (vrf_l3vpn_data !=  nullptr && is_set(vrf_l3vpn_data->operation));
+	|| (cev4l3vpn_data !=  nullptr && cev4l3vpn_data->has_operation())
+	|| (cev6l3vpn_data !=  nullptr && cev6l3vpn_data->has_operation())
+	|| (evpn_data !=  nullptr && evpn_data->has_operation())
+	|| (generic_routing_encapsulation !=  nullptr && generic_routing_encapsulation->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv4blb_data !=  nullptr && ipv4blb_data->has_operation())
+	|| (ipv4l3vpn_data !=  nullptr && ipv4l3vpn_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (ipv6_generic_routing_encapsulation !=  nullptr && ipv6_generic_routing_encapsulation->has_operation())
+	|| (ipv6blb_data !=  nullptr && ipv6blb_data->has_operation())
+	|| (ipv6l3vpn_data !=  nullptr && ipv6l3vpn_data->has_operation())
+	|| (label_block_data !=  nullptr && label_block_data->has_operation())
+	|| (label_block_srgb_data !=  nullptr && label_block_srgb_data->has_operation())
+	|| (mld_pv4_data !=  nullptr && mld_pv4_data->has_operation())
+	|| (next_hop_set_l3vpn !=  nullptr && next_hop_set_l3vpn->has_operation())
+	|| (pi_mi_pmsi_data !=  nullptr && pi_mi_pmsi_data->has_operation())
+	|| (pi_ms_pmsi_data !=  nullptr && pi_ms_pmsi_data->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (sr_adj_segment_ipv4 !=  nullptr && sr_adj_segment_ipv4->has_operation())
+	|| (sr_adj_segment_ipv6 !=  nullptr && sr_adj_segment_ipv6->has_operation())
+	|| (sr_prefix_segment !=  nullptr && sr_prefix_segment->has_operation())
+	|| (te_binding !=  nullptr && te_binding->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation())
+	|| (tev4p2mp_data !=  nullptr && tev4p2mp_data->has_operation())
+	|| (tp_data !=  nullptr && tp_data->has_operation())
+	|| (vrf_l3vpn_data !=  nullptr && vrf_l3vpn_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::get_segment_path() const
@@ -93371,7 +93394,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94072,7 +94095,7 @@ MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabel
 
 bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::has_data() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -94082,12 +94105,13 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::Local
 
 bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::has_operation() const
 {
-    for (auto const & leaf : label_data.getValues())
+    for (auto const & leaf : label_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(label_data.operation);
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::get_segment_path() const
@@ -94104,7 +94128,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94180,8 +94204,8 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::has_o
 {
     return is_set(operation)
 	|| is_set(rewrite_id_type.operation)
-	|| (label_context !=  nullptr && is_set(label_context->operation))
-	|| (local_label_rewrite !=  nullptr && is_set(local_label_rewrite->operation));
+	|| (label_context !=  nullptr && label_context->has_operation())
+	|| (local_label_rewrite !=  nullptr && local_label_rewrite->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::get_segment_path() const
@@ -94198,7 +94222,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94310,7 +94334,7 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::has_data() const
 bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::get_segment_path() const
@@ -94327,7 +94351,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94431,7 +94455,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::La
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94524,7 +94548,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Te
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94618,7 +94642,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94725,7 +94749,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94825,7 +94849,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Pw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -94905,7 +94929,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Dm
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95000,12 +95024,12 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::has_oper
 {
     return is_set(operation)
 	|| is_set(fpi_type.operation)
-	|| (dmtc_ext_intf_data !=  nullptr && is_set(dmtc_ext_intf_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (label_data !=  nullptr && is_set(label_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (te_data !=  nullptr && is_set(te_data->operation));
+	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (label_data !=  nullptr && label_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (te_data !=  nullptr && te_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::get_segment_path() const
@@ -95022,7 +95046,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95252,7 +95276,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Applica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95348,7 +95372,7 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::has_operation
             return true;
     }
     return is_set(operation)
-	|| (fpi !=  nullptr && is_set(fpi->operation));
+	|| (fpi !=  nullptr && fpi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::get_segment_path() const
@@ -95365,7 +95389,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95492,7 +95516,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V4Rpf::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95580,7 +95604,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V6Rpf::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95677,7 +95701,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::ApplicationResou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95783,7 +95807,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95882,7 +95906,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -95983,7 +96007,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96112,7 +96136,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96284,7 +96308,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96451,7 +96475,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::T
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96628,7 +96652,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96762,7 +96786,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -96887,7 +96911,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97029,7 +97053,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97168,7 +97192,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97316,7 +97340,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97385,7 +97409,7 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -97401,12 +97425,13 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -97425,7 +97450,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97537,8 +97562,8 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4
 {
     return is_set(operation)
 	|| is_set(owner_application_type.operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv4Data::get_segment_path() const
@@ -97555,7 +97580,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97708,7 +97733,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97836,7 +97861,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -97905,7 +97930,7 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6
         if(label[index]->has_data())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -97921,12 +97946,13 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6
         if(label[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : nexthop.getValues())
+    for (auto const & leaf : nexthop.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(nexthop.operation)
 	|| is_set(num_lbls.operation)
 	|| is_set(num_nexthops.operation);
 }
@@ -97945,7 +97971,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98053,8 +98079,8 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6
 bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::has_operation() const
 {
     return is_set(operation)
-	|| (inner_stack !=  nullptr && is_set(inner_stack->operation))
-	|| (nexthop !=  nullptr && is_set(nexthop->operation));
+	|| (inner_stack !=  nullptr && inner_stack->has_operation())
+	|| (nexthop !=  nullptr && nexthop->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::Stackv6Data::get_segment_path() const
@@ -98071,7 +98097,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98210,7 +98236,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::T
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98320,7 +98346,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98455,20 +98481,20 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::has_ope
 {
     return is_set(operation)
 	|| is_set(moi_type.operation)
-	|| (dmtc_data !=  nullptr && is_set(dmtc_data->operation))
-	|| (ip_sub_data !=  nullptr && is_set(ip_sub_data->operation))
-	|| (ipv4_data !=  nullptr && is_set(ipv4_data->operation))
-	|| (ipv6_data !=  nullptr && is_set(ipv6_data->operation))
-	|| (pop_and_lookup_ipv4 !=  nullptr && is_set(pop_and_lookup_ipv4->operation))
-	|| (pop_and_lookup_ipv6 !=  nullptr && is_set(pop_and_lookup_ipv6->operation))
-	|| (pop_and_lookup_tp !=  nullptr && is_set(pop_and_lookup_tp->operation))
-	|| (pseudowire_data !=  nullptr && is_set(pseudowire_data->operation))
-	|| (pseudowire_head_end_data !=  nullptr && is_set(pseudowire_head_end_data->operation))
-	|| (pw_list_data !=  nullptr && is_set(pw_list_data->operation))
-	|| (stackv4_data !=  nullptr && is_set(stackv4_data->operation))
-	|| (stackv6_data !=  nullptr && is_set(stackv6_data->operation))
-	|| (te_head_data !=  nullptr && is_set(te_head_data->operation))
-	|| (tev4_data !=  nullptr && is_set(tev4_data->operation));
+	|| (dmtc_data !=  nullptr && dmtc_data->has_operation())
+	|| (ip_sub_data !=  nullptr && ip_sub_data->has_operation())
+	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
+	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
+	|| (pop_and_lookup_ipv4 !=  nullptr && pop_and_lookup_ipv4->has_operation())
+	|| (pop_and_lookup_ipv6 !=  nullptr && pop_and_lookup_ipv6->has_operation())
+	|| (pop_and_lookup_tp !=  nullptr && pop_and_lookup_tp->has_operation())
+	|| (pseudowire_data !=  nullptr && pseudowire_data->has_operation())
+	|| (pseudowire_head_end_data !=  nullptr && pseudowire_head_end_data->has_operation())
+	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
+	|| (stackv4_data !=  nullptr && stackv4_data->has_operation())
+	|| (stackv6_data !=  nullptr && stackv6_data->has_operation())
+	|| (te_head_data !=  nullptr && te_head_data->has_operation())
+	|| (tev4_data !=  nullptr && tev4_data->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::get_segment_path() const
@@ -98485,7 +98511,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::Moi::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98873,7 +98899,7 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::has_data() c
 bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::has_operation() const
 {
     return is_set(operation)
-	|| (moi !=  nullptr && is_set(moi->operation));
+	|| (moi !=  nullptr && moi->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::get_segment_path() const
@@ -98890,7 +98916,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::MoiArray::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -98984,7 +99010,7 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (application_resource !=  nullptr && is_set(application_resource->operation));
+	|| (application_resource !=  nullptr && application_resource->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::get_segment_path() const
@@ -99001,7 +99027,7 @@ EntityPath MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -99181,8 +99207,8 @@ bool MplsLsd::Rewrite::RewriteLabels::RewriteLabel::has_operation() const
 	|| is_set(rw_install_age.operation)
 	|| is_set(rw_install_time.operation)
 	|| is_set(rw_updated.operation)
-	|| (fpi_key !=  nullptr && is_set(fpi_key->operation))
-	|| (rewrite_id !=  nullptr && is_set(rewrite_id->operation));
+	|| (fpi_key !=  nullptr && fpi_key->has_operation())
+	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
 }
 
 std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::get_segment_path() const
@@ -99573,10 +99599,10 @@ bool MplsLsd::Rewrite::has_data() const
 bool MplsLsd::Rewrite::has_operation() const
 {
     return is_set(operation)
-	|| (rewrite_ipv4s !=  nullptr && is_set(rewrite_ipv4s->operation))
-	|| (rewrite_labels !=  nullptr && is_set(rewrite_labels->operation))
-	|| (rewrite_pws !=  nullptr && is_set(rewrite_pws->operation))
-	|| (rewrite_tes !=  nullptr && is_set(rewrite_tes->operation));
+	|| (rewrite_ipv4s !=  nullptr && rewrite_ipv4s->has_operation())
+	|| (rewrite_labels !=  nullptr && rewrite_labels->has_operation())
+	|| (rewrite_pws !=  nullptr && rewrite_pws->has_operation())
+	|| (rewrite_tes !=  nullptr && rewrite_tes->has_operation());
 }
 
 std::string MplsLsd::Rewrite::get_segment_path() const
@@ -100033,8 +100059,8 @@ bool MplsLsd::RewriteSummary::has_operation() const
 	|| is_set(total_t_ev4_paths.operation)
 	|| is_set(total_te_head_paths.operation)
 	|| is_set(vrf_name_xr.operation)
-	|| (ipv4_paths !=  nullptr && is_set(ipv4_paths->operation))
-	|| (ipv6_paths !=  nullptr && is_set(ipv6_paths->operation));
+	|| (ipv4_paths !=  nullptr && ipv4_paths->has_operation())
+	|| (ipv6_paths !=  nullptr && ipv6_paths->has_operation());
 }
 
 std::string MplsLsd::RewriteSummary::get_segment_path() const
@@ -100276,7 +100302,7 @@ EntityPath MplsLsd::Applications::Application::ApplicationStatistics::Connected:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100357,12 +100383,12 @@ MplsLsd::Applications::Application::ApplicationStatistics::~ApplicationStatistic
 
 bool MplsLsd::Applications::Application::ApplicationStatistics::has_data() const
 {
-    for (auto const & leaf : label_context_count.getValues())
+    for (auto const & leaf : label_context_count.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : label_context_pending_count.getValues())
+    for (auto const & leaf : label_context_pending_count.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -100375,12 +100401,12 @@ bool MplsLsd::Applications::Application::ApplicationStatistics::has_data() const
 
 bool MplsLsd::Applications::Application::ApplicationStatistics::has_operation() const
 {
-    for (auto const & leaf : label_context_count.getValues())
+    for (auto const & leaf : label_context_count.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : label_context_pending_count.getValues())
+    for (auto const & leaf : label_context_pending_count.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -100389,7 +100415,9 @@ bool MplsLsd::Applications::Application::ApplicationStatistics::has_operation() 
 	|| is_set(connect_count.operation)
 	|| is_set(interface_enable.operation)
 	|| is_set(interface_enable_pending.operation)
-	|| (connected !=  nullptr && is_set(connected->operation));
+	|| is_set(label_context_count.operation)
+	|| is_set(label_context_pending_count.operation)
+	|| (connected !=  nullptr && connected->has_operation());
 }
 
 std::string MplsLsd::Applications::Application::ApplicationStatistics::get_segment_path() const
@@ -100406,7 +100434,7 @@ EntityPath MplsLsd::Applications::Application::ApplicationStatistics::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -100566,7 +100594,7 @@ bool MplsLsd::Applications::Application::has_operation() const
 	|| is_set(recovery_time_elapsed_seconds.operation)
 	|| is_set(recovery_time_register_seconds.operation)
 	|| is_set(recovery_time_remaining_seconds.operation)
-	|| (application_statistics !=  nullptr && is_set(application_statistics->operation));
+	|| (application_statistics !=  nullptr && application_statistics->has_operation());
 }
 
 std::string MplsLsd::Applications::Application::get_segment_path() const
@@ -100881,7 +100909,7 @@ EntityPath MplsLsd::LabelSummaryVrfs::LabelSummaryVrf::OwnerCount::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -101345,7 +101373,7 @@ EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv4Paths::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -101457,7 +101485,7 @@ EntityPath MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::Ipv6Paths::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -101609,8 +101637,8 @@ bool MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::has_operation() const
 	|| is_set(total_t_ev4_paths.operation)
 	|| is_set(total_te_head_paths.operation)
 	|| is_set(vrf_name_xr.operation)
-	|| (ipv4_paths !=  nullptr && is_set(ipv4_paths->operation))
-	|| (ipv6_paths !=  nullptr && is_set(ipv6_paths->operation));
+	|| (ipv4_paths !=  nullptr && ipv4_paths->has_operation())
+	|| (ipv6_paths !=  nullptr && ipv6_paths->has_operation());
 }
 
 std::string MplsLsd::RewriteSummaryVrfs::RewriteSummaryVrf::get_segment_path() const
@@ -101968,7 +101996,7 @@ EntityPath MplsLsd::Interfaces::Interface::ApplicationOwner::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -102344,17 +102372,17 @@ bool MplsLsd::has_data() const
 bool MplsLsd::has_operation() const
 {
     return is_set(operation)
-	|| (applications !=  nullptr && is_set(applications->operation))
-	|| (clients !=  nullptr && is_set(clients->operation))
-	|| (frr_database !=  nullptr && is_set(frr_database->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (label_range !=  nullptr && is_set(label_range->operation))
-	|| (label_summary !=  nullptr && is_set(label_summary->operation))
-	|| (label_summary_vrfs !=  nullptr && is_set(label_summary_vrfs->operation))
-	|| (labels !=  nullptr && is_set(labels->operation))
-	|| (rewrite !=  nullptr && is_set(rewrite->operation))
-	|| (rewrite_summary !=  nullptr && is_set(rewrite_summary->operation))
-	|| (rewrite_summary_vrfs !=  nullptr && is_set(rewrite_summary_vrfs->operation));
+	|| (applications !=  nullptr && applications->has_operation())
+	|| (clients !=  nullptr && clients->has_operation())
+	|| (frr_database !=  nullptr && frr_database->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (label_range !=  nullptr && label_range->has_operation())
+	|| (label_summary !=  nullptr && label_summary->has_operation())
+	|| (label_summary_vrfs !=  nullptr && label_summary_vrfs->has_operation())
+	|| (labels !=  nullptr && labels->has_operation())
+	|| (rewrite !=  nullptr && rewrite->has_operation())
+	|| (rewrite_summary !=  nullptr && rewrite_summary->has_operation())
+	|| (rewrite_summary_vrfs !=  nullptr && rewrite_summary_vrfs->has_operation());
 }
 
 std::string MplsLsd::get_segment_path() const
@@ -102371,7 +102399,7 @@ EntityPath MplsLsd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -102665,114 +102693,114 @@ std::unique_ptr<Entity> MplsLsd::clone_ptr()
     return std::make_unique<MplsLsd>();
 }
 
-const Enum::Value MgmtLsdClientEnum::mgmt_lsd_client_type_app {0, "mgmt-lsd-client-type-app"};
-const Enum::Value MgmtLsdClientEnum::mgmt_lsd_client_type_ba {1, "mgmt-lsd-client-type-ba"};
+const Enum::YLeaf MgmtLsdClientEnum::mgmt_lsd_client_type_app {0, "mgmt-lsd-client-type-app"};
+const Enum::YLeaf MgmtLsdClientEnum::mgmt_lsd_client_type_ba {1, "mgmt-lsd-client-type-ba"};
 
-const Enum::Value MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_partial {0, "mgmt-lsd-frr-state-partial"};
-const Enum::Value MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_active {1, "mgmt-lsd-frr-state-active"};
-const Enum::Value MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_ready {2, "mgmt-lsd-frr-state-ready"};
-const Enum::Value MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_complete {3, "mgmt-lsd-frr-state-complete"};
-const Enum::Value MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_any {4, "mgmt-lsd-frr-state-any"};
-const Enum::Value MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_igp {5, "mgmt-lsd-frr-state-igp"};
+const Enum::YLeaf MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_partial {0, "mgmt-lsd-frr-state-partial"};
+const Enum::YLeaf MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_active {1, "mgmt-lsd-frr-state-active"};
+const Enum::YLeaf MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_ready {2, "mgmt-lsd-frr-state-ready"};
+const Enum::YLeaf MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_complete {3, "mgmt-lsd-frr-state-complete"};
+const Enum::YLeaf MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_any {4, "mgmt-lsd-frr-state-any"};
+const Enum::YLeaf MgmtLsdFrrStateEnum::mgmt_lsd_frr_state_igp {5, "mgmt-lsd-frr-state-igp"};
 
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_pop_and_lkup_ipv4 {0, "mgmt-lsd-moi-type-pop-and-lkup-ipv4"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_ipv4 {1, "mgmt-lsd-moi-type-ipv4"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_ipv6 {2, "mgmt-lsd-moi-type-ipv6"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_tev4 {3, "mgmt-lsd-moi-type-tev4"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_pw {4, "mgmt-lsd-moi-type-pw"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_pop_and_lkup_ipv6 {5, "mgmt-lsd-moi-type-pop-and-lkup-ipv6"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_ip_sub {6, "mgmt-lsd-moi-type-ip-sub"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_pwhe {7, "mgmt-lsd-moi-type-pwhe"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_pw_list {8, "mgmt-lsd-moi-type-pw-list"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_ipv4_stack {9, "mgmt-lsd-moi-type-ipv4-stack"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_pop_and_lkup_tp {10, "mgmt-lsd-moi-type-pop-and-lkup-tp"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_ipv6_stack {11, "mgmt-lsd-moi-type-ipv6-stack"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_te_head {12, "mgmt-lsd-moi-type-te-head"};
-const Enum::Value MgmtLsdMoiEnum::mgmt_lsd_moi_type_dmtc_ext_intf {13, "mgmt-lsd-moi-type-dmtc-ext-intf"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_pop_and_lkup_ipv4 {0, "mgmt-lsd-moi-type-pop-and-lkup-ipv4"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_ipv4 {1, "mgmt-lsd-moi-type-ipv4"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_ipv6 {2, "mgmt-lsd-moi-type-ipv6"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_tev4 {3, "mgmt-lsd-moi-type-tev4"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_pw {4, "mgmt-lsd-moi-type-pw"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_pop_and_lkup_ipv6 {5, "mgmt-lsd-moi-type-pop-and-lkup-ipv6"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_ip_sub {6, "mgmt-lsd-moi-type-ip-sub"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_pwhe {7, "mgmt-lsd-moi-type-pwhe"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_pw_list {8, "mgmt-lsd-moi-type-pw-list"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_ipv4_stack {9, "mgmt-lsd-moi-type-ipv4-stack"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_pop_and_lkup_tp {10, "mgmt-lsd-moi-type-pop-and-lkup-tp"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_ipv6_stack {11, "mgmt-lsd-moi-type-ipv6-stack"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_te_head {12, "mgmt-lsd-moi-type-te-head"};
+const Enum::YLeaf MgmtLsdMoiEnum::mgmt_lsd_moi_type_dmtc_ext_intf {13, "mgmt-lsd-moi-type-dmtc-ext-intf"};
 
-const Enum::Value MgmtLsdFpiEnum::mgmt_lsd_fpi_type_label {0, "mgmt-lsd-fpi-type-label"};
-const Enum::Value MgmtLsdFpiEnum::mgmt_lsd_fpi_type_te {1, "mgmt-lsd-fpi-type-te"};
-const Enum::Value MgmtLsdFpiEnum::mgmt_lsd_fpi_type_ipv4 {2, "mgmt-lsd-fpi-type-ipv4"};
-const Enum::Value MgmtLsdFpiEnum::mgmt_lsd_fpi_type_ipv6 {3, "mgmt-lsd-fpi-type-ipv6"};
-const Enum::Value MgmtLsdFpiEnum::mgmt_lsd_fpi_type_pw_list {4, "mgmt-lsd-fpi-type-pw-list"};
-const Enum::Value MgmtLsdFpiEnum::mgmt_lsd_fpi_type_te_v2 {5, "mgmt-lsd-fpi-type-te-v2"};
-const Enum::Value MgmtLsdFpiEnum::mgmt_lsd_fpi_type_dmtc_ext_intf {6, "mgmt-lsd-fpi-type-dmtc-ext-intf"};
+const Enum::YLeaf MgmtLsdFpiEnum::mgmt_lsd_fpi_type_label {0, "mgmt-lsd-fpi-type-label"};
+const Enum::YLeaf MgmtLsdFpiEnum::mgmt_lsd_fpi_type_te {1, "mgmt-lsd-fpi-type-te"};
+const Enum::YLeaf MgmtLsdFpiEnum::mgmt_lsd_fpi_type_ipv4 {2, "mgmt-lsd-fpi-type-ipv4"};
+const Enum::YLeaf MgmtLsdFpiEnum::mgmt_lsd_fpi_type_ipv6 {3, "mgmt-lsd-fpi-type-ipv6"};
+const Enum::YLeaf MgmtLsdFpiEnum::mgmt_lsd_fpi_type_pw_list {4, "mgmt-lsd-fpi-type-pw-list"};
+const Enum::YLeaf MgmtLsdFpiEnum::mgmt_lsd_fpi_type_te_v2 {5, "mgmt-lsd-fpi-type-te-v2"};
+const Enum::YLeaf MgmtLsdFpiEnum::mgmt_lsd_fpi_type_dmtc_ext_intf {6, "mgmt-lsd-fpi-type-dmtc-ext-intf"};
 
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_none {0, "mgmt-lsd-lbl-ctx-type-none"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_ipv4 {1, "mgmt-lsd-lbl-ctx-type-ipv4"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_ipv6 {2, "mgmt-lsd-lbl-ctx-type-ipv6"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_tev4 {3, "mgmt-lsd-lbl-ctx-type-tev4"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_ipv4 {4, "mgmt-lsd-lbl-ctx-type-l3vpn-ipv4"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_ipv6 {5, "mgmt-lsd-lbl-ctx-type-l3vpn-ipv6"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_vrf {6, "mgmt-lsd-lbl-ctx-type-l3vpn-vrf"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_cev4 {7, "mgmt-lsd-lbl-ctx-type-l3vpn-cev4"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_cev6 {8, "mgmt-lsd-lbl-ctx-type-l3vpn-cev6"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_pw {9, "mgmt-lsd-lbl-ctx-type-pw"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_lbl_blk {10, "mgmt-lsd-lbl-ctx-type-lbl-blk"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_ip_sub {11, "mgmt-lsd-lbl-ctx-type-ip-sub"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_tev4_p2mp {12, "mgmt-lsd-lbl-ctx-type-tev4-p2mp"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_mldpv4 {13, "mgmt-lsd-lbl-ctx-type-mldpv4"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_pwhe {14, "mgmt-lsd-lbl-ctx-type-pwhe"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_tp {15, "mgmt-lsd-lbl-ctx-type-tp"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_gre {16, "mgmt-lsd-lbl-ctx-type-gre"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_evpn {17, "mgmt-lsd-lbl-ctx-type-evpn"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_blb_ipv4 {18, "mgmt-lsd-lbl-ctx-type-blb-ipv4"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_blb_ipv6 {19, "mgmt-lsd-lbl-ctx-type-blb-ipv6"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_pim_i_pmsi {20, "mgmt-lsd-lbl-ctx-type-pim-i-pmsi"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_pim_s_pmsi {21, "mgmt-lsd-lbl-ctx-type-pim-s-pmsi"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_nh_set {22, "mgmt-lsd-lbl-ctx-type-l3vpn-nh-set"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_sr_pfx_seg {23, "mgmt-lsd-lbl-ctx-type-sr-pfx-seg"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv4 {24, "mgmt-lsd-lbl-ctx-type-sr-adj-seg-ipv4"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv6 {25, "mgmt-lsd-lbl-ctx-type-sr-adj-seg-ipv6"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_lbl_blk_srgb {26, "mgmt-lsd-lbl-ctx-type-lbl-blk-srgb"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_te_binding {27, "mgmt-lsd-lbl-ctx-type-te-binding"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_gre_ipv6 {28, "mgmt-lsd-lbl-ctx-type-gre-ipv6"};
-const Enum::Value MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_any {29, "mgmt-lsd-lbl-ctx-type-any"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_none {0, "mgmt-lsd-lbl-ctx-type-none"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_ipv4 {1, "mgmt-lsd-lbl-ctx-type-ipv4"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_ipv6 {2, "mgmt-lsd-lbl-ctx-type-ipv6"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_tev4 {3, "mgmt-lsd-lbl-ctx-type-tev4"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_ipv4 {4, "mgmt-lsd-lbl-ctx-type-l3vpn-ipv4"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_ipv6 {5, "mgmt-lsd-lbl-ctx-type-l3vpn-ipv6"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_vrf {6, "mgmt-lsd-lbl-ctx-type-l3vpn-vrf"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_cev4 {7, "mgmt-lsd-lbl-ctx-type-l3vpn-cev4"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_cev6 {8, "mgmt-lsd-lbl-ctx-type-l3vpn-cev6"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_pw {9, "mgmt-lsd-lbl-ctx-type-pw"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_lbl_blk {10, "mgmt-lsd-lbl-ctx-type-lbl-blk"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_ip_sub {11, "mgmt-lsd-lbl-ctx-type-ip-sub"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_tev4_p2mp {12, "mgmt-lsd-lbl-ctx-type-tev4-p2mp"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_mldpv4 {13, "mgmt-lsd-lbl-ctx-type-mldpv4"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_pwhe {14, "mgmt-lsd-lbl-ctx-type-pwhe"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_tp {15, "mgmt-lsd-lbl-ctx-type-tp"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_gre {16, "mgmt-lsd-lbl-ctx-type-gre"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_evpn {17, "mgmt-lsd-lbl-ctx-type-evpn"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_blb_ipv4 {18, "mgmt-lsd-lbl-ctx-type-blb-ipv4"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_blb_ipv6 {19, "mgmt-lsd-lbl-ctx-type-blb-ipv6"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_pim_i_pmsi {20, "mgmt-lsd-lbl-ctx-type-pim-i-pmsi"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_pim_s_pmsi {21, "mgmt-lsd-lbl-ctx-type-pim-s-pmsi"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_l3vpn_nh_set {22, "mgmt-lsd-lbl-ctx-type-l3vpn-nh-set"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_sr_pfx_seg {23, "mgmt-lsd-lbl-ctx-type-sr-pfx-seg"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv4 {24, "mgmt-lsd-lbl-ctx-type-sr-adj-seg-ipv4"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv6 {25, "mgmt-lsd-lbl-ctx-type-sr-adj-seg-ipv6"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_lbl_blk_srgb {26, "mgmt-lsd-lbl-ctx-type-lbl-blk-srgb"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_te_binding {27, "mgmt-lsd-lbl-ctx-type-te-binding"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_gre_ipv6 {28, "mgmt-lsd-lbl-ctx-type-gre-ipv6"};
+const Enum::YLeaf MgmtLsdLblCtxEnum::mgmt_lsd_lbl_ctx_type_any {29, "mgmt-lsd-lbl-ctx-type-any"};
 
-const Enum::Value MgmtLsdLspRoleEnum::mgmt_lsd_lsp_role_head {0, "mgmt-lsd-lsp-role-head"};
-const Enum::Value MgmtLsdLspRoleEnum::mgmt_lsd_lsp_role_mid {1, "mgmt-lsd-lsp-role-mid"};
+const Enum::YLeaf MgmtLsdLspRoleEnum::mgmt_lsd_lsp_role_head {0, "mgmt-lsd-lsp-role-head"};
+const Enum::YLeaf MgmtLsdLspRoleEnum::mgmt_lsd_lsp_role_mid {1, "mgmt-lsd-lsp-role-mid"};
 
-const Enum::Value MgmtLsdAppRsrcStateEnum::mgmt_lsd_app_rsrc_state_active {0, "mgmt-lsd-app-rsrc-state-active"};
-const Enum::Value MgmtLsdAppRsrcStateEnum::mgmt_lsd_app_rsrc_state_pnd {1, "mgmt-lsd-app-rsrc-state-pnd"};
-const Enum::Value MgmtLsdAppRsrcStateEnum::mgmt_lsd_app_rsrc_state_pnd_svr {2, "mgmt-lsd-app-rsrc-state-pnd-svr"};
+const Enum::YLeaf MgmtLsdAppRsrcStateEnum::mgmt_lsd_app_rsrc_state_active {0, "mgmt-lsd-app-rsrc-state-active"};
+const Enum::YLeaf MgmtLsdAppRsrcStateEnum::mgmt_lsd_app_rsrc_state_pnd {1, "mgmt-lsd-app-rsrc-state-pnd"};
+const Enum::YLeaf MgmtLsdAppRsrcStateEnum::mgmt_lsd_app_rsrc_state_pnd_svr {2, "mgmt-lsd-app-rsrc-state-pnd-svr"};
 
-const Enum::Value MgmtLsdRwIdEnum::mgmt_lsd_rw_id_type_none {0, "mgmt-lsd-rw-id-type-none"};
-const Enum::Value MgmtLsdRwIdEnum::mgmt_lsd_rw_id_type_lbl_ctx {1, "mgmt-lsd-rw-id-type-lbl-ctx"};
-const Enum::Value MgmtLsdRwIdEnum::mgmt_lsd_rw_id_type_loc_lbl {2, "mgmt-lsd-rw-id-type-loc-lbl"};
+const Enum::YLeaf MgmtLsdRwIdEnum::mgmt_lsd_rw_id_type_none {0, "mgmt-lsd-rw-id-type-none"};
+const Enum::YLeaf MgmtLsdRwIdEnum::mgmt_lsd_rw_id_type_lbl_ctx {1, "mgmt-lsd-rw-id-type-lbl-ctx"};
+const Enum::YLeaf MgmtLsdRwIdEnum::mgmt_lsd_rw_id_type_loc_lbl {2, "mgmt-lsd-rw-id-type-loc-lbl"};
 
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_none {0, "mgmt-lsd-app-type-none"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_int {1, "mgmt-lsd-app-type-int"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_test {2, "mgmt-lsd-app-type-test"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_static {3, "mgmt-lsd-app-type-static"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_ldp {4, "mgmt-lsd-app-type-ldp"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_te {5, "mgmt-lsd-app-type-te"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_te_int {6, "mgmt-lsd-app-type-te-int"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_bgp_ipv4 {7, "mgmt-lsd-app-type-bgp-ipv4"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_bgp_vpn_ipv4 {8, "mgmt-lsd-app-type-bgp-vpn-ipv4"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_l2vpn {9, "mgmt-lsd-app-type-l2vpn"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_bgp_spkr {10, "mgmt-lsd-app-type-bgp-spkr"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_bfd {11, "mgmt-lsd-app-type-bfd"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_pim {12, "mgmt-lsd-app-type-pim"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_v2_lsd {13, "mgmt-lsd-app-type-v2-lsd"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_pim6 {14, "mgmt-lsd-app-type-pim6"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_isis {15, "mgmt-lsd-app-type-isis"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_ospf {16, "mgmt-lsd-app-type-ospf"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_cgn {17, "mgmt-lsd-app-type-cgn"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_dmtc {18, "mgmt-lsd-app-type-dmtc"};
-const Enum::Value MgmtLsdAppEnum::mgmt_lsd_app_type_any {19, "mgmt-lsd-app-type-any"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_none {0, "mgmt-lsd-app-type-none"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_int {1, "mgmt-lsd-app-type-int"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_test {2, "mgmt-lsd-app-type-test"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_static {3, "mgmt-lsd-app-type-static"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_ldp {4, "mgmt-lsd-app-type-ldp"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_te {5, "mgmt-lsd-app-type-te"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_te_int {6, "mgmt-lsd-app-type-te-int"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_bgp_ipv4 {7, "mgmt-lsd-app-type-bgp-ipv4"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_bgp_vpn_ipv4 {8, "mgmt-lsd-app-type-bgp-vpn-ipv4"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_l2vpn {9, "mgmt-lsd-app-type-l2vpn"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_bgp_spkr {10, "mgmt-lsd-app-type-bgp-spkr"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_bfd {11, "mgmt-lsd-app-type-bfd"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_pim {12, "mgmt-lsd-app-type-pim"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_v2_lsd {13, "mgmt-lsd-app-type-v2-lsd"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_pim6 {14, "mgmt-lsd-app-type-pim6"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_isis {15, "mgmt-lsd-app-type-isis"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_ospf {16, "mgmt-lsd-app-type-ospf"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_cgn {17, "mgmt-lsd-app-type-cgn"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_dmtc {18, "mgmt-lsd-app-type-dmtc"};
+const Enum::YLeaf MgmtLsdAppEnum::mgmt_lsd_app_type_any {19, "mgmt-lsd-app-type-any"};
 
-const Enum::Value MgmtLsdTeBindingEnum::mgmt_lsd_ident_p2p_tun_id {0, "mgmt-lsd-ident-p2p-tun-id"};
-const Enum::Value MgmtLsdTeBindingEnum::mgmt_lsd_ident_p2p_grp_id {1, "mgmt-lsd-ident-p2p-grp-id"};
-const Enum::Value MgmtLsdTeBindingEnum::mgmt_lsd_ident_p2mp_tun_id {2, "mgmt-lsd-ident-p2mp-tun-id"};
-const Enum::Value MgmtLsdTeBindingEnum::mgmt_lsd_ident_p2mp_grp_id {3, "mgmt-lsd-ident-p2mp-grp-id"};
+const Enum::YLeaf MgmtLsdTeBindingEnum::mgmt_lsd_ident_p2p_tun_id {0, "mgmt-lsd-ident-p2p-tun-id"};
+const Enum::YLeaf MgmtLsdTeBindingEnum::mgmt_lsd_ident_p2p_grp_id {1, "mgmt-lsd-ident-p2p-grp-id"};
+const Enum::YLeaf MgmtLsdTeBindingEnum::mgmt_lsd_ident_p2mp_tun_id {2, "mgmt-lsd-ident-p2mp-tun-id"};
+const Enum::YLeaf MgmtLsdTeBindingEnum::mgmt_lsd_ident_p2mp_grp_id {3, "mgmt-lsd-ident-p2mp-grp-id"};
 
-const Enum::Value MgmtLsdAppStateEnum::mgmt_lsd_app_state_active {0, "mgmt-lsd-app-state-active"};
-const Enum::Value MgmtLsdAppStateEnum::mgmt_lsd_app_state_zombie {1, "mgmt-lsd-app-state-zombie"};
-const Enum::Value MgmtLsdAppStateEnum::mgmt_lsd_app_state_recover {2, "mgmt-lsd-app-state-recover"};
+const Enum::YLeaf MgmtLsdAppStateEnum::mgmt_lsd_app_state_active {0, "mgmt-lsd-app-state-active"};
+const Enum::YLeaf MgmtLsdAppStateEnum::mgmt_lsd_app_state_zombie {1, "mgmt-lsd-app-state-zombie"};
+const Enum::YLeaf MgmtLsdAppStateEnum::mgmt_lsd_app_state_recover {2, "mgmt-lsd-app-state-recover"};
 
-const Enum::Value MgmtLsdIntfStateEnum::mgmt_lsd_intf_state_unknown {0, "mgmt-lsd-intf-state-unknown"};
-const Enum::Value MgmtLsdIntfStateEnum::mgmt_lsd_intf_state_up {1, "mgmt-lsd-intf-state-up"};
-const Enum::Value MgmtLsdIntfStateEnum::mgmt_lsd_intf_state_down {2, "mgmt-lsd-intf-state-down"};
+const Enum::YLeaf MgmtLsdIntfStateEnum::mgmt_lsd_intf_state_unknown {0, "mgmt-lsd-intf-state-unknown"};
+const Enum::YLeaf MgmtLsdIntfStateEnum::mgmt_lsd_intf_state_up {1, "mgmt-lsd-intf-state-up"};
+const Enum::YLeaf MgmtLsdIntfStateEnum::mgmt_lsd_intf_state_down {2, "mgmt-lsd-intf-state-down"};
 
 
 }

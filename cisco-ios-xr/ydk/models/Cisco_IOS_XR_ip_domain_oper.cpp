@@ -58,7 +58,7 @@ EntityPath IpDomain::Vrfs::Vrf::Server::ServerAddress::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -132,7 +132,7 @@ bool IpDomain::Vrfs::Vrf::Server::has_data() const
         if(server_address[index]->has_data())
             return true;
     }
-    for (auto const & leaf : domain.getValues())
+    for (auto const & leaf : domain.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -148,12 +148,13 @@ bool IpDomain::Vrfs::Vrf::Server::has_operation() const
         if(server_address[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : domain.getValues())
+    for (auto const & leaf : domain.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(domain.operation)
 	|| is_set(domain_lookup.operation)
 	|| is_set(domain_name.operation);
 }
@@ -172,7 +173,7 @@ EntityPath IpDomain::Vrfs::Vrf::Server::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -266,7 +267,7 @@ IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::~HostAliasList()
 
 bool IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::has_data() const
 {
-    for (auto const & leaf : host_alias.getValues())
+    for (auto const & leaf : host_alias.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -276,12 +277,13 @@ bool IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::has_data() const
 
 bool IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::has_operation() const
 {
-    for (auto const & leaf : host_alias.getValues())
+    for (auto const & leaf : host_alias.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(host_alias.operation);
 }
 
 std::string IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::get_segment_path() const
@@ -298,7 +300,7 @@ EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -385,7 +387,7 @@ EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -481,7 +483,7 @@ bool IpDomain::Vrfs::Vrf::Hosts::Host::has_operation() const
 	|| is_set(host_name.operation)
 	|| is_set(af_name.operation)
 	|| is_set(age.operation)
-	|| (host_alias_list !=  nullptr && is_set(host_alias_list->operation));
+	|| (host_alias_list !=  nullptr && host_alias_list->has_operation());
 }
 
 std::string IpDomain::Vrfs::Vrf::Hosts::Host::get_segment_path() const
@@ -498,7 +500,7 @@ EntityPath IpDomain::Vrfs::Vrf::Hosts::Host::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -644,7 +646,7 @@ EntityPath IpDomain::Vrfs::Vrf::Hosts::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -740,8 +742,8 @@ bool IpDomain::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (hosts !=  nullptr && is_set(hosts->operation))
-	|| (server !=  nullptr && is_set(server->operation));
+	|| (hosts !=  nullptr && hosts->has_operation())
+	|| (server !=  nullptr && server->has_operation());
 }
 
 std::string IpDomain::Vrfs::Vrf::get_segment_path() const
@@ -978,7 +980,7 @@ bool IpDomain::has_data() const
 bool IpDomain::has_operation() const
 {
     return is_set(operation)
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string IpDomain::get_segment_path() const
@@ -995,7 +997,7 @@ EntityPath IpDomain::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1077,8 +1079,8 @@ Ipv6Identity::~Ipv6Identity()
 }
 
 
-const Enum::Value ServerDomainLkupEnum::static_mapping {0, "static-mapping"};
-const Enum::Value ServerDomainLkupEnum::domain_service {1, "domain-service"};
+const Enum::YLeaf ServerDomainLkupEnum::static_mapping {0, "static-mapping"};
+const Enum::YLeaf ServerDomainLkupEnum::domain_service {1, "domain-service"};
 
 
 }

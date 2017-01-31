@@ -14,9 +14,9 @@ namespace Cisco_IOS_XR_types {
 class EncryptionTypeEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value md5;
-        static const Enum::Value proprietary;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf md5;
+        static const Enum::YLeaf proprietary;
 
 };
 

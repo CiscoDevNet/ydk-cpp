@@ -61,7 +61,7 @@ EntityPath Fpd::Nodes::Node::Devices::Device::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -178,7 +178,7 @@ EntityPath Fpd::Nodes::Node::Devices::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -269,7 +269,7 @@ bool Fpd::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (devices !=  nullptr && is_set(devices->operation));
+	|| (devices !=  nullptr && devices->has_operation());
 }
 
 std::string Fpd::Nodes::Node::get_segment_path() const
@@ -724,8 +724,8 @@ bool Fpd::has_data() const
 bool Fpd::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation))
-	|| (packages !=  nullptr && is_set(packages->operation));
+	|| (nodes !=  nullptr && nodes->has_operation())
+	|| (packages !=  nullptr && packages->has_operation());
 }
 
 std::string Fpd::get_segment_path() const
@@ -742,7 +742,7 @@ EntityPath Fpd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -829,83 +829,83 @@ std::unique_ptr<Entity> Fpd::clone_ptr()
     return std::make_unique<Fpd>();
 }
 
-const Enum::Value FpdSub1Enum::fpga1 {0, "fpga1"};
-const Enum::Value FpdSub1Enum::rommon {1, "rommon"};
-const Enum::Value FpdSub1Enum::rommona {2, "rommona"};
-const Enum::Value FpdSub1Enum::fabric_loader {3, "fabric-loader"};
-const Enum::Value FpdSub1Enum::fpga2 {4, "fpga2"};
-const Enum::Value FpdSub1Enum::fpga3 {5, "fpga3"};
-const Enum::Value FpdSub1Enum::fpga4 {6, "fpga4"};
-const Enum::Value FpdSub1Enum::fpga5 {7, "fpga5"};
-const Enum::Value FpdSub1Enum::fpga6 {8, "fpga6"};
-const Enum::Value FpdSub1Enum::fpga7 {9, "fpga7"};
-const Enum::Value FpdSub1Enum::fpga8 {10, "fpga8"};
-const Enum::Value FpdSub1Enum::fpga9 {11, "fpga9"};
-const Enum::Value FpdSub1Enum::fpga10 {12, "fpga10"};
-const Enum::Value FpdSub1Enum::fpga11 {13, "fpga11"};
-const Enum::Value FpdSub1Enum::fpga12 {14, "fpga12"};
-const Enum::Value FpdSub1Enum::fpga13 {15, "fpga13"};
-const Enum::Value FpdSub1Enum::fpga14 {16, "fpga14"};
-const Enum::Value FpdSub1Enum::cpld1 {17, "cpld1"};
-const Enum::Value FpdSub1Enum::cpld2 {18, "cpld2"};
-const Enum::Value FpdSub1Enum::cpld3 {19, "cpld3"};
-const Enum::Value FpdSub1Enum::cpld4 {20, "cpld4"};
-const Enum::Value FpdSub1Enum::cpld5 {21, "cpld5"};
-const Enum::Value FpdSub1Enum::cpld6 {22, "cpld6"};
-const Enum::Value FpdSub1Enum::cbc {23, "cbc"};
-const Enum::Value FpdSub1Enum::hsbi {24, "hsbi"};
-const Enum::Value FpdSub1Enum::txpod {25, "txpod"};
-const Enum::Value FpdSub1Enum::rxpod {26, "rxpod"};
-const Enum::Value FpdSub1Enum::ibmc {27, "ibmc"};
-const Enum::Value FpdSub1Enum::fsbl {28, "fsbl"};
-const Enum::Value FpdSub1Enum::lnx {29, "lnx"};
-const Enum::Value FpdSub1Enum::fpga15 {30, "fpga15"};
-const Enum::Value FpdSub1Enum::fpga16 {31, "fpga16"};
-const Enum::Value FpdSub1Enum::fc_fsbl {32, "fc-fsbl"};
-const Enum::Value FpdSub1Enum::fc_lnx {33, "fc-lnx"};
+const Enum::YLeaf FpdSub1Enum::fpga1 {0, "fpga1"};
+const Enum::YLeaf FpdSub1Enum::rommon {1, "rommon"};
+const Enum::YLeaf FpdSub1Enum::rommona {2, "rommona"};
+const Enum::YLeaf FpdSub1Enum::fabric_loader {3, "fabric-loader"};
+const Enum::YLeaf FpdSub1Enum::fpga2 {4, "fpga2"};
+const Enum::YLeaf FpdSub1Enum::fpga3 {5, "fpga3"};
+const Enum::YLeaf FpdSub1Enum::fpga4 {6, "fpga4"};
+const Enum::YLeaf FpdSub1Enum::fpga5 {7, "fpga5"};
+const Enum::YLeaf FpdSub1Enum::fpga6 {8, "fpga6"};
+const Enum::YLeaf FpdSub1Enum::fpga7 {9, "fpga7"};
+const Enum::YLeaf FpdSub1Enum::fpga8 {10, "fpga8"};
+const Enum::YLeaf FpdSub1Enum::fpga9 {11, "fpga9"};
+const Enum::YLeaf FpdSub1Enum::fpga10 {12, "fpga10"};
+const Enum::YLeaf FpdSub1Enum::fpga11 {13, "fpga11"};
+const Enum::YLeaf FpdSub1Enum::fpga12 {14, "fpga12"};
+const Enum::YLeaf FpdSub1Enum::fpga13 {15, "fpga13"};
+const Enum::YLeaf FpdSub1Enum::fpga14 {16, "fpga14"};
+const Enum::YLeaf FpdSub1Enum::cpld1 {17, "cpld1"};
+const Enum::YLeaf FpdSub1Enum::cpld2 {18, "cpld2"};
+const Enum::YLeaf FpdSub1Enum::cpld3 {19, "cpld3"};
+const Enum::YLeaf FpdSub1Enum::cpld4 {20, "cpld4"};
+const Enum::YLeaf FpdSub1Enum::cpld5 {21, "cpld5"};
+const Enum::YLeaf FpdSub1Enum::cpld6 {22, "cpld6"};
+const Enum::YLeaf FpdSub1Enum::cbc {23, "cbc"};
+const Enum::YLeaf FpdSub1Enum::hsbi {24, "hsbi"};
+const Enum::YLeaf FpdSub1Enum::txpod {25, "txpod"};
+const Enum::YLeaf FpdSub1Enum::rxpod {26, "rxpod"};
+const Enum::YLeaf FpdSub1Enum::ibmc {27, "ibmc"};
+const Enum::YLeaf FpdSub1Enum::fsbl {28, "fsbl"};
+const Enum::YLeaf FpdSub1Enum::lnx {29, "lnx"};
+const Enum::YLeaf FpdSub1Enum::fpga15 {30, "fpga15"};
+const Enum::YLeaf FpdSub1Enum::fpga16 {31, "fpga16"};
+const Enum::YLeaf FpdSub1Enum::fc_fsbl {32, "fc-fsbl"};
+const Enum::YLeaf FpdSub1Enum::fc_lnx {33, "fc-lnx"};
 
-const Enum::Value FpdEnum::spa {0, "spa"};
-const Enum::Value FpdEnum::lc {1, "lc"};
-const Enum::Value FpdEnum::sam {2, "sam"};
+const Enum::YLeaf FpdEnum::spa {0, "spa"};
+const Enum::YLeaf FpdEnum::lc {1, "lc"};
+const Enum::YLeaf FpdEnum::sam {2, "sam"};
 
-const Enum::Value Fpd1Enum::spa {0, "spa"};
-const Enum::Value Fpd1Enum::lc {1, "lc"};
-const Enum::Value Fpd1Enum::sam {2, "sam"};
+const Enum::YLeaf Fpd1Enum::spa {0, "spa"};
+const Enum::YLeaf Fpd1Enum::lc {1, "lc"};
+const Enum::YLeaf Fpd1Enum::sam {2, "sam"};
 
-const Enum::Value FpdSubEnum::fpga1 {0, "fpga1"};
-const Enum::Value FpdSubEnum::rommon {1, "rommon"};
-const Enum::Value FpdSubEnum::rommona {2, "rommona"};
-const Enum::Value FpdSubEnum::fabldr {3, "fabldr"};
-const Enum::Value FpdSubEnum::fpga2 {4, "fpga2"};
-const Enum::Value FpdSubEnum::fpga3 {5, "fpga3"};
-const Enum::Value FpdSubEnum::fpga4 {6, "fpga4"};
-const Enum::Value FpdSubEnum::fpga5 {7, "fpga5"};
-const Enum::Value FpdSubEnum::fpga6 {8, "fpga6"};
-const Enum::Value FpdSubEnum::fpga7 {9, "fpga7"};
-const Enum::Value FpdSubEnum::fpga8 {10, "fpga8"};
-const Enum::Value FpdSubEnum::fpga9 {11, "fpga9"};
-const Enum::Value FpdSubEnum::fpga10 {12, "fpga10"};
-const Enum::Value FpdSubEnum::fpga11 {13, "fpga11"};
-const Enum::Value FpdSubEnum::fpga12 {14, "fpga12"};
-const Enum::Value FpdSubEnum::fpga13 {15, "fpga13"};
-const Enum::Value FpdSubEnum::fpga14 {16, "fpga14"};
-const Enum::Value FpdSubEnum::cpld1 {17, "cpld1"};
-const Enum::Value FpdSubEnum::cpld2 {18, "cpld2"};
-const Enum::Value FpdSubEnum::cpld3 {19, "cpld3"};
-const Enum::Value FpdSubEnum::cpld4 {20, "cpld4"};
-const Enum::Value FpdSubEnum::cpld5 {21, "cpld5"};
-const Enum::Value FpdSubEnum::cpld6 {22, "cpld6"};
-const Enum::Value FpdSubEnum::cbc {23, "cbc"};
-const Enum::Value FpdSubEnum::hsbi {24, "hsbi"};
-const Enum::Value FpdSubEnum::txpod {25, "txpod"};
-const Enum::Value FpdSubEnum::rxpod {26, "rxpod"};
-const Enum::Value FpdSubEnum::ibmc {27, "ibmc"};
-const Enum::Value FpdSubEnum::fsbl {28, "fsbl"};
-const Enum::Value FpdSubEnum::lnx {29, "lnx"};
-const Enum::Value FpdSubEnum::fpga15 {30, "fpga15"};
-const Enum::Value FpdSubEnum::fpga16 {31, "fpga16"};
-const Enum::Value FpdSubEnum::fc_fsbl {32, "fc-fsbl"};
-const Enum::Value FpdSubEnum::fc_lnx {33, "fc-lnx"};
+const Enum::YLeaf FpdSubEnum::fpga1 {0, "fpga1"};
+const Enum::YLeaf FpdSubEnum::rommon {1, "rommon"};
+const Enum::YLeaf FpdSubEnum::rommona {2, "rommona"};
+const Enum::YLeaf FpdSubEnum::fabldr {3, "fabldr"};
+const Enum::YLeaf FpdSubEnum::fpga2 {4, "fpga2"};
+const Enum::YLeaf FpdSubEnum::fpga3 {5, "fpga3"};
+const Enum::YLeaf FpdSubEnum::fpga4 {6, "fpga4"};
+const Enum::YLeaf FpdSubEnum::fpga5 {7, "fpga5"};
+const Enum::YLeaf FpdSubEnum::fpga6 {8, "fpga6"};
+const Enum::YLeaf FpdSubEnum::fpga7 {9, "fpga7"};
+const Enum::YLeaf FpdSubEnum::fpga8 {10, "fpga8"};
+const Enum::YLeaf FpdSubEnum::fpga9 {11, "fpga9"};
+const Enum::YLeaf FpdSubEnum::fpga10 {12, "fpga10"};
+const Enum::YLeaf FpdSubEnum::fpga11 {13, "fpga11"};
+const Enum::YLeaf FpdSubEnum::fpga12 {14, "fpga12"};
+const Enum::YLeaf FpdSubEnum::fpga13 {15, "fpga13"};
+const Enum::YLeaf FpdSubEnum::fpga14 {16, "fpga14"};
+const Enum::YLeaf FpdSubEnum::cpld1 {17, "cpld1"};
+const Enum::YLeaf FpdSubEnum::cpld2 {18, "cpld2"};
+const Enum::YLeaf FpdSubEnum::cpld3 {19, "cpld3"};
+const Enum::YLeaf FpdSubEnum::cpld4 {20, "cpld4"};
+const Enum::YLeaf FpdSubEnum::cpld5 {21, "cpld5"};
+const Enum::YLeaf FpdSubEnum::cpld6 {22, "cpld6"};
+const Enum::YLeaf FpdSubEnum::cbc {23, "cbc"};
+const Enum::YLeaf FpdSubEnum::hsbi {24, "hsbi"};
+const Enum::YLeaf FpdSubEnum::txpod {25, "txpod"};
+const Enum::YLeaf FpdSubEnum::rxpod {26, "rxpod"};
+const Enum::YLeaf FpdSubEnum::ibmc {27, "ibmc"};
+const Enum::YLeaf FpdSubEnum::fsbl {28, "fsbl"};
+const Enum::YLeaf FpdSubEnum::lnx {29, "lnx"};
+const Enum::YLeaf FpdSubEnum::fpga15 {30, "fpga15"};
+const Enum::YLeaf FpdSubEnum::fpga16 {31, "fpga16"};
+const Enum::YLeaf FpdSubEnum::fc_fsbl {32, "fc-fsbl"};
+const Enum::YLeaf FpdSubEnum::fc_lnx {33, "fc-lnx"};
 
 
 }

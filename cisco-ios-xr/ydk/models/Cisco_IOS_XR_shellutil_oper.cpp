@@ -274,8 +274,8 @@ bool SystemTime::has_data() const
 bool SystemTime::has_operation() const
 {
     return is_set(operation)
-	|| (clock !=  nullptr && is_set(clock->operation))
-	|| (uptime !=  nullptr && is_set(uptime->operation));
+	|| (clock !=  nullptr && clock->has_operation())
+	|| (uptime !=  nullptr && uptime->has_operation());
 }
 
 std::string SystemTime::get_segment_path() const
@@ -292,7 +292,7 @@ EntityPath SystemTime::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -379,11 +379,11 @@ std::unique_ptr<Entity> SystemTime::clone_ptr()
     return std::make_unique<SystemTime>();
 }
 
-const Enum::Value TimeSourceEnum::error {0, "error"};
-const Enum::Value TimeSourceEnum::none {1, "none"};
-const Enum::Value TimeSourceEnum::ntp {2, "ntp"};
-const Enum::Value TimeSourceEnum::manual {3, "manual"};
-const Enum::Value TimeSourceEnum::calendar {4, "calendar"};
+const Enum::YLeaf TimeSourceEnum::error {0, "error"};
+const Enum::YLeaf TimeSourceEnum::none {1, "none"};
+const Enum::YLeaf TimeSourceEnum::ntp {2, "ntp"};
+const Enum::YLeaf TimeSourceEnum::manual {3, "manual"};
+const Enum::YLeaf TimeSourceEnum::calendar {4, "calendar"};
 
 
 }

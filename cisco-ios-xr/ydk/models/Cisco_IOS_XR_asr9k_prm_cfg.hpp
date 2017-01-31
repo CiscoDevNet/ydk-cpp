@@ -26,6 +26,7 @@ class HardwareModuleQosMode : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class HardwareModuleQosMode : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,10 +56,11 @@ class HardwareModuleQosMode : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
-                Value child_shaping_disable; //type: empty
-                Value lowburst_enable; //type: empty
 
+
+                YLeaf node_name; //type: string
+                YLeaf child_shaping_disable; //type: empty
+                YLeaf lowburst_enable; //type: empty
 
 
 
@@ -91,6 +94,7 @@ class HardwareModuleTcpMssAdjust : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -106,6 +110,7 @@ class HardwareModuleTcpMssAdjust : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -119,8 +124,9 @@ class HardwareModuleTcpMssAdjust : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Nps : public Entity
             {
@@ -137,6 +143,7 @@ class HardwareModuleTcpMssAdjust : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Np : public Entity
                 {
                     public:
@@ -150,9 +157,10 @@ class HardwareModuleTcpMssAdjust : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value np_id; //type: uint32
-                        Value adjust_value; //type: uint32
 
+
+                        YLeaf np_id; //type: uint32
+                        YLeaf adjust_value; //type: uint32
 
 
 
@@ -198,6 +206,7 @@ class HardwareModuleLoadBalance : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Bundle : public Entity
     {
         public:
@@ -213,6 +222,7 @@ class HardwareModuleLoadBalance : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class L2Service : public Entity
         {
             public:
@@ -226,8 +236,9 @@ class HardwareModuleLoadBalance : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value l3_parameters; //type: empty
 
+
+                YLeaf l3_parameters; //type: empty
 
 
 
@@ -259,8 +270,9 @@ class HardwareModuleTcam : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value global_profile; //type: PrmTcamProfileEnum
 
+
+        YLeaf global_profile; //type: PrmTcamProfileEnum
 
     class Nodes : public Entity
     {
@@ -277,6 +289,7 @@ class HardwareModuleTcam : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -290,11 +303,11 @@ class HardwareModuleTcam : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
-                Value profile; //type: PrmTcamProfileEnum
 
 
-                class PrmTcamProfileEnum;
+                YLeaf node_name; //type: string
+                YLeaf profile; //type: PrmTcamProfileEnum
+
 
 
         }; // HardwareModuleTcam::Nodes::Node
@@ -307,7 +320,6 @@ class HardwareModuleTcam : public Entity
 
 
         std::unique_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleTcam::Nodes> nodes;
-        class PrmTcamProfileEnum;
 
 
 }; // HardwareModuleTcam
@@ -328,6 +340,7 @@ class HardwareModuleEfd : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -343,6 +356,7 @@ class HardwareModuleEfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -356,10 +370,11 @@ class HardwareModuleEfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
-                Value enable; //type: empty
-                Value mode; //type: Asr9KEfdModeEnum
 
+
+                YLeaf node_name; //type: string
+                YLeaf enable; //type: empty
+                YLeaf mode; //type: Asr9KEfdModeEnum
 
             class IpPrecedence : public Entity
             {
@@ -374,11 +389,11 @@ class HardwareModuleEfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value precedence; //type: uint32
-                    Value operation_; //type: Asr9KEfdOperationEnum
 
 
-                    class Asr9KEfdOperationEnum;
+                    YLeaf precedence; //type: uint32
+                    YLeaf operation_; //type: Asr9KEfdOperationEnum
+
 
 
             }; // HardwareModuleEfd::Nodes::Node::IpPrecedence
@@ -397,11 +412,11 @@ class HardwareModuleEfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value cos; //type: uint32
-                    Value operation_; //type: Asr9KEfdOperationEnum
 
 
-                    class Asr9KEfdOperationEnum;
+                    YLeaf cos; //type: uint32
+                    YLeaf operation_; //type: Asr9KEfdOperationEnum
+
 
 
             }; // HardwareModuleEfd::Nodes::Node::VlanCos
@@ -420,11 +435,11 @@ class HardwareModuleEfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value exp; //type: uint32
-                    Value operation_; //type: Asr9KEfdOperationEnum
 
 
-                    class Asr9KEfdOperationEnum;
+                    YLeaf exp; //type: uint32
+                    YLeaf operation_; //type: Asr9KEfdOperationEnum
+
 
 
             }; // HardwareModuleEfd::Nodes::Node::MplsExp
@@ -433,7 +448,6 @@ class HardwareModuleEfd : public Entity
                 std::unique_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node::IpPrecedence> ip_precedence; // presence node
                 std::unique_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node::MplsExp> mpls_exp; // presence node
                 std::unique_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node::VlanCos> vlan_cos; // presence node
-                class Asr9KEfdModeEnum;
 
 
         }; // HardwareModuleEfd::Nodes::Node
@@ -454,25 +468,25 @@ class HardwareModuleEfd : public Entity
 class Asr9KEfdModeEnum : public Enum
 {
     public:
-        static const Enum::Value only_outer_encap;
-        static const Enum::Value include_inner_encap;
+        static const Enum::YLeaf only_outer_encap;
+        static const Enum::YLeaf include_inner_encap;
 
 };
 
 class Asr9KEfdOperationEnum : public Enum
 {
     public:
-        static const Enum::Value less_than;
-        static const Enum::Value greater_than_or_equal;
+        static const Enum::YLeaf less_than;
+        static const Enum::YLeaf greater_than_or_equal;
 
 };
 
 class PrmTcamProfileEnum : public Enum
 {
     public:
-        static const Enum::Value profile0;
-        static const Enum::Value profile1;
-        static const Enum::Value profile2;
+        static const Enum::YLeaf profile0;
+        static const Enum::YLeaf profile1;
+        static const Enum::YLeaf profile2;
 
 };
 

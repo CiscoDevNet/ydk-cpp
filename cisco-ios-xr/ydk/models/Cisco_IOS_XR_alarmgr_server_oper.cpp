@@ -276,8 +276,8 @@ bool Alarms::Detail::DetailSystem::Active::AlarmInfo::has_operation() const
 	|| is_set(status.operation)
 	|| is_set(tag.operation)
 	|| is_set(type.operation)
-	|| (otn !=  nullptr && is_set(otn->operation))
-	|| (tca !=  nullptr && is_set(tca->operation));
+	|| (otn !=  nullptr && otn->has_operation())
+	|| (tca !=  nullptr && tca->has_operation());
 }
 
 std::string Alarms::Detail::DetailSystem::Active::AlarmInfo::get_segment_path() const
@@ -851,8 +851,8 @@ bool Alarms::Detail::DetailSystem::History::AlarmInfo::has_operation() const
 	|| is_set(status.operation)
 	|| is_set(tag.operation)
 	|| is_set(type.operation)
-	|| (otn !=  nullptr && is_set(otn->operation))
-	|| (tca !=  nullptr && is_set(tca->operation));
+	|| (otn !=  nullptr && otn->has_operation())
+	|| (tca !=  nullptr && tca->has_operation());
 }
 
 std::string Alarms::Detail::DetailSystem::History::AlarmInfo::get_segment_path() const
@@ -1322,7 +1322,7 @@ bool Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::has_operation() c
 	|| is_set(suppressed_time.operation)
 	|| is_set(suppressed_timestamp.operation)
 	|| is_set(tag.operation)
-	|| (otn !=  nullptr && is_set(otn->operation));
+	|| (otn !=  nullptr && otn->has_operation());
 }
 
 std::string Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::get_segment_path() const
@@ -2141,11 +2141,11 @@ bool Alarms::Detail::DetailSystem::has_data() const
 bool Alarms::Detail::DetailSystem::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (clients !=  nullptr && is_set(clients->operation))
-	|| (history !=  nullptr && is_set(history->operation))
-	|| (stats !=  nullptr && is_set(stats->operation))
-	|| (suppressed !=  nullptr && is_set(suppressed->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (clients !=  nullptr && clients->has_operation())
+	|| (history !=  nullptr && history->has_operation())
+	|| (stats !=  nullptr && stats->has_operation())
+	|| (suppressed !=  nullptr && suppressed->has_operation());
 }
 
 std::string Alarms::Detail::DetailSystem::get_segment_path() const
@@ -2355,7 +2355,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2446,7 +2446,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2585,8 +2585,8 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmI
 	|| is_set(status.operation)
 	|| is_set(tag.operation)
 	|| is_set(type.operation)
-	|| (otn !=  nullptr && is_set(otn->operation))
-	|| (tca !=  nullptr && is_set(tca->operation));
+	|| (otn !=  nullptr && otn->has_operation())
+	|| (tca !=  nullptr && tca->has_operation());
 }
 
 std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::get_segment_path() const
@@ -2603,7 +2603,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2826,7 +2826,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2930,7 +2930,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3021,7 +3021,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3160,8 +3160,8 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alarm
 	|| is_set(status.operation)
 	|| is_set(tag.operation)
 	|| is_set(type.operation)
-	|| (otn !=  nullptr && is_set(otn->operation))
-	|| (tca !=  nullptr && is_set(tca->operation));
+	|| (otn !=  nullptr && otn->has_operation())
+	|| (tca !=  nullptr && tca->has_operation());
 }
 
 std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::get_segment_path() const
@@ -3178,7 +3178,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3401,7 +3401,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3505,7 +3505,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppress
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3631,7 +3631,7 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::Su
 	|| is_set(suppressed_time.operation)
 	|| is_set(suppressed_timestamp.operation)
 	|| is_set(tag.operation)
-	|| (otn !=  nullptr && is_set(otn->operation));
+	|| (otn !=  nullptr && otn->has_operation());
 }
 
 std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::get_segment_path() const
@@ -3648,7 +3648,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppress
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3843,7 +3843,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppress
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3986,7 +3986,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4181,7 +4181,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4343,7 +4343,7 @@ EntityPath Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4454,11 +4454,11 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::has_operation(
 {
     return is_set(operation)
 	|| is_set(node_id.operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (clients !=  nullptr && is_set(clients->operation))
-	|| (history !=  nullptr && is_set(history->operation))
-	|| (stats !=  nullptr && is_set(stats->operation))
-	|| (suppressed !=  nullptr && is_set(suppressed->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (clients !=  nullptr && clients->has_operation())
+	|| (history !=  nullptr && history->has_operation())
+	|| (stats !=  nullptr && stats->has_operation())
+	|| (suppressed !=  nullptr && suppressed->has_operation());
 }
 
 std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::get_segment_path() const
@@ -4764,7 +4764,7 @@ bool Alarms::Detail::DetailCard::has_data() const
 bool Alarms::Detail::DetailCard::has_operation() const
 {
     return is_set(operation)
-	|| (detail_locations !=  nullptr && is_set(detail_locations->operation));
+	|| (detail_locations !=  nullptr && detail_locations->has_operation());
 }
 
 std::string Alarms::Detail::DetailCard::get_segment_path() const
@@ -4870,8 +4870,8 @@ bool Alarms::Detail::has_data() const
 bool Alarms::Detail::has_operation() const
 {
     return is_set(operation)
-	|| (detail_card !=  nullptr && is_set(detail_card->operation))
-	|| (detail_system !=  nullptr && is_set(detail_system->operation));
+	|| (detail_card !=  nullptr && detail_card->has_operation())
+	|| (detail_system !=  nullptr && detail_system->has_operation());
 }
 
 std::string Alarms::Detail::get_segment_path() const
@@ -5030,7 +5030,7 @@ EntityPath Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::Alar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5152,7 +5152,7 @@ EntityPath Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5274,7 +5274,7 @@ EntityPath Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::Ala
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5396,7 +5396,7 @@ EntityPath Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5518,7 +5518,7 @@ EntityPath Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5640,7 +5640,7 @@ EntityPath Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5741,9 +5741,9 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::has_operation() co
 {
     return is_set(operation)
 	|| is_set(node_id.operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (history !=  nullptr && is_set(history->operation))
-	|| (suppressed !=  nullptr && is_set(suppressed->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (history !=  nullptr && history->has_operation())
+	|| (suppressed !=  nullptr && suppressed->has_operation());
 }
 
 std::string Alarms::Brief::BriefCard::BriefLocations::BriefLocation::get_segment_path() const
@@ -6003,7 +6003,7 @@ bool Alarms::Brief::BriefCard::has_data() const
 bool Alarms::Brief::BriefCard::has_operation() const
 {
     return is_set(operation)
-	|| (brief_locations !=  nullptr && is_set(brief_locations->operation));
+	|| (brief_locations !=  nullptr && brief_locations->has_operation());
 }
 
 std::string Alarms::Brief::BriefCard::get_segment_path() const
@@ -6846,9 +6846,9 @@ bool Alarms::Brief::BriefSystem::has_data() const
 bool Alarms::Brief::BriefSystem::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (history !=  nullptr && is_set(history->operation))
-	|| (suppressed !=  nullptr && is_set(suppressed->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (history !=  nullptr && history->has_operation())
+	|| (suppressed !=  nullptr && suppressed->has_operation());
 }
 
 std::string Alarms::Brief::BriefSystem::get_segment_path() const
@@ -7000,8 +7000,8 @@ bool Alarms::Brief::has_data() const
 bool Alarms::Brief::has_operation() const
 {
     return is_set(operation)
-	|| (brief_card !=  nullptr && is_set(brief_card->operation))
-	|| (brief_system !=  nullptr && is_set(brief_system->operation));
+	|| (brief_card !=  nullptr && brief_card->has_operation())
+	|| (brief_system !=  nullptr && brief_system->has_operation());
 }
 
 std::string Alarms::Brief::get_segment_path() const
@@ -7130,8 +7130,8 @@ bool Alarms::has_data() const
 bool Alarms::has_operation() const
 {
     return is_set(operation)
-	|| (brief !=  nullptr && is_set(brief->operation))
-	|| (detail !=  nullptr && is_set(detail->operation));
+	|| (brief !=  nullptr && brief->has_operation())
+	|| (detail !=  nullptr && detail->has_operation());
 }
 
 std::string Alarms::get_segment_path() const
@@ -7148,7 +7148,7 @@ EntityPath Alarms::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -7235,73 +7235,73 @@ std::unique_ptr<Entity> Alarms::clone_ptr()
     return std::make_unique<Alarms>();
 }
 
-const Enum::Value TimingBucketEnum::not_specified {0, "not-specified"};
-const Enum::Value TimingBucketEnum::fifteen_min {1, "fifteen-min"};
-const Enum::Value TimingBucketEnum::one_day {2, "one-day"};
+const Enum::YLeaf TimingBucketEnum::not_specified {0, "not-specified"};
+const Enum::YLeaf TimingBucketEnum::fifteen_min {1, "fifteen-min"};
+const Enum::YLeaf TimingBucketEnum::one_day {2, "one-day"};
 
-const Enum::Value AlarmSeverityEnum::unknown {0, "unknown"};
-const Enum::Value AlarmSeverityEnum::not_reported {1, "not-reported"};
-const Enum::Value AlarmSeverityEnum::not_alarmed {2, "not-alarmed"};
-const Enum::Value AlarmSeverityEnum::minor {3, "minor"};
-const Enum::Value AlarmSeverityEnum::major {4, "major"};
-const Enum::Value AlarmSeverityEnum::critical {5, "critical"};
-const Enum::Value AlarmSeverityEnum::severity_last {6, "severity-last"};
+const Enum::YLeaf AlarmSeverityEnum::unknown {0, "unknown"};
+const Enum::YLeaf AlarmSeverityEnum::not_reported {1, "not-reported"};
+const Enum::YLeaf AlarmSeverityEnum::not_alarmed {2, "not-alarmed"};
+const Enum::YLeaf AlarmSeverityEnum::minor {3, "minor"};
+const Enum::YLeaf AlarmSeverityEnum::major {4, "major"};
+const Enum::YLeaf AlarmSeverityEnum::critical {5, "critical"};
+const Enum::YLeaf AlarmSeverityEnum::severity_last {6, "severity-last"};
 
-const Enum::Value AlarmDirectionEnum::not_specified {0, "not-specified"};
-const Enum::Value AlarmDirectionEnum::send {1, "send"};
-const Enum::Value AlarmDirectionEnum::receive {2, "receive"};
-const Enum::Value AlarmDirectionEnum::send_receive {3, "send-receive"};
+const Enum::YLeaf AlarmDirectionEnum::not_specified {0, "not-specified"};
+const Enum::YLeaf AlarmDirectionEnum::send {1, "send"};
+const Enum::YLeaf AlarmDirectionEnum::receive {2, "receive"};
+const Enum::YLeaf AlarmDirectionEnum::send_receive {3, "send-receive"};
 
-const Enum::Value AlarmStatusEnum::unknown {0, "unknown"};
-const Enum::Value AlarmStatusEnum::set {1, "set"};
-const Enum::Value AlarmStatusEnum::clear {2, "clear"};
-const Enum::Value AlarmStatusEnum::suppress {3, "suppress"};
-const Enum::Value AlarmStatusEnum::last {4, "last"};
+const Enum::YLeaf AlarmStatusEnum::unknown {0, "unknown"};
+const Enum::YLeaf AlarmStatusEnum::set {1, "set"};
+const Enum::YLeaf AlarmStatusEnum::clear {2, "clear"};
+const Enum::YLeaf AlarmStatusEnum::suppress {3, "suppress"};
+const Enum::YLeaf AlarmStatusEnum::last {4, "last"};
 
-const Enum::Value AlarmServiceAffectingEnum::unknown {0, "unknown"};
-const Enum::Value AlarmServiceAffectingEnum::not_service_affecting {1, "not-service-affecting"};
-const Enum::Value AlarmServiceAffectingEnum::service_affecting {2, "service-affecting"};
+const Enum::YLeaf AlarmServiceAffectingEnum::unknown {0, "unknown"};
+const Enum::YLeaf AlarmServiceAffectingEnum::not_service_affecting {1, "not-service-affecting"};
+const Enum::YLeaf AlarmServiceAffectingEnum::service_affecting {2, "service-affecting"};
 
-const Enum::Value AlarmNotificationSrcEnum::not_specified {0, "not-specified"};
-const Enum::Value AlarmNotificationSrcEnum::near_end {1, "near-end"};
-const Enum::Value AlarmNotificationSrcEnum::far_end {2, "far-end"};
+const Enum::YLeaf AlarmNotificationSrcEnum::not_specified {0, "not-specified"};
+const Enum::YLeaf AlarmNotificationSrcEnum::near_end {1, "near-end"};
+const Enum::YLeaf AlarmNotificationSrcEnum::far_end {2, "far-end"};
 
-const Enum::Value AlarmEventEnum::default_ {0, "default"};
-const Enum::Value AlarmEventEnum::notification {1, "notification"};
-const Enum::Value AlarmEventEnum::last {2, "last"};
+const Enum::YLeaf AlarmEventEnum::default_ {0, "default"};
+const Enum::YLeaf AlarmEventEnum::notification {1, "notification"};
+const Enum::YLeaf AlarmEventEnum::last {2, "last"};
 
-const Enum::Value AlarmClientEnum::unknown {1, "unknown"};
-const Enum::Value AlarmClientEnum::producer {2, "producer"};
-const Enum::Value AlarmClientEnum::consumer {4, "consumer"};
-const Enum::Value AlarmClientEnum::subscriber {8, "subscriber"};
-const Enum::Value AlarmClientEnum::client_last {16, "client-last"};
+const Enum::YLeaf AlarmClientEnum::unknown {1, "unknown"};
+const Enum::YLeaf AlarmClientEnum::producer {2, "producer"};
+const Enum::YLeaf AlarmClientEnum::consumer {4, "consumer"};
+const Enum::YLeaf AlarmClientEnum::subscriber {8, "subscriber"};
+const Enum::YLeaf AlarmClientEnum::client_last {16, "client-last"};
 
-const Enum::Value AlarmClientStateEnum::start {0, "start"};
-const Enum::Value AlarmClientStateEnum::init {1, "init"};
-const Enum::Value AlarmClientStateEnum::connecting {2, "connecting"};
-const Enum::Value AlarmClientStateEnum::connected {3, "connected"};
-const Enum::Value AlarmClientStateEnum::registered {4, "registered"};
-const Enum::Value AlarmClientStateEnum::disconnected {5, "disconnected"};
-const Enum::Value AlarmClientStateEnum::ready {6, "ready"};
+const Enum::YLeaf AlarmClientStateEnum::start {0, "start"};
+const Enum::YLeaf AlarmClientStateEnum::init {1, "init"};
+const Enum::YLeaf AlarmClientStateEnum::connecting {2, "connecting"};
+const Enum::YLeaf AlarmClientStateEnum::connected {3, "connected"};
+const Enum::YLeaf AlarmClientStateEnum::registered {4, "registered"};
+const Enum::YLeaf AlarmClientStateEnum::disconnected {5, "disconnected"};
+const Enum::YLeaf AlarmClientStateEnum::ready {6, "ready"};
 
-const Enum::Value AlarmGroupsEnum::unknown {0, "unknown"};
-const Enum::Value AlarmGroupsEnum::environ {1, "environ"};
-const Enum::Value AlarmGroupsEnum::ethernet {2, "ethernet"};
-const Enum::Value AlarmGroupsEnum::fabric {3, "fabric"};
-const Enum::Value AlarmGroupsEnum::power {4, "power"};
-const Enum::Value AlarmGroupsEnum::software {5, "software"};
-const Enum::Value AlarmGroupsEnum::slice {6, "slice"};
-const Enum::Value AlarmGroupsEnum::cpu {7, "cpu"};
-const Enum::Value AlarmGroupsEnum::controller {8, "controller"};
-const Enum::Value AlarmGroupsEnum::sonet {9, "sonet"};
-const Enum::Value AlarmGroupsEnum::otn {10, "otn"};
-const Enum::Value AlarmGroupsEnum::sdh_controller {11, "sdh-controller"};
-const Enum::Value AlarmGroupsEnum::asic {12, "asic"};
-const Enum::Value AlarmGroupsEnum::fpd_infra {13, "fpd-infra"};
-const Enum::Value AlarmGroupsEnum::shelf {14, "shelf"};
-const Enum::Value AlarmGroupsEnum::mpa {15, "mpa"};
-const Enum::Value AlarmGroupsEnum::ots {16, "ots"};
-const Enum::Value AlarmGroupsEnum::last {17, "last"};
+const Enum::YLeaf AlarmGroupsEnum::unknown {0, "unknown"};
+const Enum::YLeaf AlarmGroupsEnum::environ {1, "environ"};
+const Enum::YLeaf AlarmGroupsEnum::ethernet {2, "ethernet"};
+const Enum::YLeaf AlarmGroupsEnum::fabric {3, "fabric"};
+const Enum::YLeaf AlarmGroupsEnum::power {4, "power"};
+const Enum::YLeaf AlarmGroupsEnum::software {5, "software"};
+const Enum::YLeaf AlarmGroupsEnum::slice {6, "slice"};
+const Enum::YLeaf AlarmGroupsEnum::cpu {7, "cpu"};
+const Enum::YLeaf AlarmGroupsEnum::controller {8, "controller"};
+const Enum::YLeaf AlarmGroupsEnum::sonet {9, "sonet"};
+const Enum::YLeaf AlarmGroupsEnum::otn {10, "otn"};
+const Enum::YLeaf AlarmGroupsEnum::sdh_controller {11, "sdh-controller"};
+const Enum::YLeaf AlarmGroupsEnum::asic {12, "asic"};
+const Enum::YLeaf AlarmGroupsEnum::fpd_infra {13, "fpd-infra"};
+const Enum::YLeaf AlarmGroupsEnum::shelf {14, "shelf"};
+const Enum::YLeaf AlarmGroupsEnum::mpa {15, "mpa"};
+const Enum::YLeaf AlarmGroupsEnum::ots {16, "ots"};
+const Enum::YLeaf AlarmGroupsEnum::last {17, "last"};
 
 
 }

@@ -26,6 +26,7 @@ class AsicErrorStats : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class AsicErrorStats : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class AsicErrorStats : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Counts : public Entity
             {
@@ -72,6 +75,7 @@ class AsicErrorStats : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Count : public Entity
                 {
                     public:
@@ -85,8 +89,9 @@ class AsicErrorStats : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value type; //type: string
 
+
+                        YLeaf type; //type: string
 
                     class SumData : public Entity
                     {
@@ -101,16 +106,17 @@ class AsicErrorStats : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value instance; //type: uint32
-                            Value num_nodes; //type: uint32
-                            Value crc_err_count; //type: uint32
-                            Value sbe_err_count; //type: uint32
-                            Value mbe_err_count; //type: uint32
-                            Value par_err_count; //type: uint32
-                            Value gen_err_count; //type: uint32
-                            Value reset_err_count; //type: uint32
-                            ValueList node_key; //type: list of  uint32
 
+
+                            YLeaf instance; //type: uint32
+                            YLeaf num_nodes; //type: uint32
+                            YLeaf crc_err_count; //type: uint32
+                            YLeaf sbe_err_count; //type: uint32
+                            YLeaf mbe_err_count; //type: uint32
+                            YLeaf par_err_count; //type: uint32
+                            YLeaf gen_err_count; //type: uint32
+                            YLeaf reset_err_count; //type: uint32
+                            YLeafList node_key; //type: list of  uint32
 
 
 

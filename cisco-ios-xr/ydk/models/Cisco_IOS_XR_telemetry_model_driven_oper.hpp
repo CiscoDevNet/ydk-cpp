@@ -26,6 +26,7 @@ class TelemetryModelDriven : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Destinations : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class TelemetryModelDriven : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Destination : public Entity
         {
             public:
@@ -54,10 +56,11 @@ class TelemetryModelDriven : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value destination_id; //type: string
-                Value id; //type: string
-                Value configured; //type: uint32
 
+
+                YLeaf destination_id; //type: string
+                YLeaf id; //type: string
+                YLeaf configured; //type: uint32
 
             class Destination_ : public Entity
             {
@@ -74,6 +77,7 @@ class TelemetryModelDriven : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Destination__ : public Entity
                 {
                     public:
@@ -87,17 +91,18 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value id; //type: string
-                        Value dest_port; //type: uint16
-                        Value encoding; //type: MdtEncodingEnumEnum
-                        Value transport; //type: MdtTransportEnumEnum
-                        Value state; //type: uint32
-                        Value tls; //type: uint32
-                        Value tls_host; //type: string
-                        Value total_num_of_packets_sent; //type: uint64
-                        Value total_num_of_bytes_sent; //type: uint64
-                        Value last_collection_time; //type: uint64
 
+
+                        YLeaf id; //type: string
+                        YLeaf dest_port; //type: uint16
+                        YLeaf encoding; //type: MdtEncodingEnumEnum
+                        YLeaf transport; //type: MdtTransportEnumEnum
+                        YLeaf state; //type: uint32
+                        YLeaf tls; //type: uint32
+                        YLeaf tls_host; //type: string
+                        YLeaf total_num_of_packets_sent; //type: uint64
+                        YLeaf total_num_of_bytes_sent; //type: uint64
+                        YLeaf last_collection_time; //type: uint64
 
                     class DestIpAddress : public Entity
                     {
@@ -112,20 +117,18 @@ class TelemetryModelDriven : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ip_type; //type: MdtIpEnum
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
 
-                            class MdtIpEnum;
+                            YLeaf ip_type; //type: MdtIpEnum
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
+
 
 
                     }; // TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress
 
 
                         std::unique_ptr<Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress> dest_ip_address;
-                        class MdtEncodingEnumEnum;
-                        class MdtTransportEnumEnum;
 
 
                 }; // TelemetryModelDriven::Destinations::Destination::Destination_::Destination__
@@ -144,22 +147,23 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value id; //type: uint64
-                        Value cadence; //type: uint32
-                        Value total_collections; //type: uint32
-                        Value encoding; //type: MdtEncodingEnumEnum
-                        Value last_collection_start_time; //type: uint64
-                        Value last_collection_end_time; //type: uint64
-                        Value max_collection_time; //type: uint32
-                        Value min_collection_time; //type: uint32
-                        Value min_total_time; //type: uint32
-                        Value max_total_time; //type: uint32
-                        Value avg_total_time; //type: uint32
-                        Value total_other_errors; //type: uint32
-                        Value total_not_ready; //type: uint32
-                        Value total_send_errors; //type: uint32
-                        Value total_send_drops; //type: uint32
 
+
+                        YLeaf id; //type: uint64
+                        YLeaf cadence; //type: uint32
+                        YLeaf total_collections; //type: uint32
+                        YLeaf encoding; //type: MdtEncodingEnumEnum
+                        YLeaf last_collection_start_time; //type: uint64
+                        YLeaf last_collection_end_time; //type: uint64
+                        YLeaf max_collection_time; //type: uint32
+                        YLeaf min_collection_time; //type: uint32
+                        YLeaf min_total_time; //type: uint32
+                        YLeaf max_total_time; //type: uint32
+                        YLeaf avg_total_time; //type: uint32
+                        YLeaf total_other_errors; //type: uint32
+                        YLeaf total_not_ready; //type: uint32
+                        YLeaf total_send_errors; //type: uint32
+                        YLeaf total_send_drops; //type: uint32
 
                     class CollectionPath : public Entity
                     {
@@ -174,10 +178,11 @@ class TelemetryModelDriven : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value path; //type: string
-                            Value state; //type: uint32
-                            Value status_str; //type: string
 
+
+                            YLeaf path; //type: string
+                            YLeaf state; //type: uint32
+                            YLeaf status_str; //type: string
 
 
 
@@ -197,33 +202,34 @@ class TelemetryModelDriven : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value path; //type: string
-                            Value cadence; //type: uint64
-                            Value total_get_count; //type: uint64
-                            Value total_list_count; //type: uint64
-                            Value total_datalist_count; //type: uint64
-                            Value total_finddata_count; //type: uint64
-                            Value total_get_bulk_count; //type: uint64
-                            Value total_item_count; //type: uint64
-                            Value total_get_errors; //type: uint64
-                            Value total_list_errors; //type: uint64
-                            Value total_datalist_errors; //type: uint64
-                            Value total_finddata_errors; //type: uint64
-                            Value total_get_bulk_errors; //type: uint64
-                            Value total_encode_errors; //type: uint64
-                            Value total_encode_notready; //type: uint64
-                            Value total_send_errors; //type: uint64
-                            Value total_send_drops; //type: uint64
-                            Value total_sent_bytes; //type: uint64
-                            Value total_send_packets; //type: uint64
-                            Value total_send_bytes_dropped; //type: uint64
-                            Value total_collections; //type: uint64
-                            Value total_collections_missed; //type: uint64
-                            Value max_collection_time; //type: uint64
-                            Value min_collection_time; //type: uint64
-                            Value avg_collection_time; //type: uint64
-                            Value collection_method; //type: uint64
 
+
+                            YLeaf path; //type: string
+                            YLeaf cadence; //type: uint64
+                            YLeaf total_get_count; //type: uint64
+                            YLeaf total_list_count; //type: uint64
+                            YLeaf total_datalist_count; //type: uint64
+                            YLeaf total_finddata_count; //type: uint64
+                            YLeaf total_get_bulk_count; //type: uint64
+                            YLeaf total_item_count; //type: uint64
+                            YLeaf total_get_errors; //type: uint64
+                            YLeaf total_list_errors; //type: uint64
+                            YLeaf total_datalist_errors; //type: uint64
+                            YLeaf total_finddata_errors; //type: uint64
+                            YLeaf total_get_bulk_errors; //type: uint64
+                            YLeaf total_encode_errors; //type: uint64
+                            YLeaf total_encode_notready; //type: uint64
+                            YLeaf total_send_errors; //type: uint64
+                            YLeaf total_send_drops; //type: uint64
+                            YLeaf total_sent_bytes; //type: uint64
+                            YLeaf total_send_packets; //type: uint64
+                            YLeaf total_send_bytes_dropped; //type: uint64
+                            YLeaf total_collections; //type: uint64
+                            YLeaf total_collections_missed; //type: uint64
+                            YLeaf max_collection_time; //type: uint64
+                            YLeaf min_collection_time; //type: uint64
+                            YLeaf avg_collection_time; //type: uint64
+                            YLeaf collection_method; //type: uint64
 
 
 
@@ -232,7 +238,6 @@ class TelemetryModelDriven : public Entity
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath> > collection_path;
                         std::vector<std::unique_ptr<Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup> > internal_collection_group;
-                        class MdtEncodingEnumEnum;
 
 
                 }; // TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup
@@ -272,6 +277,7 @@ class TelemetryModelDriven : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Subscription : public Entity
         {
             public:
@@ -285,10 +291,11 @@ class TelemetryModelDriven : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value subscription_id; //type: string
-                Value total_num_of_packets_sent; //type: uint64
-                Value total_num_of_bytes_sent; //type: uint64
 
+
+                YLeaf subscription_id; //type: string
+                YLeaf total_num_of_packets_sent; //type: uint64
+                YLeaf total_num_of_bytes_sent; //type: uint64
 
             class Subscription_ : public Entity
             {
@@ -303,9 +310,10 @@ class TelemetryModelDriven : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value id; //type: string
-                    Value state; //type: boolean
 
+
+                    YLeaf id; //type: string
+                    YLeaf state; //type: boolean
 
                 class SensorProfile : public Entity
                 {
@@ -320,10 +328,11 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value sample_interval; //type: uint32
-                        Value heartbeat_interval; //type: uint32
-                        Value suppress_redundant; //type: boolean
 
+
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf heartbeat_interval; //type: uint32
+                        YLeaf suppress_redundant; //type: boolean
 
                     class SensorGroup : public Entity
                     {
@@ -338,9 +347,10 @@ class TelemetryModelDriven : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value configured; //type: uint32
 
+
+                            YLeaf id; //type: string
+                            YLeaf configured; //type: uint32
 
                         class SensorPath : public Entity
                         {
@@ -355,10 +365,11 @@ class TelemetryModelDriven : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value path; //type: string
-                                Value state; //type: uint32
-                                Value status_str; //type: string
 
+
+                                YLeaf path; //type: string
+                                YLeaf state; //type: uint32
+                                YLeaf status_str; //type: string
 
 
 
@@ -390,9 +401,10 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value id; //type: string
-                        Value configured; //type: uint32
 
+
+                        YLeaf id; //type: string
+                        YLeaf configured; //type: uint32
 
                     class Destination : public Entity
                     {
@@ -407,17 +419,18 @@ class TelemetryModelDriven : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value id; //type: string
-                            Value dest_port; //type: uint16
-                            Value encoding; //type: MdtEncodingEnumEnum
-                            Value transport; //type: MdtTransportEnumEnum
-                            Value state; //type: uint32
-                            Value tls; //type: uint32
-                            Value tls_host; //type: string
-                            Value total_num_of_packets_sent; //type: uint64
-                            Value total_num_of_bytes_sent; //type: uint64
-                            Value last_collection_time; //type: uint64
 
+
+                            YLeaf id; //type: string
+                            YLeaf dest_port; //type: uint16
+                            YLeaf encoding; //type: MdtEncodingEnumEnum
+                            YLeaf transport; //type: MdtTransportEnumEnum
+                            YLeaf state; //type: uint32
+                            YLeaf tls; //type: uint32
+                            YLeaf tls_host; //type: string
+                            YLeaf total_num_of_packets_sent; //type: uint64
+                            YLeaf total_num_of_bytes_sent; //type: uint64
+                            YLeaf last_collection_time; //type: uint64
 
                         class DestIpAddress : public Entity
                         {
@@ -432,20 +445,18 @@ class TelemetryModelDriven : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip_type; //type: MdtIpEnum
-                                Value ipv4_address; //type: string
-                                Value ipv6_address; //type: string
 
 
-                                class MdtIpEnum;
+                                YLeaf ip_type; //type: MdtIpEnum
+                                YLeaf ipv4_address; //type: string
+                                YLeaf ipv6_address; //type: string
+
 
 
                         }; // TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress
 
 
                             std::unique_ptr<Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress> dest_ip_address;
-                            class MdtEncodingEnumEnum;
-                            class MdtTransportEnumEnum;
 
 
                     }; // TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination
@@ -477,22 +488,23 @@ class TelemetryModelDriven : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value id; //type: uint64
-                    Value cadence; //type: uint32
-                    Value total_collections; //type: uint32
-                    Value encoding; //type: MdtEncodingEnumEnum
-                    Value last_collection_start_time; //type: uint64
-                    Value last_collection_end_time; //type: uint64
-                    Value max_collection_time; //type: uint32
-                    Value min_collection_time; //type: uint32
-                    Value min_total_time; //type: uint32
-                    Value max_total_time; //type: uint32
-                    Value avg_total_time; //type: uint32
-                    Value total_other_errors; //type: uint32
-                    Value total_not_ready; //type: uint32
-                    Value total_send_errors; //type: uint32
-                    Value total_send_drops; //type: uint32
 
+
+                    YLeaf id; //type: uint64
+                    YLeaf cadence; //type: uint32
+                    YLeaf total_collections; //type: uint32
+                    YLeaf encoding; //type: MdtEncodingEnumEnum
+                    YLeaf last_collection_start_time; //type: uint64
+                    YLeaf last_collection_end_time; //type: uint64
+                    YLeaf max_collection_time; //type: uint32
+                    YLeaf min_collection_time; //type: uint32
+                    YLeaf min_total_time; //type: uint32
+                    YLeaf max_total_time; //type: uint32
+                    YLeaf avg_total_time; //type: uint32
+                    YLeaf total_other_errors; //type: uint32
+                    YLeaf total_not_ready; //type: uint32
+                    YLeaf total_send_errors; //type: uint32
+                    YLeaf total_send_drops; //type: uint32
 
                 class CollectionPath : public Entity
                 {
@@ -507,10 +519,11 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value path; //type: string
-                        Value state; //type: uint32
-                        Value status_str; //type: string
 
+
+                        YLeaf path; //type: string
+                        YLeaf state; //type: uint32
+                        YLeaf status_str; //type: string
 
 
 
@@ -530,33 +543,34 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value path; //type: string
-                        Value cadence; //type: uint64
-                        Value total_get_count; //type: uint64
-                        Value total_list_count; //type: uint64
-                        Value total_datalist_count; //type: uint64
-                        Value total_finddata_count; //type: uint64
-                        Value total_get_bulk_count; //type: uint64
-                        Value total_item_count; //type: uint64
-                        Value total_get_errors; //type: uint64
-                        Value total_list_errors; //type: uint64
-                        Value total_datalist_errors; //type: uint64
-                        Value total_finddata_errors; //type: uint64
-                        Value total_get_bulk_errors; //type: uint64
-                        Value total_encode_errors; //type: uint64
-                        Value total_encode_notready; //type: uint64
-                        Value total_send_errors; //type: uint64
-                        Value total_send_drops; //type: uint64
-                        Value total_sent_bytes; //type: uint64
-                        Value total_send_packets; //type: uint64
-                        Value total_send_bytes_dropped; //type: uint64
-                        Value total_collections; //type: uint64
-                        Value total_collections_missed; //type: uint64
-                        Value max_collection_time; //type: uint64
-                        Value min_collection_time; //type: uint64
-                        Value avg_collection_time; //type: uint64
-                        Value collection_method; //type: uint64
 
+
+                        YLeaf path; //type: string
+                        YLeaf cadence; //type: uint64
+                        YLeaf total_get_count; //type: uint64
+                        YLeaf total_list_count; //type: uint64
+                        YLeaf total_datalist_count; //type: uint64
+                        YLeaf total_finddata_count; //type: uint64
+                        YLeaf total_get_bulk_count; //type: uint64
+                        YLeaf total_item_count; //type: uint64
+                        YLeaf total_get_errors; //type: uint64
+                        YLeaf total_list_errors; //type: uint64
+                        YLeaf total_datalist_errors; //type: uint64
+                        YLeaf total_finddata_errors; //type: uint64
+                        YLeaf total_get_bulk_errors; //type: uint64
+                        YLeaf total_encode_errors; //type: uint64
+                        YLeaf total_encode_notready; //type: uint64
+                        YLeaf total_send_errors; //type: uint64
+                        YLeaf total_send_drops; //type: uint64
+                        YLeaf total_sent_bytes; //type: uint64
+                        YLeaf total_send_packets; //type: uint64
+                        YLeaf total_send_bytes_dropped; //type: uint64
+                        YLeaf total_collections; //type: uint64
+                        YLeaf total_collections_missed; //type: uint64
+                        YLeaf max_collection_time; //type: uint64
+                        YLeaf min_collection_time; //type: uint64
+                        YLeaf avg_collection_time; //type: uint64
+                        YLeaf collection_method; //type: uint64
 
 
 
@@ -565,7 +579,6 @@ class TelemetryModelDriven : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath> > collection_path;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup> > internal_collection_group;
-                    class MdtEncodingEnumEnum;
 
 
             }; // TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup
@@ -599,6 +612,7 @@ class TelemetryModelDriven : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SensorGroup : public Entity
         {
             public:
@@ -612,10 +626,11 @@ class TelemetryModelDriven : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value sensor_group_id; //type: string
-                Value id; //type: string
-                Value configured; //type: uint32
 
+
+                YLeaf sensor_group_id; //type: string
+                YLeaf id; //type: string
+                YLeaf configured; //type: uint32
 
             class SensorPath : public Entity
             {
@@ -630,10 +645,11 @@ class TelemetryModelDriven : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value path; //type: string
-                    Value state; //type: uint32
-                    Value status_str; //type: string
 
+
+                    YLeaf path; //type: string
+                    YLeaf state; //type: uint32
+                    YLeaf status_str; //type: string
 
 
 
@@ -663,28 +679,28 @@ class TelemetryModelDriven : public Entity
 class MdtEncodingEnumEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value gpb;
-        static const Enum::Value self_describing_gpb;
-        static const Enum::Value json;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf gpb;
+        static const Enum::YLeaf self_describing_gpb;
+        static const Enum::YLeaf json;
 
 };
 
 class MdtIpEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class MdtTransportEnumEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value grpc;
-        static const Enum::Value tcp;
-        static const Enum::Value dialin;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf grpc;
+        static const Enum::YLeaf tcp;
+        static const Enum::YLeaf dialin;
 
 };
 

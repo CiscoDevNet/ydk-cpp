@@ -49,7 +49,7 @@ EntityPath Radius::Nodes::Node::Client::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -142,7 +142,7 @@ EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -230,7 +230,7 @@ EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -316,8 +316,8 @@ bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::has_operation() const
 	|| is_set(acct_port_number.operation)
 	|| is_set(auth_port_number.operation)
 	|| is_set(ip_address.operation)
-	|| (time !=  nullptr && is_set(time->operation))
-	|| (tries !=  nullptr && is_set(tries->operation));
+	|| (time !=  nullptr && time->has_operation())
+	|| (tries !=  nullptr && tries->has_operation());
 }
 
 std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_segment_path() const
@@ -334,7 +334,7 @@ EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -477,7 +477,7 @@ EntityPath Radius::Nodes::Node::DeadCriteria::Hosts::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -564,7 +564,7 @@ bool Radius::Nodes::Node::DeadCriteria::has_data() const
 bool Radius::Nodes::Node::DeadCriteria::has_operation() const
 {
     return is_set(operation)
-	|| (hosts !=  nullptr && is_set(hosts->operation));
+	|| (hosts !=  nullptr && hosts->has_operation());
 }
 
 std::string Radius::Nodes::Node::DeadCriteria::get_segment_path() const
@@ -581,7 +581,7 @@ EntityPath Radius::Nodes::Node::DeadCriteria::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -730,7 +730,7 @@ EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::Authenticat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -894,7 +894,7 @@ bool Radius::Nodes::Node::Authentication::AuthenticationGroup::has_operation() c
 	|| is_set(ip_address.operation)
 	|| is_set(port.operation)
 	|| is_set(server_address.operation)
-	|| (authentication !=  nullptr && is_set(authentication->operation));
+	|| (authentication !=  nullptr && authentication->has_operation());
 }
 
 std::string Radius::Nodes::Node::Authentication::AuthenticationGroup::get_segment_path() const
@@ -911,7 +911,7 @@ EntityPath Radius::Nodes::Node::Authentication::AuthenticationGroup::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1036,7 +1036,7 @@ EntityPath Radius::Nodes::Node::Authentication::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1182,7 +1182,7 @@ EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1336,7 +1336,7 @@ bool Radius::Nodes::Node::Accounting::AccountingGroup::has_operation() const
 	|| is_set(ip_address.operation)
 	|| is_set(port.operation)
 	|| is_set(server_address.operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation));
+	|| (accounting !=  nullptr && accounting->has_operation());
 }
 
 std::string Radius::Nodes::Node::Accounting::AccountingGroup::get_segment_path() const
@@ -1353,7 +1353,7 @@ EntityPath Radius::Nodes::Node::Accounting::AccountingGroup::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1478,7 +1478,7 @@ EntityPath Radius::Nodes::Node::Accounting::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1624,7 +1624,7 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Account
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1830,7 +1830,7 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2016,7 +2016,7 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authori
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2146,9 +2146,9 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::has_operation
 	|| is_set(ip_address.operation)
 	|| is_set(is_private.operation)
 	|| is_set(server_address.operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation))
-	|| (authentication !=  nullptr && is_set(authentication->operation))
-	|| (authorization !=  nullptr && is_set(authorization->operation));
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (authorization !=  nullptr && authorization->has_operation());
 }
 
 std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_segment_path() const
@@ -2165,7 +2165,7 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2361,7 +2361,7 @@ EntityPath Radius::Nodes::Node::ServerGroups::ServerGroup::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2494,7 +2494,7 @@ EntityPath Radius::Nodes::Node::ServerGroups::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2598,7 +2598,7 @@ EntityPath Radius::Nodes::Node::DynamicAuthorization::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2698,12 +2698,12 @@ bool Radius::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation))
-	|| (authentication !=  nullptr && is_set(authentication->operation))
-	|| (client !=  nullptr && is_set(client->operation))
-	|| (dead_criteria !=  nullptr && is_set(dead_criteria->operation))
-	|| (dynamic_authorization !=  nullptr && is_set(dynamic_authorization->operation))
-	|| (server_groups !=  nullptr && is_set(server_groups->operation));
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (client !=  nullptr && client->has_operation())
+	|| (dead_criteria !=  nullptr && dead_criteria->has_operation())
+	|| (dynamic_authorization !=  nullptr && dynamic_authorization->has_operation())
+	|| (server_groups !=  nullptr && server_groups->has_operation());
 }
 
 std::string Radius::Nodes::Node::get_segment_path() const
@@ -3032,7 +3032,7 @@ bool Radius::has_data() const
 bool Radius::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Radius::get_segment_path() const
@@ -3049,7 +3049,7 @@ EntityPath Radius::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

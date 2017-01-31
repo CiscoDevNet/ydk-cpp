@@ -24,9 +24,10 @@ class Ipv4Dhcpd : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable; //type: empty
-        Value allow_client_id_change; //type: empty
 
+
+        YLeaf enable; //type: empty
+        YLeaf allow_client_id_change; //type: empty
 
     class Vrfs : public Entity
     {
@@ -43,6 +44,7 @@ class Ipv4Dhcpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -56,8 +58,9 @@ class Ipv4Dhcpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class Profile : public Entity
             {
@@ -72,11 +75,11 @@ class Ipv4Dhcpd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vrf_profile_name; //type: string
-                    Value mode; //type: Ipv4DhcpdModeEnum
 
 
-                    class Ipv4DhcpdModeEnum;
+                    YLeaf vrf_profile_name; //type: string
+                    YLeaf mode; //type: Ipv4DhcpdModeEnum
+
 
 
             }; // Ipv4Dhcpd::Vrfs::Vrf::Profile
@@ -109,6 +112,7 @@ class Ipv4Dhcpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Profile : public Entity
         {
             public:
@@ -122,8 +126,9 @@ class Ipv4Dhcpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value profile_name; //type: string
 
+
+                YLeaf profile_name; //type: string
 
             class Modes : public Entity
             {
@@ -140,6 +145,7 @@ class Ipv4Dhcpd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Mode : public Entity
                 {
                     public:
@@ -153,9 +159,10 @@ class Ipv4Dhcpd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value mode; //type: Ipv4DhcpdModeEnum
-                        Value enable; //type: empty
 
+
+                        YLeaf mode; //type: Ipv4DhcpdModeEnum
+                        YLeaf enable; //type: empty
 
                     class Server : public Entity
                     {
@@ -170,6 +177,7 @@ class Ipv4Dhcpd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
+
 
 
 
@@ -192,6 +200,7 @@ class Ipv4Dhcpd : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class GiAddrPolicy : public Entity
                         {
                             public:
@@ -205,10 +214,10 @@ class Ipv4Dhcpd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value policy; //type: Ipv4DhcpdGiaddrPolicyEnum
 
 
-                                class Ipv4DhcpdGiaddrPolicyEnum;
+                                YLeaf policy; //type: Ipv4DhcpdGiaddrPolicyEnum
+
 
 
                         }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy
@@ -229,6 +238,7 @@ class Ipv4Dhcpd : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Vrf : public Entity
                             {
                                 public:
@@ -242,8 +252,9 @@ class Ipv4Dhcpd : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf vrf_name; //type: string
 
                                 class HelperAddresses : public Entity
                                 {
@@ -260,6 +271,7 @@ class Ipv4Dhcpd : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class HelperAddress : public Entity
                                     {
                                         public:
@@ -273,10 +285,11 @@ class Ipv4Dhcpd : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value ip_address; //type: string
-                                            Value enable; //type: empty
-                                            Value gateway_address; //type: string
 
+
+                                            YLeaf ip_address; //type: string
+                                            YLeaf enable; //type: empty
+                                            YLeaf gateway_address; //type: string
 
 
 
@@ -314,17 +327,16 @@ class Ipv4Dhcpd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value vpn_mode; //type: Ipv4DhcpdRelayInfoOptionvpnModeEnum
-                                Value subscriber_id; //type: string
-                                Value insert; //type: empty
-                                Value check; //type: empty
-                                Value vpn; //type: empty
-                                Value allow_untrusted; //type: empty
-                                Value policy; //type: Ipv4DhcpdRelayInfoOptionPolicyEnum
 
 
-                                class Ipv4DhcpdRelayInfoOptionPolicyEnum;
-                                class Ipv4DhcpdRelayInfoOptionvpnModeEnum;
+                                YLeaf vpn_mode; //type: Ipv4DhcpdRelayInfoOptionvpnModeEnum
+                                YLeaf subscriber_id; //type: string
+                                YLeaf insert; //type: empty
+                                YLeaf check; //type: empty
+                                YLeaf vpn; //type: empty
+                                YLeaf allow_untrusted; //type: empty
+                                YLeaf policy; //type: Ipv4DhcpdRelayInfoOptionPolicyEnum
+
 
 
                         }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption
@@ -343,10 +355,10 @@ class Ipv4Dhcpd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value policy; //type: Ipv4DhcpdBroadcastFlagPolicyEnum
 
 
-                                class Ipv4DhcpdBroadcastFlagPolicyEnum;
+                                YLeaf policy; //type: Ipv4DhcpdBroadcastFlagPolicyEnum
+
 
 
                         }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy
@@ -363,7 +375,6 @@ class Ipv4Dhcpd : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay> relay;
                         std::unique_ptr<Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server> server;
-                        class Ipv4DhcpdModeEnum;
 
 
                 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode
@@ -400,12 +411,13 @@ class Ipv4Dhcpd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value proxy; //type: empty
-            Value server; //type: empty
-            Value snoop; //type: empty
-            Value full_write_interval; //type: uint32
-            Value incremental_write_interval; //type: uint32
 
+
+            YLeaf proxy; //type: empty
+            YLeaf server; //type: empty
+            YLeaf snoop; //type: empty
+            YLeaf full_write_interval; //type: uint32
+            YLeaf incremental_write_interval; //type: uint32
 
 
 
@@ -427,6 +439,7 @@ class Ipv4Dhcpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -440,9 +453,10 @@ class Ipv4Dhcpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value none; //type: empty
 
+
+                YLeaf interface_name; //type: string
+                YLeaf none; //type: empty
 
             class ProxyInterface : public Entity
             {
@@ -457,8 +471,9 @@ class Ipv4Dhcpd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
 
+
+                    YLeaf profile; //type: string
 
                 class DhcpCircuitId : public Entity
                 {
@@ -473,43 +488,27 @@ class Ipv4Dhcpd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value circuit_id; //type: string
-                        Value format; //type: Ipv4DhcpdFmtEnum
-                        Value argument1; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument2; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument3; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument4; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument5; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument6; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument7; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument8; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument9; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument10; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument11; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument12; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument13; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument14; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument15; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument16; //type: Ipv4DhcpdFmtSpecifierEnum
 
 
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtEnum;
+                        YLeaf circuit_id; //type: string
+                        YLeaf format; //type: Ipv4DhcpdFmtEnum
+                        YLeaf argument1; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument2; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument3; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument4; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument5; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument6; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument7; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument8; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument9; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument10; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument11; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument12; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument13; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument14; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument15; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument16; //type: Ipv4DhcpdFmtSpecifierEnum
+
 
 
                 }; // Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::DhcpCircuitId
@@ -534,8 +533,9 @@ class Ipv4Dhcpd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
 
+
+                    YLeaf profile; //type: string
 
 
 
@@ -557,6 +557,7 @@ class Ipv4Dhcpd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RelayDhcpCircuitId : public Entity
                 {
                     public:
@@ -570,43 +571,27 @@ class Ipv4Dhcpd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value circuit_id; //type: string
-                        Value format; //type: Ipv4DhcpdFmtEnum
-                        Value argument1; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument2; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument3; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument4; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument5; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument6; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument7; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument8; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument9; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument10; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument11; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument12; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument13; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument14; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument15; //type: Ipv4DhcpdFmtSpecifierEnum
-                        Value argument16; //type: Ipv4DhcpdFmtSpecifierEnum
 
 
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtSpecifierEnum;
-                        class Ipv4DhcpdFmtEnum;
+                        YLeaf circuit_id; //type: string
+                        YLeaf format; //type: Ipv4DhcpdFmtEnum
+                        YLeaf argument1; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument2; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument3; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument4; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument5; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument6; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument7; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument8; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument9; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument10; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument11; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument12; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument13; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument14; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument15; //type: Ipv4DhcpdFmtSpecifierEnum
+                        YLeaf argument16; //type: Ipv4DhcpdFmtSpecifierEnum
+
 
 
                 }; // Ipv4Dhcpd::Interfaces::Interface::RelayInterface::RelayDhcpCircuitId
@@ -631,11 +616,11 @@ class Ipv4Dhcpd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile_name; //type: string
-                    Value mode; //type: Ipv4DhcpdModeEnum
 
 
-                    class Ipv4DhcpdModeEnum;
+                    YLeaf profile_name; //type: string
+                    YLeaf mode; //type: Ipv4DhcpdModeEnum
+
 
 
             }; // Ipv4Dhcpd::Interfaces::Interface::Profile
@@ -654,8 +639,9 @@ class Ipv4Dhcpd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
 
+
+                    YLeaf profile; //type: string
 
 
 
@@ -677,6 +663,7 @@ class Ipv4Dhcpd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SnoopCircuitId : public Entity
                 {
                     public:
@@ -690,9 +677,10 @@ class Ipv4Dhcpd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value format_type; //type: uint32
-                        Value circuit_id_value; //type: string
 
+
+                        YLeaf format_type; //type: uint32
+                        YLeaf circuit_id_value; //type: string
 
 
 
@@ -735,9 +723,10 @@ class Ipv4Dhcpd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value duplicate_mac; //type: empty
-            Value exclude_vlan; //type: empty
 
+
+            YLeaf duplicate_mac; //type: empty
+            YLeaf exclude_vlan; //type: empty
 
 
 
@@ -757,9 +746,10 @@ class Ipv4Dhcpd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value num_period; //type: uint32
-            Value num_discover; //type: uint32
 
+
+            YLeaf num_period; //type: uint32
+            YLeaf num_discover; //type: uint32
 
 
 
@@ -780,70 +770,70 @@ class Ipv4Dhcpd : public Entity
 class Ipv4DhcpdFmtEnum : public Enum
 {
     public:
-        static const Enum::Value no_format;
-        static const Enum::Value format;
+        static const Enum::YLeaf no_format;
+        static const Enum::YLeaf format;
 
 };
 
 class Ipv4DhcpdFmtSpecifierEnum : public Enum
 {
     public:
-        static const Enum::Value physical_chassis;
-        static const Enum::Value physical_slot;
-        static const Enum::Value physical_sub_slot;
-        static const Enum::Value physical_port;
-        static const Enum::Value physical_sub_port;
-        static const Enum::Value inner_vlan_id;
-        static const Enum::Value outer_vlan_id;
-        static const Enum::Value l2_interface;
+        static const Enum::YLeaf physical_chassis;
+        static const Enum::YLeaf physical_slot;
+        static const Enum::YLeaf physical_sub_slot;
+        static const Enum::YLeaf physical_port;
+        static const Enum::YLeaf physical_sub_port;
+        static const Enum::YLeaf inner_vlan_id;
+        static const Enum::YLeaf outer_vlan_id;
+        static const Enum::YLeaf l2_interface;
 
 };
 
 class Ipv4DhcpdRelayInfoOptionPolicyEnum : public Enum
 {
     public:
-        static const Enum::Value replace;
-        static const Enum::Value keep;
-        static const Enum::Value drop;
-        static const Enum::Value encapsulate;
+        static const Enum::YLeaf replace;
+        static const Enum::YLeaf keep;
+        static const Enum::YLeaf drop;
+        static const Enum::YLeaf encapsulate;
 
 };
 
 class Ipv4DhcpdBroadcastFlagPolicyEnum : public Enum
 {
     public:
-        static const Enum::Value ignore;
-        static const Enum::Value check;
-        static const Enum::Value unicast_always;
+        static const Enum::YLeaf ignore;
+        static const Enum::YLeaf check;
+        static const Enum::YLeaf unicast_always;
 
 };
 
 class Ipv4DhcpdModeEnum : public Enum
 {
     public:
-        static const Enum::Value base;
-        static const Enum::Value relay;
-        static const Enum::Value snoop;
-        static const Enum::Value server;
-        static const Enum::Value proxy;
-        static const Enum::Value base2;
+        static const Enum::YLeaf base;
+        static const Enum::YLeaf relay;
+        static const Enum::YLeaf snoop;
+        static const Enum::YLeaf server;
+        static const Enum::YLeaf proxy;
+        static const Enum::YLeaf base2;
 
 };
 
 class Ipv4DhcpdGiaddrPolicyEnum : public Enum
 {
     public:
-        static const Enum::Value keep;
-        static const Enum::Value replace;
-        static const Enum::Value drop;
+        static const Enum::YLeaf keep;
+        static const Enum::YLeaf replace;
+        static const Enum::YLeaf drop;
 
 };
 
 class Ipv4DhcpdRelayInfoOptionvpnModeEnum : public Enum
 {
     public:
-        static const Enum::Value rfc;
-        static const Enum::Value cisco;
+        static const Enum::YLeaf rfc;
+        static const Enum::YLeaf cisco;
 
 };
 

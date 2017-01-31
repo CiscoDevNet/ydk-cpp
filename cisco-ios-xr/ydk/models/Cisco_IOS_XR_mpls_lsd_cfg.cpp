@@ -212,7 +212,7 @@ EntityPath MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -297,7 +297,7 @@ bool MplsLsd::LabelDatabases::LabelDatabase::has_operation() const
 {
     return is_set(operation)
 	|| is_set(label_database_id.operation)
-	|| (label_range !=  nullptr && is_set(label_range->operation));
+	|| (label_range !=  nullptr && label_range->has_operation());
 }
 
 std::string MplsLsd::LabelDatabases::LabelDatabase::get_segment_path() const
@@ -531,9 +531,9 @@ bool MplsLsd::has_operation() const
 	|| is_set(app_reg_delay_disable.operation)
 	|| is_set(mpls_entropy_label.operation)
 	|| is_set(mpls_ip_ttl_propagate_disable.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation))
-	|| (label_databases !=  nullptr && is_set(label_databases->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (label_databases !=  nullptr && label_databases->has_operation());
 }
 
 std::string MplsLsd::get_segment_path() const
@@ -550,7 +550,7 @@ EntityPath MplsLsd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -675,9 +675,9 @@ std::unique_ptr<Entity> MplsLsd::clone_ptr()
     return std::make_unique<MplsLsd>();
 }
 
-const Enum::Value MplsIpTtlPropagateDisableEnum::all {0, "all"};
-const Enum::Value MplsIpTtlPropagateDisableEnum::forward {1, "forward"};
-const Enum::Value MplsIpTtlPropagateDisableEnum::local {2, "local"};
+const Enum::YLeaf MplsIpTtlPropagateDisableEnum::all {0, "all"};
+const Enum::YLeaf MplsIpTtlPropagateDisableEnum::forward {1, "forward"};
+const Enum::YLeaf MplsIpTtlPropagateDisableEnum::local {2, "local"};
 
 
 }

@@ -14,9 +14,9 @@ namespace ietf_inet_types {
 class IpVersionEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 

@@ -285,20 +285,20 @@ class UpIdentity : public openconfig_mpls_types::LspOperStatusIdentity, virtual 
 class TunnelTypeEnum : public Enum
 {
     public:
-        static const Enum::Value P2P;
-        static const Enum::Value P2MP;
-        static const Enum::Value MP2MP;
+        static const Enum::YLeaf P2P;
+        static const Enum::YLeaf P2MP;
+        static const Enum::YLeaf MP2MP;
 
 };
 
 class MplsLabelEnum : public Enum
 {
     public:
-        static const Enum::Value IPV4_EXPLICIT_NULL;
-        static const Enum::Value ROUTER_ALERT;
-        static const Enum::Value IPV6_EXPLICIT_NULL;
-        static const Enum::Value IMPLICIT_NULL;
-        static const Enum::Value ENTROPY_LABEL_INDICATOR;
+        static const Enum::YLeaf IPV4_EXPLICIT_NULL;
+        static const Enum::YLeaf ROUTER_ALERT;
+        static const Enum::YLeaf IPV6_EXPLICIT_NULL;
+        static const Enum::YLeaf IMPLICIT_NULL;
+        static const Enum::YLeaf ENTROPY_LABEL_INDICATOR;
 
 };
 

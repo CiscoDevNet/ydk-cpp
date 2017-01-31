@@ -7,11 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_Ethernet_SPAN_datatypes.hpp"
-#include "Cisco_IOS_XR_Ethernet_SPAN_subscriber_cfg.hpp"
-#include "Cisco_IOS_XR_ipv6_ma_subscriber_cfg.hpp"
-#include "Cisco_IOS_XR_ipv6_nd_subscriber_cfg.hpp"
-#include "Cisco_IOS_XR_qos_ma_bng_cfg.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg {
@@ -32,6 +27,7 @@ class DynamicTemplate : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Ppps : public Entity
     {
         public:
@@ -47,6 +43,7 @@ class DynamicTemplate : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ppp : public Entity
         {
             public:
@@ -60,9 +57,10 @@ class DynamicTemplate : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value template_name; //type: string
-                Value vrf; //type: string
 
+
+                YLeaf template_name; //type: string
+                YLeaf vrf; //type: string
 
             class SpanMonitorSessions : public Entity
             {
@@ -79,6 +77,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SpanMonitorSession : public Entity
                 {
                     public:
@@ -92,11 +91,12 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_class; //type: SpanSessionClassEnum
-                        Value mirror_first; //type: uint32
-                        Value mirror_interval; //type: SpanMirrorIntervalEnum
-                        Value acl; //type: empty
 
+
+                        YLeaf session_class; //type: SpanSessionClassEnum
+                        YLeaf mirror_first; //type: uint32
+                        YLeaf mirror_interval; //type: SpanMirrorIntervalEnum
+                        YLeaf acl; //type: empty
 
                     class Attachment : public Entity
                     {
@@ -111,20 +111,18 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value session_name; //type: string
-                            Value direction; //type: SpanTrafficDirectionEnum
-                            Value port_level_enable; //type: empty
 
 
-                            class SpanTrafficDirectionEnum;
+                            YLeaf session_name; //type: string
+                            YLeaf direction; //type: SpanTrafficDirectionEnum
+                            YLeaf port_level_enable; //type: empty
+
 
 
                     }; // DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment
 
 
                         std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
-                        class SpanSessionClassEnum;
-                        class SpanMirrorIntervalEnum;
 
 
                 }; // DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession
@@ -151,6 +149,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Outbound : public Entity
                 {
                     public:
@@ -164,11 +163,12 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value hardware_count; //type: empty
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf hardware_count; //type: empty
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -188,11 +188,12 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value hardware_count; //type: empty
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf hardware_count; //type: empty
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -221,6 +222,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Inbound : public Entity
                 {
                     public:
@@ -234,10 +236,11 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -257,10 +260,11 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -289,6 +293,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DefaultVrf : public Entity
                 {
                     public:
@@ -302,14 +307,15 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value max_groups; //type: uint32
-                        Value access_group; //type: string
-                        Value multicast; //type: int32
-                        Value version; //type: uint32
-                        Value query_interval; //type: uint32
-                        Value query_max_response_time; //type: uint32
-                        Value robustness; //type: uint32
 
+
+                        YLeaf max_groups; //type: uint32
+                        YLeaf access_group; //type: string
+                        YLeaf multicast; //type: int32
+                        YLeaf version; //type: uint32
+                        YLeaf query_interval; //type: uint32
+                        YLeaf query_max_response_time; //type: uint32
+                        YLeaf robustness; //type: uint32
 
                     class ExplicitTracking : public Entity
                     {
@@ -324,9 +330,10 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: boolean
-                            Value access_list_name; //type: string
 
+
+                            YLeaf enable; //type: boolean
+                            YLeaf access_list_name; //type: string
 
 
 
@@ -358,11 +365,12 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value unnumbered; //type: string
-                    Value mtu; //type: uint32
-                    Value unreachables; //type: boolean
-                    Value rpf; //type: boolean
 
+
+                    YLeaf unnumbered; //type: string
+                    YLeaf mtu; //type: uint32
+                    YLeaf unreachables; //type: boolean
+                    YLeaf rpf; //type: boolean
 
 
 
@@ -382,10 +390,11 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mtu; //type: uint32
-                    Value unreachables; //type: empty
-                    Value verify; //type: Ipv6ReachableViaEnum
 
+
+                    YLeaf mtu; //type: uint32
+                    YLeaf unreachables; //type: empty
+                    YLeaf verify; //type: Ipv6ReachableViaEnum
 
                 class Addresses : public Entity
                 {
@@ -402,6 +411,7 @@ class DynamicTemplate : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AutoConfiguration : public Entity
                     {
                         public:
@@ -415,8 +425,9 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
 
 
@@ -430,7 +441,6 @@ class DynamicTemplate : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses> addresses;
-                    class Ipv6ReachableViaEnum;
 
 
             }; // DynamicTemplate::Ppps::Ppp::Ipv6Network
@@ -449,22 +459,23 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ra_hop_limit; //type: Ipv6NdHopLimitEnum
-                    Value framed_prefix_pool; //type: string
-                    Value managed_config; //type: empty
-                    Value other_config; //type: empty
-                    Value start_ra_on_ipv6_enable; //type: empty
-                    Value nud_enable; //type: empty
-                    Value ra_interval; //type: uint32
-                    Value ra_lifetime; //type: uint32
-                    Value router_preference; //type: Ipv6NdRouterPrefTemplateEnum
-                    Value ra_suppress; //type: empty
-                    Value ra_unicast; //type: empty
-                    Value ra_suppress_mtu; //type: empty
-                    Value suppress_cache_learning; //type: empty
-                    Value reachable_time; //type: uint32
-                    Value ns_interval; //type: uint32
 
+
+                    YLeaf ra_hop_limit; //type: Ipv6NdHopLimitEnum
+                    YLeaf framed_prefix_pool; //type: string
+                    YLeaf managed_config; //type: empty
+                    YLeaf other_config; //type: empty
+                    YLeaf start_ra_on_ipv6_enable; //type: empty
+                    YLeaf nud_enable; //type: empty
+                    YLeaf ra_interval; //type: uint32
+                    YLeaf ra_lifetime; //type: uint32
+                    YLeaf router_preference; //type: Ipv6NdRouterPrefTemplateEnum
+                    YLeaf ra_suppress; //type: empty
+                    YLeaf ra_unicast; //type: empty
+                    YLeaf ra_suppress_mtu; //type: empty
+                    YLeaf suppress_cache_learning; //type: empty
+                    YLeaf reachable_time; //type: uint32
+                    YLeaf ns_interval; //type: uint32
 
                 class FramedPrefix : public Entity
                 {
@@ -479,9 +490,10 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix_length; //type: uint8
-                        Value prefix; //type: string
 
+
+                        YLeaf prefix_length; //type: uint8
+                        YLeaf prefix; //type: string
 
 
 
@@ -501,8 +513,9 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attempts; //type: uint32
 
+
+                        YLeaf attempts; //type: uint32
 
 
 
@@ -522,9 +535,10 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value count; //type: uint32
-                        Value interval; //type: uint32
 
+
+                        YLeaf count; //type: uint32
+                        YLeaf interval; //type: uint32
 
 
 
@@ -534,8 +548,6 @@ class DynamicTemplate : public Entity
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection> duplicate_address_detection;
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix> framed_prefix; // presence node
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial> ra_initial; // presence node
-                    class Ipv6NdHopLimitEnum;
-                    class Ipv6NdRouterPrefTemplateEnum;
 
 
             }; // DynamicTemplate::Ppps::Ppp::Ipv6Neighbor
@@ -554,12 +566,13 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value dns_ipv6address; //type: string
-                    Value address_pool; //type: string
-                    Value delegated_prefix_pool; //type: string
-                    Value class_; //type: string
-                    Value stateful_address; //type: string
 
+
+                    YLeaf dns_ipv6address; //type: string
+                    YLeaf address_pool; //type: string
+                    YLeaf delegated_prefix_pool; //type: string
+                    YLeaf class_; //type: string
+                    YLeaf stateful_address; //type: string
 
                 class DelegatedPrefix : public Entity
                 {
@@ -574,9 +587,10 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix; //type: string
-                        Value prefix_length; //type: uint8
 
+
+                        YLeaf prefix; //type: string
+                        YLeaf prefix_length; //type: uint8
 
 
 
@@ -602,8 +616,9 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value service_policy_in; //type: string
 
+
+                    YLeaf service_policy_in; //type: string
 
                 class ServicePolicy : public Entity
                 {
@@ -618,8 +633,9 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value input; //type: string
 
+
+                        YLeaf input; //type: string
 
 
 
@@ -647,6 +663,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ServicePolicy : public Entity
                 {
                     public:
@@ -662,6 +679,7 @@ class DynamicTemplate : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Input : public Entity
                     {
                         public:
@@ -675,12 +693,13 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value policy_name; //type: string
-                            Value spi_name; //type: string
-                            Value merge; //type: boolean
-                            Value merge_id; //type: uint32
-                            Value account_stats; //type: boolean
 
+
+                            YLeaf policy_name; //type: string
+                            YLeaf spi_name; //type: string
+                            YLeaf merge; //type: boolean
+                            YLeaf merge_id; //type: uint32
+                            YLeaf account_stats; //type: boolean
 
 
 
@@ -700,12 +719,13 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value policy_name; //type: string
-                            Value spi_name; //type: string
-                            Value merge; //type: boolean
-                            Value merge_id; //type: uint32
-                            Value account_stats; //type: boolean
 
+
+                            YLeaf policy_name; //type: string
+                            YLeaf spi_name; //type: string
+                            YLeaf merge; //type: boolean
+                            YLeaf merge_id; //type: uint32
+                            YLeaf account_stats; //type: boolean
 
 
 
@@ -732,14 +752,13 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value aal; //type: Qosl2DataLinkEnum
-                        Value encapsulation; //type: Qosl2EncapEnum
-                        Value atm_cell_tax; //type: empty
-                        Value user_defined; //type: int32
 
 
-                        class Qosl2DataLinkEnum;
-                        class Qosl2EncapEnum;
+                        YLeaf aal; //type: Qosl2DataLinkEnum
+                        YLeaf encapsulation; //type: Qosl2EncapEnum
+                        YLeaf atm_cell_tax; //type: empty
+                        YLeaf user_defined; //type: int32
+
 
 
                 }; // DynamicTemplate::Ppps::Ppp::Qos::Account
@@ -758,8 +777,9 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value minimum_bandwidth; //type: uint32
 
+
+                        YLeaf minimum_bandwidth; //type: uint32
 
 
 
@@ -810,6 +830,7 @@ class DynamicTemplate : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class IpSubscriber : public Entity
         {
             public:
@@ -823,9 +844,10 @@ class DynamicTemplate : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value template_name; //type: string
-                Value vrf; //type: string
 
+
+                YLeaf template_name; //type: string
+                YLeaf vrf; //type: string
 
             class SpanMonitorSessions : public Entity
             {
@@ -842,6 +864,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SpanMonitorSession : public Entity
                 {
                     public:
@@ -855,11 +878,12 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_class; //type: SpanSessionClassEnum
-                        Value mirror_first; //type: uint32
-                        Value mirror_interval; //type: SpanMirrorIntervalEnum
-                        Value acl; //type: empty
 
+
+                        YLeaf session_class; //type: SpanSessionClassEnum
+                        YLeaf mirror_first; //type: uint32
+                        YLeaf mirror_interval; //type: SpanMirrorIntervalEnum
+                        YLeaf acl; //type: empty
 
                     class Attachment : public Entity
                     {
@@ -874,20 +898,18 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value session_name; //type: string
-                            Value direction; //type: SpanTrafficDirectionEnum
-                            Value port_level_enable; //type: empty
 
 
-                            class SpanTrafficDirectionEnum;
+                            YLeaf session_name; //type: string
+                            YLeaf direction; //type: SpanTrafficDirectionEnum
+                            YLeaf port_level_enable; //type: empty
+
 
 
                     }; // DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment
 
 
                         std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
-                        class SpanSessionClassEnum;
-                        class SpanMirrorIntervalEnum;
 
 
                 }; // DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession
@@ -914,6 +936,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Outbound : public Entity
                 {
                     public:
@@ -927,11 +950,12 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value hardware_count; //type: empty
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf hardware_count; //type: empty
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -951,11 +975,12 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value hardware_count; //type: empty
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf hardware_count; //type: empty
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -984,6 +1009,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Inbound : public Entity
                 {
                     public:
@@ -997,10 +1023,11 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -1020,10 +1047,11 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -1050,11 +1078,12 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value unnumbered; //type: string
-                    Value mtu; //type: uint32
-                    Value unreachables; //type: boolean
-                    Value rpf; //type: boolean
 
+
+                    YLeaf unnumbered; //type: string
+                    YLeaf mtu; //type: uint32
+                    YLeaf unreachables; //type: boolean
+                    YLeaf rpf; //type: boolean
 
 
 
@@ -1074,10 +1103,11 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mtu; //type: uint32
-                    Value unreachables; //type: empty
-                    Value verify; //type: Ipv6ReachableViaEnum
 
+
+                    YLeaf mtu; //type: uint32
+                    YLeaf unreachables; //type: empty
+                    YLeaf verify; //type: Ipv6ReachableViaEnum
 
                 class Addresses : public Entity
                 {
@@ -1094,6 +1124,7 @@ class DynamicTemplate : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AutoConfiguration : public Entity
                     {
                         public:
@@ -1107,8 +1138,9 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
 
 
@@ -1122,7 +1154,6 @@ class DynamicTemplate : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses> addresses;
-                    class Ipv6ReachableViaEnum;
 
 
             }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network
@@ -1141,22 +1172,23 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ra_hop_limit; //type: Ipv6NdHopLimitEnum
-                    Value framed_prefix_pool; //type: string
-                    Value managed_config; //type: empty
-                    Value other_config; //type: empty
-                    Value start_ra_on_ipv6_enable; //type: empty
-                    Value nud_enable; //type: empty
-                    Value ra_interval; //type: uint32
-                    Value ra_lifetime; //type: uint32
-                    Value router_preference; //type: Ipv6NdRouterPrefTemplateEnum
-                    Value ra_suppress; //type: empty
-                    Value ra_unicast; //type: empty
-                    Value ra_suppress_mtu; //type: empty
-                    Value suppress_cache_learning; //type: empty
-                    Value reachable_time; //type: uint32
-                    Value ns_interval; //type: uint32
 
+
+                    YLeaf ra_hop_limit; //type: Ipv6NdHopLimitEnum
+                    YLeaf framed_prefix_pool; //type: string
+                    YLeaf managed_config; //type: empty
+                    YLeaf other_config; //type: empty
+                    YLeaf start_ra_on_ipv6_enable; //type: empty
+                    YLeaf nud_enable; //type: empty
+                    YLeaf ra_interval; //type: uint32
+                    YLeaf ra_lifetime; //type: uint32
+                    YLeaf router_preference; //type: Ipv6NdRouterPrefTemplateEnum
+                    YLeaf ra_suppress; //type: empty
+                    YLeaf ra_unicast; //type: empty
+                    YLeaf ra_suppress_mtu; //type: empty
+                    YLeaf suppress_cache_learning; //type: empty
+                    YLeaf reachable_time; //type: uint32
+                    YLeaf ns_interval; //type: uint32
 
                 class FramedPrefix : public Entity
                 {
@@ -1171,9 +1203,10 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix_length; //type: uint8
-                        Value prefix; //type: string
 
+
+                        YLeaf prefix_length; //type: uint8
+                        YLeaf prefix; //type: string
 
 
 
@@ -1193,8 +1226,9 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attempts; //type: uint32
 
+
+                        YLeaf attempts; //type: uint32
 
 
 
@@ -1214,9 +1248,10 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value count; //type: uint32
-                        Value interval; //type: uint32
 
+
+                        YLeaf count; //type: uint32
+                        YLeaf interval; //type: uint32
 
 
 
@@ -1226,8 +1261,6 @@ class DynamicTemplate : public Entity
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection> duplicate_address_detection;
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix> framed_prefix; // presence node
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial> ra_initial; // presence node
-                    class Ipv6NdHopLimitEnum;
-                    class Ipv6NdRouterPrefTemplateEnum;
 
 
             }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor
@@ -1246,12 +1279,13 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value dns_ipv6address; //type: string
-                    Value address_pool; //type: string
-                    Value delegated_prefix_pool; //type: string
-                    Value class_; //type: string
-                    Value stateful_address; //type: string
 
+
+                    YLeaf dns_ipv6address; //type: string
+                    YLeaf address_pool; //type: string
+                    YLeaf delegated_prefix_pool; //type: string
+                    YLeaf class_; //type: string
+                    YLeaf stateful_address; //type: string
 
                 class DelegatedPrefix : public Entity
                 {
@@ -1266,9 +1300,10 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix; //type: string
-                        Value prefix_length; //type: uint8
 
+
+                        YLeaf prefix; //type: string
+                        YLeaf prefix_length; //type: uint8
 
 
 
@@ -1294,8 +1329,9 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value service_policy_in; //type: string
 
+
+                    YLeaf service_policy_in; //type: string
 
                 class ServicePolicy : public Entity
                 {
@@ -1310,8 +1346,9 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value input; //type: string
 
+
+                        YLeaf input; //type: string
 
 
 
@@ -1339,6 +1376,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ServicePolicy : public Entity
                 {
                     public:
@@ -1354,6 +1392,7 @@ class DynamicTemplate : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Input : public Entity
                     {
                         public:
@@ -1367,12 +1406,13 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value policy_name; //type: string
-                            Value spi_name; //type: string
-                            Value merge; //type: boolean
-                            Value merge_id; //type: uint32
-                            Value account_stats; //type: boolean
 
+
+                            YLeaf policy_name; //type: string
+                            YLeaf spi_name; //type: string
+                            YLeaf merge; //type: boolean
+                            YLeaf merge_id; //type: uint32
+                            YLeaf account_stats; //type: boolean
 
 
 
@@ -1392,12 +1432,13 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value policy_name; //type: string
-                            Value spi_name; //type: string
-                            Value merge; //type: boolean
-                            Value merge_id; //type: uint32
-                            Value account_stats; //type: boolean
 
+
+                            YLeaf policy_name; //type: string
+                            YLeaf spi_name; //type: string
+                            YLeaf merge; //type: boolean
+                            YLeaf merge_id; //type: uint32
+                            YLeaf account_stats; //type: boolean
 
 
 
@@ -1424,14 +1465,13 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value aal; //type: Qosl2DataLinkEnum
-                        Value encapsulation; //type: Qosl2EncapEnum
-                        Value atm_cell_tax; //type: empty
-                        Value user_defined; //type: int32
 
 
-                        class Qosl2DataLinkEnum;
-                        class Qosl2EncapEnum;
+                        YLeaf aal; //type: Qosl2DataLinkEnum
+                        YLeaf encapsulation; //type: Qosl2EncapEnum
+                        YLeaf atm_cell_tax; //type: empty
+                        YLeaf user_defined; //type: int32
+
 
 
                 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account
@@ -1450,8 +1490,9 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value minimum_bandwidth; //type: uint32
 
+
+                        YLeaf minimum_bandwidth; //type: uint32
 
 
 
@@ -1501,6 +1542,7 @@ class DynamicTemplate : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SubscriberService : public Entity
         {
             public:
@@ -1514,9 +1556,10 @@ class DynamicTemplate : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value template_name; //type: string
-                Value vrf; //type: string
 
+
+                YLeaf template_name; //type: string
+                YLeaf vrf; //type: string
 
             class SpanMonitorSessions : public Entity
             {
@@ -1533,6 +1576,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SpanMonitorSession : public Entity
                 {
                     public:
@@ -1546,11 +1590,12 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_class; //type: SpanSessionClassEnum
-                        Value mirror_first; //type: uint32
-                        Value mirror_interval; //type: SpanMirrorIntervalEnum
-                        Value acl; //type: empty
 
+
+                        YLeaf session_class; //type: SpanSessionClassEnum
+                        YLeaf mirror_first; //type: uint32
+                        YLeaf mirror_interval; //type: SpanMirrorIntervalEnum
+                        YLeaf acl; //type: empty
 
                     class Attachment : public Entity
                     {
@@ -1565,20 +1610,18 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value session_name; //type: string
-                            Value direction; //type: SpanTrafficDirectionEnum
-                            Value port_level_enable; //type: empty
 
 
-                            class SpanTrafficDirectionEnum;
+                            YLeaf session_name; //type: string
+                            YLeaf direction; //type: SpanTrafficDirectionEnum
+                            YLeaf port_level_enable; //type: empty
+
 
 
                     }; // DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment
 
 
                         std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
-                        class SpanSessionClassEnum;
-                        class SpanMirrorIntervalEnum;
 
 
                 }; // DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession
@@ -1605,6 +1648,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Outbound : public Entity
                 {
                     public:
@@ -1618,11 +1662,12 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value hardware_count; //type: empty
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf hardware_count; //type: empty
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -1642,11 +1687,12 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value hardware_count; //type: empty
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf hardware_count; //type: empty
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -1675,6 +1721,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Inbound : public Entity
                 {
                     public:
@@ -1688,10 +1735,11 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -1711,10 +1759,11 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value common_acl_name; //type: string
-                        Value name; //type: string
-                        Value interface_statistics; //type: empty
 
+
+                        YLeaf common_acl_name; //type: string
+                        YLeaf name; //type: string
+                        YLeaf interface_statistics; //type: empty
 
 
 
@@ -1741,11 +1790,12 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value unnumbered; //type: string
-                    Value mtu; //type: uint32
-                    Value unreachables; //type: boolean
-                    Value rpf; //type: boolean
 
+
+                    YLeaf unnumbered; //type: string
+                    YLeaf mtu; //type: uint32
+                    YLeaf unreachables; //type: boolean
+                    YLeaf rpf; //type: boolean
 
 
 
@@ -1765,10 +1815,11 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mtu; //type: uint32
-                    Value unreachables; //type: empty
-                    Value verify; //type: Ipv6ReachableViaEnum
 
+
+                    YLeaf mtu; //type: uint32
+                    YLeaf unreachables; //type: empty
+                    YLeaf verify; //type: Ipv6ReachableViaEnum
 
                 class Addresses : public Entity
                 {
@@ -1785,6 +1836,7 @@ class DynamicTemplate : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AutoConfiguration : public Entity
                     {
                         public:
@@ -1798,8 +1850,9 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
 
 
@@ -1813,7 +1866,6 @@ class DynamicTemplate : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses> addresses;
-                    class Ipv6ReachableViaEnum;
 
 
             }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network
@@ -1832,22 +1884,23 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ra_hop_limit; //type: Ipv6NdHopLimitEnum
-                    Value framed_prefix_pool; //type: string
-                    Value managed_config; //type: empty
-                    Value other_config; //type: empty
-                    Value start_ra_on_ipv6_enable; //type: empty
-                    Value nud_enable; //type: empty
-                    Value ra_interval; //type: uint32
-                    Value ra_lifetime; //type: uint32
-                    Value router_preference; //type: Ipv6NdRouterPrefTemplateEnum
-                    Value ra_suppress; //type: empty
-                    Value ra_unicast; //type: empty
-                    Value ra_suppress_mtu; //type: empty
-                    Value suppress_cache_learning; //type: empty
-                    Value reachable_time; //type: uint32
-                    Value ns_interval; //type: uint32
 
+
+                    YLeaf ra_hop_limit; //type: Ipv6NdHopLimitEnum
+                    YLeaf framed_prefix_pool; //type: string
+                    YLeaf managed_config; //type: empty
+                    YLeaf other_config; //type: empty
+                    YLeaf start_ra_on_ipv6_enable; //type: empty
+                    YLeaf nud_enable; //type: empty
+                    YLeaf ra_interval; //type: uint32
+                    YLeaf ra_lifetime; //type: uint32
+                    YLeaf router_preference; //type: Ipv6NdRouterPrefTemplateEnum
+                    YLeaf ra_suppress; //type: empty
+                    YLeaf ra_unicast; //type: empty
+                    YLeaf ra_suppress_mtu; //type: empty
+                    YLeaf suppress_cache_learning; //type: empty
+                    YLeaf reachable_time; //type: uint32
+                    YLeaf ns_interval; //type: uint32
 
                 class FramedPrefix : public Entity
                 {
@@ -1862,9 +1915,10 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix_length; //type: uint8
-                        Value prefix; //type: string
 
+
+                        YLeaf prefix_length; //type: uint8
+                        YLeaf prefix; //type: string
 
 
 
@@ -1884,8 +1938,9 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value attempts; //type: uint32
 
+
+                        YLeaf attempts; //type: uint32
 
 
 
@@ -1905,9 +1960,10 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value count; //type: uint32
-                        Value interval; //type: uint32
 
+
+                        YLeaf count; //type: uint32
+                        YLeaf interval; //type: uint32
 
 
 
@@ -1917,8 +1973,6 @@ class DynamicTemplate : public Entity
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection> duplicate_address_detection;
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix> framed_prefix; // presence node
                     std::unique_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial> ra_initial; // presence node
-                    class Ipv6NdHopLimitEnum;
-                    class Ipv6NdRouterPrefTemplateEnum;
 
 
             }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor
@@ -1937,8 +1991,9 @@ class DynamicTemplate : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value service_policy_in; //type: string
 
+
+                    YLeaf service_policy_in; //type: string
 
                 class ServicePolicy : public Entity
                 {
@@ -1953,8 +2008,9 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value input; //type: string
 
+
+                        YLeaf input; //type: string
 
 
 
@@ -1982,6 +2038,7 @@ class DynamicTemplate : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ServicePolicy : public Entity
                 {
                     public:
@@ -1997,6 +2054,7 @@ class DynamicTemplate : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Input : public Entity
                     {
                         public:
@@ -2010,12 +2068,13 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value policy_name; //type: string
-                            Value spi_name; //type: string
-                            Value merge; //type: boolean
-                            Value merge_id; //type: uint32
-                            Value account_stats; //type: boolean
 
+
+                            YLeaf policy_name; //type: string
+                            YLeaf spi_name; //type: string
+                            YLeaf merge; //type: boolean
+                            YLeaf merge_id; //type: uint32
+                            YLeaf account_stats; //type: boolean
 
 
 
@@ -2035,12 +2094,13 @@ class DynamicTemplate : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value policy_name; //type: string
-                            Value spi_name; //type: string
-                            Value merge; //type: boolean
-                            Value merge_id; //type: uint32
-                            Value account_stats; //type: boolean
 
+
+                            YLeaf policy_name; //type: string
+                            YLeaf spi_name; //type: string
+                            YLeaf merge; //type: boolean
+                            YLeaf merge_id; //type: uint32
+                            YLeaf account_stats; //type: boolean
 
 
 
@@ -2067,14 +2127,13 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value aal; //type: Qosl2DataLinkEnum
-                        Value encapsulation; //type: Qosl2EncapEnum
-                        Value atm_cell_tax; //type: empty
-                        Value user_defined; //type: int32
 
 
-                        class Qosl2DataLinkEnum;
-                        class Qosl2EncapEnum;
+                        YLeaf aal; //type: Qosl2DataLinkEnum
+                        YLeaf encapsulation; //type: Qosl2EncapEnum
+                        YLeaf atm_cell_tax; //type: empty
+                        YLeaf user_defined; //type: int32
+
 
 
                 }; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account
@@ -2093,8 +2152,9 @@ class DynamicTemplate : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value minimum_bandwidth; //type: uint32
 
+
+                        YLeaf minimum_bandwidth; //type: uint32
 
 
 

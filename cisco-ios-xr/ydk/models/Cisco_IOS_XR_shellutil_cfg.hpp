@@ -24,8 +24,9 @@ class HostNames : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value host_name; //type: string
 
+
+        YLeaf host_name; //type: string
 
 
 

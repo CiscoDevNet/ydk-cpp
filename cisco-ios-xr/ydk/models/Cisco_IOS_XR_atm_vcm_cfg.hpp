@@ -14,22 +14,22 @@ namespace Cisco_IOS_XR_atm_vcm_cfg {
 class AtmVpiBitsModeEnum : public Enum
 {
     public:
-        static const Enum::Value twelve;
+        static const Enum::YLeaf twelve;
 
 };
 
 class AtmPvcTestModeEnum : public Enum
 {
     public:
-        static const Enum::Value loop;
-        static const Enum::Value reserved;
+        static const Enum::YLeaf loop;
+        static const Enum::YLeaf reserved;
 
 };
 
 class AtmPvpTestModeEnum : public Enum
 {
     public:
-        static const Enum::Value loop;
+        static const Enum::YLeaf loop;
 
 };
 

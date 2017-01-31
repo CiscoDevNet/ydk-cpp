@@ -570,8 +570,8 @@ bool TrafficCollector::Summary::VrfStatistic::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (database_statistics_ipv4 !=  nullptr && is_set(database_statistics_ipv4->operation))
-	|| (database_statistics_tunnel !=  nullptr && is_set(database_statistics_tunnel->operation));
+	|| (database_statistics_ipv4 !=  nullptr && database_statistics_ipv4->has_operation())
+	|| (database_statistics_tunnel !=  nullptr && database_statistics_tunnel->has_operation());
 }
 
 std::string TrafficCollector::Summary::VrfStatistic::get_segment_path() const
@@ -986,7 +986,7 @@ bool TrafficCollector::Summary::has_operation() const
 	|| is_set(history_size.operation)
 	|| is_set(timeout_interval.operation)
 	|| is_set(timeout_timer_is_running.operation)
-	|| (database_statistics_external_interface !=  nullptr && is_set(database_statistics_external_interface->operation));
+	|| (database_statistics_external_interface !=  nullptr && database_statistics_external_interface->has_operation());
 }
 
 std::string TrafficCollector::Summary::get_segment_path() const
@@ -1216,7 +1216,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1329,7 +1329,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1452,7 +1452,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1565,7 +1565,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1686,8 +1686,8 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 	|| is_set(label_xr.operation)
 	|| is_set(mask.operation)
 	|| is_set(prefix.operation)
-	|| (base_counter_statistics !=  nullptr && is_set(base_counter_statistics->operation))
-	|| (traffic_matrix_counter_statistics !=  nullptr && is_set(traffic_matrix_counter_statistics->operation));
+	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation())
+	|| (traffic_matrix_counter_statistics !=  nullptr && traffic_matrix_counter_statistics->has_operation());
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::get_segment_path() const
@@ -1704,7 +1704,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1862,7 +1862,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1975,7 +1975,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::T
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2088,7 +2088,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::T
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2201,7 +2201,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel:
 	|| is_set(interface_name_xr.operation)
 	|| is_set(is_active.operation)
 	|| is_set(vrfid.operation)
-	|| (base_counter_statistics !=  nullptr && is_set(base_counter_statistics->operation));
+	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation());
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::get_segment_path() const
@@ -2218,7 +2218,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::T
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2348,7 +2348,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2440,8 +2440,8 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::has_data() const
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::has_operation() const
 {
     return is_set(operation)
-	|| (prefixes !=  nullptr && is_set(prefixes->operation))
-	|| (tunnels !=  nullptr && is_set(tunnels->operation));
+	|| (prefixes !=  nullptr && prefixes->has_operation())
+	|| (tunnels !=  nullptr && tunnels->has_operation());
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::get_segment_path() const
@@ -2458,7 +2458,7 @@ EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2569,7 +2569,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::has_operation() const
 {
     return is_set(operation)
 	|| is_set(af_name.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_segment_path() const
@@ -2783,7 +2783,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::has_data() const
 bool TrafficCollector::VrfTable::DefaultVrf::has_operation() const
 {
     return is_set(operation)
-	|| (afs !=  nullptr && is_set(afs->operation));
+	|| (afs !=  nullptr && afs->has_operation());
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::get_segment_path() const
@@ -2884,7 +2884,7 @@ bool TrafficCollector::VrfTable::has_data() const
 bool TrafficCollector::VrfTable::has_operation() const
 {
     return is_set(operation)
-	|| (default_vrf !=  nullptr && is_set(default_vrf->operation));
+	|| (default_vrf !=  nullptr && default_vrf->has_operation());
 }
 
 std::string TrafficCollector::VrfTable::get_segment_path() const
@@ -3011,7 +3011,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterSta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3124,7 +3124,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterSta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3247,7 +3247,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3360,7 +3360,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3481,8 +3481,8 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::has_operation() cons
 	|| is_set(label_xr.operation)
 	|| is_set(mask.operation)
 	|| is_set(prefix.operation)
-	|| (base_counter_statistics !=  nullptr && is_set(base_counter_statistics->operation))
-	|| (traffic_matrix_counter_statistics !=  nullptr && is_set(traffic_matrix_counter_statistics->operation));
+	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation())
+	|| (traffic_matrix_counter_statistics !=  nullptr && traffic_matrix_counter_statistics->has_operation());
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_segment_path() const
@@ -3499,7 +3499,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3657,7 +3657,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3770,7 +3770,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3883,7 +3883,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3996,7 +3996,7 @@ bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::has_operation() const
 	|| is_set(interface_name_xr.operation)
 	|| is_set(is_active.operation)
 	|| is_set(vrfid.operation)
-	|| (base_counter_statistics !=  nullptr && is_set(base_counter_statistics->operation));
+	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation());
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_segment_path() const
@@ -4013,7 +4013,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4143,7 +4143,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4235,8 +4235,8 @@ bool TrafficCollector::Afs::Af::Counters::has_data() const
 bool TrafficCollector::Afs::Af::Counters::has_operation() const
 {
     return is_set(operation)
-	|| (prefixes !=  nullptr && is_set(prefixes->operation))
-	|| (tunnels !=  nullptr && is_set(tunnels->operation));
+	|| (prefixes !=  nullptr && prefixes->has_operation())
+	|| (tunnels !=  nullptr && tunnels->has_operation());
 }
 
 std::string TrafficCollector::Afs::Af::Counters::get_segment_path() const
@@ -4253,7 +4253,7 @@ EntityPath TrafficCollector::Afs::Af::Counters::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4364,7 +4364,7 @@ bool TrafficCollector::Afs::Af::has_operation() const
 {
     return is_set(operation)
 	|| is_set(af_name.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string TrafficCollector::Afs::Af::get_segment_path() const
@@ -4593,10 +4593,10 @@ bool TrafficCollector::has_data() const
 bool TrafficCollector::has_operation() const
 {
     return is_set(operation)
-	|| (afs !=  nullptr && is_set(afs->operation))
-	|| (external_interfaces !=  nullptr && is_set(external_interfaces->operation))
-	|| (summary !=  nullptr && is_set(summary->operation))
-	|| (vrf_table !=  nullptr && is_set(vrf_table->operation));
+	|| (afs !=  nullptr && afs->has_operation())
+	|| (external_interfaces !=  nullptr && external_interfaces->has_operation())
+	|| (summary !=  nullptr && summary->has_operation())
+	|| (vrf_table !=  nullptr && vrf_table->has_operation());
 }
 
 std::string TrafficCollector::get_segment_path() const
@@ -4613,7 +4613,7 @@ EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -4746,8 +4746,8 @@ std::unique_ptr<Entity> TrafficCollector::clone_ptr()
     return std::make_unique<TrafficCollector>();
 }
 
-const Enum::Value TcOperAfNameEnum::ipv4 {0, "ipv4"};
-const Enum::Value TcOperAfNameEnum::ipv6 {1, "ipv6"};
+const Enum::YLeaf TcOperAfNameEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf TcOperAfNameEnum::ipv6 {1, "ipv6"};
 
 
 }

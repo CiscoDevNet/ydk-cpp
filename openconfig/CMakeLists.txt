@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.9)
 cmake_policy(SET CMP0048 NEW)
-project(ydk_openconfig VERSION 0.5.2)
+project(ydk_openconfig VERSION 0.5.3)
 
 
 
@@ -9,7 +9,7 @@ set(YDK_OPENCONFIG_DESCRIPTION "openconfig ydk bundle")
 # set version
 set(YDK_OPENCONFIG_MAJOR_VERSION 0)
 set(YDK_OPENCONFIG_MINOR_VERSION 5)
-set(YDK_OPENCONFIG_SERVICE_VERSION 2)
+set(YDK_OPENCONFIG_SERVICE_VERSION 3)
 set(YDK_OPENCONFIG_VERSION ${YDK_OPENCONFIG_MAJOR_VERSION}.${YDK_OPENCONFIG_MINOR_VERSION}.${YDK_OPENCONFIG_SERVICE_VERSION})
 set(YDK_OPENCONFIG_CORE_SOVERSION ${YDK_OPENCONFIG_MAJOR_VERSION}.${YDK_OPENCONFIG_MINOR_VERSION})
 
@@ -55,7 +55,7 @@ target_link_libraries(ydk_openconfig
     ${LIBYDK_LIBRARIES}
 )
 
-set_property(TARGET ydk_openconfig PROPERTY CXX_STANDARD 14)
+set_property(TARGET ydk_openconfig PROPERTY CXX_STANDARD 11)
 set_property(TARGET ydk_openconfig PROPERTY CXX_STANDARD_REQUIRED ON)
 
 # find YDK library

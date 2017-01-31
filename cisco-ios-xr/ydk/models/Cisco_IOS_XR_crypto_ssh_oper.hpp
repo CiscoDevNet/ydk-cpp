@@ -26,6 +26,7 @@ class Ssh1 : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Kex : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Ssh1 : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Nodes : public Entity
@@ -56,6 +58,7 @@ class Ssh1 : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -69,8 +72,9 @@ class Ssh1 : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_name; //type: string
 
+
+                    YLeaf node_name; //type: string
 
                 class IncomingSessions : public Entity
                 {
@@ -87,6 +91,7 @@ class Ssh1 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SessionDetailInfo : public Entity
                     {
                         public:
@@ -100,21 +105,16 @@ class Ssh1 : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value session_id; //type: uint32
-                            Value key_exchange; //type: KexNameEnum
-                            Value public_key; //type: HostkeyEnum
-                            Value in_cipher; //type: CipherEnum
-                            Value out_cipher; //type: CipherEnum
-                            Value in_mac; //type: MacEnum
-                            Value out_mac; //type: MacEnum
 
 
-                            class CipherEnum;
-                            class MacEnum;
-                            class KexNameEnum;
-                            class CipherEnum;
-                            class MacEnum;
-                            class HostkeyEnum;
+                            YLeaf session_id; //type: uint32
+                            YLeaf key_exchange; //type: KexNameEnum
+                            YLeaf public_key; //type: HostkeyEnum
+                            YLeaf in_cipher; //type: CipherEnum
+                            YLeaf out_cipher; //type: CipherEnum
+                            YLeaf in_mac; //type: MacEnum
+                            YLeaf out_mac; //type: MacEnum
+
 
 
                     }; // Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo
@@ -141,6 +141,7 @@ class Ssh1 : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SessionDetailInfo : public Entity
                     {
                         public:
@@ -154,21 +155,16 @@ class Ssh1 : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value session_id; //type: uint32
-                            Value key_exchange; //type: KexNameEnum
-                            Value public_key; //type: HostkeyEnum
-                            Value in_cipher; //type: CipherEnum
-                            Value out_cipher; //type: CipherEnum
-                            Value in_mac; //type: MacEnum
-                            Value out_mac; //type: MacEnum
 
 
-                            class CipherEnum;
-                            class MacEnum;
-                            class KexNameEnum;
-                            class CipherEnum;
-                            class MacEnum;
-                            class HostkeyEnum;
+                            YLeaf session_id; //type: uint32
+                            YLeaf key_exchange; //type: KexNameEnum
+                            YLeaf public_key; //type: HostkeyEnum
+                            YLeaf in_cipher; //type: CipherEnum
+                            YLeaf out_cipher; //type: CipherEnum
+                            YLeaf in_mac; //type: MacEnum
+                            YLeaf out_mac; //type: MacEnum
+
 
 
                     }; // Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo
@@ -220,6 +216,7 @@ class Ssh : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Session : public Entity
     {
         public:
@@ -233,6 +230,7 @@ class Ssh : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Brief : public Entity
@@ -250,6 +248,7 @@ class Ssh : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class IncomingSessions : public Entity
             {
                 public:
@@ -265,6 +264,7 @@ class Ssh : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SessionBriefInfo : public Entity
                 {
                     public:
@@ -278,23 +278,20 @@ class Ssh : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_id; //type: uint32
-                        Value channel_id; //type: uint32
-                        Value vty_assigned; //type: boolean
-                        Value vty_line_number; //type: uint32
-                        Value node_name; //type: string
-                        Value session_state; //type: StatesEnum
-                        Value user_id; //type: string
-                        Value host_address; //type: string
-                        Value version; //type: VersionEnum
-                        Value authentication_type; //type: AuthenEnum
-                        Value connection_type; //type: ConnectionEnum
 
 
-                        class AuthenEnum;
-                        class ConnectionEnum;
-                        class StatesEnum;
-                        class VersionEnum;
+                        YLeaf session_id; //type: uint32
+                        YLeaf channel_id; //type: uint32
+                        YLeaf vty_assigned; //type: boolean
+                        YLeaf vty_line_number; //type: uint32
+                        YLeaf node_name; //type: string
+                        YLeaf session_state; //type: StatesEnum
+                        YLeaf user_id; //type: string
+                        YLeaf host_address; //type: string
+                        YLeaf version; //type: VersionEnum
+                        YLeaf authentication_type; //type: AuthenEnum
+                        YLeaf connection_type; //type: ConnectionEnum
+
 
 
                 }; // Ssh::Session::Brief::IncomingSessions::SessionBriefInfo
@@ -321,6 +318,7 @@ class Ssh : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SessionBriefInfo : public Entity
                 {
                     public:
@@ -334,23 +332,20 @@ class Ssh : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_id; //type: uint32
-                        Value channel_id; //type: uint32
-                        Value vty_assigned; //type: boolean
-                        Value vty_line_number; //type: uint32
-                        Value node_name; //type: string
-                        Value session_state; //type: StatesEnum
-                        Value user_id; //type: string
-                        Value host_address; //type: string
-                        Value version; //type: VersionEnum
-                        Value authentication_type; //type: AuthenEnum
-                        Value connection_type; //type: ConnectionEnum
 
 
-                        class AuthenEnum;
-                        class ConnectionEnum;
-                        class StatesEnum;
-                        class VersionEnum;
+                        YLeaf session_id; //type: uint32
+                        YLeaf channel_id; //type: uint32
+                        YLeaf vty_assigned; //type: boolean
+                        YLeaf vty_line_number; //type: uint32
+                        YLeaf node_name; //type: string
+                        YLeaf session_state; //type: StatesEnum
+                        YLeaf user_id; //type: string
+                        YLeaf host_address; //type: string
+                        YLeaf version; //type: VersionEnum
+                        YLeaf authentication_type; //type: AuthenEnum
+                        YLeaf connection_type; //type: ConnectionEnum
+
 
 
                 }; // Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo
@@ -384,6 +379,7 @@ class Ssh : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class IncomingSessions : public Entity
             {
                 public:
@@ -399,6 +395,7 @@ class Ssh : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SessionDetailInfo : public Entity
                 {
                     public:
@@ -412,21 +409,16 @@ class Ssh : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_id; //type: uint32
-                        Value key_exchange; //type: KexNameEnum
-                        Value public_key; //type: HostkeyEnum
-                        Value in_cipher; //type: CipherEnum
-                        Value out_cipher; //type: CipherEnum
-                        Value in_mac; //type: MacEnum
-                        Value out_mac; //type: MacEnum
 
 
-                        class CipherEnum;
-                        class MacEnum;
-                        class KexNameEnum;
-                        class CipherEnum;
-                        class MacEnum;
-                        class HostkeyEnum;
+                        YLeaf session_id; //type: uint32
+                        YLeaf key_exchange; //type: KexNameEnum
+                        YLeaf public_key; //type: HostkeyEnum
+                        YLeaf in_cipher; //type: CipherEnum
+                        YLeaf out_cipher; //type: CipherEnum
+                        YLeaf in_mac; //type: MacEnum
+                        YLeaf out_mac; //type: MacEnum
+
 
 
                 }; // Ssh::Session::Detail::IncomingSessions::SessionDetailInfo
@@ -453,6 +445,7 @@ class Ssh : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SessionDetailInfo : public Entity
                 {
                     public:
@@ -466,21 +459,16 @@ class Ssh : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_id; //type: uint32
-                        Value key_exchange; //type: KexNameEnum
-                        Value public_key; //type: HostkeyEnum
-                        Value in_cipher; //type: CipherEnum
-                        Value out_cipher; //type: CipherEnum
-                        Value in_mac; //type: MacEnum
-                        Value out_mac; //type: MacEnum
 
 
-                        class CipherEnum;
-                        class MacEnum;
-                        class KexNameEnum;
-                        class CipherEnum;
-                        class MacEnum;
-                        class HostkeyEnum;
+                        YLeaf session_id; //type: uint32
+                        YLeaf key_exchange; //type: KexNameEnum
+                        YLeaf public_key; //type: HostkeyEnum
+                        YLeaf in_cipher; //type: CipherEnum
+                        YLeaf out_cipher; //type: CipherEnum
+                        YLeaf in_mac; //type: MacEnum
+                        YLeaf out_mac; //type: MacEnum
+
 
 
                 }; // Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo
@@ -515,85 +503,85 @@ class Ssh : public Entity
 class KexNameEnum : public Enum
 {
     public:
-        static const Enum::Value diffie_hellman;
-        static const Enum::Value password_authenticated;
+        static const Enum::YLeaf diffie_hellman;
+        static const Enum::YLeaf password_authenticated;
 
 };
 
 class HostkeyEnum : public Enum
 {
     public:
-        static const Enum::Value ssh_dss;
-        static const Enum::Value ssh_rsa;
+        static const Enum::YLeaf ssh_dss;
+        static const Enum::YLeaf ssh_rsa;
 
 };
 
 class VersionEnum : public Enum
 {
     public:
-        static const Enum::Value v2;
-        static const Enum::Value v1;
+        static const Enum::YLeaf v2;
+        static const Enum::YLeaf v1;
 
 };
 
 class ConnectionEnum : public Enum
 {
     public:
-        static const Enum::Value undefined;
-        static const Enum::Value shell;
-        static const Enum::Value exec;
-        static const Enum::Value scp;
-        static const Enum::Value sftp_subsystem;
-        static const Enum::Value netconf_subsystem;
+        static const Enum::YLeaf undefined;
+        static const Enum::YLeaf shell;
+        static const Enum::YLeaf exec;
+        static const Enum::YLeaf scp;
+        static const Enum::YLeaf sftp_subsystem;
+        static const Enum::YLeaf netconf_subsystem;
 
 };
 
 class StatesEnum : public Enum
 {
     public:
-        static const Enum::Value open;
-        static const Enum::Value version_ok;
-        static const Enum::Value key_exchange_initialize;
-        static const Enum::Value key_exchange_dh;
-        static const Enum::Value new_keys;
-        static const Enum::Value authenticate_information;
-        static const Enum::Value authenticated;
-        static const Enum::Value channel_open;
-        static const Enum::Value pty_open;
-        static const Enum::Value session_open;
-        static const Enum::Value rekey;
-        static const Enum::Value suspended;
-        static const Enum::Value session_closed;
+        static const Enum::YLeaf open;
+        static const Enum::YLeaf version_ok;
+        static const Enum::YLeaf key_exchange_initialize;
+        static const Enum::YLeaf key_exchange_dh;
+        static const Enum::YLeaf new_keys;
+        static const Enum::YLeaf authenticate_information;
+        static const Enum::YLeaf authenticated;
+        static const Enum::YLeaf channel_open;
+        static const Enum::YLeaf pty_open;
+        static const Enum::YLeaf session_open;
+        static const Enum::YLeaf rekey;
+        static const Enum::YLeaf suspended;
+        static const Enum::YLeaf session_closed;
 
 };
 
 class MacEnum : public Enum
 {
     public:
-        static const Enum::Value hmac_md5;
-        static const Enum::Value hmac_sha1;
+        static const Enum::YLeaf hmac_md5;
+        static const Enum::YLeaf hmac_sha1;
 
 };
 
 class CipherEnum : public Enum
 {
     public:
-        static const Enum::Value aes128_cbc;
-        static const Enum::Value aes192_cbc;
-        static const Enum::Value aes256_cbc;
-        static const Enum::Value triple_des_cbc;
-        static const Enum::Value aes128_ctr;
-        static const Enum::Value aes192_ctr;
-        static const Enum::Value aes256_ctr;
+        static const Enum::YLeaf aes128_cbc;
+        static const Enum::YLeaf aes192_cbc;
+        static const Enum::YLeaf aes256_cbc;
+        static const Enum::YLeaf triple_des_cbc;
+        static const Enum::YLeaf aes128_ctr;
+        static const Enum::YLeaf aes192_ctr;
+        static const Enum::YLeaf aes256_ctr;
 
 };
 
 class AuthenEnum : public Enum
 {
     public:
-        static const Enum::Value password;
-        static const Enum::Value rsa_public_key;
-        static const Enum::Value keyboard_interactive;
+        static const Enum::YLeaf password;
+        static const Enum::YLeaf rsa_public_key;
+        static const Enum::YLeaf keyboard_interactive;
 
 };
 

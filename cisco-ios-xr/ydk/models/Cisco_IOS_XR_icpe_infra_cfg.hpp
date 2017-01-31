@@ -26,6 +26,7 @@ class NvSatellites : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class NvSatellite : public Entity
     {
         public:
@@ -39,20 +40,21 @@ class NvSatellites : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value satellite_id; //type: uint32
-            Value vrf; //type: string
-            Value upgrade_on_connect; //type: uint32
-            Value timeout_warning; //type: uint32
-            Value device_name; //type: string
-            Value description; //type: string
-            Value type; //type: string
-            Value enable; //type: empty
-            Value disc_timeout; //type: uint32
-            Value delayed_switchback; //type: uint32
-            Value serial_number; //type: string
-            Value secret; //type: string
-            Value ip_address; //type: string
 
+
+            YLeaf satellite_id; //type: uint32
+            YLeaf vrf; //type: string
+            YLeaf upgrade_on_connect; //type: uint32
+            YLeaf timeout_warning; //type: uint32
+            YLeaf device_name; //type: string
+            YLeaf description; //type: string
+            YLeaf type; //type: string
+            YLeaf enable; //type: empty
+            YLeaf disc_timeout; //type: uint32
+            YLeaf delayed_switchback; //type: uint32
+            YLeaf serial_number; //type: string
+            YLeaf secret; //type: string
+            YLeaf ip_address; //type: string
 
         class CandidateFabricPorts : public Entity
         {
@@ -69,6 +71,7 @@ class NvSatellites : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class CandidateFabricPort : public Entity
             {
                 public:
@@ -82,11 +85,12 @@ class NvSatellites : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value port_type; //type: string
-                    Value slot; //type: uint32
-                    Value sub_slot; //type: uint32
-                    Value port_range; //type: string
 
+
+                    YLeaf port_type; //type: string
+                    YLeaf slot; //type: uint32
+                    YLeaf sub_slot; //type: uint32
+                    YLeaf port_range; //type: string
 
 
 
@@ -112,9 +116,10 @@ class NvSatellites : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value username; //type: string
-                Value password; //type: string
 
+
+                YLeaf username; //type: string
+                YLeaf password; //type: string
 
 
 
@@ -134,8 +139,9 @@ class NvSatellites : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value host_priority; //type: uint32
 
+
+                YLeaf host_priority; //type: uint32
 
 
 
@@ -171,6 +177,7 @@ class NvSatelliteGlobal : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class ChassisMac : public Entity
     {
         public:
@@ -184,10 +191,11 @@ class NvSatelliteGlobal : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value mac1; //type: uint32
-            Value mac2; //type: uint32
-            Value mac3; //type: uint32
 
+
+            YLeaf mac1; //type: uint32
+            YLeaf mac2; //type: uint32
+            YLeaf mac3; //type: uint32
 
 
 

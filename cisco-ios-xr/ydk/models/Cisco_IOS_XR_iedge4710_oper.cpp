@@ -58,7 +58,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -178,7 +178,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -298,7 +298,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -418,7 +418,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -538,7 +538,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -658,7 +658,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -790,12 +790,12 @@ bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::has
 	|| is_set(policy_plane_unknown_requests.operation)
 	|| is_set(started_sessions.operation)
 	|| is_set(stopped_sessions.operation)
-	|| (interim !=  nullptr && is_set(interim->operation))
-	|| (interim_inflight !=  nullptr && is_set(interim_inflight->operation))
-	|| (pass_through !=  nullptr && is_set(pass_through->operation))
-	|| (start !=  nullptr && is_set(start->operation))
-	|| (stop !=  nullptr && is_set(stop->operation))
-	|| (update !=  nullptr && is_set(update->operation));
+	|| (interim !=  nullptr && interim->has_operation())
+	|| (interim_inflight !=  nullptr && interim_inflight->has_operation())
+	|| (pass_through !=  nullptr && pass_through->has_operation())
+	|| (start !=  nullptr && start->has_operation())
+	|| (stop !=  nullptr && stop->has_operation())
+	|| (update !=  nullptr && update->has_operation());
 }
 
 std::string Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::get_segment_path() const
@@ -812,7 +812,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1071,7 +1071,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1195,7 +1195,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1311,7 +1311,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentic
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1432,7 +1432,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorizat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1528,7 +1528,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorizat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1624,7 +1624,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorizat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1720,7 +1720,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorizat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1816,7 +1816,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorizat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1912,7 +1912,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorizat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2008,7 +2008,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorizat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2104,7 +2104,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorizat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2246,14 +2246,14 @@ bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::h
 	|| is_set(unknown_account_cmd_resps.operation)
 	|| is_set(unknown_cmd_resps.operation)
 	|| is_set(unknown_service_cmd_resps.operation)
-	|| (account_logoff !=  nullptr && is_set(account_logoff->operation))
-	|| (account_logon !=  nullptr && is_set(account_logon->operation))
-	|| (account_update !=  nullptr && is_set(account_update->operation))
-	|| (service_multi !=  nullptr && is_set(service_multi->operation))
-	|| (session_disconnect !=  nullptr && is_set(session_disconnect->operation))
-	|| (single_service_logoff !=  nullptr && is_set(single_service_logoff->operation))
-	|| (single_service_logon !=  nullptr && is_set(single_service_logon->operation))
-	|| (single_service_modify !=  nullptr && is_set(single_service_modify->operation));
+	|| (account_logoff !=  nullptr && account_logoff->has_operation())
+	|| (account_logon !=  nullptr && account_logon->has_operation())
+	|| (account_update !=  nullptr && account_update->has_operation())
+	|| (service_multi !=  nullptr && service_multi->has_operation())
+	|| (session_disconnect !=  nullptr && session_disconnect->has_operation())
+	|| (single_service_logoff !=  nullptr && single_service_logoff->has_operation())
+	|| (single_service_logon !=  nullptr && single_service_logon->has_operation())
+	|| (single_service_modify !=  nullptr && single_service_modify->has_operation());
 }
 
 std::string Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::get_segment_path() const
@@ -2270,7 +2270,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorizat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2600,7 +2600,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2736,7 +2736,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthoriza
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2866,7 +2866,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2986,7 +2986,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3106,7 +3106,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3226,7 +3226,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassTh
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3346,7 +3346,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3466,7 +3466,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3598,12 +3598,12 @@ bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::has_operatio
 	|| is_set(policy_plane_unknown_requests.operation)
 	|| is_set(started_sessions.operation)
 	|| is_set(stopped_sessions.operation)
-	|| (interim !=  nullptr && is_set(interim->operation))
-	|| (interim_inflight !=  nullptr && is_set(interim_inflight->operation))
-	|| (pass_through !=  nullptr && is_set(pass_through->operation))
-	|| (start !=  nullptr && is_set(start->operation))
-	|| (stop !=  nullptr && is_set(stop->operation))
-	|| (update !=  nullptr && is_set(update->operation));
+	|| (interim !=  nullptr && interim->has_operation())
+	|| (interim_inflight !=  nullptr && interim_inflight->has_operation())
+	|| (pass_through !=  nullptr && pass_through->has_operation())
+	|| (start !=  nullptr && start->has_operation())
+	|| (stop !=  nullptr && stop->has_operation())
+	|| (update !=  nullptr && update->has_operation());
 }
 
 std::string Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::get_segment_path() const
@@ -3620,7 +3620,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3867,7 +3867,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3968,7 +3968,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4064,7 +4064,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4160,7 +4160,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4256,7 +4256,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4352,7 +4352,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4448,7 +4448,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4544,7 +4544,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4640,7 +4640,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4782,14 +4782,14 @@ bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthori
 	|| is_set(unknown_account_cmd_resps.operation)
 	|| is_set(unknown_cmd_resps.operation)
 	|| is_set(unknown_service_cmd_resps.operation)
-	|| (account_logoff !=  nullptr && is_set(account_logoff->operation))
-	|| (account_logon !=  nullptr && is_set(account_logon->operation))
-	|| (account_update !=  nullptr && is_set(account_update->operation))
-	|| (service_multi !=  nullptr && is_set(service_multi->operation))
-	|| (session_disconnect !=  nullptr && is_set(session_disconnect->operation))
-	|| (single_service_logoff !=  nullptr && is_set(single_service_logoff->operation))
-	|| (single_service_logon !=  nullptr && is_set(single_service_logon->operation))
-	|| (single_service_modify !=  nullptr && is_set(single_service_modify->operation));
+	|| (account_logoff !=  nullptr && account_logoff->has_operation())
+	|| (account_logon !=  nullptr && account_logon->has_operation())
+	|| (account_update !=  nullptr && account_update->has_operation())
+	|| (service_multi !=  nullptr && service_multi->has_operation())
+	|| (session_disconnect !=  nullptr && session_disconnect->has_operation())
+	|| (single_service_logoff !=  nullptr && single_service_logoff->has_operation())
+	|| (single_service_logon !=  nullptr && single_service_logon->has_operation())
+	|| (single_service_modify !=  nullptr && single_service_modify->has_operation());
 }
 
 std::string Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::get_segment_path() const
@@ -4806,7 +4806,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5146,16 +5146,16 @@ bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::has_data() const
 bool Subscriber::Manager::Nodes::Node::Statistics::Aaa::has_operation() const
 {
     return is_set(operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation))
-	|| (aggregate_accounting !=  nullptr && is_set(aggregate_accounting->operation))
-	|| (aggregate_authentication !=  nullptr && is_set(aggregate_authentication->operation))
-	|| (aggregate_authorization !=  nullptr && is_set(aggregate_authorization->operation))
-	|| (aggregate_change_of_authorization !=  nullptr && is_set(aggregate_change_of_authorization->operation))
-	|| (aggregate_mobility !=  nullptr && is_set(aggregate_mobility->operation))
-	|| (authentication !=  nullptr && is_set(authentication->operation))
-	|| (authorization !=  nullptr && is_set(authorization->operation))
-	|| (change_of_authorization !=  nullptr && is_set(change_of_authorization->operation))
-	|| (mobility !=  nullptr && is_set(mobility->operation));
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (aggregate_accounting !=  nullptr && aggregate_accounting->has_operation())
+	|| (aggregate_authentication !=  nullptr && aggregate_authentication->has_operation())
+	|| (aggregate_authorization !=  nullptr && aggregate_authorization->has_operation())
+	|| (aggregate_change_of_authorization !=  nullptr && aggregate_change_of_authorization->has_operation())
+	|| (aggregate_mobility !=  nullptr && aggregate_mobility->has_operation())
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (authorization !=  nullptr && authorization->has_operation())
+	|| (change_of_authorization !=  nullptr && change_of_authorization->has_operation())
+	|| (mobility !=  nullptr && mobility->has_operation());
 }
 
 std::string Subscriber::Manager::Nodes::Node::Statistics::Aaa::get_segment_path() const
@@ -5172,7 +5172,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Aaa::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5531,7 +5531,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5854,7 +5854,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::Srg::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6185,9 +6185,9 @@ bool Subscriber::Manager::Nodes::Node::Statistics::has_data() const
 bool Subscriber::Manager::Nodes::Node::Statistics::has_operation() const
 {
     return is_set(operation)
-	|| (aaa !=  nullptr && is_set(aaa->operation))
-	|| (aggregate_summary !=  nullptr && is_set(aggregate_summary->operation))
-	|| (srg !=  nullptr && is_set(srg->operation));
+	|| (aaa !=  nullptr && aaa->has_operation())
+	|| (aggregate_summary !=  nullptr && aggregate_summary->has_operation())
+	|| (srg !=  nullptr && srg->has_operation());
 }
 
 std::string Subscriber::Manager::Nodes::Node::Statistics::get_segment_path() const
@@ -6204,7 +6204,7 @@ EntityPath Subscriber::Manager::Nodes::Node::Statistics::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6338,7 +6338,7 @@ bool Subscriber::Manager::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Subscriber::Manager::Nodes::Node::get_segment_path() const
@@ -6552,7 +6552,7 @@ bool Subscriber::Manager::has_data() const
 bool Subscriber::Manager::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Subscriber::Manager::get_segment_path() const
@@ -6685,7 +6685,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6813,7 +6813,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6941,7 +6941,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7047,9 +7047,9 @@ bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::get_segment_path() const
@@ -7066,7 +7066,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7225,7 +7225,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::Add
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7345,7 +7345,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::Add
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7465,7 +7465,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::Add
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7566,9 +7566,9 @@ bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFa
 bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::get_segment_path() const
@@ -7585,7 +7585,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::Add
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7724,8 +7724,8 @@ bool Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::has_opera
 {
     return is_set(operation)
 	|| is_set(author_state.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::get_segment_path() const
@@ -7742,7 +7742,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7875,7 +7875,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthorSummaries::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7994,7 +7994,7 @@ EntityPath Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8122,7 +8122,7 @@ EntityPath Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8250,7 +8250,7 @@ EntityPath Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacke
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8356,9 +8356,9 @@ bool Subscriber::Session::Nodes::Node::Summary::StateXr::has_data() const
 bool Subscriber::Session::Nodes::Node::Summary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Summary::StateXr::get_segment_path() const
@@ -8375,7 +8375,7 @@ EntityPath Subscriber::Session::Nodes::Node::Summary::StateXr::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8534,7 +8534,7 @@ EntityPath Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8654,7 +8654,7 @@ EntityPath Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8774,7 +8774,7 @@ EntityPath Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8875,9 +8875,9 @@ bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::has_data() cons
 bool Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_segment_path() const
@@ -8894,7 +8894,7 @@ EntityPath Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9029,8 +9029,8 @@ bool Subscriber::Session::Nodes::Node::Summary::has_data() const
 bool Subscriber::Session::Nodes::Node::Summary::has_operation() const
 {
     return is_set(operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Summary::get_segment_path() const
@@ -9047,7 +9047,7 @@ EntityPath Subscriber::Session::Nodes::Node::Summary::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9186,7 +9186,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9314,7 +9314,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9442,7 +9442,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9548,9 +9548,9 @@ bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::has_da
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::get_segment_path() const
@@ -9567,7 +9567,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9726,7 +9726,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9846,7 +9846,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9966,7 +9966,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10067,9 +10067,9 @@ bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr
 bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::get_segment_path() const
@@ -10086,7 +10086,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10225,8 +10225,8 @@ bool Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::has_operation()
 {
     return is_set(operation)
 	|| is_set(mac_address.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_segment_path() const
@@ -10243,7 +10243,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10376,7 +10376,7 @@ EntityPath Subscriber::Session::Nodes::Node::MacSummaries::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10495,7 +10495,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10623,7 +10623,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10751,7 +10751,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10857,9 +10857,9 @@ bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::Sta
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::get_segment_path() const
@@ -10876,7 +10876,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11035,7 +11035,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11155,7 +11155,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11275,7 +11275,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11376,9 +11376,9 @@ bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::Add
 bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::get_segment_path() const
@@ -11395,7 +11395,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11534,8 +11534,8 @@ bool Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::has
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::get_segment_path() const
@@ -11552,7 +11552,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11685,7 +11685,7 @@ EntityPath Subscriber::Session::Nodes::Node::InterfaceSummaries::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11804,7 +11804,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::Authentica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11932,7 +11932,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::Authentica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12060,7 +12060,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::Authentica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12166,9 +12166,9 @@ bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSu
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::get_segment_path() const
@@ -12185,7 +12185,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::Authentica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12344,7 +12344,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::Authentica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12464,7 +12464,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::Authentica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12584,7 +12584,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::Authentica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12685,9 +12685,9 @@ bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSu
 bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::get_segment_path() const
@@ -12704,7 +12704,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::Authentica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12843,8 +12843,8 @@ bool Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSu
 {
     return is_set(operation)
 	|| is_set(authentication_state.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::get_segment_path() const
@@ -12861,7 +12861,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::Authentica
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12994,7 +12994,7 @@ EntityPath Subscriber::Session::Nodes::Node::AuthenticationSummaries::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13113,7 +13113,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::State
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13241,7 +13241,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::State
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13369,7 +13369,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::State
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13475,9 +13475,9 @@ bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::ha
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::get_segment_path() const
@@ -13494,7 +13494,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::State
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13653,7 +13653,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::Addre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13773,7 +13773,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::Addre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13893,7 +13893,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::Addre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13994,9 +13994,9 @@ bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFami
 bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::get_segment_path() const
@@ -14013,7 +14013,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::Addre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14152,8 +14152,8 @@ bool Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::has_operati
 {
     return is_set(operation)
 	|| is_set(state.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_segment_path() const
@@ -14170,7 +14170,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14303,7 +14303,7 @@ EntityPath Subscriber::Session::Nodes::Node::StateSummaries::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14422,7 +14422,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14550,7 +14550,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14678,7 +14678,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14784,9 +14784,9 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSu
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::get_segment_path() const
@@ -14803,7 +14803,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14962,7 +14962,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15082,7 +15082,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15202,7 +15202,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15303,9 +15303,9 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSu
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::get_segment_path() const
@@ -15322,7 +15322,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15464,8 +15464,8 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSu
     return is_set(operation)
 	|| is_set(address.operation)
 	|| is_set(vrf_name.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::get_segment_path() const
@@ -15482,7 +15482,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15620,7 +15620,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15739,7 +15739,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15867,7 +15867,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15995,7 +15995,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16101,9 +16101,9 @@ bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySumm
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::get_segment_path() const
@@ -16120,7 +16120,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16279,7 +16279,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16399,7 +16399,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16519,7 +16519,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16620,9 +16620,9 @@ bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySumm
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::get_segment_path() const
@@ -16639,7 +16639,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16778,8 +16778,8 @@ bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySumm
 {
     return is_set(operation)
 	|| is_set(address_family.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_segment_path() const
@@ -16796,7 +16796,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFami
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16929,7 +16929,7 @@ EntityPath Subscriber::Session::Nodes::Node::AddressFamilySummaries::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17048,7 +17048,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17176,7 +17176,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17304,7 +17304,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17410,9 +17410,9 @@ bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::State
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::get_segment_path() const
@@ -17429,7 +17429,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17588,7 +17588,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17708,7 +17708,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17828,7 +17828,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17929,9 +17929,9 @@ bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addre
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::get_segment_path() const
@@ -17948,7 +17948,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18087,8 +18087,8 @@ bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_o
 {
     return is_set(operation)
 	|| is_set(username.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_segment_path() const
@@ -18105,7 +18105,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18238,7 +18238,7 @@ EntityPath Subscriber::Session::Nodes::Node::UsernameSummaries::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18357,7 +18357,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18485,7 +18485,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18613,7 +18613,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18719,9 +18719,9 @@ bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterface
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::get_segment_path() const
@@ -18738,7 +18738,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18897,7 +18897,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19017,7 +19017,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19137,7 +19137,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19238,9 +19238,9 @@ bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterface
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::get_segment_path() const
@@ -19257,7 +19257,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19396,8 +19396,8 @@ bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterface
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_segment_path() const
@@ -19414,7 +19414,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19547,7 +19547,7 @@ EntityPath Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19666,7 +19666,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19794,7 +19794,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19922,7 +19922,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20028,9 +20028,9 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary:
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::get_segment_path() const
@@ -20047,7 +20047,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20206,7 +20206,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20326,7 +20326,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20446,7 +20446,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20547,9 +20547,9 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary:
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::get_segment_path() const
@@ -20566,7 +20566,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20705,8 +20705,8 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary:
 {
     return is_set(operation)
 	|| is_set(address.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_segment_path() const
@@ -20723,7 +20723,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20856,7 +20856,7 @@ EntityPath Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20975,7 +20975,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21103,7 +21103,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21231,7 +21231,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21337,9 +21337,9 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_da
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::get_segment_path() const
@@ -21356,7 +21356,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21515,7 +21515,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21635,7 +21635,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21755,7 +21755,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21856,9 +21856,9 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscriber_dhcp !=  nullptr && is_set(ip_subscriber_dhcp->operation))
-	|| (ip_subscriber_packet !=  nullptr && is_set(ip_subscriber_packet->operation))
-	|| (pppoe !=  nullptr && is_set(pppoe->operation));
+	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_operation())
+	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_operation())
+	|| (pppoe !=  nullptr && pppoe->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::get_segment_path() const
@@ -21875,7 +21875,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22014,8 +22014,8 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_operation()
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (address_family_xr !=  nullptr && is_set(address_family_xr->operation))
-	|| (state_xr !=  nullptr && is_set(state_xr->operation));
+	|| (address_family_xr !=  nullptr && address_family_xr->has_operation())
+	|| (state_xr !=  nullptr && state_xr->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_segment_path() const
@@ -22032,7 +22032,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22165,7 +22165,7 @@ EntityPath Subscriber::Session::Nodes::Node::VrfSummaries::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22308,7 +22308,7 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Acc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22465,7 +22465,7 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22710,7 +22710,7 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23057,7 +23057,7 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttribu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23194,7 +23194,7 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23400,9 +23400,9 @@ bool Subscriber::Session::Nodes::Node::Sessions::Session_::has_operation() const
 	|| is_set(tunnel_server_authentication_id.operation)
 	|| is_set(username.operation)
 	|| is_set(vrf_name.operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation))
-	|| (mobility_attributes !=  nullptr && is_set(mobility_attributes->operation))
-	|| (user_profile_attributes !=  nullptr && is_set(user_profile_attributes->operation));
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (mobility_attributes !=  nullptr && mobility_attributes->has_operation())
+	|| (user_profile_attributes !=  nullptr && user_profile_attributes->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::Sessions::Session_::get_segment_path() const
@@ -23419,7 +23419,7 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::Session_::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23761,7 +23761,7 @@ EntityPath Subscriber::Session::Nodes::Node::Sessions::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23912,19 +23912,19 @@ bool Subscriber::Session::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (access_interface_summaries !=  nullptr && is_set(access_interface_summaries->operation))
-	|| (address_family_summaries !=  nullptr && is_set(address_family_summaries->operation))
-	|| (authentication_summaries !=  nullptr && is_set(authentication_summaries->operation))
-	|| (author_summaries !=  nullptr && is_set(author_summaries->operation))
-	|| (interface_summaries !=  nullptr && is_set(interface_summaries->operation))
-	|| (ipv4_address_summaries !=  nullptr && is_set(ipv4_address_summaries->operation))
-	|| (ipv4_address_vrf_summaries !=  nullptr && is_set(ipv4_address_vrf_summaries->operation))
-	|| (mac_summaries !=  nullptr && is_set(mac_summaries->operation))
-	|| (sessions !=  nullptr && is_set(sessions->operation))
-	|| (state_summaries !=  nullptr && is_set(state_summaries->operation))
-	|| (summary !=  nullptr && is_set(summary->operation))
-	|| (username_summaries !=  nullptr && is_set(username_summaries->operation))
-	|| (vrf_summaries !=  nullptr && is_set(vrf_summaries->operation));
+	|| (access_interface_summaries !=  nullptr && access_interface_summaries->has_operation())
+	|| (address_family_summaries !=  nullptr && address_family_summaries->has_operation())
+	|| (authentication_summaries !=  nullptr && authentication_summaries->has_operation())
+	|| (author_summaries !=  nullptr && author_summaries->has_operation())
+	|| (interface_summaries !=  nullptr && interface_summaries->has_operation())
+	|| (ipv4_address_summaries !=  nullptr && ipv4_address_summaries->has_operation())
+	|| (ipv4_address_vrf_summaries !=  nullptr && ipv4_address_vrf_summaries->has_operation())
+	|| (mac_summaries !=  nullptr && mac_summaries->has_operation())
+	|| (sessions !=  nullptr && sessions->has_operation())
+	|| (state_summaries !=  nullptr && state_summaries->has_operation())
+	|| (summary !=  nullptr && summary->has_operation())
+	|| (username_summaries !=  nullptr && username_summaries->has_operation())
+	|| (vrf_summaries !=  nullptr && vrf_summaries->has_operation());
 }
 
 std::string Subscriber::Session::Nodes::Node::get_segment_path() const
@@ -24414,7 +24414,7 @@ bool Subscriber::Session::has_data() const
 bool Subscriber::Session::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Subscriber::Session::get_segment_path() const
@@ -24520,8 +24520,8 @@ bool Subscriber::has_data() const
 bool Subscriber::has_operation() const
 {
     return is_set(operation)
-	|| (manager !=  nullptr && is_set(manager->operation))
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (manager !=  nullptr && manager->has_operation())
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string Subscriber::get_segment_path() const
@@ -24538,7 +24538,7 @@ EntityPath Subscriber::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -24669,7 +24669,7 @@ EntityPath IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24754,7 +24754,7 @@ bool IedgeLicenseManager::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(nodeid.operation)
-	|| (iedge_license_manager_summary !=  nullptr && is_set(iedge_license_manager_summary->operation));
+	|| (iedge_license_manager_summary !=  nullptr && iedge_license_manager_summary->has_operation());
 }
 
 std::string IedgeLicenseManager::Nodes::Node::get_segment_path() const
@@ -24968,7 +24968,7 @@ bool IedgeLicenseManager::has_data() const
 bool IedgeLicenseManager::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string IedgeLicenseManager::get_segment_path() const
@@ -24985,7 +24985,7 @@ EntityPath IedgeLicenseManager::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -25049,143 +25049,143 @@ std::unique_ptr<Entity> IedgeLicenseManager::clone_ptr()
     return std::make_unique<IedgeLicenseManager>();
 }
 
-const Enum::Value AaaTunnelProtoEnum::none {0, "none"};
-const Enum::Value AaaTunnelProtoEnum::pptp {1, "pptp"};
-const Enum::Value AaaTunnelProtoEnum::l2f {2, "l2f"};
-const Enum::Value AaaTunnelProtoEnum::l2tp {3, "l2tp"};
-const Enum::Value AaaTunnelProtoEnum::atmp {4, "atmp"};
-const Enum::Value AaaTunnelProtoEnum::vtp {5, "vtp"};
-const Enum::Value AaaTunnelProtoEnum::ah {6, "ah"};
-const Enum::Value AaaTunnelProtoEnum::ip_over_ip {7, "ip-over-ip"};
-const Enum::Value AaaTunnelProtoEnum::minimum_ip_over_ip {8, "minimum-ip-over-ip"};
-const Enum::Value AaaTunnelProtoEnum::esp {9, "esp"};
-const Enum::Value AaaTunnelProtoEnum::gre {10, "gre"};
-const Enum::Value AaaTunnelProtoEnum::bay_dvs {11, "bay-dvs"};
-const Enum::Value AaaTunnelProtoEnum::ip_in_ip {12, "ip-in-ip"};
-const Enum::Value AaaTunnelProtoEnum::vlan {13, "vlan"};
+const Enum::YLeaf AaaTunnelProtoEnum::none {0, "none"};
+const Enum::YLeaf AaaTunnelProtoEnum::pptp {1, "pptp"};
+const Enum::YLeaf AaaTunnelProtoEnum::l2f {2, "l2f"};
+const Enum::YLeaf AaaTunnelProtoEnum::l2tp {3, "l2tp"};
+const Enum::YLeaf AaaTunnelProtoEnum::atmp {4, "atmp"};
+const Enum::YLeaf AaaTunnelProtoEnum::vtp {5, "vtp"};
+const Enum::YLeaf AaaTunnelProtoEnum::ah {6, "ah"};
+const Enum::YLeaf AaaTunnelProtoEnum::ip_over_ip {7, "ip-over-ip"};
+const Enum::YLeaf AaaTunnelProtoEnum::minimum_ip_over_ip {8, "minimum-ip-over-ip"};
+const Enum::YLeaf AaaTunnelProtoEnum::esp {9, "esp"};
+const Enum::YLeaf AaaTunnelProtoEnum::gre {10, "gre"};
+const Enum::YLeaf AaaTunnelProtoEnum::bay_dvs {11, "bay-dvs"};
+const Enum::YLeaf AaaTunnelProtoEnum::ip_in_ip {12, "ip-in-ip"};
+const Enum::YLeaf AaaTunnelProtoEnum::vlan {13, "vlan"};
 
-const Enum::Value AaaTerminateCauseEnum::none {0, "none"};
-const Enum::Value AaaTerminateCauseEnum::user_request {1, "user-request"};
-const Enum::Value AaaTerminateCauseEnum::lost_carrier {2, "lost-carrier"};
-const Enum::Value AaaTerminateCauseEnum::lost_service {3, "lost-service"};
-const Enum::Value AaaTerminateCauseEnum::idle_timeout {4, "idle-timeout"};
-const Enum::Value AaaTerminateCauseEnum::session_timeout {5, "session-timeout"};
-const Enum::Value AaaTerminateCauseEnum::admin_reset {6, "admin-reset"};
-const Enum::Value AaaTerminateCauseEnum::admin_reboot {7, "admin-reboot"};
-const Enum::Value AaaTerminateCauseEnum::port_error {8, "port-error"};
-const Enum::Value AaaTerminateCauseEnum::nas_error {9, "nas-error"};
-const Enum::Value AaaTerminateCauseEnum::nas_request {10, "nas-request"};
-const Enum::Value AaaTerminateCauseEnum::nas_reboot {11, "nas-reboot"};
-const Enum::Value AaaTerminateCauseEnum::port_unneeded {12, "port-unneeded"};
-const Enum::Value AaaTerminateCauseEnum::port_preempted {13, "port-preempted"};
-const Enum::Value AaaTerminateCauseEnum::port_suspended {14, "port-suspended"};
-const Enum::Value AaaTerminateCauseEnum::service_unavailable {15, "service-unavailable"};
-const Enum::Value AaaTerminateCauseEnum::callback {16, "callback"};
-const Enum::Value AaaTerminateCauseEnum::user_error {17, "user-error"};
-const Enum::Value AaaTerminateCauseEnum::host_request {18, "host-request"};
-const Enum::Value AaaTerminateCauseEnum::supplicant_restart {19, "supplicant-restart"};
-const Enum::Value AaaTerminateCauseEnum::reauthorization_failure {20, "reauthorization-failure"};
-const Enum::Value AaaTerminateCauseEnum::port_reinitialized {21, "port-reinitialized"};
-const Enum::Value AaaTerminateCauseEnum::admin_disabled {22, "admin-disabled"};
+const Enum::YLeaf AaaTerminateCauseEnum::none {0, "none"};
+const Enum::YLeaf AaaTerminateCauseEnum::user_request {1, "user-request"};
+const Enum::YLeaf AaaTerminateCauseEnum::lost_carrier {2, "lost-carrier"};
+const Enum::YLeaf AaaTerminateCauseEnum::lost_service {3, "lost-service"};
+const Enum::YLeaf AaaTerminateCauseEnum::idle_timeout {4, "idle-timeout"};
+const Enum::YLeaf AaaTerminateCauseEnum::session_timeout {5, "session-timeout"};
+const Enum::YLeaf AaaTerminateCauseEnum::admin_reset {6, "admin-reset"};
+const Enum::YLeaf AaaTerminateCauseEnum::admin_reboot {7, "admin-reboot"};
+const Enum::YLeaf AaaTerminateCauseEnum::port_error {8, "port-error"};
+const Enum::YLeaf AaaTerminateCauseEnum::nas_error {9, "nas-error"};
+const Enum::YLeaf AaaTerminateCauseEnum::nas_request {10, "nas-request"};
+const Enum::YLeaf AaaTerminateCauseEnum::nas_reboot {11, "nas-reboot"};
+const Enum::YLeaf AaaTerminateCauseEnum::port_unneeded {12, "port-unneeded"};
+const Enum::YLeaf AaaTerminateCauseEnum::port_preempted {13, "port-preempted"};
+const Enum::YLeaf AaaTerminateCauseEnum::port_suspended {14, "port-suspended"};
+const Enum::YLeaf AaaTerminateCauseEnum::service_unavailable {15, "service-unavailable"};
+const Enum::YLeaf AaaTerminateCauseEnum::callback {16, "callback"};
+const Enum::YLeaf AaaTerminateCauseEnum::user_error {17, "user-error"};
+const Enum::YLeaf AaaTerminateCauseEnum::host_request {18, "host-request"};
+const Enum::YLeaf AaaTerminateCauseEnum::supplicant_restart {19, "supplicant-restart"};
+const Enum::YLeaf AaaTerminateCauseEnum::reauthorization_failure {20, "reauthorization-failure"};
+const Enum::YLeaf AaaTerminateCauseEnum::port_reinitialized {21, "port-reinitialized"};
+const Enum::YLeaf AaaTerminateCauseEnum::admin_disabled {22, "admin-disabled"};
 
-const Enum::Value SubscriberAuthorStateFilterFlagEnum::un_authorized {0, "un-authorized"};
-const Enum::Value SubscriberAuthorStateFilterFlagEnum::authorized {1, "authorized"};
+const Enum::YLeaf SubscriberAuthorStateFilterFlagEnum::un_authorized {0, "un-authorized"};
+const Enum::YLeaf SubscriberAuthorStateFilterFlagEnum::authorized {1, "authorized"};
 
-const Enum::Value IedgeOperSessionStateEnum::initialize {0, "initialize"};
-const Enum::Value IedgeOperSessionStateEnum::connecting {1, "connecting"};
-const Enum::Value IedgeOperSessionStateEnum::connected {2, "connected"};
-const Enum::Value IedgeOperSessionStateEnum::activated {3, "activated"};
-const Enum::Value IedgeOperSessionStateEnum::idle {4, "idle"};
-const Enum::Value IedgeOperSessionStateEnum::disconnecting {5, "disconnecting"};
-const Enum::Value IedgeOperSessionStateEnum::end {6, "end"};
+const Enum::YLeaf IedgeOperSessionStateEnum::initialize {0, "initialize"};
+const Enum::YLeaf IedgeOperSessionStateEnum::connecting {1, "connecting"};
+const Enum::YLeaf IedgeOperSessionStateEnum::connected {2, "connected"};
+const Enum::YLeaf IedgeOperSessionStateEnum::activated {3, "activated"};
+const Enum::YLeaf IedgeOperSessionStateEnum::idle {4, "idle"};
+const Enum::YLeaf IedgeOperSessionStateEnum::disconnecting {5, "disconnecting"};
+const Enum::YLeaf IedgeOperSessionStateEnum::end {6, "end"};
 
-const Enum::Value IedgeOperSessionAfStateEnum::not_started {0, "not-started"};
-const Enum::Value IedgeOperSessionAfStateEnum::down {1, "down"};
-const Enum::Value IedgeOperSessionAfStateEnum::up_pending {2, "up-pending"};
-const Enum::Value IedgeOperSessionAfStateEnum::up {3, "up"};
+const Enum::YLeaf IedgeOperSessionAfStateEnum::not_started {0, "not-started"};
+const Enum::YLeaf IedgeOperSessionAfStateEnum::down {1, "down"};
+const Enum::YLeaf IedgeOperSessionAfStateEnum::up_pending {2, "up-pending"};
+const Enum::YLeaf IedgeOperSessionAfStateEnum::up {3, "up"};
 
-const Enum::Value SubscriberStateFilterFlagEnum::initializing {0, "initializing"};
-const Enum::Value SubscriberStateFilterFlagEnum::connecting {1, "connecting"};
-const Enum::Value SubscriberStateFilterFlagEnum::connected {2, "connected"};
-const Enum::Value SubscriberStateFilterFlagEnum::activated {3, "activated"};
-const Enum::Value SubscriberStateFilterFlagEnum::idle {4, "idle"};
-const Enum::Value SubscriberStateFilterFlagEnum::disconnecting {5, "disconnecting"};
-const Enum::Value SubscriberStateFilterFlagEnum::end {6, "end"};
+const Enum::YLeaf SubscriberStateFilterFlagEnum::initializing {0, "initializing"};
+const Enum::YLeaf SubscriberStateFilterFlagEnum::connecting {1, "connecting"};
+const Enum::YLeaf SubscriberStateFilterFlagEnum::connected {2, "connected"};
+const Enum::YLeaf SubscriberStateFilterFlagEnum::activated {3, "activated"};
+const Enum::YLeaf SubscriberStateFilterFlagEnum::idle {4, "idle"};
+const Enum::YLeaf SubscriberStateFilterFlagEnum::disconnecting {5, "disconnecting"};
+const Enum::YLeaf SubscriberStateFilterFlagEnum::end {6, "end"};
 
-const Enum::Value AaaAuthServiceEnum::none {0, "none"};
-const Enum::Value AaaAuthServiceEnum::login {1, "login"};
-const Enum::Value AaaAuthServiceEnum::framed {2, "framed"};
-const Enum::Value AaaAuthServiceEnum::callback_login {3, "callback-login"};
-const Enum::Value AaaAuthServiceEnum::callback_framed {4, "callback-framed"};
-const Enum::Value AaaAuthServiceEnum::outbound {5, "outbound"};
-const Enum::Value AaaAuthServiceEnum::administrator {6, "administrator"};
-const Enum::Value AaaAuthServiceEnum::prompt {7, "prompt"};
-const Enum::Value AaaAuthServiceEnum::authentication_only {8, "authentication-only"};
-const Enum::Value AaaAuthServiceEnum::callback_nas_prompt {9, "callback-nas-prompt"};
-const Enum::Value AaaAuthServiceEnum::call_check {10, "call-check"};
-const Enum::Value AaaAuthServiceEnum::callback_administrator {11, "callback-administrator"};
-const Enum::Value AaaAuthServiceEnum::voice {12, "voice"};
-const Enum::Value AaaAuthServiceEnum::fax {13, "fax"};
-const Enum::Value AaaAuthServiceEnum::modem_relay {14, "modem-relay"};
-const Enum::Value AaaAuthServiceEnum::eap_over_udp {15, "eap-over-udp"};
+const Enum::YLeaf AaaAuthServiceEnum::none {0, "none"};
+const Enum::YLeaf AaaAuthServiceEnum::login {1, "login"};
+const Enum::YLeaf AaaAuthServiceEnum::framed {2, "framed"};
+const Enum::YLeaf AaaAuthServiceEnum::callback_login {3, "callback-login"};
+const Enum::YLeaf AaaAuthServiceEnum::callback_framed {4, "callback-framed"};
+const Enum::YLeaf AaaAuthServiceEnum::outbound {5, "outbound"};
+const Enum::YLeaf AaaAuthServiceEnum::administrator {6, "administrator"};
+const Enum::YLeaf AaaAuthServiceEnum::prompt {7, "prompt"};
+const Enum::YLeaf AaaAuthServiceEnum::authentication_only {8, "authentication-only"};
+const Enum::YLeaf AaaAuthServiceEnum::callback_nas_prompt {9, "callback-nas-prompt"};
+const Enum::YLeaf AaaAuthServiceEnum::call_check {10, "call-check"};
+const Enum::YLeaf AaaAuthServiceEnum::callback_administrator {11, "callback-administrator"};
+const Enum::YLeaf AaaAuthServiceEnum::voice {12, "voice"};
+const Enum::YLeaf AaaAuthServiceEnum::fax {13, "fax"};
+const Enum::YLeaf AaaAuthServiceEnum::modem_relay {14, "modem-relay"};
+const Enum::YLeaf AaaAuthServiceEnum::eap_over_udp {15, "eap-over-udp"};
 
-const Enum::Value AaaInterfaceEnum::none {0, "none"};
-const Enum::Value AaaInterfaceEnum::primary_rate {1, "primary-rate"};
-const Enum::Value AaaInterfaceEnum::basic_rate {2, "basic-rate"};
-const Enum::Value AaaInterfaceEnum::serial {3, "serial"};
-const Enum::Value AaaInterfaceEnum::asynchronous {4, "asynchronous"};
-const Enum::Value AaaInterfaceEnum::vty {5, "vty"};
-const Enum::Value AaaInterfaceEnum::atm {6, "atm"};
-const Enum::Value AaaInterfaceEnum::ethernet {7, "ethernet"};
-const Enum::Value AaaInterfaceEnum::ppp_over_atm {8, "ppp-over-atm"};
-const Enum::Value AaaInterfaceEnum::pppoe_over_atm {9, "pppoe-over-atm"};
-const Enum::Value AaaInterfaceEnum::pppoe_over_ethernet {10, "pppoe-over-ethernet"};
-const Enum::Value AaaInterfaceEnum::ppp_over_vlan {11, "ppp-over-vlan"};
-const Enum::Value AaaInterfaceEnum::ppp_over_qinq {12, "ppp-over-qinq"};
-const Enum::Value AaaInterfaceEnum::v120 {13, "v120"};
-const Enum::Value AaaInterfaceEnum::v110 {14, "v110"};
-const Enum::Value AaaInterfaceEnum::piafs {15, "piafs"};
-const Enum::Value AaaInterfaceEnum::x75 {16, "x75"};
-const Enum::Value AaaInterfaceEnum::ip_sec {17, "ip-sec"};
-const Enum::Value AaaInterfaceEnum::other {18, "other"};
-const Enum::Value AaaInterfaceEnum::virtual_pppoe_over_ethernet {19, "virtual-pppoe-over-ethernet"};
-const Enum::Value AaaInterfaceEnum::virtual_pppoe_over_vlan {20, "virtual-pppoe-over-vlan"};
-const Enum::Value AaaInterfaceEnum::virtual_pppoe_over_qinq {21, "virtual-pppoe-over-qinq"};
-const Enum::Value AaaInterfaceEnum::ipo_e_over_ethernet {22, "ipo-e-over-ethernet"};
-const Enum::Value AaaInterfaceEnum::ipo_e_over_vlan {23, "ipo-e-over-vlan"};
-const Enum::Value AaaInterfaceEnum::ipo_e_over_qinq {24, "ipo-e-over-qinq"};
-const Enum::Value AaaInterfaceEnum::virtual_i_po_e_over_ethernet {25, "virtual-i-po-e-over-ethernet"};
-const Enum::Value AaaInterfaceEnum::virtual_i_po_e_over_vlan {26, "virtual-i-po-e-over-vlan"};
-const Enum::Value AaaInterfaceEnum::virtual_i_po_e_over_qinq {27, "virtual-i-po-e-over-qinq"};
+const Enum::YLeaf AaaInterfaceEnum::none {0, "none"};
+const Enum::YLeaf AaaInterfaceEnum::primary_rate {1, "primary-rate"};
+const Enum::YLeaf AaaInterfaceEnum::basic_rate {2, "basic-rate"};
+const Enum::YLeaf AaaInterfaceEnum::serial {3, "serial"};
+const Enum::YLeaf AaaInterfaceEnum::asynchronous {4, "asynchronous"};
+const Enum::YLeaf AaaInterfaceEnum::vty {5, "vty"};
+const Enum::YLeaf AaaInterfaceEnum::atm {6, "atm"};
+const Enum::YLeaf AaaInterfaceEnum::ethernet {7, "ethernet"};
+const Enum::YLeaf AaaInterfaceEnum::ppp_over_atm {8, "ppp-over-atm"};
+const Enum::YLeaf AaaInterfaceEnum::pppoe_over_atm {9, "pppoe-over-atm"};
+const Enum::YLeaf AaaInterfaceEnum::pppoe_over_ethernet {10, "pppoe-over-ethernet"};
+const Enum::YLeaf AaaInterfaceEnum::ppp_over_vlan {11, "ppp-over-vlan"};
+const Enum::YLeaf AaaInterfaceEnum::ppp_over_qinq {12, "ppp-over-qinq"};
+const Enum::YLeaf AaaInterfaceEnum::v120 {13, "v120"};
+const Enum::YLeaf AaaInterfaceEnum::v110 {14, "v110"};
+const Enum::YLeaf AaaInterfaceEnum::piafs {15, "piafs"};
+const Enum::YLeaf AaaInterfaceEnum::x75 {16, "x75"};
+const Enum::YLeaf AaaInterfaceEnum::ip_sec {17, "ip-sec"};
+const Enum::YLeaf AaaInterfaceEnum::other {18, "other"};
+const Enum::YLeaf AaaInterfaceEnum::virtual_pppoe_over_ethernet {19, "virtual-pppoe-over-ethernet"};
+const Enum::YLeaf AaaInterfaceEnum::virtual_pppoe_over_vlan {20, "virtual-pppoe-over-vlan"};
+const Enum::YLeaf AaaInterfaceEnum::virtual_pppoe_over_qinq {21, "virtual-pppoe-over-qinq"};
+const Enum::YLeaf AaaInterfaceEnum::ipo_e_over_ethernet {22, "ipo-e-over-ethernet"};
+const Enum::YLeaf AaaInterfaceEnum::ipo_e_over_vlan {23, "ipo-e-over-vlan"};
+const Enum::YLeaf AaaInterfaceEnum::ipo_e_over_qinq {24, "ipo-e-over-qinq"};
+const Enum::YLeaf AaaInterfaceEnum::virtual_i_po_e_over_ethernet {25, "virtual-i-po-e-over-ethernet"};
+const Enum::YLeaf AaaInterfaceEnum::virtual_i_po_e_over_vlan {26, "virtual-i-po-e-over-vlan"};
+const Enum::YLeaf AaaInterfaceEnum::virtual_i_po_e_over_qinq {27, "virtual-i-po-e-over-qinq"};
 
-const Enum::Value SubscriberAuthenStateFilterFlagEnum::un_authenticated {0, "un-authenticated"};
-const Enum::Value SubscriberAuthenStateFilterFlagEnum::authenticated {1, "authenticated"};
+const Enum::YLeaf SubscriberAuthenStateFilterFlagEnum::un_authenticated {0, "un-authenticated"};
+const Enum::YLeaf SubscriberAuthenStateFilterFlagEnum::authenticated {1, "authenticated"};
 
-const Enum::Value IedgeOperSessionEnum::unknown {0, "unknown"};
-const Enum::Value IedgeOperSessionEnum::pppoe {1, "pppoe"};
-const Enum::Value IedgeOperSessionEnum::ppp {2, "ppp"};
-const Enum::Value IedgeOperSessionEnum::ip_packet_trigger {3, "ip-packet-trigger"};
-const Enum::Value IedgeOperSessionEnum::ip_packet_dhcp_trigger {4, "ip-packet-dhcp-trigger"};
+const Enum::YLeaf IedgeOperSessionEnum::unknown {0, "unknown"};
+const Enum::YLeaf IedgeOperSessionEnum::pppoe {1, "pppoe"};
+const Enum::YLeaf IedgeOperSessionEnum::ppp {2, "ppp"};
+const Enum::YLeaf IedgeOperSessionEnum::ip_packet_trigger {3, "ip-packet-trigger"};
+const Enum::YLeaf IedgeOperSessionEnum::ip_packet_dhcp_trigger {4, "ip-packet-dhcp-trigger"};
 
-const Enum::Value AaaTunnelMediumEnum::none {0, "none"};
-const Enum::Value AaaTunnelMediumEnum::ipv4 {1, "ipv4"};
-const Enum::Value AaaTunnelMediumEnum::ipv6 {2, "ipv6"};
-const Enum::Value AaaTunnelMediumEnum::nsap {3, "nsap"};
-const Enum::Value AaaTunnelMediumEnum::hdlc {4, "hdlc"};
-const Enum::Value AaaTunnelMediumEnum::bbn {5, "bbn"};
-const Enum::Value AaaTunnelMediumEnum::all802 {6, "all802"};
+const Enum::YLeaf AaaTunnelMediumEnum::none {0, "none"};
+const Enum::YLeaf AaaTunnelMediumEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf AaaTunnelMediumEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf AaaTunnelMediumEnum::nsap {3, "nsap"};
+const Enum::YLeaf AaaTunnelMediumEnum::hdlc {4, "hdlc"};
+const Enum::YLeaf AaaTunnelMediumEnum::bbn {5, "bbn"};
+const Enum::YLeaf AaaTunnelMediumEnum::all802 {6, "all802"};
 
-const Enum::Value IedgePppSubEnum::pta {0, "pta"};
-const Enum::Value IedgePppSubEnum::lac {1, "lac"};
+const Enum::YLeaf IedgePppSubEnum::pta {0, "pta"};
+const Enum::YLeaf IedgePppSubEnum::lac {1, "lac"};
 
-const Enum::Value SubscriberAddressFamilyFilterFlagEnum::ipv4_only {0, "ipv4-only"};
-const Enum::Value SubscriberAddressFamilyFilterFlagEnum::ipv6_only {1, "ipv6-only"};
-const Enum::Value SubscriberAddressFamilyFilterFlagEnum::ipv4_all {2, "ipv4-all"};
-const Enum::Value SubscriberAddressFamilyFilterFlagEnum::ipv6_all {3, "ipv6-all"};
-const Enum::Value SubscriberAddressFamilyFilterFlagEnum::dual_all {4, "dual-all"};
-const Enum::Value SubscriberAddressFamilyFilterFlagEnum::dual_part_up {5, "dual-part-up"};
-const Enum::Value SubscriberAddressFamilyFilterFlagEnum::dual_up {6, "dual-up"};
-const Enum::Value SubscriberAddressFamilyFilterFlagEnum::lac {7, "lac"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlagEnum::ipv4_only {0, "ipv4-only"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlagEnum::ipv6_only {1, "ipv6-only"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlagEnum::ipv4_all {2, "ipv4-all"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlagEnum::ipv6_all {3, "ipv6-all"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlagEnum::dual_all {4, "dual-all"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlagEnum::dual_part_up {5, "dual-part-up"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlagEnum::dual_up {6, "dual-up"};
+const Enum::YLeaf SubscriberAddressFamilyFilterFlagEnum::lac {7, "lac"};
 
 
 }

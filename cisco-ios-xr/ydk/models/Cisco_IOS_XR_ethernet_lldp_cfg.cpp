@@ -453,11 +453,11 @@ bool Lldp::TlvSelect::has_operation() const
 {
     return is_set(operation)
 	|| is_set(tlv_select_enter.operation)
-	|| (management_address !=  nullptr && is_set(management_address->operation))
-	|| (port_description !=  nullptr && is_set(port_description->operation))
-	|| (system_capabilities !=  nullptr && is_set(system_capabilities->operation))
-	|| (system_description !=  nullptr && is_set(system_description->operation))
-	|| (system_name !=  nullptr && is_set(system_name->operation));
+	|| (management_address !=  nullptr && management_address->has_operation())
+	|| (port_description !=  nullptr && port_description->has_operation())
+	|| (system_capabilities !=  nullptr && system_capabilities->has_operation())
+	|| (system_description !=  nullptr && system_description->has_operation())
+	|| (system_name !=  nullptr && system_name->has_operation());
 }
 
 std::string Lldp::TlvSelect::get_segment_path() const
@@ -668,7 +668,7 @@ bool Lldp::has_operation() const
 	|| is_set(holdtime.operation)
 	|| is_set(reinit.operation)
 	|| is_set(timer.operation)
-	|| (tlv_select !=  nullptr && is_set(tlv_select->operation));
+	|| (tlv_select !=  nullptr && tlv_select->has_operation());
 }
 
 std::string Lldp::get_segment_path() const
@@ -685,7 +685,7 @@ EntityPath Lldp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

@@ -26,6 +26,7 @@ class Bfd : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class LabelSessionBriefs : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LabelSessionBrief : public Entity
         {
             public:
@@ -54,15 +56,16 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value incoming_label; //type: int32
-                Value location; //type: string
-                Value node_id; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value session_type; //type: BfdSessionEnum
-                Value session_subtype; //type: string
-                Value session_flags; //type: uint32
 
+
+                YLeaf interface_name; //type: string
+                YLeaf incoming_label; //type: int32
+                YLeaf location; //type: string
+                YLeaf node_id; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf session_type; //type: BfdSessionEnum
+                YLeaf session_subtype; //type: string
+                YLeaf session_flags; //type: uint32
 
             class StatusBriefInformation : public Entity
             {
@@ -79,6 +82,7 @@ class Bfd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsyncIntervalMultiplier : public Entity
                 {
                     public:
@@ -92,11 +96,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_remote_transmit_interval; //type: uint32
-                        Value negotiated_local_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_remote_transmit_interval; //type: uint32
+                        YLeaf negotiated_local_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -116,10 +121,11 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -134,8 +140,6 @@ class Bfd : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionBriefs::LabelSessionBrief::StatusBriefInformation> status_brief_information;
-                class BfdSessionEnum;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::LabelSessionBriefs::LabelSessionBrief
@@ -162,6 +166,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionState : public Entity
         {
             public:
@@ -175,11 +180,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_count; //type: uint32
-                Value down_count; //type: uint32
-                Value up_count; //type: uint32
-                Value unknown_count; //type: uint32
 
+
+                YLeaf total_count; //type: uint32
+                YLeaf down_count; //type: uint32
+                YLeaf up_count; //type: uint32
+                YLeaf unknown_count; //type: uint32
 
 
 
@@ -207,6 +213,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6SingleHopPacketCounters : public Entity
         {
             public:
@@ -222,6 +229,7 @@ class Bfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv6SingleHopPacketCounter : public Entity
             {
                 public:
@@ -235,15 +243,15 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value hello_transmit_count; //type: uint32
-                    Value hello_receive_count; //type: uint32
-                    Value echo_transmit_count; //type: uint32
-                    Value echo_receive_count; //type: uint32
-                    Value display_type; //type: BfdMgmtPktDisplayEnum
 
 
-                    class BfdMgmtPktDisplayEnum;
+                    YLeaf interface_name; //type: string
+                    YLeaf hello_transmit_count; //type: uint32
+                    YLeaf hello_receive_count; //type: uint32
+                    YLeaf echo_transmit_count; //type: uint32
+                    YLeaf echo_receive_count; //type: uint32
+                    YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+
 
 
             }; // Bfd::Ipv6SingleHopCounters::Ipv6SingleHopPacketCounters::Ipv6SingleHopPacketCounter
@@ -276,6 +284,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class PacketCounters : public Entity
         {
             public:
@@ -291,6 +300,7 @@ class Bfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class PacketCounter : public Entity
             {
                 public:
@@ -304,15 +314,15 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value hello_transmit_count; //type: uint32
-                    Value hello_receive_count; //type: uint32
-                    Value echo_transmit_count; //type: uint32
-                    Value echo_receive_count; //type: uint32
-                    Value display_type; //type: BfdMgmtPktDisplayEnum
 
 
-                    class BfdMgmtPktDisplayEnum;
+                    YLeaf interface_name; //type: string
+                    YLeaf hello_transmit_count; //type: uint32
+                    YLeaf hello_receive_count; //type: uint32
+                    YLeaf echo_transmit_count; //type: uint32
+                    YLeaf echo_receive_count; //type: uint32
+                    YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+
 
 
             }; // Bfd::Counters::PacketCounters::PacketCounter
@@ -345,6 +355,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ClientDetail : public Entity
         {
             public:
@@ -358,9 +369,10 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value client_name; //type: string
-                Value recreate_time; //type: uint32
 
+
+                YLeaf client_name; //type: string
+                YLeaf recreate_time; //type: uint32
 
             class Brief : public Entity
             {
@@ -375,10 +387,11 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name_xr; //type: string
-                    Value node_id; //type: string
-                    Value session_count; //type: uint32
 
+
+                    YLeaf name_xr; //type: string
+                    YLeaf node_id; //type: string
+                    YLeaf session_count; //type: uint32
 
 
 
@@ -398,9 +411,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value is_zombie_state; //type: int32
-                    Value is_recreate_state; //type: int32
 
+
+                    YLeaf is_zombie_state; //type: int32
+                    YLeaf is_recreate_state; //type: int32
 
 
 
@@ -435,6 +449,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionState : public Entity
         {
             public:
@@ -448,11 +463,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_count; //type: uint32
-                Value down_count; //type: uint32
-                Value up_count; //type: uint32
-                Value unknown_count; //type: uint32
 
+
+                YLeaf total_count; //type: uint32
+                YLeaf down_count; //type: uint32
+                YLeaf up_count; //type: uint32
+                YLeaf unknown_count; //type: uint32
 
 
 
@@ -480,6 +496,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionState : public Entity
         {
             public:
@@ -493,11 +510,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_count; //type: uint32
-                Value down_count; //type: uint32
-                Value up_count; //type: uint32
-                Value unknown_count; //type: uint32
 
+
+                YLeaf total_count; //type: uint32
+                YLeaf down_count; //type: uint32
+                YLeaf up_count; //type: uint32
+                YLeaf unknown_count; //type: uint32
 
 
 
@@ -525,6 +543,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LabelMultiPath : public Entity
         {
             public:
@@ -538,18 +557,18 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value incoming_label; //type: int32
-                Value location; //type: string
-                Value session_subtype; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value local_discriminator; //type: uint32
-                Value node_id; //type: string
-                Value incoming_label_xr; //type: uint32
-                Value session_interface_name; //type: string
 
 
-                class BfdMgmtSessionStateEnum;
+                YLeaf interface_name; //type: string
+                YLeaf incoming_label; //type: int32
+                YLeaf location; //type: string
+                YLeaf session_subtype; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf local_discriminator; //type: uint32
+                YLeaf node_id; //type: string
+                YLeaf incoming_label_xr; //type: uint32
+                YLeaf session_interface_name; //type: string
+
 
 
         }; // Bfd::LabelMultiPaths::LabelMultiPath
@@ -576,6 +595,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4MultiHopSessionDetail : public Entity
         {
             public:
@@ -589,11 +609,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value source_address; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value vrf_name; //type: string
 
+
+                YLeaf source_address; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf vrf_name; //type: string
 
             class StatusInformation : public Entity
             {
@@ -608,21 +629,22 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value session_subtype; //type: string
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value local_discriminator; //type: uint32
-                    Value remote_discriminator; //type: uint32
-                    Value to_up_state_count; //type: uint32
-                    Value desired_minimum_echo_transmit_interval; //type: uint32
-                    Value remote_negotiated_interval; //type: uint32
-                    Value latency_number; //type: uint32
-                    Value latency_minimum; //type: uint32
-                    Value latency_maximum; //type: uint32
-                    Value latency_average; //type: uint32
-                    Value node_id; //type: string
-                    Value internal_label; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf session_subtype; //type: string
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf local_discriminator; //type: uint32
+                    YLeaf remote_discriminator; //type: uint32
+                    YLeaf to_up_state_count; //type: uint32
+                    YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+                    YLeaf remote_negotiated_interval; //type: uint32
+                    YLeaf latency_number; //type: uint32
+                    YLeaf latency_minimum; //type: uint32
+                    YLeaf latency_maximum; //type: uint32
+                    YLeaf latency_average; //type: uint32
+                    YLeaf node_id; //type: string
+                    YLeaf internal_label; //type: uint32
 
                 class SourceAddress : public Entity
                 {
@@ -637,13 +659,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi; //type: BfdAfIdEnum
-                        Value dummy; //type: uint8
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class BfdAfIdEnum;
+                        YLeaf afi; //type: BfdAfIdEnum
+                        YLeaf dummy; //type: uint8
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation::SourceAddress
@@ -662,11 +684,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value days; //type: uint32
-                        Value hours; //type: uint8
-                        Value minutes; //type: uint8
-                        Value seconds; //type: uint8
 
+
+                        YLeaf days; //type: uint32
+                        YLeaf hours; //type: uint8
+                        YLeaf minutes; //type: uint8
+                        YLeaf seconds; //type: uint8
 
 
 
@@ -686,26 +709,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation::TransmitPacket
@@ -724,26 +746,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation::ReceivePacket
@@ -764,6 +785,7 @@ class Bfd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AsyncIntervalMultiplier : public Entity
                     {
                         public:
@@ -777,11 +799,12 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_remote_transmit_interval; //type: uint32
-                            Value negotiated_local_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_remote_transmit_interval; //type: uint32
+                            YLeaf negotiated_local_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -801,10 +824,11 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -831,12 +855,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -856,12 +881,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -881,12 +907,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -906,12 +933,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -927,8 +955,6 @@ class Bfd : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation::SourceAddress> source_address;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation::StatusBriefInformation> status_brief_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation::TransmitPacket> transmit_packet;
-                    class BfdSessionEnum;
-                    class BfdMgmtSessionStateEnum;
 
 
             }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::StatusInformation
@@ -947,8 +973,9 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mp_download_state; //type: BfdMpDownloadStateEnum
 
+
+                    YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
 
                 class ChangeTime : public Entity
                 {
@@ -963,9 +990,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -973,7 +1001,6 @@ class Bfd : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::MpDownloadState::ChangeTime> change_time;
-                    class BfdMpDownloadStateEnum;
 
 
             }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::MpDownloadState
@@ -992,16 +1019,17 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsp_ping_tx_count; //type: uint32
-                    Value lsp_ping_tx_error_count; //type: uint32
-                    Value lsp_ping_tx_last_rc; //type: string
-                    Value lsp_ping_tx_last_error_rc; //type: string
-                    Value lsp_ping_rx_last_discr; //type: uint32
-                    Value lsp_ping_rx_count; //type: uint32
-                    Value lsp_ping_rx_last_code; //type: uint8
-                    Value lsp_ping_rx_last_subcode; //type: uint8
-                    Value lsp_ping_rx_last_output; //type: string
 
+
+                    YLeaf lsp_ping_tx_count; //type: uint32
+                    YLeaf lsp_ping_tx_error_count; //type: uint32
+                    YLeaf lsp_ping_tx_last_rc; //type: string
+                    YLeaf lsp_ping_tx_last_error_rc; //type: string
+                    YLeaf lsp_ping_rx_last_discr; //type: uint32
+                    YLeaf lsp_ping_rx_count; //type: uint32
+                    YLeaf lsp_ping_rx_last_code; //type: uint8
+                    YLeaf lsp_ping_rx_last_subcode; //type: uint8
+                    YLeaf lsp_ping_rx_last_output; //type: string
 
                 class LspPingTxLastTime : public Entity
                 {
@@ -1016,9 +1044,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -1038,9 +1067,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -1060,9 +1090,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -1090,12 +1121,13 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value detection_multiplier; //type: uint32
-                    Value adjusted_interval; //type: uint32
-                    Value adjusted_detection_multiplier; //type: uint32
-                    Value name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf detection_multiplier; //type: uint32
+                    YLeaf adjusted_interval; //type: uint32
+                    YLeaf adjusted_detection_multiplier; //type: uint32
+                    YLeaf name; //type: string
 
 
 
@@ -1115,9 +1147,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value local_discriminator; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf local_discriminator; //type: uint32
 
                 class SessionKey : public Entity
                 {
@@ -1132,13 +1165,14 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_key_type; //type: uint32
-                        Value interface_name; //type: string
-                        Value vrf_name; //type: string
-                        Value incoming_label; //type: uint32
-                        Value sbfd_enabled; //type: int32
-                        Value sbfd_target_type; //type: uint32
 
+
+                        YLeaf session_key_type; //type: uint32
+                        YLeaf interface_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf incoming_label; //type: uint32
+                        YLeaf sbfd_enabled; //type: int32
+                        YLeaf sbfd_target_type; //type: uint32
 
                     class IpDestinationAddress : public Entity
                     {
@@ -1153,13 +1187,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
@@ -1178,13 +1212,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
@@ -1203,8 +1237,9 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfdfe_ctype; //type: BfdApiFecEnum
 
+
+                            YLeaf bfdfe_ctype; //type: BfdApiFecEnum
 
                         class Dummy : public Entity
                         {
@@ -1219,8 +1254,9 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dummy; //type: string
 
+
+                                YLeaf dummy; //type: string
 
 
 
@@ -1240,19 +1276,19 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value s2l_fec_subgroup_id; //type: uint16
-                                Value s2l_fec_lsp_id; //type: uint16
-                                Value s2l_fec_tunnel_id; //type: uint16
-                                Value s2l_fec_extended_tunnel_id; //type: string
-                                Value s2l_fec_source; //type: string
-                                Value s2l_fec_dest; //type: string
-                                Value s2l_fec_p2mp_id; //type: uint32
-                                Value s2l_fec_subgroup_originator; //type: string
-                                Value s2l_fec_ctype; //type: MplsLibCEnum
-                                Value s2l_fec_vrf; //type: string
 
 
-                                class MplsLibCEnum;
+                                YLeaf s2l_fec_subgroup_id; //type: uint16
+                                YLeaf s2l_fec_lsp_id; //type: uint16
+                                YLeaf s2l_fec_tunnel_id; //type: uint16
+                                YLeaf s2l_fec_extended_tunnel_id; //type: string
+                                YLeaf s2l_fec_source; //type: string
+                                YLeaf s2l_fec_dest; //type: string
+                                YLeaf s2l_fec_p2mp_id; //type: uint32
+                                YLeaf s2l_fec_subgroup_originator; //type: string
+                                YLeaf s2l_fec_ctype; //type: MplsLibCEnum
+                                YLeaf s2l_fec_vrf; //type: string
+
 
 
                         }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
@@ -1260,7 +1296,6 @@ class Bfd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy> dummy;
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec> te_s2l_fec;
-                            class BfdApiFecEnum;
 
 
                     }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -1279,13 +1314,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress
@@ -1313,12 +1348,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value detection_multiplier; //type: uint32
-                        Value adjusted_interval; //type: uint32
-                        Value adjusted_detection_multiplier; //type: uint32
-                        Value name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf adjusted_interval; //type: uint32
+                        YLeaf adjusted_detection_multiplier; //type: uint32
+                        YLeaf name; //type: string
 
 
 
@@ -1327,7 +1363,6 @@ class Bfd : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::OwnerInformation> > owner_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation::SessionKey> session_key;
-                    class BfdSessionEnum;
 
 
             }; // Bfd::Ipv4MultiHopSessionDetails::Ipv4MultiHopSessionDetail::AssociationInformation
@@ -1364,6 +1399,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4SingleHopSessionDetail : public Entity
         {
             public:
@@ -1377,10 +1413,11 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
 
+
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
 
             class StatusInformation : public Entity
             {
@@ -1395,21 +1432,22 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value session_subtype; //type: string
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value local_discriminator; //type: uint32
-                    Value remote_discriminator; //type: uint32
-                    Value to_up_state_count; //type: uint32
-                    Value desired_minimum_echo_transmit_interval; //type: uint32
-                    Value remote_negotiated_interval; //type: uint32
-                    Value latency_number; //type: uint32
-                    Value latency_minimum; //type: uint32
-                    Value latency_maximum; //type: uint32
-                    Value latency_average; //type: uint32
-                    Value node_id; //type: string
-                    Value internal_label; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf session_subtype; //type: string
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf local_discriminator; //type: uint32
+                    YLeaf remote_discriminator; //type: uint32
+                    YLeaf to_up_state_count; //type: uint32
+                    YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+                    YLeaf remote_negotiated_interval; //type: uint32
+                    YLeaf latency_number; //type: uint32
+                    YLeaf latency_minimum; //type: uint32
+                    YLeaf latency_maximum; //type: uint32
+                    YLeaf latency_average; //type: uint32
+                    YLeaf node_id; //type: string
+                    YLeaf internal_label; //type: uint32
 
                 class SourceAddress : public Entity
                 {
@@ -1424,13 +1462,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi; //type: BfdAfIdEnum
-                        Value dummy; //type: uint8
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class BfdAfIdEnum;
+                        YLeaf afi; //type: BfdAfIdEnum
+                        YLeaf dummy; //type: uint8
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation::SourceAddress
@@ -1449,11 +1487,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value days; //type: uint32
-                        Value hours; //type: uint8
-                        Value minutes; //type: uint8
-                        Value seconds; //type: uint8
 
+
+                        YLeaf days; //type: uint32
+                        YLeaf hours; //type: uint8
+                        YLeaf minutes; //type: uint8
+                        YLeaf seconds; //type: uint8
 
 
 
@@ -1473,26 +1512,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation::TransmitPacket
@@ -1511,26 +1549,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation::ReceivePacket
@@ -1551,6 +1588,7 @@ class Bfd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AsyncIntervalMultiplier : public Entity
                     {
                         public:
@@ -1564,11 +1602,12 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_remote_transmit_interval; //type: uint32
-                            Value negotiated_local_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_remote_transmit_interval; //type: uint32
+                            YLeaf negotiated_local_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -1588,10 +1627,11 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -1618,12 +1658,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -1643,12 +1684,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -1668,12 +1710,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -1693,12 +1736,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -1714,8 +1758,6 @@ class Bfd : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation::SourceAddress> source_address;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation::StatusBriefInformation> status_brief_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation::TransmitPacket> transmit_packet;
-                    class BfdSessionEnum;
-                    class BfdMgmtSessionStateEnum;
 
 
             }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::StatusInformation
@@ -1734,8 +1776,9 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mp_download_state; //type: BfdMpDownloadStateEnum
 
+
+                    YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
 
                 class ChangeTime : public Entity
                 {
@@ -1750,9 +1793,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -1760,7 +1804,6 @@ class Bfd : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::MpDownloadState::ChangeTime> change_time;
-                    class BfdMpDownloadStateEnum;
 
 
             }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::MpDownloadState
@@ -1779,16 +1822,17 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsp_ping_tx_count; //type: uint32
-                    Value lsp_ping_tx_error_count; //type: uint32
-                    Value lsp_ping_tx_last_rc; //type: string
-                    Value lsp_ping_tx_last_error_rc; //type: string
-                    Value lsp_ping_rx_last_discr; //type: uint32
-                    Value lsp_ping_rx_count; //type: uint32
-                    Value lsp_ping_rx_last_code; //type: uint8
-                    Value lsp_ping_rx_last_subcode; //type: uint8
-                    Value lsp_ping_rx_last_output; //type: string
 
+
+                    YLeaf lsp_ping_tx_count; //type: uint32
+                    YLeaf lsp_ping_tx_error_count; //type: uint32
+                    YLeaf lsp_ping_tx_last_rc; //type: string
+                    YLeaf lsp_ping_tx_last_error_rc; //type: string
+                    YLeaf lsp_ping_rx_last_discr; //type: uint32
+                    YLeaf lsp_ping_rx_count; //type: uint32
+                    YLeaf lsp_ping_rx_last_code; //type: uint8
+                    YLeaf lsp_ping_rx_last_subcode; //type: uint8
+                    YLeaf lsp_ping_rx_last_output; //type: string
 
                 class LspPingTxLastTime : public Entity
                 {
@@ -1803,9 +1847,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -1825,9 +1870,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -1847,9 +1893,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -1877,12 +1924,13 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value detection_multiplier; //type: uint32
-                    Value adjusted_interval; //type: uint32
-                    Value adjusted_detection_multiplier; //type: uint32
-                    Value name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf detection_multiplier; //type: uint32
+                    YLeaf adjusted_interval; //type: uint32
+                    YLeaf adjusted_detection_multiplier; //type: uint32
+                    YLeaf name; //type: string
 
 
 
@@ -1902,9 +1950,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value local_discriminator; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf local_discriminator; //type: uint32
 
                 class SessionKey : public Entity
                 {
@@ -1919,13 +1968,14 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_key_type; //type: uint32
-                        Value interface_name; //type: string
-                        Value vrf_name; //type: string
-                        Value incoming_label; //type: uint32
-                        Value sbfd_enabled; //type: int32
-                        Value sbfd_target_type; //type: uint32
 
+
+                        YLeaf session_key_type; //type: uint32
+                        YLeaf interface_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf incoming_label; //type: uint32
+                        YLeaf sbfd_enabled; //type: int32
+                        YLeaf sbfd_target_type; //type: uint32
 
                     class IpDestinationAddress : public Entity
                     {
@@ -1940,13 +1990,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
@@ -1965,13 +2015,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
@@ -1990,8 +2040,9 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfdfe_ctype; //type: BfdApiFecEnum
 
+
+                            YLeaf bfdfe_ctype; //type: BfdApiFecEnum
 
                         class Dummy : public Entity
                         {
@@ -2006,8 +2057,9 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dummy; //type: string
 
+
+                                YLeaf dummy; //type: string
 
 
 
@@ -2027,19 +2079,19 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value s2l_fec_subgroup_id; //type: uint16
-                                Value s2l_fec_lsp_id; //type: uint16
-                                Value s2l_fec_tunnel_id; //type: uint16
-                                Value s2l_fec_extended_tunnel_id; //type: string
-                                Value s2l_fec_source; //type: string
-                                Value s2l_fec_dest; //type: string
-                                Value s2l_fec_p2mp_id; //type: uint32
-                                Value s2l_fec_subgroup_originator; //type: string
-                                Value s2l_fec_ctype; //type: MplsLibCEnum
-                                Value s2l_fec_vrf; //type: string
 
 
-                                class MplsLibCEnum;
+                                YLeaf s2l_fec_subgroup_id; //type: uint16
+                                YLeaf s2l_fec_lsp_id; //type: uint16
+                                YLeaf s2l_fec_tunnel_id; //type: uint16
+                                YLeaf s2l_fec_extended_tunnel_id; //type: string
+                                YLeaf s2l_fec_source; //type: string
+                                YLeaf s2l_fec_dest; //type: string
+                                YLeaf s2l_fec_p2mp_id; //type: uint32
+                                YLeaf s2l_fec_subgroup_originator; //type: string
+                                YLeaf s2l_fec_ctype; //type: MplsLibCEnum
+                                YLeaf s2l_fec_vrf; //type: string
+
 
 
                         }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
@@ -2047,7 +2099,6 @@ class Bfd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy> dummy;
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec> te_s2l_fec;
-                            class BfdApiFecEnum;
 
 
                     }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -2066,13 +2117,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress
@@ -2100,12 +2151,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value detection_multiplier; //type: uint32
-                        Value adjusted_interval; //type: uint32
-                        Value adjusted_detection_multiplier; //type: uint32
-                        Value name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf adjusted_interval; //type: uint32
+                        YLeaf adjusted_detection_multiplier; //type: uint32
+                        YLeaf name; //type: string
 
 
 
@@ -2114,7 +2166,6 @@ class Bfd : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::OwnerInformation> > owner_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation::SessionKey> session_key;
-                    class BfdSessionEnum;
 
 
             }; // Bfd::Ipv4SingleHopSessionDetails::Ipv4SingleHopSessionDetail::AssociationInformation
@@ -2151,6 +2202,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4MultiHopSessionBrief : public Entity
         {
             public:
@@ -2164,16 +2216,17 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value source_address; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value vrf_name; //type: string
-                Value node_id; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value session_type; //type: BfdSessionEnum
-                Value session_subtype; //type: string
-                Value session_flags; //type: uint32
 
+
+                YLeaf source_address; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf vrf_name; //type: string
+                YLeaf node_id; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf session_type; //type: BfdSessionEnum
+                YLeaf session_subtype; //type: string
+                YLeaf session_flags; //type: uint32
 
             class StatusBriefInformation : public Entity
             {
@@ -2190,6 +2243,7 @@ class Bfd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsyncIntervalMultiplier : public Entity
                 {
                     public:
@@ -2203,11 +2257,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_remote_transmit_interval; //type: uint32
-                        Value negotiated_local_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_remote_transmit_interval; //type: uint32
+                        YLeaf negotiated_local_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -2227,10 +2282,11 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -2245,8 +2301,6 @@ class Bfd : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopSessionBriefs::Ipv4MultiHopSessionBrief::StatusBriefInformation> status_brief_information;
-                class BfdSessionEnum;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::Ipv4MultiHopSessionBriefs::Ipv4MultiHopSessionBrief
@@ -2273,6 +2327,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class GenericSummary : public Entity
         {
             public:
@@ -2286,16 +2341,17 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location; //type: string
-                Value node_id; //type: string
-                Value pps_allocated_value; //type: uint32
-                Value ppsmp_allocated_value; //type: uint32
-                Value pps_max_value; //type: uint32
-                Value ppsmp_max_value; //type: uint32
-                Value total_session_number; //type: uint32
-                Value mp_session_number; //type: uint32
-                Value max_session_number; //type: uint32
 
+
+                YLeaf location; //type: string
+                YLeaf node_id; //type: string
+                YLeaf pps_allocated_value; //type: uint32
+                YLeaf ppsmp_allocated_value; //type: uint32
+                YLeaf pps_max_value; //type: uint32
+                YLeaf ppsmp_max_value; //type: uint32
+                YLeaf total_session_number; //type: uint32
+                YLeaf mp_session_number; //type: uint32
+                YLeaf max_session_number; //type: uint32
 
 
 
@@ -2323,6 +2379,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6SingleHopMultiPath : public Entity
         {
             public:
@@ -2336,18 +2393,18 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value session_subtype; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value local_discriminator; //type: uint32
-                Value node_id; //type: string
-                Value incoming_label_xr; //type: uint32
-                Value session_interface_name; //type: string
 
 
-                class BfdMgmtSessionStateEnum;
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf session_subtype; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf local_discriminator; //type: uint32
+                YLeaf node_id; //type: string
+                YLeaf incoming_label_xr; //type: uint32
+                YLeaf session_interface_name; //type: string
+
 
 
         }; // Bfd::Ipv6SingleHopMultiPaths::Ipv6SingleHopMultiPath
@@ -2374,6 +2431,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4SingleHopNodeLocationSummary : public Entity
         {
             public:
@@ -2387,8 +2445,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location; //type: string
 
+
+                YLeaf location; //type: string
 
             class SessionState : public Entity
             {
@@ -2403,13 +2462,14 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_count; //type: uint32
-                    Value up_count; //type: uint32
-                    Value down_count; //type: uint32
-                    Value unknown_count; //type: uint32
-                    Value retry_count; //type: uint32
-                    Value standby_count; //type: uint32
 
+
+                    YLeaf total_count; //type: uint32
+                    YLeaf up_count; //type: uint32
+                    YLeaf down_count; //type: uint32
+                    YLeaf unknown_count; //type: uint32
+                    YLeaf retry_count; //type: uint32
+                    YLeaf standby_count; //type: uint32
 
 
 
@@ -2443,6 +2503,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionState : public Entity
         {
             public:
@@ -2456,11 +2517,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_count; //type: uint32
-                Value down_count; //type: uint32
-                Value up_count; //type: uint32
-                Value unknown_count; //type: uint32
 
+
+                YLeaf total_count; //type: uint32
+                YLeaf down_count; //type: uint32
+                YLeaf up_count; //type: uint32
+                YLeaf unknown_count; //type: uint32
 
 
 
@@ -2488,6 +2550,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfDoMplsteHeadSessionBrief : public Entity
         {
             public:
@@ -2501,26 +2564,27 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value vrf_name; //type: string
-                Value incoming_label; //type: int32
-                Value fe_ctype; //type: int32
-                Value fec_subgroup_id; //type: int32
-                Value feclspid; //type: int32
-                Value fec_tunnel_id; //type: int32
-                Value fec_extended_tunnel_id; //type: string
-                Value fec_source; //type: string
-                Value fec_destination; //type: string
-                Value fecp2mpid; //type: int32
-                Value fec_subgroup_originator; //type: string
-                Value fec_ctype; //type: int32
-                Value location; //type: string
-                Value node_id; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value session_type; //type: BfdSessionEnum
-                Value session_subtype; //type: string
-                Value session_flags; //type: uint32
 
+
+                YLeaf interface_name; //type: string
+                YLeaf vrf_name; //type: string
+                YLeaf incoming_label; //type: int32
+                YLeaf fe_ctype; //type: int32
+                YLeaf fec_subgroup_id; //type: int32
+                YLeaf feclspid; //type: int32
+                YLeaf fec_tunnel_id; //type: int32
+                YLeaf fec_extended_tunnel_id; //type: string
+                YLeaf fec_source; //type: string
+                YLeaf fec_destination; //type: string
+                YLeaf fecp2mpid; //type: int32
+                YLeaf fec_subgroup_originator; //type: string
+                YLeaf fec_ctype; //type: int32
+                YLeaf location; //type: string
+                YLeaf node_id; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf session_type; //type: BfdSessionEnum
+                YLeaf session_subtype; //type: string
+                YLeaf session_flags; //type: uint32
 
             class StatusBriefInformation : public Entity
             {
@@ -2537,6 +2601,7 @@ class Bfd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsyncIntervalMultiplier : public Entity
                 {
                     public:
@@ -2550,11 +2615,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_remote_transmit_interval; //type: uint32
-                        Value negotiated_local_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_remote_transmit_interval; //type: uint32
+                        YLeaf negotiated_local_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -2574,10 +2640,11 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -2592,8 +2659,6 @@ class Bfd : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionBriefs::Ipv4BfDoMplsteHeadSessionBrief::StatusBriefInformation> status_brief_information;
-                class BfdSessionEnum;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::Ipv4BfDoMplsteHeadSessionBriefs::Ipv4BfDoMplsteHeadSessionBrief
@@ -2620,6 +2685,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfDoMplsteTailSessionDetail : public Entity
         {
             public:
@@ -2633,20 +2699,21 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value incoming_label; //type: int32
-                Value fe_ctype; //type: int32
-                Value fec_subgroup_id; //type: int32
-                Value feclspid; //type: int32
-                Value fec_tunnel_id; //type: int32
-                Value fec_extended_tunnel_id; //type: string
-                Value fec_source; //type: string
-                Value fec_destination; //type: string
-                Value fecp2mpid; //type: int32
-                Value fec_subgroup_originator; //type: string
-                Value fec_ctype; //type: int32
-                Value location; //type: string
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf incoming_label; //type: int32
+                YLeaf fe_ctype; //type: int32
+                YLeaf fec_subgroup_id; //type: int32
+                YLeaf feclspid; //type: int32
+                YLeaf fec_tunnel_id; //type: int32
+                YLeaf fec_extended_tunnel_id; //type: string
+                YLeaf fec_source; //type: string
+                YLeaf fec_destination; //type: string
+                YLeaf fecp2mpid; //type: int32
+                YLeaf fec_subgroup_originator; //type: string
+                YLeaf fec_ctype; //type: int32
+                YLeaf location; //type: string
 
             class StatusInformation : public Entity
             {
@@ -2661,21 +2728,22 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value session_subtype; //type: string
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value local_discriminator; //type: uint32
-                    Value remote_discriminator; //type: uint32
-                    Value to_up_state_count; //type: uint32
-                    Value desired_minimum_echo_transmit_interval; //type: uint32
-                    Value remote_negotiated_interval; //type: uint32
-                    Value latency_number; //type: uint32
-                    Value latency_minimum; //type: uint32
-                    Value latency_maximum; //type: uint32
-                    Value latency_average; //type: uint32
-                    Value node_id; //type: string
-                    Value internal_label; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf session_subtype; //type: string
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf local_discriminator; //type: uint32
+                    YLeaf remote_discriminator; //type: uint32
+                    YLeaf to_up_state_count; //type: uint32
+                    YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+                    YLeaf remote_negotiated_interval; //type: uint32
+                    YLeaf latency_number; //type: uint32
+                    YLeaf latency_minimum; //type: uint32
+                    YLeaf latency_maximum; //type: uint32
+                    YLeaf latency_average; //type: uint32
+                    YLeaf node_id; //type: string
+                    YLeaf internal_label; //type: uint32
 
                 class SourceAddress : public Entity
                 {
@@ -2690,13 +2758,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi; //type: BfdAfIdEnum
-                        Value dummy; //type: uint8
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class BfdAfIdEnum;
+                        YLeaf afi; //type: BfdAfIdEnum
+                        YLeaf dummy; //type: uint8
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation::SourceAddress
@@ -2715,11 +2783,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value days; //type: uint32
-                        Value hours; //type: uint8
-                        Value minutes; //type: uint8
-                        Value seconds; //type: uint8
 
+
+                        YLeaf days; //type: uint32
+                        YLeaf hours; //type: uint8
+                        YLeaf minutes; //type: uint8
+                        YLeaf seconds; //type: uint8
 
 
 
@@ -2739,26 +2808,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation::TransmitPacket
@@ -2777,26 +2845,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation::ReceivePacket
@@ -2817,6 +2884,7 @@ class Bfd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AsyncIntervalMultiplier : public Entity
                     {
                         public:
@@ -2830,11 +2898,12 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_remote_transmit_interval; //type: uint32
-                            Value negotiated_local_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_remote_transmit_interval; //type: uint32
+                            YLeaf negotiated_local_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -2854,10 +2923,11 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -2884,12 +2954,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -2909,12 +2980,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -2934,12 +3006,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -2959,12 +3032,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -2980,8 +3054,6 @@ class Bfd : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation::SourceAddress> source_address;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation::StatusBriefInformation> status_brief_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation::TransmitPacket> transmit_packet;
-                    class BfdSessionEnum;
-                    class BfdMgmtSessionStateEnum;
 
 
             }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::StatusInformation
@@ -3000,8 +3072,9 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mp_download_state; //type: BfdMpDownloadStateEnum
 
+
+                    YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
 
                 class ChangeTime : public Entity
                 {
@@ -3016,9 +3089,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -3026,7 +3100,6 @@ class Bfd : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::MpDownloadState::ChangeTime> change_time;
-                    class BfdMpDownloadStateEnum;
 
 
             }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::MpDownloadState
@@ -3045,16 +3118,17 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsp_ping_tx_count; //type: uint32
-                    Value lsp_ping_tx_error_count; //type: uint32
-                    Value lsp_ping_tx_last_rc; //type: string
-                    Value lsp_ping_tx_last_error_rc; //type: string
-                    Value lsp_ping_rx_last_discr; //type: uint32
-                    Value lsp_ping_rx_count; //type: uint32
-                    Value lsp_ping_rx_last_code; //type: uint8
-                    Value lsp_ping_rx_last_subcode; //type: uint8
-                    Value lsp_ping_rx_last_output; //type: string
 
+
+                    YLeaf lsp_ping_tx_count; //type: uint32
+                    YLeaf lsp_ping_tx_error_count; //type: uint32
+                    YLeaf lsp_ping_tx_last_rc; //type: string
+                    YLeaf lsp_ping_tx_last_error_rc; //type: string
+                    YLeaf lsp_ping_rx_last_discr; //type: uint32
+                    YLeaf lsp_ping_rx_count; //type: uint32
+                    YLeaf lsp_ping_rx_last_code; //type: uint8
+                    YLeaf lsp_ping_rx_last_subcode; //type: uint8
+                    YLeaf lsp_ping_rx_last_output; //type: string
 
                 class LspPingTxLastTime : public Entity
                 {
@@ -3069,9 +3143,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -3091,9 +3166,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -3113,9 +3189,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -3143,12 +3220,13 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value detection_multiplier; //type: uint32
-                    Value adjusted_interval; //type: uint32
-                    Value adjusted_detection_multiplier; //type: uint32
-                    Value name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf detection_multiplier; //type: uint32
+                    YLeaf adjusted_interval; //type: uint32
+                    YLeaf adjusted_detection_multiplier; //type: uint32
+                    YLeaf name; //type: string
 
 
 
@@ -3168,9 +3246,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value local_discriminator; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf local_discriminator; //type: uint32
 
                 class SessionKey : public Entity
                 {
@@ -3185,13 +3264,14 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_key_type; //type: uint32
-                        Value interface_name; //type: string
-                        Value vrf_name; //type: string
-                        Value incoming_label; //type: uint32
-                        Value sbfd_enabled; //type: int32
-                        Value sbfd_target_type; //type: uint32
 
+
+                        YLeaf session_key_type; //type: uint32
+                        YLeaf interface_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf incoming_label; //type: uint32
+                        YLeaf sbfd_enabled; //type: int32
+                        YLeaf sbfd_target_type; //type: uint32
 
                     class IpDestinationAddress : public Entity
                     {
@@ -3206,13 +3286,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
@@ -3231,13 +3311,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
@@ -3256,8 +3336,9 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfdfe_ctype; //type: BfdApiFecEnum
 
+
+                            YLeaf bfdfe_ctype; //type: BfdApiFecEnum
 
                         class Dummy : public Entity
                         {
@@ -3272,8 +3353,9 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dummy; //type: string
 
+
+                                YLeaf dummy; //type: string
 
 
 
@@ -3293,19 +3375,19 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value s2l_fec_subgroup_id; //type: uint16
-                                Value s2l_fec_lsp_id; //type: uint16
-                                Value s2l_fec_tunnel_id; //type: uint16
-                                Value s2l_fec_extended_tunnel_id; //type: string
-                                Value s2l_fec_source; //type: string
-                                Value s2l_fec_dest; //type: string
-                                Value s2l_fec_p2mp_id; //type: uint32
-                                Value s2l_fec_subgroup_originator; //type: string
-                                Value s2l_fec_ctype; //type: MplsLibCEnum
-                                Value s2l_fec_vrf; //type: string
 
 
-                                class MplsLibCEnum;
+                                YLeaf s2l_fec_subgroup_id; //type: uint16
+                                YLeaf s2l_fec_lsp_id; //type: uint16
+                                YLeaf s2l_fec_tunnel_id; //type: uint16
+                                YLeaf s2l_fec_extended_tunnel_id; //type: string
+                                YLeaf s2l_fec_source; //type: string
+                                YLeaf s2l_fec_dest; //type: string
+                                YLeaf s2l_fec_p2mp_id; //type: uint32
+                                YLeaf s2l_fec_subgroup_originator; //type: string
+                                YLeaf s2l_fec_ctype; //type: MplsLibCEnum
+                                YLeaf s2l_fec_vrf; //type: string
+
 
 
                         }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
@@ -3313,7 +3395,6 @@ class Bfd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy> dummy;
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec> te_s2l_fec;
-                            class BfdApiFecEnum;
 
 
                     }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -3332,13 +3413,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey::TargetAddress
@@ -3366,12 +3447,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value detection_multiplier; //type: uint32
-                        Value adjusted_interval; //type: uint32
-                        Value adjusted_detection_multiplier; //type: uint32
-                        Value name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf adjusted_interval; //type: uint32
+                        YLeaf adjusted_detection_multiplier; //type: uint32
+                        YLeaf name; //type: string
 
 
 
@@ -3380,7 +3462,6 @@ class Bfd : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::OwnerInformation> > owner_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation::SessionKey> session_key;
-                    class BfdSessionEnum;
 
 
             }; // Bfd::Ipv4BfDoMplsteTailSessionDetails::Ipv4BfDoMplsteTailSessionDetail::AssociationInformation
@@ -3417,6 +3498,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4MultiHopNodeLocationSummary : public Entity
         {
             public:
@@ -3430,8 +3512,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location; //type: string
 
+
+                YLeaf location; //type: string
 
             class SessionState : public Entity
             {
@@ -3446,13 +3529,14 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_count; //type: uint32
-                    Value up_count; //type: uint32
-                    Value down_count; //type: uint32
-                    Value unknown_count; //type: uint32
-                    Value retry_count; //type: uint32
-                    Value standby_count; //type: uint32
 
+
+                    YLeaf total_count; //type: uint32
+                    YLeaf up_count; //type: uint32
+                    YLeaf down_count; //type: uint32
+                    YLeaf unknown_count; //type: uint32
+                    YLeaf retry_count; //type: uint32
+                    YLeaf standby_count; //type: uint32
 
 
 
@@ -3486,6 +3570,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfDoMplsteTailSessionBrief : public Entity
         {
             public:
@@ -3499,25 +3584,26 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value incoming_label; //type: int32
-                Value fe_ctype; //type: int32
-                Value fec_subgroup_id; //type: int32
-                Value feclspid; //type: int32
-                Value fec_tunnel_id; //type: int32
-                Value fec_extended_tunnel_id; //type: string
-                Value fec_source; //type: string
-                Value fec_destination; //type: string
-                Value fecp2mpid; //type: int32
-                Value fec_subgroup_originator; //type: string
-                Value fec_ctype; //type: int32
-                Value location; //type: string
-                Value node_id; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value session_type; //type: BfdSessionEnum
-                Value session_subtype; //type: string
-                Value session_flags; //type: uint32
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf incoming_label; //type: int32
+                YLeaf fe_ctype; //type: int32
+                YLeaf fec_subgroup_id; //type: int32
+                YLeaf feclspid; //type: int32
+                YLeaf fec_tunnel_id; //type: int32
+                YLeaf fec_extended_tunnel_id; //type: string
+                YLeaf fec_source; //type: string
+                YLeaf fec_destination; //type: string
+                YLeaf fecp2mpid; //type: int32
+                YLeaf fec_subgroup_originator; //type: string
+                YLeaf fec_ctype; //type: int32
+                YLeaf location; //type: string
+                YLeaf node_id; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf session_type; //type: BfdSessionEnum
+                YLeaf session_subtype; //type: string
+                YLeaf session_flags; //type: uint32
 
             class StatusBriefInformation : public Entity
             {
@@ -3534,6 +3620,7 @@ class Bfd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsyncIntervalMultiplier : public Entity
                 {
                     public:
@@ -3547,11 +3634,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_remote_transmit_interval; //type: uint32
-                        Value negotiated_local_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_remote_transmit_interval; //type: uint32
+                        YLeaf negotiated_local_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -3571,10 +3659,11 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -3589,8 +3678,6 @@ class Bfd : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailSessionBriefs::Ipv4BfDoMplsteTailSessionBrief::StatusBriefInformation> status_brief_information;
-                class BfdSessionEnum;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::Ipv4BfDoMplsteTailSessionBriefs::Ipv4BfDoMplsteTailSessionBrief
@@ -3617,6 +3704,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6MultiHopNodeLocationSummary : public Entity
         {
             public:
@@ -3630,8 +3718,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location; //type: string
 
+
+                YLeaf location; //type: string
 
             class SessionState : public Entity
             {
@@ -3646,13 +3735,14 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_count; //type: uint32
-                    Value up_count; //type: uint32
-                    Value down_count; //type: uint32
-                    Value unknown_count; //type: uint32
-                    Value retry_count; //type: uint32
-                    Value standby_count; //type: uint32
 
+
+                    YLeaf total_count; //type: uint32
+                    YLeaf up_count; //type: uint32
+                    YLeaf down_count; //type: uint32
+                    YLeaf unknown_count; //type: uint32
+                    YLeaf retry_count; //type: uint32
+                    YLeaf standby_count; //type: uint32
 
 
 
@@ -3686,6 +3776,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionState : public Entity
         {
             public:
@@ -3699,11 +3790,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_count; //type: uint32
-                Value down_count; //type: uint32
-                Value up_count; //type: uint32
-                Value unknown_count; //type: uint32
 
+
+                YLeaf total_count; //type: uint32
+                YLeaf down_count; //type: uint32
+                YLeaf up_count; //type: uint32
+                YLeaf unknown_count; //type: uint32
 
 
 
@@ -3731,6 +3823,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4SingleHopPacketCounters : public Entity
         {
             public:
@@ -3746,6 +3839,7 @@ class Bfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv4SingleHopPacketCounter : public Entity
             {
                 public:
@@ -3759,15 +3853,15 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value hello_transmit_count; //type: uint32
-                    Value hello_receive_count; //type: uint32
-                    Value echo_transmit_count; //type: uint32
-                    Value echo_receive_count; //type: uint32
-                    Value display_type; //type: BfdMgmtPktDisplayEnum
 
 
-                    class BfdMgmtPktDisplayEnum;
+                    YLeaf interface_name; //type: string
+                    YLeaf hello_transmit_count; //type: uint32
+                    YLeaf hello_receive_count; //type: uint32
+                    YLeaf echo_transmit_count; //type: uint32
+                    YLeaf echo_receive_count; //type: uint32
+                    YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+
 
 
             }; // Bfd::Ipv4SingleHopCounters::Ipv4SingleHopPacketCounters::Ipv4SingleHopPacketCounter
@@ -3800,6 +3894,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6MultiHopSessionDetail : public Entity
         {
             public:
@@ -3813,11 +3908,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value source_address; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value vrf_name; //type: string
 
+
+                YLeaf source_address; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf vrf_name; //type: string
 
             class StatusInformation : public Entity
             {
@@ -3832,21 +3928,22 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value session_subtype; //type: string
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value local_discriminator; //type: uint32
-                    Value remote_discriminator; //type: uint32
-                    Value to_up_state_count; //type: uint32
-                    Value desired_minimum_echo_transmit_interval; //type: uint32
-                    Value remote_negotiated_interval; //type: uint32
-                    Value latency_number; //type: uint32
-                    Value latency_minimum; //type: uint32
-                    Value latency_maximum; //type: uint32
-                    Value latency_average; //type: uint32
-                    Value node_id; //type: string
-                    Value internal_label; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf session_subtype; //type: string
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf local_discriminator; //type: uint32
+                    YLeaf remote_discriminator; //type: uint32
+                    YLeaf to_up_state_count; //type: uint32
+                    YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+                    YLeaf remote_negotiated_interval; //type: uint32
+                    YLeaf latency_number; //type: uint32
+                    YLeaf latency_minimum; //type: uint32
+                    YLeaf latency_maximum; //type: uint32
+                    YLeaf latency_average; //type: uint32
+                    YLeaf node_id; //type: string
+                    YLeaf internal_label; //type: uint32
 
                 class SourceAddress : public Entity
                 {
@@ -3861,13 +3958,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi; //type: BfdAfIdEnum
-                        Value dummy; //type: uint8
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class BfdAfIdEnum;
+                        YLeaf afi; //type: BfdAfIdEnum
+                        YLeaf dummy; //type: uint8
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress
@@ -3886,11 +3983,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value days; //type: uint32
-                        Value hours; //type: uint8
-                        Value minutes; //type: uint8
-                        Value seconds; //type: uint8
 
+
+                        YLeaf days; //type: uint32
+                        YLeaf hours; //type: uint8
+                        YLeaf minutes; //type: uint8
+                        YLeaf seconds; //type: uint8
 
 
 
@@ -3910,26 +4008,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket
@@ -3948,26 +4045,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket
@@ -3988,6 +4084,7 @@ class Bfd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AsyncIntervalMultiplier : public Entity
                     {
                         public:
@@ -4001,11 +4098,12 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_remote_transmit_interval; //type: uint32
-                            Value negotiated_local_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_remote_transmit_interval; //type: uint32
+                            YLeaf negotiated_local_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -4025,10 +4123,11 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -4055,12 +4154,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -4080,12 +4180,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -4105,12 +4206,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -4130,12 +4232,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -4151,8 +4254,6 @@ class Bfd : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress> source_address;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation> status_brief_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket> transmit_packet;
-                    class BfdSessionEnum;
-                    class BfdMgmtSessionStateEnum;
 
 
             }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation
@@ -4171,8 +4272,9 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mp_download_state; //type: BfdMpDownloadStateEnum
 
+
+                    YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
 
                 class ChangeTime : public Entity
                 {
@@ -4187,9 +4289,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -4197,7 +4300,6 @@ class Bfd : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime> change_time;
-                    class BfdMpDownloadStateEnum;
 
 
             }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState
@@ -4216,16 +4318,17 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsp_ping_tx_count; //type: uint32
-                    Value lsp_ping_tx_error_count; //type: uint32
-                    Value lsp_ping_tx_last_rc; //type: string
-                    Value lsp_ping_tx_last_error_rc; //type: string
-                    Value lsp_ping_rx_last_discr; //type: uint32
-                    Value lsp_ping_rx_count; //type: uint32
-                    Value lsp_ping_rx_last_code; //type: uint8
-                    Value lsp_ping_rx_last_subcode; //type: uint8
-                    Value lsp_ping_rx_last_output; //type: string
 
+
+                    YLeaf lsp_ping_tx_count; //type: uint32
+                    YLeaf lsp_ping_tx_error_count; //type: uint32
+                    YLeaf lsp_ping_tx_last_rc; //type: string
+                    YLeaf lsp_ping_tx_last_error_rc; //type: string
+                    YLeaf lsp_ping_rx_last_discr; //type: uint32
+                    YLeaf lsp_ping_rx_count; //type: uint32
+                    YLeaf lsp_ping_rx_last_code; //type: uint8
+                    YLeaf lsp_ping_rx_last_subcode; //type: uint8
+                    YLeaf lsp_ping_rx_last_output; //type: string
 
                 class LspPingTxLastTime : public Entity
                 {
@@ -4240,9 +4343,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -4262,9 +4366,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -4284,9 +4389,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -4314,12 +4420,13 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value detection_multiplier; //type: uint32
-                    Value adjusted_interval; //type: uint32
-                    Value adjusted_detection_multiplier; //type: uint32
-                    Value name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf detection_multiplier; //type: uint32
+                    YLeaf adjusted_interval; //type: uint32
+                    YLeaf adjusted_detection_multiplier; //type: uint32
+                    YLeaf name; //type: string
 
 
 
@@ -4339,9 +4446,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value local_discriminator; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf local_discriminator; //type: uint32
 
                 class SessionKey : public Entity
                 {
@@ -4356,13 +4464,14 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_key_type; //type: uint32
-                        Value interface_name; //type: string
-                        Value vrf_name; //type: string
-                        Value incoming_label; //type: uint32
-                        Value sbfd_enabled; //type: int32
-                        Value sbfd_target_type; //type: uint32
 
+
+                        YLeaf session_key_type; //type: uint32
+                        YLeaf interface_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf incoming_label; //type: uint32
+                        YLeaf sbfd_enabled; //type: int32
+                        YLeaf sbfd_target_type; //type: uint32
 
                     class IpDestinationAddress : public Entity
                     {
@@ -4377,13 +4486,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
@@ -4402,13 +4511,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
@@ -4427,8 +4536,9 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfdfe_ctype; //type: BfdApiFecEnum
 
+
+                            YLeaf bfdfe_ctype; //type: BfdApiFecEnum
 
                         class Dummy : public Entity
                         {
@@ -4443,8 +4553,9 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dummy; //type: string
 
+
+                                YLeaf dummy; //type: string
 
 
 
@@ -4464,19 +4575,19 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value s2l_fec_subgroup_id; //type: uint16
-                                Value s2l_fec_lsp_id; //type: uint16
-                                Value s2l_fec_tunnel_id; //type: uint16
-                                Value s2l_fec_extended_tunnel_id; //type: string
-                                Value s2l_fec_source; //type: string
-                                Value s2l_fec_dest; //type: string
-                                Value s2l_fec_p2mp_id; //type: uint32
-                                Value s2l_fec_subgroup_originator; //type: string
-                                Value s2l_fec_ctype; //type: MplsLibCEnum
-                                Value s2l_fec_vrf; //type: string
 
 
-                                class MplsLibCEnum;
+                                YLeaf s2l_fec_subgroup_id; //type: uint16
+                                YLeaf s2l_fec_lsp_id; //type: uint16
+                                YLeaf s2l_fec_tunnel_id; //type: uint16
+                                YLeaf s2l_fec_extended_tunnel_id; //type: string
+                                YLeaf s2l_fec_source; //type: string
+                                YLeaf s2l_fec_dest; //type: string
+                                YLeaf s2l_fec_p2mp_id; //type: uint32
+                                YLeaf s2l_fec_subgroup_originator; //type: string
+                                YLeaf s2l_fec_ctype; //type: MplsLibCEnum
+                                YLeaf s2l_fec_vrf; //type: string
+
 
 
                         }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
@@ -4484,7 +4595,6 @@ class Bfd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy> dummy;
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec> te_s2l_fec;
-                            class BfdApiFecEnum;
 
 
                     }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -4503,13 +4613,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress
@@ -4537,12 +4647,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value detection_multiplier; //type: uint32
-                        Value adjusted_interval; //type: uint32
-                        Value adjusted_detection_multiplier; //type: uint32
-                        Value name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf adjusted_interval; //type: uint32
+                        YLeaf adjusted_detection_multiplier; //type: uint32
+                        YLeaf name; //type: string
 
 
 
@@ -4551,7 +4662,6 @@ class Bfd : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation> > owner_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey> session_key;
-                    class BfdSessionEnum;
 
 
             }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation
@@ -4588,6 +4698,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6MultiHopMultiPath : public Entity
         {
             public:
@@ -4601,19 +4712,19 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value source_address; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value vrf_name; //type: string
-                Value session_subtype; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value local_discriminator; //type: uint32
-                Value node_id; //type: string
-                Value incoming_label_xr; //type: uint32
-                Value session_interface_name; //type: string
 
 
-                class BfdMgmtSessionStateEnum;
+                YLeaf source_address; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf vrf_name; //type: string
+                YLeaf session_subtype; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf local_discriminator; //type: uint32
+                YLeaf node_id; //type: string
+                YLeaf incoming_label_xr; //type: uint32
+                YLeaf session_interface_name; //type: string
+
 
 
         }; // Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath
@@ -4640,6 +4751,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfDoMplsteHeadPacketCounters : public Entity
         {
             public:
@@ -4655,6 +4767,7 @@ class Bfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv4BfDoMplsteHeadPacketCounter : public Entity
             {
                 public:
@@ -4668,16 +4781,16 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value location; //type: string
-                    Value hello_transmit_count; //type: uint32
-                    Value hello_receive_count; //type: uint32
-                    Value echo_transmit_count; //type: uint32
-                    Value echo_receive_count; //type: uint32
-                    Value display_type; //type: BfdMgmtPktDisplayEnum
 
 
-                    class BfdMgmtPktDisplayEnum;
+                    YLeaf interface_name; //type: string
+                    YLeaf location; //type: string
+                    YLeaf hello_transmit_count; //type: uint32
+                    YLeaf hello_receive_count; //type: uint32
+                    YLeaf echo_transmit_count; //type: uint32
+                    YLeaf echo_receive_count; //type: uint32
+                    YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+
 
 
             }; // Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter
@@ -4710,6 +4823,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionMib : public Entity
         {
             public:
@@ -4723,28 +4837,29 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value discriminator; //type: int32
-                Value local_discriminator; //type: uint32
-                Value remote_discriminator; //type: uint32
-                Value sessionversion; //type: uint32
-                Value session_state; //type: uint32
-                Value trap_bitmap; //type: uint32
-                Value pkt_in; //type: uint64
-                Value pkt_out; //type: uint64
-                Value last_up_time_sec; //type: uint64
-                Value last_up_time_nsec; //type: uint32
-                Value last_down_time_sec; //type: uint64
-                Value last_down_time_nsec; //type: uint32
-                Value last_down_diag; //type: BfdMgmtSessionDiagEnum
-                Value up_counter; //type: uint32
-                Value last_time_cached; //type: uint64
-                Value interface_name; //type: string
-                Value int_handle; //type: uint32
-                Value detection_multiplier; //type: uint32
-                Value desired_min_tx_interval; //type: uint32
-                Value required_min_rx_interval; //type: uint32
-                Value required_min_rx_echo_interval; //type: uint32
 
+
+                YLeaf discriminator; //type: int32
+                YLeaf local_discriminator; //type: uint32
+                YLeaf remote_discriminator; //type: uint32
+                YLeaf sessionversion; //type: uint32
+                YLeaf session_state; //type: uint32
+                YLeaf trap_bitmap; //type: uint32
+                YLeaf pkt_in; //type: uint64
+                YLeaf pkt_out; //type: uint64
+                YLeaf last_up_time_sec; //type: uint64
+                YLeaf last_up_time_nsec; //type: uint32
+                YLeaf last_down_time_sec; //type: uint64
+                YLeaf last_down_time_nsec; //type: uint32
+                YLeaf last_down_diag; //type: BfdMgmtSessionDiagEnum
+                YLeaf up_counter; //type: uint32
+                YLeaf last_time_cached; //type: uint64
+                YLeaf interface_name; //type: string
+                YLeaf int_handle; //type: uint32
+                YLeaf detection_multiplier; //type: uint32
+                YLeaf desired_min_tx_interval; //type: uint32
+                YLeaf required_min_rx_interval; //type: uint32
+                YLeaf required_min_rx_echo_interval; //type: uint32
 
             class DestAddress : public Entity
             {
@@ -4759,20 +4874,19 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value afi; //type: BfdAfIdEnum
-                    Value dummy; //type: uint8
-                    Value ipv4; //type: string
-                    Value ipv6; //type: string
 
 
-                    class BfdAfIdEnum;
+                    YLeaf afi; //type: BfdAfIdEnum
+                    YLeaf dummy; //type: uint8
+                    YLeaf ipv4; //type: string
+                    YLeaf ipv6; //type: string
+
 
 
             }; // Bfd::SessionMibs::SessionMib::DestAddress
 
 
                 std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionMibs::SessionMib::DestAddress> dest_address;
-                class BfdMgmtSessionDiagEnum;
 
 
         }; // Bfd::SessionMibs::SessionMib
@@ -4799,6 +4913,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionState : public Entity
         {
             public:
@@ -4812,11 +4927,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_count; //type: uint32
-                Value down_count; //type: uint32
-                Value up_count; //type: uint32
-                Value unknown_count; //type: uint32
 
+
+                YLeaf total_count; //type: uint32
+                YLeaf down_count; //type: uint32
+                YLeaf up_count; //type: uint32
+                YLeaf unknown_count; //type: uint32
 
 
 
@@ -4844,6 +4960,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LabelSummaryNode : public Entity
         {
             public:
@@ -4857,8 +4974,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location_name; //type: string
 
+
+                YLeaf location_name; //type: string
 
             class SessionState : public Entity
             {
@@ -4873,13 +4991,14 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_count; //type: uint32
-                    Value up_count; //type: uint32
-                    Value down_count; //type: uint32
-                    Value unknown_count; //type: uint32
-                    Value retry_count; //type: uint32
-                    Value standby_count; //type: uint32
 
+
+                    YLeaf total_count; //type: uint32
+                    YLeaf up_count; //type: uint32
+                    YLeaf down_count; //type: uint32
+                    YLeaf unknown_count; //type: uint32
+                    YLeaf retry_count; //type: uint32
+                    YLeaf standby_count; //type: uint32
 
 
 
@@ -4913,6 +5032,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6MultiHopSessionBrief : public Entity
         {
             public:
@@ -4926,16 +5046,17 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value source_address; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value vrf_name; //type: string
-                Value node_id; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value session_type; //type: BfdSessionEnum
-                Value session_subtype; //type: string
-                Value session_flags; //type: uint32
 
+
+                YLeaf source_address; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf vrf_name; //type: string
+                YLeaf node_id; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf session_type; //type: BfdSessionEnum
+                YLeaf session_subtype; //type: string
+                YLeaf session_flags; //type: uint32
 
             class StatusBriefInformation : public Entity
             {
@@ -4952,6 +5073,7 @@ class Bfd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsyncIntervalMultiplier : public Entity
                 {
                     public:
@@ -4965,11 +5087,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_remote_transmit_interval; //type: uint32
-                        Value negotiated_local_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_remote_transmit_interval; //type: uint32
+                        YLeaf negotiated_local_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -4989,10 +5112,11 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -5007,8 +5131,6 @@ class Bfd : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation> status_brief_information;
-                class BfdSessionEnum;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief
@@ -5035,6 +5157,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionBrief : public Entity
         {
             public:
@@ -5048,15 +5171,16 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value node_id; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value session_type; //type: BfdSessionEnum
-                Value session_subtype; //type: string
-                Value session_flags; //type: uint32
 
+
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf node_id; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf session_type; //type: BfdSessionEnum
+                YLeaf session_subtype; //type: string
+                YLeaf session_flags; //type: uint32
 
             class StatusBriefInformation : public Entity
             {
@@ -5073,6 +5197,7 @@ class Bfd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsyncIntervalMultiplier : public Entity
                 {
                     public:
@@ -5086,11 +5211,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_remote_transmit_interval; //type: uint32
-                        Value negotiated_local_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_remote_transmit_interval; //type: uint32
+                        YLeaf negotiated_local_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -5110,10 +5236,11 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -5128,8 +5255,6 @@ class Bfd : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionBriefs::SessionBrief::StatusBriefInformation> status_brief_information;
-                class BfdSessionEnum;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::SessionBriefs::SessionBrief
@@ -5156,6 +5281,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6SingleHopNodeLocationSummary : public Entity
         {
             public:
@@ -5169,8 +5295,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location; //type: string
 
+
+                YLeaf location; //type: string
 
             class SessionState : public Entity
             {
@@ -5185,13 +5312,14 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_count; //type: uint32
-                    Value up_count; //type: uint32
-                    Value down_count; //type: uint32
-                    Value unknown_count; //type: uint32
-                    Value retry_count; //type: uint32
-                    Value standby_count; //type: uint32
 
+
+                    YLeaf total_count; //type: uint32
+                    YLeaf up_count; //type: uint32
+                    YLeaf down_count; //type: uint32
+                    YLeaf unknown_count; //type: uint32
+                    YLeaf retry_count; //type: uint32
+                    YLeaf standby_count; //type: uint32
 
 
 
@@ -5225,6 +5353,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionState : public Entity
         {
             public:
@@ -5238,11 +5367,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_count; //type: uint32
-                Value down_count; //type: uint32
-                Value up_count; //type: uint32
-                Value unknown_count; //type: uint32
 
+
+                YLeaf total_count; //type: uint32
+                YLeaf down_count; //type: uint32
+                YLeaf up_count; //type: uint32
+                YLeaf unknown_count; //type: uint32
 
 
 
@@ -5270,6 +5400,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfdMplsteTailNodeSummary : public Entity
         {
             public:
@@ -5283,8 +5414,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location_name; //type: string
 
+
+                YLeaf location_name; //type: string
 
             class SessionState : public Entity
             {
@@ -5299,13 +5431,14 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_count; //type: uint32
-                    Value up_count; //type: uint32
-                    Value down_count; //type: uint32
-                    Value unknown_count; //type: uint32
-                    Value retry_count; //type: uint32
-                    Value standby_count; //type: uint32
 
+
+                    YLeaf total_count; //type: uint32
+                    YLeaf up_count; //type: uint32
+                    YLeaf down_count; //type: uint32
+                    YLeaf unknown_count; //type: uint32
+                    YLeaf retry_count; //type: uint32
+                    YLeaf standby_count; //type: uint32
 
 
 
@@ -5339,6 +5472,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4SingleHopLocationSummary : public Entity
         {
             public:
@@ -5352,8 +5486,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location_name; //type: string
 
+
+                YLeaf location_name; //type: string
 
             class SessionState : public Entity
             {
@@ -5368,13 +5503,14 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_count; //type: uint32
-                    Value up_count; //type: uint32
-                    Value down_count; //type: uint32
-                    Value unknown_count; //type: uint32
-                    Value retry_count; //type: uint32
-                    Value standby_count; //type: uint32
 
+
+                    YLeaf total_count; //type: uint32
+                    YLeaf up_count; //type: uint32
+                    YLeaf down_count; //type: uint32
+                    YLeaf unknown_count; //type: uint32
+                    YLeaf retry_count; //type: uint32
+                    YLeaf standby_count; //type: uint32
 
 
 
@@ -5408,6 +5544,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfdMplsteHeadSummaryNode : public Entity
         {
             public:
@@ -5421,8 +5558,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location_name; //type: string
 
+
+                YLeaf location_name; //type: string
 
             class SessionState : public Entity
             {
@@ -5437,13 +5575,14 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_count; //type: uint32
-                    Value up_count; //type: uint32
-                    Value down_count; //type: uint32
-                    Value unknown_count; //type: uint32
-                    Value retry_count; //type: uint32
-                    Value standby_count; //type: uint32
 
+
+                    YLeaf total_count; //type: uint32
+                    YLeaf up_count; //type: uint32
+                    YLeaf down_count; //type: uint32
+                    YLeaf unknown_count; //type: uint32
+                    YLeaf retry_count; //type: uint32
+                    YLeaf standby_count; //type: uint32
 
 
 
@@ -5477,6 +5616,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LabelSessionDetail : public Entity
         {
             public:
@@ -5490,10 +5630,11 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value incoming_label; //type: int32
-                Value location; //type: string
 
+
+                YLeaf interface_name; //type: string
+                YLeaf incoming_label; //type: int32
+                YLeaf location; //type: string
 
             class StatusInformation : public Entity
             {
@@ -5508,21 +5649,22 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value session_subtype; //type: string
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value local_discriminator; //type: uint32
-                    Value remote_discriminator; //type: uint32
-                    Value to_up_state_count; //type: uint32
-                    Value desired_minimum_echo_transmit_interval; //type: uint32
-                    Value remote_negotiated_interval; //type: uint32
-                    Value latency_number; //type: uint32
-                    Value latency_minimum; //type: uint32
-                    Value latency_maximum; //type: uint32
-                    Value latency_average; //type: uint32
-                    Value node_id; //type: string
-                    Value internal_label; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf session_subtype; //type: string
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf local_discriminator; //type: uint32
+                    YLeaf remote_discriminator; //type: uint32
+                    YLeaf to_up_state_count; //type: uint32
+                    YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+                    YLeaf remote_negotiated_interval; //type: uint32
+                    YLeaf latency_number; //type: uint32
+                    YLeaf latency_minimum; //type: uint32
+                    YLeaf latency_maximum; //type: uint32
+                    YLeaf latency_average; //type: uint32
+                    YLeaf node_id; //type: string
+                    YLeaf internal_label; //type: uint32
 
                 class SourceAddress : public Entity
                 {
@@ -5537,13 +5679,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi; //type: BfdAfIdEnum
-                        Value dummy; //type: uint8
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class BfdAfIdEnum;
+                        YLeaf afi; //type: BfdAfIdEnum
+                        YLeaf dummy; //type: uint8
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress
@@ -5562,11 +5704,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value days; //type: uint32
-                        Value hours; //type: uint8
-                        Value minutes; //type: uint8
-                        Value seconds; //type: uint8
 
+
+                        YLeaf days; //type: uint32
+                        YLeaf hours; //type: uint8
+                        YLeaf minutes; //type: uint8
+                        YLeaf seconds; //type: uint8
 
 
 
@@ -5586,26 +5729,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket
@@ -5624,26 +5766,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket
@@ -5664,6 +5805,7 @@ class Bfd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AsyncIntervalMultiplier : public Entity
                     {
                         public:
@@ -5677,11 +5819,12 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_remote_transmit_interval; //type: uint32
-                            Value negotiated_local_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_remote_transmit_interval; //type: uint32
+                            YLeaf negotiated_local_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -5701,10 +5844,11 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -5731,12 +5875,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -5756,12 +5901,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -5781,12 +5927,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -5806,12 +5953,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -5827,8 +5975,6 @@ class Bfd : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress> source_address;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation> status_brief_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket> transmit_packet;
-                    class BfdSessionEnum;
-                    class BfdMgmtSessionStateEnum;
 
 
             }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
@@ -5847,8 +5993,9 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mp_download_state; //type: BfdMpDownloadStateEnum
 
+
+                    YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
 
                 class ChangeTime : public Entity
                 {
@@ -5863,9 +6010,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -5873,7 +6021,6 @@ class Bfd : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime> change_time;
-                    class BfdMpDownloadStateEnum;
 
 
             }; // Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState
@@ -5892,16 +6039,17 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsp_ping_tx_count; //type: uint32
-                    Value lsp_ping_tx_error_count; //type: uint32
-                    Value lsp_ping_tx_last_rc; //type: string
-                    Value lsp_ping_tx_last_error_rc; //type: string
-                    Value lsp_ping_rx_last_discr; //type: uint32
-                    Value lsp_ping_rx_count; //type: uint32
-                    Value lsp_ping_rx_last_code; //type: uint8
-                    Value lsp_ping_rx_last_subcode; //type: uint8
-                    Value lsp_ping_rx_last_output; //type: string
 
+
+                    YLeaf lsp_ping_tx_count; //type: uint32
+                    YLeaf lsp_ping_tx_error_count; //type: uint32
+                    YLeaf lsp_ping_tx_last_rc; //type: string
+                    YLeaf lsp_ping_tx_last_error_rc; //type: string
+                    YLeaf lsp_ping_rx_last_discr; //type: uint32
+                    YLeaf lsp_ping_rx_count; //type: uint32
+                    YLeaf lsp_ping_rx_last_code; //type: uint8
+                    YLeaf lsp_ping_rx_last_subcode; //type: uint8
+                    YLeaf lsp_ping_rx_last_output; //type: string
 
                 class LspPingTxLastTime : public Entity
                 {
@@ -5916,9 +6064,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -5938,9 +6087,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -5960,9 +6110,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -5990,12 +6141,13 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value detection_multiplier; //type: uint32
-                    Value adjusted_interval; //type: uint32
-                    Value adjusted_detection_multiplier; //type: uint32
-                    Value name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf detection_multiplier; //type: uint32
+                    YLeaf adjusted_interval; //type: uint32
+                    YLeaf adjusted_detection_multiplier; //type: uint32
+                    YLeaf name; //type: string
 
 
 
@@ -6015,9 +6167,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value local_discriminator; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf local_discriminator; //type: uint32
 
                 class SessionKey : public Entity
                 {
@@ -6032,13 +6185,14 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_key_type; //type: uint32
-                        Value interface_name; //type: string
-                        Value vrf_name; //type: string
-                        Value incoming_label; //type: uint32
-                        Value sbfd_enabled; //type: int32
-                        Value sbfd_target_type; //type: uint32
 
+
+                        YLeaf session_key_type; //type: uint32
+                        YLeaf interface_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf incoming_label; //type: uint32
+                        YLeaf sbfd_enabled; //type: int32
+                        YLeaf sbfd_target_type; //type: uint32
 
                     class IpDestinationAddress : public Entity
                     {
@@ -6053,13 +6207,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
@@ -6078,13 +6232,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
@@ -6103,8 +6257,9 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfdfe_ctype; //type: BfdApiFecEnum
 
+
+                            YLeaf bfdfe_ctype; //type: BfdApiFecEnum
 
                         class Dummy : public Entity
                         {
@@ -6119,8 +6274,9 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dummy; //type: string
 
+
+                                YLeaf dummy; //type: string
 
 
 
@@ -6140,19 +6296,19 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value s2l_fec_subgroup_id; //type: uint16
-                                Value s2l_fec_lsp_id; //type: uint16
-                                Value s2l_fec_tunnel_id; //type: uint16
-                                Value s2l_fec_extended_tunnel_id; //type: string
-                                Value s2l_fec_source; //type: string
-                                Value s2l_fec_dest; //type: string
-                                Value s2l_fec_p2mp_id; //type: uint32
-                                Value s2l_fec_subgroup_originator; //type: string
-                                Value s2l_fec_ctype; //type: MplsLibCEnum
-                                Value s2l_fec_vrf; //type: string
 
 
-                                class MplsLibCEnum;
+                                YLeaf s2l_fec_subgroup_id; //type: uint16
+                                YLeaf s2l_fec_lsp_id; //type: uint16
+                                YLeaf s2l_fec_tunnel_id; //type: uint16
+                                YLeaf s2l_fec_extended_tunnel_id; //type: string
+                                YLeaf s2l_fec_source; //type: string
+                                YLeaf s2l_fec_dest; //type: string
+                                YLeaf s2l_fec_p2mp_id; //type: uint32
+                                YLeaf s2l_fec_subgroup_originator; //type: string
+                                YLeaf s2l_fec_ctype; //type: MplsLibCEnum
+                                YLeaf s2l_fec_vrf; //type: string
+
 
 
                         }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
@@ -6160,7 +6316,6 @@ class Bfd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy> dummy;
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec> te_s2l_fec;
-                            class BfdApiFecEnum;
 
 
                     }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -6179,13 +6334,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress
@@ -6213,12 +6368,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value detection_multiplier; //type: uint32
-                        Value adjusted_interval; //type: uint32
-                        Value adjusted_detection_multiplier; //type: uint32
-                        Value name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf adjusted_interval; //type: uint32
+                        YLeaf adjusted_detection_multiplier; //type: uint32
+                        YLeaf name; //type: string
 
 
 
@@ -6227,7 +6383,6 @@ class Bfd : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation> > owner_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey> session_key;
-                    class BfdSessionEnum;
 
 
             }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation
@@ -6264,6 +6419,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6SingleHopSessionDetail : public Entity
         {
             public:
@@ -6277,10 +6433,11 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
 
+
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
 
             class StatusInformation : public Entity
             {
@@ -6295,21 +6452,22 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value session_subtype; //type: string
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value local_discriminator; //type: uint32
-                    Value remote_discriminator; //type: uint32
-                    Value to_up_state_count; //type: uint32
-                    Value desired_minimum_echo_transmit_interval; //type: uint32
-                    Value remote_negotiated_interval; //type: uint32
-                    Value latency_number; //type: uint32
-                    Value latency_minimum; //type: uint32
-                    Value latency_maximum; //type: uint32
-                    Value latency_average; //type: uint32
-                    Value node_id; //type: string
-                    Value internal_label; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf session_subtype; //type: string
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf local_discriminator; //type: uint32
+                    YLeaf remote_discriminator; //type: uint32
+                    YLeaf to_up_state_count; //type: uint32
+                    YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+                    YLeaf remote_negotiated_interval; //type: uint32
+                    YLeaf latency_number; //type: uint32
+                    YLeaf latency_minimum; //type: uint32
+                    YLeaf latency_maximum; //type: uint32
+                    YLeaf latency_average; //type: uint32
+                    YLeaf node_id; //type: string
+                    YLeaf internal_label; //type: uint32
 
                 class SourceAddress : public Entity
                 {
@@ -6324,13 +6482,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi; //type: BfdAfIdEnum
-                        Value dummy; //type: uint8
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class BfdAfIdEnum;
+                        YLeaf afi; //type: BfdAfIdEnum
+                        YLeaf dummy; //type: uint8
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress
@@ -6349,11 +6507,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value days; //type: uint32
-                        Value hours; //type: uint8
-                        Value minutes; //type: uint8
-                        Value seconds; //type: uint8
 
+
+                        YLeaf days; //type: uint32
+                        YLeaf hours; //type: uint8
+                        YLeaf minutes; //type: uint8
+                        YLeaf seconds; //type: uint8
 
 
 
@@ -6373,26 +6532,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket
@@ -6411,26 +6569,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket
@@ -6451,6 +6608,7 @@ class Bfd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AsyncIntervalMultiplier : public Entity
                     {
                         public:
@@ -6464,11 +6622,12 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_remote_transmit_interval; //type: uint32
-                            Value negotiated_local_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_remote_transmit_interval; //type: uint32
+                            YLeaf negotiated_local_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -6488,10 +6647,11 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -6518,12 +6678,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -6543,12 +6704,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -6568,12 +6730,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -6593,12 +6756,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -6614,8 +6778,6 @@ class Bfd : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress> source_address;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation> status_brief_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket> transmit_packet;
-                    class BfdSessionEnum;
-                    class BfdMgmtSessionStateEnum;
 
 
             }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation
@@ -6634,8 +6796,9 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mp_download_state; //type: BfdMpDownloadStateEnum
 
+
+                    YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
 
                 class ChangeTime : public Entity
                 {
@@ -6650,9 +6813,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -6660,7 +6824,6 @@ class Bfd : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime> change_time;
-                    class BfdMpDownloadStateEnum;
 
 
             }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState
@@ -6679,16 +6842,17 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsp_ping_tx_count; //type: uint32
-                    Value lsp_ping_tx_error_count; //type: uint32
-                    Value lsp_ping_tx_last_rc; //type: string
-                    Value lsp_ping_tx_last_error_rc; //type: string
-                    Value lsp_ping_rx_last_discr; //type: uint32
-                    Value lsp_ping_rx_count; //type: uint32
-                    Value lsp_ping_rx_last_code; //type: uint8
-                    Value lsp_ping_rx_last_subcode; //type: uint8
-                    Value lsp_ping_rx_last_output; //type: string
 
+
+                    YLeaf lsp_ping_tx_count; //type: uint32
+                    YLeaf lsp_ping_tx_error_count; //type: uint32
+                    YLeaf lsp_ping_tx_last_rc; //type: string
+                    YLeaf lsp_ping_tx_last_error_rc; //type: string
+                    YLeaf lsp_ping_rx_last_discr; //type: uint32
+                    YLeaf lsp_ping_rx_count; //type: uint32
+                    YLeaf lsp_ping_rx_last_code; //type: uint8
+                    YLeaf lsp_ping_rx_last_subcode; //type: uint8
+                    YLeaf lsp_ping_rx_last_output; //type: string
 
                 class LspPingTxLastTime : public Entity
                 {
@@ -6703,9 +6867,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -6725,9 +6890,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -6747,9 +6913,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -6777,12 +6944,13 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value detection_multiplier; //type: uint32
-                    Value adjusted_interval; //type: uint32
-                    Value adjusted_detection_multiplier; //type: uint32
-                    Value name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf detection_multiplier; //type: uint32
+                    YLeaf adjusted_interval; //type: uint32
+                    YLeaf adjusted_detection_multiplier; //type: uint32
+                    YLeaf name; //type: string
 
 
 
@@ -6802,9 +6970,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value local_discriminator; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf local_discriminator; //type: uint32
 
                 class SessionKey : public Entity
                 {
@@ -6819,13 +6988,14 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_key_type; //type: uint32
-                        Value interface_name; //type: string
-                        Value vrf_name; //type: string
-                        Value incoming_label; //type: uint32
-                        Value sbfd_enabled; //type: int32
-                        Value sbfd_target_type; //type: uint32
 
+
+                        YLeaf session_key_type; //type: uint32
+                        YLeaf interface_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf incoming_label; //type: uint32
+                        YLeaf sbfd_enabled; //type: int32
+                        YLeaf sbfd_target_type; //type: uint32
 
                     class IpDestinationAddress : public Entity
                     {
@@ -6840,13 +7010,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
@@ -6865,13 +7035,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
@@ -6890,8 +7060,9 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfdfe_ctype; //type: BfdApiFecEnum
 
+
+                            YLeaf bfdfe_ctype; //type: BfdApiFecEnum
 
                         class Dummy : public Entity
                         {
@@ -6906,8 +7077,9 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dummy; //type: string
 
+
+                                YLeaf dummy; //type: string
 
 
 
@@ -6927,19 +7099,19 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value s2l_fec_subgroup_id; //type: uint16
-                                Value s2l_fec_lsp_id; //type: uint16
-                                Value s2l_fec_tunnel_id; //type: uint16
-                                Value s2l_fec_extended_tunnel_id; //type: string
-                                Value s2l_fec_source; //type: string
-                                Value s2l_fec_dest; //type: string
-                                Value s2l_fec_p2mp_id; //type: uint32
-                                Value s2l_fec_subgroup_originator; //type: string
-                                Value s2l_fec_ctype; //type: MplsLibCEnum
-                                Value s2l_fec_vrf; //type: string
 
 
-                                class MplsLibCEnum;
+                                YLeaf s2l_fec_subgroup_id; //type: uint16
+                                YLeaf s2l_fec_lsp_id; //type: uint16
+                                YLeaf s2l_fec_tunnel_id; //type: uint16
+                                YLeaf s2l_fec_extended_tunnel_id; //type: string
+                                YLeaf s2l_fec_source; //type: string
+                                YLeaf s2l_fec_dest; //type: string
+                                YLeaf s2l_fec_p2mp_id; //type: uint32
+                                YLeaf s2l_fec_subgroup_originator; //type: string
+                                YLeaf s2l_fec_ctype; //type: MplsLibCEnum
+                                YLeaf s2l_fec_vrf; //type: string
+
 
 
                         }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
@@ -6947,7 +7119,6 @@ class Bfd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy> dummy;
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec> te_s2l_fec;
-                            class BfdApiFecEnum;
 
 
                     }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -6966,13 +7137,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress
@@ -7000,12 +7171,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value detection_multiplier; //type: uint32
-                        Value adjusted_interval; //type: uint32
-                        Value adjusted_detection_multiplier; //type: uint32
-                        Value name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf adjusted_interval; //type: uint32
+                        YLeaf adjusted_detection_multiplier; //type: uint32
+                        YLeaf name; //type: string
 
 
 
@@ -7014,7 +7186,6 @@ class Bfd : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation> > owner_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey> session_key;
-                    class BfdSessionEnum;
 
 
             }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation
@@ -7051,6 +7222,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4MultiHopPacketCounters : public Entity
         {
             public:
@@ -7066,6 +7238,7 @@ class Bfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv4MultiHopPacketCounter : public Entity
             {
                 public:
@@ -7079,18 +7252,18 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value source_address; //type: string
-                    Value destination_address; //type: string
-                    Value location; //type: string
-                    Value vrf_name; //type: string
-                    Value hello_transmit_count; //type: uint32
-                    Value hello_receive_count; //type: uint32
-                    Value echo_transmit_count; //type: uint32
-                    Value echo_receive_count; //type: uint32
-                    Value display_type; //type: BfdMgmtPktDisplayEnum
 
 
-                    class BfdMgmtPktDisplayEnum;
+                    YLeaf source_address; //type: string
+                    YLeaf destination_address; //type: string
+                    YLeaf location; //type: string
+                    YLeaf vrf_name; //type: string
+                    YLeaf hello_transmit_count; //type: uint32
+                    YLeaf hello_receive_count; //type: uint32
+                    YLeaf echo_transmit_count; //type: uint32
+                    YLeaf echo_receive_count; //type: uint32
+                    YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+
 
 
             }; // Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter
@@ -7123,6 +7296,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionDetail : public Entity
         {
             public:
@@ -7136,10 +7310,11 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
 
+
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
 
             class StatusInformation : public Entity
             {
@@ -7154,21 +7329,22 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value session_subtype; //type: string
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value local_discriminator; //type: uint32
-                    Value remote_discriminator; //type: uint32
-                    Value to_up_state_count; //type: uint32
-                    Value desired_minimum_echo_transmit_interval; //type: uint32
-                    Value remote_negotiated_interval; //type: uint32
-                    Value latency_number; //type: uint32
-                    Value latency_minimum; //type: uint32
-                    Value latency_maximum; //type: uint32
-                    Value latency_average; //type: uint32
-                    Value node_id; //type: string
-                    Value internal_label; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf session_subtype; //type: string
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf local_discriminator; //type: uint32
+                    YLeaf remote_discriminator; //type: uint32
+                    YLeaf to_up_state_count; //type: uint32
+                    YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+                    YLeaf remote_negotiated_interval; //type: uint32
+                    YLeaf latency_number; //type: uint32
+                    YLeaf latency_minimum; //type: uint32
+                    YLeaf latency_maximum; //type: uint32
+                    YLeaf latency_average; //type: uint32
+                    YLeaf node_id; //type: string
+                    YLeaf internal_label; //type: uint32
 
                 class SourceAddress : public Entity
                 {
@@ -7183,13 +7359,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi; //type: BfdAfIdEnum
-                        Value dummy; //type: uint8
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class BfdAfIdEnum;
+                        YLeaf afi; //type: BfdAfIdEnum
+                        YLeaf dummy; //type: uint8
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress
@@ -7208,11 +7384,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value days; //type: uint32
-                        Value hours; //type: uint8
-                        Value minutes; //type: uint8
-                        Value seconds; //type: uint8
 
+
+                        YLeaf days; //type: uint32
+                        YLeaf hours; //type: uint8
+                        YLeaf minutes; //type: uint8
+                        YLeaf seconds; //type: uint8
 
 
 
@@ -7232,26 +7409,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket
@@ -7270,26 +7446,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket
@@ -7310,6 +7485,7 @@ class Bfd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AsyncIntervalMultiplier : public Entity
                     {
                         public:
@@ -7323,11 +7499,12 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_remote_transmit_interval; //type: uint32
-                            Value negotiated_local_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_remote_transmit_interval; //type: uint32
+                            YLeaf negotiated_local_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -7347,10 +7524,11 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -7377,12 +7555,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -7402,12 +7581,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -7427,12 +7607,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -7452,12 +7633,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -7473,8 +7655,6 @@ class Bfd : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress> source_address;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation> status_brief_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket> transmit_packet;
-                    class BfdSessionEnum;
-                    class BfdMgmtSessionStateEnum;
 
 
             }; // Bfd::SessionDetails::SessionDetail::StatusInformation
@@ -7493,8 +7673,9 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mp_download_state; //type: BfdMpDownloadStateEnum
 
+
+                    YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
 
                 class ChangeTime : public Entity
                 {
@@ -7509,9 +7690,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -7519,7 +7701,6 @@ class Bfd : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime> change_time;
-                    class BfdMpDownloadStateEnum;
 
 
             }; // Bfd::SessionDetails::SessionDetail::MpDownloadState
@@ -7538,16 +7719,17 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsp_ping_tx_count; //type: uint32
-                    Value lsp_ping_tx_error_count; //type: uint32
-                    Value lsp_ping_tx_last_rc; //type: string
-                    Value lsp_ping_tx_last_error_rc; //type: string
-                    Value lsp_ping_rx_last_discr; //type: uint32
-                    Value lsp_ping_rx_count; //type: uint32
-                    Value lsp_ping_rx_last_code; //type: uint8
-                    Value lsp_ping_rx_last_subcode; //type: uint8
-                    Value lsp_ping_rx_last_output; //type: string
 
+
+                    YLeaf lsp_ping_tx_count; //type: uint32
+                    YLeaf lsp_ping_tx_error_count; //type: uint32
+                    YLeaf lsp_ping_tx_last_rc; //type: string
+                    YLeaf lsp_ping_tx_last_error_rc; //type: string
+                    YLeaf lsp_ping_rx_last_discr; //type: uint32
+                    YLeaf lsp_ping_rx_count; //type: uint32
+                    YLeaf lsp_ping_rx_last_code; //type: uint8
+                    YLeaf lsp_ping_rx_last_subcode; //type: uint8
+                    YLeaf lsp_ping_rx_last_output; //type: string
 
                 class LspPingTxLastTime : public Entity
                 {
@@ -7562,9 +7744,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -7584,9 +7767,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -7606,9 +7790,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -7636,12 +7821,13 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value detection_multiplier; //type: uint32
-                    Value adjusted_interval; //type: uint32
-                    Value adjusted_detection_multiplier; //type: uint32
-                    Value name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf detection_multiplier; //type: uint32
+                    YLeaf adjusted_interval; //type: uint32
+                    YLeaf adjusted_detection_multiplier; //type: uint32
+                    YLeaf name; //type: string
 
 
 
@@ -7661,9 +7847,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value local_discriminator; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf local_discriminator; //type: uint32
 
                 class SessionKey : public Entity
                 {
@@ -7678,13 +7865,14 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_key_type; //type: uint32
-                        Value interface_name; //type: string
-                        Value vrf_name; //type: string
-                        Value incoming_label; //type: uint32
-                        Value sbfd_enabled; //type: int32
-                        Value sbfd_target_type; //type: uint32
 
+
+                        YLeaf session_key_type; //type: uint32
+                        YLeaf interface_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf incoming_label; //type: uint32
+                        YLeaf sbfd_enabled; //type: int32
+                        YLeaf sbfd_target_type; //type: uint32
 
                     class IpDestinationAddress : public Entity
                     {
@@ -7699,13 +7887,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
@@ -7724,13 +7912,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::IpSourceAddress
@@ -7749,8 +7937,9 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfdfe_ctype; //type: BfdApiFecEnum
 
+
+                            YLeaf bfdfe_ctype; //type: BfdApiFecEnum
 
                         class Dummy : public Entity
                         {
@@ -7765,8 +7954,9 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dummy; //type: string
 
+
+                                YLeaf dummy; //type: string
 
 
 
@@ -7786,19 +7976,19 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value s2l_fec_subgroup_id; //type: uint16
-                                Value s2l_fec_lsp_id; //type: uint16
-                                Value s2l_fec_tunnel_id; //type: uint16
-                                Value s2l_fec_extended_tunnel_id; //type: string
-                                Value s2l_fec_source; //type: string
-                                Value s2l_fec_dest; //type: string
-                                Value s2l_fec_p2mp_id; //type: uint32
-                                Value s2l_fec_subgroup_originator; //type: string
-                                Value s2l_fec_ctype; //type: MplsLibCEnum
-                                Value s2l_fec_vrf; //type: string
 
 
-                                class MplsLibCEnum;
+                                YLeaf s2l_fec_subgroup_id; //type: uint16
+                                YLeaf s2l_fec_lsp_id; //type: uint16
+                                YLeaf s2l_fec_tunnel_id; //type: uint16
+                                YLeaf s2l_fec_extended_tunnel_id; //type: string
+                                YLeaf s2l_fec_source; //type: string
+                                YLeaf s2l_fec_dest; //type: string
+                                YLeaf s2l_fec_p2mp_id; //type: uint32
+                                YLeaf s2l_fec_subgroup_originator; //type: string
+                                YLeaf s2l_fec_ctype; //type: MplsLibCEnum
+                                YLeaf s2l_fec_vrf; //type: string
+
 
 
                         }; // Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
@@ -7806,7 +7996,6 @@ class Bfd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy> dummy;
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec> te_s2l_fec;
-                            class BfdApiFecEnum;
 
 
                     }; // Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -7825,13 +8014,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey::TargetAddress
@@ -7859,12 +8048,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value detection_multiplier; //type: uint32
-                        Value adjusted_interval; //type: uint32
-                        Value adjusted_detection_multiplier; //type: uint32
-                        Value name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf adjusted_interval; //type: uint32
+                        YLeaf adjusted_detection_multiplier; //type: uint32
+                        YLeaf name; //type: string
 
 
 
@@ -7873,7 +8063,6 @@ class Bfd : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::AssociationInformation::OwnerInformation> > owner_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::AssociationInformation::SessionKey> session_key;
-                    class BfdSessionEnum;
 
 
             }; // Bfd::SessionDetails::SessionDetail::AssociationInformation
@@ -7910,6 +8099,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4SingleHopMultiPath : public Entity
         {
             public:
@@ -7923,18 +8113,18 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value session_subtype; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value local_discriminator; //type: uint32
-                Value node_id; //type: string
-                Value incoming_label_xr; //type: uint32
-                Value session_interface_name; //type: string
 
 
-                class BfdMgmtSessionStateEnum;
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf session_subtype; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf local_discriminator; //type: uint32
+                YLeaf node_id; //type: string
+                YLeaf incoming_label_xr; //type: uint32
+                YLeaf session_interface_name; //type: string
+
 
 
         }; // Bfd::Ipv4SingleHopMultiPaths::Ipv4SingleHopMultiPath
@@ -7961,6 +8151,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4SingleHopSessionBrief : public Entity
         {
             public:
@@ -7974,15 +8165,16 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value node_id; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value session_type; //type: BfdSessionEnum
-                Value session_subtype; //type: string
-                Value session_flags; //type: uint32
 
+
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf node_id; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf session_type; //type: BfdSessionEnum
+                YLeaf session_subtype; //type: string
+                YLeaf session_flags; //type: uint32
 
             class StatusBriefInformation : public Entity
             {
@@ -7999,6 +8191,7 @@ class Bfd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsyncIntervalMultiplier : public Entity
                 {
                     public:
@@ -8012,11 +8205,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_remote_transmit_interval; //type: uint32
-                        Value negotiated_local_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_remote_transmit_interval; //type: uint32
+                        YLeaf negotiated_local_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -8036,10 +8230,11 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -8054,8 +8249,6 @@ class Bfd : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopSessionBriefs::Ipv4SingleHopSessionBrief::StatusBriefInformation> status_brief_information;
-                class BfdSessionEnum;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::Ipv4SingleHopSessionBriefs::Ipv4SingleHopSessionBrief
@@ -8082,6 +8275,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6MultiHopPacketCounters : public Entity
         {
             public:
@@ -8097,6 +8291,7 @@ class Bfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv6MultiHopPacketCounter : public Entity
             {
                 public:
@@ -8110,18 +8305,18 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value source_address; //type: string
-                    Value destination_address; //type: string
-                    Value location; //type: string
-                    Value vrf_name; //type: string
-                    Value hello_transmit_count; //type: uint32
-                    Value hello_receive_count; //type: uint32
-                    Value echo_transmit_count; //type: uint32
-                    Value echo_receive_count; //type: uint32
-                    Value display_type; //type: BfdMgmtPktDisplayEnum
 
 
-                    class BfdMgmtPktDisplayEnum;
+                    YLeaf source_address; //type: string
+                    YLeaf destination_address; //type: string
+                    YLeaf location; //type: string
+                    YLeaf vrf_name; //type: string
+                    YLeaf hello_transmit_count; //type: uint32
+                    YLeaf hello_receive_count; //type: uint32
+                    YLeaf echo_transmit_count; //type: uint32
+                    YLeaf echo_receive_count; //type: uint32
+                    YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+
 
 
             }; // Bfd::Ipv6MultiHopCounters::Ipv6MultiHopPacketCounters::Ipv6MultiHopPacketCounter
@@ -8154,6 +8349,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6SingleHopLocationSummary : public Entity
         {
             public:
@@ -8167,8 +8363,9 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location_name; //type: string
 
+
+                YLeaf location_name; //type: string
 
             class SessionState : public Entity
             {
@@ -8183,13 +8380,14 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value total_count; //type: uint32
-                    Value up_count; //type: uint32
-                    Value down_count; //type: uint32
-                    Value unknown_count; //type: uint32
-                    Value retry_count; //type: uint32
-                    Value standby_count; //type: uint32
 
+
+                    YLeaf total_count; //type: uint32
+                    YLeaf up_count; //type: uint32
+                    YLeaf down_count; //type: uint32
+                    YLeaf unknown_count; //type: uint32
+                    YLeaf retry_count; //type: uint32
+                    YLeaf standby_count; //type: uint32
 
 
 
@@ -8223,6 +8421,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LabelPacketCounters : public Entity
         {
             public:
@@ -8238,6 +8437,7 @@ class Bfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LabelPacketCounter : public Entity
             {
                 public:
@@ -8251,16 +8451,16 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value location; //type: string
-                    Value hello_transmit_count; //type: uint32
-                    Value hello_receive_count; //type: uint32
-                    Value echo_transmit_count; //type: uint32
-                    Value echo_receive_count; //type: uint32
-                    Value display_type; //type: BfdMgmtPktDisplayEnum
 
 
-                    class BfdMgmtPktDisplayEnum;
+                    YLeaf interface_name; //type: string
+                    YLeaf location; //type: string
+                    YLeaf hello_transmit_count; //type: uint32
+                    YLeaf hello_receive_count; //type: uint32
+                    YLeaf echo_transmit_count; //type: uint32
+                    YLeaf echo_receive_count; //type: uint32
+                    YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+
 
 
             }; // Bfd::LabelCounters::LabelPacketCounters::LabelPacketCounter
@@ -8293,6 +8493,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfDoMplsteHeadSessionDetail : public Entity
         {
             public:
@@ -8306,21 +8507,22 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value vrf_name; //type: string
-                Value incoming_label; //type: int32
-                Value fe_ctype; //type: int32
-                Value fec_subgroup_id; //type: int32
-                Value feclspid; //type: int32
-                Value fec_tunnel_id; //type: int32
-                Value fec_extended_tunnel_id; //type: string
-                Value fec_source; //type: string
-                Value fec_destination; //type: string
-                Value fecp2mpid; //type: int32
-                Value fec_subgroup_originator; //type: string
-                Value fec_ctype; //type: int32
-                Value location; //type: string
 
+
+                YLeaf interface_name; //type: string
+                YLeaf vrf_name; //type: string
+                YLeaf incoming_label; //type: int32
+                YLeaf fe_ctype; //type: int32
+                YLeaf fec_subgroup_id; //type: int32
+                YLeaf feclspid; //type: int32
+                YLeaf fec_tunnel_id; //type: int32
+                YLeaf fec_extended_tunnel_id; //type: string
+                YLeaf fec_source; //type: string
+                YLeaf fec_destination; //type: string
+                YLeaf fecp2mpid; //type: int32
+                YLeaf fec_subgroup_originator; //type: string
+                YLeaf fec_ctype; //type: int32
+                YLeaf location; //type: string
 
             class StatusInformation : public Entity
             {
@@ -8335,21 +8537,22 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value session_subtype; //type: string
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value local_discriminator; //type: uint32
-                    Value remote_discriminator; //type: uint32
-                    Value to_up_state_count; //type: uint32
-                    Value desired_minimum_echo_transmit_interval; //type: uint32
-                    Value remote_negotiated_interval; //type: uint32
-                    Value latency_number; //type: uint32
-                    Value latency_minimum; //type: uint32
-                    Value latency_maximum; //type: uint32
-                    Value latency_average; //type: uint32
-                    Value node_id; //type: string
-                    Value internal_label; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf session_subtype; //type: string
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf local_discriminator; //type: uint32
+                    YLeaf remote_discriminator; //type: uint32
+                    YLeaf to_up_state_count; //type: uint32
+                    YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+                    YLeaf remote_negotiated_interval; //type: uint32
+                    YLeaf latency_number; //type: uint32
+                    YLeaf latency_minimum; //type: uint32
+                    YLeaf latency_maximum; //type: uint32
+                    YLeaf latency_average; //type: uint32
+                    YLeaf node_id; //type: string
+                    YLeaf internal_label; //type: uint32
 
                 class SourceAddress : public Entity
                 {
@@ -8364,13 +8567,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi; //type: BfdAfIdEnum
-                        Value dummy; //type: uint8
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class BfdAfIdEnum;
+                        YLeaf afi; //type: BfdAfIdEnum
+                        YLeaf dummy; //type: uint8
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation::SourceAddress
@@ -8389,11 +8592,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value days; //type: uint32
-                        Value hours; //type: uint8
-                        Value minutes; //type: uint8
-                        Value seconds; //type: uint8
 
+
+                        YLeaf days; //type: uint32
+                        YLeaf hours; //type: uint8
+                        YLeaf minutes; //type: uint8
+                        YLeaf seconds; //type: uint8
 
 
 
@@ -8413,26 +8617,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation::TransmitPacket
@@ -8451,26 +8654,25 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version; //type: uint8
-                        Value diagnostic; //type: BfdMgmtSessionDiagEnum
-                        Value ihear_you; //type: int32
-                        Value state; //type: BfdMgmtSessionStateEnum
-                        Value demand; //type: int32
-                        Value poll; //type: int32
-                        Value final_; //type: int32
-                        Value control_plane_independent; //type: int32
-                        Value authentication_present; //type: int32
-                        Value detection_multiplier; //type: uint32
-                        Value length; //type: uint32
-                        Value my_discriminator; //type: uint32
-                        Value your_discriminator; //type: uint32
-                        Value desired_minimum_transmit_interval; //type: uint32
-                        Value required_minimum_receive_interval; //type: uint32
-                        Value required_minimum_echo_receive_interval; //type: uint32
 
 
-                        class BfdMgmtSessionDiagEnum;
-                        class BfdMgmtSessionStateEnum;
+                        YLeaf version; //type: uint8
+                        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
+                        YLeaf ihear_you; //type: int32
+                        YLeaf state; //type: BfdMgmtSessionStateEnum
+                        YLeaf demand; //type: int32
+                        YLeaf poll; //type: int32
+                        YLeaf final_; //type: int32
+                        YLeaf control_plane_independent; //type: int32
+                        YLeaf authentication_present; //type: int32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf length; //type: uint32
+                        YLeaf my_discriminator; //type: uint32
+                        YLeaf your_discriminator; //type: uint32
+                        YLeaf desired_minimum_transmit_interval; //type: uint32
+                        YLeaf required_minimum_receive_interval; //type: uint32
+                        YLeaf required_minimum_echo_receive_interval; //type: uint32
+
 
 
                 }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation::ReceivePacket
@@ -8491,6 +8693,7 @@ class Bfd : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AsyncIntervalMultiplier : public Entity
                     {
                         public:
@@ -8504,11 +8707,12 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_remote_transmit_interval; //type: uint32
-                            Value negotiated_local_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_remote_transmit_interval; //type: uint32
+                            YLeaf negotiated_local_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -8528,10 +8732,11 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value negotiated_transmit_interval; //type: uint32
-                            Value detection_time; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf negotiated_transmit_interval; //type: uint32
+                            YLeaf detection_time; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -8558,12 +8763,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -8583,12 +8789,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -8608,12 +8815,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -8633,12 +8841,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number; //type: uint32
-                        Value minimum; //type: uint32
-                        Value maximum; //type: uint32
-                        Value average; //type: uint32
-                        Value last; //type: uint32
 
+
+                        YLeaf number; //type: uint32
+                        YLeaf minimum; //type: uint32
+                        YLeaf maximum; //type: uint32
+                        YLeaf average; //type: uint32
+                        YLeaf last; //type: uint32
 
 
 
@@ -8654,8 +8863,6 @@ class Bfd : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation::SourceAddress> source_address;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation::StatusBriefInformation> status_brief_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation::TransmitPacket> transmit_packet;
-                    class BfdSessionEnum;
-                    class BfdMgmtSessionStateEnum;
 
 
             }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::StatusInformation
@@ -8674,8 +8881,9 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mp_download_state; //type: BfdMpDownloadStateEnum
 
+
+                    YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
 
                 class ChangeTime : public Entity
                 {
@@ -8690,9 +8898,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -8700,7 +8909,6 @@ class Bfd : public Entity
 
 
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::MpDownloadState::ChangeTime> change_time;
-                    class BfdMpDownloadStateEnum;
 
 
             }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::MpDownloadState
@@ -8719,16 +8927,17 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lsp_ping_tx_count; //type: uint32
-                    Value lsp_ping_tx_error_count; //type: uint32
-                    Value lsp_ping_tx_last_rc; //type: string
-                    Value lsp_ping_tx_last_error_rc; //type: string
-                    Value lsp_ping_rx_last_discr; //type: uint32
-                    Value lsp_ping_rx_count; //type: uint32
-                    Value lsp_ping_rx_last_code; //type: uint8
-                    Value lsp_ping_rx_last_subcode; //type: uint8
-                    Value lsp_ping_rx_last_output; //type: string
 
+
+                    YLeaf lsp_ping_tx_count; //type: uint32
+                    YLeaf lsp_ping_tx_error_count; //type: uint32
+                    YLeaf lsp_ping_tx_last_rc; //type: string
+                    YLeaf lsp_ping_tx_last_error_rc; //type: string
+                    YLeaf lsp_ping_rx_last_discr; //type: uint32
+                    YLeaf lsp_ping_rx_count; //type: uint32
+                    YLeaf lsp_ping_rx_last_code; //type: uint8
+                    YLeaf lsp_ping_rx_last_subcode; //type: uint8
+                    YLeaf lsp_ping_rx_last_output; //type: string
 
                 class LspPingTxLastTime : public Entity
                 {
@@ -8743,9 +8952,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -8765,9 +8975,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -8787,9 +8998,10 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint64
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint64
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -8817,12 +9029,13 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value detection_multiplier; //type: uint32
-                    Value adjusted_interval; //type: uint32
-                    Value adjusted_detection_multiplier; //type: uint32
-                    Value name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf detection_multiplier; //type: uint32
+                    YLeaf adjusted_interval; //type: uint32
+                    YLeaf adjusted_detection_multiplier; //type: uint32
+                    YLeaf name; //type: string
 
 
 
@@ -8842,9 +9055,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value local_discriminator; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf local_discriminator; //type: uint32
 
                 class SessionKey : public Entity
                 {
@@ -8859,13 +9073,14 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_key_type; //type: uint32
-                        Value interface_name; //type: string
-                        Value vrf_name; //type: string
-                        Value incoming_label; //type: uint32
-                        Value sbfd_enabled; //type: int32
-                        Value sbfd_target_type; //type: uint32
 
+
+                        YLeaf session_key_type; //type: uint32
+                        YLeaf interface_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf incoming_label; //type: uint32
+                        YLeaf sbfd_enabled; //type: int32
+                        YLeaf sbfd_target_type; //type: uint32
 
                     class IpDestinationAddress : public Entity
                     {
@@ -8880,13 +9095,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
@@ -8905,13 +9120,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
@@ -8930,8 +9145,9 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfdfe_ctype; //type: BfdApiFecEnum
 
+
+                            YLeaf bfdfe_ctype; //type: BfdApiFecEnum
 
                         class Dummy : public Entity
                         {
@@ -8946,8 +9162,9 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dummy; //type: string
 
+
+                                YLeaf dummy; //type: string
 
 
 
@@ -8967,19 +9184,19 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value s2l_fec_subgroup_id; //type: uint16
-                                Value s2l_fec_lsp_id; //type: uint16
-                                Value s2l_fec_tunnel_id; //type: uint16
-                                Value s2l_fec_extended_tunnel_id; //type: string
-                                Value s2l_fec_source; //type: string
-                                Value s2l_fec_dest; //type: string
-                                Value s2l_fec_p2mp_id; //type: uint32
-                                Value s2l_fec_subgroup_originator; //type: string
-                                Value s2l_fec_ctype; //type: MplsLibCEnum
-                                Value s2l_fec_vrf; //type: string
 
 
-                                class MplsLibCEnum;
+                                YLeaf s2l_fec_subgroup_id; //type: uint16
+                                YLeaf s2l_fec_lsp_id; //type: uint16
+                                YLeaf s2l_fec_tunnel_id; //type: uint16
+                                YLeaf s2l_fec_extended_tunnel_id; //type: string
+                                YLeaf s2l_fec_source; //type: string
+                                YLeaf s2l_fec_dest; //type: string
+                                YLeaf s2l_fec_p2mp_id; //type: uint32
+                                YLeaf s2l_fec_subgroup_originator; //type: string
+                                YLeaf s2l_fec_ctype; //type: MplsLibCEnum
+                                YLeaf s2l_fec_vrf; //type: string
+
 
 
                         }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
@@ -8987,7 +9204,6 @@ class Bfd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy> dummy;
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec> te_s2l_fec;
-                            class BfdApiFecEnum;
 
 
                     }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -9006,13 +9222,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey::TargetAddress
@@ -9040,12 +9256,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value detection_multiplier; //type: uint32
-                        Value adjusted_interval; //type: uint32
-                        Value adjusted_detection_multiplier; //type: uint32
-                        Value name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf adjusted_interval; //type: uint32
+                        YLeaf adjusted_detection_multiplier; //type: uint32
+                        YLeaf name; //type: string
 
 
 
@@ -9054,7 +9271,6 @@ class Bfd : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation> > owner_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::SessionKey> session_key;
-                    class BfdSessionEnum;
 
 
             }; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation
@@ -9091,6 +9307,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RelationBrief : public Entity
         {
             public:
@@ -9104,10 +9321,11 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
 
+
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
 
             class LinkInformation : public Entity
             {
@@ -9122,18 +9340,17 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value interface_name; //type: string
 
 
-                    class BfdMgmtSessionStateEnum;
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf interface_name; //type: string
+
 
 
             }; // Bfd::RelationBriefs::RelationBrief::LinkInformation
 
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationBriefs::RelationBrief::LinkInformation> > link_information;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::RelationBriefs::RelationBrief
@@ -9160,6 +9377,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ClientBrief : public Entity
         {
             public:
@@ -9173,11 +9391,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value name_xr; //type: string
-                Value node_id; //type: string
-                Value session_count; //type: uint32
 
+
+                YLeaf name; //type: string
+                YLeaf name_xr; //type: string
+                YLeaf node_id; //type: string
+                YLeaf session_count; //type: uint32
 
 
 
@@ -9205,6 +9424,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfDoMplsteHeadMultiPath : public Entity
         {
             public:
@@ -9218,29 +9438,29 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value vrf_name; //type: string
-                Value incoming_label; //type: int32
-                Value fe_ctype; //type: int32
-                Value fec_subgroup_id; //type: int32
-                Value feclspid; //type: int32
-                Value fec_tunnel_id; //type: int32
-                Value fec_extended_tunnel_id; //type: string
-                Value fec_source; //type: string
-                Value fec_destination; //type: string
-                Value fecp2mpid; //type: int32
-                Value fec_subgroup_originator; //type: string
-                Value fec_ctype; //type: int32
-                Value location; //type: string
-                Value session_subtype; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value local_discriminator; //type: uint32
-                Value node_id; //type: string
-                Value incoming_label_xr; //type: uint32
-                Value session_interface_name; //type: string
 
 
-                class BfdMgmtSessionStateEnum;
+                YLeaf interface_name; //type: string
+                YLeaf vrf_name; //type: string
+                YLeaf incoming_label; //type: int32
+                YLeaf fe_ctype; //type: int32
+                YLeaf fec_subgroup_id; //type: int32
+                YLeaf feclspid; //type: int32
+                YLeaf fec_tunnel_id; //type: int32
+                YLeaf fec_extended_tunnel_id; //type: string
+                YLeaf fec_source; //type: string
+                YLeaf fec_destination; //type: string
+                YLeaf fecp2mpid; //type: int32
+                YLeaf fec_subgroup_originator; //type: string
+                YLeaf fec_ctype; //type: int32
+                YLeaf location; //type: string
+                YLeaf session_subtype; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf local_discriminator; //type: uint32
+                YLeaf node_id; //type: string
+                YLeaf incoming_label_xr; //type: uint32
+                YLeaf session_interface_name; //type: string
+
 
 
         }; // Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath
@@ -9267,6 +9487,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RelationDetail : public Entity
         {
             public:
@@ -9280,11 +9501,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value local_discriminator; //type: uint32
 
+
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf local_discriminator; //type: uint32
 
             class LinkInformation : public Entity
             {
@@ -9299,12 +9521,12 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value state; //type: BfdMgmtSessionStateEnum
-                    Value interface_name; //type: string
-                    Value local_discriminator; //type: uint32
 
 
-                    class BfdMgmtSessionStateEnum;
+                    YLeaf state; //type: BfdMgmtSessionStateEnum
+                    YLeaf interface_name; //type: string
+                    YLeaf local_discriminator; //type: uint32
+
 
 
             }; // Bfd::RelationDetails::RelationDetail::LinkInformation
@@ -9323,9 +9545,10 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sessiontype; //type: BfdSessionEnum
-                    Value local_discriminator; //type: uint32
 
+
+                    YLeaf sessiontype; //type: BfdSessionEnum
+                    YLeaf local_discriminator; //type: uint32
 
                 class SessionKey : public Entity
                 {
@@ -9340,13 +9563,14 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_key_type; //type: uint32
-                        Value interface_name; //type: string
-                        Value vrf_name; //type: string
-                        Value incoming_label; //type: uint32
-                        Value sbfd_enabled; //type: int32
-                        Value sbfd_target_type; //type: uint32
 
+
+                        YLeaf session_key_type; //type: uint32
+                        YLeaf interface_name; //type: string
+                        YLeaf vrf_name; //type: string
+                        YLeaf incoming_label; //type: uint32
+                        YLeaf sbfd_enabled; //type: int32
+                        YLeaf sbfd_target_type; //type: uint32
 
                     class IpDestinationAddress : public Entity
                     {
@@ -9361,13 +9585,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::IpDestinationAddress
@@ -9386,13 +9610,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::IpSourceAddress
@@ -9411,8 +9635,9 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bfdfe_ctype; //type: BfdApiFecEnum
 
+
+                            YLeaf bfdfe_ctype; //type: BfdApiFecEnum
 
                         class Dummy : public Entity
                         {
@@ -9427,8 +9652,9 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dummy; //type: string
 
+
+                                YLeaf dummy; //type: string
 
 
 
@@ -9448,19 +9674,19 @@ class Bfd : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value s2l_fec_subgroup_id; //type: uint16
-                                Value s2l_fec_lsp_id; //type: uint16
-                                Value s2l_fec_tunnel_id; //type: uint16
-                                Value s2l_fec_extended_tunnel_id; //type: string
-                                Value s2l_fec_source; //type: string
-                                Value s2l_fec_dest; //type: string
-                                Value s2l_fec_p2mp_id; //type: uint32
-                                Value s2l_fec_subgroup_originator; //type: string
-                                Value s2l_fec_ctype; //type: MplsLibCEnum
-                                Value s2l_fec_vrf; //type: string
 
 
-                                class MplsLibCEnum;
+                                YLeaf s2l_fec_subgroup_id; //type: uint16
+                                YLeaf s2l_fec_lsp_id; //type: uint16
+                                YLeaf s2l_fec_tunnel_id; //type: uint16
+                                YLeaf s2l_fec_extended_tunnel_id; //type: string
+                                YLeaf s2l_fec_source; //type: string
+                                YLeaf s2l_fec_dest; //type: string
+                                YLeaf s2l_fec_p2mp_id; //type: uint32
+                                YLeaf s2l_fec_subgroup_originator; //type: string
+                                YLeaf s2l_fec_ctype; //type: MplsLibCEnum
+                                YLeaf s2l_fec_vrf; //type: string
+
 
 
                         }; // Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
@@ -9468,7 +9694,6 @@ class Bfd : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::Bfdfec::Dummy> dummy;
                             std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec> te_s2l_fec;
-                            class BfdApiFecEnum;
 
 
                     }; // Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::Bfdfec
@@ -9487,13 +9712,13 @@ class Bfd : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi; //type: BfdAfIdEnum
-                            Value dummy; //type: uint8
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class BfdAfIdEnum;
+                            YLeaf afi; //type: BfdAfIdEnum
+                            YLeaf dummy; //type: uint8
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey::TargetAddress
@@ -9521,12 +9746,13 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value detection_multiplier; //type: uint32
-                        Value adjusted_interval; //type: uint32
-                        Value adjusted_detection_multiplier; //type: uint32
-                        Value name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
+                        YLeaf adjusted_interval; //type: uint32
+                        YLeaf adjusted_detection_multiplier; //type: uint32
+                        YLeaf name; //type: string
 
 
 
@@ -9535,7 +9761,6 @@ class Bfd : public Entity
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation> > owner_information;
                     std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation::SessionKey> session_key;
-                    class BfdSessionEnum;
 
 
             }; // Bfd::RelationDetails::RelationDetail::AssociationInformation
@@ -9543,7 +9768,6 @@ class Bfd : public Entity
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation> > association_information;
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::LinkInformation> > link_information;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::RelationDetails::RelationDetail
@@ -9570,6 +9794,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfDoMplsteTailPacketCounters : public Entity
         {
             public:
@@ -9585,6 +9810,7 @@ class Bfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv4BfDoMplsteTailPacketCounter : public Entity
             {
                 public:
@@ -9598,27 +9824,27 @@ class Bfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value vrf_name; //type: string
-                    Value incoming_label; //type: int32
-                    Value fe_ctype; //type: int32
-                    Value fec_subgroup_id; //type: int32
-                    Value feclspid; //type: int32
-                    Value fec_tunnel_id; //type: int32
-                    Value fec_extended_tunnel_id; //type: string
-                    Value fec_source; //type: string
-                    Value fec_destination; //type: string
-                    Value fecp2mpid; //type: int32
-                    Value fec_subgroup_originator; //type: string
-                    Value fec_ctype; //type: int32
-                    Value location; //type: string
-                    Value hello_transmit_count; //type: uint32
-                    Value hello_receive_count; //type: uint32
-                    Value echo_transmit_count; //type: uint32
-                    Value echo_receive_count; //type: uint32
-                    Value display_type; //type: BfdMgmtPktDisplayEnum
 
 
-                    class BfdMgmtPktDisplayEnum;
+                    YLeaf vrf_name; //type: string
+                    YLeaf incoming_label; //type: int32
+                    YLeaf fe_ctype; //type: int32
+                    YLeaf fec_subgroup_id; //type: int32
+                    YLeaf feclspid; //type: int32
+                    YLeaf fec_tunnel_id; //type: int32
+                    YLeaf fec_extended_tunnel_id; //type: string
+                    YLeaf fec_source; //type: string
+                    YLeaf fec_destination; //type: string
+                    YLeaf fecp2mpid; //type: int32
+                    YLeaf fec_subgroup_originator; //type: string
+                    YLeaf fec_ctype; //type: int32
+                    YLeaf location; //type: string
+                    YLeaf hello_transmit_count; //type: uint32
+                    YLeaf hello_receive_count; //type: uint32
+                    YLeaf echo_transmit_count; //type: uint32
+                    YLeaf echo_receive_count; //type: uint32
+                    YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+
 
 
             }; // Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter
@@ -9651,6 +9877,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6SingleHopSessionBrief : public Entity
         {
             public:
@@ -9664,15 +9891,16 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value node_id; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value session_type; //type: BfdSessionEnum
-                Value session_subtype; //type: string
-                Value session_flags; //type: uint32
 
+
+                YLeaf interface_name; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf node_id; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf session_type; //type: BfdSessionEnum
+                YLeaf session_subtype; //type: string
+                YLeaf session_flags; //type: uint32
 
             class StatusBriefInformation : public Entity
             {
@@ -9689,6 +9917,7 @@ class Bfd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsyncIntervalMultiplier : public Entity
                 {
                     public:
@@ -9702,11 +9931,12 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_remote_transmit_interval; //type: uint32
-                        Value negotiated_local_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_remote_transmit_interval; //type: uint32
+                        YLeaf negotiated_local_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -9726,10 +9956,11 @@ class Bfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value negotiated_transmit_interval; //type: uint32
-                        Value detection_time; //type: uint32
-                        Value detection_multiplier; //type: uint32
 
+
+                        YLeaf negotiated_transmit_interval; //type: uint32
+                        YLeaf detection_time; //type: uint32
+                        YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -9744,8 +9975,6 @@ class Bfd : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation> status_brief_information;
-                class BfdSessionEnum;
-                class BfdMgmtSessionStateEnum;
 
 
         }; // Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief
@@ -9772,6 +10001,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4BfDoMplsteTailMultiPath : public Entity
         {
             public:
@@ -9785,28 +10015,28 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value incoming_label; //type: int32
-                Value fe_ctype; //type: int32
-                Value fec_subgroup_id; //type: int32
-                Value feclspid; //type: int32
-                Value fec_tunnel_id; //type: int32
-                Value fec_extended_tunnel_id; //type: string
-                Value fec_source; //type: string
-                Value fec_destination; //type: string
-                Value fecp2mpid; //type: int32
-                Value fec_subgroup_originator; //type: string
-                Value fec_ctype; //type: int32
-                Value location; //type: string
-                Value session_subtype; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value local_discriminator; //type: uint32
-                Value node_id; //type: string
-                Value incoming_label_xr; //type: uint32
-                Value session_interface_name; //type: string
 
 
-                class BfdMgmtSessionStateEnum;
+                YLeaf vrf_name; //type: string
+                YLeaf incoming_label; //type: int32
+                YLeaf fe_ctype; //type: int32
+                YLeaf fec_subgroup_id; //type: int32
+                YLeaf feclspid; //type: int32
+                YLeaf fec_tunnel_id; //type: int32
+                YLeaf fec_extended_tunnel_id; //type: string
+                YLeaf fec_source; //type: string
+                YLeaf fec_destination; //type: string
+                YLeaf fecp2mpid; //type: int32
+                YLeaf fec_subgroup_originator; //type: string
+                YLeaf fec_ctype; //type: int32
+                YLeaf location; //type: string
+                YLeaf session_subtype; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf local_discriminator; //type: uint32
+                YLeaf node_id; //type: string
+                YLeaf incoming_label_xr; //type: uint32
+                YLeaf session_interface_name; //type: string
+
 
 
         }; // Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath
@@ -9833,6 +10063,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv4MultiHopMultiPath : public Entity
         {
             public:
@@ -9846,19 +10077,19 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value source_address; //type: string
-                Value destination_address; //type: string
-                Value location; //type: string
-                Value vrf_name; //type: string
-                Value session_subtype; //type: string
-                Value state; //type: BfdMgmtSessionStateEnum
-                Value local_discriminator; //type: uint32
-                Value node_id; //type: string
-                Value incoming_label_xr; //type: uint32
-                Value session_interface_name; //type: string
 
 
-                class BfdMgmtSessionStateEnum;
+                YLeaf source_address; //type: string
+                YLeaf destination_address; //type: string
+                YLeaf location; //type: string
+                YLeaf vrf_name; //type: string
+                YLeaf session_subtype; //type: string
+                YLeaf state; //type: BfdMgmtSessionStateEnum
+                YLeaf local_discriminator; //type: uint32
+                YLeaf node_id; //type: string
+                YLeaf incoming_label_xr; //type: uint32
+                YLeaf session_interface_name; //type: string
+
 
 
         }; // Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath
@@ -9885,6 +10116,7 @@ class Bfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SessionState : public Entity
         {
             public:
@@ -9898,11 +10130,12 @@ class Bfd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value total_count; //type: uint32
-                Value down_count; //type: uint32
-                Value up_count; //type: uint32
-                Value unknown_count; //type: uint32
 
+
+                YLeaf total_count; //type: uint32
+                YLeaf down_count; //type: uint32
+                YLeaf up_count; //type: uint32
+                YLeaf unknown_count; //type: uint32
 
 
 
@@ -9977,97 +10210,97 @@ class Bfd : public Entity
 class BfdApiFecEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_api_fec_type_none;
-        static const Enum::Value bfd_api_fec_type_p2p_te;
+        static const Enum::YLeaf bfd_api_fec_type_none;
+        static const Enum::YLeaf bfd_api_fec_type_p2p_te;
 
 };
 
 class BfdSessionEnum : public Enum
 {
     public:
-        static const Enum::Value undefined;
-        static const Enum::Value bundle_member;
-        static const Enum::Value bundle_interface;
-        static const Enum::Value state_inheriting;
-        static const Enum::Value bundle_vlan;
-        static const Enum::Value mpls_tp;
-        static const Enum::Value gre;
-        static const Enum::Value pseudowire_headend;
-        static const Enum::Value ip_single_hop;
+        static const Enum::YLeaf undefined;
+        static const Enum::YLeaf bundle_member;
+        static const Enum::YLeaf bundle_interface;
+        static const Enum::YLeaf state_inheriting;
+        static const Enum::YLeaf bundle_vlan;
+        static const Enum::YLeaf mpls_tp;
+        static const Enum::YLeaf gre;
+        static const Enum::YLeaf pseudowire_headend;
+        static const Enum::YLeaf ip_single_hop;
 
 };
 
 class BfdAfIdEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_af_id_none;
-        static const Enum::Value bfd_af_id_ipv4;
-        static const Enum::Value bfd_af_id_ipv6;
+        static const Enum::YLeaf bfd_af_id_none;
+        static const Enum::YLeaf bfd_af_id_ipv4;
+        static const Enum::YLeaf bfd_af_id_ipv6;
 
 };
 
 class BfdMpDownloadStateEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_mp_download_none;
-        static const Enum::Value bfd_mp_download_no_lc;
-        static const Enum::Value bfd_mp_download_downloaded;
-        static const Enum::Value bfd_mp_download_ack;
-        static const Enum::Value bfd_mp_download_nack;
-        static const Enum::Value bfd_mp_download_delete;
+        static const Enum::YLeaf bfd_mp_download_none;
+        static const Enum::YLeaf bfd_mp_download_no_lc;
+        static const Enum::YLeaf bfd_mp_download_downloaded;
+        static const Enum::YLeaf bfd_mp_download_ack;
+        static const Enum::YLeaf bfd_mp_download_nack;
+        static const Enum::YLeaf bfd_mp_download_delete;
 
 };
 
 class BfdMgmtSessionStateEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_mgmt_session_state_admin_down;
-        static const Enum::Value bfd_mgmt_session_state_down;
-        static const Enum::Value bfd_mgmt_session_state_init;
-        static const Enum::Value bfd_mgmt_session_state_up;
-        static const Enum::Value bfd_mgmt_session_state_failing;
-        static const Enum::Value bfd_mgmt_session_state_unknown;
+        static const Enum::YLeaf bfd_mgmt_session_state_admin_down;
+        static const Enum::YLeaf bfd_mgmt_session_state_down;
+        static const Enum::YLeaf bfd_mgmt_session_state_init;
+        static const Enum::YLeaf bfd_mgmt_session_state_up;
+        static const Enum::YLeaf bfd_mgmt_session_state_failing;
+        static const Enum::YLeaf bfd_mgmt_session_state_unknown;
 
 };
 
 class BfdMgmtSessionDiagEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_mgmt_session_diag_none;
-        static const Enum::Value bfd_mgmt_session_diag_control_detect_expired;
-        static const Enum::Value bfd_mgmt_session_diag_echo_function_failed;
-        static const Enum::Value bfd_mgmt_session_diag_nb_or_signaled_down;
-        static const Enum::Value bfd_mgmt_session_diag_fwding_plane_reset;
-        static const Enum::Value bfd_mgmt_session_diag_path_down;
-        static const Enum::Value bfd_mgmt_session_diag_conc_path_down;
-        static const Enum::Value bfd_mgmt_session_diag_admin_down;
-        static const Enum::Value bfd_mgmt_session_diag_rev_conc_path_down;
-        static const Enum::Value bfd_mgmt_session_diag_num;
+        static const Enum::YLeaf bfd_mgmt_session_diag_none;
+        static const Enum::YLeaf bfd_mgmt_session_diag_control_detect_expired;
+        static const Enum::YLeaf bfd_mgmt_session_diag_echo_function_failed;
+        static const Enum::YLeaf bfd_mgmt_session_diag_nb_or_signaled_down;
+        static const Enum::YLeaf bfd_mgmt_session_diag_fwding_plane_reset;
+        static const Enum::YLeaf bfd_mgmt_session_diag_path_down;
+        static const Enum::YLeaf bfd_mgmt_session_diag_conc_path_down;
+        static const Enum::YLeaf bfd_mgmt_session_diag_admin_down;
+        static const Enum::YLeaf bfd_mgmt_session_diag_rev_conc_path_down;
+        static const Enum::YLeaf bfd_mgmt_session_diag_num;
 
 };
 
 class BfdMgmtPktDisplayEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_mgmt_pkt_display_type_none;
-        static const Enum::Value bfd_mgmt_pkt_display_type_bob_mbr;
-        static const Enum::Value bfd_mgmt_pkt_display_type_max;
+        static const Enum::YLeaf bfd_mgmt_pkt_display_type_none;
+        static const Enum::YLeaf bfd_mgmt_pkt_display_type_bob_mbr;
+        static const Enum::YLeaf bfd_mgmt_pkt_display_type_max;
 
 };
 
 class MplsLibCEnum : public Enum
 {
     public:
-        static const Enum::Value mpls_lib_c_type_null;
-        static const Enum::Value mpls_lib_c_type_ipv4;
-        static const Enum::Value mpls_lib_c_type_ipv4_p2p_tunnel;
-        static const Enum::Value mpls_lib_c_type_ipv6_p2p_tunnel;
-        static const Enum::Value mpls_lib_c_type_ipv4_uni;
-        static const Enum::Value mpls_lib_c_type_ipv4_p2mp_tunnel;
-        static const Enum::Value mpls_lib_c_type_ipv6_p2mp_tunnel;
-        static const Enum::Value mpls_lib_c_type_ipv4_tp_tunnel;
-        static const Enum::Value mpls_lib_c_type_ipv6_tp_tunnel;
-        static const Enum::Value mpls_lib_c_type_p2p_binding_label;
+        static const Enum::YLeaf mpls_lib_c_type_null;
+        static const Enum::YLeaf mpls_lib_c_type_ipv4;
+        static const Enum::YLeaf mpls_lib_c_type_ipv4_p2p_tunnel;
+        static const Enum::YLeaf mpls_lib_c_type_ipv6_p2p_tunnel;
+        static const Enum::YLeaf mpls_lib_c_type_ipv4_uni;
+        static const Enum::YLeaf mpls_lib_c_type_ipv4_p2mp_tunnel;
+        static const Enum::YLeaf mpls_lib_c_type_ipv6_p2mp_tunnel;
+        static const Enum::YLeaf mpls_lib_c_type_ipv4_tp_tunnel;
+        static const Enum::YLeaf mpls_lib_c_type_ipv6_tp_tunnel;
+        static const Enum::YLeaf mpls_lib_c_type_p2p_binding_label;
 
 };
 

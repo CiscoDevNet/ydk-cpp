@@ -14,20 +14,20 @@ namespace openconfig_if_ip {
 class NeighborOriginEnum : public Enum
 {
     public:
-        static const Enum::Value OTHER;
-        static const Enum::Value STATIC;
-        static const Enum::Value DYNAMIC;
+        static const Enum::YLeaf OTHER;
+        static const Enum::YLeaf STATIC;
+        static const Enum::YLeaf DYNAMIC;
 
 };
 
 class IpAddressOriginEnum : public Enum
 {
     public:
-        static const Enum::Value OTHER;
-        static const Enum::Value STATIC;
-        static const Enum::Value DHCP;
-        static const Enum::Value LINK_LAYER;
-        static const Enum::Value RANDOM;
+        static const Enum::YLeaf OTHER;
+        static const Enum::YLeaf STATIC;
+        static const Enum::YLeaf DHCP;
+        static const Enum::YLeaf LINK_LAYER;
+        static const Enum::YLeaf RANDOM;
 
 };
 

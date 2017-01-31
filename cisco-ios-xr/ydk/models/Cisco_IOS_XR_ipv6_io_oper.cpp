@@ -133,7 +133,7 @@ EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -474,7 +474,7 @@ EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -766,7 +766,7 @@ EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -887,9 +887,9 @@ bool Ipv6Io::Nodes::Node::Statistics::Traffic::has_data() const
 bool Ipv6Io::Nodes::Node::Statistics::Traffic::has_operation() const
 {
     return is_set(operation)
-	|| (icmp !=  nullptr && is_set(icmp->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation))
-	|| (ipv6_node_discovery !=  nullptr && is_set(ipv6_node_discovery->operation));
+	|| (icmp !=  nullptr && icmp->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (ipv6_node_discovery !=  nullptr && ipv6_node_discovery->has_operation());
 }
 
 std::string Ipv6Io::Nodes::Node::Statistics::Traffic::get_segment_path() const
@@ -906,7 +906,7 @@ EntityPath Ipv6Io::Nodes::Node::Statistics::Traffic::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1036,7 +1036,7 @@ bool Ipv6Io::Nodes::Node::Statistics::has_data() const
 bool Ipv6Io::Nodes::Node::Statistics::has_operation() const
 {
     return is_set(operation)
-	|| (traffic !=  nullptr && is_set(traffic->operation));
+	|| (traffic !=  nullptr && traffic->has_operation());
 }
 
 std::string Ipv6Io::Nodes::Node::Statistics::get_segment_path() const
@@ -1053,7 +1053,7 @@ EntityPath Ipv6Io::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1141,7 +1141,7 @@ bool Ipv6Io::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Ipv6Io::Nodes::Node::get_segment_path() const
@@ -1355,7 +1355,7 @@ bool Ipv6Io::has_data() const
 bool Ipv6Io::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Ipv6Io::get_segment_path() const
@@ -1372,7 +1372,7 @@ EntityPath Ipv6Io::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

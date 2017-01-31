@@ -28,35 +28,32 @@ class NetconfClient;
 
 class NetconfServiceProvider : public path::ServiceProvider {
 public:
-        NetconfServiceProvider(path::Repository* repo,
+        NetconfServiceProvider(path::Repository & repo,
                                 std::string address,
                                std::string username,
                                std::string password,
-                               int port);
+                               int port = 830);
         NetconfServiceProvider(std::string address,
                                std::string username,
                                std::string password,
-                               int port);
+                               int port = 830);
         ~NetconfServiceProvider();
         path::RootSchemaNode* get_root_schema() const;
         path::DataNode* invoke(path::Rpc* rpc) const;
-        std::string execute_payload(std::string payload);
+        EncodingFormat get_encoding() const;
 
 private:
         path::DataNode* handle_edit(path::Rpc* rpc, path::Annotation ann) const;
+        path::DataNode* handle_netconf_operation(path::Rpc* ydk_rpc) const;
         path::DataNode* handle_read(path::Rpc* rpc) const;
-        void initialize();
+        void initialize(path::Repository & repo);
 
 private:
-        std::unique_ptr<path::Repository> m_repo_ptr;
-        path::Repository* m_repo;
         std::unique_ptr<NetconfClient> client;
         std::unique_ptr<path::ModelProvider> model_provider;
         std::unique_ptr<ydk::path::RootSchemaNode> root_schema;
 
         std::vector<std::string> server_capabilities;
-
-        bool ietf_nc_monitoring_available = false;
 
 };
 }

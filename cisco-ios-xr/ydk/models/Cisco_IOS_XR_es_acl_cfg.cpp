@@ -46,7 +46,7 @@ EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -134,7 +134,7 @@ EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::Destinat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -256,8 +256,8 @@ bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::has_operation(
 	|| is_set(sequence_str.operation)
 	|| is_set(vlan1.operation)
 	|| is_set(vlan2.operation)
-	|| (destination_network !=  nullptr && is_set(destination_network->operation))
-	|| (source_network !=  nullptr && is_set(source_network->operation));
+	|| (destination_network !=  nullptr && destination_network->has_operation())
+	|| (source_network !=  nullptr && source_network->has_operation());
 }
 
 std::string EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_segment_path() const
@@ -274,7 +274,7 @@ EntityPath EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -477,7 +477,7 @@ EntityPath EsAcl::Accesses::Access::AccessListEntries::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -568,7 +568,7 @@ bool EsAcl::Accesses::Access::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (access_list_entries !=  nullptr && is_set(access_list_entries->operation));
+	|| (access_list_entries !=  nullptr && access_list_entries->has_operation());
 }
 
 std::string EsAcl::Accesses::Access::get_segment_path() const
@@ -782,7 +782,7 @@ bool EsAcl::has_data() const
 bool EsAcl::has_operation() const
 {
     return is_set(operation)
-	|| (accesses !=  nullptr && is_set(accesses->operation));
+	|| (accesses !=  nullptr && accesses->has_operation());
 }
 
 std::string EsAcl::get_segment_path() const
@@ -799,7 +799,7 @@ EntityPath EsAcl::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -863,8 +863,8 @@ std::unique_ptr<Entity> EsAcl::clone_ptr()
     return std::make_unique<EsAcl>();
 }
 
-const Enum::Value EsAclGrantEnumEnum::deny {0, "deny"};
-const Enum::Value EsAclGrantEnumEnum::permit {1, "permit"};
+const Enum::YLeaf EsAclGrantEnumEnum::deny {0, "deny"};
+const Enum::YLeaf EsAclGrantEnumEnum::permit {1, "permit"};
 
 
 }

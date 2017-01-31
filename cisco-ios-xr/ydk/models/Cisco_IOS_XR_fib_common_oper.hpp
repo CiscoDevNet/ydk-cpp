@@ -26,6 +26,7 @@ class FibStatistics : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class FibStatistics : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class FibStatistics : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Drops : public Entity
             {
@@ -70,30 +73,31 @@ class FibStatistics : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value no_route_packets; //type: uint64
-                    Value punt_unreachable_packets; //type: uint64
-                    Value df_unreachable_packets; //type: uint64
-                    Value encapsulation_failure_packets; //type: uint64
-                    Value incomplete_adjacency_packets; //type: uint64
-                    Value unresolved_prefix_packets; //type: uint64
-                    Value unsupported_feature_packets; //type: uint64
-                    Value discard_packets; //type: uint64
-                    Value checksum_error_packets; //type: uint64
-                    Value fragmenation_consumed_packets; //type: uint64
-                    Value fragmenation_failure_packets; //type: uint64
-                    Value null_packets; //type: uint64
-                    Value rpf_check_failure_packets; //type: uint64
-                    Value acl_in_rpf_packets; //type: uint64
-                    Value rp_destination_drop_packets; //type: uint64
-                    Value total_number_of_drop_packets; //type: uint64
-                    Value mpls_disabled_interface; //type: uint64
-                    Value gre_lookup_failed_drop; //type: uint64
-                    Value gre_error_drop; //type: uint64
-                    Value lisp_punt_drops; //type: uint64
-                    Value lisp_encap_error_drops; //type: uint64
-                    Value lisp_decap_error_drops; //type: uint64
-                    Value multi_label_drops; //type: uint64
 
+
+                    YLeaf no_route_packets; //type: uint64
+                    YLeaf punt_unreachable_packets; //type: uint64
+                    YLeaf df_unreachable_packets; //type: uint64
+                    YLeaf encapsulation_failure_packets; //type: uint64
+                    YLeaf incomplete_adjacency_packets; //type: uint64
+                    YLeaf unresolved_prefix_packets; //type: uint64
+                    YLeaf unsupported_feature_packets; //type: uint64
+                    YLeaf discard_packets; //type: uint64
+                    YLeaf checksum_error_packets; //type: uint64
+                    YLeaf fragmenation_consumed_packets; //type: uint64
+                    YLeaf fragmenation_failure_packets; //type: uint64
+                    YLeaf null_packets; //type: uint64
+                    YLeaf rpf_check_failure_packets; //type: uint64
+                    YLeaf acl_in_rpf_packets; //type: uint64
+                    YLeaf rp_destination_drop_packets; //type: uint64
+                    YLeaf total_number_of_drop_packets; //type: uint64
+                    YLeaf mpls_disabled_interface; //type: uint64
+                    YLeaf gre_lookup_failed_drop; //type: uint64
+                    YLeaf gre_error_drop; //type: uint64
+                    YLeaf lisp_punt_drops; //type: uint64
+                    YLeaf lisp_encap_error_drops; //type: uint64
+                    YLeaf lisp_decap_error_drops; //type: uint64
+                    YLeaf multi_label_drops; //type: uint64
 
 
 
@@ -133,6 +137,7 @@ class Fib : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -148,6 +153,7 @@ class Fib : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -161,8 +167,9 @@ class Fib : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Protocols : public Entity
             {
@@ -179,6 +186,7 @@ class Fib : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Protocol : public Entity
                 {
                     public:
@@ -192,8 +200,9 @@ class Fib : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value protocol_name; //type: FibProtocolEnum
 
+
+                        YLeaf protocol_name; //type: FibProtocolEnum
 
                     class IssuState : public Entity
                     {
@@ -208,18 +217,19 @@ class Fib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value imdr_support; //type: boolean
-                            Value slc_support; //type: boolean
-                            Value fis_issu_restart; //type: boolean
-                            Value imdr_eoc_implicit; //type: boolean
-                            Value slc_eoc_implicit; //type: boolean
-                            Value eoc_received_imdr_time_stamp; //type: string
-                            Value eoc_received_slc_time_stamp; //type: string
-                            Value eod_received_im_time_stamp; //type: string
-                            Value eod_sent_imdr_time_stamp; //type: string
-                            Value eod_sent_slc_time_stamp; //type: string
-                            Value fis_issu_error_ts; //type: uint64
 
+
+                            YLeaf imdr_support; //type: boolean
+                            YLeaf slc_support; //type: boolean
+                            YLeaf fis_issu_restart; //type: boolean
+                            YLeaf imdr_eoc_implicit; //type: boolean
+                            YLeaf slc_eoc_implicit; //type: boolean
+                            YLeaf eoc_received_imdr_time_stamp; //type: string
+                            YLeaf eoc_received_slc_time_stamp; //type: string
+                            YLeaf eod_received_im_time_stamp; //type: string
+                            YLeaf eod_sent_imdr_time_stamp; //type: string
+                            YLeaf eod_sent_slc_time_stamp; //type: string
+                            YLeaf fis_issu_error_ts; //type: uint64
 
                         class FisProtoState : public Entity
                         {
@@ -234,21 +244,22 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol_name; //type: string
-                                Value aib_eod_time_stamp; //type: string
-                                Value rsi_eod_valid; //type: boolean
-                                Value rsi_eod_time_stamp; //type: string
-                                Value lsd_eod_valid; //type: boolean
-                                Value lsd_eod_time_stamp; //type: string
-                                Value lmrib_eod_valid; //type: boolean
-                                Value lmrib_eod_time_stamp; //type: string
-                                Value rib_info_valid; //type: boolean
-                                Value bcdl_tables; //type: uint32
-                                Value converged_tables; //type: uint32
-                                Value rib_tables_converged_time_stamp; //type: string
-                                Value protocol_eod_valid; //type: boolean
-                                Value protocol_eod_time_stamp; //type: string
 
+
+                                YLeaf protocol_name; //type: string
+                                YLeaf aib_eod_time_stamp; //type: string
+                                YLeaf rsi_eod_valid; //type: boolean
+                                YLeaf rsi_eod_time_stamp; //type: string
+                                YLeaf lsd_eod_valid; //type: boolean
+                                YLeaf lsd_eod_time_stamp; //type: string
+                                YLeaf lmrib_eod_valid; //type: boolean
+                                YLeaf lmrib_eod_time_stamp; //type: string
+                                YLeaf rib_info_valid; //type: boolean
+                                YLeaf bcdl_tables; //type: uint32
+                                YLeaf converged_tables; //type: uint32
+                                YLeaf rib_tables_converged_time_stamp; //type: string
+                                YLeaf protocol_eod_valid; //type: boolean
+                                YLeaf protocol_eod_time_stamp; //type: string
 
 
 
@@ -276,6 +287,7 @@ class Fib : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Summary : public Entity
                         {
                             public:
@@ -289,49 +301,50 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol_name; //type: FibProtocolEnum
-                                Value vrf_name; //type: string
-                                Value table_id; //type: int32
-                                Value prefix; //type: string
-                                Value ss_tbl_id; //type: uint32
-                                Value ss_tbl_id_ptr; //type: uint32
-                                Value ss_vrf_id; //type: uint32
-                                Value ss_vr_id; //type: uint32
-                                Value load_balancing; //type: SsLbaStateEnum
-                                Value forwarding_elements; //type: uint32
-                                Value routes; //type: uint32
-                                Value prefix_in_place_modifications; //type: uint32
-                                Value stale_prefix_deletes; //type: uint32
-                                Value load_sharing_elements; //type: uint32
-                                Value load_sharing_references; //type: uint64
-                                Value total_load_share_element_bytes; //type: uint32
-                                Value leaves_used_bytes; //type: uint32
-                                Value reresolve_entries; //type: uint32
-                                Value old_unresolve_entries; //type: uint32
-                                Value new_unresolve_entries; //type: uint32
-                                Value unresolve_entries; //type: uint32
-                                Value cef_route_drops; //type: uint32
-                                Value cef_version_mismatch_route_drops; //type: uint64
-                                Value delete_cache_num_entries; //type: uint32
-                                Value existing_leaves_revisions; //type: uint32
-                                Value fib_default_prefix; //type: uint32
-                                Value fib_default_prefix_mask_length; //type: uint32
-                                Value next_hops; //type: uint32
-                                Value incomplete_next_hops; //type: uint32
-                                Value resolution_timer; //type: uint32
-                                Value slow_process_timer; //type: uint32
-                                Value max_resolution_timer; //type: uint32
-                                Value imposition_prefixes; //type: uint32
-                                Value extended_prefixes; //type: uint32
-                                Value cefl_bl_recycled_routes; //type: uint32
-                                Value ldi_backwalks; //type: uint32
-                                Value ss_prot_route_count; //type: uint32
-                                Value lisp_eid_prefixes; //type: uint32
-                                Value lisp_eid_valid_prefixes; //type: uint32
-                                Value lisp_rloc_objects; //type: uint32
-                                Value ss_vxlan_ltep_ifh; //type: string
-                                Value ss_drop_pl_count; //type: uint32
 
+
+                                YLeaf protocol_name; //type: FibProtocolEnum
+                                YLeaf vrf_name; //type: string
+                                YLeaf table_id; //type: int32
+                                YLeaf prefix; //type: string
+                                YLeaf ss_tbl_id; //type: uint32
+                                YLeaf ss_tbl_id_ptr; //type: uint32
+                                YLeaf ss_vrf_id; //type: uint32
+                                YLeaf ss_vr_id; //type: uint32
+                                YLeaf load_balancing; //type: SsLbaStateEnum
+                                YLeaf forwarding_elements; //type: uint32
+                                YLeaf routes; //type: uint32
+                                YLeaf prefix_in_place_modifications; //type: uint32
+                                YLeaf stale_prefix_deletes; //type: uint32
+                                YLeaf load_sharing_elements; //type: uint32
+                                YLeaf load_sharing_references; //type: uint64
+                                YLeaf total_load_share_element_bytes; //type: uint32
+                                YLeaf leaves_used_bytes; //type: uint32
+                                YLeaf reresolve_entries; //type: uint32
+                                YLeaf old_unresolve_entries; //type: uint32
+                                YLeaf new_unresolve_entries; //type: uint32
+                                YLeaf unresolve_entries; //type: uint32
+                                YLeaf cef_route_drops; //type: uint32
+                                YLeaf cef_version_mismatch_route_drops; //type: uint64
+                                YLeaf delete_cache_num_entries; //type: uint32
+                                YLeaf existing_leaves_revisions; //type: uint32
+                                YLeaf fib_default_prefix; //type: uint32
+                                YLeaf fib_default_prefix_mask_length; //type: uint32
+                                YLeaf next_hops; //type: uint32
+                                YLeaf incomplete_next_hops; //type: uint32
+                                YLeaf resolution_timer; //type: uint32
+                                YLeaf slow_process_timer; //type: uint32
+                                YLeaf max_resolution_timer; //type: uint32
+                                YLeaf imposition_prefixes; //type: uint32
+                                YLeaf extended_prefixes; //type: uint32
+                                YLeaf cefl_bl_recycled_routes; //type: uint32
+                                YLeaf ldi_backwalks; //type: uint32
+                                YLeaf ss_prot_route_count; //type: uint32
+                                YLeaf lisp_eid_prefixes; //type: uint32
+                                YLeaf lisp_eid_valid_prefixes; //type: uint32
+                                YLeaf lisp_rloc_objects; //type: uint32
+                                YLeaf ss_vxlan_ltep_ifh; //type: string
+                                YLeaf ss_drop_pl_count; //type: uint32
 
                             class ExclusiveLoadSharingElement : public Entity
                             {
@@ -346,16 +359,17 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value total_load_sharing_element_bytes; //type: uint32
-                                    Value total_load_sharing_element_references; //type: uint64
-                                    Value total_path_list_elements; //type: uint32
-                                    Value recursive_path_list_elements; //type: uint32
-                                    Value platform_shared_path_list_elements; //type: uint32
-                                    Value retry_path_list_elements; //type: uint32
-                                    Value total_load_info_elements; //type: uint32
-                                    Value recursive_load_info_elements; //type: uint32
-                                    Value platform_shared_load_info_elements; //type: uint32
 
+
+                                    YLeaf total_load_sharing_element_bytes; //type: uint32
+                                    YLeaf total_load_sharing_element_references; //type: uint64
+                                    YLeaf total_path_list_elements; //type: uint32
+                                    YLeaf recursive_path_list_elements; //type: uint32
+                                    YLeaf platform_shared_path_list_elements; //type: uint32
+                                    YLeaf retry_path_list_elements; //type: uint32
+                                    YLeaf total_load_info_elements; //type: uint32
+                                    YLeaf recursive_load_info_elements; //type: uint32
+                                    YLeaf platform_shared_load_info_elements; //type: uint32
 
 
 
@@ -375,16 +389,17 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value total_load_sharing_element_bytes; //type: uint32
-                                    Value total_load_sharing_element_references; //type: uint64
-                                    Value total_path_list_elements; //type: uint32
-                                    Value recursive_path_list_elements; //type: uint32
-                                    Value platform_shared_path_list_elements; //type: uint32
-                                    Value retry_path_list_elements; //type: uint32
-                                    Value total_load_info_elements; //type: uint32
-                                    Value recursive_load_info_elements; //type: uint32
-                                    Value platform_shared_load_info_elements; //type: uint32
 
+
+                                    YLeaf total_load_sharing_element_bytes; //type: uint32
+                                    YLeaf total_load_sharing_element_references; //type: uint64
+                                    YLeaf total_path_list_elements; //type: uint32
+                                    YLeaf recursive_path_list_elements; //type: uint32
+                                    YLeaf platform_shared_path_list_elements; //type: uint32
+                                    YLeaf retry_path_list_elements; //type: uint32
+                                    YLeaf total_load_info_elements; //type: uint32
+                                    YLeaf recursive_load_info_elements; //type: uint32
+                                    YLeaf platform_shared_load_info_elements; //type: uint32
 
 
 
@@ -404,16 +419,17 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value total_load_sharing_element_bytes; //type: uint32
-                                    Value total_load_sharing_element_references; //type: uint64
-                                    Value total_path_list_elements; //type: uint32
-                                    Value recursive_path_list_elements; //type: uint32
-                                    Value platform_shared_path_list_elements; //type: uint32
-                                    Value retry_path_list_elements; //type: uint32
-                                    Value total_load_info_elements; //type: uint32
-                                    Value recursive_load_info_elements; //type: uint32
-                                    Value platform_shared_load_info_elements; //type: uint32
 
+
+                                    YLeaf total_load_sharing_element_bytes; //type: uint32
+                                    YLeaf total_load_sharing_element_references; //type: uint64
+                                    YLeaf total_path_list_elements; //type: uint32
+                                    YLeaf recursive_path_list_elements; //type: uint32
+                                    YLeaf platform_shared_path_list_elements; //type: uint32
+                                    YLeaf retry_path_list_elements; //type: uint32
+                                    YLeaf total_load_info_elements; //type: uint32
+                                    YLeaf recursive_load_info_elements; //type: uint32
+                                    YLeaf platform_shared_load_info_elements; //type: uint32
 
 
 
@@ -433,16 +449,17 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value total_load_sharing_element_bytes; //type: uint32
-                                    Value total_load_sharing_element_references; //type: uint64
-                                    Value total_path_list_elements; //type: uint32
-                                    Value recursive_path_list_elements; //type: uint32
-                                    Value platform_shared_path_list_elements; //type: uint32
-                                    Value retry_path_list_elements; //type: uint32
-                                    Value total_load_info_elements; //type: uint32
-                                    Value recursive_load_info_elements; //type: uint32
-                                    Value platform_shared_load_info_elements; //type: uint32
 
+
+                                    YLeaf total_load_sharing_element_bytes; //type: uint32
+                                    YLeaf total_load_sharing_element_references; //type: uint64
+                                    YLeaf total_path_list_elements; //type: uint32
+                                    YLeaf recursive_path_list_elements; //type: uint32
+                                    YLeaf platform_shared_path_list_elements; //type: uint32
+                                    YLeaf retry_path_list_elements; //type: uint32
+                                    YLeaf total_load_info_elements; //type: uint32
+                                    YLeaf recursive_load_info_elements; //type: uint32
+                                    YLeaf platform_shared_load_info_elements; //type: uint32
 
 
 
@@ -453,8 +470,6 @@ class Fib : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::ExclusiveLoadSharingElement> exclusive_load_sharing_element;
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::LabelSharedLoadSharingElement> label_shared_load_sharing_element;
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::SharedLoadSharingElement> shared_load_sharing_element;
-                                class SsLbaStateEnum;
-                                class FibProtocolEnum;
 
 
                         }; // Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary
@@ -479,8 +494,9 @@ class Fib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sesa_num_client; //type: uint32
 
+
+                            YLeaf sesa_num_client; //type: uint32
 
                         class SesaPlSum : public Entity
                         {
@@ -495,10 +511,11 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sep_num_ecd_pathlist; //type: uint32
-                                Value sep_num_ecd_pl_unresolved; //type: uint32
-                                ValueList sep_num_ecd_pl_per_interest; //type: list of  uint32
 
+
+                                YLeaf sep_num_ecd_pathlist; //type: uint32
+                                YLeaf sep_num_ecd_pl_unresolved; //type: uint32
+                                YLeafList sep_num_ecd_pl_per_interest; //type: list of  uint32
 
 
 
@@ -526,6 +543,7 @@ class Fib : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class FrrInterfaces : public Entity
                         {
                             public:
@@ -541,6 +559,7 @@ class Fib : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class FrrInterface : public Entity
                             {
                                 public:
@@ -554,8 +573,9 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value frr_interface_name; //type: string
 
+
+                                    YLeaf frr_interface_name; //type: string
 
                                 class Logs : public Entity
                                 {
@@ -572,6 +592,7 @@ class Fib : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Log : public Entity
                                     {
                                         public:
@@ -585,13 +606,14 @@ class Fib : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value log_index; //type: int32
-                                            Value frr_protocol_type; //type: FibFrrProtocolShowEnum
-                                            Value frr_interface_name; //type: string
-                                            Value frr_prefix; //type: string
-                                            Value frr_switching_time; //type: uint32
-                                            Value bundle_member_interface_name; //type: string
 
+
+                                            YLeaf log_index; //type: int32
+                                            YLeaf frr_protocol_type; //type: FibFrrProtocolShowEnum
+                                            YLeaf frr_interface_name; //type: string
+                                            YLeaf frr_prefix; //type: string
+                                            YLeaf frr_switching_time; //type: uint32
+                                            YLeaf bundle_member_interface_name; //type: string
 
                                         class FrrTimestamp : public Entity
                                         {
@@ -606,9 +628,10 @@ class Fib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value seconds; //type: int32
-                                                Value nano_seconds; //type: int32
 
+
+                                                YLeaf seconds; //type: int32
+                                                YLeaf nano_seconds; //type: int32
 
 
 
@@ -616,7 +639,6 @@ class Fib : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp> frr_timestamp;
-                                            class FibFrrProtocolShowEnum;
 
 
                                     }; // Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log
@@ -661,6 +683,7 @@ class Fib : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Vrf : public Entity
                         {
                             public:
@@ -674,8 +697,9 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value vrf_name; //type: string
 
+
+                                YLeaf vrf_name; //type: string
 
                             class IpPrefixDetails : public Entity
                             {
@@ -692,6 +716,7 @@ class Fib : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class IpPrefixDetail : public Entity
                                 {
                                     public:
@@ -705,42 +730,43 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value protocol_type_fib_entry; //type: uint32
-                                        Value platform_hardware; //type: string
-                                        Value number_of_referances_to_path_list; //type: uint32
-                                        Value path_list_flags; //type: uint32
-                                        Value path_list_source; //type: uint32
-                                        Value number_of_referances_to_ldi; //type: uint32
-                                        Value ldi_flags; //type: uint32
-                                        Value flags_external_ldi; //type: uint32
-                                        Value exact_route_result; //type: boolean
-                                        Value prefix_is_static_or_connected; //type: boolean
-                                        Value packet_should_recieve; //type: boolean
-                                        Value prefix_connected; //type: boolean
-                                        Value prefix_for_adjancency; //type: boolean
-                                        Value prefix_for_pic_next_hop; //type: boolean
-                                        Value purgable_after_purge_interval; //type: boolean
-                                        Value broadcast_recive_flag; //type: boolean
-                                        Value broadcast_forward_flag; //type: boolean
-                                        Value zero_by_zero_route_as_default; //type: boolean
-                                        Value external_switch_triggered; //type: boolean
-                                        Value route_attribute_flag; //type: boolean
-                                        Value dummy_real_zero_route; //type: boolean
-                                        Value ldi_lw_flag; //type: uint32
-                                        Value ref_counter_of_ldi_lw_ldi; //type: uint32
-                                        Value type_of_ldi_lw_ldi; //type: uint32
-                                        Value lspa_flags; //type: uint32
-                                        Value version_of_route; //type: uint64
-                                        Value fib_route_download_priority; //type: uint32
-                                        Value time_of_last_update_in_msec; //type: uint64
-                                        Value l2_subscriber_route; //type: boolean
-                                        Value l2_subscriber_xconnect_id; //type: uint32
-                                        Value l2_subscriber_ip_protocol; //type: uint32
-                                        Value l2tpv3_cookie_length_bits; //type: uint32
-                                        Value route_for_external_reach_linecard_flag; //type: boolean
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf protocol_type_fib_entry; //type: uint32
+                                        YLeaf platform_hardware; //type: string
+                                        YLeaf number_of_referances_to_path_list; //type: uint32
+                                        YLeaf path_list_flags; //type: uint32
+                                        YLeaf path_list_source; //type: uint32
+                                        YLeaf number_of_referances_to_ldi; //type: uint32
+                                        YLeaf ldi_flags; //type: uint32
+                                        YLeaf flags_external_ldi; //type: uint32
+                                        YLeaf exact_route_result; //type: boolean
+                                        YLeaf prefix_is_static_or_connected; //type: boolean
+                                        YLeaf packet_should_recieve; //type: boolean
+                                        YLeaf prefix_connected; //type: boolean
+                                        YLeaf prefix_for_adjancency; //type: boolean
+                                        YLeaf prefix_for_pic_next_hop; //type: boolean
+                                        YLeaf purgable_after_purge_interval; //type: boolean
+                                        YLeaf broadcast_recive_flag; //type: boolean
+                                        YLeaf broadcast_forward_flag; //type: boolean
+                                        YLeaf zero_by_zero_route_as_default; //type: boolean
+                                        YLeaf external_switch_triggered; //type: boolean
+                                        YLeaf route_attribute_flag; //type: boolean
+                                        YLeaf dummy_real_zero_route; //type: boolean
+                                        YLeaf ldi_lw_flag; //type: uint32
+                                        YLeaf ref_counter_of_ldi_lw_ldi; //type: uint32
+                                        YLeaf type_of_ldi_lw_ldi; //type: uint32
+                                        YLeaf lspa_flags; //type: uint32
+                                        YLeaf version_of_route; //type: uint64
+                                        YLeaf fib_route_download_priority; //type: uint32
+                                        YLeaf time_of_last_update_in_msec; //type: uint64
+                                        YLeaf l2_subscriber_route; //type: boolean
+                                        YLeaf l2_subscriber_xconnect_id; //type: uint32
+                                        YLeaf l2_subscriber_ip_protocol; //type: uint32
+                                        YLeaf l2tpv3_cookie_length_bits; //type: uint32
+                                        YLeaf route_for_external_reach_linecard_flag; //type: boolean
 
                                     class DetailFibEntryInformation : public Entity
                                     {
@@ -755,46 +781,47 @@ class Fib : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fib_entry_version; //type: uint32
-                                            Value per_prefix_accounting; //type: uint8
-                                            Value load_sharing_type; //type: FibLoadshareShowEnum
-                                            Value fib_entry_adjacency_type; //type: FibAdjacencyShowEnum
-                                            Value fib_protocol_type; //type: uint32
-                                            Value afi_fib_protocol_type; //type: uint32
-                                            Value aib_l3_address; //type: string
-                                            Value adjacency_address_length; //type: uint32
-                                            Value adjacency_interface; //type: uint32
-                                            Value fib_special_nh_information_type; //type: uint32
-                                            Value fib_entry_adjacency_address; //type: string
-                                            Value fib_entry_adjacency_interface; //type: uint32
-                                            Value packets_through_fib_entry; //type: uint64
-                                            Value bytes_through_fib_entry; //type: uint64
-                                            Value detailed_prefix_length; //type: uint32
-                                            Value prefix_protocol; //type: uint32
-                                            Value precedence_forpackets; //type: uint8
-                                            Value traffic_index_for_packets; //type: uint8
-                                            Value switch_compontent_id; //type: uint32
-                                            Value fast_adjacency_flag; //type: boolean
-                                            Value illegal_fast_adjacency_flag; //type: boolean
-                                            Value remote_adjacency_flag; //type: boolean
-                                            Value bgp_attribute_id; //type: uint32
-                                            Value bgp_local_attribute_id; //type: uint32
-                                            Value bgp_attribute_origin_as; //type: uint32
-                                            Value bgp_attribute_next_hop_as; //type: uint32
-                                            Value path_string; //type: string
-                                            Value extcom_string; //type: string
-                                            Value com_string; //type: string
-                                            Value extended_community; //type: uint32
-                                            Value qos_group; //type: uint32
-                                            Value mpls_fec; //type: uint32
-                                            Value qppb_qos_group_and_ip_precedence; //type: uint32
-                                            Value flow_tag; //type: uint8
-                                            Value forward_class; //type: uint8
-                                            Value pl_time_of_last_update_in_msec; //type: uint64
-                                            Value ldi_time_of_last_update_in_msec; //type: uint64
-                                            Value lwldi_time_of_last_update_in_msec; //type: uint64
-                                            Value pl_time_stamp_type; //type: uint32
 
+
+                                            YLeaf fib_entry_version; //type: uint32
+                                            YLeaf per_prefix_accounting; //type: uint8
+                                            YLeaf load_sharing_type; //type: FibLoadshareShowEnum
+                                            YLeaf fib_entry_adjacency_type; //type: FibAdjacencyShowEnum
+                                            YLeaf fib_protocol_type; //type: uint32
+                                            YLeaf afi_fib_protocol_type; //type: uint32
+                                            YLeaf aib_l3_address; //type: string
+                                            YLeaf adjacency_address_length; //type: uint32
+                                            YLeaf adjacency_interface; //type: uint32
+                                            YLeaf fib_special_nh_information_type; //type: uint32
+                                            YLeaf fib_entry_adjacency_address; //type: string
+                                            YLeaf fib_entry_adjacency_interface; //type: uint32
+                                            YLeaf packets_through_fib_entry; //type: uint64
+                                            YLeaf bytes_through_fib_entry; //type: uint64
+                                            YLeaf detailed_prefix_length; //type: uint32
+                                            YLeaf prefix_protocol; //type: uint32
+                                            YLeaf precedence_forpackets; //type: uint8
+                                            YLeaf traffic_index_for_packets; //type: uint8
+                                            YLeaf switch_compontent_id; //type: uint32
+                                            YLeaf fast_adjacency_flag; //type: boolean
+                                            YLeaf illegal_fast_adjacency_flag; //type: boolean
+                                            YLeaf remote_adjacency_flag; //type: boolean
+                                            YLeaf bgp_attribute_id; //type: uint32
+                                            YLeaf bgp_local_attribute_id; //type: uint32
+                                            YLeaf bgp_attribute_origin_as; //type: uint32
+                                            YLeaf bgp_attribute_next_hop_as; //type: uint32
+                                            YLeaf path_string; //type: string
+                                            YLeaf extcom_string; //type: string
+                                            YLeaf com_string; //type: string
+                                            YLeaf extended_community; //type: uint32
+                                            YLeaf qos_group; //type: uint32
+                                            YLeaf mpls_fec; //type: uint32
+                                            YLeaf qppb_qos_group_and_ip_precedence; //type: uint32
+                                            YLeaf flow_tag; //type: uint8
+                                            YLeaf forward_class; //type: uint8
+                                            YLeaf pl_time_of_last_update_in_msec; //type: uint64
+                                            YLeaf ldi_time_of_last_update_in_msec; //type: uint64
+                                            YLeaf lwldi_time_of_last_update_in_msec; //type: uint64
+                                            YLeaf pl_time_stamp_type; //type: uint32
 
                                         class LoadshareInformation : public Entity
                                         {
@@ -809,18 +836,19 @@ class Fib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value packets_through_load_information; //type: uint64
-                                                Value bytes_through_load_information; //type: uint64
-                                                Value total_packets_through_load_information; //type: uint64
-                                                Value total_bytes_through_load_information; //type: uint64
-                                                Value prefix_of_owner; //type: uint32
-                                                Value mask_length_of_owner; //type: uint32
-                                                Value load_information_reference_count; //type: uint16
-                                                Value per_dest_load_sharing_flag; //type: boolean
-                                                Value load_information_owner_deleted_flag; //type: boolean
-                                                Value loadinfo_sanity_flag; //type: boolean
-                                                Value is_owner; //type: boolean
 
+
+                                                YLeaf packets_through_load_information; //type: uint64
+                                                YLeaf bytes_through_load_information; //type: uint64
+                                                YLeaf total_packets_through_load_information; //type: uint64
+                                                YLeaf total_bytes_through_load_information; //type: uint64
+                                                YLeaf prefix_of_owner; //type: uint32
+                                                YLeaf mask_length_of_owner; //type: uint32
+                                                YLeaf load_information_reference_count; //type: uint16
+                                                YLeaf per_dest_load_sharing_flag; //type: boolean
+                                                YLeaf load_information_owner_deleted_flag; //type: boolean
+                                                YLeaf loadinfo_sanity_flag; //type: boolean
+                                                YLeaf is_owner; //type: boolean
 
                                             class LoadInformtionInternalData : public Entity
                                             {
@@ -835,25 +863,26 @@ class Fib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value level_ofldis; //type: uint8
-                                                    Value number_of_ldis; //type: uint8
-                                                    Value maximum_index_arrays; //type: uint32
-                                                    Value path_indices; //type: string
-                                                    Value path_ldi_numbers; //type: string
-                                                    Value maximum_slots; //type: uint32
-                                                    Value normalized_weights; //type: string
-                                                    Value tunnel_class_value; //type: string
-                                                    Value is_pbts_info_valid; //type: boolean
-                                                    Value pbts_class_offset; //type: string
-                                                    Value pbts_class_num_paths; //type: string
-                                                    Value pbts_fallback_mapped_class; //type: string
-                                                    Value round_robin_disable; //type: boolean
-                                                    Value ldi_next_hop_buckets; //type: uint8
-                                                    Value platform_hardware_information; //type: string
-                                                    ValueList sanity_flag; //type: list of  boolean
-                                                    ValueList interface_handle; //type: list of  string
-                                                    ValueList weights_of_path; //type: list of  uint32
 
+
+                                                    YLeaf level_ofldis; //type: uint8
+                                                    YLeaf number_of_ldis; //type: uint8
+                                                    YLeaf maximum_index_arrays; //type: uint32
+                                                    YLeaf path_indices; //type: string
+                                                    YLeaf path_ldi_numbers; //type: string
+                                                    YLeaf maximum_slots; //type: uint32
+                                                    YLeaf normalized_weights; //type: string
+                                                    YLeaf tunnel_class_value; //type: string
+                                                    YLeaf is_pbts_info_valid; //type: boolean
+                                                    YLeaf pbts_class_offset; //type: string
+                                                    YLeaf pbts_class_num_paths; //type: string
+                                                    YLeaf pbts_fallback_mapped_class; //type: string
+                                                    YLeaf round_robin_disable; //type: boolean
+                                                    YLeaf ldi_next_hop_buckets; //type: uint8
+                                                    YLeaf platform_hardware_information; //type: string
+                                                    YLeafList sanity_flag; //type: list of  boolean
+                                                    YLeafList interface_handle; //type: list of  string
+                                                    YLeafList weights_of_path; //type: list of  uint32
 
                                                 class AdjacencyAddress : public Entity
                                                 {
@@ -868,8 +897,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
 
+
+                                                        YLeaf address; //type: string
 
 
 
@@ -889,8 +919,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value entry; //type: boolean
 
+
+                                                        YLeaf entry; //type: boolean
 
 
 
@@ -910,8 +941,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value entry; //type: boolean
 
+
+                                                        YLeaf entry; //type: boolean
 
 
 
@@ -931,8 +963,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value entry; //type: boolean
 
+
+                                                        YLeaf entry; //type: boolean
 
 
 
@@ -955,8 +988,6 @@ class Fib : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation> loadshare_information;
-                                            class FibAdjacencyShowEnum;
-                                            class FibLoadshareShowEnum;
 
 
                                     }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation
@@ -977,6 +1008,7 @@ class Fib : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FibShTblPath : public Entity
                                         {
                                             public:
@@ -990,28 +1022,29 @@ class Fib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value hardware_information; //type: string
-                                                Value brief_interface_handle; //type: string
-                                                Value brief_next_hop_prefix; //type: string
-                                                Value via_label_to_recurse; //type: uint32
-                                                Value brief_pnode_address; //type: string
-                                                Value brief_qnode_address; //type: string
-                                                Value resolved_path; //type: boolean
-                                                Value recursive_path; //type: boolean
-                                                Value packets_received_path; //type: boolean
-                                                Value attached_path; //type: boolean
-                                                Value backup_path; //type: boolean
-                                                Value best_external_path; //type: boolean
-                                                Value protect_ignore; //type: boolean
-                                                Value path_dlb; //type: boolean
-                                                Value path_flags; //type: uint16
-                                                Value path_info_flags; //type: uint16
-                                                Value path_index; //type: uint8
-                                                Value backup_index; //type: uint8
-                                                Value next_hop_index; //type: uint32
-                                                Value parent_interface_handle; //type: string
-                                                Value recursionvia_len; //type: uint8
 
+
+                                                YLeaf hardware_information; //type: string
+                                                YLeaf brief_interface_handle; //type: string
+                                                YLeaf brief_next_hop_prefix; //type: string
+                                                YLeaf via_label_to_recurse; //type: uint32
+                                                YLeaf brief_pnode_address; //type: string
+                                                YLeaf brief_qnode_address; //type: string
+                                                YLeaf resolved_path; //type: boolean
+                                                YLeaf recursive_path; //type: boolean
+                                                YLeaf packets_received_path; //type: boolean
+                                                YLeaf attached_path; //type: boolean
+                                                YLeaf backup_path; //type: boolean
+                                                YLeaf best_external_path; //type: boolean
+                                                YLeaf protect_ignore; //type: boolean
+                                                YLeaf path_dlb; //type: boolean
+                                                YLeaf path_flags; //type: uint16
+                                                YLeaf path_info_flags; //type: uint16
+                                                YLeaf path_index; //type: uint8
+                                                YLeaf backup_index; //type: uint8
+                                                YLeaf next_hop_index; //type: uint32
+                                                YLeaf parent_interface_handle; //type: string
+                                                YLeaf recursionvia_len; //type: uint8
 
                                             class MoreDetailAboutPath : public Entity
                                             {
@@ -1026,33 +1059,34 @@ class Fib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value ip_address_to_recurse; //type: string
-                                                    Value label_to_recurse; //type: uint32
-                                                    Value detail_next_hop_prefix; //type: string
-                                                    Value next_hop_mask_length; //type: uint8
-                                                    Value interface_associated_path; //type: string
-                                                    Value next_hop_interface; //type: string
-                                                    Value next_hop_vrf; //type: string
-                                                    Value tunnle_endpoint_id; //type: uint32
-                                                    Value lisprlocid; //type: uint32
-                                                    Value number_of_dependencies_this_path; //type: uint32
-                                                    Value robin_reset_value; //type: uint8
-                                                    Value recurse_prefix_object; //type: boolean
-                                                    Value next_prefix_recursion; //type: string
-                                                    Value next_prefix_length; //type: uint8
-                                                    Value recurse_prefix_object2; //type: boolean
-                                                    Value next_prefix_recursion2; //type: string
-                                                    Value next_prefix_length2; //type: uint8
-                                                    Value detail_fib_adjacency_type; //type: FibAdjacencyShowEnum
-                                                    Value current_path_flag; //type: boolean
-                                                    Value recursive_path_information; //type: boolean
-                                                    Value external_adjacency; //type: boolean
-                                                    Value fib_path_nh_information_type; //type: FibNehEnum
-                                                    Value fib_path_nh_information_type_special; //type: FibNehSpecialEnum
-                                                    Value weight_of_path; //type: uint32
-                                                    Value tunnel_class; //type: uint8
-                                                    Value tunnel_is_forward_class; //type: boolean
 
+
+                                                    YLeaf ip_address_to_recurse; //type: string
+                                                    YLeaf label_to_recurse; //type: uint32
+                                                    YLeaf detail_next_hop_prefix; //type: string
+                                                    YLeaf next_hop_mask_length; //type: uint8
+                                                    YLeaf interface_associated_path; //type: string
+                                                    YLeaf next_hop_interface; //type: string
+                                                    YLeaf next_hop_vrf; //type: string
+                                                    YLeaf tunnle_endpoint_id; //type: uint32
+                                                    YLeaf lisprlocid; //type: uint32
+                                                    YLeaf number_of_dependencies_this_path; //type: uint32
+                                                    YLeaf robin_reset_value; //type: uint8
+                                                    YLeaf recurse_prefix_object; //type: boolean
+                                                    YLeaf next_prefix_recursion; //type: string
+                                                    YLeaf next_prefix_length; //type: uint8
+                                                    YLeaf recurse_prefix_object2; //type: boolean
+                                                    YLeaf next_prefix_recursion2; //type: string
+                                                    YLeaf next_prefix_length2; //type: uint8
+                                                    YLeaf detail_fib_adjacency_type; //type: FibAdjacencyShowEnum
+                                                    YLeaf current_path_flag; //type: boolean
+                                                    YLeaf recursive_path_information; //type: boolean
+                                                    YLeaf external_adjacency; //type: boolean
+                                                    YLeaf fib_path_nh_information_type; //type: FibNehEnum
+                                                    YLeaf fib_path_nh_information_type_special; //type: FibNehSpecialEnum
+                                                    YLeaf weight_of_path; //type: uint32
+                                                    YLeaf tunnel_class; //type: uint8
+                                                    YLeaf tunnel_is_forward_class; //type: boolean
 
                                                 class SpdIpencap : public Entity
                                                 {
@@ -1067,16 +1101,17 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value ip_encap_hdr_count; //type: uint8
-                                                        Value ip_encap_locks; //type: uint32
-                                                        Value ip_encap_transport_tbl; //type: uint32
-                                                        Value ipe_transport_vrf_name; //type: string
-                                                        Value ip_encap_transport_af; //type: uint32
-                                                        Value ip_encap_payload_af; //type: uint32
-                                                        Value ip_encap_payload_mtu; //type: uint16
-                                                        Value ip_encap_parent; //type: uint32
-                                                        Value ip_encap_parent_type; //type: uint32
 
+
+                                                        YLeaf ip_encap_hdr_count; //type: uint8
+                                                        YLeaf ip_encap_locks; //type: uint32
+                                                        YLeaf ip_encap_transport_tbl; //type: uint32
+                                                        YLeaf ipe_transport_vrf_name; //type: string
+                                                        YLeaf ip_encap_transport_af; //type: uint32
+                                                        YLeaf ip_encap_payload_af; //type: uint32
+                                                        YLeaf ip_encap_payload_mtu; //type: uint16
+                                                        YLeaf ip_encap_parent; //type: uint32
+                                                        YLeaf ip_encap_parent_type; //type: uint32
 
                                                     class IpEncapHdr : public Entity
                                                     {
@@ -1091,12 +1126,12 @@ class Fib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value ip_encap_hdr_type; //type: FibShIpencapHdrEnum
-                                                            Value ip_encap_hdrp; //type: string
-                                                            Value ip_encap_hdr_dyn; //type: uint32
 
 
-                                                            class FibShIpencapHdrEnum;
+                                                            YLeaf ip_encap_hdr_type; //type: FibShIpencapHdrEnum
+                                                            YLeaf ip_encap_hdrp; //type: string
+                                                            YLeaf ip_encap_hdr_dyn; //type: uint32
+
 
 
                                                     }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr
@@ -1109,9 +1144,6 @@ class Fib : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap> > spd_ipencap;
-                                                    class FibAdjacencyShowEnum;
-                                                    class FibNehEnum;
-                                                    class FibNehSpecialEnum;
 
 
                                             }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath
@@ -1130,13 +1162,14 @@ class Fib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value local_lable; //type: uint32
-                                                    Value recursive_fwd_chain; //type: boolean
-                                                    Value recursive_out_label_valid; //type: boolean
-                                                    Value recursive_out_lable; //type: uint32
-                                                    Value number_of_igp_paths; //type: uint32
-                                                    Value remote_backup; //type: boolean
 
+
+                                                    YLeaf local_lable; //type: uint32
+                                                    YLeaf recursive_fwd_chain; //type: boolean
+                                                    YLeaf recursive_out_label_valid; //type: boolean
+                                                    YLeaf recursive_out_lable; //type: uint32
+                                                    YLeaf number_of_igp_paths; //type: uint32
+                                                    YLeaf remote_backup; //type: boolean
 
                                                 class IgpLabelStackArray : public Entity
                                                 {
@@ -1151,11 +1184,12 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value number_of_labels; //type: uint32
-                                                        Value out_interface; //type: string
-                                                        Value nh_address; //type: string
-                                                        ValueList lstack; //type: list of  uint32
 
+
+                                                        YLeaf number_of_labels; //type: uint32
+                                                        YLeaf out_interface; //type: string
+                                                        YLeaf nh_address; //type: string
+                                                        YLeafList lstack; //type: list of  uint32
 
 
 
@@ -1207,46 +1241,47 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value prefix; //type: string
-                                    Value ss_tbl_id; //type: uint32
-                                    Value ss_tbl_id_ptr; //type: uint32
-                                    Value ss_vrf_id; //type: uint32
-                                    Value ss_vr_id; //type: uint32
-                                    Value load_balancing; //type: SsLbaStateEnum
-                                    Value forwarding_elements; //type: uint32
-                                    Value routes; //type: uint32
-                                    Value prefix_in_place_modifications; //type: uint32
-                                    Value stale_prefix_deletes; //type: uint32
-                                    Value load_sharing_elements; //type: uint32
-                                    Value load_sharing_references; //type: uint64
-                                    Value total_load_share_element_bytes; //type: uint32
-                                    Value leaves_used_bytes; //type: uint32
-                                    Value reresolve_entries; //type: uint32
-                                    Value old_unresolve_entries; //type: uint32
-                                    Value new_unresolve_entries; //type: uint32
-                                    Value unresolve_entries; //type: uint32
-                                    Value cef_route_drops; //type: uint32
-                                    Value cef_version_mismatch_route_drops; //type: uint64
-                                    Value delete_cache_num_entries; //type: uint32
-                                    Value existing_leaves_revisions; //type: uint32
-                                    Value fib_default_prefix; //type: uint32
-                                    Value fib_default_prefix_mask_length; //type: uint32
-                                    Value next_hops; //type: uint32
-                                    Value incomplete_next_hops; //type: uint32
-                                    Value resolution_timer; //type: uint32
-                                    Value slow_process_timer; //type: uint32
-                                    Value max_resolution_timer; //type: uint32
-                                    Value imposition_prefixes; //type: uint32
-                                    Value extended_prefixes; //type: uint32
-                                    Value cefl_bl_recycled_routes; //type: uint32
-                                    Value ldi_backwalks; //type: uint32
-                                    Value ss_prot_route_count; //type: uint32
-                                    Value lisp_eid_prefixes; //type: uint32
-                                    Value lisp_eid_valid_prefixes; //type: uint32
-                                    Value lisp_rloc_objects; //type: uint32
-                                    Value ss_vxlan_ltep_ifh; //type: string
-                                    Value ss_drop_pl_count; //type: uint32
 
+
+                                    YLeaf prefix; //type: string
+                                    YLeaf ss_tbl_id; //type: uint32
+                                    YLeaf ss_tbl_id_ptr; //type: uint32
+                                    YLeaf ss_vrf_id; //type: uint32
+                                    YLeaf ss_vr_id; //type: uint32
+                                    YLeaf load_balancing; //type: SsLbaStateEnum
+                                    YLeaf forwarding_elements; //type: uint32
+                                    YLeaf routes; //type: uint32
+                                    YLeaf prefix_in_place_modifications; //type: uint32
+                                    YLeaf stale_prefix_deletes; //type: uint32
+                                    YLeaf load_sharing_elements; //type: uint32
+                                    YLeaf load_sharing_references; //type: uint64
+                                    YLeaf total_load_share_element_bytes; //type: uint32
+                                    YLeaf leaves_used_bytes; //type: uint32
+                                    YLeaf reresolve_entries; //type: uint32
+                                    YLeaf old_unresolve_entries; //type: uint32
+                                    YLeaf new_unresolve_entries; //type: uint32
+                                    YLeaf unresolve_entries; //type: uint32
+                                    YLeaf cef_route_drops; //type: uint32
+                                    YLeaf cef_version_mismatch_route_drops; //type: uint64
+                                    YLeaf delete_cache_num_entries; //type: uint32
+                                    YLeaf existing_leaves_revisions; //type: uint32
+                                    YLeaf fib_default_prefix; //type: uint32
+                                    YLeaf fib_default_prefix_mask_length; //type: uint32
+                                    YLeaf next_hops; //type: uint32
+                                    YLeaf incomplete_next_hops; //type: uint32
+                                    YLeaf resolution_timer; //type: uint32
+                                    YLeaf slow_process_timer; //type: uint32
+                                    YLeaf max_resolution_timer; //type: uint32
+                                    YLeaf imposition_prefixes; //type: uint32
+                                    YLeaf extended_prefixes; //type: uint32
+                                    YLeaf cefl_bl_recycled_routes; //type: uint32
+                                    YLeaf ldi_backwalks; //type: uint32
+                                    YLeaf ss_prot_route_count; //type: uint32
+                                    YLeaf lisp_eid_prefixes; //type: uint32
+                                    YLeaf lisp_eid_valid_prefixes; //type: uint32
+                                    YLeaf lisp_rloc_objects; //type: uint32
+                                    YLeaf ss_vxlan_ltep_ifh; //type: string
+                                    YLeaf ss_drop_pl_count; //type: uint32
 
                                 class ExclusiveLoadSharingElement : public Entity
                                 {
@@ -1261,16 +1296,17 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_load_sharing_element_bytes; //type: uint32
-                                        Value total_load_sharing_element_references; //type: uint64
-                                        Value total_path_list_elements; //type: uint32
-                                        Value recursive_path_list_elements; //type: uint32
-                                        Value platform_shared_path_list_elements; //type: uint32
-                                        Value retry_path_list_elements; //type: uint32
-                                        Value total_load_info_elements; //type: uint32
-                                        Value recursive_load_info_elements; //type: uint32
-                                        Value platform_shared_load_info_elements; //type: uint32
 
+
+                                        YLeaf total_load_sharing_element_bytes; //type: uint32
+                                        YLeaf total_load_sharing_element_references; //type: uint64
+                                        YLeaf total_path_list_elements; //type: uint32
+                                        YLeaf recursive_path_list_elements; //type: uint32
+                                        YLeaf platform_shared_path_list_elements; //type: uint32
+                                        YLeaf retry_path_list_elements; //type: uint32
+                                        YLeaf total_load_info_elements; //type: uint32
+                                        YLeaf recursive_load_info_elements; //type: uint32
+                                        YLeaf platform_shared_load_info_elements; //type: uint32
 
 
 
@@ -1290,16 +1326,17 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_load_sharing_element_bytes; //type: uint32
-                                        Value total_load_sharing_element_references; //type: uint64
-                                        Value total_path_list_elements; //type: uint32
-                                        Value recursive_path_list_elements; //type: uint32
-                                        Value platform_shared_path_list_elements; //type: uint32
-                                        Value retry_path_list_elements; //type: uint32
-                                        Value total_load_info_elements; //type: uint32
-                                        Value recursive_load_info_elements; //type: uint32
-                                        Value platform_shared_load_info_elements; //type: uint32
 
+
+                                        YLeaf total_load_sharing_element_bytes; //type: uint32
+                                        YLeaf total_load_sharing_element_references; //type: uint64
+                                        YLeaf total_path_list_elements; //type: uint32
+                                        YLeaf recursive_path_list_elements; //type: uint32
+                                        YLeaf platform_shared_path_list_elements; //type: uint32
+                                        YLeaf retry_path_list_elements; //type: uint32
+                                        YLeaf total_load_info_elements; //type: uint32
+                                        YLeaf recursive_load_info_elements; //type: uint32
+                                        YLeaf platform_shared_load_info_elements; //type: uint32
 
 
 
@@ -1319,16 +1356,17 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_load_sharing_element_bytes; //type: uint32
-                                        Value total_load_sharing_element_references; //type: uint64
-                                        Value total_path_list_elements; //type: uint32
-                                        Value recursive_path_list_elements; //type: uint32
-                                        Value platform_shared_path_list_elements; //type: uint32
-                                        Value retry_path_list_elements; //type: uint32
-                                        Value total_load_info_elements; //type: uint32
-                                        Value recursive_load_info_elements; //type: uint32
-                                        Value platform_shared_load_info_elements; //type: uint32
 
+
+                                        YLeaf total_load_sharing_element_bytes; //type: uint32
+                                        YLeaf total_load_sharing_element_references; //type: uint64
+                                        YLeaf total_path_list_elements; //type: uint32
+                                        YLeaf recursive_path_list_elements; //type: uint32
+                                        YLeaf platform_shared_path_list_elements; //type: uint32
+                                        YLeaf retry_path_list_elements; //type: uint32
+                                        YLeaf total_load_info_elements; //type: uint32
+                                        YLeaf recursive_load_info_elements; //type: uint32
+                                        YLeaf platform_shared_load_info_elements; //type: uint32
 
 
 
@@ -1348,16 +1386,17 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value total_load_sharing_element_bytes; //type: uint32
-                                        Value total_load_sharing_element_references; //type: uint64
-                                        Value total_path_list_elements; //type: uint32
-                                        Value recursive_path_list_elements; //type: uint32
-                                        Value platform_shared_path_list_elements; //type: uint32
-                                        Value retry_path_list_elements; //type: uint32
-                                        Value total_load_info_elements; //type: uint32
-                                        Value recursive_load_info_elements; //type: uint32
-                                        Value platform_shared_load_info_elements; //type: uint32
 
+
+                                        YLeaf total_load_sharing_element_bytes; //type: uint32
+                                        YLeaf total_load_sharing_element_references; //type: uint64
+                                        YLeaf total_path_list_elements; //type: uint32
+                                        YLeaf recursive_path_list_elements; //type: uint32
+                                        YLeaf platform_shared_path_list_elements; //type: uint32
+                                        YLeaf retry_path_list_elements; //type: uint32
+                                        YLeaf total_load_info_elements; //type: uint32
+                                        YLeaf recursive_load_info_elements; //type: uint32
+                                        YLeaf platform_shared_load_info_elements; //type: uint32
 
 
 
@@ -1368,7 +1407,6 @@ class Fib : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::ExclusiveLoadSharingElement> exclusive_load_sharing_element;
                                     std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelSharedLoadSharingElement> label_shared_load_sharing_element;
                                     std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoadSharingElement> shared_load_sharing_element;
-                                    class SsLbaStateEnum;
 
 
                             }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary
@@ -1389,6 +1427,7 @@ class Fib : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class InterfaceInfo : public Entity
                                 {
                                     public:
@@ -1402,8 +1441,9 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link_type; //type: FibLinkEnum
 
+
+                                        YLeaf link_type; //type: FibLinkEnum
 
                                     class Interfaces : public Entity
                                     {
@@ -1420,6 +1460,7 @@ class Fib : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Interface : public Entity
                                         {
                                             public:
@@ -1433,37 +1474,38 @@ class Fib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
-                                                Value per_interface; //type: string
-                                                Value fib_interface_type; //type: uint32
-                                                Value fib_id_pointer; //type: uint32
-                                                Value fib_id_flags; //type: uint32
-                                                Value fib_id_extension_pointer; //type: uint32
-                                                Value fib_id_extension_flags; //type: uint32
-                                                Value number_of_dependent_next_hop_information; //type: uint32
-                                                Value vrf_local_cef_information_pointer; //type: uint32
-                                                Value reference_count; //type: uint16
-                                                Value last_modified_time; //type: uint32
-                                                Value last_operation; //type: FibidbOperEnum
-                                                Value protocol_enabled; //type: boolean
-                                                Value referance_count_for_protocol; //type: uint32
-                                                Value number_of_input_packets; //type: uint64
-                                                Value number_of_input_bytes; //type: uint64
-                                                Value number_of_output_packets; //type: uint64
-                                                Value number_of_output_bytes; //type: uint64
-                                                Value interface_up_flag; //type: boolean
-                                                Value per_packet_load_balancing_flag; //type: boolean
-                                                Value p2p_interface_flag; //type: boolean
-                                                Value loopback_interface_flag; //type: boolean
-                                                Value null_interface_flag; //type: boolean
-                                                Value tunnel_interface_flag; //type: boolean
-                                                Value gre_tunnel_interface_flag; //type: boolean
-                                                Value punt_packets_from_fib_switching_flag; //type: boolean
-                                                Value drop_packets_while_fib_switching_flag; //type: boolean
-                                                Value punt_packets_from_linecard_flag; //type: boolean
-                                                Value primary_ipv4_address; //type: string
-                                                Value primary_ipv6_address; //type: string
 
+
+                                                YLeaf interface_name; //type: string
+                                                YLeaf per_interface; //type: string
+                                                YLeaf fib_interface_type; //type: uint32
+                                                YLeaf fib_id_pointer; //type: uint32
+                                                YLeaf fib_id_flags; //type: uint32
+                                                YLeaf fib_id_extension_pointer; //type: uint32
+                                                YLeaf fib_id_extension_flags; //type: uint32
+                                                YLeaf number_of_dependent_next_hop_information; //type: uint32
+                                                YLeaf vrf_local_cef_information_pointer; //type: uint32
+                                                YLeaf reference_count; //type: uint16
+                                                YLeaf last_modified_time; //type: uint32
+                                                YLeaf last_operation; //type: FibidbOperEnum
+                                                YLeaf protocol_enabled; //type: boolean
+                                                YLeaf referance_count_for_protocol; //type: uint32
+                                                YLeaf number_of_input_packets; //type: uint64
+                                                YLeaf number_of_input_bytes; //type: uint64
+                                                YLeaf number_of_output_packets; //type: uint64
+                                                YLeaf number_of_output_bytes; //type: uint64
+                                                YLeaf interface_up_flag; //type: boolean
+                                                YLeaf per_packet_load_balancing_flag; //type: boolean
+                                                YLeaf p2p_interface_flag; //type: boolean
+                                                YLeaf loopback_interface_flag; //type: boolean
+                                                YLeaf null_interface_flag; //type: boolean
+                                                YLeaf tunnel_interface_flag; //type: boolean
+                                                YLeaf gre_tunnel_interface_flag; //type: boolean
+                                                YLeaf punt_packets_from_fib_switching_flag; //type: boolean
+                                                YLeaf drop_packets_while_fib_switching_flag; //type: boolean
+                                                YLeaf punt_packets_from_linecard_flag; //type: boolean
+                                                YLeaf primary_ipv4_address; //type: string
+                                                YLeaf primary_ipv6_address; //type: string
 
                                             class DetailFibIntInformation : public Entity
                                             {
@@ -1478,23 +1520,23 @@ class Fib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_mtu; //type: uint16
-                                                    Value forwarding_flag; //type: boolean
-                                                    Value rpf_configured_flag; //type: boolean
-                                                    Value rpf_mode; //type: FibRpfModeEnum
-                                                    Value default_route_with_rpf; //type: boolean
-                                                    Value self_ping_with_rpf; //type: boolean
-                                                    Value bgp_pa_input_configured_flag; //type: boolean
-                                                    Value source_bgp_pa_input_configured_flag; //type: boolean
-                                                    Value destination_bgp_pa_input_configured_flag; //type: boolean
-                                                    Value bgp_pa_output_configured_flag; //type: boolean
-                                                    Value source_bgp_pa_output_configured_flag; //type: boolean
-                                                    Value destination_bgp_pa_output_configured_flag; //type: boolean
-                                                    Value icmp_flag; //type: uint32
-                                                    Value multi_label_drop_flag; //type: boolean
 
 
-                                                    class FibRpfModeEnum;
+                                                    YLeaf interface_mtu; //type: uint16
+                                                    YLeaf forwarding_flag; //type: boolean
+                                                    YLeaf rpf_configured_flag; //type: boolean
+                                                    YLeaf rpf_mode; //type: FibRpfModeEnum
+                                                    YLeaf default_route_with_rpf; //type: boolean
+                                                    YLeaf self_ping_with_rpf; //type: boolean
+                                                    YLeaf bgp_pa_input_configured_flag; //type: boolean
+                                                    YLeaf source_bgp_pa_input_configured_flag; //type: boolean
+                                                    YLeaf destination_bgp_pa_input_configured_flag; //type: boolean
+                                                    YLeaf bgp_pa_output_configured_flag; //type: boolean
+                                                    YLeaf source_bgp_pa_output_configured_flag; //type: boolean
+                                                    YLeaf destination_bgp_pa_output_configured_flag; //type: boolean
+                                                    YLeaf icmp_flag; //type: uint32
+                                                    YLeaf multi_label_drop_flag; //type: boolean
+
 
 
                                             }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::DetailFibIntInformation
@@ -1515,6 +1557,7 @@ class Fib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class FibIdbHist : public Entity
                                                 {
                                                     public:
@@ -1528,8 +1571,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value evt_class_name; //type: string
 
+
+                                                        YLeaf evt_class_name; //type: string
 
                                                     class EvtEntry : public Entity
                                                     {
@@ -1544,13 +1588,14 @@ class Fib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value evt_timestamp; //type: string
-                                                            Value evt_name; //type: string
-                                                            Value evt_type; //type: uint8
-                                                            Value evt_many; //type: boolean
-                                                            Value evt_sticky; //type: boolean
-                                                            ValueList evt_data; //type: list of  uint32
 
+
+                                                            YLeaf evt_timestamp; //type: string
+                                                            YLeaf evt_name; //type: string
+                                                            YLeaf evt_type; //type: uint8
+                                                            YLeaf evt_many; //type: boolean
+                                                            YLeaf evt_sticky; //type: boolean
+                                                            YLeafList evt_data; //type: list of  uint32
 
 
 
@@ -1576,8 +1621,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value evt_class_name; //type: string
 
+
+                                                        YLeaf evt_class_name; //type: string
 
                                                     class EvtEntry : public Entity
                                                     {
@@ -1592,13 +1638,14 @@ class Fib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value evt_timestamp; //type: string
-                                                            Value evt_name; //type: string
-                                                            Value evt_type; //type: uint8
-                                                            Value evt_many; //type: boolean
-                                                            Value evt_sticky; //type: boolean
-                                                            ValueList evt_data; //type: list of  uint32
 
+
+                                                            YLeaf evt_timestamp; //type: string
+                                                            YLeaf evt_name; //type: string
+                                                            YLeaf evt_type; //type: uint8
+                                                            YLeaf evt_many; //type: boolean
+                                                            YLeaf evt_sticky; //type: boolean
+                                                            YLeafList evt_data; //type: list of  uint32
 
 
 
@@ -1620,7 +1667,6 @@ class Fib : public Entity
 
                                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::DetailFibIntInformation> detail_fib_int_information;
                                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal> si_internal;
-                                                class FibidbOperEnum;
 
 
                                         }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface
@@ -1633,7 +1679,6 @@ class Fib : public Entity
 
 
                                         std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces> interfaces;
-                                        class FibLinkEnum;
 
 
                                 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo
@@ -1660,6 +1705,7 @@ class Fib : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class IpPrefixBrief : public Entity
                                 {
                                     public:
@@ -1673,42 +1719,43 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix; //type: string
-                                        Value prefix_length; //type: uint8
-                                        Value protocol_type_fib_entry; //type: uint32
-                                        Value platform_hardware; //type: string
-                                        Value number_of_referances_to_path_list; //type: uint32
-                                        Value path_list_flags; //type: uint32
-                                        Value path_list_source; //type: uint32
-                                        Value number_of_referances_to_ldi; //type: uint32
-                                        Value ldi_flags; //type: uint32
-                                        Value flags_external_ldi; //type: uint32
-                                        Value exact_route_result; //type: boolean
-                                        Value prefix_is_static_or_connected; //type: boolean
-                                        Value packet_should_recieve; //type: boolean
-                                        Value prefix_connected; //type: boolean
-                                        Value prefix_for_adjancency; //type: boolean
-                                        Value prefix_for_pic_next_hop; //type: boolean
-                                        Value purgable_after_purge_interval; //type: boolean
-                                        Value broadcast_recive_flag; //type: boolean
-                                        Value broadcast_forward_flag; //type: boolean
-                                        Value zero_by_zero_route_as_default; //type: boolean
-                                        Value external_switch_triggered; //type: boolean
-                                        Value route_attribute_flag; //type: boolean
-                                        Value dummy_real_zero_route; //type: boolean
-                                        Value ldi_lw_flag; //type: uint32
-                                        Value ref_counter_of_ldi_lw_ldi; //type: uint32
-                                        Value type_of_ldi_lw_ldi; //type: uint32
-                                        Value lspa_flags; //type: uint32
-                                        Value version_of_route; //type: uint64
-                                        Value fib_route_download_priority; //type: uint32
-                                        Value time_of_last_update_in_msec; //type: uint64
-                                        Value l2_subscriber_route; //type: boolean
-                                        Value l2_subscriber_xconnect_id; //type: uint32
-                                        Value l2_subscriber_ip_protocol; //type: uint32
-                                        Value l2tpv3_cookie_length_bits; //type: uint32
-                                        Value route_for_external_reach_linecard_flag; //type: boolean
 
+
+                                        YLeaf prefix; //type: string
+                                        YLeaf prefix_length; //type: uint8
+                                        YLeaf protocol_type_fib_entry; //type: uint32
+                                        YLeaf platform_hardware; //type: string
+                                        YLeaf number_of_referances_to_path_list; //type: uint32
+                                        YLeaf path_list_flags; //type: uint32
+                                        YLeaf path_list_source; //type: uint32
+                                        YLeaf number_of_referances_to_ldi; //type: uint32
+                                        YLeaf ldi_flags; //type: uint32
+                                        YLeaf flags_external_ldi; //type: uint32
+                                        YLeaf exact_route_result; //type: boolean
+                                        YLeaf prefix_is_static_or_connected; //type: boolean
+                                        YLeaf packet_should_recieve; //type: boolean
+                                        YLeaf prefix_connected; //type: boolean
+                                        YLeaf prefix_for_adjancency; //type: boolean
+                                        YLeaf prefix_for_pic_next_hop; //type: boolean
+                                        YLeaf purgable_after_purge_interval; //type: boolean
+                                        YLeaf broadcast_recive_flag; //type: boolean
+                                        YLeaf broadcast_forward_flag; //type: boolean
+                                        YLeaf zero_by_zero_route_as_default; //type: boolean
+                                        YLeaf external_switch_triggered; //type: boolean
+                                        YLeaf route_attribute_flag; //type: boolean
+                                        YLeaf dummy_real_zero_route; //type: boolean
+                                        YLeaf ldi_lw_flag; //type: uint32
+                                        YLeaf ref_counter_of_ldi_lw_ldi; //type: uint32
+                                        YLeaf type_of_ldi_lw_ldi; //type: uint32
+                                        YLeaf lspa_flags; //type: uint32
+                                        YLeaf version_of_route; //type: uint64
+                                        YLeaf fib_route_download_priority; //type: uint32
+                                        YLeaf time_of_last_update_in_msec; //type: uint64
+                                        YLeaf l2_subscriber_route; //type: boolean
+                                        YLeaf l2_subscriber_xconnect_id; //type: uint32
+                                        YLeaf l2_subscriber_ip_protocol; //type: uint32
+                                        YLeaf l2tpv3_cookie_length_bits; //type: uint32
+                                        YLeaf route_for_external_reach_linecard_flag; //type: boolean
 
                                     class DetailFibEntryInformation : public Entity
                                     {
@@ -1723,46 +1770,47 @@ class Fib : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fib_entry_version; //type: uint32
-                                            Value per_prefix_accounting; //type: uint8
-                                            Value load_sharing_type; //type: FibLoadshareShowEnum
-                                            Value fib_entry_adjacency_type; //type: FibAdjacencyShowEnum
-                                            Value fib_protocol_type; //type: uint32
-                                            Value afi_fib_protocol_type; //type: uint32
-                                            Value aib_l3_address; //type: string
-                                            Value adjacency_address_length; //type: uint32
-                                            Value adjacency_interface; //type: uint32
-                                            Value fib_special_nh_information_type; //type: uint32
-                                            Value fib_entry_adjacency_address; //type: string
-                                            Value fib_entry_adjacency_interface; //type: uint32
-                                            Value packets_through_fib_entry; //type: uint64
-                                            Value bytes_through_fib_entry; //type: uint64
-                                            Value detailed_prefix_length; //type: uint32
-                                            Value prefix_protocol; //type: uint32
-                                            Value precedence_forpackets; //type: uint8
-                                            Value traffic_index_for_packets; //type: uint8
-                                            Value switch_compontent_id; //type: uint32
-                                            Value fast_adjacency_flag; //type: boolean
-                                            Value illegal_fast_adjacency_flag; //type: boolean
-                                            Value remote_adjacency_flag; //type: boolean
-                                            Value bgp_attribute_id; //type: uint32
-                                            Value bgp_local_attribute_id; //type: uint32
-                                            Value bgp_attribute_origin_as; //type: uint32
-                                            Value bgp_attribute_next_hop_as; //type: uint32
-                                            Value path_string; //type: string
-                                            Value extcom_string; //type: string
-                                            Value com_string; //type: string
-                                            Value extended_community; //type: uint32
-                                            Value qos_group; //type: uint32
-                                            Value mpls_fec; //type: uint32
-                                            Value qppb_qos_group_and_ip_precedence; //type: uint32
-                                            Value flow_tag; //type: uint8
-                                            Value forward_class; //type: uint8
-                                            Value pl_time_of_last_update_in_msec; //type: uint64
-                                            Value ldi_time_of_last_update_in_msec; //type: uint64
-                                            Value lwldi_time_of_last_update_in_msec; //type: uint64
-                                            Value pl_time_stamp_type; //type: uint32
 
+
+                                            YLeaf fib_entry_version; //type: uint32
+                                            YLeaf per_prefix_accounting; //type: uint8
+                                            YLeaf load_sharing_type; //type: FibLoadshareShowEnum
+                                            YLeaf fib_entry_adjacency_type; //type: FibAdjacencyShowEnum
+                                            YLeaf fib_protocol_type; //type: uint32
+                                            YLeaf afi_fib_protocol_type; //type: uint32
+                                            YLeaf aib_l3_address; //type: string
+                                            YLeaf adjacency_address_length; //type: uint32
+                                            YLeaf adjacency_interface; //type: uint32
+                                            YLeaf fib_special_nh_information_type; //type: uint32
+                                            YLeaf fib_entry_adjacency_address; //type: string
+                                            YLeaf fib_entry_adjacency_interface; //type: uint32
+                                            YLeaf packets_through_fib_entry; //type: uint64
+                                            YLeaf bytes_through_fib_entry; //type: uint64
+                                            YLeaf detailed_prefix_length; //type: uint32
+                                            YLeaf prefix_protocol; //type: uint32
+                                            YLeaf precedence_forpackets; //type: uint8
+                                            YLeaf traffic_index_for_packets; //type: uint8
+                                            YLeaf switch_compontent_id; //type: uint32
+                                            YLeaf fast_adjacency_flag; //type: boolean
+                                            YLeaf illegal_fast_adjacency_flag; //type: boolean
+                                            YLeaf remote_adjacency_flag; //type: boolean
+                                            YLeaf bgp_attribute_id; //type: uint32
+                                            YLeaf bgp_local_attribute_id; //type: uint32
+                                            YLeaf bgp_attribute_origin_as; //type: uint32
+                                            YLeaf bgp_attribute_next_hop_as; //type: uint32
+                                            YLeaf path_string; //type: string
+                                            YLeaf extcom_string; //type: string
+                                            YLeaf com_string; //type: string
+                                            YLeaf extended_community; //type: uint32
+                                            YLeaf qos_group; //type: uint32
+                                            YLeaf mpls_fec; //type: uint32
+                                            YLeaf qppb_qos_group_and_ip_precedence; //type: uint32
+                                            YLeaf flow_tag; //type: uint8
+                                            YLeaf forward_class; //type: uint8
+                                            YLeaf pl_time_of_last_update_in_msec; //type: uint64
+                                            YLeaf ldi_time_of_last_update_in_msec; //type: uint64
+                                            YLeaf lwldi_time_of_last_update_in_msec; //type: uint64
+                                            YLeaf pl_time_stamp_type; //type: uint32
 
                                         class LoadshareInformation : public Entity
                                         {
@@ -1777,18 +1825,19 @@ class Fib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value packets_through_load_information; //type: uint64
-                                                Value bytes_through_load_information; //type: uint64
-                                                Value total_packets_through_load_information; //type: uint64
-                                                Value total_bytes_through_load_information; //type: uint64
-                                                Value prefix_of_owner; //type: uint32
-                                                Value mask_length_of_owner; //type: uint32
-                                                Value load_information_reference_count; //type: uint16
-                                                Value per_dest_load_sharing_flag; //type: boolean
-                                                Value load_information_owner_deleted_flag; //type: boolean
-                                                Value loadinfo_sanity_flag; //type: boolean
-                                                Value is_owner; //type: boolean
 
+
+                                                YLeaf packets_through_load_information; //type: uint64
+                                                YLeaf bytes_through_load_information; //type: uint64
+                                                YLeaf total_packets_through_load_information; //type: uint64
+                                                YLeaf total_bytes_through_load_information; //type: uint64
+                                                YLeaf prefix_of_owner; //type: uint32
+                                                YLeaf mask_length_of_owner; //type: uint32
+                                                YLeaf load_information_reference_count; //type: uint16
+                                                YLeaf per_dest_load_sharing_flag; //type: boolean
+                                                YLeaf load_information_owner_deleted_flag; //type: boolean
+                                                YLeaf loadinfo_sanity_flag; //type: boolean
+                                                YLeaf is_owner; //type: boolean
 
                                             class LoadInformtionInternalData : public Entity
                                             {
@@ -1803,25 +1852,26 @@ class Fib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value level_ofldis; //type: uint8
-                                                    Value number_of_ldis; //type: uint8
-                                                    Value maximum_index_arrays; //type: uint32
-                                                    Value path_indices; //type: string
-                                                    Value path_ldi_numbers; //type: string
-                                                    Value maximum_slots; //type: uint32
-                                                    Value normalized_weights; //type: string
-                                                    Value tunnel_class_value; //type: string
-                                                    Value is_pbts_info_valid; //type: boolean
-                                                    Value pbts_class_offset; //type: string
-                                                    Value pbts_class_num_paths; //type: string
-                                                    Value pbts_fallback_mapped_class; //type: string
-                                                    Value round_robin_disable; //type: boolean
-                                                    Value ldi_next_hop_buckets; //type: uint8
-                                                    Value platform_hardware_information; //type: string
-                                                    ValueList sanity_flag; //type: list of  boolean
-                                                    ValueList interface_handle; //type: list of  string
-                                                    ValueList weights_of_path; //type: list of  uint32
 
+
+                                                    YLeaf level_ofldis; //type: uint8
+                                                    YLeaf number_of_ldis; //type: uint8
+                                                    YLeaf maximum_index_arrays; //type: uint32
+                                                    YLeaf path_indices; //type: string
+                                                    YLeaf path_ldi_numbers; //type: string
+                                                    YLeaf maximum_slots; //type: uint32
+                                                    YLeaf normalized_weights; //type: string
+                                                    YLeaf tunnel_class_value; //type: string
+                                                    YLeaf is_pbts_info_valid; //type: boolean
+                                                    YLeaf pbts_class_offset; //type: string
+                                                    YLeaf pbts_class_num_paths; //type: string
+                                                    YLeaf pbts_fallback_mapped_class; //type: string
+                                                    YLeaf round_robin_disable; //type: boolean
+                                                    YLeaf ldi_next_hop_buckets; //type: uint8
+                                                    YLeaf platform_hardware_information; //type: string
+                                                    YLeafList sanity_flag; //type: list of  boolean
+                                                    YLeafList interface_handle; //type: list of  string
+                                                    YLeafList weights_of_path; //type: list of  uint32
 
                                                 class AdjacencyAddress : public Entity
                                                 {
@@ -1836,8 +1886,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
 
+
+                                                        YLeaf address; //type: string
 
 
 
@@ -1857,8 +1908,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value entry; //type: boolean
 
+
+                                                        YLeaf entry; //type: boolean
 
 
 
@@ -1878,8 +1930,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value entry; //type: boolean
 
+
+                                                        YLeaf entry; //type: boolean
 
 
 
@@ -1899,8 +1952,9 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value entry; //type: boolean
 
+
+                                                        YLeaf entry; //type: boolean
 
 
 
@@ -1923,8 +1977,6 @@ class Fib : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation> loadshare_information;
-                                            class FibAdjacencyShowEnum;
-                                            class FibLoadshareShowEnum;
 
 
                                     }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation
@@ -1945,6 +1997,7 @@ class Fib : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FibShTblPath : public Entity
                                         {
                                             public:
@@ -1958,28 +2011,29 @@ class Fib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value hardware_information; //type: string
-                                                Value brief_interface_handle; //type: string
-                                                Value brief_next_hop_prefix; //type: string
-                                                Value via_label_to_recurse; //type: uint32
-                                                Value brief_pnode_address; //type: string
-                                                Value brief_qnode_address; //type: string
-                                                Value resolved_path; //type: boolean
-                                                Value recursive_path; //type: boolean
-                                                Value packets_received_path; //type: boolean
-                                                Value attached_path; //type: boolean
-                                                Value backup_path; //type: boolean
-                                                Value best_external_path; //type: boolean
-                                                Value protect_ignore; //type: boolean
-                                                Value path_dlb; //type: boolean
-                                                Value path_flags; //type: uint16
-                                                Value path_info_flags; //type: uint16
-                                                Value path_index; //type: uint8
-                                                Value backup_index; //type: uint8
-                                                Value next_hop_index; //type: uint32
-                                                Value parent_interface_handle; //type: string
-                                                Value recursionvia_len; //type: uint8
 
+
+                                                YLeaf hardware_information; //type: string
+                                                YLeaf brief_interface_handle; //type: string
+                                                YLeaf brief_next_hop_prefix; //type: string
+                                                YLeaf via_label_to_recurse; //type: uint32
+                                                YLeaf brief_pnode_address; //type: string
+                                                YLeaf brief_qnode_address; //type: string
+                                                YLeaf resolved_path; //type: boolean
+                                                YLeaf recursive_path; //type: boolean
+                                                YLeaf packets_received_path; //type: boolean
+                                                YLeaf attached_path; //type: boolean
+                                                YLeaf backup_path; //type: boolean
+                                                YLeaf best_external_path; //type: boolean
+                                                YLeaf protect_ignore; //type: boolean
+                                                YLeaf path_dlb; //type: boolean
+                                                YLeaf path_flags; //type: uint16
+                                                YLeaf path_info_flags; //type: uint16
+                                                YLeaf path_index; //type: uint8
+                                                YLeaf backup_index; //type: uint8
+                                                YLeaf next_hop_index; //type: uint32
+                                                YLeaf parent_interface_handle; //type: string
+                                                YLeaf recursionvia_len; //type: uint8
 
                                             class MoreDetailAboutPath : public Entity
                                             {
@@ -1994,33 +2048,34 @@ class Fib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value ip_address_to_recurse; //type: string
-                                                    Value label_to_recurse; //type: uint32
-                                                    Value detail_next_hop_prefix; //type: string
-                                                    Value next_hop_mask_length; //type: uint8
-                                                    Value interface_associated_path; //type: string
-                                                    Value next_hop_interface; //type: string
-                                                    Value next_hop_vrf; //type: string
-                                                    Value tunnle_endpoint_id; //type: uint32
-                                                    Value lisprlocid; //type: uint32
-                                                    Value number_of_dependencies_this_path; //type: uint32
-                                                    Value robin_reset_value; //type: uint8
-                                                    Value recurse_prefix_object; //type: boolean
-                                                    Value next_prefix_recursion; //type: string
-                                                    Value next_prefix_length; //type: uint8
-                                                    Value recurse_prefix_object2; //type: boolean
-                                                    Value next_prefix_recursion2; //type: string
-                                                    Value next_prefix_length2; //type: uint8
-                                                    Value detail_fib_adjacency_type; //type: FibAdjacencyShowEnum
-                                                    Value current_path_flag; //type: boolean
-                                                    Value recursive_path_information; //type: boolean
-                                                    Value external_adjacency; //type: boolean
-                                                    Value fib_path_nh_information_type; //type: FibNehEnum
-                                                    Value fib_path_nh_information_type_special; //type: FibNehSpecialEnum
-                                                    Value weight_of_path; //type: uint32
-                                                    Value tunnel_class; //type: uint8
-                                                    Value tunnel_is_forward_class; //type: boolean
 
+
+                                                    YLeaf ip_address_to_recurse; //type: string
+                                                    YLeaf label_to_recurse; //type: uint32
+                                                    YLeaf detail_next_hop_prefix; //type: string
+                                                    YLeaf next_hop_mask_length; //type: uint8
+                                                    YLeaf interface_associated_path; //type: string
+                                                    YLeaf next_hop_interface; //type: string
+                                                    YLeaf next_hop_vrf; //type: string
+                                                    YLeaf tunnle_endpoint_id; //type: uint32
+                                                    YLeaf lisprlocid; //type: uint32
+                                                    YLeaf number_of_dependencies_this_path; //type: uint32
+                                                    YLeaf robin_reset_value; //type: uint8
+                                                    YLeaf recurse_prefix_object; //type: boolean
+                                                    YLeaf next_prefix_recursion; //type: string
+                                                    YLeaf next_prefix_length; //type: uint8
+                                                    YLeaf recurse_prefix_object2; //type: boolean
+                                                    YLeaf next_prefix_recursion2; //type: string
+                                                    YLeaf next_prefix_length2; //type: uint8
+                                                    YLeaf detail_fib_adjacency_type; //type: FibAdjacencyShowEnum
+                                                    YLeaf current_path_flag; //type: boolean
+                                                    YLeaf recursive_path_information; //type: boolean
+                                                    YLeaf external_adjacency; //type: boolean
+                                                    YLeaf fib_path_nh_information_type; //type: FibNehEnum
+                                                    YLeaf fib_path_nh_information_type_special; //type: FibNehSpecialEnum
+                                                    YLeaf weight_of_path; //type: uint32
+                                                    YLeaf tunnel_class; //type: uint8
+                                                    YLeaf tunnel_is_forward_class; //type: boolean
 
                                                 class SpdIpencap : public Entity
                                                 {
@@ -2035,16 +2090,17 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value ip_encap_hdr_count; //type: uint8
-                                                        Value ip_encap_locks; //type: uint32
-                                                        Value ip_encap_transport_tbl; //type: uint32
-                                                        Value ipe_transport_vrf_name; //type: string
-                                                        Value ip_encap_transport_af; //type: uint32
-                                                        Value ip_encap_payload_af; //type: uint32
-                                                        Value ip_encap_payload_mtu; //type: uint16
-                                                        Value ip_encap_parent; //type: uint32
-                                                        Value ip_encap_parent_type; //type: uint32
 
+
+                                                        YLeaf ip_encap_hdr_count; //type: uint8
+                                                        YLeaf ip_encap_locks; //type: uint32
+                                                        YLeaf ip_encap_transport_tbl; //type: uint32
+                                                        YLeaf ipe_transport_vrf_name; //type: string
+                                                        YLeaf ip_encap_transport_af; //type: uint32
+                                                        YLeaf ip_encap_payload_af; //type: uint32
+                                                        YLeaf ip_encap_payload_mtu; //type: uint16
+                                                        YLeaf ip_encap_parent; //type: uint32
+                                                        YLeaf ip_encap_parent_type; //type: uint32
 
                                                     class IpEncapHdr : public Entity
                                                     {
@@ -2059,12 +2115,12 @@ class Fib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value ip_encap_hdr_type; //type: FibShIpencapHdrEnum
-                                                            Value ip_encap_hdrp; //type: string
-                                                            Value ip_encap_hdr_dyn; //type: uint32
 
 
-                                                            class FibShIpencapHdrEnum;
+                                                            YLeaf ip_encap_hdr_type; //type: FibShIpencapHdrEnum
+                                                            YLeaf ip_encap_hdrp; //type: string
+                                                            YLeaf ip_encap_hdr_dyn; //type: uint32
+
 
 
                                                     }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr
@@ -2077,9 +2133,6 @@ class Fib : public Entity
 
 
                                                     std::vector<std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap> > spd_ipencap;
-                                                    class FibAdjacencyShowEnum;
-                                                    class FibNehEnum;
-                                                    class FibNehSpecialEnum;
 
 
                                             }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MoreDetailAboutPath
@@ -2098,13 +2151,14 @@ class Fib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value local_lable; //type: uint32
-                                                    Value recursive_fwd_chain; //type: boolean
-                                                    Value recursive_out_label_valid; //type: boolean
-                                                    Value recursive_out_lable; //type: uint32
-                                                    Value number_of_igp_paths; //type: uint32
-                                                    Value remote_backup; //type: boolean
 
+
+                                                    YLeaf local_lable; //type: uint32
+                                                    YLeaf recursive_fwd_chain; //type: boolean
+                                                    YLeaf recursive_out_label_valid; //type: boolean
+                                                    YLeaf recursive_out_lable; //type: uint32
+                                                    YLeaf number_of_igp_paths; //type: uint32
+                                                    YLeaf remote_backup; //type: boolean
 
                                                 class IgpLabelStackArray : public Entity
                                                 {
@@ -2119,11 +2173,12 @@ class Fib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value number_of_labels; //type: uint32
-                                                        Value out_interface; //type: string
-                                                        Value nh_address; //type: string
-                                                        ValueList lstack; //type: list of  uint32
 
+
+                                                        YLeaf number_of_labels; //type: uint32
+                                                        YLeaf out_interface; //type: string
+                                                        YLeaf nh_address; //type: string
+                                                        YLeafList lstack; //type: list of  uint32
 
 
 
@@ -2192,6 +2247,7 @@ class Fib : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ExternalClientSummary : public Entity
                         {
                             public:
@@ -2205,16 +2261,17 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ecd_ver; //type: int32
-                                Value id; //type: int32
-                                Value ses_client_name; //type: string
-                                Value ses_feci_fib_proto; //type: uint32
-                                Value ses_num_regs; //type: uint32
-                                Value ses_num_pending; //type: uint32
-                                Value ses_client_pulsed_time; //type: uint64
-                                Value ses_comp_id; //type: uint32
-                                Value ses_ecd_version; //type: uint32
 
+
+                                YLeaf ecd_ver; //type: int32
+                                YLeaf id; //type: int32
+                                YLeaf ses_client_name; //type: string
+                                YLeaf ses_feci_fib_proto; //type: uint32
+                                YLeaf ses_num_regs; //type: uint32
+                                YLeaf ses_num_pending; //type: uint32
+                                YLeaf ses_client_pulsed_time; //type: uint64
+                                YLeaf ses_comp_id; //type: uint32
+                                YLeaf ses_ecd_version; //type: uint32
 
                             class SesPlSum : public Entity
                             {
@@ -2229,10 +2286,11 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sep_num_ecd_pathlist; //type: uint32
-                                    Value sep_num_ecd_pl_unresolved; //type: uint32
-                                    ValueList sep_num_ecd_pl_per_interest; //type: list of  uint32
 
+
+                                    YLeaf sep_num_ecd_pathlist; //type: uint32
+                                    YLeaf sep_num_ecd_pl_unresolved; //type: uint32
+                                    YLeafList sep_num_ecd_pl_per_interest; //type: list of  uint32
 
 
 
@@ -2264,35 +2322,36 @@ class Fib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value mi_pfi_ifh_upd; //type: uint64
-                            Value mi_pfi_ifh_del; //type: uint64
-                            Value mi_pfi_ifh_stale; //type: uint64
-                            Value mi_tot_plat_upd_time; //type: uint64
-                            Value mi_tot_gtrie_time; //type: uint64
-                            Value mi_tot_dnld_time; //type: uint64
-                            Value mi_clock_time; //type: uint64
-                            Value mi_cpu_time; //type: uint64
-                            Value mi_shm_reset_ts; //type: uint64
-                            Value mi_idb_recycle_count; //type: uint32
-                            Value mi_idb_recycle_cleanup_count; //type: uint32
-                            Value mi_num_mgmt_list; //type: uint32
-                            Value mi_num_virtual_ll_addresses_added; //type: uint32
-                            Value mi_num_virtual_ll_addresses_deleted; //type: uint32
-                            Value mi_num_virtual_ll_addresses_dropped; //type: uint32
-                            Value mi_num_virtual_ll_addresses_cached; //type: uint32
-                            Value mi_cpuless_init; //type: boolean
-                            Value mi_cpuless_count; //type: uint32
-                            Value mi_prefer_aib_routes_over_rib_oper; //type: boolean
-                            Value mi_prefer_aib_routes_over_rib_cfg; //type: boolean
-                            ValueList mi_idb_ext_cleanup_failed_count; //type: list of  uint32
-                            ValueList mi_lrpf_stats_fail; //type: list of  uint32
-                            ValueList mi_lrpf_stats_act; //type: list of  uint32
-                            ValueList mi_lrpf_num; //type: list of  uint32
-                            ValueList mi_idb_lsec_enabled_num; //type: list of  uint32
-                            ValueList mi_num_lisp_eid; //type: list of  uint32
-                            ValueList mi_num_lisp_valid_eid; //type: list of  uint32
-                            ValueList mi_cpuless_node; //type: list of  uint32
 
+
+                            YLeaf mi_pfi_ifh_upd; //type: uint64
+                            YLeaf mi_pfi_ifh_del; //type: uint64
+                            YLeaf mi_pfi_ifh_stale; //type: uint64
+                            YLeaf mi_tot_plat_upd_time; //type: uint64
+                            YLeaf mi_tot_gtrie_time; //type: uint64
+                            YLeaf mi_tot_dnld_time; //type: uint64
+                            YLeaf mi_clock_time; //type: uint64
+                            YLeaf mi_cpu_time; //type: uint64
+                            YLeaf mi_shm_reset_ts; //type: uint64
+                            YLeaf mi_idb_recycle_count; //type: uint32
+                            YLeaf mi_idb_recycle_cleanup_count; //type: uint32
+                            YLeaf mi_num_mgmt_list; //type: uint32
+                            YLeaf mi_num_virtual_ll_addresses_added; //type: uint32
+                            YLeaf mi_num_virtual_ll_addresses_deleted; //type: uint32
+                            YLeaf mi_num_virtual_ll_addresses_dropped; //type: uint32
+                            YLeaf mi_num_virtual_ll_addresses_cached; //type: uint32
+                            YLeaf mi_cpuless_init; //type: boolean
+                            YLeaf mi_cpuless_count; //type: uint32
+                            YLeaf mi_prefer_aib_routes_over_rib_oper; //type: boolean
+                            YLeaf mi_prefer_aib_routes_over_rib_cfg; //type: boolean
+                            YLeafList mi_idb_ext_cleanup_failed_count; //type: list of  uint32
+                            YLeafList mi_lrpf_stats_fail; //type: list of  uint32
+                            YLeafList mi_lrpf_stats_act; //type: list of  uint32
+                            YLeafList mi_lrpf_num; //type: list of  uint32
+                            YLeafList mi_idb_lsec_enabled_num; //type: list of  uint32
+                            YLeafList mi_num_lisp_eid; //type: list of  uint32
+                            YLeafList mi_num_lisp_valid_eid; //type: list of  uint32
+                            YLeafList mi_cpuless_node; //type: list of  uint32
 
                         class MiIssuState : public Entity
                         {
@@ -2307,18 +2366,19 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value imdr_support; //type: boolean
-                                Value slc_support; //type: boolean
-                                Value fis_issu_restart; //type: boolean
-                                Value imdr_eoc_implicit; //type: boolean
-                                Value slc_eoc_implicit; //type: boolean
-                                Value eoc_received_imdr_time_stamp; //type: string
-                                Value eoc_received_slc_time_stamp; //type: string
-                                Value eod_received_im_time_stamp; //type: string
-                                Value eod_sent_imdr_time_stamp; //type: string
-                                Value eod_sent_slc_time_stamp; //type: string
-                                Value fis_issu_error_ts; //type: uint64
 
+
+                                YLeaf imdr_support; //type: boolean
+                                YLeaf slc_support; //type: boolean
+                                YLeaf fis_issu_restart; //type: boolean
+                                YLeaf imdr_eoc_implicit; //type: boolean
+                                YLeaf slc_eoc_implicit; //type: boolean
+                                YLeaf eoc_received_imdr_time_stamp; //type: string
+                                YLeaf eoc_received_slc_time_stamp; //type: string
+                                YLeaf eod_received_im_time_stamp; //type: string
+                                YLeaf eod_sent_imdr_time_stamp; //type: string
+                                YLeaf eod_sent_slc_time_stamp; //type: string
+                                YLeaf fis_issu_error_ts; //type: uint64
 
                             class FisProtoState : public Entity
                             {
@@ -2333,21 +2393,22 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value protocol_name; //type: string
-                                    Value aib_eod_time_stamp; //type: string
-                                    Value rsi_eod_valid; //type: boolean
-                                    Value rsi_eod_time_stamp; //type: string
-                                    Value lsd_eod_valid; //type: boolean
-                                    Value lsd_eod_time_stamp; //type: string
-                                    Value lmrib_eod_valid; //type: boolean
-                                    Value lmrib_eod_time_stamp; //type: string
-                                    Value rib_info_valid; //type: boolean
-                                    Value bcdl_tables; //type: uint32
-                                    Value converged_tables; //type: uint32
-                                    Value rib_tables_converged_time_stamp; //type: string
-                                    Value protocol_eod_valid; //type: boolean
-                                    Value protocol_eod_time_stamp; //type: string
 
+
+                                    YLeaf protocol_name; //type: string
+                                    YLeaf aib_eod_time_stamp; //type: string
+                                    YLeaf rsi_eod_valid; //type: boolean
+                                    YLeaf rsi_eod_time_stamp; //type: string
+                                    YLeaf lsd_eod_valid; //type: boolean
+                                    YLeaf lsd_eod_time_stamp; //type: string
+                                    YLeaf lmrib_eod_valid; //type: boolean
+                                    YLeaf lmrib_eod_time_stamp; //type: string
+                                    YLeaf rib_info_valid; //type: boolean
+                                    YLeaf bcdl_tables; //type: uint32
+                                    YLeaf converged_tables; //type: uint32
+                                    YLeaf rib_tables_converged_time_stamp; //type: string
+                                    YLeaf protocol_eod_valid; //type: boolean
+                                    YLeaf protocol_eod_time_stamp; //type: string
 
 
 
@@ -2373,29 +2434,30 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpc_num_l3_lbl_levels; //type: uint8
-                                Value fpc_num_l3_lbl_paths; //type: uint8
-                                Value fpc_num_l3_lbl_rec_paths; //type: uint8
-                                Value fpc_num_l3_ucmp_paths; //type: uint8
-                                Value fpc_num_fwding_stages; //type: uint8
-                                Value fpc_local_label_split; //type: uint32
-                                Value fpc_stats_support; //type: boolean
-                                Value fpc_platf_ready_cb_wait; //type: boolean
-                                Value fpc_num_paths_per_pbts_class; //type: uint8
-                                Value fpc_platf_v4_upd_disable; //type: boolean
-                                Value fpc_platf_v6_upd_disable; //type: boolean
-                                Value fpc_lba_tuples_default; //type: uint32
-                                Value fpc_mraps_support; //type: boolean
-                                Value fpc_pbts_defclass_support; //type: boolean
-                                Value fpc_loadinfo_filter_support; //type: boolean
-                                Value fpc_nhid; //type: boolean
-                                Value fpc_platf_temp_back_walk_reqd; //type: boolean
-                                Value fpc_link_mpls_nhinfo_in_ipv6_thread_support; //type: boolean
-                                Value fpc_exclude_deag_bkup; //type: boolean
-                                Value fpc_dlb_support; //type: boolean
-                                Value fpc_prefix_filter_support; //type: uint8
-                                Value fpc_slowpath_ingress_inject_reqd; //type: boolean
 
+
+                                YLeaf fpc_num_l3_lbl_levels; //type: uint8
+                                YLeaf fpc_num_l3_lbl_paths; //type: uint8
+                                YLeaf fpc_num_l3_lbl_rec_paths; //type: uint8
+                                YLeaf fpc_num_l3_ucmp_paths; //type: uint8
+                                YLeaf fpc_num_fwding_stages; //type: uint8
+                                YLeaf fpc_local_label_split; //type: uint32
+                                YLeaf fpc_stats_support; //type: boolean
+                                YLeaf fpc_platf_ready_cb_wait; //type: boolean
+                                YLeaf fpc_num_paths_per_pbts_class; //type: uint8
+                                YLeaf fpc_platf_v4_upd_disable; //type: boolean
+                                YLeaf fpc_platf_v6_upd_disable; //type: boolean
+                                YLeaf fpc_lba_tuples_default; //type: uint32
+                                YLeaf fpc_mraps_support; //type: boolean
+                                YLeaf fpc_pbts_defclass_support; //type: boolean
+                                YLeaf fpc_loadinfo_filter_support; //type: boolean
+                                YLeaf fpc_nhid; //type: boolean
+                                YLeaf fpc_platf_temp_back_walk_reqd; //type: boolean
+                                YLeaf fpc_link_mpls_nhinfo_in_ipv6_thread_support; //type: boolean
+                                YLeaf fpc_exclude_deag_bkup; //type: boolean
+                                YLeaf fpc_dlb_support; //type: boolean
+                                YLeaf fpc_prefix_filter_support; //type: uint8
+                                YLeaf fpc_slowpath_ingress_inject_reqd; //type: boolean
 
                             class FpcLispDecapOverV4 : public Entity
                             {
@@ -2410,8 +2472,9 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value entry; //type: boolean
 
+
+                                    YLeaf entry; //type: boolean
 
 
 
@@ -2431,8 +2494,9 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value entry; //type: boolean
 
+
+                                    YLeaf entry; //type: boolean
 
 
 
@@ -2452,8 +2516,9 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value entry; //type: boolean
 
+
+                                    YLeaf entry; //type: boolean
 
 
 
@@ -2473,8 +2538,9 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value entry; //type: boolean
 
+
+                                    YLeaf entry; //type: boolean
 
 
 
@@ -2503,56 +2569,57 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fpd_gbltbl_entries; //type: uint64
-                                Value fpd_gbltbl_rej_entries; //type: uint64
-                                Value fpd_vrftbl_entries; //type: uint64
-                                Value fpd_vrftbl_rej_entries; //type: uint64
-                                Value fpd_num_tbls; //type: uint32
-                                Value fpd_bcdl_msgs; //type: uint64
-                                Value fpd_route_upd; //type: uint64
-                                Value fpd_route_del; //type: uint64
-                                Value fpd_route_rcv; //type: uint64
-                                Value fpd_route_drops; //type: uint64
-                                Value fpd_lbl_recycled; //type: uint64
-                                Value fpd_version_mismatch_drops; //type: uint64
-                                Value fpd_adj_upd; //type: uint64
-                                Value fpd_adj_del; //type: uint64
-                                Value fpd_adj_upd_tx; //type: uint64
-                                Value fpd_adj_upd_tx_nh_found; //type: uint64
-                                Value fpd_adj_upd_tx_retry_created; //type: uint64
-                                Value fpd_adj_tx_retry_nh_found; //type: uint64
-                                Value fpd_adj_tx_retry_obj_reinit; //type: uint64
-                                Value fpd_adj_drops; //type: uint64
-                                Value fpd_adj_msg; //type: uint64
-                                Value fpd_te_rcv; //type: uint64
-                                Value fpd_te_version_mismatch_drops; //type: uint64
-                                Value fpd_num_retry_touts; //type: uint64
-                                Value fpd_ldi_num_fixedup; //type: uint64
-                                Value fpd_ldi_num_correct_fixup; //type: uint64
-                                Value fpd_pl_num_queued_fixedup; //type: uint64
-                                Value fpd_pl_num_correct_fixup; //type: uint64
-                                Value fpd_pl_retry_add_exist; //type: uint64
-                                Value fpd_pl_inline_res_q; //type: uint64
-                                Value fpd_pl_with_backup_create_count; //type: uint64
-                                Value fpd_pl_with_backup_del_count; //type: uint64
-                                Value fpd_pl_backup_enable_count; //type: uint64
-                                Value fpd_pl_backup_disable_count; //type: uint64
-                                Value fpd_pl_fast_nfn_count; //type: uint64
-                                Value fpd_ldi_backup_activate_count; //type: uint64
-                                Value fpd_ldi_last_backup_activate_time; //type: uint64
-                                Value fpd_ldi_max_backup_activate_time; //type: uint64
-                                Value fpd_ldi_min_backup_activate_time; //type: uint64
-                                Value fpd_ldi_total_backup_activate_time; //type: uint64
-                                Value fpd_ldi_avg_backup_activate_time; //type: uint64
-                                Value fpd_recursion_constraint_count; //type: uint64
-                                Value fpd_ldi_num_del_refcnt; //type: uint64
-                                Value fpd_retryq_size; //type: uint32
-                                Value fpd_num_allocs; //type: uint64
-                                Value fpd_num_frees; //type: uint64
-                                ValueList fpd_gbltbl_src_entry; //type: list of  uint64
-                                ValueList fpd_vrftbl_src_entry; //type: list of  uint64
-                                ValueList fpd_num_retry; //type: list of  uint64
 
+
+                                YLeaf fpd_gbltbl_entries; //type: uint64
+                                YLeaf fpd_gbltbl_rej_entries; //type: uint64
+                                YLeaf fpd_vrftbl_entries; //type: uint64
+                                YLeaf fpd_vrftbl_rej_entries; //type: uint64
+                                YLeaf fpd_num_tbls; //type: uint32
+                                YLeaf fpd_bcdl_msgs; //type: uint64
+                                YLeaf fpd_route_upd; //type: uint64
+                                YLeaf fpd_route_del; //type: uint64
+                                YLeaf fpd_route_rcv; //type: uint64
+                                YLeaf fpd_route_drops; //type: uint64
+                                YLeaf fpd_lbl_recycled; //type: uint64
+                                YLeaf fpd_version_mismatch_drops; //type: uint64
+                                YLeaf fpd_adj_upd; //type: uint64
+                                YLeaf fpd_adj_del; //type: uint64
+                                YLeaf fpd_adj_upd_tx; //type: uint64
+                                YLeaf fpd_adj_upd_tx_nh_found; //type: uint64
+                                YLeaf fpd_adj_upd_tx_retry_created; //type: uint64
+                                YLeaf fpd_adj_tx_retry_nh_found; //type: uint64
+                                YLeaf fpd_adj_tx_retry_obj_reinit; //type: uint64
+                                YLeaf fpd_adj_drops; //type: uint64
+                                YLeaf fpd_adj_msg; //type: uint64
+                                YLeaf fpd_te_rcv; //type: uint64
+                                YLeaf fpd_te_version_mismatch_drops; //type: uint64
+                                YLeaf fpd_num_retry_touts; //type: uint64
+                                YLeaf fpd_ldi_num_fixedup; //type: uint64
+                                YLeaf fpd_ldi_num_correct_fixup; //type: uint64
+                                YLeaf fpd_pl_num_queued_fixedup; //type: uint64
+                                YLeaf fpd_pl_num_correct_fixup; //type: uint64
+                                YLeaf fpd_pl_retry_add_exist; //type: uint64
+                                YLeaf fpd_pl_inline_res_q; //type: uint64
+                                YLeaf fpd_pl_with_backup_create_count; //type: uint64
+                                YLeaf fpd_pl_with_backup_del_count; //type: uint64
+                                YLeaf fpd_pl_backup_enable_count; //type: uint64
+                                YLeaf fpd_pl_backup_disable_count; //type: uint64
+                                YLeaf fpd_pl_fast_nfn_count; //type: uint64
+                                YLeaf fpd_ldi_backup_activate_count; //type: uint64
+                                YLeaf fpd_ldi_last_backup_activate_time; //type: uint64
+                                YLeaf fpd_ldi_max_backup_activate_time; //type: uint64
+                                YLeaf fpd_ldi_min_backup_activate_time; //type: uint64
+                                YLeaf fpd_ldi_total_backup_activate_time; //type: uint64
+                                YLeaf fpd_ldi_avg_backup_activate_time; //type: uint64
+                                YLeaf fpd_recursion_constraint_count; //type: uint64
+                                YLeaf fpd_ldi_num_del_refcnt; //type: uint64
+                                YLeaf fpd_retryq_size; //type: uint32
+                                YLeaf fpd_num_allocs; //type: uint64
+                                YLeaf fpd_num_frees; //type: uint64
+                                YLeafList fpd_gbltbl_src_entry; //type: list of  uint64
+                                YLeafList fpd_vrftbl_src_entry; //type: list of  uint64
+                                YLeafList fpd_num_retry; //type: list of  uint64
 
                             class FpdPlatfUpdStats : public Entity
                             {
@@ -2567,10 +2634,11 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value fpus_num_success; //type: uint64
-                                    Value fpus_num_failure; //type: uint64
-                                    Value fpus_upd_total_time; //type: uint64
 
+
+                                    YLeaf fpus_num_success; //type: uint64
+                                    YLeaf fpus_num_failure; //type: uint64
+                                    YLeaf fpus_upd_total_time; //type: uint64
 
                                 class FpusObjStat : public Entity
                                 {
@@ -2585,9 +2653,10 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fos_tot_updates; //type: uint64
-                                        Value fos_tot_upd_time; //type: uint64
 
+
+                                        YLeaf fos_tot_updates; //type: uint64
+                                        YLeaf fos_tot_upd_time; //type: uint64
 
                                     class FosObjActStat : public Entity
                                     {
@@ -2602,14 +2671,15 @@ class Fib : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value foas_tot_updates; //type: uint64
-                                            Value foas_tot_upd_time; //type: uint64
-                                            Value foas_tot_updates_zero; //type: uint64
-                                            Value foas_num_success; //type: uint64
-                                            Value foas_num_failure; //type: uint64
-                                            Value foas_max_time; //type: uint64
-                                            Value foas_max_tstamp; //type: uint64
 
+
+                                            YLeaf foas_tot_updates; //type: uint64
+                                            YLeaf foas_tot_upd_time; //type: uint64
+                                            YLeaf foas_tot_updates_zero; //type: uint64
+                                            YLeaf foas_num_success; //type: uint64
+                                            YLeaf foas_num_failure; //type: uint64
+                                            YLeaf foas_max_time; //type: uint64
+                                            YLeaf foas_max_tstamp; //type: uint64
 
 
 
@@ -2641,10 +2711,11 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value fgt_num_success; //type: uint64
-                                    Value fgt_num_failure; //type: uint64
-                                    Value fgt_upd_total_time; //type: uint64
 
+
+                                    YLeaf fgt_num_success; //type: uint64
+                                    YLeaf fgt_num_failure; //type: uint64
+                                    YLeaf fgt_upd_total_time; //type: uint64
 
                                 class FgtGtrieFnTiming : public Entity
                                 {
@@ -2659,13 +2730,14 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fgft_fn; //type: string
-                                        Value fgft_tot_updates; //type: uint64
-                                        Value fgft_tot_updates_zero; //type: uint64
-                                        Value fgft_tot_upd_time; //type: uint64
-                                        Value fgft_max_time; //type: uint64
-                                        Value fgft_max_tstamp; //type: uint64
 
+
+                                        YLeaf fgft_fn; //type: string
+                                        YLeaf fgft_tot_updates; //type: uint64
+                                        YLeaf fgft_tot_updates_zero; //type: uint64
+                                        YLeaf fgft_tot_upd_time; //type: uint64
+                                        YLeaf fgft_max_time; //type: uint64
+                                        YLeaf fgft_max_tstamp; //type: uint64
 
 
 
@@ -2698,8 +2770,9 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                ValueList fpp_cntr; //type: list of  uint32
 
+
+                                YLeafList fpp_cntr; //type: list of  uint32
 
 
 
@@ -2719,12 +2792,13 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tableid; //type: uint32
-                                Value prfx; //type: string
-                                Value prfx_len; //type: uint16
-                                Value prfx_proto; //type: uint16
-                                Value msec_time; //type: uint64
 
+
+                                YLeaf tableid; //type: uint32
+                                YLeaf prfx; //type: string
+                                YLeaf prfx_len; //type: uint16
+                                YLeaf prfx_proto; //type: uint16
+                                YLeaf msec_time; //type: uint64
 
 
 
@@ -2744,22 +2818,23 @@ class Fib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mi_num_intf_frr; //type: uint32
-                                Value mi_num_parent_intf_frr; //type: uint32
-                                Value mi_num_pfi_intf_down; //type: uint32
-                                Value mi_num_bfd_down; //type: uint32
-                                Value mi_num_prot_frr_objects; //type: uint32
-                                Value mi_num_bkup_frr_objects; //type: uint32
-                                Value mi_num_tunid_allocs; //type: uint32
-                                Value mi_num_tunid_alloc_failures; //type: uint32
-                                Value mi_num_tunid_frees; //type: uint32
-                                Value mi_num_tunid_free_failures; //type: uint32
-                                Value mi_num_frr_reset_queue_adds; //type: uint32
-                                Value mi_num_frr_reset_queue_remove; //type: uint32
-                                Value mi_num_frr_reset; //type: uint32
-                                Value mi_num_frr_proto_events; //type: uint32
-                                Value mi_num_frr_logs; //type: uint32
 
+
+                                YLeaf mi_num_intf_frr; //type: uint32
+                                YLeaf mi_num_parent_intf_frr; //type: uint32
+                                YLeaf mi_num_pfi_intf_down; //type: uint32
+                                YLeaf mi_num_bfd_down; //type: uint32
+                                YLeaf mi_num_prot_frr_objects; //type: uint32
+                                YLeaf mi_num_bkup_frr_objects; //type: uint32
+                                YLeaf mi_num_tunid_allocs; //type: uint32
+                                YLeaf mi_num_tunid_alloc_failures; //type: uint32
+                                YLeaf mi_num_tunid_frees; //type: uint32
+                                YLeaf mi_num_tunid_free_failures; //type: uint32
+                                YLeaf mi_num_frr_reset_queue_adds; //type: uint32
+                                YLeaf mi_num_frr_reset_queue_remove; //type: uint32
+                                YLeaf mi_num_frr_reset; //type: uint32
+                                YLeaf mi_num_frr_proto_events; //type: uint32
+                                YLeaf mi_num_frr_logs; //type: uint32
 
 
 
@@ -2792,6 +2867,7 @@ class Fib : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Conflicts : public Entity
                         {
                             public:
@@ -2807,6 +2883,7 @@ class Fib : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Conflict : public Entity
                             {
                                 public:
@@ -2820,18 +2897,19 @@ class Fib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label; //type: uint32
-                                    Value source; //type: FibRouteSourceEnum
-                                    Value ll_ctype; //type: FibllcEntryEnum
-                                    Value pfx_tbl_id; //type: int32
-                                    Value prefix; //type: string
-                                    Value prefix_len; //type: int32
-                                    Value local_label; //type: uint32
-                                    Value source_xr; //type: uint32
-                                    Value update_ts; //type: uint64
-                                    Value retry_ts; //type: uint64
-                                    Value num_retries; //type: uint32
 
+
+                                    YLeaf label; //type: uint32
+                                    YLeaf source; //type: FibRouteSourceEnum
+                                    YLeaf ll_ctype; //type: FibllcEntryEnum
+                                    YLeaf pfx_tbl_id; //type: int32
+                                    YLeaf prefix; //type: string
+                                    YLeaf prefix_len; //type: int32
+                                    YLeaf local_label; //type: uint32
+                                    YLeaf source_xr; //type: uint32
+                                    YLeaf update_ts; //type: uint64
+                                    YLeaf retry_ts; //type: uint64
+                                    YLeaf num_retries; //type: uint32
 
                                 class Ext : public Entity
                                 {
@@ -2846,8 +2924,9 @@ class Fib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value type; //type: FibMplsLlcEntryBagEnum
 
+
+                                        YLeaf type; //type: FibMplsLlcEntryBagEnum
 
                                     class Pfx : public Entity
                                     {
@@ -2862,9 +2941,10 @@ class Fib : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value pfx; //type: string
-                                            Value tbl_id; //type: uint32
 
+
+                                            YLeaf pfx; //type: string
+                                            YLeaf tbl_id; //type: uint32
 
 
 
@@ -2884,9 +2964,10 @@ class Fib : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value nh; //type: string
-                                            Value mcast_id; //type: uint32
 
+
+                                            YLeaf nh; //type: string
+                                            YLeaf mcast_id; //type: uint32
 
 
 
@@ -2895,15 +2976,12 @@ class Fib : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm> lsm;
                                         std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx> pfx;
-                                        class FibMplsLlcEntryBagEnum;
 
 
                                 }; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext
 
 
                                     std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext> ext;
-                                    class FibllcEntryEnum;
-                                    class FibRouteSourceEnum;
 
 
                             }; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict
@@ -2929,7 +3007,6 @@ class Fib : public Entity
                         std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Misc> misc;
                         std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Summaries> summaries;
                         std::unique_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Vrfs> vrfs;
-                        class FibProtocolEnum;
 
 
                 }; // Fib::Nodes::Node::Protocols::Protocol
@@ -2974,6 +3051,7 @@ class MplsForwarding : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -2989,6 +3067,7 @@ class MplsForwarding : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -3002,8 +3081,9 @@ class MplsForwarding : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class ForwardingSummary : public Entity
             {
@@ -3018,36 +3098,37 @@ class MplsForwarding : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ipv4_imposition_entries; //type: uint32
-                    Value reserved_label_entries; //type: uint32
-                    Value label_switched_entries; //type: uint32
-                    Value deleted_stale_entries; //type: uint32
-                    Value te_head_entries; //type: uint32
-                    Value te_frr_head_entries; //type: uint32
-                    Value te_frr_interface_entries; //type: uint32
-                    Value te_frr_next_hop_entries; //type: uint32
-                    Value te_mid_points_entries; //type: uint32
-                    Value te_frr_mid_points_entries; //type: uint32
-                    Value te_internal_entries; //type: uint32
-                    Value te_frr_internal_entries; //type: uint32
-                    Value total_forwarding_updates; //type: uint32
-                    Value total_forwarding_update_messages; //type: uint32
-                    Value total_p2mp_forwarding_updates; //type: uint32
-                    Value total_p2mp_forwarding_added_or_modify_messages; //type: uint32
-                    Value total_p2mp_forwarding_delete_messages; //type: uint32
-                    Value total_p2mp_forwarding_drop_messages; //type: uint32
-                    Value total_p2mp_iir_forwarding_drop_messages; //type: uint32
-                    Value lowest_label; //type: uint32
-                    Value highest_label; //type: uint32
-                    Value ignore_protect; //type: uint32
-                    Value mte_head_entries; //type: uint32
-                    Value mte_ll_entries; //type: uint32
-                    Value mte_midpoint_entries; //type: uint32
-                    Value global_dropped_packets; //type: uint64
-                    Value global_fragmented_packets; //type: uint64
-                    Value global_failed_lookups; //type: uint64
-                    Value lrpf_entries; //type: uint32
 
+
+                    YLeaf ipv4_imposition_entries; //type: uint32
+                    YLeaf reserved_label_entries; //type: uint32
+                    YLeaf label_switched_entries; //type: uint32
+                    YLeaf deleted_stale_entries; //type: uint32
+                    YLeaf te_head_entries; //type: uint32
+                    YLeaf te_frr_head_entries; //type: uint32
+                    YLeaf te_frr_interface_entries; //type: uint32
+                    YLeaf te_frr_next_hop_entries; //type: uint32
+                    YLeaf te_mid_points_entries; //type: uint32
+                    YLeaf te_frr_mid_points_entries; //type: uint32
+                    YLeaf te_internal_entries; //type: uint32
+                    YLeaf te_frr_internal_entries; //type: uint32
+                    YLeaf total_forwarding_updates; //type: uint32
+                    YLeaf total_forwarding_update_messages; //type: uint32
+                    YLeaf total_p2mp_forwarding_updates; //type: uint32
+                    YLeaf total_p2mp_forwarding_added_or_modify_messages; //type: uint32
+                    YLeaf total_p2mp_forwarding_delete_messages; //type: uint32
+                    YLeaf total_p2mp_forwarding_drop_messages; //type: uint32
+                    YLeaf total_p2mp_iir_forwarding_drop_messages; //type: uint32
+                    YLeaf lowest_label; //type: uint32
+                    YLeaf highest_label; //type: uint32
+                    YLeaf ignore_protect; //type: uint32
+                    YLeaf mte_head_entries; //type: uint32
+                    YLeaf mte_ll_entries; //type: uint32
+                    YLeaf mte_midpoint_entries; //type: uint32
+                    YLeaf global_dropped_packets; //type: uint64
+                    YLeaf global_fragmented_packets; //type: uint64
+                    YLeaf global_failed_lookups; //type: uint64
+                    YLeaf lrpf_entries; //type: uint32
 
 
 
@@ -3069,6 +3150,7 @@ class MplsForwarding : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ForwardingDetails : public Entity
                 {
                     public:
@@ -3084,6 +3166,7 @@ class MplsForwarding : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ForwardingDetail : public Entity
                     {
                         public:
@@ -3097,28 +3180,29 @@ class MplsForwarding : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value label_value; //type: int32
-                            Value eos; //type: MplseosEnum
-                            Value leaf_local_label; //type: uint32
-                            Value eos_bit; //type: uint32
-                            Value hardware_information; //type: string
-                            Value leaf_referance_count; //type: uint32
-                            Value leaf_flags; //type: uint32
-                            Value path_list_referance_count; //type: uint32
-                            Value path_list_flags; //type: uint32
-                            Value ldi_referance_count; //type: uint32
-                            Value ldi_flags; //type: uint32
-                            Value ldi_type; //type: uint32
-                            Value ldi_pointer; //type: uint32
-                            Value lw_ldi_type; //type: uint32
-                            Value lw_ldi_pointer; //type: uint32
-                            Value lw_ldi_refernace_count; //type: uint32
-                            Value lw_shared_ldi_pointer; //type: uint32
-                            Value lspa_flags; //type: uint32
-                            Value afi_table_id; //type: uint32
-                            Value multicast_label; //type: boolean
-                            Value leaf_time_in_milli_seconds; //type: uint64
 
+
+                            YLeaf label_value; //type: int32
+                            YLeaf eos; //type: MplseosEnum
+                            YLeaf leaf_local_label; //type: uint32
+                            YLeaf eos_bit; //type: uint32
+                            YLeaf hardware_information; //type: string
+                            YLeaf leaf_referance_count; //type: uint32
+                            YLeaf leaf_flags; //type: uint32
+                            YLeaf path_list_referance_count; //type: uint32
+                            YLeaf path_list_flags; //type: uint32
+                            YLeaf ldi_referance_count; //type: uint32
+                            YLeaf ldi_flags; //type: uint32
+                            YLeaf ldi_type; //type: uint32
+                            YLeaf ldi_pointer; //type: uint32
+                            YLeaf lw_ldi_type; //type: uint32
+                            YLeaf lw_ldi_pointer; //type: uint32
+                            YLeaf lw_ldi_refernace_count; //type: uint32
+                            YLeaf lw_shared_ldi_pointer; //type: uint32
+                            YLeaf lspa_flags; //type: uint32
+                            YLeaf afi_table_id; //type: uint32
+                            YLeaf multicast_label; //type: boolean
+                            YLeaf leaf_time_in_milli_seconds; //type: uint64
 
                         class LdiInformation : public Entity
                         {
@@ -3133,8 +3217,9 @@ class MplsForwarding : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ldi_hardware_information; //type: string
 
+
+                                YLeaf ldi_hardware_information; //type: string
 
 
 
@@ -3154,21 +3239,22 @@ class MplsForwarding : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value multicast_mol_base_flags; //type: uint32
-                                Value multicast_mol_flags; //type: uint16
-                                Value multicast_mol_referance_count; //type: uint16
-                                Value multicast_tunnel_interface_handler; //type: string
-                                Value multicast_tunnel_id; //type: uint32
-                                Value multicast_tunnel_next_hop_information; //type: uint32
-                                Value multicast_tunnel_lspvif; //type: uint32
-                                Value multicast_mpls_output_paths; //type: uint16
-                                Value multicast_mpls_protocol_output_paths; //type: uint16
-                                Value multicast_mpls_local_output_paths; //type: uint16
-                                Value multicast_rpf_id; //type: uint32
-                                Value multicast_encap_id; //type: uint32
-                                Value multicast_platform_data_length; //type: uint8
-                                Value multicast_platform_data; //type: string
 
+
+                                YLeaf multicast_mol_base_flags; //type: uint32
+                                YLeaf multicast_mol_flags; //type: uint16
+                                YLeaf multicast_mol_referance_count; //type: uint16
+                                YLeaf multicast_tunnel_interface_handler; //type: string
+                                YLeaf multicast_tunnel_id; //type: uint32
+                                YLeaf multicast_tunnel_next_hop_information; //type: uint32
+                                YLeaf multicast_tunnel_lspvif; //type: uint32
+                                YLeaf multicast_mpls_output_paths; //type: uint16
+                                YLeaf multicast_mpls_protocol_output_paths; //type: uint16
+                                YLeaf multicast_mpls_local_output_paths; //type: uint16
+                                YLeaf multicast_rpf_id; //type: uint32
+                                YLeaf multicast_encap_id; //type: uint32
+                                YLeaf multicast_platform_data_length; //type: uint8
+                                YLeaf multicast_platform_data; //type: string
 
 
 
@@ -3188,26 +3274,27 @@ class MplsForwarding : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label_information_type; //type: uint32
-                                Value local_label; //type: uint32
-                                Value outgoing_label; //type: uint32
-                                Value mpls_adjacency_flags; //type: uint32
-                                Value tunnel_id_present; //type: boolean
-                                Value outgoing_interface; //type: string
-                                Value outgoing_physical_interface; //type: string
-                                Value tunnel_interface; //type: string
-                                Value label_information_path_index; //type: uint32
-                                Value label_information_next_hop_type; //type: NextHopEnum
-                                Value label_information_next_hop_protocol; //type: ProtoEnum
-                                Value tx_bytes; //type: uint64
-                                Value tx_packets; //type: uint64
-                                Value outgoing_interface_string; //type: string
-                                Value outgoing_label_string; //type: string
-                                Value prefix_or_id; //type: string
-                                Value label_information_next_hop_string; //type: string
-                                Value label_information_route_version; //type: uint64
-                                Value label_information_time_in_milli_seconds; //type: uint64
 
+
+                                YLeaf label_information_type; //type: uint32
+                                YLeaf local_label; //type: uint32
+                                YLeaf outgoing_label; //type: uint32
+                                YLeaf mpls_adjacency_flags; //type: uint32
+                                YLeaf tunnel_id_present; //type: boolean
+                                YLeaf outgoing_interface; //type: string
+                                YLeaf outgoing_physical_interface; //type: string
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf label_information_path_index; //type: uint32
+                                YLeaf label_information_next_hop_type; //type: NextHopEnum
+                                YLeaf label_information_next_hop_protocol; //type: ProtoEnum
+                                YLeaf tx_bytes; //type: uint64
+                                YLeaf tx_packets; //type: uint64
+                                YLeaf outgoing_interface_string; //type: string
+                                YLeaf outgoing_label_string; //type: string
+                                YLeaf prefix_or_id; //type: string
+                                YLeaf label_information_next_hop_string; //type: string
+                                YLeaf label_information_route_version; //type: uint64
+                                YLeaf label_information_time_in_milli_seconds; //type: uint64
 
                             class LabelInformationDetail : public Entity
                             {
@@ -3222,27 +3309,25 @@ class MplsForwarding : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value l3_mtu; //type: uint32
-                                    Value total_encapsulation_size; //type: uint32
-                                    Value mac_size; //type: uint32
-                                    Value transmit_number_of_packets_switched; //type: uint64
-                                    Value transmit_number_of_bytes_switched; //type: uint64
-                                    Value status; //type: int32
-                                    Value next_hop_interface; //type: string
-                                    Value next_hop_protocol; //type: ProtoEnum
-                                    Value next_hop_string; //type: string
-                                    ValueList label_stack; //type: list of  uint32
 
 
-                                    class ProtoEnum;
+                                    YLeaf l3_mtu; //type: uint32
+                                    YLeaf total_encapsulation_size; //type: uint32
+                                    YLeaf mac_size; //type: uint32
+                                    YLeaf transmit_number_of_packets_switched; //type: uint64
+                                    YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                    YLeaf status; //type: int32
+                                    YLeaf next_hop_interface; //type: string
+                                    YLeaf next_hop_protocol; //type: ProtoEnum
+                                    YLeaf next_hop_string; //type: string
+                                    YLeafList label_stack; //type: list of  uint32
+
 
 
                             }; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail
 
 
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail> label_information_detail;
-                                class ProtoEnum;
-                                class NextHopEnum;
 
 
                         }; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation
@@ -3251,7 +3336,6 @@ class MplsForwarding : public Entity
                             std::vector<std::unique_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation> > label_information;
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation> ldi_information;
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation> multicast_information;
-                            class MplseosEnum;
 
 
                     }; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
@@ -3278,6 +3362,7 @@ class MplsForwarding : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Information : public Entity
                     {
                         public:
@@ -3291,28 +3376,29 @@ class MplsForwarding : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value label_value; //type: int32
-                            Value eos; //type: MplseosEnum
-                            Value leaf_local_label; //type: uint32
-                            Value eos_bit; //type: uint32
-                            Value hardware_information; //type: string
-                            Value leaf_referance_count; //type: uint32
-                            Value leaf_flags; //type: uint32
-                            Value path_list_referance_count; //type: uint32
-                            Value path_list_flags; //type: uint32
-                            Value ldi_referance_count; //type: uint32
-                            Value ldi_flags; //type: uint32
-                            Value ldi_type; //type: uint32
-                            Value ldi_pointer; //type: uint32
-                            Value lw_ldi_type; //type: uint32
-                            Value lw_ldi_pointer; //type: uint32
-                            Value lw_ldi_refernace_count; //type: uint32
-                            Value lw_shared_ldi_pointer; //type: uint32
-                            Value lspa_flags; //type: uint32
-                            Value afi_table_id; //type: uint32
-                            Value multicast_label; //type: boolean
-                            Value leaf_time_in_milli_seconds; //type: uint64
 
+
+                            YLeaf label_value; //type: int32
+                            YLeaf eos; //type: MplseosEnum
+                            YLeaf leaf_local_label; //type: uint32
+                            YLeaf eos_bit; //type: uint32
+                            YLeaf hardware_information; //type: string
+                            YLeaf leaf_referance_count; //type: uint32
+                            YLeaf leaf_flags; //type: uint32
+                            YLeaf path_list_referance_count; //type: uint32
+                            YLeaf path_list_flags; //type: uint32
+                            YLeaf ldi_referance_count; //type: uint32
+                            YLeaf ldi_flags; //type: uint32
+                            YLeaf ldi_type; //type: uint32
+                            YLeaf ldi_pointer; //type: uint32
+                            YLeaf lw_ldi_type; //type: uint32
+                            YLeaf lw_ldi_pointer; //type: uint32
+                            YLeaf lw_ldi_refernace_count; //type: uint32
+                            YLeaf lw_shared_ldi_pointer; //type: uint32
+                            YLeaf lspa_flags; //type: uint32
+                            YLeaf afi_table_id; //type: uint32
+                            YLeaf multicast_label; //type: boolean
+                            YLeaf leaf_time_in_milli_seconds; //type: uint64
 
                         class LdiInformation : public Entity
                         {
@@ -3327,8 +3413,9 @@ class MplsForwarding : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ldi_hardware_information; //type: string
 
+
+                                YLeaf ldi_hardware_information; //type: string
 
 
 
@@ -3348,21 +3435,22 @@ class MplsForwarding : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value multicast_mol_base_flags; //type: uint32
-                                Value multicast_mol_flags; //type: uint16
-                                Value multicast_mol_referance_count; //type: uint16
-                                Value multicast_tunnel_interface_handler; //type: string
-                                Value multicast_tunnel_id; //type: uint32
-                                Value multicast_tunnel_next_hop_information; //type: uint32
-                                Value multicast_tunnel_lspvif; //type: uint32
-                                Value multicast_mpls_output_paths; //type: uint16
-                                Value multicast_mpls_protocol_output_paths; //type: uint16
-                                Value multicast_mpls_local_output_paths; //type: uint16
-                                Value multicast_rpf_id; //type: uint32
-                                Value multicast_encap_id; //type: uint32
-                                Value multicast_platform_data_length; //type: uint8
-                                Value multicast_platform_data; //type: string
 
+
+                                YLeaf multicast_mol_base_flags; //type: uint32
+                                YLeaf multicast_mol_flags; //type: uint16
+                                YLeaf multicast_mol_referance_count; //type: uint16
+                                YLeaf multicast_tunnel_interface_handler; //type: string
+                                YLeaf multicast_tunnel_id; //type: uint32
+                                YLeaf multicast_tunnel_next_hop_information; //type: uint32
+                                YLeaf multicast_tunnel_lspvif; //type: uint32
+                                YLeaf multicast_mpls_output_paths; //type: uint16
+                                YLeaf multicast_mpls_protocol_output_paths; //type: uint16
+                                YLeaf multicast_mpls_local_output_paths; //type: uint16
+                                YLeaf multicast_rpf_id; //type: uint32
+                                YLeaf multicast_encap_id; //type: uint32
+                                YLeaf multicast_platform_data_length; //type: uint8
+                                YLeaf multicast_platform_data; //type: string
 
 
 
@@ -3382,26 +3470,27 @@ class MplsForwarding : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value label_information_type; //type: uint32
-                                Value local_label; //type: uint32
-                                Value outgoing_label; //type: uint32
-                                Value mpls_adjacency_flags; //type: uint32
-                                Value tunnel_id_present; //type: boolean
-                                Value outgoing_interface; //type: string
-                                Value outgoing_physical_interface; //type: string
-                                Value tunnel_interface; //type: string
-                                Value label_information_path_index; //type: uint32
-                                Value label_information_next_hop_type; //type: NextHopEnum
-                                Value label_information_next_hop_protocol; //type: ProtoEnum
-                                Value tx_bytes; //type: uint64
-                                Value tx_packets; //type: uint64
-                                Value outgoing_interface_string; //type: string
-                                Value outgoing_label_string; //type: string
-                                Value prefix_or_id; //type: string
-                                Value label_information_next_hop_string; //type: string
-                                Value label_information_route_version; //type: uint64
-                                Value label_information_time_in_milli_seconds; //type: uint64
 
+
+                                YLeaf label_information_type; //type: uint32
+                                YLeaf local_label; //type: uint32
+                                YLeaf outgoing_label; //type: uint32
+                                YLeaf mpls_adjacency_flags; //type: uint32
+                                YLeaf tunnel_id_present; //type: boolean
+                                YLeaf outgoing_interface; //type: string
+                                YLeaf outgoing_physical_interface; //type: string
+                                YLeaf tunnel_interface; //type: string
+                                YLeaf label_information_path_index; //type: uint32
+                                YLeaf label_information_next_hop_type; //type: NextHopEnum
+                                YLeaf label_information_next_hop_protocol; //type: ProtoEnum
+                                YLeaf tx_bytes; //type: uint64
+                                YLeaf tx_packets; //type: uint64
+                                YLeaf outgoing_interface_string; //type: string
+                                YLeaf outgoing_label_string; //type: string
+                                YLeaf prefix_or_id; //type: string
+                                YLeaf label_information_next_hop_string; //type: string
+                                YLeaf label_information_route_version; //type: uint64
+                                YLeaf label_information_time_in_milli_seconds; //type: uint64
 
                             class LabelInformationDetail : public Entity
                             {
@@ -3416,27 +3505,25 @@ class MplsForwarding : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value l3_mtu; //type: uint32
-                                    Value total_encapsulation_size; //type: uint32
-                                    Value mac_size; //type: uint32
-                                    Value transmit_number_of_packets_switched; //type: uint64
-                                    Value transmit_number_of_bytes_switched; //type: uint64
-                                    Value status; //type: int32
-                                    Value next_hop_interface; //type: string
-                                    Value next_hop_protocol; //type: ProtoEnum
-                                    Value next_hop_string; //type: string
-                                    ValueList label_stack; //type: list of  uint32
 
 
-                                    class ProtoEnum;
+                                    YLeaf l3_mtu; //type: uint32
+                                    YLeaf total_encapsulation_size; //type: uint32
+                                    YLeaf mac_size; //type: uint32
+                                    YLeaf transmit_number_of_packets_switched; //type: uint64
+                                    YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                    YLeaf status; //type: int32
+                                    YLeaf next_hop_interface; //type: string
+                                    YLeaf next_hop_protocol; //type: ProtoEnum
+                                    YLeaf next_hop_string; //type: string
+                                    YLeafList label_stack; //type: list of  uint32
+
 
 
                             }; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail
 
 
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail> label_information_detail;
-                                class ProtoEnum;
-                                class NextHopEnum;
 
 
                         }; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation
@@ -3445,7 +3532,6 @@ class MplsForwarding : public Entity
                             std::vector<std::unique_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation> > label_information;
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation> ldi_information;
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation> multicast_information;
-                            class MplseosEnum;
 
 
                     }; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information
@@ -3472,6 +3558,7 @@ class MplsForwarding : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interfaces : public Entity
                     {
                         public:
@@ -3487,6 +3574,7 @@ class MplsForwarding : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Interface : public Entity
                         {
                             public:
@@ -3500,15 +3588,16 @@ class MplsForwarding : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value rpf_enabled; //type: boolean
-                                Value rpf_supported; //type: boolean
-                                Value mld_enabled; //type: boolean
-                                Value mld_supported; //type: boolean
-                                Value rpf_drops; //type: uint64
-                                Value multi_label_drops; //type: uint64
-                                Value rpfifh; //type: string
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf rpf_enabled; //type: boolean
+                                YLeaf rpf_supported; //type: boolean
+                                YLeaf mld_enabled; //type: boolean
+                                YLeaf mld_supported; //type: boolean
+                                YLeaf rpf_drops; //type: uint64
+                                YLeaf multi_label_drops; //type: uint64
+                                YLeaf rpfifh; //type: string
 
 
 
@@ -3534,9 +3623,10 @@ class MplsForwarding : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rpf_drops; //type: uint64
-                            Value multi_label_drops; //type: uint64
 
+
+                            YLeaf rpf_drops; //type: uint64
+                            YLeaf multi_label_drops; //type: uint64
 
 
 
@@ -3592,6 +3682,7 @@ class FibMpls : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -3607,6 +3698,7 @@ class FibMpls : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -3620,8 +3712,9 @@ class FibMpls : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class LabelFib : public Entity
             {
@@ -3636,6 +3729,7 @@ class FibMpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Forwardings : public Entity
@@ -3653,6 +3747,7 @@ class FibMpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Forwarding : public Entity
                     {
                         public:
@@ -3666,38 +3761,39 @@ class FibMpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value local_label; //type: int32
-                            Value eos; //type: EosEnum
-                            Value leaf_local_label; //type: uint32
-                            Value eos_bit; //type: uint32
-                            Value hardware_information; //type: string
-                            Value leaf_reference_count; //type: uint32
-                            Value leaf_ptr; //type: uint32
-                            Value leaf_flags; //type: uint32
-                            Value path_list_reference_count; //type: uint32
-                            Value path_list_ldi_mask; //type: uint32
-                            Value path_list_flags; //type: uint32
-                            Value path_list_pointer; //type: uint32
-                            Value ldi_reference_count; //type: uint32
-                            Value ldi_flags; //type: uint32
-                            Value ldi_type; //type: uint32
-                            Value ldi_pointer; //type: uint32
-                            Value lw_ldi_type; //type: uint32
-                            Value lw_ldi_pointer; //type: uint32
-                            Value lw_ldi_reference_count; //type: uint32
-                            Value lw_shared_ldi_pointer; //type: uint32
-                            Value lspa_flags; //type: uint32
-                            Value afi_table_id; //type: uint32
-                            Value multicast_label; //type: boolean
-                            Value leaf_time_in_milli_seconds; //type: uint64
-                            Value pwhe_interface_list_id; //type: uint16
-                            Value pwhe_interface_list_ptr; //type: uint32
-                            Value pl_time_of_last_update_in_msec; //type: uint64
-                            Value ldi_time_of_last_update_in_msec; //type: uint64
-                            Value lwldi_time_of_last_update_in_msec; //type: uint64
-                            Value lspa_time_of_last_update_in_msec; //type: uint64
-                            Value pl_time_stamp_type; //type: uint32
 
+
+                            YLeaf local_label; //type: int32
+                            YLeaf eos; //type: EosEnum
+                            YLeaf leaf_local_label; //type: uint32
+                            YLeaf eos_bit; //type: uint32
+                            YLeaf hardware_information; //type: string
+                            YLeaf leaf_reference_count; //type: uint32
+                            YLeaf leaf_ptr; //type: uint32
+                            YLeaf leaf_flags; //type: uint32
+                            YLeaf path_list_reference_count; //type: uint32
+                            YLeaf path_list_ldi_mask; //type: uint32
+                            YLeaf path_list_flags; //type: uint32
+                            YLeaf path_list_pointer; //type: uint32
+                            YLeaf ldi_reference_count; //type: uint32
+                            YLeaf ldi_flags; //type: uint32
+                            YLeaf ldi_type; //type: uint32
+                            YLeaf ldi_pointer; //type: uint32
+                            YLeaf lw_ldi_type; //type: uint32
+                            YLeaf lw_ldi_pointer; //type: uint32
+                            YLeaf lw_ldi_reference_count; //type: uint32
+                            YLeaf lw_shared_ldi_pointer; //type: uint32
+                            YLeaf lspa_flags; //type: uint32
+                            YLeaf afi_table_id; //type: uint32
+                            YLeaf multicast_label; //type: boolean
+                            YLeaf leaf_time_in_milli_seconds; //type: uint64
+                            YLeaf pwhe_interface_list_id; //type: uint16
+                            YLeaf pwhe_interface_list_ptr; //type: uint32
+                            YLeaf pl_time_of_last_update_in_msec; //type: uint64
+                            YLeaf ldi_time_of_last_update_in_msec; //type: uint64
+                            YLeaf lwldi_time_of_last_update_in_msec; //type: uint64
+                            YLeaf lspa_time_of_last_update_in_msec; //type: uint64
+                            YLeaf pl_time_stamp_type; //type: uint32
 
                         class LabelInformation : public Entity
                         {
@@ -3714,6 +3810,7 @@ class FibMpls : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class FibMplsAdjInfo : public Entity
                             {
                                 public:
@@ -3727,45 +3824,46 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label_information_type; //type: uint32
-                                    Value local_label; //type: uint32
-                                    Value outgoing_label; //type: uint32
-                                    Value frr_nh_ptr; //type: uint32
-                                    Value mpls_adjacency_flags; //type: uint32
-                                    Value path_flags; //type: uint32
-                                    Value path_index; //type: uint8
-                                    Value backup_path_index; //type: uint8
-                                    Value nhid; //type: uint32
-                                    Value weight; //type: uint32
-                                    Value app_id; //type: uint16
-                                    Value tunnel_id_present; //type: boolean
-                                    Value outgoing_interface; //type: uint32
-                                    Value outgoing_physical_interface; //type: uint32
-                                    Value tunnel_interface_name; //type: string
-                                    Value label_information_path_index; //type: uint32
-                                    Value label_information_encap_id; //type: uint64
-                                    Value label_information_next_hop_type; //type: uint32
-                                    Value label_information_next_hop_table_id; //type: uint32
-                                    Value label_information_next_hop_protocol; //type: uint32
-                                    Value sli_from_ldi; //type: boolean
-                                    Value label_information_next_hop_string; //type: string
-                                    Value label_information_route_version; //type: uint64
-                                    Value label_information_time_in_milli_seconds; //type: uint64
-                                    Value label_bridge_domain_id; //type: uint32
-                                    Value label_xid; //type: uint32
-                                    Value label_pw_xid; //type: uint32
-                                    Value label_shg_id; //type: uint32
-                                    Value pwhev_ctype; //type: uint32
-                                    Value pwhecw_enabled; //type: boolean
-                                    Value pwhe_interface; //type: string
-                                    Value pq_label; //type: uint32
-                                    Value pq_flags; //type: uint32
-                                    Value li_pointer; //type: uint32
-                                    Value li_reference_count; //type: uint32
-                                    Value is_srte; //type: boolean
-                                    Value is_pure_backup; //type: boolean
-                                    Value is_frr_active; //type: boolean
 
+
+                                    YLeaf label_information_type; //type: uint32
+                                    YLeaf local_label; //type: uint32
+                                    YLeaf outgoing_label; //type: uint32
+                                    YLeaf frr_nh_ptr; //type: uint32
+                                    YLeaf mpls_adjacency_flags; //type: uint32
+                                    YLeaf path_flags; //type: uint32
+                                    YLeaf path_index; //type: uint8
+                                    YLeaf backup_path_index; //type: uint8
+                                    YLeaf nhid; //type: uint32
+                                    YLeaf weight; //type: uint32
+                                    YLeaf app_id; //type: uint16
+                                    YLeaf tunnel_id_present; //type: boolean
+                                    YLeaf outgoing_interface; //type: uint32
+                                    YLeaf outgoing_physical_interface; //type: uint32
+                                    YLeaf tunnel_interface_name; //type: string
+                                    YLeaf label_information_path_index; //type: uint32
+                                    YLeaf label_information_encap_id; //type: uint64
+                                    YLeaf label_information_next_hop_type; //type: uint32
+                                    YLeaf label_information_next_hop_table_id; //type: uint32
+                                    YLeaf label_information_next_hop_protocol; //type: uint32
+                                    YLeaf sli_from_ldi; //type: boolean
+                                    YLeaf label_information_next_hop_string; //type: string
+                                    YLeaf label_information_route_version; //type: uint64
+                                    YLeaf label_information_time_in_milli_seconds; //type: uint64
+                                    YLeaf label_bridge_domain_id; //type: uint32
+                                    YLeaf label_xid; //type: uint32
+                                    YLeaf label_pw_xid; //type: uint32
+                                    YLeaf label_shg_id; //type: uint32
+                                    YLeaf pwhev_ctype; //type: uint32
+                                    YLeaf pwhecw_enabled; //type: boolean
+                                    YLeaf pwhe_interface; //type: string
+                                    YLeaf pq_label; //type: uint32
+                                    YLeaf pq_flags; //type: uint32
+                                    YLeaf li_pointer; //type: uint32
+                                    YLeaf li_reference_count; //type: uint32
+                                    YLeaf is_srte; //type: boolean
+                                    YLeaf is_pure_backup; //type: boolean
+                                    YLeaf is_frr_active; //type: boolean
 
                                 class LabelInformationDetail : public Entity
                                 {
@@ -3780,23 +3878,24 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value l3_mtu; //type: uint32
-                                        Value total_encapsulation_size; //type: uint32
-                                        Value mac_size; //type: uint32
-                                        Value transmit_number_of_packets_switched; //type: uint64
-                                        Value transmit_number_of_bytes_switched; //type: uint64
-                                        Value transmit_number_of_tm_packets_switched; //type: uint64
-                                        Value transmit_number_of_tm_bytes_switched; //type: uint64
-                                        Value status; //type: int32
-                                        Value next_hop_interface_name; //type: string
-                                        Value next_hop_protocol; //type: uint32
-                                        Value next_hop_string; //type: string
-                                        Value nh_id; //type: uint32
-                                        Value version_priority_valid; //type: boolean
-                                        Value route_download_version; //type: uint64
-                                        Value route_download_priority; //type: uint32
-                                        ValueList label_stack; //type: list of  uint32
 
+
+                                        YLeaf l3_mtu; //type: uint32
+                                        YLeaf total_encapsulation_size; //type: uint32
+                                        YLeaf mac_size; //type: uint32
+                                        YLeaf transmit_number_of_packets_switched; //type: uint64
+                                        YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                        YLeaf transmit_number_of_tm_packets_switched; //type: uint64
+                                        YLeaf transmit_number_of_tm_bytes_switched; //type: uint64
+                                        YLeaf status; //type: int32
+                                        YLeaf next_hop_interface_name; //type: string
+                                        YLeaf next_hop_protocol; //type: uint32
+                                        YLeaf next_hop_string; //type: string
+                                        YLeaf nh_id; //type: uint32
+                                        YLeaf version_priority_valid; //type: boolean
+                                        YLeaf route_download_version; //type: uint64
+                                        YLeaf route_download_priority; //type: uint32
+                                        YLeafList label_stack; //type: list of  uint32
 
 
 
@@ -3816,20 +3915,21 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value my_node_id; //type: uint32
-                                        Value flags; //type: uint32
-                                        Value via_label; //type: uint32
-                                        Value mcast_id; //type: uint32
-                                        Value pri_tos_mask; //type: uint32
-                                        Value bk_tos_mask; //type: uint32
-                                        Value pd_ts_ms; //type: uint64
-                                        Value primary_is_local; //type: boolean
-                                        Value backup_is_local; //type: boolean
-                                        ValueList if_node_id; //type: list of  uint32
-                                        ValueList bkup_if_node_id; //type: list of  uint32
-                                        ValueList if_hdl; //type: list of  uint32
-                                        ValueList bkup_if_hdl; //type: list of  uint32
 
+
+                                        YLeaf my_node_id; //type: uint32
+                                        YLeaf flags; //type: uint32
+                                        YLeaf via_label; //type: uint32
+                                        YLeaf mcast_id; //type: uint32
+                                        YLeaf pri_tos_mask; //type: uint32
+                                        YLeaf bk_tos_mask; //type: uint32
+                                        YLeaf pd_ts_ms; //type: uint64
+                                        YLeaf primary_is_local; //type: boolean
+                                        YLeaf backup_is_local; //type: boolean
+                                        YLeafList if_node_id; //type: list of  uint32
+                                        YLeafList bkup_if_node_id; //type: list of  uint32
+                                        YLeafList if_hdl; //type: list of  uint32
+                                        YLeafList bkup_if_hdl; //type: list of  uint32
 
 
 
@@ -3862,8 +3962,9 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ldi_hardware_information; //type: string
 
+
+                                YLeaf ldi_hardware_information; //type: string
 
 
 
@@ -3883,28 +3984,29 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value multicast_mol_base_flags; //type: uint32
-                                Value multicast_mol_flags; //type: uint16
-                                Value multicast_mol_reference_count; //type: uint16
-                                Value multicast_tunnel_interface_name; //type: string
-                                Value multicast_tunnel_id; //type: uint32
-                                Value multicast_tunnel_next_hop_information; //type: uint32
-                                Value multicast_tunnel_lspvif; //type: uint32
-                                Value multicast_mpls_output_paths; //type: uint16
-                                Value multicast_mpls_protocol_output_paths; //type: uint16
-                                Value multicast_mpls_local_output_paths; //type: uint16
-                                Value multicast_rpf_id; //type: uint32
-                                Value multicast_encap_id; //type: uint32
-                                Value dependent_tunnel_local_label; //type: uint32
-                                Value dependent_tunnel_ifh; //type: uint32
-                                Value multicast_v4_table_id; //type: uint32
-                                Value multicast_v6_table_id; //type: uint32
-                                Value label_bridge_domain_id; //type: uint32
-                                Value label_xid; //type: uint32
-                                Value label_shg_id; //type: uint32
-                                Value multicast_platform_data_length; //type: uint8
-                                Value multicast_platform_data; //type: string
 
+
+                                YLeaf multicast_mol_base_flags; //type: uint32
+                                YLeaf multicast_mol_flags; //type: uint16
+                                YLeaf multicast_mol_reference_count; //type: uint16
+                                YLeaf multicast_tunnel_interface_name; //type: string
+                                YLeaf multicast_tunnel_id; //type: uint32
+                                YLeaf multicast_tunnel_next_hop_information; //type: uint32
+                                YLeaf multicast_tunnel_lspvif; //type: uint32
+                                YLeaf multicast_mpls_output_paths; //type: uint16
+                                YLeaf multicast_mpls_protocol_output_paths; //type: uint16
+                                YLeaf multicast_mpls_local_output_paths; //type: uint16
+                                YLeaf multicast_rpf_id; //type: uint32
+                                YLeaf multicast_encap_id; //type: uint32
+                                YLeaf dependent_tunnel_local_label; //type: uint32
+                                YLeaf dependent_tunnel_ifh; //type: uint32
+                                YLeaf multicast_v4_table_id; //type: uint32
+                                YLeaf multicast_v6_table_id; //type: uint32
+                                YLeaf label_bridge_domain_id; //type: uint32
+                                YLeaf label_xid; //type: uint32
+                                YLeaf label_shg_id; //type: uint32
+                                YLeaf multicast_platform_data_length; //type: uint8
+                                YLeaf multicast_platform_data; //type: string
 
 
 
@@ -3924,14 +4026,15 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rpf_flags; //type: uint32
-                                Value rpf_pl_flags; //type: uint32
-                                Value rpf_create_ts; //type: uint64
-                                Value rpf_mod_ts; //type: uint64
-                                Value rpf_pd_ts; //type: uint64
-                                Value rpf_hardware; //type: string
-                                ValueList rpf_if; //type: list of  string
 
+
+                                YLeaf rpf_flags; //type: uint32
+                                YLeaf rpf_pl_flags; //type: uint32
+                                YLeaf rpf_create_ts; //type: uint64
+                                YLeaf rpf_mod_ts; //type: uint64
+                                YLeaf rpf_pd_ts; //type: uint64
+                                YLeaf rpf_hardware; //type: string
+                                YLeafList rpf_if; //type: list of  string
 
                             class RpfV4Nbr : public Entity
                             {
@@ -3946,9 +4049,10 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rpf_tbl_id; //type: uint32
-                                    Value rpf_v4_addr; //type: string
 
+
+                                    YLeaf rpf_tbl_id; //type: uint32
+                                    YLeaf rpf_v4_addr; //type: string
 
 
 
@@ -3968,9 +4072,10 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rpf_tbl_id; //type: uint32
-                                    Value rpf_v6_addr; //type: string
 
+
+                                    YLeaf rpf_tbl_id; //type: uint32
+                                    YLeaf rpf_v6_addr; //type: string
 
 
 
@@ -3990,9 +4095,10 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rpf_path_index; //type: uint32
-                                    Value rpf_ifh; //type: uint32
 
+
+                                    YLeaf rpf_path_index; //type: uint32
+                                    YLeaf rpf_ifh; //type: uint32
 
 
 
@@ -4011,7 +4117,6 @@ class FibMpls : public Entity
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LdiInformation> ldi_information;
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::MulticastInformation> multicast_information;
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::Rpf> rpf;
-                            class EosEnum;
 
 
                     }; // FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding
@@ -4038,6 +4143,7 @@ class FibMpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ForwardingDetail : public Entity
                     {
                         public:
@@ -4051,38 +4157,39 @@ class FibMpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value local_label; //type: int32
-                            Value eos; //type: EosEnum
-                            Value leaf_local_label; //type: uint32
-                            Value eos_bit; //type: uint32
-                            Value hardware_information; //type: string
-                            Value leaf_reference_count; //type: uint32
-                            Value leaf_ptr; //type: uint32
-                            Value leaf_flags; //type: uint32
-                            Value path_list_reference_count; //type: uint32
-                            Value path_list_ldi_mask; //type: uint32
-                            Value path_list_flags; //type: uint32
-                            Value path_list_pointer; //type: uint32
-                            Value ldi_reference_count; //type: uint32
-                            Value ldi_flags; //type: uint32
-                            Value ldi_type; //type: uint32
-                            Value ldi_pointer; //type: uint32
-                            Value lw_ldi_type; //type: uint32
-                            Value lw_ldi_pointer; //type: uint32
-                            Value lw_ldi_reference_count; //type: uint32
-                            Value lw_shared_ldi_pointer; //type: uint32
-                            Value lspa_flags; //type: uint32
-                            Value afi_table_id; //type: uint32
-                            Value multicast_label; //type: boolean
-                            Value leaf_time_in_milli_seconds; //type: uint64
-                            Value pwhe_interface_list_id; //type: uint16
-                            Value pwhe_interface_list_ptr; //type: uint32
-                            Value pl_time_of_last_update_in_msec; //type: uint64
-                            Value ldi_time_of_last_update_in_msec; //type: uint64
-                            Value lwldi_time_of_last_update_in_msec; //type: uint64
-                            Value lspa_time_of_last_update_in_msec; //type: uint64
-                            Value pl_time_stamp_type; //type: uint32
 
+
+                            YLeaf local_label; //type: int32
+                            YLeaf eos; //type: EosEnum
+                            YLeaf leaf_local_label; //type: uint32
+                            YLeaf eos_bit; //type: uint32
+                            YLeaf hardware_information; //type: string
+                            YLeaf leaf_reference_count; //type: uint32
+                            YLeaf leaf_ptr; //type: uint32
+                            YLeaf leaf_flags; //type: uint32
+                            YLeaf path_list_reference_count; //type: uint32
+                            YLeaf path_list_ldi_mask; //type: uint32
+                            YLeaf path_list_flags; //type: uint32
+                            YLeaf path_list_pointer; //type: uint32
+                            YLeaf ldi_reference_count; //type: uint32
+                            YLeaf ldi_flags; //type: uint32
+                            YLeaf ldi_type; //type: uint32
+                            YLeaf ldi_pointer; //type: uint32
+                            YLeaf lw_ldi_type; //type: uint32
+                            YLeaf lw_ldi_pointer; //type: uint32
+                            YLeaf lw_ldi_reference_count; //type: uint32
+                            YLeaf lw_shared_ldi_pointer; //type: uint32
+                            YLeaf lspa_flags; //type: uint32
+                            YLeaf afi_table_id; //type: uint32
+                            YLeaf multicast_label; //type: boolean
+                            YLeaf leaf_time_in_milli_seconds; //type: uint64
+                            YLeaf pwhe_interface_list_id; //type: uint16
+                            YLeaf pwhe_interface_list_ptr; //type: uint32
+                            YLeaf pl_time_of_last_update_in_msec; //type: uint64
+                            YLeaf ldi_time_of_last_update_in_msec; //type: uint64
+                            YLeaf lwldi_time_of_last_update_in_msec; //type: uint64
+                            YLeaf lspa_time_of_last_update_in_msec; //type: uint64
+                            YLeaf pl_time_stamp_type; //type: uint32
 
                         class LabelInformation : public Entity
                         {
@@ -4099,6 +4206,7 @@ class FibMpls : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class FibMplsAdjInfo : public Entity
                             {
                                 public:
@@ -4112,45 +4220,46 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value label_information_type; //type: uint32
-                                    Value local_label; //type: uint32
-                                    Value outgoing_label; //type: uint32
-                                    Value frr_nh_ptr; //type: uint32
-                                    Value mpls_adjacency_flags; //type: uint32
-                                    Value path_flags; //type: uint32
-                                    Value path_index; //type: uint8
-                                    Value backup_path_index; //type: uint8
-                                    Value nhid; //type: uint32
-                                    Value weight; //type: uint32
-                                    Value app_id; //type: uint16
-                                    Value tunnel_id_present; //type: boolean
-                                    Value outgoing_interface; //type: uint32
-                                    Value outgoing_physical_interface; //type: uint32
-                                    Value tunnel_interface_name; //type: string
-                                    Value label_information_path_index; //type: uint32
-                                    Value label_information_encap_id; //type: uint64
-                                    Value label_information_next_hop_type; //type: uint32
-                                    Value label_information_next_hop_table_id; //type: uint32
-                                    Value label_information_next_hop_protocol; //type: uint32
-                                    Value sli_from_ldi; //type: boolean
-                                    Value label_information_next_hop_string; //type: string
-                                    Value label_information_route_version; //type: uint64
-                                    Value label_information_time_in_milli_seconds; //type: uint64
-                                    Value label_bridge_domain_id; //type: uint32
-                                    Value label_xid; //type: uint32
-                                    Value label_pw_xid; //type: uint32
-                                    Value label_shg_id; //type: uint32
-                                    Value pwhev_ctype; //type: uint32
-                                    Value pwhecw_enabled; //type: boolean
-                                    Value pwhe_interface; //type: string
-                                    Value pq_label; //type: uint32
-                                    Value pq_flags; //type: uint32
-                                    Value li_pointer; //type: uint32
-                                    Value li_reference_count; //type: uint32
-                                    Value is_srte; //type: boolean
-                                    Value is_pure_backup; //type: boolean
-                                    Value is_frr_active; //type: boolean
 
+
+                                    YLeaf label_information_type; //type: uint32
+                                    YLeaf local_label; //type: uint32
+                                    YLeaf outgoing_label; //type: uint32
+                                    YLeaf frr_nh_ptr; //type: uint32
+                                    YLeaf mpls_adjacency_flags; //type: uint32
+                                    YLeaf path_flags; //type: uint32
+                                    YLeaf path_index; //type: uint8
+                                    YLeaf backup_path_index; //type: uint8
+                                    YLeaf nhid; //type: uint32
+                                    YLeaf weight; //type: uint32
+                                    YLeaf app_id; //type: uint16
+                                    YLeaf tunnel_id_present; //type: boolean
+                                    YLeaf outgoing_interface; //type: uint32
+                                    YLeaf outgoing_physical_interface; //type: uint32
+                                    YLeaf tunnel_interface_name; //type: string
+                                    YLeaf label_information_path_index; //type: uint32
+                                    YLeaf label_information_encap_id; //type: uint64
+                                    YLeaf label_information_next_hop_type; //type: uint32
+                                    YLeaf label_information_next_hop_table_id; //type: uint32
+                                    YLeaf label_information_next_hop_protocol; //type: uint32
+                                    YLeaf sli_from_ldi; //type: boolean
+                                    YLeaf label_information_next_hop_string; //type: string
+                                    YLeaf label_information_route_version; //type: uint64
+                                    YLeaf label_information_time_in_milli_seconds; //type: uint64
+                                    YLeaf label_bridge_domain_id; //type: uint32
+                                    YLeaf label_xid; //type: uint32
+                                    YLeaf label_pw_xid; //type: uint32
+                                    YLeaf label_shg_id; //type: uint32
+                                    YLeaf pwhev_ctype; //type: uint32
+                                    YLeaf pwhecw_enabled; //type: boolean
+                                    YLeaf pwhe_interface; //type: string
+                                    YLeaf pq_label; //type: uint32
+                                    YLeaf pq_flags; //type: uint32
+                                    YLeaf li_pointer; //type: uint32
+                                    YLeaf li_reference_count; //type: uint32
+                                    YLeaf is_srte; //type: boolean
+                                    YLeaf is_pure_backup; //type: boolean
+                                    YLeaf is_frr_active; //type: boolean
 
                                 class LabelInformationDetail : public Entity
                                 {
@@ -4165,23 +4274,24 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value l3_mtu; //type: uint32
-                                        Value total_encapsulation_size; //type: uint32
-                                        Value mac_size; //type: uint32
-                                        Value transmit_number_of_packets_switched; //type: uint64
-                                        Value transmit_number_of_bytes_switched; //type: uint64
-                                        Value transmit_number_of_tm_packets_switched; //type: uint64
-                                        Value transmit_number_of_tm_bytes_switched; //type: uint64
-                                        Value status; //type: int32
-                                        Value next_hop_interface_name; //type: string
-                                        Value next_hop_protocol; //type: uint32
-                                        Value next_hop_string; //type: string
-                                        Value nh_id; //type: uint32
-                                        Value version_priority_valid; //type: boolean
-                                        Value route_download_version; //type: uint64
-                                        Value route_download_priority; //type: uint32
-                                        ValueList label_stack; //type: list of  uint32
 
+
+                                        YLeaf l3_mtu; //type: uint32
+                                        YLeaf total_encapsulation_size; //type: uint32
+                                        YLeaf mac_size; //type: uint32
+                                        YLeaf transmit_number_of_packets_switched; //type: uint64
+                                        YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                        YLeaf transmit_number_of_tm_packets_switched; //type: uint64
+                                        YLeaf transmit_number_of_tm_bytes_switched; //type: uint64
+                                        YLeaf status; //type: int32
+                                        YLeaf next_hop_interface_name; //type: string
+                                        YLeaf next_hop_protocol; //type: uint32
+                                        YLeaf next_hop_string; //type: string
+                                        YLeaf nh_id; //type: uint32
+                                        YLeaf version_priority_valid; //type: boolean
+                                        YLeaf route_download_version; //type: uint64
+                                        YLeaf route_download_priority; //type: uint32
+                                        YLeafList label_stack; //type: list of  uint32
 
 
 
@@ -4201,20 +4311,21 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value my_node_id; //type: uint32
-                                        Value flags; //type: uint32
-                                        Value via_label; //type: uint32
-                                        Value mcast_id; //type: uint32
-                                        Value pri_tos_mask; //type: uint32
-                                        Value bk_tos_mask; //type: uint32
-                                        Value pd_ts_ms; //type: uint64
-                                        Value primary_is_local; //type: boolean
-                                        Value backup_is_local; //type: boolean
-                                        ValueList if_node_id; //type: list of  uint32
-                                        ValueList bkup_if_node_id; //type: list of  uint32
-                                        ValueList if_hdl; //type: list of  uint32
-                                        ValueList bkup_if_hdl; //type: list of  uint32
 
+
+                                        YLeaf my_node_id; //type: uint32
+                                        YLeaf flags; //type: uint32
+                                        YLeaf via_label; //type: uint32
+                                        YLeaf mcast_id; //type: uint32
+                                        YLeaf pri_tos_mask; //type: uint32
+                                        YLeaf bk_tos_mask; //type: uint32
+                                        YLeaf pd_ts_ms; //type: uint64
+                                        YLeaf primary_is_local; //type: boolean
+                                        YLeaf backup_is_local; //type: boolean
+                                        YLeafList if_node_id; //type: list of  uint32
+                                        YLeafList bkup_if_node_id; //type: list of  uint32
+                                        YLeafList if_hdl; //type: list of  uint32
+                                        YLeafList bkup_if_hdl; //type: list of  uint32
 
 
 
@@ -4247,8 +4358,9 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ldi_hardware_information; //type: string
 
+
+                                YLeaf ldi_hardware_information; //type: string
 
 
 
@@ -4268,28 +4380,29 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value multicast_mol_base_flags; //type: uint32
-                                Value multicast_mol_flags; //type: uint16
-                                Value multicast_mol_reference_count; //type: uint16
-                                Value multicast_tunnel_interface_name; //type: string
-                                Value multicast_tunnel_id; //type: uint32
-                                Value multicast_tunnel_next_hop_information; //type: uint32
-                                Value multicast_tunnel_lspvif; //type: uint32
-                                Value multicast_mpls_output_paths; //type: uint16
-                                Value multicast_mpls_protocol_output_paths; //type: uint16
-                                Value multicast_mpls_local_output_paths; //type: uint16
-                                Value multicast_rpf_id; //type: uint32
-                                Value multicast_encap_id; //type: uint32
-                                Value dependent_tunnel_local_label; //type: uint32
-                                Value dependent_tunnel_ifh; //type: uint32
-                                Value multicast_v4_table_id; //type: uint32
-                                Value multicast_v6_table_id; //type: uint32
-                                Value label_bridge_domain_id; //type: uint32
-                                Value label_xid; //type: uint32
-                                Value label_shg_id; //type: uint32
-                                Value multicast_platform_data_length; //type: uint8
-                                Value multicast_platform_data; //type: string
 
+
+                                YLeaf multicast_mol_base_flags; //type: uint32
+                                YLeaf multicast_mol_flags; //type: uint16
+                                YLeaf multicast_mol_reference_count; //type: uint16
+                                YLeaf multicast_tunnel_interface_name; //type: string
+                                YLeaf multicast_tunnel_id; //type: uint32
+                                YLeaf multicast_tunnel_next_hop_information; //type: uint32
+                                YLeaf multicast_tunnel_lspvif; //type: uint32
+                                YLeaf multicast_mpls_output_paths; //type: uint16
+                                YLeaf multicast_mpls_protocol_output_paths; //type: uint16
+                                YLeaf multicast_mpls_local_output_paths; //type: uint16
+                                YLeaf multicast_rpf_id; //type: uint32
+                                YLeaf multicast_encap_id; //type: uint32
+                                YLeaf dependent_tunnel_local_label; //type: uint32
+                                YLeaf dependent_tunnel_ifh; //type: uint32
+                                YLeaf multicast_v4_table_id; //type: uint32
+                                YLeaf multicast_v6_table_id; //type: uint32
+                                YLeaf label_bridge_domain_id; //type: uint32
+                                YLeaf label_xid; //type: uint32
+                                YLeaf label_shg_id; //type: uint32
+                                YLeaf multicast_platform_data_length; //type: uint8
+                                YLeaf multicast_platform_data; //type: string
 
 
 
@@ -4309,14 +4422,15 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value rpf_flags; //type: uint32
-                                Value rpf_pl_flags; //type: uint32
-                                Value rpf_create_ts; //type: uint64
-                                Value rpf_mod_ts; //type: uint64
-                                Value rpf_pd_ts; //type: uint64
-                                Value rpf_hardware; //type: string
-                                ValueList rpf_if; //type: list of  string
 
+
+                                YLeaf rpf_flags; //type: uint32
+                                YLeaf rpf_pl_flags; //type: uint32
+                                YLeaf rpf_create_ts; //type: uint64
+                                YLeaf rpf_mod_ts; //type: uint64
+                                YLeaf rpf_pd_ts; //type: uint64
+                                YLeaf rpf_hardware; //type: string
+                                YLeafList rpf_if; //type: list of  string
 
                             class RpfV4Nbr : public Entity
                             {
@@ -4331,9 +4445,10 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rpf_tbl_id; //type: uint32
-                                    Value rpf_v4_addr; //type: string
 
+
+                                    YLeaf rpf_tbl_id; //type: uint32
+                                    YLeaf rpf_v4_addr; //type: string
 
 
 
@@ -4353,9 +4468,10 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rpf_tbl_id; //type: uint32
-                                    Value rpf_v6_addr; //type: string
 
+
+                                    YLeaf rpf_tbl_id; //type: uint32
+                                    YLeaf rpf_v6_addr; //type: string
 
 
 
@@ -4375,9 +4491,10 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rpf_path_index; //type: uint32
-                                    Value rpf_ifh; //type: uint32
 
+
+                                    YLeaf rpf_path_index; //type: uint32
+                                    YLeaf rpf_ifh; //type: uint32
 
 
 
@@ -4396,7 +4513,6 @@ class FibMpls : public Entity
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation> ldi_information;
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation> multicast_information;
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::Rpf> rpf;
-                            class EosEnum;
 
 
                     }; // FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
@@ -4430,6 +4546,7 @@ class FibMpls : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ForwardingTunnels : public Entity
                 {
                     public:
@@ -4445,6 +4562,7 @@ class FibMpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ForwardingTunnel : public Entity
                     {
                         public:
@@ -4458,8 +4576,9 @@ class FibMpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
                         class TunnelInfo : public Entity
                         {
@@ -4474,20 +4593,21 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface_name; //type: string
-                                Value tunnel_local_label; //type: uint32
-                                Value tunnel_fwd_class; //type: uint8
-                                Value tunnel_load_metric; //type: uint8
-                                Value tunnel_is_srte; //type: boolean
-                                Value tunnel_resolution_incomplete; //type: boolean
-                                Value tunnel_resolution_inconsistent; //type: boolean
-                                Value tunnel_is_programmed_to_drop; //type: boolean
-                                Value tli_type; //type: uint32
-                                Value tli_pointer; //type: uint32
-                                Value tli_reference_count; //type: uint32
-                                Value tli_flags; //type: uint32
-                                Value tli_flags_extended; //type: uint32
 
+
+                                YLeaf tunnel_interface_name; //type: string
+                                YLeaf tunnel_local_label; //type: uint32
+                                YLeaf tunnel_fwd_class; //type: uint8
+                                YLeaf tunnel_load_metric; //type: uint8
+                                YLeaf tunnel_is_srte; //type: boolean
+                                YLeaf tunnel_resolution_incomplete; //type: boolean
+                                YLeaf tunnel_resolution_inconsistent; //type: boolean
+                                YLeaf tunnel_is_programmed_to_drop; //type: boolean
+                                YLeaf tli_type; //type: uint32
+                                YLeaf tli_pointer; //type: uint32
+                                YLeaf tli_reference_count; //type: uint32
+                                YLeaf tli_flags; //type: uint32
+                                YLeaf tli_flags_extended; //type: uint32
 
 
 
@@ -4507,36 +4627,37 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value leaf_local_label; //type: uint32
-                                Value eos_bit; //type: uint32
-                                Value hardware_information; //type: string
-                                Value leaf_reference_count; //type: uint32
-                                Value leaf_ptr; //type: uint32
-                                Value leaf_flags; //type: uint32
-                                Value path_list_reference_count; //type: uint32
-                                Value path_list_ldi_mask; //type: uint32
-                                Value path_list_flags; //type: uint32
-                                Value path_list_pointer; //type: uint32
-                                Value ldi_reference_count; //type: uint32
-                                Value ldi_flags; //type: uint32
-                                Value ldi_type; //type: uint32
-                                Value ldi_pointer; //type: uint32
-                                Value lw_ldi_type; //type: uint32
-                                Value lw_ldi_pointer; //type: uint32
-                                Value lw_ldi_reference_count; //type: uint32
-                                Value lw_shared_ldi_pointer; //type: uint32
-                                Value lspa_flags; //type: uint32
-                                Value afi_table_id; //type: uint32
-                                Value multicast_label; //type: boolean
-                                Value leaf_time_in_milli_seconds; //type: uint64
-                                Value pwhe_interface_list_id; //type: uint16
-                                Value pwhe_interface_list_ptr; //type: uint32
-                                Value pl_time_of_last_update_in_msec; //type: uint64
-                                Value ldi_time_of_last_update_in_msec; //type: uint64
-                                Value lwldi_time_of_last_update_in_msec; //type: uint64
-                                Value lspa_time_of_last_update_in_msec; //type: uint64
-                                Value pl_time_stamp_type; //type: uint32
 
+
+                                YLeaf leaf_local_label; //type: uint32
+                                YLeaf eos_bit; //type: uint32
+                                YLeaf hardware_information; //type: string
+                                YLeaf leaf_reference_count; //type: uint32
+                                YLeaf leaf_ptr; //type: uint32
+                                YLeaf leaf_flags; //type: uint32
+                                YLeaf path_list_reference_count; //type: uint32
+                                YLeaf path_list_ldi_mask; //type: uint32
+                                YLeaf path_list_flags; //type: uint32
+                                YLeaf path_list_pointer; //type: uint32
+                                YLeaf ldi_reference_count; //type: uint32
+                                YLeaf ldi_flags; //type: uint32
+                                YLeaf ldi_type; //type: uint32
+                                YLeaf ldi_pointer; //type: uint32
+                                YLeaf lw_ldi_type; //type: uint32
+                                YLeaf lw_ldi_pointer; //type: uint32
+                                YLeaf lw_ldi_reference_count; //type: uint32
+                                YLeaf lw_shared_ldi_pointer; //type: uint32
+                                YLeaf lspa_flags; //type: uint32
+                                YLeaf afi_table_id; //type: uint32
+                                YLeaf multicast_label; //type: boolean
+                                YLeaf leaf_time_in_milli_seconds; //type: uint64
+                                YLeaf pwhe_interface_list_id; //type: uint16
+                                YLeaf pwhe_interface_list_ptr; //type: uint32
+                                YLeaf pl_time_of_last_update_in_msec; //type: uint64
+                                YLeaf ldi_time_of_last_update_in_msec; //type: uint64
+                                YLeaf lwldi_time_of_last_update_in_msec; //type: uint64
+                                YLeaf lspa_time_of_last_update_in_msec; //type: uint64
+                                YLeaf pl_time_stamp_type; //type: uint32
 
                             class LabelInformation : public Entity
                             {
@@ -4553,6 +4674,7 @@ class FibMpls : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FibMplsAdjInfo : public Entity
                                 {
                                     public:
@@ -4566,45 +4688,46 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value label_information_type; //type: uint32
-                                        Value local_label; //type: uint32
-                                        Value outgoing_label; //type: uint32
-                                        Value frr_nh_ptr; //type: uint32
-                                        Value mpls_adjacency_flags; //type: uint32
-                                        Value path_flags; //type: uint32
-                                        Value path_index; //type: uint8
-                                        Value backup_path_index; //type: uint8
-                                        Value nhid; //type: uint32
-                                        Value weight; //type: uint32
-                                        Value app_id; //type: uint16
-                                        Value tunnel_id_present; //type: boolean
-                                        Value outgoing_interface; //type: uint32
-                                        Value outgoing_physical_interface; //type: uint32
-                                        Value tunnel_interface_name; //type: string
-                                        Value label_information_path_index; //type: uint32
-                                        Value label_information_encap_id; //type: uint64
-                                        Value label_information_next_hop_type; //type: uint32
-                                        Value label_information_next_hop_table_id; //type: uint32
-                                        Value label_information_next_hop_protocol; //type: uint32
-                                        Value sli_from_ldi; //type: boolean
-                                        Value label_information_next_hop_string; //type: string
-                                        Value label_information_route_version; //type: uint64
-                                        Value label_information_time_in_milli_seconds; //type: uint64
-                                        Value label_bridge_domain_id; //type: uint32
-                                        Value label_xid; //type: uint32
-                                        Value label_pw_xid; //type: uint32
-                                        Value label_shg_id; //type: uint32
-                                        Value pwhev_ctype; //type: uint32
-                                        Value pwhecw_enabled; //type: boolean
-                                        Value pwhe_interface; //type: string
-                                        Value pq_label; //type: uint32
-                                        Value pq_flags; //type: uint32
-                                        Value li_pointer; //type: uint32
-                                        Value li_reference_count; //type: uint32
-                                        Value is_srte; //type: boolean
-                                        Value is_pure_backup; //type: boolean
-                                        Value is_frr_active; //type: boolean
 
+
+                                        YLeaf label_information_type; //type: uint32
+                                        YLeaf local_label; //type: uint32
+                                        YLeaf outgoing_label; //type: uint32
+                                        YLeaf frr_nh_ptr; //type: uint32
+                                        YLeaf mpls_adjacency_flags; //type: uint32
+                                        YLeaf path_flags; //type: uint32
+                                        YLeaf path_index; //type: uint8
+                                        YLeaf backup_path_index; //type: uint8
+                                        YLeaf nhid; //type: uint32
+                                        YLeaf weight; //type: uint32
+                                        YLeaf app_id; //type: uint16
+                                        YLeaf tunnel_id_present; //type: boolean
+                                        YLeaf outgoing_interface; //type: uint32
+                                        YLeaf outgoing_physical_interface; //type: uint32
+                                        YLeaf tunnel_interface_name; //type: string
+                                        YLeaf label_information_path_index; //type: uint32
+                                        YLeaf label_information_encap_id; //type: uint64
+                                        YLeaf label_information_next_hop_type; //type: uint32
+                                        YLeaf label_information_next_hop_table_id; //type: uint32
+                                        YLeaf label_information_next_hop_protocol; //type: uint32
+                                        YLeaf sli_from_ldi; //type: boolean
+                                        YLeaf label_information_next_hop_string; //type: string
+                                        YLeaf label_information_route_version; //type: uint64
+                                        YLeaf label_information_time_in_milli_seconds; //type: uint64
+                                        YLeaf label_bridge_domain_id; //type: uint32
+                                        YLeaf label_xid; //type: uint32
+                                        YLeaf label_pw_xid; //type: uint32
+                                        YLeaf label_shg_id; //type: uint32
+                                        YLeaf pwhev_ctype; //type: uint32
+                                        YLeaf pwhecw_enabled; //type: boolean
+                                        YLeaf pwhe_interface; //type: string
+                                        YLeaf pq_label; //type: uint32
+                                        YLeaf pq_flags; //type: uint32
+                                        YLeaf li_pointer; //type: uint32
+                                        YLeaf li_reference_count; //type: uint32
+                                        YLeaf is_srte; //type: boolean
+                                        YLeaf is_pure_backup; //type: boolean
+                                        YLeaf is_frr_active; //type: boolean
 
                                     class LabelInformationDetail : public Entity
                                     {
@@ -4619,23 +4742,24 @@ class FibMpls : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value l3_mtu; //type: uint32
-                                            Value total_encapsulation_size; //type: uint32
-                                            Value mac_size; //type: uint32
-                                            Value transmit_number_of_packets_switched; //type: uint64
-                                            Value transmit_number_of_bytes_switched; //type: uint64
-                                            Value transmit_number_of_tm_packets_switched; //type: uint64
-                                            Value transmit_number_of_tm_bytes_switched; //type: uint64
-                                            Value status; //type: int32
-                                            Value next_hop_interface_name; //type: string
-                                            Value next_hop_protocol; //type: uint32
-                                            Value next_hop_string; //type: string
-                                            Value nh_id; //type: uint32
-                                            Value version_priority_valid; //type: boolean
-                                            Value route_download_version; //type: uint64
-                                            Value route_download_priority; //type: uint32
-                                            ValueList label_stack; //type: list of  uint32
 
+
+                                            YLeaf l3_mtu; //type: uint32
+                                            YLeaf total_encapsulation_size; //type: uint32
+                                            YLeaf mac_size; //type: uint32
+                                            YLeaf transmit_number_of_packets_switched; //type: uint64
+                                            YLeaf transmit_number_of_bytes_switched; //type: uint64
+                                            YLeaf transmit_number_of_tm_packets_switched; //type: uint64
+                                            YLeaf transmit_number_of_tm_bytes_switched; //type: uint64
+                                            YLeaf status; //type: int32
+                                            YLeaf next_hop_interface_name; //type: string
+                                            YLeaf next_hop_protocol; //type: uint32
+                                            YLeaf next_hop_string; //type: string
+                                            YLeaf nh_id; //type: uint32
+                                            YLeaf version_priority_valid; //type: boolean
+                                            YLeaf route_download_version; //type: uint64
+                                            YLeaf route_download_priority; //type: uint32
+                                            YLeafList label_stack; //type: list of  uint32
 
 
 
@@ -4655,20 +4779,21 @@ class FibMpls : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value my_node_id; //type: uint32
-                                            Value flags; //type: uint32
-                                            Value via_label; //type: uint32
-                                            Value mcast_id; //type: uint32
-                                            Value pri_tos_mask; //type: uint32
-                                            Value bk_tos_mask; //type: uint32
-                                            Value pd_ts_ms; //type: uint64
-                                            Value primary_is_local; //type: boolean
-                                            Value backup_is_local; //type: boolean
-                                            ValueList if_node_id; //type: list of  uint32
-                                            ValueList bkup_if_node_id; //type: list of  uint32
-                                            ValueList if_hdl; //type: list of  uint32
-                                            ValueList bkup_if_hdl; //type: list of  uint32
 
+
+                                            YLeaf my_node_id; //type: uint32
+                                            YLeaf flags; //type: uint32
+                                            YLeaf via_label; //type: uint32
+                                            YLeaf mcast_id; //type: uint32
+                                            YLeaf pri_tos_mask; //type: uint32
+                                            YLeaf bk_tos_mask; //type: uint32
+                                            YLeaf pd_ts_ms; //type: uint64
+                                            YLeaf primary_is_local; //type: boolean
+                                            YLeaf backup_is_local; //type: boolean
+                                            YLeafList if_node_id; //type: list of  uint32
+                                            YLeafList bkup_if_node_id; //type: list of  uint32
+                                            YLeafList if_hdl; //type: list of  uint32
+                                            YLeafList bkup_if_hdl; //type: list of  uint32
 
 
 
@@ -4701,8 +4826,9 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ldi_hardware_information; //type: string
 
+
+                                    YLeaf ldi_hardware_information; //type: string
 
 
 
@@ -4722,28 +4848,29 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value multicast_mol_base_flags; //type: uint32
-                                    Value multicast_mol_flags; //type: uint16
-                                    Value multicast_mol_reference_count; //type: uint16
-                                    Value multicast_tunnel_interface_name; //type: string
-                                    Value multicast_tunnel_id; //type: uint32
-                                    Value multicast_tunnel_next_hop_information; //type: uint32
-                                    Value multicast_tunnel_lspvif; //type: uint32
-                                    Value multicast_mpls_output_paths; //type: uint16
-                                    Value multicast_mpls_protocol_output_paths; //type: uint16
-                                    Value multicast_mpls_local_output_paths; //type: uint16
-                                    Value multicast_rpf_id; //type: uint32
-                                    Value multicast_encap_id; //type: uint32
-                                    Value dependent_tunnel_local_label; //type: uint32
-                                    Value dependent_tunnel_ifh; //type: uint32
-                                    Value multicast_v4_table_id; //type: uint32
-                                    Value multicast_v6_table_id; //type: uint32
-                                    Value label_bridge_domain_id; //type: uint32
-                                    Value label_xid; //type: uint32
-                                    Value label_shg_id; //type: uint32
-                                    Value multicast_platform_data_length; //type: uint8
-                                    Value multicast_platform_data; //type: string
 
+
+                                    YLeaf multicast_mol_base_flags; //type: uint32
+                                    YLeaf multicast_mol_flags; //type: uint16
+                                    YLeaf multicast_mol_reference_count; //type: uint16
+                                    YLeaf multicast_tunnel_interface_name; //type: string
+                                    YLeaf multicast_tunnel_id; //type: uint32
+                                    YLeaf multicast_tunnel_next_hop_information; //type: uint32
+                                    YLeaf multicast_tunnel_lspvif; //type: uint32
+                                    YLeaf multicast_mpls_output_paths; //type: uint16
+                                    YLeaf multicast_mpls_protocol_output_paths; //type: uint16
+                                    YLeaf multicast_mpls_local_output_paths; //type: uint16
+                                    YLeaf multicast_rpf_id; //type: uint32
+                                    YLeaf multicast_encap_id; //type: uint32
+                                    YLeaf dependent_tunnel_local_label; //type: uint32
+                                    YLeaf dependent_tunnel_ifh; //type: uint32
+                                    YLeaf multicast_v4_table_id; //type: uint32
+                                    YLeaf multicast_v6_table_id; //type: uint32
+                                    YLeaf label_bridge_domain_id; //type: uint32
+                                    YLeaf label_xid; //type: uint32
+                                    YLeaf label_shg_id; //type: uint32
+                                    YLeaf multicast_platform_data_length; //type: uint8
+                                    YLeaf multicast_platform_data; //type: string
 
 
 
@@ -4763,14 +4890,15 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value rpf_flags; //type: uint32
-                                    Value rpf_pl_flags; //type: uint32
-                                    Value rpf_create_ts; //type: uint64
-                                    Value rpf_mod_ts; //type: uint64
-                                    Value rpf_pd_ts; //type: uint64
-                                    Value rpf_hardware; //type: string
-                                    ValueList rpf_if; //type: list of  string
 
+
+                                    YLeaf rpf_flags; //type: uint32
+                                    YLeaf rpf_pl_flags; //type: uint32
+                                    YLeaf rpf_create_ts; //type: uint64
+                                    YLeaf rpf_mod_ts; //type: uint64
+                                    YLeaf rpf_pd_ts; //type: uint64
+                                    YLeaf rpf_hardware; //type: string
+                                    YLeafList rpf_if; //type: list of  string
 
                                 class RpfV4Nbr : public Entity
                                 {
@@ -4785,9 +4913,10 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value rpf_tbl_id; //type: uint32
-                                        Value rpf_v4_addr; //type: string
 
+
+                                        YLeaf rpf_tbl_id; //type: uint32
+                                        YLeaf rpf_v4_addr; //type: string
 
 
 
@@ -4807,9 +4936,10 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value rpf_tbl_id; //type: uint32
-                                        Value rpf_v6_addr; //type: string
 
+
+                                        YLeaf rpf_tbl_id; //type: uint32
+                                        YLeaf rpf_v6_addr; //type: string
 
 
 
@@ -4829,9 +4959,10 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value rpf_path_index; //type: uint32
-                                        Value rpf_ifh; //type: uint32
 
+
+                                        YLeaf rpf_path_index; //type: uint32
+                                        YLeaf rpf_ifh; //type: uint32
 
 
 
@@ -4889,6 +5020,7 @@ class FibMpls : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class FrrdbTunnelHeadSummary : public Entity
                 {
                     public:
@@ -4902,11 +5034,12 @@ class FibMpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value active; //type: uint32
-                        Value ready; //type: uint32
-                        Value partial; //type: uint32
-                        Value other; //type: uint32
 
+
+                        YLeaf active; //type: uint32
+                        YLeaf ready; //type: uint32
+                        YLeaf partial; //type: uint32
+                        YLeaf other; //type: uint32
 
 
 
@@ -4928,6 +5061,7 @@ class FibMpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class FrrdbBackupInterfaceSummary : public Entity
                     {
                         public:
@@ -4941,12 +5075,13 @@ class FibMpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value active; //type: uint32
-                            Value ready; //type: uint32
-                            Value partial; //type: uint32
-                            Value other; //type: uint32
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf active; //type: uint32
+                            YLeaf ready; //type: uint32
+                            YLeaf partial; //type: uint32
+                            YLeaf other; //type: uint32
 
 
 
@@ -4972,11 +5107,12 @@ class FibMpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value active; //type: uint32
-                        Value ready; //type: uint32
-                        Value partial; //type: uint32
-                        Value other; //type: uint32
 
+
+                        YLeaf active; //type: uint32
+                        YLeaf ready; //type: uint32
+                        YLeaf partial; //type: uint32
+                        YLeaf other; //type: uint32
 
 
 
@@ -4998,6 +5134,7 @@ class FibMpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class FrrdbProtectedInterfaceTableSummary : public Entity
                     {
                         public:
@@ -5011,12 +5148,13 @@ class FibMpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value active; //type: uint32
-                            Value ready; //type: uint32
-                            Value partial; //type: uint32
-                            Value other; //type: uint32
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf active; //type: uint32
+                            YLeaf ready; //type: uint32
+                            YLeaf partial; //type: uint32
+                            YLeaf other; //type: uint32
 
 
 
@@ -5042,11 +5180,12 @@ class FibMpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value active; //type: uint32
-                        Value ready; //type: uint32
-                        Value partial; //type: uint32
-                        Value other; //type: uint32
 
+
+                        YLeaf active; //type: uint32
+                        YLeaf ready; //type: uint32
+                        YLeaf partial; //type: uint32
+                        YLeaf other; //type: uint32
 
 
 
@@ -5068,6 +5207,7 @@ class FibMpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class FrrdbTunnelMidpoint : public Entity
                     {
                         public:
@@ -5081,19 +5221,20 @@ class FibMpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value local_label; //type: int32
-                            Value tunnel_interface_name; //type: string
-                            Value input_label; //type: uint32
-                            Value outgoing_interface; //type: string
-                            Value outgoing_label; //type: uint32
-                            Value frr_interface_name; //type: string
-                            Value frr_label; //type: uint32
-                            Value entry_frr_state; //type: MgmtFibMplsFrrStateEnum
-                            Value frr_next_hop_ipv4_address; //type: string
-                            Value is_mldp_lsp; //type: boolean
-                            Value is_multicast_tunnel; //type: boolean
-                            Value multicast_tunnel_legs; //type: uint32
 
+
+                            YLeaf local_label; //type: int32
+                            YLeaf tunnel_interface_name; //type: string
+                            YLeaf input_label; //type: uint32
+                            YLeaf outgoing_interface; //type: string
+                            YLeaf outgoing_label; //type: uint32
+                            YLeaf frr_interface_name; //type: string
+                            YLeaf frr_label; //type: uint32
+                            YLeaf entry_frr_state; //type: MgmtFibMplsFrrStateEnum
+                            YLeaf frr_next_hop_ipv4_address; //type: string
+                            YLeaf is_mldp_lsp; //type: boolean
+                            YLeaf is_multicast_tunnel; //type: boolean
+                            YLeaf multicast_tunnel_legs; //type: uint32
 
                         class FrrEntryId : public Entity
                         {
@@ -5108,8 +5249,9 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value role; //type: MgmtFibMplsLspRoleEnum
 
+
+                                YLeaf role; //type: MgmtFibMplsLspRoleEnum
 
                             class Head : public Entity
                             {
@@ -5124,9 +5266,10 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value destination_prefix; //type: string
-                                    Value destination_prefix_length; //type: uint32
 
+
+                                    YLeaf destination_prefix; //type: string
+                                    YLeaf destination_prefix_length; //type: uint32
 
 
 
@@ -5146,10 +5289,11 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_address; //type: string
-                                    Value lspid; //type: uint32
-                                    Value tunnel_id; //type: uint32
 
+
+                                    YLeaf source_address; //type: string
+                                    YLeaf lspid; //type: uint32
+                                    YLeaf tunnel_id; //type: uint32
 
 
 
@@ -5158,7 +5302,6 @@ class FibMpls : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrEntryId::Head> head;
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrEntryId::Midpoint> midpoint;
-                                class MgmtFibMplsLspRoleEnum;
 
 
                         }; // FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrEntryId
@@ -5177,16 +5320,17 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface_name; //type: string
-                                Value input_label; //type: uint32
-                                Value outgoing_interface; //type: string
-                                Value outgoing_label; //type: uint32
-                                Value frr_interface_name; //type: string
-                                Value frr_label; //type: uint32
-                                Value entry_frr_state; //type: MgmtFibMplsFrrStateEnum
-                                Value frr_next_hop_ipv4_address; //type: string
-                                Value is_mldp_lsp; //type: boolean
 
+
+                                YLeaf tunnel_interface_name; //type: string
+                                YLeaf input_label; //type: uint32
+                                YLeaf outgoing_interface; //type: string
+                                YLeaf outgoing_label; //type: uint32
+                                YLeaf frr_interface_name; //type: string
+                                YLeaf frr_label; //type: uint32
+                                YLeaf entry_frr_state; //type: MgmtFibMplsFrrStateEnum
+                                YLeaf frr_next_hop_ipv4_address; //type: string
+                                YLeaf is_mldp_lsp; //type: boolean
 
                             class FrrEntryId : public Entity
                             {
@@ -5201,8 +5345,9 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value role; //type: MgmtFibMplsLspRoleEnum
 
+
+                                    YLeaf role; //type: MgmtFibMplsLspRoleEnum
 
                                 class Head : public Entity
                                 {
@@ -5217,9 +5362,10 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value destination_prefix; //type: string
-                                        Value destination_prefix_length; //type: uint32
 
+
+                                        YLeaf destination_prefix; //type: string
+                                        YLeaf destination_prefix_length; //type: uint32
 
 
 
@@ -5239,10 +5385,11 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value source_address; //type: string
-                                        Value lspid; //type: uint32
-                                        Value tunnel_id; //type: uint32
 
+
+                                        YLeaf source_address; //type: string
+                                        YLeaf lspid; //type: uint32
+                                        YLeaf tunnel_id; //type: uint32
 
 
 
@@ -5251,14 +5398,12 @@ class FibMpls : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::MulticastLeg::FrrEntryId::Head> head;
                                     std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::MulticastLeg::FrrEntryId::Midpoint> midpoint;
-                                    class MgmtFibMplsLspRoleEnum;
 
 
                             }; // FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::MulticastLeg::FrrEntryId
 
 
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::MulticastLeg::FrrEntryId> frr_entry_id;
-                                class MgmtFibMplsFrrStateEnum;
 
 
                         }; // FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::MulticastLeg
@@ -5266,7 +5411,6 @@ class FibMpls : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrEntryId> frr_entry_id;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::MulticastLeg> > multicast_leg;
-                            class MgmtFibMplsFrrStateEnum;
 
 
                     }; // FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint
@@ -5293,6 +5437,7 @@ class FibMpls : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class FrrdbTunnelHead : public Entity
                     {
                         public:
@@ -5306,19 +5451,20 @@ class FibMpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value tunnel_interface_name; //type: string
-                            Value input_label; //type: uint32
-                            Value outgoing_interface; //type: string
-                            Value outgoing_label; //type: uint32
-                            Value frr_interface_name; //type: string
-                            Value frr_label; //type: uint32
-                            Value entry_frr_state; //type: MgmtFibMplsFrrStateEnum
-                            Value frr_next_hop_ipv4_address; //type: string
-                            Value is_mldp_lsp; //type: boolean
-                            Value is_multicast_tunnel; //type: boolean
-                            Value multicast_tunnel_legs; //type: uint32
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf tunnel_interface_name; //type: string
+                            YLeaf input_label; //type: uint32
+                            YLeaf outgoing_interface; //type: string
+                            YLeaf outgoing_label; //type: uint32
+                            YLeaf frr_interface_name; //type: string
+                            YLeaf frr_label; //type: uint32
+                            YLeaf entry_frr_state; //type: MgmtFibMplsFrrStateEnum
+                            YLeaf frr_next_hop_ipv4_address; //type: string
+                            YLeaf is_mldp_lsp; //type: boolean
+                            YLeaf is_multicast_tunnel; //type: boolean
+                            YLeaf multicast_tunnel_legs; //type: uint32
 
                         class FrrEntryId : public Entity
                         {
@@ -5333,8 +5479,9 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value role; //type: MgmtFibMplsLspRoleEnum
 
+
+                                YLeaf role; //type: MgmtFibMplsLspRoleEnum
 
                             class Head : public Entity
                             {
@@ -5349,9 +5496,10 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value destination_prefix; //type: string
-                                    Value destination_prefix_length; //type: uint32
 
+
+                                    YLeaf destination_prefix; //type: string
+                                    YLeaf destination_prefix_length; //type: uint32
 
 
 
@@ -5371,10 +5519,11 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_address; //type: string
-                                    Value lspid; //type: uint32
-                                    Value tunnel_id; //type: uint32
 
+
+                                    YLeaf source_address; //type: string
+                                    YLeaf lspid; //type: uint32
+                                    YLeaf tunnel_id; //type: uint32
 
 
 
@@ -5383,7 +5532,6 @@ class FibMpls : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrEntryId::Head> head;
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrEntryId::Midpoint> midpoint;
-                                class MgmtFibMplsLspRoleEnum;
 
 
                         }; // FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrEntryId
@@ -5402,16 +5550,17 @@ class FibMpls : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value tunnel_interface_name; //type: string
-                                Value input_label; //type: uint32
-                                Value outgoing_interface; //type: string
-                                Value outgoing_label; //type: uint32
-                                Value frr_interface_name; //type: string
-                                Value frr_label; //type: uint32
-                                Value entry_frr_state; //type: MgmtFibMplsFrrStateEnum
-                                Value frr_next_hop_ipv4_address; //type: string
-                                Value is_mldp_lsp; //type: boolean
 
+
+                                YLeaf tunnel_interface_name; //type: string
+                                YLeaf input_label; //type: uint32
+                                YLeaf outgoing_interface; //type: string
+                                YLeaf outgoing_label; //type: uint32
+                                YLeaf frr_interface_name; //type: string
+                                YLeaf frr_label; //type: uint32
+                                YLeaf entry_frr_state; //type: MgmtFibMplsFrrStateEnum
+                                YLeaf frr_next_hop_ipv4_address; //type: string
+                                YLeaf is_mldp_lsp; //type: boolean
 
                             class FrrEntryId : public Entity
                             {
@@ -5426,8 +5575,9 @@ class FibMpls : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value role; //type: MgmtFibMplsLspRoleEnum
 
+
+                                    YLeaf role; //type: MgmtFibMplsLspRoleEnum
 
                                 class Head : public Entity
                                 {
@@ -5442,9 +5592,10 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value destination_prefix; //type: string
-                                        Value destination_prefix_length; //type: uint32
 
+
+                                        YLeaf destination_prefix; //type: string
+                                        YLeaf destination_prefix_length; //type: uint32
 
 
 
@@ -5464,10 +5615,11 @@ class FibMpls : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value source_address; //type: string
-                                        Value lspid; //type: uint32
-                                        Value tunnel_id; //type: uint32
 
+
+                                        YLeaf source_address; //type: string
+                                        YLeaf lspid; //type: uint32
+                                        YLeaf tunnel_id; //type: uint32
 
 
 
@@ -5476,14 +5628,12 @@ class FibMpls : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::MulticastLeg::FrrEntryId::Head> head;
                                     std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::MulticastLeg::FrrEntryId::Midpoint> midpoint;
-                                    class MgmtFibMplsLspRoleEnum;
 
 
                             }; // FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::MulticastLeg::FrrEntryId
 
 
                                 std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::MulticastLeg::FrrEntryId> frr_entry_id;
-                                class MgmtFibMplsFrrStateEnum;
 
 
                         }; // FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::MulticastLeg
@@ -5491,7 +5641,6 @@ class FibMpls : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrEntryId> frr_entry_id;
                             std::vector<std::unique_ptr<Cisco_IOS_XR_fib_common_oper::FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::MulticastLeg> > multicast_leg;
-                            class MgmtFibMplsFrrStateEnum;
 
 
                     }; // FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead
@@ -5528,35 +5677,36 @@ class FibMpls : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ipv4_imposition_entries; //type: uint32
-                    Value reserved_label_entries; //type: uint32
-                    Value label_switched_entries; //type: uint32
-                    Value protected_label_switched_entries; //type: uint32
-                    Value deleted_stale_entries; //type: uint32
-                    Value te_head_entries; //type: uint32
-                    Value te_frr_head_entries; //type: uint32
-                    Value te_frr_interface_entries; //type: uint32
-                    Value te_frr_next_hop_entries; //type: uint32
-                    Value te_mid_points_entries; //type: uint32
-                    Value te_frr_mid_points_entries; //type: uint32
-                    Value te_internal_entries; //type: uint32
-                    Value te_frr_internal_entries; //type: uint32
-                    Value total_forwarding_updates; //type: uint32
-                    Value total_forwarding_update_messages; //type: uint32
-                    Value total_p2mp_forwarding_updates; //type: uint32
-                    Value total_p2mp_forwarding_added_or_modify_messages; //type: uint32
-                    Value total_p2mp_forwarding_delete_messages; //type: uint32
-                    Value total_p2mp_forwarding_drop_messages; //type: uint32
-                    Value total_p2mp_iir_forwarding_drop_messages; //type: uint32
-                    Value lowest_label; //type: uint32
-                    Value highest_label; //type: uint32
-                    Value ignore_protect; //type: uint32
-                    Value mte_head_entries; //type: uint32
-                    Value mte_ll_entries; //type: uint32
-                    Value mte_midpoint_entries; //type: uint32
-                    Value num_lsp; //type: uint32
-                    Value lrpf_entries; //type: uint32
 
+
+                    YLeaf ipv4_imposition_entries; //type: uint32
+                    YLeaf reserved_label_entries; //type: uint32
+                    YLeaf label_switched_entries; //type: uint32
+                    YLeaf protected_label_switched_entries; //type: uint32
+                    YLeaf deleted_stale_entries; //type: uint32
+                    YLeaf te_head_entries; //type: uint32
+                    YLeaf te_frr_head_entries; //type: uint32
+                    YLeaf te_frr_interface_entries; //type: uint32
+                    YLeaf te_frr_next_hop_entries; //type: uint32
+                    YLeaf te_mid_points_entries; //type: uint32
+                    YLeaf te_frr_mid_points_entries; //type: uint32
+                    YLeaf te_internal_entries; //type: uint32
+                    YLeaf te_frr_internal_entries; //type: uint32
+                    YLeaf total_forwarding_updates; //type: uint32
+                    YLeaf total_forwarding_update_messages; //type: uint32
+                    YLeaf total_p2mp_forwarding_updates; //type: uint32
+                    YLeaf total_p2mp_forwarding_added_or_modify_messages; //type: uint32
+                    YLeaf total_p2mp_forwarding_delete_messages; //type: uint32
+                    YLeaf total_p2mp_forwarding_drop_messages; //type: uint32
+                    YLeaf total_p2mp_iir_forwarding_drop_messages; //type: uint32
+                    YLeaf lowest_label; //type: uint32
+                    YLeaf highest_label; //type: uint32
+                    YLeaf ignore_protect; //type: uint32
+                    YLeaf mte_head_entries; //type: uint32
+                    YLeaf mte_ll_entries; //type: uint32
+                    YLeaf mte_midpoint_entries; //type: uint32
+                    YLeaf num_lsp; //type: uint32
+                    YLeaf lrpf_entries; //type: uint32
 
 
 
@@ -5578,6 +5728,7 @@ class FibMpls : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class FrrLog : public Entity
                 {
                     public:
@@ -5591,15 +5742,16 @@ class FibMpls : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value event_id; //type: int32
-                        Value protected_frr_interface_name; //type: string
-                        Value next_hop; //type: uint32
-                        Value number_of_rewrites_affected; //type: uint32
-                        Value switching_time_nsecs; //type: uint32
-                        Value main_processing; //type: uint32
-                        Value fast_bundle_member_down_interface; //type: uint32
-                        Value frr_event_node_id; //type: string
 
+
+                        YLeaf event_id; //type: int32
+                        YLeaf protected_frr_interface_name; //type: string
+                        YLeaf next_hop; //type: uint32
+                        YLeaf number_of_rewrites_affected; //type: uint32
+                        YLeaf switching_time_nsecs; //type: uint32
+                        YLeaf main_processing; //type: uint32
+                        YLeaf fast_bundle_member_down_interface; //type: uint32
+                        YLeaf frr_event_node_id; //type: string
 
                     class StartTime : public Entity
                     {
@@ -5614,9 +5766,10 @@ class FibMpls : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: int32
-                            Value nanoseconds; //type: int32
 
+
+                            YLeaf seconds; //type: int32
+                            YLeaf nanoseconds; //type: int32
 
 
 
@@ -5660,197 +5813,197 @@ class FibMpls : public Entity
 class FibMplsLlcEntryBagEnum : public Enum
 {
     public:
-        static const Enum::Value fib_mpls_llc_bag_type_xc;
-        static const Enum::Value fib_mpls_llc_bag_type_pfx;
-        static const Enum::Value fib_mpls_llc_bag_type_lsm;
-        static const Enum::Value fib_mpls_llc_bag_type_max;
+        static const Enum::YLeaf fib_mpls_llc_bag_type_xc;
+        static const Enum::YLeaf fib_mpls_llc_bag_type_pfx;
+        static const Enum::YLeaf fib_mpls_llc_bag_type_lsm;
+        static const Enum::YLeaf fib_mpls_llc_bag_type_max;
 
 };
 
 class MgmtFibMplsFrrStateEnum : public Enum
 {
     public:
-        static const Enum::Value partial;
-        static const Enum::Value active;
-        static const Enum::Value ready;
-        static const Enum::Value complete;
-        static const Enum::Value any;
+        static const Enum::YLeaf partial;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf ready;
+        static const Enum::YLeaf complete;
+        static const Enum::YLeaf any;
 
 };
 
 class FibShIpencapHdrEnum : public Enum
 {
     public:
-        static const Enum::Value fib_sh_ip_encap_none;
-        static const Enum::Value fib_sh_ip_encap_ip4;
-        static const Enum::Value fib_sh_ip_encap_ip6;
-        static const Enum::Value fib_sh_ip_encap_udp;
-        static const Enum::Value fib_sh_ip_encap_lisp;
+        static const Enum::YLeaf fib_sh_ip_encap_none;
+        static const Enum::YLeaf fib_sh_ip_encap_ip4;
+        static const Enum::YLeaf fib_sh_ip_encap_ip6;
+        static const Enum::YLeaf fib_sh_ip_encap_udp;
+        static const Enum::YLeaf fib_sh_ip_encap_lisp;
 
 };
 
 class FibProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
-        static const Enum::Value mpls;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
+        static const Enum::YLeaf mpls;
 
 };
 
 class FibNehEnum : public Enum
 {
     public:
-        static const Enum::Value nh_local;
-        static const Enum::Value nh_remote;
-        static const Enum::Value nh_special;
+        static const Enum::YLeaf nh_local;
+        static const Enum::YLeaf nh_remote;
+        static const Enum::YLeaf nh_special;
 
 };
 
 class FibFrrProtocolShowEnum : public Enum
 {
     public:
-        static const Enum::Value frr_protocol_ipv4;
-        static const Enum::Value frr_protocol_ipv6;
-        static const Enum::Value frr_protocol_mpls;
+        static const Enum::YLeaf frr_protocol_ipv4;
+        static const Enum::YLeaf frr_protocol_ipv6;
+        static const Enum::YLeaf frr_protocol_mpls;
 
 };
 
 class ProtoEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
-        static const Enum::Value mpls;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
+        static const Enum::YLeaf mpls;
 
 };
 
 class FibLinkEnum : public Enum
 {
     public:
-        static const Enum::Value link_ipv4;
-        static const Enum::Value link_ipv6;
-        static const Enum::Value link_mpls;
+        static const Enum::YLeaf link_ipv4;
+        static const Enum::YLeaf link_ipv6;
+        static const Enum::YLeaf link_mpls;
 
 };
 
 class FibAdjacencyShowEnum : public Enum
 {
     public:
-        static const Enum::Value fib_adjacency_normal;
-        static const Enum::Value fib_adjacency_null;
-        static const Enum::Value fib_adjacency_punt;
-        static const Enum::Value fib_adjacency_drop;
-        static const Enum::Value fib_adjacency_glean;
-        static const Enum::Value fib_adjacency_discard;
-        static const Enum::Value fib_adjacency_broadcast;
-        static const Enum::Value fib_adjacency_external;
-        static const Enum::Value fib_adjacency_lisp;
-        static const Enum::Value fib_adjacency_unknown;
+        static const Enum::YLeaf fib_adjacency_normal;
+        static const Enum::YLeaf fib_adjacency_null;
+        static const Enum::YLeaf fib_adjacency_punt;
+        static const Enum::YLeaf fib_adjacency_drop;
+        static const Enum::YLeaf fib_adjacency_glean;
+        static const Enum::YLeaf fib_adjacency_discard;
+        static const Enum::YLeaf fib_adjacency_broadcast;
+        static const Enum::YLeaf fib_adjacency_external;
+        static const Enum::YLeaf fib_adjacency_lisp;
+        static const Enum::YLeaf fib_adjacency_unknown;
 
 };
 
 class FibLoadshareShowEnum : public Enum
 {
     public:
-        static const Enum::Value fib_load_share_none;
-        static const Enum::Value fib_load_share_per_packet;
-        static const Enum::Value fib_load_share_dest_sharing;
+        static const Enum::YLeaf fib_load_share_none;
+        static const Enum::YLeaf fib_load_share_per_packet;
+        static const Enum::YLeaf fib_load_share_dest_sharing;
 
 };
 
 class EosEnum : public Enum
 {
     public:
-        static const Enum::Value eos0;
-        static const Enum::Value eos1;
+        static const Enum::YLeaf eos0;
+        static const Enum::YLeaf eos1;
 
 };
 
 class FibllcEntryEnum : public Enum
 {
     public:
-        static const Enum::Value xc;
-        static const Enum::Value pfx;
+        static const Enum::YLeaf xc;
+        static const Enum::YLeaf pfx;
 
 };
 
 class FibRpfModeEnum : public Enum
 {
     public:
-        static const Enum::Value fib_rpf_mode_strict;
-        static const Enum::Value fib_rpf_mode_loose;
-        static const Enum::Value fib_rpf_mode_unknown;
+        static const Enum::YLeaf fib_rpf_mode_strict;
+        static const Enum::YLeaf fib_rpf_mode_loose;
+        static const Enum::YLeaf fib_rpf_mode_unknown;
 
 };
 
 class FibidbOperEnum : public Enum
 {
     public:
-        static const Enum::Value fibidb_none;
-        static const Enum::Value fibidb_create;
-        static const Enum::Value fibidb_delete;
-        static const Enum::Value fibidb_modify;
-        static const Enum::Value fibidb_max;
+        static const Enum::YLeaf fibidb_none;
+        static const Enum::YLeaf fibidb_create;
+        static const Enum::YLeaf fibidb_delete;
+        static const Enum::YLeaf fibidb_modify;
+        static const Enum::YLeaf fibidb_max;
 
 };
 
 class SsLbaStateEnum : public Enum
 {
     public:
-        static const Enum::Value l3;
-        static const Enum::Value l4;
+        static const Enum::YLeaf l3;
+        static const Enum::YLeaf l4;
 
 };
 
 class NextHopEnum : public Enum
 {
     public:
-        static const Enum::Value tx;
-        static const Enum::Value rx;
-        static const Enum::Value special;
+        static const Enum::YLeaf tx;
+        static const Enum::YLeaf rx;
+        static const Enum::YLeaf special;
 
 };
 
 class FibRouteSourceEnum : public Enum
 {
     public:
-        static const Enum::Value lsd;
-        static const Enum::Value rib;
-        static const Enum::Value mrib;
+        static const Enum::YLeaf lsd;
+        static const Enum::YLeaf rib;
+        static const Enum::YLeaf mrib;
 
 };
 
 class MplseosEnum : public Enum
 {
     public:
-        static const Enum::Value eos0;
-        static const Enum::Value eos1;
+        static const Enum::YLeaf eos0;
+        static const Enum::YLeaf eos1;
 
 };
 
 class MgmtFibMplsLspRoleEnum : public Enum
 {
     public:
-        static const Enum::Value head;
-        static const Enum::Value midpoint;
+        static const Enum::YLeaf head;
+        static const Enum::YLeaf midpoint;
 
 };
 
 class FibNehSpecialEnum : public Enum
 {
     public:
-        static const Enum::Value nh_not_found;
-        static const Enum::Value nh_null0;
-        static const Enum::Value nh_punt;
-        static const Enum::Value nh_drop;
-        static const Enum::Value nh_glean;
-        static const Enum::Value nh_receive;
-        static const Enum::Value nh_broadcast;
-        static const Enum::Value nh_external;
-        static const Enum::Value nh_lisp;
-        static const Enum::Value nh_lookup;
-        static const Enum::Value nh_max_type;
+        static const Enum::YLeaf nh_not_found;
+        static const Enum::YLeaf nh_null0;
+        static const Enum::YLeaf nh_punt;
+        static const Enum::YLeaf nh_drop;
+        static const Enum::YLeaf nh_glean;
+        static const Enum::YLeaf nh_receive;
+        static const Enum::YLeaf nh_broadcast;
+        static const Enum::YLeaf nh_external;
+        static const Enum::YLeaf nh_lisp;
+        static const Enum::YLeaf nh_lookup;
+        static const Enum::YLeaf nh_max_type;
 
 };
 

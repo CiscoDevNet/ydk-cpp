@@ -24,18 +24,19 @@ class L2Vpn : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value nsr; //type: empty
-        Value mtu_mismatch_ignore; //type: empty
-        Value tcn_propagation; //type: empty
-        Value pwoam_refresh; //type: uint32
-        Value load_balance; //type: LoadBalanceEnum
-        Value mspw_description; //type: string
-        Value pw_status_disable; //type: empty
-        Value enable; //type: empty
-        Value pw_grouping; //type: empty
-        Value capability; //type: L2VpnCapabilityModeEnum
-        Value l2vpn_router_id; //type: string
 
+
+        YLeaf nsr; //type: empty
+        YLeaf mtu_mismatch_ignore; //type: empty
+        YLeaf tcn_propagation; //type: empty
+        YLeaf pwoam_refresh; //type: uint32
+        YLeaf load_balance; //type: LoadBalanceEnum
+        YLeaf mspw_description; //type: string
+        YLeaf pw_status_disable; //type: empty
+        YLeaf enable; //type: empty
+        YLeaf pw_grouping; //type: empty
+        YLeaf capability; //type: L2VpnCapabilityModeEnum
+        YLeaf l2vpn_router_id; //type: string
 
     class PwRouting : public Entity
     {
@@ -50,8 +51,9 @@ class L2Vpn : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value pw_routing_global_id; //type: uint32
 
+
+            YLeaf pw_routing_global_id; //type: uint32
 
         class PwRoutingBgp : public Entity
         {
@@ -66,8 +68,9 @@ class L2Vpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
             class EvpnRouteDistinguisher : public Entity
             {
@@ -82,14 +85,14 @@ class L2Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value type; //type: BgpRouteDistinguisherEnum
-                    Value as; //type: uint32
-                    Value as_index; //type: uint32
-                    Value address; //type: string
-                    Value addr_index; //type: uint32
 
 
-                    class BgpRouteDistinguisherEnum;
+                    YLeaf type; //type: BgpRouteDistinguisherEnum
+                    YLeaf as; //type: uint32
+                    YLeaf as_index; //type: uint32
+                    YLeaf address; //type: string
+                    YLeaf addr_index; //type: uint32
+
 
 
             }; // L2Vpn::PwRouting::PwRoutingBgp::EvpnRouteDistinguisher
@@ -120,8 +123,9 @@ class L2Vpn : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value ldp_flap; //type: empty
 
+
+            YLeaf ldp_flap; //type: empty
 
 
 
@@ -143,6 +147,7 @@ class L2Vpn : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class G8032Rings : public Entity
         {
             public:
@@ -158,6 +163,7 @@ class L2Vpn : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class G8032Ring : public Entity
             {
                 public:
@@ -171,11 +177,12 @@ class L2Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value g8032_ring_name; //type: string
-                    Value open_ring; //type: empty
-                    Value exclusion_list; //type: string
-                    Value erp_provider_bridge; //type: empty
 
+
+                    YLeaf g8032_ring_name; //type: string
+                    YLeaf open_ring; //type: empty
+                    YLeaf exclusion_list; //type: string
+                    YLeaf erp_provider_bridge; //type: empty
 
                 class ErpPort0S : public Entity
                 {
@@ -192,6 +199,7 @@ class L2Vpn : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ErpPort0 : public Entity
                     {
                         public:
@@ -205,9 +213,10 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value monitor; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf monitor; //type: string
 
 
 
@@ -235,6 +244,7 @@ class L2Vpn : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ErpInstance : public Entity
                     {
                         public:
@@ -248,11 +258,12 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value erp_instance_id; //type: uint32
-                            Value description; //type: string
-                            Value inclusion_list; //type: string
-                            Value profile; //type: string
 
+
+                            YLeaf erp_instance_id; //type: uint32
+                            YLeaf description; //type: string
+                            YLeaf inclusion_list; //type: string
+                            YLeaf profile; //type: string
 
                         class Rpl : public Entity
                         {
@@ -267,12 +278,11 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value port; //type: ErpPort1Enum
-                                Value role; //type: RplRoleEnum
 
 
-                                class ErpPort1Enum;
-                                class RplRoleEnum;
+                                YLeaf port; //type: ErpPort1Enum
+                                YLeaf role; //type: RplRoleEnum
+
 
 
                         }; // L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::Rpl
@@ -291,10 +301,11 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value port0; //type: string
-                                Value enable; //type: empty
-                                Value level; //type: uint32
 
+
+                                YLeaf port0; //type: string
+                                YLeaf enable; //type: empty
+                                YLeaf level; //type: uint32
 
                             class Port1 : public Entity
                             {
@@ -309,11 +320,11 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value aps_type; //type: ErpapsEnum
-                                    Value aps_channel; //type: string
 
 
-                                    class ErpapsEnum;
+                                    YLeaf aps_type; //type: ErpapsEnum
+                                    YLeaf aps_channel; //type: string
+
 
 
                             }; // L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::Aps::Port1
@@ -353,6 +364,7 @@ class L2Vpn : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ErpPort1 : public Entity
                     {
                         public:
@@ -366,8 +378,9 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value erp_port_type; //type: ErpPortEnum
 
+
+                            YLeaf erp_port_type; //type: ErpPortEnum
 
                         class None : public Entity
                         {
@@ -382,8 +395,9 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value monitor; //type: string
 
+
+                                YLeaf monitor; //type: string
 
 
 
@@ -403,9 +417,10 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value monitor; //type: string
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf monitor; //type: string
 
 
 
@@ -414,7 +429,6 @@ class L2Vpn : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::G8032Rings::G8032Ring::ErpPort1S::ErpPort1::None> none; // presence node
                             std::vector<std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::G8032Rings::G8032Ring::ErpPort1S::ErpPort1::VirtualOrInterface> > virtual_or_interface;
-                            class ErpPortEnum;
 
 
                     }; // L2Vpn::Database::G8032Rings::G8032Ring::ErpPort1S::ErpPort1
@@ -455,6 +469,7 @@ class L2Vpn : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class XconnectGroup : public Entity
             {
                 public:
@@ -468,8 +483,9 @@ class L2Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class P2PXconnects : public Entity
                 {
@@ -486,6 +502,7 @@ class L2Vpn : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class P2PXconnect : public Entity
                     {
                         public:
@@ -499,10 +516,11 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value name; //type: string
-                            Value p2p_description; //type: string
-                            Value interworking; //type: InterworkingEnum
 
+
+                            YLeaf name; //type: string
+                            YLeaf p2p_description; //type: string
+                            YLeaf interworking; //type: InterworkingEnum
 
                         class BackupAttachmentCircuits : public Entity
                         {
@@ -519,6 +537,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class BackupAttachmentCircuit : public Entity
                             {
                                 public:
@@ -532,8 +551,9 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf interface_name; //type: string
 
 
 
@@ -561,6 +581,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PseudowireEvpn : public Entity
                             {
                                 public:
@@ -574,10 +595,11 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value eviid; //type: uint32
-                                    Value remote_acid; //type: uint32
-                                    Value source_acid; //type: uint32
 
+
+                                    YLeaf eviid; //type: uint32
+                                    YLeaf remote_acid; //type: uint32
+                                    YLeaf source_acid; //type: uint32
 
 
 
@@ -605,6 +627,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pseudowire : public Entity
                             {
                                 public:
@@ -618,8 +641,9 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pseudowire_id; //type: uint32
 
+
+                                    YLeaf pseudowire_id; //type: uint32
 
                                 class Neighbor : public Entity
                                 {
@@ -634,12 +658,13 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value neighbor; //type: string
-                                        Value tag_impose; //type: uint32
-                                        Value class_; //type: string
-                                        Value source_address; //type: string
-                                        Value bandwidth; //type: uint32
 
+
+                                        YLeaf neighbor; //type: string
+                                        YLeaf tag_impose; //type: uint32
+                                        YLeaf class_; //type: string
+                                        YLeaf source_address; //type: string
+                                        YLeaf bandwidth; //type: uint32
 
                                     class MplsStaticLabels : public Entity
                                     {
@@ -654,9 +679,10 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value local_static_label; //type: uint32
-                                            Value remote_static_label; //type: uint32
 
+
+                                            YLeaf local_static_label; //type: uint32
+                                            YLeaf remote_static_label; //type: uint32
 
 
 
@@ -678,6 +704,7 @@ class L2Vpn : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class BackupPseudowire : public Entity
                                         {
                                             public:
@@ -691,10 +718,11 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor; //type: string
-                                                Value pseudowire_id; //type: uint32
-                                                Value backup_pw_class; //type: string
 
+
+                                                YLeaf neighbor; //type: string
+                                                YLeaf pseudowire_id; //type: uint32
+                                                YLeaf backup_pw_class; //type: string
 
                                             class BackupMplsStaticLabels : public Entity
                                             {
@@ -709,9 +737,10 @@ class L2Vpn : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value local_static_label; //type: uint32
-                                                    Value remote_static_label; //type: uint32
 
+
+                                                    YLeaf local_static_label; //type: uint32
+                                                    YLeaf remote_static_label; //type: uint32
 
 
 
@@ -743,9 +772,10 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value l2tp_remote_session_id; //type: uint32
-                                            Value l2tp_local_session_id; //type: uint32
 
+
+                                            YLeaf l2tp_remote_session_id; //type: uint32
+                                            YLeaf l2tp_local_session_id; //type: uint32
 
                                         class L2TpRemoteCookie : public Entity
                                         {
@@ -760,12 +790,12 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value size; //type: L2TpCookieSizeEnum
-                                                Value lower_value; //type: uint32
-                                                Value higher_value; //type: uint32
 
 
-                                                class L2TpCookieSizeEnum;
+                                                YLeaf size; //type: L2TpCookieSizeEnum
+                                                YLeaf lower_value; //type: uint32
+                                                YLeaf higher_value; //type: uint32
+
 
 
                                         }; // L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::Neighbor::L2TpStaticAttributes::L2TpRemoteCookie
@@ -784,12 +814,12 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value size; //type: L2TpCookieSizeEnum
-                                                Value lower_value; //type: uint32
-                                                Value higher_value; //type: uint32
 
 
-                                                class L2TpCookieSizeEnum;
+                                                YLeaf size; //type: L2TpCookieSizeEnum
+                                                YLeaf lower_value; //type: uint32
+                                                YLeaf higher_value; //type: uint32
+
 
 
                                         }; // L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::Neighbor::L2TpStaticAttributes::L2TpSecondaryLocalCookie
@@ -808,12 +838,12 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value size; //type: L2TpCookieSizeEnum
-                                                Value lower_value; //type: uint32
-                                                Value higher_value; //type: uint32
 
 
-                                                class L2TpCookieSizeEnum;
+                                                YLeaf size; //type: L2TpCookieSizeEnum
+                                                YLeaf lower_value; //type: uint32
+                                                YLeaf higher_value; //type: uint32
+
 
 
                                         }; // L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::Neighbor::L2TpStaticAttributes::L2TpLocalCookie
@@ -840,8 +870,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value enable; //type: empty
 
+
+                                            YLeaf enable; //type: empty
 
 
 
@@ -870,12 +901,13 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value pseudowire_address; //type: string
-                                        Value tag_impose; //type: uint32
-                                        Value class_; //type: string
-                                        Value source_address; //type: string
-                                        Value bandwidth; //type: uint32
 
+
+                                        YLeaf pseudowire_address; //type: string
+                                        YLeaf tag_impose; //type: uint32
+                                        YLeaf class_; //type: string
+                                        YLeaf source_address; //type: string
+                                        YLeaf bandwidth; //type: uint32
 
                                     class MplsStaticLabels : public Entity
                                     {
@@ -890,9 +922,10 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value local_static_label; //type: uint32
-                                            Value remote_static_label; //type: uint32
 
+
+                                            YLeaf local_static_label; //type: uint32
+                                            YLeaf remote_static_label; //type: uint32
 
 
 
@@ -914,6 +947,7 @@ class L2Vpn : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class BackupPseudowire : public Entity
                                         {
                                             public:
@@ -927,10 +961,11 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor; //type: string
-                                                Value pseudowire_id; //type: uint32
-                                                Value backup_pw_class; //type: string
 
+
+                                                YLeaf neighbor; //type: string
+                                                YLeaf pseudowire_id; //type: uint32
+                                                YLeaf backup_pw_class; //type: string
 
                                             class BackupMplsStaticLabels : public Entity
                                             {
@@ -945,9 +980,10 @@ class L2Vpn : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value local_static_label; //type: uint32
-                                                    Value remote_static_label; //type: uint32
 
+
+                                                    YLeaf local_static_label; //type: uint32
+                                                    YLeaf remote_static_label; //type: uint32
 
 
 
@@ -979,9 +1015,10 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value l2tp_remote_session_id; //type: uint32
-                                            Value l2tp_local_session_id; //type: uint32
 
+
+                                            YLeaf l2tp_remote_session_id; //type: uint32
+                                            YLeaf l2tp_local_session_id; //type: uint32
 
                                         class L2TpRemoteCookie : public Entity
                                         {
@@ -996,12 +1033,12 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value size; //type: L2TpCookieSizeEnum
-                                                Value lower_value; //type: uint32
-                                                Value higher_value; //type: uint32
 
 
-                                                class L2TpCookieSizeEnum;
+                                                YLeaf size; //type: L2TpCookieSizeEnum
+                                                YLeaf lower_value; //type: uint32
+                                                YLeaf higher_value; //type: uint32
+
 
 
                                         }; // L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::PseudowireAddress::L2TpStaticAttributes::L2TpRemoteCookie
@@ -1020,12 +1057,12 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value size; //type: L2TpCookieSizeEnum
-                                                Value lower_value; //type: uint32
-                                                Value higher_value; //type: uint32
 
 
-                                                class L2TpCookieSizeEnum;
+                                                YLeaf size; //type: L2TpCookieSizeEnum
+                                                YLeaf lower_value; //type: uint32
+                                                YLeaf higher_value; //type: uint32
+
 
 
                                         }; // L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::PseudowireAddress::L2TpStaticAttributes::L2TpSecondaryLocalCookie
@@ -1044,12 +1081,12 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value size; //type: L2TpCookieSizeEnum
-                                                Value lower_value; //type: uint32
-                                                Value higher_value; //type: uint32
 
 
-                                                class L2TpCookieSizeEnum;
+                                                YLeaf size; //type: L2TpCookieSizeEnum
+                                                YLeaf lower_value; //type: uint32
+                                                YLeaf higher_value; //type: uint32
+
 
 
                                         }; // L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::PseudowireAddress::L2TpStaticAttributes::L2TpLocalCookie
@@ -1076,8 +1113,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value enable; //type: empty
 
+
+                                            YLeaf enable; //type: empty
 
 
 
@@ -1121,6 +1159,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MonitorSession : public Entity
                             {
                                 public:
@@ -1134,9 +1173,10 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value name; //type: string
-                                    Value enable; //type: empty
 
+
+                                    YLeaf name; //type: string
+                                    YLeaf enable; //type: empty
 
 
 
@@ -1164,6 +1204,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PseudowireRouted : public Entity
                             {
                                 public:
@@ -1177,13 +1218,14 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value global_id; //type: uint32
-                                    Value prefix; //type: string
-                                    Value acid; //type: uint32
-                                    Value sacid; //type: uint32
-                                    Value tag_impose; //type: uint32
-                                    Value class_; //type: string
 
+
+                                    YLeaf global_id; //type: uint32
+                                    YLeaf prefix; //type: string
+                                    YLeaf acid; //type: uint32
+                                    YLeaf sacid; //type: uint32
+                                    YLeaf tag_impose; //type: uint32
+                                    YLeaf class_; //type: string
 
 
 
@@ -1211,6 +1253,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AttachmentCircuit : public Entity
                             {
                                 public:
@@ -1224,9 +1267,10 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value name; //type: string
-                                    Value enable; //type: empty
 
+
+                                    YLeaf name; //type: string
+                                    YLeaf enable; //type: empty
 
 
 
@@ -1245,7 +1289,6 @@ class L2Vpn : public Entity
                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::PseudowireEvpns> pseudowire_evpns;
                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::PseudowireRouteds> pseudowire_routeds;
                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires> pseudowires;
-                            class InterworkingEnum;
 
 
                     }; // L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect
@@ -1272,6 +1315,7 @@ class L2Vpn : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Mp2MpXconnect : public Entity
                     {
                         public:
@@ -1285,14 +1329,15 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value name; //type: string
-                            Value mp2mpmtu; //type: uint32
-                            Value mp2mp_control_word; //type: empty
-                            Value mp2mpl2_encapsulation; //type: L2EncapsulationEnum
-                            Value mp2mp_interworking; //type: InterworkingEnum
-                            Value mp2mp_shutdown; //type: empty
-                            Value mp2mpvpn_id; //type: uint32
 
+
+                            YLeaf name; //type: string
+                            YLeaf mp2mpmtu; //type: uint32
+                            YLeaf mp2mp_control_word; //type: empty
+                            YLeaf mp2mpl2_encapsulation; //type: L2EncapsulationEnum
+                            YLeaf mp2mp_interworking; //type: InterworkingEnum
+                            YLeaf mp2mp_shutdown; //type: empty
+                            YLeaf mp2mpvpn_id; //type: uint32
 
                         class Mp2MpAutoDiscovery : public Entity
                         {
@@ -1307,8 +1352,9 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: empty
 
+
+                                YLeaf enable; //type: empty
 
                             class RouteDistinguisher : public Entity
                             {
@@ -1323,14 +1369,14 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value type; //type: BgpRouteDistinguisherEnum
-                                    Value as; //type: uint32
-                                    Value as_index; //type: uint32
-                                    Value address; //type: string
-                                    Value addr_index; //type: uint32
 
 
-                                    class BgpRouteDistinguisherEnum;
+                                    YLeaf type; //type: BgpRouteDistinguisherEnum
+                                    YLeaf as; //type: uint32
+                                    YLeaf as_index; //type: uint32
+                                    YLeaf address; //type: string
+                                    YLeaf addr_index; //type: uint32
+
 
 
                             }; // L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::Mp2MpAutoDiscovery::RouteDistinguisher
@@ -1349,9 +1395,10 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value export_; //type: string
-                                    Value import; //type: string
 
+
+                                    YLeaf export_; //type: string
+                                    YLeaf import; //type: string
 
 
 
@@ -1373,6 +1420,7 @@ class L2Vpn : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Mp2MpRouteTarget : public Entity
                                 {
                                     public:
@@ -1386,9 +1434,10 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value role; //type: BgpRouteTargetRoleEnum
-                                        Value format; //type: BgpRouteTargetFormatEnum
 
+
+                                        YLeaf role; //type: BgpRouteTargetRoleEnum
+                                        YLeaf format; //type: BgpRouteTargetFormatEnum
 
                                     class TwoByteAsOrFourByteAs : public Entity
                                     {
@@ -1403,9 +1452,10 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value as; //type: uint32
-                                            Value as_index; //type: uint32
 
+
+                                            YLeaf as; //type: uint32
+                                            YLeaf as_index; //type: uint32
 
 
 
@@ -1425,9 +1475,10 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
-                                            Value addr_index; //type: uint32
 
+
+                                            YLeaf address; //type: string
+                                            YLeaf addr_index; //type: uint32
 
 
 
@@ -1436,8 +1487,6 @@ class L2Vpn : public Entity
 
                                         std::vector<std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::Mp2MpAutoDiscovery::Mp2MpRouteTargets::Mp2MpRouteTarget::Ipv4Address> > ipv4_address;
                                         std::vector<std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::Mp2MpAutoDiscovery::Mp2MpRouteTargets::Mp2MpRouteTarget::TwoByteAsOrFourByteAs> > two_byte_as_or_four_byte_as;
-                                        class BgpRouteTargetFormatEnum;
-                                        class BgpRouteTargetRoleEnum;
 
 
                                 }; // L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::Mp2MpAutoDiscovery::Mp2MpRouteTargets::Mp2MpRouteTarget
@@ -1462,9 +1511,10 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ce_range; //type: uint32
-                                    Value enable; //type: empty
 
+
+                                    YLeaf ce_range; //type: uint32
+                                    YLeaf enable; //type: empty
 
                                 class FlowLabelLoadBalance : public Entity
                                 {
@@ -1479,11 +1529,11 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value flow_label; //type: FlowLabelLoadBalanceEnum
-                                        Value static_; //type: empty
 
 
-                                        class FlowLabelLoadBalanceEnum;
+                                        YLeaf flow_label; //type: FlowLabelLoadBalanceEnum
+                                        YLeaf static_; //type: empty
+
 
 
                                 }; // L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::Mp2MpAutoDiscovery::Mp2MpSignalingProtocol::FlowLabelLoadBalance
@@ -1504,6 +1554,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Ceid : public Entity
                                     {
                                         public:
@@ -1517,8 +1568,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value ce_id; //type: uint32
 
+
+                                            YLeaf ce_id; //type: uint32
 
                                         class RemoteCeidAttachmentCircuits : public Entity
                                         {
@@ -1535,6 +1587,7 @@ class L2Vpn : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class RemoteCeidAttachmentCircuit : public Entity
                                             {
                                                 public:
@@ -1548,9 +1601,10 @@ class L2Vpn : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value name; //type: string
-                                                    Value remote_ce_id; //type: uint32
 
+
+                                                    YLeaf name; //type: string
+                                                    YLeaf remote_ce_id; //type: uint32
 
 
 
@@ -1592,8 +1646,6 @@ class L2Vpn : public Entity
 
 
                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::Mp2MpAutoDiscovery> mp2mp_auto_discovery;
-                            class InterworkingEnum;
-                            class L2EncapsulationEnum;
 
 
                     }; // L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect
@@ -1633,6 +1685,7 @@ class L2Vpn : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class BridgeDomainGroup : public Entity
             {
                 public:
@@ -1646,8 +1699,9 @@ class L2Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class BridgeDomains : public Entity
                 {
@@ -1664,6 +1718,7 @@ class L2Vpn : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BridgeDomain : public Entity
                     {
                         public:
@@ -1677,18 +1732,19 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value name; //type: string
-                            Value coupled_mode; //type: empty
-                            Value shutdown; //type: empty
-                            Value flooding_unknown_unicast; //type: empty
-                            Value igmp_snooping_disable; //type: empty
-                            Value transport_mode; //type: BridgeDomainTransportModeEnum
-                            Value mld_snooping; //type: string
-                            Value bridge_domain_mtu; //type: uint32
-                            Value dhcp; //type: string
-                            Value igmp_snooping; //type: string
-                            Value flooding; //type: empty
 
+
+                            YLeaf name; //type: string
+                            YLeaf coupled_mode; //type: empty
+                            YLeaf shutdown; //type: empty
+                            YLeaf flooding_unknown_unicast; //type: empty
+                            YLeaf igmp_snooping_disable; //type: empty
+                            YLeaf transport_mode; //type: BridgeDomainTransportModeEnum
+                            YLeaf mld_snooping; //type: string
+                            YLeaf bridge_domain_mtu; //type: uint32
+                            YLeaf dhcp; //type: string
+                            YLeaf igmp_snooping; //type: string
+                            YLeaf flooding; //type: empty
 
                         class BdStormControls : public Entity
                         {
@@ -1705,6 +1761,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class BdStormControl : public Entity
                             {
                                 public:
@@ -1718,8 +1775,9 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value sctype; //type: StormControlEnum
 
+
+                                    YLeaf sctype; //type: StormControlEnum
 
                                 class StormControlUnit : public Entity
                                 {
@@ -1734,9 +1792,10 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value kbits_per_sec; //type: uint32
-                                        Value pkts_per_sec; //type: uint32
 
+
+                                        YLeaf kbits_per_sec; //type: uint32
+                                        YLeaf pkts_per_sec; //type: uint32
 
 
 
@@ -1744,7 +1803,6 @@ class L2Vpn : public Entity
 
 
                                     std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::StormControlUnit> storm_control_unit;
-                                    class StormControlEnum;
 
 
                             }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl
@@ -1771,6 +1829,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MemberVni : public Entity
                             {
                                 public:
@@ -1784,8 +1843,9 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value vni; //type: uint32
 
+
+                                    YLeaf vni; //type: uint32
 
                                 class MemberVniStaticMacAddresses : public Entity
                                 {
@@ -1802,6 +1862,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class MemberVniStaticMacAddress : public Entity
                                     {
                                         public:
@@ -1815,9 +1876,10 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value mac_address; //type: string
-                                            Value next_hop_ip; //type: string
 
+
+                                            YLeaf mac_address; //type: string
+                                            YLeaf next_hop_ip; //type: string
 
 
 
@@ -1855,13 +1917,14 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bd_mac_withdraw_relay; //type: empty
-                                Value bd_mac_withdraw_access_pw_disable; //type: empty
-                                Value bd_mac_port_down_flush; //type: empty
-                                Value bd_mac_withdraw; //type: empty
-                                Value bd_mac_withdraw_behavior; //type: MacWithdrawBehaviorEnum
-                                Value bd_mac_learn; //type: MacLearnEnum
 
+
+                                YLeaf bd_mac_withdraw_relay; //type: empty
+                                YLeaf bd_mac_withdraw_access_pw_disable; //type: empty
+                                YLeaf bd_mac_port_down_flush; //type: empty
+                                YLeaf bd_mac_withdraw; //type: empty
+                                YLeaf bd_mac_withdraw_behavior; //type: MacWithdrawBehaviorEnum
+                                YLeaf bd_mac_learn; //type: MacLearnEnum
 
                             class BdMacLimit : public Entity
                             {
@@ -1876,13 +1939,12 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bd_mac_limit_action; //type: MacLimitActionEnum
-                                    Value bd_mac_limit_notif; //type: MacNotificationEnum
-                                    Value bd_mac_limit_max; //type: uint32
 
 
-                                    class MacLimitActionEnum;
-                                    class MacNotificationEnum;
+                                    YLeaf bd_mac_limit_action; //type: MacLimitActionEnum
+                                    YLeaf bd_mac_limit_notif; //type: MacNotificationEnum
+                                    YLeaf bd_mac_limit_max; //type: uint32
+
 
 
                             }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacLimit
@@ -1903,6 +1965,7 @@ class L2Vpn : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class BdMacFilter : public Entity
                                 {
                                     public:
@@ -1916,9 +1979,10 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value drop; //type: empty
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf drop; //type: empty
 
 
 
@@ -1944,12 +2008,12 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value logging; //type: empty
-                                    Value action; //type: MacSecureActionEnum
-                                    Value enable; //type: empty
 
 
-                                    class MacSecureActionEnum;
+                                    YLeaf logging; //type: empty
+                                    YLeaf action; //type: MacSecureActionEnum
+                                    YLeaf enable; //type: empty
+
 
 
                             }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure
@@ -1968,11 +2032,11 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bd_mac_aging_type; //type: MacAgingEnum
-                                    Value bd_mac_aging_time; //type: uint32
 
 
-                                    class MacAgingEnum;
+                                    YLeaf bd_mac_aging_type; //type: MacAgingEnum
+                                    YLeaf bd_mac_aging_time; //type: uint32
+
 
 
                             }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacAging
@@ -1982,8 +2046,6 @@ class L2Vpn : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters> bd_mac_filters;
                                 std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacLimit> bd_mac_limit;
                                 std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure> mac_secure;
-                                class MacLearnEnum;
-                                class MacWithdrawBehaviorEnum;
 
 
                         }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac
@@ -2002,9 +2064,10 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value offload_ipv4_multicast_enable; //type: empty
-                                Value enable; //type: empty
 
+
+                                YLeaf offload_ipv4_multicast_enable; //type: empty
+                                YLeaf enable; //type: empty
 
 
 
@@ -2026,6 +2089,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class PbbEdges : public Entity
                             {
                                 public:
@@ -2041,6 +2105,7 @@ class L2Vpn : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PbbEdge : public Entity
                                 {
                                     public:
@@ -2054,11 +2119,12 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value isid; //type: uint32
-                                        Value core_bd_name; //type: string
-                                        Value pbb_edge_igmp_profile; //type: string
-                                        Value unknown_unicast_bmac; //type: string
 
+
+                                        YLeaf isid; //type: uint32
+                                        YLeaf core_bd_name; //type: string
+                                        YLeaf pbb_edge_igmp_profile; //type: string
+                                        YLeaf unknown_unicast_bmac; //type: string
 
                                     class PbbStaticMacMappings : public Entity
                                     {
@@ -2075,6 +2141,7 @@ class L2Vpn : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class PbbStaticMacMapping : public Entity
                                         {
                                             public:
@@ -2088,9 +2155,10 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value bmac; //type: string
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf bmac; //type: string
 
 
 
@@ -2116,11 +2184,11 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value profile_id; //type: InterfaceProfileEnum
-                                            Value dhcp_snooping_id; //type: string
 
 
-                                            class InterfaceProfileEnum;
+                                            YLeaf profile_id; //type: InterfaceProfileEnum
+                                            YLeaf dhcp_snooping_id; //type: string
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeDhcpProfile
@@ -2139,8 +2207,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value pbb_edge_mac_learning; //type: MacLearnEnum
 
+
+                                            YLeaf pbb_edge_mac_learning; //type: MacLearnEnum
 
                                         class PbbEdgeMacLimit : public Entity
                                         {
@@ -2155,13 +2224,12 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value pbb_edge_mac_limit_action; //type: MacLimitActionEnum
-                                                Value pbb_edge_mac_limit_max; //type: uint32
-                                                Value pbb_edge_mac_limit_notif; //type: MacNotificationEnum
 
 
-                                                class MacLimitActionEnum;
-                                                class MacNotificationEnum;
+                                                YLeaf pbb_edge_mac_limit_action; //type: MacLimitActionEnum
+                                                YLeaf pbb_edge_mac_limit_max; //type: uint32
+                                                YLeaf pbb_edge_mac_limit_notif; //type: MacNotificationEnum
+
 
 
                                         }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacLimit
@@ -2180,11 +2248,11 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value pbb_edge_mac_aging_type; //type: MacAgingEnum
-                                                Value pbb_edge_mac_aging_time; //type: uint32
 
 
-                                                class MacAgingEnum;
+                                                YLeaf pbb_edge_mac_aging_type; //type: MacAgingEnum
+                                                YLeaf pbb_edge_mac_aging_time; //type: uint32
+
 
 
                                         }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacAging
@@ -2203,15 +2271,14 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value logging; //type: L2VpnLoggingEnum
-                                                Value disable; //type: empty
-                                                Value action; //type: MacSecureActionEnum
-                                                Value enable; //type: empty
-                                                Value accept_shutdown; //type: empty
 
 
-                                                class MacSecureActionEnum;
-                                                class L2VpnLoggingEnum;
+                                                YLeaf logging; //type: L2VpnLoggingEnum
+                                                YLeaf disable; //type: empty
+                                                YLeaf action; //type: MacSecureActionEnum
+                                                YLeaf enable; //type: empty
+                                                YLeaf accept_shutdown; //type: empty
+
 
 
                                         }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure
@@ -2220,7 +2287,6 @@ class L2Vpn : public Entity
                                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacAging> pbb_edge_mac_aging;
                                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacLimit> pbb_edge_mac_limit;
                                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure> pbb_edge_mac_secure;
-                                            class MacLearnEnum;
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac
@@ -2253,11 +2319,12 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pbb_core_mmrp_flood_optimization; //type: empty
-                                    Value vlan_id; //type: uint32
-                                    Value pbb_core_igmp_profile; //type: string
-                                    Value enable; //type: empty
 
+
+                                    YLeaf pbb_core_mmrp_flood_optimization; //type: empty
+                                    YLeaf vlan_id; //type: uint32
+                                    YLeaf pbb_core_igmp_profile; //type: string
+                                    YLeaf enable; //type: empty
 
                                 class PbbCoreMac : public Entity
                                 {
@@ -2272,8 +2339,9 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value pbb_core_mac_learning; //type: MacLearnEnum
 
+
+                                        YLeaf pbb_core_mac_learning; //type: MacLearnEnum
 
                                     class PbbCoreMacAging : public Entity
                                     {
@@ -2288,11 +2356,11 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value pbb_core_mac_aging_type; //type: MacAgingEnum
-                                            Value pbb_core_mac_aging_time; //type: uint32
 
 
-                                            class MacAgingEnum;
+                                            YLeaf pbb_core_mac_aging_type; //type: MacAgingEnum
+                                            YLeaf pbb_core_mac_aging_time; //type: uint32
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacAging
@@ -2311,13 +2379,12 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value pbb_core_mac_limit_max; //type: uint32
-                                            Value pbb_core_mac_limit_notif; //type: MacNotificationEnum
-                                            Value pbb_core_mac_limit_action; //type: MacLimitActionEnum
 
 
-                                            class MacLimitActionEnum;
-                                            class MacNotificationEnum;
+                                            YLeaf pbb_core_mac_limit_max; //type: uint32
+                                            YLeaf pbb_core_mac_limit_notif; //type: MacNotificationEnum
+                                            YLeaf pbb_core_mac_limit_action; //type: MacLimitActionEnum
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacLimit
@@ -2325,7 +2392,6 @@ class L2Vpn : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacAging> pbb_core_mac_aging;
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacLimit> pbb_core_mac_limit;
-                                        class MacLearnEnum;
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac
@@ -2346,6 +2412,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PbbCoreEvi : public Entity
                                     {
                                         public:
@@ -2359,8 +2426,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value eviid; //type: uint32
 
+
+                                            YLeaf eviid; //type: uint32
 
 
 
@@ -2386,11 +2454,11 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value profile_id; //type: InterfaceProfileEnum
-                                        Value dhcp_snooping_id; //type: string
 
 
-                                        class InterfaceProfileEnum;
+                                        YLeaf profile_id; //type: InterfaceProfileEnum
+                                        YLeaf dhcp_snooping_id; //type: string
+
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreDhcpProfile
@@ -2426,6 +2494,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class BridgeDomainEvi : public Entity
                             {
                                 public:
@@ -2439,8 +2508,9 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value eviid; //type: uint32
 
+
+                                    YLeaf eviid; //type: uint32
 
 
 
@@ -2468,6 +2538,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class BdPseudowire : public Entity
                             {
                                 public:
@@ -2481,14 +2552,15 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value neighbor; //type: string
-                                    Value pseudowire_id; //type: uint32
-                                    Value pseudowire_mld_snoop; //type: string
-                                    Value pseudowire_igmp_snoop; //type: string
-                                    Value pseudowire_flooding; //type: InterfaceTrafficFloodEnum
-                                    Value bd_pw_class; //type: string
-                                    Value pseudowire_flooding_unknown_unicast; //type: InterfaceTrafficFloodEnum
 
+
+                                    YLeaf neighbor; //type: string
+                                    YLeaf pseudowire_id; //type: uint32
+                                    YLeaf pseudowire_mld_snoop; //type: string
+                                    YLeaf pseudowire_igmp_snoop; //type: string
+                                    YLeaf pseudowire_flooding; //type: InterfaceTrafficFloodEnum
+                                    YLeaf bd_pw_class; //type: string
+                                    YLeaf pseudowire_flooding_unknown_unicast; //type: InterfaceTrafficFloodEnum
 
                                 class PseudowireDai : public Entity
                                 {
@@ -2503,10 +2575,11 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value logging; //type: L2VpnLoggingEnum
-                                        Value disable; //type: empty
-                                        Value enable; //type: empty
 
+
+                                        YLeaf logging; //type: L2VpnLoggingEnum
+                                        YLeaf disable; //type: empty
+                                        YLeaf enable; //type: empty
 
                                     class PseudowireDaiAddressValidation : public Entity
                                     {
@@ -2521,21 +2594,18 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value ipv4_verification; //type: L2VpnVerificationEnum
-                                            Value destination_mac_verification; //type: L2VpnVerificationEnum
-                                            Value source_mac_verification; //type: L2VpnVerificationEnum
 
 
-                                            class L2VpnVerificationEnum;
-                                            class L2VpnVerificationEnum;
-                                            class L2VpnVerificationEnum;
+                                            YLeaf ipv4_verification; //type: L2VpnVerificationEnum
+                                            YLeaf destination_mac_verification; //type: L2VpnVerificationEnum
+                                            YLeaf source_mac_verification; //type: L2VpnVerificationEnum
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::PseudowireDaiAddressValidation
 
 
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::PseudowireDaiAddressValidation> pseudowire_dai_address_validation;
-                                        class L2VpnLoggingEnum;
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai
@@ -2556,6 +2626,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class BdpwStormControlType : public Entity
                                     {
                                         public:
@@ -2569,8 +2640,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sctype; //type: StormControlEnum
 
+
+                                            YLeaf sctype; //type: StormControlEnum
 
                                         class StormControlUnit : public Entity
                                         {
@@ -2585,9 +2657,10 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value kbits_per_sec; //type: uint32
-                                                Value pkts_per_sec; //type: uint32
 
+
+                                                YLeaf kbits_per_sec; //type: uint32
+                                                YLeaf pkts_per_sec; //type: uint32
 
 
 
@@ -2595,7 +2668,6 @@ class L2Vpn : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::StormControlUnit> storm_control_unit;
-                                            class StormControlEnum;
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType
@@ -2620,11 +2692,11 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value profile_id; //type: InterfaceProfileEnum
-                                        Value dhcp_snooping_id; //type: string
 
 
-                                        class InterfaceProfileEnum;
+                                        YLeaf profile_id; //type: InterfaceProfileEnum
+                                        YLeaf dhcp_snooping_id; //type: string
+
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireProfile
@@ -2645,6 +2717,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class BdPwStaticMacAddress : public Entity
                                     {
                                         public:
@@ -2658,8 +2731,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -2685,12 +2759,12 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value logging; //type: L2VpnLoggingEnum
-                                        Value disable; //type: empty
-                                        Value enable; //type: empty
 
 
-                                        class L2VpnLoggingEnum;
+                                        YLeaf logging; //type: L2VpnLoggingEnum
+                                        YLeaf disable; //type: empty
+                                        YLeaf enable; //type: empty
+
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireIpSourceGuard
@@ -2709,10 +2783,11 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value pseudowire_mac_port_down_flush; //type: PortDownFlushEnum
-                                        Value enable; //type: empty
-                                        Value pseudowire_mac_learning; //type: MacLearnEnum
 
+
+                                        YLeaf pseudowire_mac_port_down_flush; //type: PortDownFlushEnum
+                                        YLeaf enable; //type: empty
+                                        YLeaf pseudowire_mac_learning; //type: MacLearnEnum
 
                                     class PseudowireMacSecure : public Entity
                                     {
@@ -2727,14 +2802,13 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value logging; //type: L2VpnLoggingEnum
-                                            Value disable; //type: empty
-                                            Value action; //type: MacSecureActionEnum
-                                            Value enable; //type: empty
 
 
-                                            class MacSecureActionEnum;
-                                            class L2VpnLoggingEnum;
+                                            YLeaf logging; //type: L2VpnLoggingEnum
+                                            YLeaf disable; //type: empty
+                                            YLeaf action; //type: MacSecureActionEnum
+                                            YLeaf enable; //type: empty
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure
@@ -2753,11 +2827,11 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value pseudowire_mac_aging_type; //type: MacAgingEnum
-                                            Value pseudowire_mac_aging_time; //type: uint32
 
 
-                                            class MacAgingEnum;
+                                            YLeaf pseudowire_mac_aging_type; //type: MacAgingEnum
+                                            YLeaf pseudowire_mac_aging_time; //type: uint32
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacAging
@@ -2776,13 +2850,12 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value pseudowire_mac_limit_action; //type: MacLimitActionEnum
-                                            Value pseudowire_mac_limit_notif; //type: MacNotificationEnum
-                                            Value pseudowire_mac_limit_max; //type: uint32
 
 
-                                            class MacLimitActionEnum;
-                                            class MacNotificationEnum;
+                                            YLeaf pseudowire_mac_limit_action; //type: MacLimitActionEnum
+                                            YLeaf pseudowire_mac_limit_notif; //type: MacNotificationEnum
+                                            YLeaf pseudowire_mac_limit_max; //type: uint32
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacLimit
@@ -2791,8 +2864,6 @@ class L2Vpn : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacAging> pseudowire_mac_aging;
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacLimit> pseudowire_mac_limit;
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure> pseudowire_mac_secure;
-                                        class MacLearnEnum;
-                                        class PortDownFlushEnum;
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac
@@ -2813,6 +2884,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class BdPwSplitHorizonGroup : public Entity
                                     {
                                         public:
@@ -2826,8 +2898,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value enable; //type: empty
 
+
+                                            YLeaf enable; //type: empty
 
 
 
@@ -2853,9 +2926,10 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value local_static_label; //type: uint32
-                                        Value remote_static_label; //type: uint32
 
+
+                                        YLeaf local_static_label; //type: uint32
+                                        YLeaf remote_static_label; //type: uint32
 
 
 
@@ -2877,6 +2951,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class BridgeDomainBackupPseudowire : public Entity
                                     {
                                         public:
@@ -2890,10 +2965,11 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value neighbor; //type: string
-                                            Value pseudowire_id; //type: uint32
-                                            Value bridge_domain_backup_pw_class; //type: string
 
+
+                                            YLeaf neighbor; //type: string
+                                            YLeaf pseudowire_id; //type: uint32
+                                            YLeaf bridge_domain_backup_pw_class; //type: string
 
 
 
@@ -2915,8 +2991,6 @@ class L2Vpn : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireIpSourceGuard> pseudowire_ip_source_guard;
                                     std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac> pseudowire_mac;
                                     std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireProfile> pseudowire_profile;
-                                    class InterfaceTrafficFloodEnum;
-                                    class InterfaceTrafficFloodEnum;
 
 
                             }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire
@@ -2943,6 +3017,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Vfi : public Entity
                             {
                                 public:
@@ -2956,10 +3031,11 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value name; //type: string
-                                    Value vfi_shutdown; //type: empty
-                                    Value vpnid; //type: uint32
 
+
+                                    YLeaf name; //type: string
+                                    YLeaf vfi_shutdown; //type: empty
+                                    YLeaf vpnid; //type: uint32
 
                                 class MulticastP2Mp : public Entity
                                 {
@@ -2974,8 +3050,9 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: empty
 
+
+                                        YLeaf enable; //type: empty
 
                                     class Transports : public Entity
                                     {
@@ -2992,6 +3069,7 @@ class L2Vpn : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Transport : public Entity
                                         {
                                             public:
@@ -3005,9 +3083,10 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value transport_name; //type: string
-                                                Value attribute_set_name; //type: string
 
+
+                                                YLeaf transport_name; //type: string
+                                                YLeaf attribute_set_name; //type: string
 
 
 
@@ -3035,6 +3114,7 @@ class L2Vpn : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Signaling : public Entity
                                         {
                                             public:
@@ -3048,8 +3128,9 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value signaling_name; //type: string
 
+
+                                                YLeaf signaling_name; //type: string
 
 
 
@@ -3084,6 +3165,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class VfiPseudowire : public Entity
                                     {
                                         public:
@@ -3097,12 +3179,13 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value neighbor; //type: string
-                                            Value pseudowire_id; //type: uint32
-                                            Value vfi_pw_class; //type: string
-                                            Value vfi_pw_igmp_snoop; //type: string
-                                            Value vfi_pw_mld_snoop; //type: string
 
+
+                                            YLeaf neighbor; //type: string
+                                            YLeaf pseudowire_id; //type: uint32
+                                            YLeaf vfi_pw_class; //type: string
+                                            YLeaf vfi_pw_igmp_snoop; //type: string
+                                            YLeaf vfi_pw_mld_snoop; //type: string
 
                                         class VfiPwDhcpSnoop : public Entity
                                         {
@@ -3117,11 +3200,11 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value profile_id; //type: InterfaceProfileEnum
-                                                Value dhcp_snooping_id; //type: string
 
 
-                                                class InterfaceProfileEnum;
+                                                YLeaf profile_id; //type: InterfaceProfileEnum
+                                                YLeaf dhcp_snooping_id; //type: string
+
 
 
                                         }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwDhcpSnoop
@@ -3140,9 +3223,10 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value local_static_label; //type: uint32
-                                                Value remote_static_label; //type: uint32
 
+
+                                                YLeaf local_static_label; //type: uint32
+                                                YLeaf remote_static_label; //type: uint32
 
 
 
@@ -3164,6 +3248,7 @@ class L2Vpn : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class PseudowireStaticMacAddress : public Entity
                                             {
                                                 public:
@@ -3177,8 +3262,9 @@ class L2Vpn : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
 
+
+                                                    YLeaf address; //type: string
 
 
 
@@ -3218,10 +3304,11 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value table_policy; //type: string
-                                        Value ad_control_word; //type: empty
-                                        Value enable; //type: empty
 
+
+                                        YLeaf table_policy; //type: string
+                                        YLeaf ad_control_word; //type: empty
+                                        YLeaf enable; //type: empty
 
                                     class LdpSignalingProtocol : public Entity
                                     {
@@ -3236,8 +3323,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value enable; //type: empty
 
+
+                                            YLeaf enable; //type: empty
 
                                         class Vplsid : public Entity
                                         {
@@ -3252,14 +3340,14 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value type; //type: LdpVplsIdEnum
-                                                Value as; //type: uint32
-                                                Value as_index; //type: uint32
-                                                Value address; //type: string
-                                                Value address_index; //type: uint32
 
 
-                                                class LdpVplsIdEnum;
+                                                YLeaf type; //type: LdpVplsIdEnum
+                                                YLeaf as; //type: uint32
+                                                YLeaf as_index; //type: uint32
+                                                YLeaf address; //type: string
+                                                YLeaf address_index; //type: uint32
+
 
 
                                         }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::Vplsid
@@ -3278,11 +3366,11 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value flow_label; //type: FlowLabelLoadBalanceEnum
-                                                Value static_; //type: empty
 
 
-                                                class FlowLabelLoadBalanceEnum;
+                                                YLeaf flow_label; //type: FlowLabelLoadBalanceEnum
+                                                YLeaf static_; //type: empty
+
 
 
                                         }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance
@@ -3308,8 +3396,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value export_; //type: string
 
+
+                                            YLeaf export_; //type: string
 
 
 
@@ -3329,14 +3418,14 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value type; //type: BgpRouteDistinguisherEnum
-                                            Value as; //type: uint32
-                                            Value as_index; //type: uint32
-                                            Value address; //type: string
-                                            Value addr_index; //type: uint32
 
 
-                                            class BgpRouteDistinguisherEnum;
+                                            YLeaf type; //type: BgpRouteDistinguisherEnum
+                                            YLeaf as; //type: uint32
+                                            YLeaf as_index; //type: uint32
+                                            YLeaf address; //type: string
+                                            YLeaf addr_index; //type: uint32
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher
@@ -3355,10 +3444,11 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value ve_range; //type: uint32
-                                            Value veid; //type: uint32
-                                            Value enable; //type: empty
 
+
+                                            YLeaf ve_range; //type: uint32
+                                            YLeaf veid; //type: uint32
+                                            YLeaf enable; //type: empty
 
                                         class FlowLabelLoadBalance : public Entity
                                         {
@@ -3373,11 +3463,11 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value flow_label; //type: FlowLabelLoadBalanceEnum
-                                                Value static_; //type: empty
 
 
-                                                class FlowLabelLoadBalanceEnum;
+                                                YLeaf flow_label; //type: FlowLabelLoadBalanceEnum
+                                                YLeaf static_; //type: empty
+
 
 
                                         }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance
@@ -3404,6 +3494,7 @@ class L2Vpn : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class RouteTarget : public Entity
                                         {
                                             public:
@@ -3417,9 +3508,10 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value role; //type: BgpRouteTargetRoleEnum
-                                                Value format; //type: BgpRouteTargetFormatEnum
 
+
+                                                YLeaf role; //type: BgpRouteTargetRoleEnum
+                                                YLeaf format; //type: BgpRouteTargetFormatEnum
 
                                             class TwoByteAsOrFourByteAs : public Entity
                                             {
@@ -3434,9 +3526,10 @@ class L2Vpn : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: uint32
-                                                    Value as_index; //type: uint32
 
+
+                                                    YLeaf as; //type: uint32
+                                                    YLeaf as_index; //type: uint32
 
 
 
@@ -3456,9 +3549,10 @@ class L2Vpn : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
-                                                    Value addr_index; //type: uint32
 
+
+                                                    YLeaf address; //type: string
+                                                    YLeaf addr_index; //type: uint32
 
 
 
@@ -3467,8 +3561,6 @@ class L2Vpn : public Entity
 
                                                 std::vector<std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address> > ipv4_address;
                                                 std::vector<std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs> > two_byte_as_or_four_byte_as;
-                                                class BgpRouteTargetFormatEnum;
-                                                class BgpRouteTargetRoleEnum;
 
 
                                         }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget
@@ -3519,6 +3611,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class BdAttachmentCircuit : public Entity
                             {
                                 public:
@@ -3532,12 +3625,13 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value name; //type: string
-                                    Value interface_flooding; //type: InterfaceTrafficFloodEnum
-                                    Value interface_igmp_snoop; //type: string
-                                    Value interface_flooding_unknown_unicast; //type: InterfaceTrafficFloodEnum
-                                    Value interface_mld_snoop; //type: string
 
+
+                                    YLeaf name; //type: string
+                                    YLeaf interface_flooding; //type: InterfaceTrafficFloodEnum
+                                    YLeaf interface_igmp_snoop; //type: string
+                                    YLeaf interface_flooding_unknown_unicast; //type: InterfaceTrafficFloodEnum
+                                    YLeaf interface_mld_snoop; //type: string
 
                                 class InterfaceIpSourceGuard : public Entity
                                 {
@@ -3552,12 +3646,12 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value logging; //type: L2VpnLoggingEnum
-                                        Value disable; //type: empty
-                                        Value enable; //type: empty
 
 
-                                        class L2VpnLoggingEnum;
+                                        YLeaf logging; //type: L2VpnLoggingEnum
+                                        YLeaf disable; //type: empty
+                                        YLeaf enable; //type: empty
+
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard
@@ -3576,10 +3670,11 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value logging; //type: L2VpnLoggingEnum
-                                        Value disable; //type: empty
-                                        Value enable; //type: empty
 
+
+                                        YLeaf logging; //type: L2VpnLoggingEnum
+                                        YLeaf disable; //type: empty
+                                        YLeaf enable; //type: empty
 
                                     class InterfaceDaiAddressValidation : public Entity
                                     {
@@ -3594,22 +3689,19 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value ipv4_verification; //type: L2VpnVerificationEnum
-                                            Value destination_mac_verification; //type: L2VpnVerificationEnum
-                                            Value source_mac_verification; //type: L2VpnVerificationEnum
-                                            Value enable; //type: empty
 
 
-                                            class L2VpnVerificationEnum;
-                                            class L2VpnVerificationEnum;
-                                            class L2VpnVerificationEnum;
+                                            YLeaf ipv4_verification; //type: L2VpnVerificationEnum
+                                            YLeaf destination_mac_verification; //type: L2VpnVerificationEnum
+                                            YLeaf source_mac_verification; //type: L2VpnVerificationEnum
+                                            YLeaf enable; //type: empty
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation
 
 
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation> interface_dai_address_validation;
-                                        class L2VpnLoggingEnum;
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai
@@ -3628,11 +3720,11 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value profile_id; //type: InterfaceProfileEnum
-                                        Value dhcp_snooping_id; //type: string
 
 
-                                        class InterfaceProfileEnum;
+                                        YLeaf profile_id; //type: InterfaceProfileEnum
+                                        YLeaf dhcp_snooping_id; //type: string
+
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile
@@ -3653,6 +3745,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class BdacStormControlType : public Entity
                                     {
                                         public:
@@ -3666,8 +3759,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sctype; //type: StormControlEnum
 
+
+                                            YLeaf sctype; //type: StormControlEnum
 
                                         class StormControlUnit : public Entity
                                         {
@@ -3682,9 +3776,10 @@ class L2Vpn : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value kbits_per_sec; //type: uint32
-                                                Value pkts_per_sec; //type: uint32
 
+
+                                                YLeaf kbits_per_sec; //type: uint32
+                                                YLeaf pkts_per_sec; //type: uint32
 
 
 
@@ -3692,7 +3787,6 @@ class L2Vpn : public Entity
 
 
                                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit> storm_control_unit;
-                                            class StormControlEnum;
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType
@@ -3719,6 +3813,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class SplitHorizonGroupId : public Entity
                                     {
                                         public:
@@ -3732,8 +3827,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value enable; //type: empty
 
+
+                                            YLeaf enable; //type: empty
 
 
 
@@ -3761,6 +3857,7 @@ class L2Vpn : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class StaticMacAddress : public Entity
                                     {
                                         public:
@@ -3774,8 +3871,9 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value address; //type: string
 
+
+                                            YLeaf address; //type: string
 
 
 
@@ -3801,9 +3899,10 @@ class L2Vpn : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_mac_port_down_flush; //type: PortDownFlushEnum
-                                        Value interface_mac_learning; //type: MacLearnEnum
 
+
+                                        YLeaf interface_mac_port_down_flush; //type: PortDownFlushEnum
+                                        YLeaf interface_mac_learning; //type: MacLearnEnum
 
                                     class InterfaceMacAging : public Entity
                                     {
@@ -3818,11 +3917,11 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_mac_aging_time; //type: uint32
-                                            Value interface_mac_aging_type; //type: MacAgingEnum
 
 
-                                            class MacAgingEnum;
+                                            YLeaf interface_mac_aging_time; //type: uint32
+                                            YLeaf interface_mac_aging_type; //type: MacAgingEnum
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging
@@ -3841,14 +3940,13 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value logging; //type: L2VpnLoggingEnum
-                                            Value disable; //type: empty
-                                            Value action; //type: MacSecureActionEnum
-                                            Value enable; //type: empty
 
 
-                                            class MacSecureActionEnum;
-                                            class L2VpnLoggingEnum;
+                                            YLeaf logging; //type: L2VpnLoggingEnum
+                                            YLeaf disable; //type: empty
+                                            YLeaf action; //type: MacSecureActionEnum
+                                            YLeaf enable; //type: empty
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure
@@ -3867,13 +3965,12 @@ class L2Vpn : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_mac_limit_max; //type: uint32
-                                            Value interface_mac_limit_notif; //type: MacNotificationEnum
-                                            Value interface_mac_limit_action; //type: MacLimitActionEnum
 
 
-                                            class MacLimitActionEnum;
-                                            class MacNotificationEnum;
+                                            YLeaf interface_mac_limit_max; //type: uint32
+                                            YLeaf interface_mac_limit_notif; //type: MacNotificationEnum
+                                            YLeaf interface_mac_limit_action; //type: MacLimitActionEnum
+
 
 
                                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit
@@ -3882,8 +3979,6 @@ class L2Vpn : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging> interface_mac_aging;
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit> interface_mac_limit;
                                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure> interface_mac_secure;
-                                        class MacLearnEnum;
-                                        class PortDownFlushEnum;
 
 
                                 }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac
@@ -3896,8 +3991,6 @@ class L2Vpn : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile> interface_profile;
                                     std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon> split_horizon;
                                     std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses> static_mac_addresses;
-                                    class InterfaceTrafficFloodEnum;
-                                    class InterfaceTrafficFloodEnum;
 
 
                             }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit
@@ -3924,6 +4017,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class BdPseudowireEvpn : public Entity
                             {
                                 public:
@@ -3937,9 +4031,10 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value eviid; //type: uint32
-                                    Value acid; //type: uint32
 
+
+                                    YLeaf eviid; //type: uint32
+                                    YLeaf acid; //type: uint32
 
 
 
@@ -3965,9 +4060,10 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value logging; //type: empty
-                                Value enable; //type: empty
 
+
+                                YLeaf logging; //type: empty
+                                YLeaf enable; //type: empty
 
 
 
@@ -3987,9 +4083,10 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value logging; //type: empty
-                                Value enable; //type: empty
 
+
+                                YLeaf logging; //type: empty
+                                YLeaf enable; //type: empty
 
                             class DaiAddressValidation : public Entity
                             {
@@ -4004,11 +4101,12 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ipv4_verification; //type: empty
-                                    Value destination_mac_verification; //type: empty
-                                    Value source_mac_verification; //type: empty
-                                    Value enable; //type: empty
 
+
+                                    YLeaf ipv4_verification; //type: empty
+                                    YLeaf destination_mac_verification; //type: empty
+                                    YLeaf source_mac_verification; //type: empty
+                                    YLeaf enable; //type: empty
 
 
 
@@ -4036,6 +4134,7 @@ class L2Vpn : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class RoutedInterface : public Entity
                             {
                                 public:
@@ -4049,8 +4148,9 @@ class L2Vpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf interface_name; //type: string
 
 
 
@@ -4076,7 +4176,6 @@ class L2Vpn : public Entity
                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::NvSatellite> nv_satellite;
                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces> routed_interfaces;
                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis> vfis;
-                            class BridgeDomainTransportModeEnum;
 
 
                     }; // L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain
@@ -4115,6 +4214,7 @@ class L2Vpn : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class PseudowireClass : public Entity
             {
                 public:
@@ -4128,10 +4228,11 @@ class L2Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
-                    Value mac_withdraw; //type: empty
-                    Value enable; //type: empty
 
+
+                    YLeaf name; //type: string
+                    YLeaf mac_withdraw; //type: empty
+                    YLeaf enable; //type: empty
 
                 class L2Tpv3Encapsulation : public Entity
                 {
@@ -4146,13 +4247,14 @@ class L2Vpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value df_bit_set; //type: empty
-                        Value cookie_size; //type: L2TpCookieSizeEnum
-                        Value source_address; //type: string
-                        Value transport_mode; //type: TransportModeEnum
-                        Value enable; //type: empty
-                        Value time_to_live; //type: uint32
 
+
+                        YLeaf df_bit_set; //type: empty
+                        YLeaf cookie_size; //type: L2TpCookieSizeEnum
+                        YLeaf source_address; //type: string
+                        YLeaf transport_mode; //type: TransportModeEnum
+                        YLeaf enable; //type: empty
+                        YLeaf time_to_live; //type: uint32
 
                     class Sequencing : public Entity
                     {
@@ -4167,11 +4269,11 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sequencing; //type: L2Tpv3SequencingEnum
-                            Value resync_threshold; //type: uint32
 
 
-                            class L2Tpv3SequencingEnum;
+                            YLeaf sequencing; //type: L2Tpv3SequencingEnum
+                            YLeaf resync_threshold; //type: uint32
+
 
 
                     }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing
@@ -4190,11 +4292,11 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value type_of_service_value; //type: uint32
-                            Value type_of_service_mode; //type: TypeOfServiceModeEnum
 
 
-                            class TypeOfServiceModeEnum;
+                            YLeaf type_of_service_value; //type: uint32
+                            YLeaf type_of_service_mode; //type: TypeOfServiceModeEnum
+
 
 
                     }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService
@@ -4213,11 +4315,11 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value protocol; //type: L2TpSignalingProtocolEnum
-                            Value l2tpv3_class_name; //type: string
 
 
-                            class L2TpSignalingProtocolEnum;
+                            YLeaf protocol; //type: L2TpSignalingProtocolEnum
+                            YLeaf l2tpv3_class_name; //type: string
+
 
 
                     }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol
@@ -4236,9 +4338,10 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
-                            Value max_path_mtu; //type: uint32
 
+
+                            YLeaf enable; //type: empty
+                            YLeaf max_path_mtu; //type: uint32
 
 
 
@@ -4249,8 +4352,6 @@ class L2Vpn : public Entity
                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing> sequencing;
                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol> signaling_protocol;
                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService> type_of_service;
-                        class L2TpCookieSizeEnum;
-                        class TransportModeEnum;
 
 
                 }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation
@@ -4269,11 +4370,11 @@ class L2Vpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value type; //type: BackupDisableEnum
-                        Value disable_backup; //type: uint32
 
 
-                        class BackupDisableEnum;
+                        YLeaf type; //type: BackupDisableEnum
+                        YLeaf disable_backup; //type: uint32
+
 
 
                 }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay
@@ -4292,15 +4393,16 @@ class L2Vpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value pw_switching_tlv; //type: PwSwitchingPointTlvEnum
-                        Value static_tag_rewrite; //type: uint32
-                        Value signaling_protocol; //type: MplsSignalingProtocolEnum
-                        Value vccv_type; //type: VccvVerificationEnum
-                        Value source_address; //type: string
-                        Value transport_mode; //type: TransportModeEnum
-                        Value enable; //type: empty
-                        Value control_word; //type: ControlWordEnum
 
+
+                        YLeaf pw_switching_tlv; //type: PwSwitchingPointTlvEnum
+                        YLeaf static_tag_rewrite; //type: uint32
+                        YLeaf signaling_protocol; //type: MplsSignalingProtocolEnum
+                        YLeaf vccv_type; //type: VccvVerificationEnum
+                        YLeaf source_address; //type: string
+                        YLeaf transport_mode; //type: TransportModeEnum
+                        YLeaf enable; //type: empty
+                        YLeaf control_word; //type: ControlWordEnum
 
                     class Sequencing : public Entity
                     {
@@ -4315,11 +4417,11 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value sequencing; //type: MplsSequencingEnum
-                            Value resync_threshold; //type: uint32
 
 
-                            class MplsSequencingEnum;
+                            YLeaf sequencing; //type: MplsSequencingEnum
+                            YLeaf resync_threshold; //type: uint32
+
 
 
                     }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing
@@ -4338,9 +4440,10 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value redundancy_one_way; //type: empty
-                            Value redundancy_initial_delay; //type: uint32
 
+
+                            YLeaf redundancy_one_way; //type: empty
+                            YLeaf redundancy_initial_delay; //type: uint32
 
 
 
@@ -4360,12 +4463,12 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value type; //type: PreferredPathEnum
-                            Value interface_tunnel_number; //type: uint32
-                            Value fallback_disable; //type: empty
 
 
-                            class PreferredPathEnum;
+                            YLeaf type; //type: PreferredPathEnum
+                            YLeaf interface_tunnel_number; //type: uint32
+                            YLeaf fallback_disable; //type: empty
+
 
 
                     }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath
@@ -4384,9 +4487,10 @@ class L2Vpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value flow_label_load_balance_code; //type: FlowLabelTlvCodeEnum
-                            Value pw_label_load_balance; //type: LoadBalanceEnum
 
+
+                            YLeaf flow_label_load_balance_code; //type: FlowLabelTlvCodeEnum
+                            YLeaf pw_label_load_balance; //type: LoadBalanceEnum
 
                         class FlowLabelLoadBalance : public Entity
                         {
@@ -4401,19 +4505,17 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value flow_label; //type: FlowLabelLoadBalanceEnum
-                                Value static_; //type: empty
 
 
-                                class FlowLabelLoadBalanceEnum;
+                                YLeaf flow_label; //type: FlowLabelLoadBalanceEnum
+                                YLeaf static_; //type: empty
+
 
 
                         }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance
 
 
                             std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance> flow_label_load_balance;
-                            class FlowLabelTlvCodeEnum;
-                            class LoadBalanceEnum;
 
 
                     }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup
@@ -4423,11 +4525,6 @@ class L2Vpn : public Entity
                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy> mpls_redundancy;
                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath> preferred_path;
                         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing> sequencing;
-                        class ControlWordEnum;
-                        class PwSwitchingPointTlvEnum;
-                        class MplsSignalingProtocolEnum;
-                        class TransportModeEnum;
-                        class VccvVerificationEnum;
 
 
                 }; // L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation
@@ -4462,6 +4559,7 @@ class L2Vpn : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class VlanUnawareFlexibleXconnectServices : public Entity
             {
                 public:
@@ -4477,6 +4575,7 @@ class L2Vpn : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class VlanUnawareFlexibleXconnectService : public Entity
                 {
                     public:
@@ -4490,8 +4589,9 @@ class L2Vpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
                     class VlanUnawareFxcAttachmentCircuits : public Entity
                     {
@@ -4508,6 +4608,7 @@ class L2Vpn : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class VlanUnawareFxcAttachmentCircuit : public Entity
                         {
                             public:
@@ -4521,8 +4622,9 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
 
+
+                                YLeaf name; //type: string
 
 
 
@@ -4550,6 +4652,7 @@ class L2Vpn : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class VlanUnawareFxcPseudowireEvpn : public Entity
                         {
                             public:
@@ -4563,9 +4666,10 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value eviid; //type: uint32
-                                Value acid; //type: uint32
 
+
+                                YLeaf eviid; //type: uint32
+                                YLeaf acid; //type: uint32
 
 
 
@@ -4610,8 +4714,9 @@ class L2Vpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
             class IccpRedundancyGroups : public Entity
             {
@@ -4628,6 +4733,7 @@ class L2Vpn : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class IccpRedundancyGroup : public Entity
                 {
                     public:
@@ -4641,9 +4747,10 @@ class L2Vpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value group_id; //type: int32
-                        Value multi_homing_node_id; //type: uint32
 
+
+                        YLeaf group_id; //type: int32
+                        YLeaf multi_homing_node_id; //type: uint32
 
                     class IccpInterfaces : public Entity
                     {
@@ -4660,6 +4767,7 @@ class L2Vpn : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class IccpInterface : public Entity
                         {
                             public:
@@ -4673,12 +4781,13 @@ class L2Vpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value secondary_vlan_range; //type: string
-                                Value recovery_delay; //type: uint32
-                                Value primary_vlan_range; //type: string
-                                Value mac_flush_tcn; //type: empty
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf secondary_vlan_range; //type: string
+                                YLeaf recovery_delay; //type: uint32
+                                YLeaf primary_vlan_range; //type: string
+                                YLeaf mac_flush_tcn; //type: empty
 
 
 
@@ -4733,8 +4842,9 @@ class L2Vpn : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value backbone_source_mac; //type: string
 
+
+            YLeaf backbone_source_mac; //type: string
 
 
 
@@ -4756,6 +4866,7 @@ class L2Vpn : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class BgpSignaling : public Entity
         {
             public:
@@ -4769,8 +4880,9 @@ class L2Vpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value mtu_mismatch_ignore; //type: empty
 
+
+                YLeaf mtu_mismatch_ignore; //type: empty
 
 
 
@@ -4798,6 +4910,7 @@ class L2Vpn : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Logging : public Entity
         {
             public:
@@ -4811,12 +4924,13 @@ class L2Vpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value bridge_domain_state_change; //type: empty
-                Value pseudowire_state_change; //type: empty
-                Value vfi; //type: empty
-                Value nsr_state_change; //type: empty
-                Value pwhe_replication_state_change; //type: empty
 
+
+                YLeaf bridge_domain_state_change; //type: empty
+                YLeaf pseudowire_state_change; //type: empty
+                YLeaf vfi; //type: empty
+                YLeaf nsr_state_change; //type: empty
+                YLeaf pwhe_replication_state_change; //type: empty
 
 
 
@@ -4844,6 +4958,7 @@ class L2Vpn : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Mib : public Entity
         {
             public:
@@ -4857,6 +4972,7 @@ class L2Vpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class MibInterface : public Entity
@@ -4874,6 +4990,7 @@ class L2Vpn : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Format : public Entity
                 {
                     public:
@@ -4887,8 +5004,9 @@ class L2Vpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value external_interface_format; //type: empty
 
+
+                        YLeaf external_interface_format; //type: empty
 
 
 
@@ -4914,8 +5032,9 @@ class L2Vpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value statistics; //type: empty
 
+
+                    YLeaf statistics; //type: empty
 
 
 
@@ -4942,8 +5061,6 @@ class L2Vpn : public Entity
         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::PwRouting> pw_routing;
         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Snmp> snmp;
         std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::L2Vpn::Utility> utility;
-        class L2VpnCapabilityModeEnum;
-        class LoadBalanceEnum;
 
 
 }; // L2Vpn
@@ -4964,6 +5081,7 @@ class GenericInterfaceLists : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class GenericInterface : public Entity
     {
         public:
@@ -4977,9 +5095,10 @@ class GenericInterfaceLists : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value generic_interface_list_name; //type: string
-            Value enable; //type: empty
 
+
+            YLeaf generic_interface_list_name; //type: string
+            YLeaf enable; //type: empty
 
         class Interfaces : public Entity
         {
@@ -4996,6 +5115,7 @@ class GenericInterfaceLists : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -5009,9 +5129,10 @@ class GenericInterfaceLists : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value enable; //type: empty
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf enable; //type: empty
 
 
 
@@ -5049,8 +5170,9 @@ class Evpn : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable; //type: empty
 
+
+        YLeaf enable; //type: empty
 
     class EvpnTables : public Entity
     {
@@ -5067,6 +5189,7 @@ class Evpn : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class EvpnTimers : public Entity
         {
             public:
@@ -5080,10 +5203,11 @@ class Evpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value evpn_recovery; //type: uint32
-                Value enable; //type: empty
-                Value evpn_peering; //type: uint32
 
+
+                YLeaf evpn_recovery; //type: uint32
+                YLeaf enable; //type: empty
+                YLeaf evpn_peering; //type: uint32
 
 
 
@@ -5105,6 +5229,7 @@ class Evpn : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Evpnevi : public Entity
             {
                 public:
@@ -5118,10 +5243,11 @@ class Evpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value eviid; //type: uint32
-                    Value evpnevi_description; //type: string
-                    Value evpn_evi_cw_disable; //type: empty
 
+
+                    YLeaf eviid; //type: uint32
+                    YLeaf evpnevi_description; //type: string
+                    YLeaf evpn_evi_cw_disable; //type: empty
 
                 class EviLoadBalancing : public Entity
                 {
@@ -5136,9 +5262,10 @@ class Evpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value evi_flow_label; //type: empty
-                        Value enable; //type: empty
 
+
+                        YLeaf evi_flow_label; //type: empty
+                        YLeaf enable; //type: empty
 
 
 
@@ -5158,9 +5285,10 @@ class Evpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value table_policy; //type: string
-                        Value enable; //type: empty
 
+
+                        YLeaf table_policy; //type: string
+                        YLeaf enable; //type: empty
 
                     class EvpnRouteTargets : public Entity
                     {
@@ -5177,6 +5305,7 @@ class Evpn : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class EvpnRouteTarget : public Entity
                         {
                             public:
@@ -5190,10 +5319,11 @@ class Evpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value stitching; //type: BgpRouteTargetEnum
-                                Value role; //type: BgpRouteTargetRoleEnum
-                                Value format; //type: BgpRouteTargetFormatEnum
 
+
+                                YLeaf stitching; //type: BgpRouteTargetEnum
+                                YLeaf role; //type: BgpRouteTargetRoleEnum
+                                YLeaf format; //type: BgpRouteTargetFormatEnum
 
                             class TwoByteAsOrFourByteAs : public Entity
                             {
@@ -5208,9 +5338,10 @@ class Evpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value as; //type: uint32
-                                    Value as_index; //type: uint32
 
+
+                                    YLeaf as; //type: uint32
+                                    YLeaf as_index; //type: uint32
 
 
 
@@ -5230,9 +5361,10 @@ class Evpn : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value addr_index; //type: uint32
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf addr_index; //type: uint32
 
 
 
@@ -5241,9 +5373,6 @@ class Evpn : public Entity
 
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTarget::Ipv4Address> > ipv4_address;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTarget::TwoByteAsOrFourByteAs> > two_byte_as_or_four_byte_as;
-                                class BgpRouteTargetFormatEnum;
-                                class BgpRouteTargetRoleEnum;
-                                class BgpRouteTargetEnum;
 
 
                         }; // Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTarget
@@ -5268,14 +5397,14 @@ class Evpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value type; //type: BgpRouteDistinguisherEnum
-                            Value as; //type: uint32
-                            Value as_index; //type: uint32
-                            Value address; //type: string
-                            Value addr_index; //type: uint32
 
 
-                            class BgpRouteDistinguisherEnum;
+                            YLeaf type; //type: BgpRouteDistinguisherEnum
+                            YLeaf as; //type: uint32
+                            YLeaf as_index; //type: uint32
+                            YLeaf address; //type: string
+                            YLeaf addr_index; //type: uint32
+
 
 
                     }; // Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::EvpnRouteDistinguisher
@@ -5314,9 +5443,10 @@ class Evpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value evpn_flow_label; //type: empty
-                Value enable; //type: empty
 
+
+                YLeaf evpn_flow_label; //type: empty
+                YLeaf enable; //type: empty
 
 
 
@@ -5336,8 +5466,9 @@ class Evpn : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
             class EvpnRouteDistinguisher : public Entity
             {
@@ -5352,14 +5483,14 @@ class Evpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value type; //type: BgpRouteDistinguisherEnum
-                    Value as; //type: uint32
-                    Value as_index; //type: uint32
-                    Value address; //type: string
-                    Value addr_index; //type: uint32
 
 
-                    class BgpRouteDistinguisherEnum;
+                    YLeaf type; //type: BgpRouteDistinguisherEnum
+                    YLeaf as; //type: uint32
+                    YLeaf as_index; //type: uint32
+                    YLeaf address; //type: string
+                    YLeaf addr_index; //type: uint32
+
 
 
             }; // Evpn::EvpnTables::EvpnbgpAutoDiscovery::EvpnRouteDistinguisher
@@ -5386,6 +5517,7 @@ class Evpn : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class EvpnInterface : public Entity
             {
                 public:
@@ -5399,9 +5531,10 @@ class Evpn : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value mac_flush; //type: empty
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf mac_flush; //type: empty
 
                 class EvpnacTimers : public Entity
                 {
@@ -5416,10 +5549,11 @@ class Evpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value evpnac_peering; //type: uint32
-                        Value enable; //type: empty
-                        Value evpnac_recovery; //type: uint32
 
+
+                        YLeaf evpnac_peering; //type: uint32
+                        YLeaf enable; //type: empty
+                        YLeaf evpnac_recovery; //type: uint32
 
 
 
@@ -5439,12 +5573,13 @@ class Evpn : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value force_single_homed; //type: empty
-                        Value load_balancing_per_service; //type: empty
-                        Value es_import_route_target; //type: string
-                        Value enable; //type: empty
-                        Value backbone_source_mac; //type: string
 
+
+                        YLeaf force_single_homed; //type: empty
+                        YLeaf load_balancing_per_service; //type: empty
+                        YLeaf es_import_route_target; //type: string
+                        YLeaf enable; //type: empty
+                        YLeaf backbone_source_mac; //type: string
 
                     class IdentifierType0 : public Entity
                     {
@@ -5459,12 +5594,13 @@ class Evpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bytes1; //type: string
-                            Value bytes23; //type: string
-                            Value bytes45; //type: string
-                            Value bytes67; //type: string
-                            Value bytes89; //type: string
 
+
+                            YLeaf bytes1; //type: string
+                            YLeaf bytes23; //type: string
+                            YLeaf bytes45; //type: string
+                            YLeaf bytes67; //type: string
+                            YLeaf bytes89; //type: string
 
 
 
@@ -5484,8 +5620,9 @@ class Evpn : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: empty
 
+
+                            YLeaf enable; //type: empty
 
                         class ServiceList : public Entity
                         {
@@ -5500,9 +5637,10 @@ class Evpn : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value primary; //type: string
-                                Value secondary; //type: string
 
+
+                                YLeaf primary; //type: string
+                                YLeaf secondary; //type: string
 
 
 
@@ -5554,344 +5692,344 @@ class Evpn : public Entity
 class FlowLabelTlvCodeEnum : public Enum
 {
     public:
-        static const Enum::Value Y_17;
-        static const Enum::Value disable;
+        static const Enum::YLeaf Y_17;
+        static const Enum::YLeaf disable;
 
 };
 
 class BackupDisableEnum : public Enum
 {
     public:
-        static const Enum::Value never;
-        static const Enum::Value delay;
+        static const Enum::YLeaf never;
+        static const Enum::YLeaf delay;
 
 };
 
 class BgpRouteTargetFormatEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value two_byte_as;
-        static const Enum::Value four_byte_as;
-        static const Enum::Value ipv4_address;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf two_byte_as;
+        static const Enum::YLeaf four_byte_as;
+        static const Enum::YLeaf ipv4_address;
 
 };
 
 class LoadBalanceEnum : public Enum
 {
     public:
-        static const Enum::Value source_dest_mac;
-        static const Enum::Value source_dest_ip;
-        static const Enum::Value pseudowire_label;
+        static const Enum::YLeaf source_dest_mac;
+        static const Enum::YLeaf source_dest_ip;
+        static const Enum::YLeaf pseudowire_label;
 
 };
 
 class InterworkingEnum : public Enum
 {
     public:
-        static const Enum::Value ethernet;
-        static const Enum::Value ipv4;
+        static const Enum::YLeaf ethernet;
+        static const Enum::YLeaf ipv4;
 
 };
 
 class PwSwitchingPointTlvEnum : public Enum
 {
     public:
-        static const Enum::Value hide;
+        static const Enum::YLeaf hide;
 
 };
 
 class MacAgingEnum : public Enum
 {
     public:
-        static const Enum::Value absolute;
-        static const Enum::Value inactivity;
+        static const Enum::YLeaf absolute;
+        static const Enum::YLeaf inactivity;
 
 };
 
 class L2Tpv3SequencingEnum : public Enum
 {
     public:
-        static const Enum::Value off;
-        static const Enum::Value both;
+        static const Enum::YLeaf off;
+        static const Enum::YLeaf both;
 
 };
 
 class ErpPort1Enum : public Enum
 {
     public:
-        static const Enum::Value port0;
-        static const Enum::Value port1;
+        static const Enum::YLeaf port0;
+        static const Enum::YLeaf port1;
 
 };
 
 class InterfaceProfileEnum : public Enum
 {
     public:
-        static const Enum::Value snoop;
-        static const Enum::Value dhcp_protocol;
+        static const Enum::YLeaf snoop;
+        static const Enum::YLeaf dhcp_protocol;
 
 };
 
 class L2EncapsulationEnum : public Enum
 {
     public:
-        static const Enum::Value vlan;
-        static const Enum::Value ethernet;
+        static const Enum::YLeaf vlan;
+        static const Enum::YLeaf ethernet;
 
 };
 
 class InterfaceTrafficFloodEnum : public Enum
 {
     public:
-        static const Enum::Value traffic_flooding;
-        static const Enum::Value enable_flooding;
-        static const Enum::Value disable_flooding;
+        static const Enum::YLeaf traffic_flooding;
+        static const Enum::YLeaf enable_flooding;
+        static const Enum::YLeaf disable_flooding;
 
 };
 
 class L2VpnLoggingEnum : public Enum
 {
     public:
-        static const Enum::Value enable;
-        static const Enum::Value disable;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf disable;
 
 };
 
 class BgpRouteTargetRoleEnum : public Enum
 {
     public:
-        static const Enum::Value both;
-        static const Enum::Value import;
-        static const Enum::Value export_;
+        static const Enum::YLeaf both;
+        static const Enum::YLeaf import;
+        static const Enum::YLeaf export_;
 
 };
 
 class ErpPortEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value virtual_;
-        static const Enum::Value interface;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf virtual_;
+        static const Enum::YLeaf interface;
 
 };
 
 class MacWithdrawBehaviorEnum : public Enum
 {
     public:
-        static const Enum::Value legacy;
-        static const Enum::Value optimized;
+        static const Enum::YLeaf legacy;
+        static const Enum::YLeaf optimized;
 
 };
 
 class L2TpCookieSizeEnum : public Enum
 {
     public:
-        static const Enum::Value zero;
-        static const Enum::Value four;
-        static const Enum::Value eight;
+        static const Enum::YLeaf zero;
+        static const Enum::YLeaf four;
+        static const Enum::YLeaf eight;
 
 };
 
 class StormControlEnum : public Enum
 {
     public:
-        static const Enum::Value unicast;
-        static const Enum::Value multicast;
-        static const Enum::Value broadcast;
+        static const Enum::YLeaf unicast;
+        static const Enum::YLeaf multicast;
+        static const Enum::YLeaf broadcast;
 
 };
 
 class L2TpSignalingProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value l2tpv3;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf l2tpv3;
 
 };
 
 class RplRoleEnum : public Enum
 {
     public:
-        static const Enum::Value owner;
-        static const Enum::Value neighbor;
-        static const Enum::Value next_neighbor;
+        static const Enum::YLeaf owner;
+        static const Enum::YLeaf neighbor;
+        static const Enum::YLeaf next_neighbor;
 
 };
 
 class MacLimitActionEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value flood;
-        static const Enum::Value no_flood;
-        static const Enum::Value shutdown;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf flood;
+        static const Enum::YLeaf no_flood;
+        static const Enum::YLeaf shutdown;
 
 };
 
 class TypeOfServiceModeEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value reflect;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf reflect;
 
 };
 
 class MacNotificationEnum : public Enum
 {
     public:
-        static const Enum::Value no_notif;
-        static const Enum::Value syslog;
-        static const Enum::Value trap;
-        static const Enum::Value syslog_snmp;
+        static const Enum::YLeaf no_notif;
+        static const Enum::YLeaf syslog;
+        static const Enum::YLeaf trap;
+        static const Enum::YLeaf syslog_snmp;
 
 };
 
 class L2VpnVerificationEnum : public Enum
 {
     public:
-        static const Enum::Value enable;
-        static const Enum::Value disable;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf disable;
 
 };
 
 class LdpVplsIdEnum : public Enum
 {
     public:
-        static const Enum::Value two_byte_as;
-        static const Enum::Value ipv4_address;
+        static const Enum::YLeaf two_byte_as;
+        static const Enum::YLeaf ipv4_address;
 
 };
 
 class MacLearnEnum : public Enum
 {
     public:
-        static const Enum::Value default_learning;
-        static const Enum::Value enable_learning;
-        static const Enum::Value disable_learning;
+        static const Enum::YLeaf default_learning;
+        static const Enum::YLeaf enable_learning;
+        static const Enum::YLeaf disable_learning;
 
 };
 
 class PortDownFlushEnum : public Enum
 {
     public:
-        static const Enum::Value port_down_flush;
-        static const Enum::Value enable_port_down_flush;
-        static const Enum::Value disable_port_down_flush;
+        static const Enum::YLeaf port_down_flush;
+        static const Enum::YLeaf enable_port_down_flush;
+        static const Enum::YLeaf disable_port_down_flush;
 
 };
 
 class L2VpnCapabilityModeEnum : public Enum
 {
     public:
-        static const Enum::Value high_mode;
-        static const Enum::Value single_mode;
+        static const Enum::YLeaf high_mode;
+        static const Enum::YLeaf single_mode;
 
 };
 
 class MplsSignalingProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value ldp;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf ldp;
 
 };
 
 class BgpRouteTargetEnum : public Enum
 {
     public:
-        static const Enum::Value no_stitching;
-        static const Enum::Value stitching;
+        static const Enum::YLeaf no_stitching;
+        static const Enum::YLeaf stitching;
 
 };
 
 class ControlWordEnum : public Enum
 {
     public:
-        static const Enum::Value enable;
-        static const Enum::Value disable;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf disable;
 
 };
 
 class PreferredPathEnum : public Enum
 {
     public:
-        static const Enum::Value te_tunnel;
-        static const Enum::Value ip_tunnel;
-        static const Enum::Value tp_tunnel;
+        static const Enum::YLeaf te_tunnel;
+        static const Enum::YLeaf ip_tunnel;
+        static const Enum::YLeaf tp_tunnel;
 
 };
 
 class BridgeDomainTransportModeEnum : public Enum
 {
     public:
-        static const Enum::Value vlan_passthrough;
+        static const Enum::YLeaf vlan_passthrough;
 
 };
 
 class FlowLabelLoadBalanceEnum : public Enum
 {
     public:
-        static const Enum::Value off;
-        static const Enum::Value receive;
-        static const Enum::Value transmit;
-        static const Enum::Value both;
+        static const Enum::YLeaf off;
+        static const Enum::YLeaf receive;
+        static const Enum::YLeaf transmit;
+        static const Enum::YLeaf both;
 
 };
 
 class BgpRouteDistinguisherEnum : public Enum
 {
     public:
-        static const Enum::Value auto_;
-        static const Enum::Value two_byte_as;
-        static const Enum::Value four_byte_as;
-        static const Enum::Value ipv4_address;
+        static const Enum::YLeaf auto_;
+        static const Enum::YLeaf two_byte_as;
+        static const Enum::YLeaf four_byte_as;
+        static const Enum::YLeaf ipv4_address;
 
 };
 
 class ErpapsEnum : public Enum
 {
     public:
-        static const Enum::Value interface;
-        static const Enum::Value bridge_domain;
-        static const Enum::Value xconnect;
-        static const Enum::Value none;
+        static const Enum::YLeaf interface;
+        static const Enum::YLeaf bridge_domain;
+        static const Enum::YLeaf xconnect;
+        static const Enum::YLeaf none;
 
 };
 
 class VccvVerificationEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value lsp_ping;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf lsp_ping;
 
 };
 
 class TransportModeEnum : public Enum
 {
     public:
-        static const Enum::Value ethernet;
-        static const Enum::Value vlan;
-        static const Enum::Value vlan_passthrough;
+        static const Enum::YLeaf ethernet;
+        static const Enum::YLeaf vlan;
+        static const Enum::YLeaf vlan_passthrough;
 
 };
 
 class MplsSequencingEnum : public Enum
 {
     public:
-        static const Enum::Value off;
-        static const Enum::Value transmit;
-        static const Enum::Value receive;
-        static const Enum::Value both;
+        static const Enum::YLeaf off;
+        static const Enum::YLeaf transmit;
+        static const Enum::YLeaf receive;
+        static const Enum::YLeaf both;
 
 };
 
 class MacSecureActionEnum : public Enum
 {
     public:
-        static const Enum::Value restrict;
-        static const Enum::Value none;
-        static const Enum::Value shutdown;
+        static const Enum::YLeaf restrict;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf shutdown;
 
 };
 

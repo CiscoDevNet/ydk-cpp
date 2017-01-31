@@ -26,6 +26,7 @@ class AtmVcm : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class AtmVcm : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class AtmVcm : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Vcs : public Entity
             {
@@ -72,6 +75,7 @@ class AtmVcm : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Vc : public Entity
                 {
                     public:
@@ -85,32 +89,33 @@ class AtmVcm : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value vpi; //type: uint32
-                        Value vci; //type: uint32
-                        Value main_interface; //type: string
-                        Value sub_interface; //type: string
-                        Value vc_interface; //type: string
-                        Value vpi_xr; //type: uint16
-                        Value vci_xr; //type: uint16
-                        Value type; //type: VcEnum
-                        Value encapsulation; //type: VcEncapEnum
-                        Value shape; //type: VcTrafShapingEnum
-                        Value peak_cell_rate; //type: uint32
-                        Value sustained_cell_rate; //type: uint32
-                        Value burst_rate; //type: uint32
-                        Value encaps_inherit_level; //type: VcInheritLevelEnum
-                        Value qos_inherit_level; //type: VcInheritLevelEnum
-                        Value transmit_mtu; //type: uint32
-                        Value receive_mtu; //type: uint32
-                        Value vc_onvp_tunnel; //type: boolean
-                        Value vc_on_p2p_sub_interface; //type: boolean
-                        Value oper_status; //type: boolean
-                        Value amin_status; //type: boolean
-                        Value internal_state; //type: VcStateEnum
-                        Value last_state_change_time; //type: uint32
-                        Value test_mode; //type: VcTestModeEnum
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf vpi; //type: uint32
+                        YLeaf vci; //type: uint32
+                        YLeaf main_interface; //type: string
+                        YLeaf sub_interface; //type: string
+                        YLeaf vc_interface; //type: string
+                        YLeaf vpi_xr; //type: uint16
+                        YLeaf vci_xr; //type: uint16
+                        YLeaf type; //type: VcEnum
+                        YLeaf encapsulation; //type: VcEncapEnum
+                        YLeaf shape; //type: VcTrafShapingEnum
+                        YLeaf peak_cell_rate; //type: uint32
+                        YLeaf sustained_cell_rate; //type: uint32
+                        YLeaf burst_rate; //type: uint32
+                        YLeaf encaps_inherit_level; //type: VcInheritLevelEnum
+                        YLeaf qos_inherit_level; //type: VcInheritLevelEnum
+                        YLeaf transmit_mtu; //type: uint32
+                        YLeaf receive_mtu; //type: uint32
+                        YLeaf vc_onvp_tunnel; //type: boolean
+                        YLeaf vc_on_p2p_sub_interface; //type: boolean
+                        YLeaf oper_status; //type: boolean
+                        YLeaf amin_status; //type: boolean
+                        YLeaf internal_state; //type: VcStateEnum
+                        YLeaf last_state_change_time; //type: uint32
+                        YLeaf test_mode; //type: VcTestModeEnum
 
                     class CellPackingData : public Entity
                     {
@@ -125,10 +130,11 @@ class AtmVcm : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value local_max_cells_packed_per_packet; //type: uint16
-                            Value negotiated_max_cells_packed_per_packet; //type: uint16
-                            Value max_cell_packed_timeout; //type: uint16
 
+
+                            YLeaf local_max_cells_packed_per_packet; //type: uint16
+                            YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
+                            YLeaf max_cell_packed_timeout; //type: uint16
 
 
 
@@ -136,13 +142,6 @@ class AtmVcm : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData> cell_packing_data;
-                        class VcInheritLevelEnum;
-                        class VcEncapEnum;
-                        class VcStateEnum;
-                        class VcInheritLevelEnum;
-                        class VcTrafShapingEnum;
-                        class VcTestModeEnum;
-                        class VcEnum;
 
 
                 }; // AtmVcm::Nodes::Node::Vcs::Vc
@@ -169,6 +168,7 @@ class AtmVcm : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CellPack : public Entity
                 {
                     public:
@@ -182,15 +182,16 @@ class AtmVcm : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value pci; //type: int32
-                        Value sub_interface_name; //type: string
-                        Value cell_packing_mode; //type: VcCellPackingModeEnum
-                        Value vpi; //type: uint32
-                        Value vci; //type: uint32
-                        Value received_average_cells_packets; //type: uint64
-                        Value sent_cells_packets; //type: uint64
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf pci; //type: int32
+                        YLeaf sub_interface_name; //type: string
+                        YLeaf cell_packing_mode; //type: VcCellPackingModeEnum
+                        YLeaf vpi; //type: uint32
+                        YLeaf vci; //type: uint32
+                        YLeaf received_average_cells_packets; //type: uint64
+                        YLeaf sent_cells_packets; //type: uint64
 
                     class CellPacking : public Entity
                     {
@@ -205,10 +206,11 @@ class AtmVcm : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value local_max_cells_packed_per_packet; //type: uint16
-                            Value negotiated_max_cells_packed_per_packet; //type: uint16
-                            Value max_cell_packed_timeout; //type: uint16
 
+
+                            YLeaf local_max_cells_packed_per_packet; //type: uint16
+                            YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
+                            YLeaf max_cell_packed_timeout; //type: uint16
 
 
 
@@ -216,7 +218,6 @@ class AtmVcm : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking> cell_packing;
-                        class VcCellPackingModeEnum;
 
 
                 }; // AtmVcm::Nodes::Node::CellPacks::CellPack
@@ -243,6 +244,7 @@ class AtmVcm : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Pvp : public Entity
                 {
                     public:
@@ -256,31 +258,32 @@ class AtmVcm : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value vpi; //type: int32
-                        Value main_interface; //type: string
-                        Value sub_interface; //type: string
-                        Value vc_interface; //type: string
-                        Value vpi_xr; //type: uint16
-                        Value vci_xr; //type: uint16
-                        Value type; //type: VcEnum
-                        Value encapsulation; //type: VcEncapEnum
-                        Value shape; //type: VcTrafShapingEnum
-                        Value peak_cell_rate; //type: uint32
-                        Value sustained_cell_rate; //type: uint32
-                        Value burst_rate; //type: uint32
-                        Value encaps_inherit_level; //type: VcInheritLevelEnum
-                        Value qos_inherit_level; //type: VcInheritLevelEnum
-                        Value transmit_mtu; //type: uint32
-                        Value receive_mtu; //type: uint32
-                        Value vc_onvp_tunnel; //type: boolean
-                        Value vc_on_p2p_sub_interface; //type: boolean
-                        Value oper_status; //type: boolean
-                        Value amin_status; //type: boolean
-                        Value internal_state; //type: VcStateEnum
-                        Value last_state_change_time; //type: uint32
-                        Value test_mode; //type: VcTestModeEnum
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf vpi; //type: int32
+                        YLeaf main_interface; //type: string
+                        YLeaf sub_interface; //type: string
+                        YLeaf vc_interface; //type: string
+                        YLeaf vpi_xr; //type: uint16
+                        YLeaf vci_xr; //type: uint16
+                        YLeaf type; //type: VcEnum
+                        YLeaf encapsulation; //type: VcEncapEnum
+                        YLeaf shape; //type: VcTrafShapingEnum
+                        YLeaf peak_cell_rate; //type: uint32
+                        YLeaf sustained_cell_rate; //type: uint32
+                        YLeaf burst_rate; //type: uint32
+                        YLeaf encaps_inherit_level; //type: VcInheritLevelEnum
+                        YLeaf qos_inherit_level; //type: VcInheritLevelEnum
+                        YLeaf transmit_mtu; //type: uint32
+                        YLeaf receive_mtu; //type: uint32
+                        YLeaf vc_onvp_tunnel; //type: boolean
+                        YLeaf vc_on_p2p_sub_interface; //type: boolean
+                        YLeaf oper_status; //type: boolean
+                        YLeaf amin_status; //type: boolean
+                        YLeaf internal_state; //type: VcStateEnum
+                        YLeaf last_state_change_time; //type: uint32
+                        YLeaf test_mode; //type: VcTestModeEnum
 
                     class CellPackingData : public Entity
                     {
@@ -295,10 +298,11 @@ class AtmVcm : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value local_max_cells_packed_per_packet; //type: uint16
-                            Value negotiated_max_cells_packed_per_packet; //type: uint16
-                            Value max_cell_packed_timeout; //type: uint16
 
+
+                            YLeaf local_max_cells_packed_per_packet; //type: uint16
+                            YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
+                            YLeaf max_cell_packed_timeout; //type: uint16
 
 
 
@@ -306,13 +310,6 @@ class AtmVcm : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData> cell_packing_data;
-                        class VcInheritLevelEnum;
-                        class VcEncapEnum;
-                        class VcStateEnum;
-                        class VcInheritLevelEnum;
-                        class VcTrafShapingEnum;
-                        class VcTestModeEnum;
-                        class VcEnum;
 
 
                 }; // AtmVcm::Nodes::Node::Pvps::Pvp
@@ -339,6 +336,7 @@ class AtmVcm : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ClassLink : public Entity
                 {
                     public:
@@ -352,10 +350,11 @@ class AtmVcm : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vpi; //type: int32
-                        Value vci; //type: int32
-                        Value sub_interface_name; //type: string
 
+
+                        YLeaf vpi; //type: int32
+                        YLeaf vci; //type: int32
+                        YLeaf sub_interface_name; //type: string
 
                     class VcClassNotSupported : public Entity
                     {
@@ -370,12 +369,11 @@ class AtmVcm : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value encapsulation_not_supported; //type: VcEncapEnum
-                            Value not_supported_inherit_level; //type: VcInheritLevelEnum
 
 
-                            class VcEncapEnum;
-                            class VcInheritLevelEnum;
+                            YLeaf encapsulation_not_supported; //type: VcEncapEnum
+                            YLeaf not_supported_inherit_level; //type: VcInheritLevelEnum
+
 
 
                     }; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported
@@ -396,6 +394,7 @@ class AtmVcm : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ClassLinkShaping : public Entity
                         {
                             public:
@@ -409,15 +408,14 @@ class AtmVcm : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value shaping_type; //type: VcTrafShapingEnum
-                                Value peak_output_rate; //type: uint32
-                                Value average_output_rate; //type: uint32
-                                Value burst_output_rate; //type: uint32
-                                Value shaping_inherit_level; //type: VcInheritLevelEnum
 
 
-                                class VcInheritLevelEnum;
-                                class VcTrafShapingEnum;
+                                YLeaf shaping_type; //type: VcTrafShapingEnum
+                                YLeaf peak_output_rate; //type: uint32
+                                YLeaf average_output_rate; //type: uint32
+                                YLeaf burst_output_rate; //type: uint32
+                                YLeaf shaping_inherit_level; //type: VcInheritLevelEnum
+
 
 
                         }; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping
@@ -436,12 +434,11 @@ class AtmVcm : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value encapsulation_type; //type: VcEncapEnum
-                                Value encapsulation_inherit_level; //type: VcInheritLevelEnum
 
 
-                                class VcInheritLevelEnum;
-                                class VcEncapEnum;
+                                YLeaf encapsulation_type; //type: VcEncapEnum
+                                YLeaf encapsulation_inherit_level; //type: VcInheritLevelEnum
+
 
 
                         }; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation
@@ -460,15 +457,14 @@ class AtmVcm : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value manage_level; //type: VcManageLevelEnum
-                                Value pvc_frequency; //type: uint32
-                                Value keep_vc_up; //type: boolean
-                                Value ais_rdi_failure; //type: boolean
-                                Value manage_inherit_level; //type: ClassLinkOamInheritLevelEnum
 
 
-                                class ClassLinkOamInheritLevelEnum;
-                                class VcManageLevelEnum;
+                                YLeaf manage_level; //type: VcManageLevelEnum
+                                YLeaf pvc_frequency; //type: uint32
+                                YLeaf keep_vc_up; //type: boolean
+                                YLeaf ais_rdi_failure; //type: boolean
+                                YLeaf manage_inherit_level; //type: ClassLinkOamInheritLevelEnum
+
 
 
                         }; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc
@@ -487,13 +483,13 @@ class AtmVcm : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value retry_up_count; //type: uint32
-                                Value down_count; //type: uint32
-                                Value retry_frequency; //type: uint32
-                                Value retry_inherit_level; //type: ClassLinkOamInheritLevelEnum
 
 
-                                class ClassLinkOamInheritLevelEnum;
+                                YLeaf retry_up_count; //type: uint32
+                                YLeaf down_count; //type: uint32
+                                YLeaf retry_frequency; //type: uint32
+                                YLeaf retry_inherit_level; //type: ClassLinkOamInheritLevelEnum
+
 
 
                         }; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry
@@ -512,12 +508,12 @@ class AtmVcm : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ais_rdi_up_count; //type: uint32
-                                Value ais_rdi_up_time; //type: uint32
-                                Value ais_rdi_inherit_level; //type: ClassLinkOamInheritLevelEnum
 
 
-                                class ClassLinkOamInheritLevelEnum;
+                                YLeaf ais_rdi_up_count; //type: uint32
+                                YLeaf ais_rdi_up_time; //type: uint32
+                                YLeaf ais_rdi_inherit_level; //type: ClassLinkOamInheritLevelEnum
+
 
 
                         }; // AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi
@@ -561,6 +557,7 @@ class AtmVcm : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -574,24 +571,25 @@ class AtmVcm : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value ilmi_vpi; //type: uint32
-                        Value ilmi_vci; //type: uint32
-                        Value pvc_failures; //type: uint32
-                        Value currently_failing_layer2pv_ps; //type: uint32
-                        Value currently_failing_layer2pv_cs; //type: uint32
-                        Value currently_failing_layer3vp_tunnels; //type: uint32
-                        Value currently_failing_layer3pv_cs; //type: uint32
-                        Value pvc_failures_trap_enable; //type: boolean
-                        Value pvc_notification_interval; //type: uint32
-                        Value configured_layer2pv_ps; //type: uint32
-                        Value configured_layer2pv_cs; //type: uint32
-                        Value configured_layer3vp_tunnels; //type: uint32
-                        Value configured_layer3pv_cs; //type: uint32
-                        Value port_type; //type: VcmPortEnum
-                        Value main_interface; //type: string
-                        Value l2_cell_packing_count; //type: uint16
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf ilmi_vpi; //type: uint32
+                        YLeaf ilmi_vci; //type: uint32
+                        YLeaf pvc_failures; //type: uint32
+                        YLeaf currently_failing_layer2pv_ps; //type: uint32
+                        YLeaf currently_failing_layer2pv_cs; //type: uint32
+                        YLeaf currently_failing_layer3vp_tunnels; //type: uint32
+                        YLeaf currently_failing_layer3pv_cs; //type: uint32
+                        YLeaf pvc_failures_trap_enable; //type: boolean
+                        YLeaf pvc_notification_interval; //type: uint32
+                        YLeaf configured_layer2pv_ps; //type: uint32
+                        YLeaf configured_layer2pv_cs; //type: uint32
+                        YLeaf configured_layer3vp_tunnels; //type: uint32
+                        YLeaf configured_layer3pv_cs; //type: uint32
+                        YLeaf port_type; //type: VcmPortEnum
+                        YLeaf main_interface; //type: string
+                        YLeaf l2_cell_packing_count; //type: uint16
 
                     class CellPackingData : public Entity
                     {
@@ -606,10 +604,11 @@ class AtmVcm : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value local_max_cells_packed_per_packet; //type: uint16
-                            Value negotiated_max_cells_packed_per_packet; //type: uint16
-                            Value max_cell_packed_timeout; //type: uint16
 
+
+                            YLeaf local_max_cells_packed_per_packet; //type: uint16
+                            YLeaf negotiated_max_cells_packed_per_packet; //type: uint16
+                            YLeaf max_cell_packed_timeout; //type: uint16
 
 
 
@@ -617,7 +616,6 @@ class AtmVcm : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_atm_vcm_oper::AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData> cell_packing_data;
-                        class VcmPortEnum;
 
 
                 }; // AtmVcm::Nodes::Node::Interfaces::Interface
@@ -644,6 +642,7 @@ class AtmVcm : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class VpTunnel : public Entity
                 {
                     public:
@@ -657,25 +656,24 @@ class AtmVcm : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value vpi; //type: int32
-                        Value main_interface; //type: string
-                        Value vp_interface; //type: string
-                        Value vpi_xr; //type: uint16
-                        Value shape; //type: VpTrafShapingEnum
-                        Value peak_cell_rate; //type: uint32
-                        Value sustained_cell_rate; //type: uint32
-                        Value burst_rate; //type: uint32
-                        Value f4oam_enabled; //type: boolean
-                        Value data_vc_count; //type: uint32
-                        Value oper_status; //type: boolean
-                        Value amin_status; //type: boolean
-                        Value internal_state; //type: VpStateEnum
-                        Value last_vp_state_change_time; //type: uint32
 
 
-                        class VpStateEnum;
-                        class VpTrafShapingEnum;
+                        YLeaf interface_name; //type: string
+                        YLeaf vpi; //type: int32
+                        YLeaf main_interface; //type: string
+                        YLeaf vp_interface; //type: string
+                        YLeaf vpi_xr; //type: uint16
+                        YLeaf shape; //type: VpTrafShapingEnum
+                        YLeaf peak_cell_rate; //type: uint32
+                        YLeaf sustained_cell_rate; //type: uint32
+                        YLeaf burst_rate; //type: uint32
+                        YLeaf f4oam_enabled; //type: boolean
+                        YLeaf data_vc_count; //type: uint32
+                        YLeaf oper_status; //type: boolean
+                        YLeaf amin_status; //type: boolean
+                        YLeaf internal_state; //type: VpStateEnum
+                        YLeaf last_vp_state_change_time; //type: uint32
+
 
 
                 }; // AtmVcm::Nodes::Node::VpTunnels::VpTunnel
@@ -713,142 +711,142 @@ class AtmVcm : public Entity
 class VcEnum : public Enum
 {
     public:
-        static const Enum::Value layer3_vc;
-        static const Enum::Value layer2_vc;
-        static const Enum::Value layer2_vp;
-        static const Enum::Value vc_type_unknown;
+        static const Enum::YLeaf layer3_vc;
+        static const Enum::YLeaf layer2_vc;
+        static const Enum::YLeaf layer2_vp;
+        static const Enum::YLeaf vc_type_unknown;
 
 };
 
 class VcEncapEnum : public Enum
 {
     public:
-        static const Enum::Value ilmi;
-        static const Enum::Value qsaal;
-        static const Enum::Value snap;
-        static const Enum::Value mux;
-        static const Enum::Value nlpid;
-        static const Enum::Value f4oam;
-        static const Enum::Value aal0;
-        static const Enum::Value aal5;
-        static const Enum::Value encap_unknown;
+        static const Enum::YLeaf ilmi;
+        static const Enum::YLeaf qsaal;
+        static const Enum::YLeaf snap;
+        static const Enum::YLeaf mux;
+        static const Enum::YLeaf nlpid;
+        static const Enum::YLeaf f4oam;
+        static const Enum::YLeaf aal0;
+        static const Enum::YLeaf aal5;
+        static const Enum::YLeaf encap_unknown;
 
 };
 
 class VcManageLevelEnum : public Enum
 {
     public:
-        static const Enum::Value manage;
-        static const Enum::Value not_managed;
+        static const Enum::YLeaf manage;
+        static const Enum::YLeaf not_managed;
 
 };
 
 class VcTestModeEnum : public Enum
 {
     public:
-        static const Enum::Value test_mode_none;
-        static const Enum::Value loop;
-        static const Enum::Value reserved;
+        static const Enum::YLeaf test_mode_none;
+        static const Enum::YLeaf loop;
+        static const Enum::YLeaf reserved;
 
 };
 
 class VpTrafShapingEnum : public Enum
 {
     public:
-        static const Enum::Value vp_cbr;
-        static const Enum::Value vp_vbr_nrt;
-        static const Enum::Value vp_vbr_rt;
-        static const Enum::Value vp_abr;
-        static const Enum::Value vp_ubr_plus;
-        static const Enum::Value vp_ubr;
-        static const Enum::Value vp_traf_shaping_unknown;
+        static const Enum::YLeaf vp_cbr;
+        static const Enum::YLeaf vp_vbr_nrt;
+        static const Enum::YLeaf vp_vbr_rt;
+        static const Enum::YLeaf vp_abr;
+        static const Enum::YLeaf vp_ubr_plus;
+        static const Enum::YLeaf vp_ubr;
+        static const Enum::YLeaf vp_traf_shaping_unknown;
 
 };
 
 class VcStateEnum : public Enum
 {
     public:
-        static const Enum::Value initialized;
-        static const Enum::Value modifying;
-        static const Enum::Value modified;
-        static const Enum::Value activating;
-        static const Enum::Value activated;
-        static const Enum::Value not_verified;
-        static const Enum::Value ready;
-        static const Enum::Value deactivating;
-        static const Enum::Value inactive;
-        static const Enum::Value deleting;
-        static const Enum::Value deleted;
-        static const Enum::Value state_unknown;
+        static const Enum::YLeaf initialized;
+        static const Enum::YLeaf modifying;
+        static const Enum::YLeaf modified;
+        static const Enum::YLeaf activating;
+        static const Enum::YLeaf activated;
+        static const Enum::YLeaf not_verified;
+        static const Enum::YLeaf ready;
+        static const Enum::YLeaf deactivating;
+        static const Enum::YLeaf inactive;
+        static const Enum::YLeaf deleting;
+        static const Enum::YLeaf deleted;
+        static const Enum::YLeaf state_unknown;
 
 };
 
 class ClassLinkOamInheritLevelEnum : public Enum
 {
     public:
-        static const Enum::Value vc_configured_onvc;
-        static const Enum::Value vc_class_onvc;
-        static const Enum::Value vc_class_on_sub_interface;
-        static const Enum::Value vc_class_on_main_interface;
-        static const Enum::Value vc_global_default;
-        static const Enum::Value vc_inherit_level_unknown;
+        static const Enum::YLeaf vc_configured_onvc;
+        static const Enum::YLeaf vc_class_onvc;
+        static const Enum::YLeaf vc_class_on_sub_interface;
+        static const Enum::YLeaf vc_class_on_main_interface;
+        static const Enum::YLeaf vc_global_default;
+        static const Enum::YLeaf vc_inherit_level_unknown;
 
 };
 
 class VpStateEnum : public Enum
 {
     public:
-        static const Enum::Value vp_initialized;
-        static const Enum::Value vp_modifying;
-        static const Enum::Value vp_ready;
-        static const Enum::Value vp_mgd_down;
-        static const Enum::Value vp_deleting;
-        static const Enum::Value vp_deleted;
-        static const Enum::Value vp_state_unknown;
+        static const Enum::YLeaf vp_initialized;
+        static const Enum::YLeaf vp_modifying;
+        static const Enum::YLeaf vp_ready;
+        static const Enum::YLeaf vp_mgd_down;
+        static const Enum::YLeaf vp_deleting;
+        static const Enum::YLeaf vp_deleted;
+        static const Enum::YLeaf vp_state_unknown;
 
 };
 
 class VcTrafShapingEnum : public Enum
 {
     public:
-        static const Enum::Value cbr;
-        static const Enum::Value vbr_nrt;
-        static const Enum::Value vbr_rt;
-        static const Enum::Value abr;
-        static const Enum::Value ubr_plus;
-        static const Enum::Value ubr;
-        static const Enum::Value traf_shaping_unknown;
+        static const Enum::YLeaf cbr;
+        static const Enum::YLeaf vbr_nrt;
+        static const Enum::YLeaf vbr_rt;
+        static const Enum::YLeaf abr;
+        static const Enum::YLeaf ubr_plus;
+        static const Enum::YLeaf ubr;
+        static const Enum::YLeaf traf_shaping_unknown;
 
 };
 
 class VcCellPackingModeEnum : public Enum
 {
     public:
-        static const Enum::Value vp;
-        static const Enum::Value vc;
-        static const Enum::Value port_mode;
+        static const Enum::YLeaf vp;
+        static const Enum::YLeaf vc;
+        static const Enum::YLeaf port_mode;
 
 };
 
 class VcmPortEnum : public Enum
 {
     public:
-        static const Enum::Value port_type_layer_2;
-        static const Enum::Value port_type_layer_3;
-        static const Enum::Value port_type_unknown;
+        static const Enum::YLeaf port_type_layer_2;
+        static const Enum::YLeaf port_type_layer_3;
+        static const Enum::YLeaf port_type_unknown;
 
 };
 
 class VcInheritLevelEnum : public Enum
 {
     public:
-        static const Enum::Value directly_configured_onvc;
-        static const Enum::Value vc_class_configured_onvc;
-        static const Enum::Value vc_class_configured_on_sub_interface;
-        static const Enum::Value vc_class_configured_on_main_interface;
-        static const Enum::Value global_default;
-        static const Enum::Value unknown;
-        static const Enum::Value not_supported;
+        static const Enum::YLeaf directly_configured_onvc;
+        static const Enum::YLeaf vc_class_configured_onvc;
+        static const Enum::YLeaf vc_class_configured_on_sub_interface;
+        static const Enum::YLeaf vc_class_configured_on_main_interface;
+        static const Enum::YLeaf global_default;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf not_supported;
 
 };
 

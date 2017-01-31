@@ -14,239 +14,239 @@ namespace Cisco_IOS_XR_ipv4_acl_datatypes {
 class Ipv4AclDscpNumberEnum : public Enum
 {
     public:
-        static const Enum::Value default_;
-        static const Enum::Value af11;
-        static const Enum::Value af12;
-        static const Enum::Value af13;
-        static const Enum::Value af21;
-        static const Enum::Value af22;
-        static const Enum::Value af23;
-        static const Enum::Value af31;
-        static const Enum::Value af32;
-        static const Enum::Value af33;
-        static const Enum::Value af41;
-        static const Enum::Value af42;
-        static const Enum::Value af43;
-        static const Enum::Value cs1;
-        static const Enum::Value cs2;
-        static const Enum::Value cs3;
-        static const Enum::Value cs4;
-        static const Enum::Value cs5;
-        static const Enum::Value cs6;
-        static const Enum::Value cs7;
-        static const Enum::Value ef;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf af11;
+        static const Enum::YLeaf af12;
+        static const Enum::YLeaf af13;
+        static const Enum::YLeaf af21;
+        static const Enum::YLeaf af22;
+        static const Enum::YLeaf af23;
+        static const Enum::YLeaf af31;
+        static const Enum::YLeaf af32;
+        static const Enum::YLeaf af33;
+        static const Enum::YLeaf af41;
+        static const Enum::YLeaf af42;
+        static const Enum::YLeaf af43;
+        static const Enum::YLeaf cs1;
+        static const Enum::YLeaf cs2;
+        static const Enum::YLeaf cs3;
+        static const Enum::YLeaf cs4;
+        static const Enum::YLeaf cs5;
+        static const Enum::YLeaf cs6;
+        static const Enum::YLeaf cs7;
+        static const Enum::YLeaf ef;
 
 };
 
 class Ipv4AclTcpBitsNumberEnum : public Enum
 {
     public:
-        static const Enum::Value established;
-        static const Enum::Value ack;
-        static const Enum::Value rst;
-        static const Enum::Value fin;
-        static const Enum::Value psh;
-        static const Enum::Value syn;
-        static const Enum::Value urg;
+        static const Enum::YLeaf established;
+        static const Enum::YLeaf ack;
+        static const Enum::YLeaf rst;
+        static const Enum::YLeaf fin;
+        static const Enum::YLeaf psh;
+        static const Enum::YLeaf syn;
+        static const Enum::YLeaf urg;
 
 };
 
 class Ipv4AclTcpMatchOperatorEnumEnum : public Enum
 {
     public:
-        static const Enum::Value match_all;
-        static const Enum::Value match_any;
+        static const Enum::YLeaf match_all;
+        static const Enum::YLeaf match_any;
 
 };
 
 class Ipv4AclLoggingEnumEnum : public Enum
 {
     public:
-        static const Enum::Value log;
-        static const Enum::Value log_input;
+        static const Enum::YLeaf log;
+        static const Enum::YLeaf log_input;
 
 };
 
 class Ipv4AclPrecedenceNumberEnum : public Enum
 {
     public:
-        static const Enum::Value critical;
-        static const Enum::Value flash;
-        static const Enum::Value flash_override;
-        static const Enum::Value immediate;
-        static const Enum::Value internet;
-        static const Enum::Value network;
-        static const Enum::Value priority;
-        static const Enum::Value routine;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf flash;
+        static const Enum::YLeaf flash_override;
+        static const Enum::YLeaf immediate;
+        static const Enum::YLeaf internet;
+        static const Enum::YLeaf network;
+        static const Enum::YLeaf priority;
+        static const Enum::YLeaf routine;
 
 };
 
 class Ipv4AclProtocolNumberEnum : public Enum
 {
     public:
-        static const Enum::Value ip;
-        static const Enum::Value icmp;
-        static const Enum::Value igmp;
-        static const Enum::Value ip_in_ip;
-        static const Enum::Value tcp;
-        static const Enum::Value igrp;
-        static const Enum::Value udp;
-        static const Enum::Value gre;
-        static const Enum::Value esp;
-        static const Enum::Value ahp;
-        static const Enum::Value eigrp;
-        static const Enum::Value ospf;
-        static const Enum::Value nos;
-        static const Enum::Value pim;
-        static const Enum::Value pcp;
-        static const Enum::Value sctp;
+        static const Enum::YLeaf ip;
+        static const Enum::YLeaf icmp;
+        static const Enum::YLeaf igmp;
+        static const Enum::YLeaf ip_in_ip;
+        static const Enum::YLeaf tcp;
+        static const Enum::YLeaf igrp;
+        static const Enum::YLeaf udp;
+        static const Enum::YLeaf gre;
+        static const Enum::YLeaf esp;
+        static const Enum::YLeaf ahp;
+        static const Enum::YLeaf eigrp;
+        static const Enum::YLeaf ospf;
+        static const Enum::YLeaf nos;
+        static const Enum::YLeaf pim;
+        static const Enum::YLeaf pcp;
+        static const Enum::YLeaf sctp;
 
 };
 
 class Ipv4AclGrantEnumEnum : public Enum
 {
     public:
-        static const Enum::Value deny;
-        static const Enum::Value permit;
+        static const Enum::YLeaf deny;
+        static const Enum::YLeaf permit;
 
 };
 
 class Ipv4AclPortNumberEnum : public Enum
 {
     public:
-        static const Enum::Value echo;
-        static const Enum::Value discard;
-        static const Enum::Value daytime;
-        static const Enum::Value char_gen;
-        static const Enum::Value ftp_data;
-        static const Enum::Value ftp;
-        static const Enum::Value telnet;
-        static const Enum::Value smtp;
-        static const Enum::Value time;
-        static const Enum::Value name_server;
-        static const Enum::Value who_is;
-        static const Enum::Value tacacs;
-        static const Enum::Value dns;
-        static const Enum::Value boot_ps;
-        static const Enum::Value boot_pc;
-        static const Enum::Value tftp;
-        static const Enum::Value gopher;
-        static const Enum::Value finger;
-        static const Enum::Value www;
-        static const Enum::Value host_name;
-        static const Enum::Value pop2;
-        static const Enum::Value pop3;
-        static const Enum::Value sun_rpc;
-        static const Enum::Value ident;
-        static const Enum::Value nntp;
-        static const Enum::Value ntp;
-        static const Enum::Value net_bios_ns;
-        static const Enum::Value net_bios_dgs;
-        static const Enum::Value net_bios_ss;
-        static const Enum::Value snmp;
-        static const Enum::Value snmp_trap;
-        static const Enum::Value xdmcp;
-        static const Enum::Value bgp;
-        static const Enum::Value irc;
-        static const Enum::Value dnsix;
-        static const Enum::Value mobile_ip;
-        static const Enum::Value pim_auto_rp;
-        static const Enum::Value isakmp;
-        static const Enum::Value exec_or_biff;
-        static const Enum::Value login_or_who;
-        static const Enum::Value cmd_or_syslog;
-        static const Enum::Value lpd;
-        static const Enum::Value talk;
-        static const Enum::Value rip;
-        static const Enum::Value uucp;
-        static const Enum::Value klogin;
-        static const Enum::Value kshell;
-        static const Enum::Value ldp;
+        static const Enum::YLeaf echo;
+        static const Enum::YLeaf discard;
+        static const Enum::YLeaf daytime;
+        static const Enum::YLeaf char_gen;
+        static const Enum::YLeaf ftp_data;
+        static const Enum::YLeaf ftp;
+        static const Enum::YLeaf telnet;
+        static const Enum::YLeaf smtp;
+        static const Enum::YLeaf time;
+        static const Enum::YLeaf name_server;
+        static const Enum::YLeaf who_is;
+        static const Enum::YLeaf tacacs;
+        static const Enum::YLeaf dns;
+        static const Enum::YLeaf boot_ps;
+        static const Enum::YLeaf boot_pc;
+        static const Enum::YLeaf tftp;
+        static const Enum::YLeaf gopher;
+        static const Enum::YLeaf finger;
+        static const Enum::YLeaf www;
+        static const Enum::YLeaf host_name;
+        static const Enum::YLeaf pop2;
+        static const Enum::YLeaf pop3;
+        static const Enum::YLeaf sun_rpc;
+        static const Enum::YLeaf ident;
+        static const Enum::YLeaf nntp;
+        static const Enum::YLeaf ntp;
+        static const Enum::YLeaf net_bios_ns;
+        static const Enum::YLeaf net_bios_dgs;
+        static const Enum::YLeaf net_bios_ss;
+        static const Enum::YLeaf snmp;
+        static const Enum::YLeaf snmp_trap;
+        static const Enum::YLeaf xdmcp;
+        static const Enum::YLeaf bgp;
+        static const Enum::YLeaf irc;
+        static const Enum::YLeaf dnsix;
+        static const Enum::YLeaf mobile_ip;
+        static const Enum::YLeaf pim_auto_rp;
+        static const Enum::YLeaf isakmp;
+        static const Enum::YLeaf exec_or_biff;
+        static const Enum::YLeaf login_or_who;
+        static const Enum::YLeaf cmd_or_syslog;
+        static const Enum::YLeaf lpd;
+        static const Enum::YLeaf talk;
+        static const Enum::YLeaf rip;
+        static const Enum::YLeaf uucp;
+        static const Enum::YLeaf klogin;
+        static const Enum::YLeaf kshell;
+        static const Enum::YLeaf ldp;
 
 };
 
 class Ipv4AclIcmpTypeCodeEnumEnum : public Enum
 {
     public:
-        static const Enum::Value echo_reply;
-        static const Enum::Value network_unreachable;
-        static const Enum::Value host_unreachable;
-        static const Enum::Value protocol_unreachable;
-        static const Enum::Value port_unreachable;
-        static const Enum::Value packet_too_big;
-        static const Enum::Value source_route_failed;
-        static const Enum::Value network_unknown;
-        static const Enum::Value host_unknown;
-        static const Enum::Value host_isolated;
-        static const Enum::Value dod_net_prohibited;
-        static const Enum::Value dod_host_prohibited;
-        static const Enum::Value host_tos_unreachable;
-        static const Enum::Value net_tos_unreachable;
-        static const Enum::Value administratively_prohibited;
-        static const Enum::Value host_precedence_unreachable;
-        static const Enum::Value precedence_unreachable;
-        static const Enum::Value unreachable;
-        static const Enum::Value source_quench;
-        static const Enum::Value network_redirect;
-        static const Enum::Value host_redirect;
-        static const Enum::Value net_tos_redirect;
-        static const Enum::Value host_tos_redirect;
-        static const Enum::Value redirect;
-        static const Enum::Value alternate_address;
-        static const Enum::Value echo;
-        static const Enum::Value router_advertisement;
-        static const Enum::Value router_solicitation;
-        static const Enum::Value ttl_exceeded;
-        static const Enum::Value reassembly_timeout;
-        static const Enum::Value time_exceeded;
-        static const Enum::Value general_parameter_problem;
-        static const Enum::Value option_missing;
-        static const Enum::Value no_room_for_option;
-        static const Enum::Value parameter_problem;
-        static const Enum::Value timestamp_request;
-        static const Enum::Value timestamp_reply;
-        static const Enum::Value information_request;
-        static const Enum::Value information_reply;
-        static const Enum::Value mask_request;
-        static const Enum::Value mask_reply;
-        static const Enum::Value traceroute;
-        static const Enum::Value conversion_error;
-        static const Enum::Value mobile_redirect;
+        static const Enum::YLeaf echo_reply;
+        static const Enum::YLeaf network_unreachable;
+        static const Enum::YLeaf host_unreachable;
+        static const Enum::YLeaf protocol_unreachable;
+        static const Enum::YLeaf port_unreachable;
+        static const Enum::YLeaf packet_too_big;
+        static const Enum::YLeaf source_route_failed;
+        static const Enum::YLeaf network_unknown;
+        static const Enum::YLeaf host_unknown;
+        static const Enum::YLeaf host_isolated;
+        static const Enum::YLeaf dod_net_prohibited;
+        static const Enum::YLeaf dod_host_prohibited;
+        static const Enum::YLeaf host_tos_unreachable;
+        static const Enum::YLeaf net_tos_unreachable;
+        static const Enum::YLeaf administratively_prohibited;
+        static const Enum::YLeaf host_precedence_unreachable;
+        static const Enum::YLeaf precedence_unreachable;
+        static const Enum::YLeaf unreachable;
+        static const Enum::YLeaf source_quench;
+        static const Enum::YLeaf network_redirect;
+        static const Enum::YLeaf host_redirect;
+        static const Enum::YLeaf net_tos_redirect;
+        static const Enum::YLeaf host_tos_redirect;
+        static const Enum::YLeaf redirect;
+        static const Enum::YLeaf alternate_address;
+        static const Enum::YLeaf echo;
+        static const Enum::YLeaf router_advertisement;
+        static const Enum::YLeaf router_solicitation;
+        static const Enum::YLeaf ttl_exceeded;
+        static const Enum::YLeaf reassembly_timeout;
+        static const Enum::YLeaf time_exceeded;
+        static const Enum::YLeaf general_parameter_problem;
+        static const Enum::YLeaf option_missing;
+        static const Enum::YLeaf no_room_for_option;
+        static const Enum::YLeaf parameter_problem;
+        static const Enum::YLeaf timestamp_request;
+        static const Enum::YLeaf timestamp_reply;
+        static const Enum::YLeaf information_request;
+        static const Enum::YLeaf information_reply;
+        static const Enum::YLeaf mask_request;
+        static const Enum::YLeaf mask_reply;
+        static const Enum::YLeaf traceroute;
+        static const Enum::YLeaf conversion_error;
+        static const Enum::YLeaf mobile_redirect;
 
 };
 
 class Ipv4AclOperatorEnumEnum : public Enum
 {
     public:
-        static const Enum::Value equal;
-        static const Enum::Value greater_than;
-        static const Enum::Value less_than;
-        static const Enum::Value not_equal;
-        static const Enum::Value range;
+        static const Enum::YLeaf equal;
+        static const Enum::YLeaf greater_than;
+        static const Enum::YLeaf less_than;
+        static const Enum::YLeaf not_equal;
+        static const Enum::YLeaf range;
 
 };
 
 class Ipv4AclIgmpNumberEnum : public Enum
 {
     public:
-        static const Enum::Value host_query;
-        static const Enum::Value host_report;
-        static const Enum::Value dvmrp;
-        static const Enum::Value pim;
-        static const Enum::Value trace;
-        static const Enum::Value v2_report;
-        static const Enum::Value v2_leave;
-        static const Enum::Value mtrace_response;
-        static const Enum::Value mtrace;
-        static const Enum::Value v3_report;
+        static const Enum::YLeaf host_query;
+        static const Enum::YLeaf host_report;
+        static const Enum::YLeaf dvmrp;
+        static const Enum::YLeaf pim;
+        static const Enum::YLeaf trace;
+        static const Enum::YLeaf v2_report;
+        static const Enum::YLeaf v2_leave;
+        static const Enum::YLeaf mtrace_response;
+        static const Enum::YLeaf mtrace;
+        static const Enum::YLeaf v3_report;
 
 };
 
 class Ipv4AclStatusEnumEnum : public Enum
 {
     public:
-        static const Enum::Value disabled;
-        static const Enum::Value enabled;
+        static const Enum::YLeaf disabled;
+        static const Enum::YLeaf enabled;
 
 };
 

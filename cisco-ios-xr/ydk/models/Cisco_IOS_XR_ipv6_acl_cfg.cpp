@@ -79,7 +79,7 @@ EntityPath Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -226,7 +226,7 @@ EntityPath Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -314,7 +314,7 @@ bool Ipv6AclAndPrefixList::Prefixes::Prefix::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (prefix_list_entries !=  nullptr && is_set(prefix_list_entries->operation));
+	|| (prefix_list_entries !=  nullptr && prefix_list_entries->has_operation());
 }
 
 std::string Ipv6AclAndPrefixList::Prefixes::Prefix::get_segment_path() const
@@ -636,7 +636,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -732,7 +732,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -828,7 +828,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -924,7 +924,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1014,7 +1014,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1100,7 +1100,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1196,7 +1196,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1292,7 +1292,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1388,7 +1388,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1484,7 +1484,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1580,7 +1580,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1670,9 +1670,9 @@ bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
 {
     return is_set(operation)
 	|| is_set(next_hop_type.operation)
-	|| (next_hop_1 !=  nullptr && is_set(next_hop_1->operation))
-	|| (next_hop_2 !=  nullptr && is_set(next_hop_2->operation))
-	|| (next_hop_3 !=  nullptr && is_set(next_hop_3->operation));
+	|| (next_hop_1 !=  nullptr && next_hop_1->has_operation())
+	|| (next_hop_2 !=  nullptr && next_hop_2->has_operation())
+	|| (next_hop_3 !=  nullptr && next_hop_3->has_operation());
 }
 
 std::string Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::get_segment_path() const
@@ -1689,7 +1689,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1850,7 +1850,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2027,16 +2027,16 @@ bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
 	|| is_set(sequence_str.operation)
 	|| is_set(source_port_group.operation)
 	|| is_set(source_prefix_group.operation)
-	|| (destination_network !=  nullptr && is_set(destination_network->operation))
-	|| (destination_port !=  nullptr && is_set(destination_port->operation))
-	|| (header_flags !=  nullptr && is_set(header_flags->operation))
-	|| (icmp !=  nullptr && is_set(icmp->operation))
-	|| (next_hop !=  nullptr && is_set(next_hop->operation))
-	|| (packet_length !=  nullptr && is_set(packet_length->operation))
-	|| (source_network !=  nullptr && is_set(source_network->operation))
-	|| (source_port !=  nullptr && is_set(source_port->operation))
-	|| (tcp !=  nullptr && is_set(tcp->operation))
-	|| (time_to_live !=  nullptr && is_set(time_to_live->operation));
+	|| (destination_network !=  nullptr && destination_network->has_operation())
+	|| (destination_port !=  nullptr && destination_port->has_operation())
+	|| (header_flags !=  nullptr && header_flags->has_operation())
+	|| (icmp !=  nullptr && icmp->has_operation())
+	|| (next_hop !=  nullptr && next_hop->has_operation())
+	|| (packet_length !=  nullptr && packet_length->has_operation())
+	|| (source_network !=  nullptr && source_network->has_operation())
+	|| (source_port !=  nullptr && source_port->has_operation())
+	|| (tcp !=  nullptr && tcp->has_operation())
+	|| (time_to_live !=  nullptr && time_to_live->has_operation());
 }
 
 std::string Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::get_segment_path() const
@@ -2053,7 +2053,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2440,7 +2440,7 @@ EntityPath Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2531,7 +2531,7 @@ bool Ipv6AclAndPrefixList::Accesses::Access::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (access_list_entries !=  nullptr && is_set(access_list_entries->operation));
+	|| (access_list_entries !=  nullptr && access_list_entries->has_operation());
 }
 
 std::string Ipv6AclAndPrefixList::Accesses::Access::get_segment_path() const
@@ -2755,9 +2755,9 @@ bool Ipv6AclAndPrefixList::has_data() const
 bool Ipv6AclAndPrefixList::has_operation() const
 {
     return is_set(operation)
-	|| (accesses !=  nullptr && is_set(accesses->operation))
-	|| (log_update !=  nullptr && is_set(log_update->operation))
-	|| (prefixes !=  nullptr && is_set(prefixes->operation));
+	|| (accesses !=  nullptr && accesses->has_operation())
+	|| (log_update !=  nullptr && log_update->has_operation())
+	|| (prefixes !=  nullptr && prefixes->has_operation());
 }
 
 std::string Ipv6AclAndPrefixList::get_segment_path() const
@@ -2774,7 +2774,7 @@ EntityPath Ipv6AclAndPrefixList::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2884,9 +2884,9 @@ std::unique_ptr<Entity> Ipv6AclAndPrefixList::clone_ptr()
     return std::make_unique<Ipv6AclAndPrefixList>();
 }
 
-const Enum::Value NextHopTypeEnum::none_next_hop {0, "none-next-hop"};
-const Enum::Value NextHopTypeEnum::regular_next_hop {1, "regular-next-hop"};
-const Enum::Value NextHopTypeEnum::default_next_hop {2, "default-next-hop"};
+const Enum::YLeaf NextHopTypeEnum::none_next_hop {0, "none-next-hop"};
+const Enum::YLeaf NextHopTypeEnum::regular_next_hop {1, "regular-next-hop"};
+const Enum::YLeaf NextHopTypeEnum::default_next_hop {2, "default-next-hop"};
 
 
 }

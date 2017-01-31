@@ -76,7 +76,7 @@ EntityPath Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -218,7 +218,7 @@ EntityPath Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -309,7 +309,7 @@ bool Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::has_operation() 
 {
     return is_set(operation)
 	|| is_set(prefix_list_name.operation)
-	|| (prefix_list_sequences !=  nullptr && is_set(prefix_list_sequences->operation));
+	|| (prefix_list_sequences !=  nullptr && prefix_list_sequences->has_operation());
 }
 
 std::string Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_segment_path() const
@@ -543,7 +543,7 @@ EntityPath Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -645,7 +645,7 @@ EntityPath Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -889,7 +889,7 @@ bool Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequen
 	|| is_set(ttl1.operation)
 	|| is_set(ttl2.operation)
 	|| is_set(ttl_operator.operation)
-	|| (hw_next_hop_info !=  nullptr && is_set(hw_next_hop_info->operation));
+	|| (hw_next_hop_info !=  nullptr && hw_next_hop_info->has_operation());
 }
 
 std::string Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::get_segment_path() const
@@ -906,7 +906,7 @@ EntityPath Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1282,7 +1282,7 @@ EntityPath Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessList
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1373,7 +1373,7 @@ bool Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::has_operation() 
 {
     return is_set(operation)
 	|| is_set(access_list_name.operation)
-	|| (access_list_sequences !=  nullptr && is_set(access_list_sequences->operation));
+	|| (access_list_sequences !=  nullptr && access_list_sequences->has_operation());
 }
 
 std::string Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::get_segment_path() const
@@ -1809,9 +1809,9 @@ bool Ipv4AclAndPrefixList::AccessListManager::has_data() const
 bool Ipv4AclAndPrefixList::AccessListManager::has_operation() const
 {
     return is_set(operation)
-	|| (accesses !=  nullptr && is_set(accesses->operation))
-	|| (prefixes !=  nullptr && is_set(prefixes->operation))
-	|| (usages !=  nullptr && is_set(usages->operation));
+	|| (accesses !=  nullptr && accesses->has_operation())
+	|| (prefixes !=  nullptr && prefixes->has_operation())
+	|| (usages !=  nullptr && usages->has_operation());
 }
 
 std::string Ipv4AclAndPrefixList::AccessListManager::get_segment_path() const
@@ -2734,7 +2734,7 @@ bool Ipv4AclAndPrefixList::Oor::AccessListSummary::has_data() const
 bool Ipv4AclAndPrefixList::Oor::AccessListSummary::has_operation() const
 {
     return is_set(operation)
-	|| (details !=  nullptr && is_set(details->operation));
+	|| (details !=  nullptr && details->has_operation());
 }
 
 std::string Ipv4AclAndPrefixList::Oor::AccessListSummary::get_segment_path() const
@@ -2971,7 +2971,7 @@ bool Ipv4AclAndPrefixList::Oor::PrefixListSummary::has_data() const
 bool Ipv4AclAndPrefixList::Oor::PrefixListSummary::has_operation() const
 {
     return is_set(operation)
-	|| (details !=  nullptr && is_set(details->operation));
+	|| (details !=  nullptr && details->has_operation());
 }
 
 std::string Ipv4AclAndPrefixList::Oor::PrefixListSummary::get_segment_path() const
@@ -3092,11 +3092,11 @@ bool Ipv4AclAndPrefixList::Oor::has_data() const
 bool Ipv4AclAndPrefixList::Oor::has_operation() const
 {
     return is_set(operation)
-	|| (access_list_summary !=  nullptr && is_set(access_list_summary->operation))
-	|| (details !=  nullptr && is_set(details->operation))
-	|| (oor_accesses !=  nullptr && is_set(oor_accesses->operation))
-	|| (oor_prefixes !=  nullptr && is_set(oor_prefixes->operation))
-	|| (prefix_list_summary !=  nullptr && is_set(prefix_list_summary->operation));
+	|| (access_list_summary !=  nullptr && access_list_summary->has_operation())
+	|| (details !=  nullptr && details->has_operation())
+	|| (oor_accesses !=  nullptr && oor_accesses->has_operation())
+	|| (oor_prefixes !=  nullptr && oor_prefixes->has_operation())
+	|| (prefix_list_summary !=  nullptr && prefix_list_summary->has_operation());
 }
 
 std::string Ipv4AclAndPrefixList::Oor::get_segment_path() const
@@ -3294,8 +3294,8 @@ bool Ipv4AclAndPrefixList::has_data() const
 bool Ipv4AclAndPrefixList::has_operation() const
 {
     return is_set(operation)
-	|| (access_list_manager !=  nullptr && is_set(access_list_manager->operation))
-	|| (oor !=  nullptr && is_set(oor->operation));
+	|| (access_list_manager !=  nullptr && access_list_manager->has_operation())
+	|| (oor !=  nullptr && oor->has_operation());
 }
 
 std::string Ipv4AclAndPrefixList::get_segment_path() const
@@ -3312,7 +3312,7 @@ EntityPath Ipv4AclAndPrefixList::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3399,50 +3399,50 @@ std::unique_ptr<Entity> Ipv4AclAndPrefixList::clone_ptr()
     return std::make_unique<Ipv4AclAndPrefixList>();
 }
 
-const Enum::Value AclTcpflagsOperatorEnum::match_none {0, "match-none"};
-const Enum::Value AclTcpflagsOperatorEnum::match_all {1, "match-all"};
-const Enum::Value AclTcpflagsOperatorEnum::match_any_old {2, "match-any-old"};
-const Enum::Value AclTcpflagsOperatorEnum::match_any {3, "match-any"};
+const Enum::YLeaf AclTcpflagsOperatorEnum::match_none {0, "match-none"};
+const Enum::YLeaf AclTcpflagsOperatorEnum::match_all {1, "match-all"};
+const Enum::YLeaf AclTcpflagsOperatorEnum::match_any_old {2, "match-any-old"};
+const Enum::YLeaf AclTcpflagsOperatorEnum::match_any {3, "match-any"};
 
-const Enum::Value AclPortOperatorEnum::none {0, "none"};
-const Enum::Value AclPortOperatorEnum::eq {1, "eq"};
-const Enum::Value AclPortOperatorEnum::gt {2, "gt"};
-const Enum::Value AclPortOperatorEnum::lt {3, "lt"};
-const Enum::Value AclPortOperatorEnum::neq {4, "neq"};
-const Enum::Value AclPortOperatorEnum::range {5, "range"};
-const Enum::Value AclPortOperatorEnum::onebyte {8, "onebyte"};
-const Enum::Value AclPortOperatorEnum::twobytes {9, "twobytes"};
+const Enum::YLeaf AclPortOperatorEnum::none {0, "none"};
+const Enum::YLeaf AclPortOperatorEnum::eq {1, "eq"};
+const Enum::YLeaf AclPortOperatorEnum::gt {2, "gt"};
+const Enum::YLeaf AclPortOperatorEnum::lt {3, "lt"};
+const Enum::YLeaf AclPortOperatorEnum::neq {4, "neq"};
+const Enum::YLeaf AclPortOperatorEnum::range {5, "range"};
+const Enum::YLeaf AclPortOperatorEnum::onebyte {8, "onebyte"};
+const Enum::YLeaf AclPortOperatorEnum::twobytes {9, "twobytes"};
 
-const Enum::Value AclAce1Enum::normal {0, "normal"};
-const Enum::Value AclAce1Enum::remark {1, "remark"};
-const Enum::Value AclAce1Enum::abf {2, "abf"};
+const Enum::YLeaf AclAce1Enum::normal {0, "normal"};
+const Enum::YLeaf AclAce1Enum::remark {1, "remark"};
+const Enum::YLeaf AclAce1Enum::abf {2, "abf"};
 
-const Enum::Value BagAclNhAtStatusEnum::unknown {0, "unknown"};
-const Enum::Value BagAclNhAtStatusEnum::up {1, "up"};
-const Enum::Value BagAclNhAtStatusEnum::down {2, "down"};
-const Enum::Value BagAclNhAtStatusEnum::not_present {3, "not-present"};
-const Enum::Value BagAclNhAtStatusEnum::max {4, "max"};
+const Enum::YLeaf BagAclNhAtStatusEnum::unknown {0, "unknown"};
+const Enum::YLeaf BagAclNhAtStatusEnum::up {1, "up"};
+const Enum::YLeaf BagAclNhAtStatusEnum::down {2, "down"};
+const Enum::YLeaf BagAclNhAtStatusEnum::not_present {3, "not-present"};
+const Enum::YLeaf BagAclNhAtStatusEnum::max {4, "max"};
 
-const Enum::Value BagAclNhEnum::nexthop_none {0, "nexthop-none"};
-const Enum::Value BagAclNhEnum::nexthop_default {1, "nexthop-default"};
-const Enum::Value BagAclNhEnum::nexthop {2, "nexthop"};
+const Enum::YLeaf BagAclNhEnum::nexthop_none {0, "nexthop-none"};
+const Enum::YLeaf BagAclNhEnum::nexthop_default {1, "nexthop-default"};
+const Enum::YLeaf BagAclNhEnum::nexthop {2, "nexthop"};
 
-const Enum::Value AclActionEnum::deny {0, "deny"};
-const Enum::Value AclActionEnum::permit {1, "permit"};
-const Enum::Value AclActionEnum::encrypt {2, "encrypt"};
-const Enum::Value AclActionEnum::bypass {3, "bypass"};
-const Enum::Value AclActionEnum::fallthrough {4, "fallthrough"};
-const Enum::Value AclActionEnum::invalid {5, "invalid"};
+const Enum::YLeaf AclActionEnum::deny {0, "deny"};
+const Enum::YLeaf AclActionEnum::permit {1, "permit"};
+const Enum::YLeaf AclActionEnum::encrypt {2, "encrypt"};
+const Enum::YLeaf AclActionEnum::bypass {3, "bypass"};
+const Enum::YLeaf AclActionEnum::fallthrough {4, "fallthrough"};
+const Enum::YLeaf AclActionEnum::invalid {5, "invalid"};
 
-const Enum::Value BagAclNhStatusEnum::not_present {0, "not-present"};
-const Enum::Value BagAclNhStatusEnum::unknown {1, "unknown"};
-const Enum::Value BagAclNhStatusEnum::down {2, "down"};
-const Enum::Value BagAclNhStatusEnum::up {3, "up"};
-const Enum::Value BagAclNhStatusEnum::max {4, "max"};
+const Enum::YLeaf BagAclNhStatusEnum::not_present {0, "not-present"};
+const Enum::YLeaf BagAclNhStatusEnum::unknown {1, "unknown"};
+const Enum::YLeaf BagAclNhStatusEnum::down {2, "down"};
+const Enum::YLeaf BagAclNhStatusEnum::up {3, "up"};
+const Enum::YLeaf BagAclNhStatusEnum::max {4, "max"};
 
-const Enum::Value AclLogEnum::log_none {0, "log-none"};
-const Enum::Value AclLogEnum::log {1, "log"};
-const Enum::Value AclLogEnum::log_input {2, "log-input"};
+const Enum::YLeaf AclLogEnum::log_none {0, "log-none"};
+const Enum::YLeaf AclLogEnum::log {1, "log"};
+const Enum::YLeaf AclLogEnum::log_input {2, "log-input"};
 
 
 }

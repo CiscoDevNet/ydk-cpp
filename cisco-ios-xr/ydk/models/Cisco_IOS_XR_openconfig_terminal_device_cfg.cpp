@@ -58,7 +58,7 @@ EntityPath LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAs
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -170,7 +170,7 @@ EntityPath LogicalChannels::Channel::LogicalChannelAssignments::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -277,7 +277,7 @@ EntityPath LogicalChannels::Channel::Otn::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -386,8 +386,8 @@ bool LogicalChannels::Channel::has_operation() const
 	|| is_set(loopback_mode.operation)
 	|| is_set(rate_class.operation)
 	|| is_set(trib_protocol.operation)
-	|| (logical_channel_assignments !=  nullptr && is_set(logical_channel_assignments->operation))
-	|| (otn !=  nullptr && is_set(otn->operation));
+	|| (logical_channel_assignments !=  nullptr && logical_channel_assignments->has_operation())
+	|| (otn !=  nullptr && otn->has_operation());
 }
 
 std::string LogicalChannels::Channel::get_segment_path() const
@@ -577,7 +577,7 @@ EntityPath LogicalChannels::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -782,7 +782,7 @@ EntityPath OpticalChannels::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -849,51 +849,51 @@ std::unique_ptr<Entity> OpticalChannels::clone_ptr()
     return std::make_unique<OpticalChannels>();
 }
 
-const Enum::Value LogicalTribRateEnum::trib_rate1g {0, "trib-rate1g"};
-const Enum::Value LogicalTribRateEnum::trib_rate2_5g {1, "trib-rate2-5g"};
-const Enum::Value LogicalTribRateEnum::trib_rate10g {2, "trib-rate10g"};
-const Enum::Value LogicalTribRateEnum::trib_rate40g {3, "trib-rate40g"};
-const Enum::Value LogicalTribRateEnum::trib_rate100g {4, "trib-rate100g"};
+const Enum::YLeaf LogicalTribRateEnum::trib_rate1g {0, "trib-rate1g"};
+const Enum::YLeaf LogicalTribRateEnum::trib_rate2_5g {1, "trib-rate2-5g"};
+const Enum::YLeaf LogicalTribRateEnum::trib_rate10g {2, "trib-rate10g"};
+const Enum::YLeaf LogicalTribRateEnum::trib_rate40g {3, "trib-rate40g"};
+const Enum::YLeaf LogicalTribRateEnum::trib_rate100g {4, "trib-rate100g"};
 
-const Enum::Value LogicalLoopbackModeEnum::none {1, "none"};
-const Enum::Value LogicalLoopbackModeEnum::facility {2, "facility"};
-const Enum::Value LogicalLoopbackModeEnum::terminal {3, "terminal"};
+const Enum::YLeaf LogicalLoopbackModeEnum::none {1, "none"};
+const Enum::YLeaf LogicalLoopbackModeEnum::facility {2, "facility"};
+const Enum::YLeaf LogicalLoopbackModeEnum::terminal {3, "terminal"};
 
-const Enum::Value LogicalChannelOtnTtiAutoEnum::false_ {0, "false"};
-const Enum::Value LogicalChannelOtnTtiAutoEnum::true_ {1, "true"};
+const Enum::YLeaf LogicalChannelOtnTtiAutoEnum::false_ {0, "false"};
+const Enum::YLeaf LogicalChannelOtnTtiAutoEnum::true_ {1, "true"};
 
-const Enum::Value LogicalAdminStateEnum::enable {1, "enable"};
-const Enum::Value LogicalAdminStateEnum::disable {2, "disable"};
-const Enum::Value LogicalAdminStateEnum::maintenance {3, "maintenance"};
+const Enum::YLeaf LogicalAdminStateEnum::enable {1, "enable"};
+const Enum::YLeaf LogicalAdminStateEnum::disable {2, "disable"};
+const Enum::YLeaf LogicalAdminStateEnum::maintenance {3, "maintenance"};
 
-const Enum::Value LogicalChannelAssignmentEnum::type_logical_channel {1, "type-logical-channel"};
-const Enum::Value LogicalChannelAssignmentEnum::type_optical_channel {2, "type-optical-channel"};
+const Enum::YLeaf LogicalChannelAssignmentEnum::type_logical_channel {1, "type-logical-channel"};
+const Enum::YLeaf LogicalChannelAssignmentEnum::type_optical_channel {2, "type-optical-channel"};
 
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type1ge {1, "trib-proto-type1ge"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_stm16 {3, "trib-proto-type-stm16"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type10gelan {4, "trib-proto-type10gelan"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type10gewan {5, "trib-proto-type10gewan"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_oc192 {6, "trib-proto-type-oc192"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_stm64 {7, "trib-proto-type-stm64"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_otu2 {8, "trib-proto-type-otu2"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_otu2e {9, "trib-proto-type-otu2e"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_otu1e {10, "trib-proto-type-otu1e"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_odu2 {11, "trib-proto-type-odu2"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_odu2e {12, "trib-proto-type-odu2e"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type40ge {13, "trib-proto-type40ge"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_oc768 {14, "trib-proto-type-oc768"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_stm256 {15, "trib-proto-type-stm256"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_otu3 {16, "trib-proto-type-otu3"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_odu3 {17, "trib-proto-type-odu3"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type100ge {18, "trib-proto-type100ge"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type100g_mlg {19, "trib-proto-type100g-mlg"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
-const Enum::Value LogicalTribProtocolEnum::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type1ge {1, "trib-proto-type1ge"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_stm16 {3, "trib-proto-type-stm16"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type10gelan {4, "trib-proto-type10gelan"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type10gewan {5, "trib-proto-type10gewan"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_oc192 {6, "trib-proto-type-oc192"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_stm64 {7, "trib-proto-type-stm64"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu2 {8, "trib-proto-type-otu2"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu2e {9, "trib-proto-type-otu2e"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu1e {10, "trib-proto-type-otu1e"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_odu2 {11, "trib-proto-type-odu2"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_odu2e {12, "trib-proto-type-odu2e"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type40ge {13, "trib-proto-type40ge"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_oc768 {14, "trib-proto-type-oc768"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_stm256 {15, "trib-proto-type-stm256"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu3 {16, "trib-proto-type-otu3"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_odu3 {17, "trib-proto-type-odu3"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type100ge {18, "trib-proto-type100ge"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type100g_mlg {19, "trib-proto-type100g-mlg"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
+const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
 
-const Enum::Value LogicalProtocolEnum::type_ethernet {1, "type-ethernet"};
-const Enum::Value LogicalProtocolEnum::type_otn {2, "type-otn"};
+const Enum::YLeaf LogicalProtocolEnum::type_ethernet {1, "type-ethernet"};
+const Enum::YLeaf LogicalProtocolEnum::type_otn {2, "type-otn"};
 
 
 }

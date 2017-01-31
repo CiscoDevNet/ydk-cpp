@@ -125,7 +125,7 @@ bool Lldp::GlobalLldp::has_data() const
 bool Lldp::GlobalLldp::has_operation() const
 {
     return is_set(operation)
-	|| (lldp_info !=  nullptr && is_set(lldp_info->operation));
+	|| (lldp_info !=  nullptr && lldp_info->has_operation());
 }
 
 std::string Lldp::GlobalLldp::get_segment_path() const
@@ -246,7 +246,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -329,7 +329,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::Networ
     return is_set(operation)
 	|| is_set(if_num.operation)
 	|| is_set(ma_subtype.operation)
-	|| (address !=  nullptr && is_set(address->operation));
+	|| (address !=  nullptr && address->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::get_segment_path() const
@@ -346,7 +346,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -461,7 +461,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -579,7 +579,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::has_op
 	|| is_set(system_description.operation)
 	|| is_set(system_name.operation)
 	|| is_set(time_remaining.operation)
-	|| (network_addresses !=  nullptr && is_set(network_addresses->operation));
+	|| (network_addresses !=  nullptr && network_addresses->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::get_segment_path() const
@@ -596,7 +596,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -747,7 +747,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::Unk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -839,7 +839,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::Unk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -949,7 +949,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::Org
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1051,7 +1051,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::Org
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1168,8 +1168,8 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::has_opera
 	|| is_set(rem_index.operation)
 	|| is_set(rem_local_port_num.operation)
 	|| is_set(rem_time_mark.operation)
-	|| (org_def_tlv_list !=  nullptr && is_set(org_def_tlv_list->operation))
-	|| (unknown_tlv_list !=  nullptr && is_set(unknown_tlv_list->operation));
+	|| (org_def_tlv_list !=  nullptr && org_def_tlv_list->has_operation())
+	|| (unknown_tlv_list !=  nullptr && unknown_tlv_list->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::get_segment_path() const
@@ -1186,7 +1186,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1366,8 +1366,8 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::has_operation(
 	|| is_set(port_id_detail.operation)
 	|| is_set(receiving_interface_name.operation)
 	|| is_set(receiving_parent_interface_name.operation)
-	|| (detail !=  nullptr && is_set(detail->operation))
-	|| (mib !=  nullptr && is_set(mib->operation));
+	|| (detail !=  nullptr && detail->has_operation())
+	|| (mib !=  nullptr && mib->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::get_segment_path() const
@@ -1384,7 +1384,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1563,7 +1563,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1681,7 +1681,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Devices::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1788,7 +1788,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1871,7 +1871,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::Netwo
     return is_set(operation)
 	|| is_set(if_num.operation)
 	|| is_set(ma_subtype.operation)
-	|| (address !=  nullptr && is_set(address->operation));
+	|| (address !=  nullptr && address->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::get_segment_path() const
@@ -1888,7 +1888,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2003,7 +2003,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2121,7 +2121,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::has_o
 	|| is_set(system_description.operation)
 	|| is_set(system_name.operation)
 	|| is_set(time_remaining.operation)
-	|| (network_addresses !=  nullptr && is_set(network_addresses->operation));
+	|| (network_addresses !=  nullptr && network_addresses->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::get_segment_path() const
@@ -2138,7 +2138,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2289,7 +2289,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::Unk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2381,7 +2381,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::Unk
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2491,7 +2491,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::Org
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2593,7 +2593,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::Org
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2710,8 +2710,8 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::has_opera
 	|| is_set(rem_index.operation)
 	|| is_set(rem_local_port_num.operation)
 	|| is_set(rem_time_mark.operation)
-	|| (org_def_tlv_list !=  nullptr && is_set(org_def_tlv_list->operation))
-	|| (unknown_tlv_list !=  nullptr && is_set(unknown_tlv_list->operation));
+	|| (org_def_tlv_list !=  nullptr && org_def_tlv_list->has_operation())
+	|| (unknown_tlv_list !=  nullptr && unknown_tlv_list->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::get_segment_path() const
@@ -2728,7 +2728,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2908,8 +2908,8 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::has_operation(
 	|| is_set(port_id_detail.operation)
 	|| is_set(receiving_interface_name.operation)
 	|| is_set(receiving_parent_interface_name.operation)
-	|| (detail !=  nullptr && is_set(detail->operation))
-	|| (mib !=  nullptr && is_set(mib->operation));
+	|| (detail !=  nullptr && detail->has_operation())
+	|| (mib !=  nullptr && mib->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::get_segment_path() const
@@ -2926,7 +2926,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3105,7 +3105,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3223,7 +3223,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Details::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3330,7 +3330,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detai
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3413,7 +3413,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::Net
     return is_set(operation)
 	|| is_set(if_num.operation)
 	|| is_set(ma_subtype.operation)
-	|| (address !=  nullptr && is_set(address->operation));
+	|| (address !=  nullptr && address->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::get_segment_path() const
@@ -3430,7 +3430,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detai
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3545,7 +3545,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detai
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3663,7 +3663,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::has
 	|| is_set(system_description.operation)
 	|| is_set(system_name.operation)
 	|| is_set(time_remaining.operation)
-	|| (network_addresses !=  nullptr && is_set(network_addresses->operation));
+	|| (network_addresses !=  nullptr && network_addresses->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::get_segment_path() const
@@ -3680,7 +3680,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detai
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3831,7 +3831,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3923,7 +3923,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4033,7 +4033,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4135,7 +4135,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4252,8 +4252,8 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::has_op
 	|| is_set(rem_index.operation)
 	|| is_set(rem_local_port_num.operation)
 	|| is_set(rem_time_mark.operation)
-	|| (org_def_tlv_list !=  nullptr && is_set(org_def_tlv_list->operation))
-	|| (unknown_tlv_list !=  nullptr && is_set(unknown_tlv_list->operation));
+	|| (org_def_tlv_list !=  nullptr && org_def_tlv_list->has_operation())
+	|| (unknown_tlv_list !=  nullptr && unknown_tlv_list->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::get_segment_path() const
@@ -4270,7 +4270,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4450,8 +4450,8 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::has_operati
 	|| is_set(port_id_detail.operation)
 	|| is_set(receiving_interface_name.operation)
 	|| is_set(receiving_parent_interface_name.operation)
-	|| (detail !=  nullptr && is_set(detail->operation))
-	|| (mib !=  nullptr && is_set(mib->operation));
+	|| (detail !=  nullptr && detail->has_operation())
+	|| (mib !=  nullptr && mib->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::get_segment_path() const
@@ -4468,7 +4468,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4647,7 +4647,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4765,7 +4765,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::Summaries::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4862,9 +4862,9 @@ bool Lldp::Nodes::Node::Neighbors::has_data() const
 bool Lldp::Nodes::Node::Neighbors::has_operation() const
 {
     return is_set(operation)
-	|| (details !=  nullptr && is_set(details->operation))
-	|| (devices !=  nullptr && is_set(devices->operation))
-	|| (summaries !=  nullptr && is_set(summaries->operation));
+	|| (details !=  nullptr && details->has_operation())
+	|| (devices !=  nullptr && devices->has_operation())
+	|| (summaries !=  nullptr && summaries->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Neighbors::get_segment_path() const
@@ -4881,7 +4881,7 @@ EntityPath Lldp::Nodes::Node::Neighbors::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5031,7 +5031,7 @@ EntityPath Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::Lldp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5114,7 +5114,7 @@ bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEn
     return is_set(operation)
 	|| is_set(if_num.operation)
 	|| is_set(ma_subtype.operation)
-	|| (address !=  nullptr && is_set(address->operation));
+	|| (address !=  nullptr && address->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::get_segment_path() const
@@ -5131,7 +5131,7 @@ EntityPath Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::Lldp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5246,7 +5246,7 @@ EntityPath Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5364,7 +5364,7 @@ bool Lldp::Nodes::Node::Interfaces::Interface::has_operation() const
 	|| is_set(rx_state.operation)
 	|| is_set(tx_enabled.operation)
 	|| is_set(tx_state.operation)
-	|| (local_network_addresses !=  nullptr && is_set(local_network_addresses->operation));
+	|| (local_network_addresses !=  nullptr && local_network_addresses->has_operation());
 }
 
 std::string Lldp::Nodes::Node::Interfaces::Interface::get_segment_path() const
@@ -5381,7 +5381,7 @@ EntityPath Lldp::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5536,7 +5536,7 @@ EntityPath Lldp::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5667,7 +5667,7 @@ EntityPath Lldp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5797,9 +5797,9 @@ bool Lldp::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (neighbors !=  nullptr && is_set(neighbors->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (neighbors !=  nullptr && neighbors->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Lldp::Nodes::Node::get_segment_path() const
@@ -6064,8 +6064,8 @@ bool Lldp::has_data() const
 bool Lldp::has_operation() const
 {
     return is_set(operation)
-	|| (global_lldp !=  nullptr && is_set(global_lldp->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (global_lldp !=  nullptr && global_lldp->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Lldp::get_segment_path() const
@@ -6082,7 +6082,7 @@ EntityPath Lldp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -6169,8 +6169,8 @@ std::unique_ptr<Entity> Lldp::clone_ptr()
     return std::make_unique<Lldp>();
 }
 
-const Enum::Value LldpL3AddrProtocolEnum::ipv4 {0, "ipv4"};
-const Enum::Value LldpL3AddrProtocolEnum::ipv6 {1, "ipv6"};
+const Enum::YLeaf LldpL3AddrProtocolEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf LldpL3AddrProtocolEnum::ipv6 {1, "ipv6"};
 
 
 }

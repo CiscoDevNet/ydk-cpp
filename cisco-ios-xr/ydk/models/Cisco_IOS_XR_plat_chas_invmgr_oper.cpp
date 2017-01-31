@@ -64,7 +64,7 @@ EntityPath Platform::Racks::Rack::Slots::Slot::Instances::Instance::State::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -169,7 +169,7 @@ bool Platform::Racks::Rack::Slots::Slot::Instances::Instance::has_operation() co
 {
     return is_set(operation)
 	|| is_set(instance_name.operation)
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Platform::Racks::Rack::Slots::Slot::Instances::Instance::get_segment_path() const
@@ -186,7 +186,7 @@ EntityPath Platform::Racks::Rack::Slots::Slot::Instances::Instance::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -296,7 +296,7 @@ EntityPath Platform::Racks::Rack::Slots::Slot::Instances::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -409,7 +409,7 @@ EntityPath Platform::Racks::Rack::Slots::Slot::Vm::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -530,7 +530,7 @@ EntityPath Platform::Racks::Rack::Slots::Slot::State::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -645,9 +645,9 @@ bool Platform::Racks::Rack::Slots::Slot::has_operation() const
 {
     return is_set(operation)
 	|| is_set(slot_name.operation)
-	|| (instances !=  nullptr && is_set(instances->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (vm !=  nullptr && is_set(vm->operation));
+	|| (instances !=  nullptr && instances->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (vm !=  nullptr && vm->has_operation());
 }
 
 std::string Platform::Racks::Rack::Slots::Slot::get_segment_path() const
@@ -664,7 +664,7 @@ EntityPath Platform::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -820,7 +820,7 @@ EntityPath Platform::Racks::Rack::Slots::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -911,7 +911,7 @@ bool Platform::Racks::Rack::has_operation() const
 {
     return is_set(operation)
 	|| is_set(rack_name.operation)
-	|| (slots !=  nullptr && is_set(slots->operation));
+	|| (slots !=  nullptr && slots->has_operation());
 }
 
 std::string Platform::Racks::Rack::get_segment_path() const
@@ -1125,7 +1125,7 @@ bool Platform::has_data() const
 bool Platform::has_operation() const
 {
     return is_set(operation)
-	|| (racks !=  nullptr && is_set(racks->operation));
+	|| (racks !=  nullptr && racks->has_operation());
 }
 
 std::string Platform::get_segment_path() const
@@ -1142,7 +1142,7 @@ EntityPath Platform::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1265,7 +1265,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Po
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1388,7 +1388,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Po
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1476,7 +1476,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Po
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1568,8 +1568,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::A
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::get_segment_path() const
@@ -1586,7 +1586,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Po
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1723,8 +1723,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::A
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::get_segment_path() const
@@ -1741,7 +1741,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Po
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1852,7 +1852,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::h
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation));
+	|| (attributes !=  nullptr && attributes->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::get_segment_path() const
@@ -1869,7 +1869,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Po
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1979,7 +1979,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2086,7 +2086,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2191,7 +2191,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2323,7 +2323,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2454,7 +2454,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2547,9 +2547,9 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformati
     return is_set(operation)
 	|| is_set(main_memory_size.operation)
 	|| is_set(nvram_size.operation)
-	|| (bootflash !=  nullptr && is_set(bootflash->operation))
-	|| (processor !=  nullptr && is_set(processor->operation))
-	|| (rom !=  nullptr && is_set(rom->operation));
+	|| (bootflash !=  nullptr && bootflash->has_operation())
+	|| (processor !=  nullptr && processor->has_operation())
+	|| (rom !=  nullptr && rom->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::get_segment_path() const
@@ -2566,7 +2566,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2747,7 +2747,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2878,7 +2878,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2984,7 +2984,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3101,10 +3101,10 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformati
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::has_operation() const
 {
     return is_set(operation)
-	|| (bootflash_information !=  nullptr && is_set(bootflash_information->operation))
-	|| (disk_information !=  nullptr && is_set(disk_information->operation))
-	|| (motherboard_information !=  nullptr && is_set(motherboard_information->operation))
-	|| (processor_information !=  nullptr && is_set(processor_information->operation));
+	|| (bootflash_information !=  nullptr && bootflash_information->has_operation())
+	|| (disk_information !=  nullptr && disk_information->has_operation())
+	|| (motherboard_information !=  nullptr && motherboard_information->has_operation())
+	|| (processor_information !=  nullptr && processor_information->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::get_segment_path() const
@@ -3121,7 +3121,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3312,7 +3312,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3435,7 +3435,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3523,7 +3523,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3615,8 +3615,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::Attributes::FruInfo::get_segment_path() const
@@ -3633,7 +3633,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3770,8 +3770,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::Attributes::get_segment_path() const
@@ -3788,7 +3788,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3895,7 +3895,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::has_operation() const
 {
     return is_set(operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation));
+	|| (attributes !=  nullptr && attributes->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::get_segment_path() const
@@ -3912,7 +3912,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4034,7 +4034,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4157,7 +4157,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4245,7 +4245,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4337,8 +4337,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
@@ -4355,7 +4355,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4492,8 +4492,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::get_segment_path() const
@@ -4510,7 +4510,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4621,7 +4621,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation));
+	|| (attributes !=  nullptr && attributes->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::get_segment_path() const
@@ -4638,7 +4638,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4748,7 +4748,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4873,7 +4873,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4996,7 +4996,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5084,7 +5084,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5176,8 +5176,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::get_segment_path() const
@@ -5194,7 +5194,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5331,8 +5331,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::get_segment_path() const
@@ -5349,7 +5349,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5470,9 +5470,9 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation))
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (sensors !=  nullptr && is_set(sensors->operation));
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (port !=  nullptr && port->has_operation())
+	|| (sensors !=  nullptr && sensors->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::get_segment_path() const
@@ -5489,7 +5489,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5645,7 +5645,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5770,7 +5770,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5893,7 +5893,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5981,7 +5981,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6073,8 +6073,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
@@ -6091,7 +6091,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6228,8 +6228,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::get_segment_path() const
@@ -6246,7 +6246,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6357,7 +6357,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation));
+	|| (attributes !=  nullptr && attributes->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::get_segment_path() const
@@ -6374,7 +6374,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6484,7 +6484,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6609,7 +6609,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6732,7 +6732,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6820,7 +6820,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6912,8 +6912,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::get_segment_path() const
@@ -6930,7 +6930,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7067,8 +7067,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::get_segment_path() const
@@ -7085,7 +7085,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7202,9 +7202,9 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::has_operation() const
 {
     return is_set(operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation))
-	|| (port_slots !=  nullptr && is_set(port_slots->operation))
-	|| (sensors !=  nullptr && is_set(sensors->operation));
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (port_slots !=  nullptr && port_slots->has_operation())
+	|| (sensors !=  nullptr && sensors->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::get_segment_path() const
@@ -7221,7 +7221,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7389,7 +7389,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7512,7 +7512,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7600,7 +7600,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7692,8 +7692,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::get_segment_path() const
@@ -7710,7 +7710,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7847,8 +7847,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::get_segment_path() const
@@ -7865,7 +7865,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7981,8 +7981,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation))
-	|| (module !=  nullptr && is_set(module->operation));
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (module !=  nullptr && module->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::get_segment_path() const
@@ -7999,7 +7999,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8132,7 +8132,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8257,7 +8257,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8380,7 +8380,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8468,7 +8468,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8560,8 +8560,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwC
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
@@ -8578,7 +8578,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8715,8 +8715,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwC
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_segment_path() const
@@ -8733,7 +8733,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8844,7 +8844,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwC
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation));
+	|| (attributes !=  nullptr && attributes->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::get_segment_path() const
@@ -8861,7 +8861,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8971,7 +8971,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9096,7 +9096,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9219,7 +9219,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9307,7 +9307,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9399,8 +9399,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwC
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::get_segment_path() const
@@ -9417,7 +9417,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9554,8 +9554,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwC
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::get_segment_path() const
@@ -9572,7 +9572,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9688,8 +9688,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwC
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation))
-	|| (sensors !=  nullptr && is_set(sensors->operation));
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (sensors !=  nullptr && sensors->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::get_segment_path() const
@@ -9706,7 +9706,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9839,7 +9839,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9964,7 +9964,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10087,7 +10087,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10175,7 +10175,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10267,8 +10267,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Attributes::FruInfo::get_segment_path() const
@@ -10285,7 +10285,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10422,8 +10422,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Attributes::get_segment_path() const
@@ -10440,7 +10440,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10547,7 +10547,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::has_operation() const
 {
     return is_set(operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation));
+	|| (attributes !=  nullptr && attributes->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::get_segment_path() const
@@ -10564,7 +10564,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10686,7 +10686,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10809,7 +10809,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10897,7 +10897,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10989,8 +10989,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
@@ -11007,7 +11007,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11144,8 +11144,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::get_segment_path() const
@@ -11162,7 +11162,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11273,7 +11273,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation));
+	|| (attributes !=  nullptr && attributes->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::get_segment_path() const
@@ -11290,7 +11290,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11400,7 +11400,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11525,7 +11525,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11648,7 +11648,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11736,7 +11736,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11828,8 +11828,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::get_segment_path() const
@@ -11846,7 +11846,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11983,8 +11983,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::get_segment_path() const
@@ -12001,7 +12001,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12122,9 +12122,9 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation))
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (sensors !=  nullptr && is_set(sensors->operation));
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (port !=  nullptr && port->has_operation())
+	|| (sensors !=  nullptr && sensors->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::get_segment_path() const
@@ -12141,7 +12141,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12297,7 +12297,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12422,7 +12422,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12545,7 +12545,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12633,7 +12633,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12725,8 +12725,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
@@ -12743,7 +12743,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12880,8 +12880,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::get_segment_path() const
@@ -12898,7 +12898,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13009,7 +13009,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation));
+	|| (attributes !=  nullptr && attributes->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::get_segment_path() const
@@ -13026,7 +13026,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13136,7 +13136,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13261,7 +13261,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13384,7 +13384,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13472,7 +13472,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13564,8 +13564,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruIn
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::get_segment_path() const
@@ -13582,7 +13582,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13719,8 +13719,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::has_d
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::get_segment_path() const
@@ -13737,7 +13737,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13878,13 +13878,13 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::has_operation() c
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation))
-	|| (hardware_information !=  nullptr && is_set(hardware_information->operation))
-	|| (hw_components !=  nullptr && is_set(hw_components->operation))
-	|| (port_slots !=  nullptr && is_set(port_slots->operation))
-	|| (portses !=  nullptr && is_set(portses->operation))
-	|| (sensors !=  nullptr && is_set(sensors->operation))
-	|| (sub_slots !=  nullptr && is_set(sub_slots->operation));
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (hardware_information !=  nullptr && hardware_information->has_operation())
+	|| (hw_components !=  nullptr && hw_components->has_operation())
+	|| (port_slots !=  nullptr && port_slots->has_operation())
+	|| (portses !=  nullptr && portses->has_operation())
+	|| (sensors !=  nullptr && sensors->has_operation())
+	|| (sub_slots !=  nullptr && sub_slots->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::get_segment_path() const
@@ -13901,7 +13901,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14149,7 +14149,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14274,7 +14274,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14397,7 +14397,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::Las
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14485,7 +14485,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::Mod
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14577,8 +14577,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::has_opera
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::get_segment_path() const
@@ -14595,7 +14595,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14732,8 +14732,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::has_data() const
 bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::get_segment_path() const
@@ -14750,7 +14750,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14866,8 +14866,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation))
-	|| (cards !=  nullptr && is_set(cards->operation));
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (cards !=  nullptr && cards->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::get_segment_path() const
@@ -14884,7 +14884,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::Slot::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15017,7 +15017,7 @@ EntityPath PlatformInventory::Racks::Rack::Slots::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15142,7 +15142,7 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15265,7 +15265,7 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15353,7 +15353,7 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15445,8 +15445,8 @@ bool PlatformInventory::Racks::Rack::Attributes::FruInfo::has_operation() const
 	|| is_set(module_operational_state.operation)
 	|| is_set(module_power_administrative_state.operation)
 	|| is_set(module_reset_reason.operation)
-	|| (last_operational_state_change !=  nullptr && is_set(last_operational_state_change->operation))
-	|| (module_up_time !=  nullptr && is_set(module_up_time->operation));
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Attributes::FruInfo::get_segment_path() const
@@ -15463,7 +15463,7 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15600,8 +15600,8 @@ bool PlatformInventory::Racks::Rack::Attributes::has_data() const
 bool PlatformInventory::Racks::Rack::Attributes::has_operation() const
 {
     return is_set(operation)
-	|| (basic_info !=  nullptr && is_set(basic_info->operation))
-	|| (fru_info !=  nullptr && is_set(fru_info->operation));
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::Attributes::get_segment_path() const
@@ -15618,7 +15618,7 @@ EntityPath PlatformInventory::Racks::Rack::Attributes::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15734,8 +15734,8 @@ bool PlatformInventory::Racks::Rack::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (attributes !=  nullptr && is_set(attributes->operation))
-	|| (slots !=  nullptr && is_set(slots->operation));
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (slots !=  nullptr && slots->has_operation());
 }
 
 std::string PlatformInventory::Racks::Rack::get_segment_path() const
@@ -15972,7 +15972,7 @@ bool PlatformInventory::has_data() const
 bool PlatformInventory::has_operation() const
 {
     return is_set(operation)
-	|| (racks !=  nullptr && is_set(racks->operation));
+	|| (racks !=  nullptr && racks->has_operation());
 }
 
 std::string PlatformInventory::get_segment_path() const
@@ -15989,7 +15989,7 @@ EntityPath PlatformInventory::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -16053,119 +16053,119 @@ std::unique_ptr<Entity> PlatformInventory::clone_ptr()
     return std::make_unique<PlatformInventory>();
 }
 
-const Enum::Value InvAdminStateEnum::admin_state_invalid {0, "admin-state-invalid"};
-const Enum::Value InvAdminStateEnum::admin_up {1, "admin-up"};
-const Enum::Value InvAdminStateEnum::admin_down {2, "admin-down"};
+const Enum::YLeaf InvAdminStateEnum::admin_state_invalid {0, "admin-state-invalid"};
+const Enum::YLeaf InvAdminStateEnum::admin_up {1, "admin-up"};
+const Enum::YLeaf InvAdminStateEnum::admin_down {2, "admin-down"};
 
-const Enum::Value InvResetReasonEnum::module_reset_reason_unknown {0, "module-reset-reason-unknown"};
-const Enum::Value InvResetReasonEnum::module_reset_reason_powerup {1, "module-reset-reason-powerup"};
-const Enum::Value InvResetReasonEnum::module_reset_reason_user_shutdown {2, "module-reset-reason-user-shutdown"};
-const Enum::Value InvResetReasonEnum::module_reset_reason_user_reload {3, "module-reset-reason-user-reload"};
-const Enum::Value InvResetReasonEnum::module_reset_reason_auto_reload {4, "module-reset-reason-auto-reload"};
-const Enum::Value InvResetReasonEnum::module_reset_reason_environment {5, "module-reset-reason-environment"};
-const Enum::Value InvResetReasonEnum::module_reset_reason_user_unpower {6, "module-reset-reason-user-unpower"};
+const Enum::YLeaf InvResetReasonEnum::module_reset_reason_unknown {0, "module-reset-reason-unknown"};
+const Enum::YLeaf InvResetReasonEnum::module_reset_reason_powerup {1, "module-reset-reason-powerup"};
+const Enum::YLeaf InvResetReasonEnum::module_reset_reason_user_shutdown {2, "module-reset-reason-user-shutdown"};
+const Enum::YLeaf InvResetReasonEnum::module_reset_reason_user_reload {3, "module-reset-reason-user-reload"};
+const Enum::YLeaf InvResetReasonEnum::module_reset_reason_auto_reload {4, "module-reset-reason-auto-reload"};
+const Enum::YLeaf InvResetReasonEnum::module_reset_reason_environment {5, "module-reset-reason-environment"};
+const Enum::YLeaf InvResetReasonEnum::module_reset_reason_user_unpower {6, "module-reset-reason-user-unpower"};
 
-const Enum::Value InvCardStateEnum::inv_card_not_present {0, "inv-card-not-present"};
-const Enum::Value InvCardStateEnum::inv_card_present {1, "inv-card-present"};
-const Enum::Value InvCardStateEnum::inv_card_reset {2, "inv-card-reset"};
-const Enum::Value InvCardStateEnum::inv_card_booting {3, "inv-card-booting"};
-const Enum::Value InvCardStateEnum::inv_card_mbi_booting {4, "inv-card-mbi-booting"};
-const Enum::Value InvCardStateEnum::inv_card_running_mbi {5, "inv-card-running-mbi"};
-const Enum::Value InvCardStateEnum::inv_card_running_ena {6, "inv-card-running-ena"};
-const Enum::Value InvCardStateEnum::inv_card_bring_down {7, "inv-card-bring-down"};
-const Enum::Value InvCardStateEnum::inv_card_ena_failure {8, "inv-card-ena-failure"};
-const Enum::Value InvCardStateEnum::inv_card_f_diag_run {9, "inv-card-f-diag-run"};
-const Enum::Value InvCardStateEnum::inv_card_f_diag_failure {10, "inv-card-f-diag-failure"};
-const Enum::Value InvCardStateEnum::inv_card_powered {11, "inv-card-powered"};
-const Enum::Value InvCardStateEnum::inv_card_unpowered {12, "inv-card-unpowered"};
-const Enum::Value InvCardStateEnum::inv_card_mdr {13, "inv-card-mdr"};
-const Enum::Value InvCardStateEnum::inv_card_mdr_running_mbi {14, "inv-card-mdr-running-mbi"};
-const Enum::Value InvCardStateEnum::inv_card_main_t_mode {15, "inv-card-main-t-mode"};
-const Enum::Value InvCardStateEnum::inv_card_admin_down {16, "inv-card-admin-down"};
-const Enum::Value InvCardStateEnum::inv_card_no_mon {17, "inv-card-no-mon"};
-const Enum::Value InvCardStateEnum::inv_card_unknown {18, "inv-card-unknown"};
-const Enum::Value InvCardStateEnum::inv_card_failed {19, "inv-card-failed"};
-const Enum::Value InvCardStateEnum::inv_card_ok {20, "inv-card-ok"};
-const Enum::Value InvCardStateEnum::inv_card_missing {21, "inv-card-missing"};
-const Enum::Value InvCardStateEnum::inv_card_field_diag_downloading {22, "inv-card-field-diag-downloading"};
-const Enum::Value InvCardStateEnum::inv_card_field_diag_unmonitor {23, "inv-card-field-diag-unmonitor"};
-const Enum::Value InvCardStateEnum::inv_card_fabric_field_diag_unmonitor {24, "inv-card-fabric-field-diag-unmonitor"};
-const Enum::Value InvCardStateEnum::inv_card_field_diag_rp_launching {25, "inv-card-field-diag-rp-launching"};
-const Enum::Value InvCardStateEnum::inv_card_field_diag_running {26, "inv-card-field-diag-running"};
-const Enum::Value InvCardStateEnum::inv_card_field_diag_pass {27, "inv-card-field-diag-pass"};
-const Enum::Value InvCardStateEnum::inv_card_field_diag_fail {28, "inv-card-field-diag-fail"};
-const Enum::Value InvCardStateEnum::inv_card_field_diag_timeout {29, "inv-card-field-diag-timeout"};
-const Enum::Value InvCardStateEnum::inv_card_disabled {30, "inv-card-disabled"};
-const Enum::Value InvCardStateEnum::inv_card_spa_booting {31, "inv-card-spa-booting"};
-const Enum::Value InvCardStateEnum::inv_card_not_allowed_online {32, "inv-card-not-allowed-online"};
-const Enum::Value InvCardStateEnum::inv_card_stopped {33, "inv-card-stopped"};
-const Enum::Value InvCardStateEnum::inv_card_incompatible_fw_ver {34, "inv-card-incompatible-fw-ver"};
-const Enum::Value InvCardStateEnum::inv_card_fpd_hold {35, "inv-card-fpd-hold"};
-const Enum::Value InvCardStateEnum::inv_card_node_prep {36, "inv-card-node-prep"};
-const Enum::Value InvCardStateEnum::inv_card_updating_fpd {37, "inv-card-updating-fpd"};
-const Enum::Value InvCardStateEnum::inv_card_num_states {38, "inv-card-num-states"};
+const Enum::YLeaf InvCardStateEnum::inv_card_not_present {0, "inv-card-not-present"};
+const Enum::YLeaf InvCardStateEnum::inv_card_present {1, "inv-card-present"};
+const Enum::YLeaf InvCardStateEnum::inv_card_reset {2, "inv-card-reset"};
+const Enum::YLeaf InvCardStateEnum::inv_card_booting {3, "inv-card-booting"};
+const Enum::YLeaf InvCardStateEnum::inv_card_mbi_booting {4, "inv-card-mbi-booting"};
+const Enum::YLeaf InvCardStateEnum::inv_card_running_mbi {5, "inv-card-running-mbi"};
+const Enum::YLeaf InvCardStateEnum::inv_card_running_ena {6, "inv-card-running-ena"};
+const Enum::YLeaf InvCardStateEnum::inv_card_bring_down {7, "inv-card-bring-down"};
+const Enum::YLeaf InvCardStateEnum::inv_card_ena_failure {8, "inv-card-ena-failure"};
+const Enum::YLeaf InvCardStateEnum::inv_card_f_diag_run {9, "inv-card-f-diag-run"};
+const Enum::YLeaf InvCardStateEnum::inv_card_f_diag_failure {10, "inv-card-f-diag-failure"};
+const Enum::YLeaf InvCardStateEnum::inv_card_powered {11, "inv-card-powered"};
+const Enum::YLeaf InvCardStateEnum::inv_card_unpowered {12, "inv-card-unpowered"};
+const Enum::YLeaf InvCardStateEnum::inv_card_mdr {13, "inv-card-mdr"};
+const Enum::YLeaf InvCardStateEnum::inv_card_mdr_running_mbi {14, "inv-card-mdr-running-mbi"};
+const Enum::YLeaf InvCardStateEnum::inv_card_main_t_mode {15, "inv-card-main-t-mode"};
+const Enum::YLeaf InvCardStateEnum::inv_card_admin_down {16, "inv-card-admin-down"};
+const Enum::YLeaf InvCardStateEnum::inv_card_no_mon {17, "inv-card-no-mon"};
+const Enum::YLeaf InvCardStateEnum::inv_card_unknown {18, "inv-card-unknown"};
+const Enum::YLeaf InvCardStateEnum::inv_card_failed {19, "inv-card-failed"};
+const Enum::YLeaf InvCardStateEnum::inv_card_ok {20, "inv-card-ok"};
+const Enum::YLeaf InvCardStateEnum::inv_card_missing {21, "inv-card-missing"};
+const Enum::YLeaf InvCardStateEnum::inv_card_field_diag_downloading {22, "inv-card-field-diag-downloading"};
+const Enum::YLeaf InvCardStateEnum::inv_card_field_diag_unmonitor {23, "inv-card-field-diag-unmonitor"};
+const Enum::YLeaf InvCardStateEnum::inv_card_fabric_field_diag_unmonitor {24, "inv-card-fabric-field-diag-unmonitor"};
+const Enum::YLeaf InvCardStateEnum::inv_card_field_diag_rp_launching {25, "inv-card-field-diag-rp-launching"};
+const Enum::YLeaf InvCardStateEnum::inv_card_field_diag_running {26, "inv-card-field-diag-running"};
+const Enum::YLeaf InvCardStateEnum::inv_card_field_diag_pass {27, "inv-card-field-diag-pass"};
+const Enum::YLeaf InvCardStateEnum::inv_card_field_diag_fail {28, "inv-card-field-diag-fail"};
+const Enum::YLeaf InvCardStateEnum::inv_card_field_diag_timeout {29, "inv-card-field-diag-timeout"};
+const Enum::YLeaf InvCardStateEnum::inv_card_disabled {30, "inv-card-disabled"};
+const Enum::YLeaf InvCardStateEnum::inv_card_spa_booting {31, "inv-card-spa-booting"};
+const Enum::YLeaf InvCardStateEnum::inv_card_not_allowed_online {32, "inv-card-not-allowed-online"};
+const Enum::YLeaf InvCardStateEnum::inv_card_stopped {33, "inv-card-stopped"};
+const Enum::YLeaf InvCardStateEnum::inv_card_incompatible_fw_ver {34, "inv-card-incompatible-fw-ver"};
+const Enum::YLeaf InvCardStateEnum::inv_card_fpd_hold {35, "inv-card-fpd-hold"};
+const Enum::YLeaf InvCardStateEnum::inv_card_node_prep {36, "inv-card-node-prep"};
+const Enum::YLeaf InvCardStateEnum::inv_card_updating_fpd {37, "inv-card-updating-fpd"};
+const Enum::YLeaf InvCardStateEnum::inv_card_num_states {38, "inv-card-num-states"};
 
-const Enum::Value InvMonitorStateEnum::unmonitored {0, "unmonitored"};
-const Enum::Value InvMonitorStateEnum::monitored {1, "monitored"};
+const Enum::YLeaf InvMonitorStateEnum::unmonitored {0, "unmonitored"};
+const Enum::YLeaf InvMonitorStateEnum::monitored {1, "monitored"};
 
-const Enum::Value NodeStateEnum::not_present {0, "not-present"};
-const Enum::Value NodeStateEnum::present {1, "present"};
-const Enum::Value NodeStateEnum::reset {2, "reset"};
-const Enum::Value NodeStateEnum::rommon {3, "rommon"};
-const Enum::Value NodeStateEnum::mbi_boot {4, "mbi-boot"};
-const Enum::Value NodeStateEnum::mbi_run {5, "mbi-run"};
-const Enum::Value NodeStateEnum::xr_run {6, "xr-run"};
-const Enum::Value NodeStateEnum::bring_down {7, "bring-down"};
-const Enum::Value NodeStateEnum::xr_fail {8, "xr-fail"};
-const Enum::Value NodeStateEnum::fdiag_run {9, "fdiag-run"};
-const Enum::Value NodeStateEnum::fdiag_fail {10, "fdiag-fail"};
-const Enum::Value NodeStateEnum::power {11, "power"};
-const Enum::Value NodeStateEnum::unpower {12, "unpower"};
-const Enum::Value NodeStateEnum::mdr_warm_reload {13, "mdr-warm-reload"};
-const Enum::Value NodeStateEnum::mdr_mbi_run {14, "mdr-mbi-run"};
-const Enum::Value NodeStateEnum::maintenance_mode {15, "maintenance-mode"};
-const Enum::Value NodeStateEnum::admin_down {16, "admin-down"};
-const Enum::Value NodeStateEnum::not_monitor {17, "not-monitor"};
-const Enum::Value NodeStateEnum::unknown_card {18, "unknown-card"};
-const Enum::Value NodeStateEnum::failed {19, "failed"};
-const Enum::Value NodeStateEnum::ok {20, "ok"};
-const Enum::Value NodeStateEnum::missing {21, "missing"};
-const Enum::Value NodeStateEnum::diag_download {22, "diag-download"};
-const Enum::Value NodeStateEnum::diag_not_monitor {23, "diag-not-monitor"};
-const Enum::Value NodeStateEnum::fabric_diag_not_monitor {24, "fabric-diag-not-monitor"};
-const Enum::Value NodeStateEnum::diag_rp_launch {25, "diag-rp-launch"};
-const Enum::Value NodeStateEnum::diag_run {26, "diag-run"};
-const Enum::Value NodeStateEnum::diag_pass {27, "diag-pass"};
-const Enum::Value NodeStateEnum::diag_fail {28, "diag-fail"};
-const Enum::Value NodeStateEnum::diag_timeout {29, "diag-timeout"};
-const Enum::Value NodeStateEnum::disable {30, "disable"};
-const Enum::Value NodeStateEnum::spa_boot {31, "spa-boot"};
-const Enum::Value NodeStateEnum::not_allowed_online {32, "not-allowed-online"};
-const Enum::Value NodeStateEnum::stop {33, "stop"};
-const Enum::Value NodeStateEnum::incomp_version {34, "incomp-version"};
-const Enum::Value NodeStateEnum::fpd_hold {35, "fpd-hold"};
-const Enum::Value NodeStateEnum::xr_preparation {36, "xr-preparation"};
-const Enum::Value NodeStateEnum::sync_ready {37, "sync-ready"};
-const Enum::Value NodeStateEnum::xr_isolate {38, "xr-isolate"};
-const Enum::Value NodeStateEnum::ready {39, "ready"};
-const Enum::Value NodeStateEnum::invalid {40, "invalid"};
-const Enum::Value NodeStateEnum::operational {41, "operational"};
-const Enum::Value NodeStateEnum::operational_lock {42, "operational-lock"};
-const Enum::Value NodeStateEnum::going_down {43, "going-down"};
-const Enum::Value NodeStateEnum::going_offline {44, "going-offline"};
-const Enum::Value NodeStateEnum::going_online {45, "going-online"};
-const Enum::Value NodeStateEnum::offline {46, "offline"};
-const Enum::Value NodeStateEnum::up {47, "up"};
-const Enum::Value NodeStateEnum::down {48, "down"};
-const Enum::Value NodeStateEnum::max {49, "max"};
-const Enum::Value NodeStateEnum::unknown {50, "unknown"};
+const Enum::YLeaf NodeStateEnum::not_present {0, "not-present"};
+const Enum::YLeaf NodeStateEnum::present {1, "present"};
+const Enum::YLeaf NodeStateEnum::reset {2, "reset"};
+const Enum::YLeaf NodeStateEnum::rommon {3, "rommon"};
+const Enum::YLeaf NodeStateEnum::mbi_boot {4, "mbi-boot"};
+const Enum::YLeaf NodeStateEnum::mbi_run {5, "mbi-run"};
+const Enum::YLeaf NodeStateEnum::xr_run {6, "xr-run"};
+const Enum::YLeaf NodeStateEnum::bring_down {7, "bring-down"};
+const Enum::YLeaf NodeStateEnum::xr_fail {8, "xr-fail"};
+const Enum::YLeaf NodeStateEnum::fdiag_run {9, "fdiag-run"};
+const Enum::YLeaf NodeStateEnum::fdiag_fail {10, "fdiag-fail"};
+const Enum::YLeaf NodeStateEnum::power {11, "power"};
+const Enum::YLeaf NodeStateEnum::unpower {12, "unpower"};
+const Enum::YLeaf NodeStateEnum::mdr_warm_reload {13, "mdr-warm-reload"};
+const Enum::YLeaf NodeStateEnum::mdr_mbi_run {14, "mdr-mbi-run"};
+const Enum::YLeaf NodeStateEnum::maintenance_mode {15, "maintenance-mode"};
+const Enum::YLeaf NodeStateEnum::admin_down {16, "admin-down"};
+const Enum::YLeaf NodeStateEnum::not_monitor {17, "not-monitor"};
+const Enum::YLeaf NodeStateEnum::unknown_card {18, "unknown-card"};
+const Enum::YLeaf NodeStateEnum::failed {19, "failed"};
+const Enum::YLeaf NodeStateEnum::ok {20, "ok"};
+const Enum::YLeaf NodeStateEnum::missing {21, "missing"};
+const Enum::YLeaf NodeStateEnum::diag_download {22, "diag-download"};
+const Enum::YLeaf NodeStateEnum::diag_not_monitor {23, "diag-not-monitor"};
+const Enum::YLeaf NodeStateEnum::fabric_diag_not_monitor {24, "fabric-diag-not-monitor"};
+const Enum::YLeaf NodeStateEnum::diag_rp_launch {25, "diag-rp-launch"};
+const Enum::YLeaf NodeStateEnum::diag_run {26, "diag-run"};
+const Enum::YLeaf NodeStateEnum::diag_pass {27, "diag-pass"};
+const Enum::YLeaf NodeStateEnum::diag_fail {28, "diag-fail"};
+const Enum::YLeaf NodeStateEnum::diag_timeout {29, "diag-timeout"};
+const Enum::YLeaf NodeStateEnum::disable {30, "disable"};
+const Enum::YLeaf NodeStateEnum::spa_boot {31, "spa-boot"};
+const Enum::YLeaf NodeStateEnum::not_allowed_online {32, "not-allowed-online"};
+const Enum::YLeaf NodeStateEnum::stop {33, "stop"};
+const Enum::YLeaf NodeStateEnum::incomp_version {34, "incomp-version"};
+const Enum::YLeaf NodeStateEnum::fpd_hold {35, "fpd-hold"};
+const Enum::YLeaf NodeStateEnum::xr_preparation {36, "xr-preparation"};
+const Enum::YLeaf NodeStateEnum::sync_ready {37, "sync-ready"};
+const Enum::YLeaf NodeStateEnum::xr_isolate {38, "xr-isolate"};
+const Enum::YLeaf NodeStateEnum::ready {39, "ready"};
+const Enum::YLeaf NodeStateEnum::invalid {40, "invalid"};
+const Enum::YLeaf NodeStateEnum::operational {41, "operational"};
+const Enum::YLeaf NodeStateEnum::operational_lock {42, "operational-lock"};
+const Enum::YLeaf NodeStateEnum::going_down {43, "going-down"};
+const Enum::YLeaf NodeStateEnum::going_offline {44, "going-offline"};
+const Enum::YLeaf NodeStateEnum::going_online {45, "going-online"};
+const Enum::YLeaf NodeStateEnum::offline {46, "offline"};
+const Enum::YLeaf NodeStateEnum::up {47, "up"};
+const Enum::YLeaf NodeStateEnum::down {48, "down"};
+const Enum::YLeaf NodeStateEnum::max {49, "max"};
+const Enum::YLeaf NodeStateEnum::unknown {50, "unknown"};
 
-const Enum::Value CardRedundancyStateEnum::active {1, "active"};
-const Enum::Value CardRedundancyStateEnum::standby {2, "standby"};
+const Enum::YLeaf CardRedundancyStateEnum::active {1, "active"};
+const Enum::YLeaf CardRedundancyStateEnum::standby {2, "standby"};
 
-const Enum::Value InvPowerAdminStateEnum::admin_power_invalid {0, "admin-power-invalid"};
-const Enum::Value InvPowerAdminStateEnum::admin_on {2, "admin-on"};
-const Enum::Value InvPowerAdminStateEnum::admin_off {3, "admin-off"};
+const Enum::YLeaf InvPowerAdminStateEnum::admin_power_invalid {0, "admin-power-invalid"};
+const Enum::YLeaf InvPowerAdminStateEnum::admin_on {2, "admin-on"};
+const Enum::YLeaf InvPowerAdminStateEnum::admin_off {3, "admin-off"};
 
 
 }

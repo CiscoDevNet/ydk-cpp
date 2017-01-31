@@ -49,7 +49,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -135,7 +135,7 @@ bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::has_op
 	|| is_set(acl.operation)
 	|| is_set(mirror_first.operation)
 	|| is_set(mirror_interval.operation)
-	|| (attachment !=  nullptr && is_set(attachment->operation));
+	|| (attachment !=  nullptr && attachment->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::get_segment_path() const
@@ -152,7 +152,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -277,7 +277,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -387,7 +387,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -491,7 +491,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -574,8 +574,8 @@ bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::has_data() const
 bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::has_operation() const
 {
     return is_set(operation)
-	|| (inbound !=  nullptr && is_set(inbound->operation))
-	|| (outbound !=  nullptr && is_set(outbound->operation));
+	|| (inbound !=  nullptr && inbound->has_operation())
+	|| (outbound !=  nullptr && outbound->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::get_segment_path() const
@@ -592,7 +592,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -719,7 +719,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -815,7 +815,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -893,8 +893,8 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::has_data() const
 bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::has_operation() const
 {
     return is_set(operation)
-	|| (inbound !=  nullptr && is_set(inbound->operation))
-	|| (outbound !=  nullptr && is_set(outbound->operation));
+	|| (inbound !=  nullptr && inbound->has_operation())
+	|| (outbound !=  nullptr && outbound->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::get_segment_path() const
@@ -911,7 +911,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1035,7 +1035,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1125,7 +1125,7 @@ bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_operation() const
 	|| is_set(query_max_response_time.operation)
 	|| is_set(robustness.operation)
 	|| is_set(version.operation)
-	|| (explicit_tracking !=  nullptr && is_set(explicit_tracking->operation));
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_segment_path() const
@@ -1142,7 +1142,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1261,7 +1261,7 @@ bool DynamicTemplate::Ppps::Ppp::Igmp::has_data() const
 bool DynamicTemplate::Ppps::Ppp::Igmp::has_operation() const
 {
     return is_set(operation)
-	|| (default_vrf !=  nullptr && is_set(default_vrf->operation));
+	|| (default_vrf !=  nullptr && default_vrf->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Igmp::get_segment_path() const
@@ -1278,7 +1278,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Igmp::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1385,7 +1385,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv4Network::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1480,7 +1480,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1546,7 +1546,7 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::has_data() const
 bool DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::has_operation() const
 {
     return is_set(operation)
-	|| (auto_configuration !=  nullptr && is_set(auto_configuration->operation));
+	|| (auto_configuration !=  nullptr && auto_configuration->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::get_segment_path() const
@@ -1563,7 +1563,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1657,7 +1657,7 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Network::has_operation() const
 	|| is_set(mtu.operation)
 	|| is_set(unreachables.operation)
 	|| is_set(verify.operation)
-	|| (addresses !=  nullptr && is_set(addresses->operation));
+	|| (addresses !=  nullptr && addresses->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6Network::get_segment_path() const
@@ -1674,7 +1674,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Network::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1790,7 +1790,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1875,7 +1875,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1958,7 +1958,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2079,9 +2079,9 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::has_operation() const
 	|| is_set(router_preference.operation)
 	|| is_set(start_ra_on_ipv6_enable.operation)
 	|| is_set(suppress_cache_learning.operation)
-	|| (duplicate_address_detection !=  nullptr && is_set(duplicate_address_detection->operation))
-	|| (framed_prefix !=  nullptr && is_set(framed_prefix->operation))
-	|| (ra_initial !=  nullptr && is_set(ra_initial->operation));
+	|| (duplicate_address_detection !=  nullptr && duplicate_address_detection->has_operation())
+	|| (framed_prefix !=  nullptr && framed_prefix->has_operation())
+	|| (ra_initial !=  nullptr && ra_initial->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_segment_path() const
@@ -2098,7 +2098,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2320,7 +2320,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2404,7 +2404,7 @@ bool DynamicTemplate::Ppps::Ppp::Dhcpv6::has_operation() const
 	|| is_set(delegated_prefix_pool.operation)
 	|| is_set(dns_ipv6address.operation)
 	|| is_set(stateful_address.operation)
-	|| (delegated_prefix !=  nullptr && is_set(delegated_prefix->operation));
+	|| (delegated_prefix !=  nullptr && delegated_prefix->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Dhcpv6::get_segment_path() const
@@ -2421,7 +2421,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Dhcpv6::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2544,7 +2544,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2614,7 +2614,7 @@ bool DynamicTemplate::Ppps::Ppp::Pbr::has_operation() const
 {
     return is_set(operation)
 	|| is_set(service_policy_in.operation)
-	|| (service_policy !=  nullptr && is_set(service_policy->operation));
+	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Pbr::get_segment_path() const
@@ -2631,7 +2631,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Pbr::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2746,7 +2746,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2858,7 +2858,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2943,8 +2943,8 @@ bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::has_data() const
 bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && is_set(input->operation))
-	|| (output !=  nullptr && is_set(output->operation));
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::get_segment_path() const
@@ -2961,7 +2961,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3091,7 +3091,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Qos::Account::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3186,7 +3186,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Qos::Output::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3262,9 +3262,9 @@ bool DynamicTemplate::Ppps::Ppp::Qos::has_data() const
 bool DynamicTemplate::Ppps::Ppp::Qos::has_operation() const
 {
     return is_set(operation)
-	|| (account !=  nullptr && is_set(account->operation))
-	|| (output !=  nullptr && is_set(output->operation))
-	|| (service_policy !=  nullptr && is_set(service_policy->operation));
+	|| (account !=  nullptr && account->has_operation())
+	|| (output !=  nullptr && output->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Qos::get_segment_path() const
@@ -3281,7 +3281,7 @@ EntityPath DynamicTemplate::Ppps::Ppp::Qos::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3463,16 +3463,16 @@ bool DynamicTemplate::Ppps::Ppp::has_operation() const
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(vrf.operation)
-	|| (dhcpv6 !=  nullptr && is_set(dhcpv6->operation))
-	|| (igmp !=  nullptr && is_set(igmp->operation))
-	|| (ipv4_network !=  nullptr && is_set(ipv4_network->operation))
-	|| (ipv4_packet_filter !=  nullptr && is_set(ipv4_packet_filter->operation))
-	|| (ipv6_neighbor !=  nullptr && is_set(ipv6_neighbor->operation))
-	|| (ipv6_network !=  nullptr && is_set(ipv6_network->operation))
-	|| (ipv6_packet_filter !=  nullptr && is_set(ipv6_packet_filter->operation))
-	|| (pbr !=  nullptr && is_set(pbr->operation))
-	|| (qos !=  nullptr && is_set(qos->operation))
-	|| (span_monitor_sessions !=  nullptr && is_set(span_monitor_sessions->operation));
+	|| (dhcpv6 !=  nullptr && dhcpv6->has_operation())
+	|| (igmp !=  nullptr && igmp->has_operation())
+	|| (ipv4_network !=  nullptr && ipv4_network->has_operation())
+	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_operation())
+	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_operation())
+	|| (ipv6_network !=  nullptr && ipv6_network->has_operation())
+	|| (ipv6_packet_filter !=  nullptr && ipv6_packet_filter->has_operation())
+	|| (pbr !=  nullptr && pbr->has_operation())
+	|| (qos !=  nullptr && qos->has_operation())
+	|| (span_monitor_sessions !=  nullptr && span_monitor_sessions->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::get_segment_path() const
@@ -3918,7 +3918,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::Sp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4004,7 +4004,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMoni
 	|| is_set(acl.operation)
 	|| is_set(mirror_first.operation)
 	|| is_set(mirror_interval.operation)
-	|| (attachment !=  nullptr && is_set(attachment->operation));
+	|| (attachment !=  nullptr && attachment->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::get_segment_path() const
@@ -4021,7 +4021,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::Sp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4146,7 +4146,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4256,7 +4256,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4360,7 +4360,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4443,8 +4443,8 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::has_data() 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::has_operation() const
 {
     return is_set(operation)
-	|| (inbound !=  nullptr && is_set(inbound->operation))
-	|| (outbound !=  nullptr && is_set(outbound->operation));
+	|| (inbound !=  nullptr && inbound->has_operation())
+	|| (outbound !=  nullptr && outbound->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::get_segment_path() const
@@ -4461,7 +4461,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4588,7 +4588,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4684,7 +4684,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4762,8 +4762,8 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::has_data() 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::has_operation() const
 {
     return is_set(operation)
-	|| (inbound !=  nullptr && is_set(inbound->operation))
-	|| (outbound !=  nullptr && is_set(outbound->operation));
+	|| (inbound !=  nullptr && inbound->has_operation())
+	|| (outbound !=  nullptr && outbound->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::get_segment_path() const
@@ -4780,7 +4780,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4910,7 +4910,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5005,7 +5005,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5071,7 +5071,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::has_d
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::has_operation() const
 {
     return is_set(operation)
-	|| (auto_configuration !=  nullptr && is_set(auto_configuration->operation));
+	|| (auto_configuration !=  nullptr && auto_configuration->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::get_segment_path() const
@@ -5088,7 +5088,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5182,7 +5182,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::has_operation() 
 	|| is_set(mtu.operation)
 	|| is_set(unreachables.operation)
 	|| is_set(verify.operation)
-	|| (addresses !=  nullptr && is_set(addresses->operation));
+	|| (addresses !=  nullptr && addresses->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::get_segment_path() const
@@ -5199,7 +5199,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5315,7 +5315,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5400,7 +5400,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::Duplicate
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5483,7 +5483,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5604,9 +5604,9 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::has_operation()
 	|| is_set(router_preference.operation)
 	|| is_set(start_ra_on_ipv6_enable.operation)
 	|| is_set(suppress_cache_learning.operation)
-	|| (duplicate_address_detection !=  nullptr && is_set(duplicate_address_detection->operation))
-	|| (framed_prefix !=  nullptr && is_set(framed_prefix->operation))
-	|| (ra_initial !=  nullptr && is_set(ra_initial->operation));
+	|| (duplicate_address_detection !=  nullptr && duplicate_address_detection->has_operation())
+	|| (framed_prefix !=  nullptr && framed_prefix->has_operation())
+	|| (ra_initial !=  nullptr && ra_initial->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::get_segment_path() const
@@ -5623,7 +5623,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5845,7 +5845,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5929,7 +5929,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::has_operation() const
 	|| is_set(delegated_prefix_pool.operation)
 	|| is_set(dns_ipv6address.operation)
 	|| is_set(stateful_address.operation)
-	|| (delegated_prefix !=  nullptr && is_set(delegated_prefix->operation));
+	|| (delegated_prefix !=  nullptr && delegated_prefix->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::get_segment_path() const
@@ -5946,7 +5946,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6069,7 +6069,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6139,7 +6139,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_operation() const
 {
     return is_set(operation)
 	|| is_set(service_policy_in.operation)
-	|| (service_policy !=  nullptr && is_set(service_policy->operation));
+	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_segment_path() const
@@ -6156,7 +6156,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6271,7 +6271,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Inp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6383,7 +6383,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Out
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6468,8 +6468,8 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::has_data(
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && is_set(input->operation))
-	|| (output !=  nullptr && is_set(output->operation));
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::get_segment_path() const
@@ -6486,7 +6486,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6616,7 +6616,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6711,7 +6711,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6787,9 +6787,9 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::has_data() const
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::has_operation() const
 {
     return is_set(operation)
-	|| (account !=  nullptr && is_set(account->operation))
-	|| (output !=  nullptr && is_set(output->operation))
-	|| (service_policy !=  nullptr && is_set(service_policy->operation));
+	|| (account !=  nullptr && account->has_operation())
+	|| (output !=  nullptr && output->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Qos::get_segment_path() const
@@ -6806,7 +6806,7 @@ EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6983,15 +6983,15 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::has_operation() const
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(vrf.operation)
-	|| (dhcpv6 !=  nullptr && is_set(dhcpv6->operation))
-	|| (ipv4_network !=  nullptr && is_set(ipv4_network->operation))
-	|| (ipv4_packet_filter !=  nullptr && is_set(ipv4_packet_filter->operation))
-	|| (ipv6_neighbor !=  nullptr && is_set(ipv6_neighbor->operation))
-	|| (ipv6_network !=  nullptr && is_set(ipv6_network->operation))
-	|| (ipv6_packet_filter !=  nullptr && is_set(ipv6_packet_filter->operation))
-	|| (pbr !=  nullptr && is_set(pbr->operation))
-	|| (qos !=  nullptr && is_set(qos->operation))
-	|| (span_monitor_sessions !=  nullptr && is_set(span_monitor_sessions->operation));
+	|| (dhcpv6 !=  nullptr && dhcpv6->has_operation())
+	|| (ipv4_network !=  nullptr && ipv4_network->has_operation())
+	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_operation())
+	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_operation())
+	|| (ipv6_network !=  nullptr && ipv6_network->has_operation())
+	|| (ipv6_packet_filter !=  nullptr && ipv6_packet_filter->has_operation())
+	|| (pbr !=  nullptr && pbr->has_operation())
+	|| (qos !=  nullptr && qos->has_operation())
+	|| (span_monitor_sessions !=  nullptr && span_monitor_sessions->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::get_segment_path() const
@@ -7414,7 +7414,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7500,7 +7500,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions
 	|| is_set(acl.operation)
 	|| is_set(mirror_first.operation)
 	|| is_set(mirror_interval.operation)
-	|| (attachment !=  nullptr && is_set(attachment->operation));
+	|| (attachment !=  nullptr && attachment->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::get_segment_path() const
@@ -7517,7 +7517,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7642,7 +7642,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7752,7 +7752,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFil
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7856,7 +7856,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFil
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7939,8 +7939,8 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::h
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::has_operation() const
 {
     return is_set(operation)
-	|| (inbound !=  nullptr && is_set(inbound->operation))
-	|| (outbound !=  nullptr && is_set(outbound->operation));
+	|| (inbound !=  nullptr && inbound->has_operation())
+	|| (outbound !=  nullptr && outbound->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::get_segment_path() const
@@ -7957,7 +7957,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFil
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8084,7 +8084,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFil
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8180,7 +8180,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFil
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8258,8 +8258,8 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::h
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::has_operation() const
 {
     return is_set(operation)
-	|| (inbound !=  nullptr && is_set(inbound->operation))
-	|| (outbound !=  nullptr && is_set(outbound->operation));
+	|| (inbound !=  nullptr && inbound->has_operation())
+	|| (outbound !=  nullptr && outbound->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::get_segment_path() const
@@ -8276,7 +8276,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFil
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8406,7 +8406,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8501,7 +8501,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8567,7 +8567,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addres
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::has_operation() const
 {
     return is_set(operation)
-	|| (auto_configuration !=  nullptr && is_set(auto_configuration->operation));
+	|| (auto_configuration !=  nullptr && auto_configuration->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::get_segment_path() const
@@ -8584,7 +8584,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8678,7 +8678,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::has_op
 	|| is_set(mtu.operation)
 	|| is_set(unreachables.operation)
 	|| is_set(verify.operation)
-	|| (addresses !=  nullptr && is_set(addresses->operation));
+	|| (addresses !=  nullptr && addresses->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::get_segment_path() const
@@ -8695,7 +8695,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8811,7 +8811,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8896,7 +8896,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8979,7 +8979,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9100,9 +9100,9 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::has_o
 	|| is_set(router_preference.operation)
 	|| is_set(start_ra_on_ipv6_enable.operation)
 	|| is_set(suppress_cache_learning.operation)
-	|| (duplicate_address_detection !=  nullptr && is_set(duplicate_address_detection->operation))
-	|| (framed_prefix !=  nullptr && is_set(framed_prefix->operation))
-	|| (ra_initial !=  nullptr && is_set(ra_initial->operation));
+	|| (duplicate_address_detection !=  nullptr && duplicate_address_detection->has_operation())
+	|| (framed_prefix !=  nullptr && framed_prefix->has_operation())
+	|| (ra_initial !=  nullptr && ra_initial->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::get_segment_path() const
@@ -9119,7 +9119,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9338,7 +9338,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServiceP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9408,7 +9408,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Pbr::has_operation(
 {
     return is_set(operation)
 	|| is_set(service_policy_in.operation)
-	|| (service_policy !=  nullptr && is_set(service_policy->operation));
+	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Pbr::get_segment_path() const
@@ -9425,7 +9425,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Pbr::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9540,7 +9540,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServiceP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9652,7 +9652,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServiceP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9737,8 +9737,8 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy:
 bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && is_set(input->operation))
-	|| (output !=  nullptr && is_set(output->operation));
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::get_segment_path() const
@@ -9755,7 +9755,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServiceP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9885,7 +9885,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9980,7 +9980,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10056,9 +10056,9 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::has_data() con
 bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::has_operation() const
 {
     return is_set(operation)
-	|| (account !=  nullptr && is_set(account->operation))
-	|| (output !=  nullptr && is_set(output->operation))
-	|| (service_policy !=  nullptr && is_set(service_policy->operation));
+	|| (account !=  nullptr && account->has_operation())
+	|| (output !=  nullptr && output->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Qos::get_segment_path() const
@@ -10075,7 +10075,7 @@ EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10247,14 +10247,14 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::has_operation() con
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(vrf.operation)
-	|| (ipv4_network !=  nullptr && is_set(ipv4_network->operation))
-	|| (ipv4_packet_filter !=  nullptr && is_set(ipv4_packet_filter->operation))
-	|| (ipv6_neighbor !=  nullptr && is_set(ipv6_neighbor->operation))
-	|| (ipv6_network !=  nullptr && is_set(ipv6_network->operation))
-	|| (ipv6_packet_filter !=  nullptr && is_set(ipv6_packet_filter->operation))
-	|| (pbr !=  nullptr && is_set(pbr->operation))
-	|| (qos !=  nullptr && is_set(qos->operation))
-	|| (span_monitor_sessions !=  nullptr && is_set(span_monitor_sessions->operation));
+	|| (ipv4_network !=  nullptr && ipv4_network->has_operation())
+	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_operation())
+	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_operation())
+	|| (ipv6_network !=  nullptr && ipv6_network->has_operation())
+	|| (ipv6_packet_filter !=  nullptr && ipv6_packet_filter->has_operation())
+	|| (pbr !=  nullptr && pbr->has_operation())
+	|| (qos !=  nullptr && qos->has_operation())
+	|| (span_monitor_sessions !=  nullptr && span_monitor_sessions->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::get_segment_path() const
@@ -10644,9 +10644,9 @@ bool DynamicTemplate::has_data() const
 bool DynamicTemplate::has_operation() const
 {
     return is_set(operation)
-	|| (ip_subscribers !=  nullptr && is_set(ip_subscribers->operation))
-	|| (ppps !=  nullptr && is_set(ppps->operation))
-	|| (subscriber_services !=  nullptr && is_set(subscriber_services->operation));
+	|| (ip_subscribers !=  nullptr && ip_subscribers->has_operation())
+	|| (ppps !=  nullptr && ppps->has_operation())
+	|| (subscriber_services !=  nullptr && subscriber_services->has_operation());
 }
 
 std::string DynamicTemplate::get_segment_path() const
@@ -10663,7 +10663,7 @@ EntityPath DynamicTemplate::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

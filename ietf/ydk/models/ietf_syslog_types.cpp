@@ -233,14 +233,14 @@ KernIdentity::~KernIdentity()
 }
 
 
-const Enum::Value SeverityEnum::emergency {0, "emergency"};
-const Enum::Value SeverityEnum::alert {1, "alert"};
-const Enum::Value SeverityEnum::critical {2, "critical"};
-const Enum::Value SeverityEnum::error {3, "error"};
-const Enum::Value SeverityEnum::warning {4, "warning"};
-const Enum::Value SeverityEnum::notice {5, "notice"};
-const Enum::Value SeverityEnum::info {6, "info"};
-const Enum::Value SeverityEnum::debug {7, "debug"};
+const Enum::YLeaf SeverityEnum::emergency {0, "emergency"};
+const Enum::YLeaf SeverityEnum::alert {1, "alert"};
+const Enum::YLeaf SeverityEnum::critical {2, "critical"};
+const Enum::YLeaf SeverityEnum::error {3, "error"};
+const Enum::YLeaf SeverityEnum::warning {4, "warning"};
+const Enum::YLeaf SeverityEnum::notice {5, "notice"};
+const Enum::YLeaf SeverityEnum::info {6, "info"};
+const Enum::YLeaf SeverityEnum::debug {7, "debug"};
 
 
 }

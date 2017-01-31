@@ -46,7 +46,7 @@ EntityPath LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::Utime::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -199,7 +199,7 @@ bool LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::has_operation() const
 	|| is_set(u_type.operation)
 	|| is_set(u_value.operation)
 	|| is_set(vid.operation)
-	|| (utime !=  nullptr && is_set(utime->operation));
+	|| (utime !=  nullptr && utime->has_operation());
 }
 
 std::string LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::get_segment_path() const
@@ -216,7 +216,7 @@ EntityPath LptsPifib::Nodes::Node::TypeValues::TypeValue::Entry::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -459,7 +459,7 @@ EntityPath LptsPifib::Nodes::Node::TypeValues::TypeValue::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -572,7 +572,7 @@ EntityPath LptsPifib::Nodes::Node::TypeValues::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -685,7 +685,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -795,7 +795,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -908,7 +908,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::UsageEntries::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1039,7 +1039,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Police::PoliceInfo::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1176,7 +1176,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Police::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1298,7 +1298,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1420,7 +1420,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::StaticPolice::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1533,7 +1533,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1640,7 +1640,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Bfd::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1750,7 +1750,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::Statistics::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1860,7 +1860,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2113,7 +2113,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2456,7 +2456,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::IndexEntries::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2568,12 +2568,12 @@ bool LptsPifib::Nodes::Node::Hardware::has_data() const
 bool LptsPifib::Nodes::Node::Hardware::has_operation() const
 {
     return is_set(operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (index_entries !=  nullptr && is_set(index_entries->operation))
-	|| (police !=  nullptr && is_set(police->operation))
-	|| (static_police !=  nullptr && is_set(static_police->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation))
-	|| (usage_entries !=  nullptr && is_set(usage_entries->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (index_entries !=  nullptr && index_entries->has_operation())
+	|| (police !=  nullptr && police->has_operation())
+	|| (static_police !=  nullptr && static_police->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation())
+	|| (usage_entries !=  nullptr && usage_entries->has_operation());
 }
 
 std::string LptsPifib::Nodes::Node::Hardware::get_segment_path() const
@@ -2590,7 +2590,7 @@ EntityPath LptsPifib::Nodes::Node::Hardware::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2798,8 +2798,8 @@ bool LptsPifib::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (hardware !=  nullptr && is_set(hardware->operation))
-	|| (type_values !=  nullptr && is_set(type_values->operation));
+	|| (hardware !=  nullptr && hardware->has_operation())
+	|| (type_values !=  nullptr && type_values->has_operation());
 }
 
 std::string LptsPifib::Nodes::Node::get_segment_path() const
@@ -3036,7 +3036,7 @@ bool LptsPifib::has_data() const
 bool LptsPifib::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string LptsPifib::get_segment_path() const
@@ -3053,7 +3053,7 @@ EntityPath LptsPifib::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3117,16 +3117,16 @@ std::unique_ptr<Entity> LptsPifib::clone_ptr()
     return std::make_unique<LptsPifib>();
 }
 
-const Enum::Value LptsPifibEnum::isis {0, "isis"};
-const Enum::Value LptsPifibEnum::ipv4_frag {1, "ipv4-frag"};
-const Enum::Value LptsPifibEnum::ipv4_echo {2, "ipv4-echo"};
-const Enum::Value LptsPifibEnum::ipv4_any {3, "ipv4-any"};
-const Enum::Value LptsPifibEnum::ipv6_frag {4, "ipv6-frag"};
-const Enum::Value LptsPifibEnum::ipv6_echo {5, "ipv6-echo"};
-const Enum::Value LptsPifibEnum::ipv6_nd {6, "ipv6-nd"};
-const Enum::Value LptsPifibEnum::ipv6_any {7, "ipv6-any"};
-const Enum::Value LptsPifibEnum::bfd_any {8, "bfd-any"};
-const Enum::Value LptsPifibEnum::all {9, "all"};
+const Enum::YLeaf LptsPifibEnum::isis {0, "isis"};
+const Enum::YLeaf LptsPifibEnum::ipv4_frag {1, "ipv4-frag"};
+const Enum::YLeaf LptsPifibEnum::ipv4_echo {2, "ipv4-echo"};
+const Enum::YLeaf LptsPifibEnum::ipv4_any {3, "ipv4-any"};
+const Enum::YLeaf LptsPifibEnum::ipv6_frag {4, "ipv6-frag"};
+const Enum::YLeaf LptsPifibEnum::ipv6_echo {5, "ipv6-echo"};
+const Enum::YLeaf LptsPifibEnum::ipv6_nd {6, "ipv6-nd"};
+const Enum::YLeaf LptsPifibEnum::ipv6_any {7, "ipv6-any"};
+const Enum::YLeaf LptsPifibEnum::bfd_any {8, "bfd-any"};
+const Enum::YLeaf LptsPifibEnum::all {9, "all"};
 
 
 }

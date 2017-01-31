@@ -24,8 +24,9 @@ class TelemetryModelDriven : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable; //type: empty
 
+
+        YLeaf enable; //type: empty
 
     class SensorGroups : public Entity
     {
@@ -42,6 +43,7 @@ class TelemetryModelDriven : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SensorGroup : public Entity
         {
             public:
@@ -55,8 +57,9 @@ class TelemetryModelDriven : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value sensor_group_identifier; //type: string
 
+
+                YLeaf sensor_group_identifier; //type: string
 
             class SensorPaths : public Entity
             {
@@ -73,6 +76,7 @@ class TelemetryModelDriven : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SensorPath : public Entity
                 {
                     public:
@@ -86,8 +90,9 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value telemetry_sensor_path; //type: string
 
+
+                        YLeaf telemetry_sensor_path; //type: string
 
 
 
@@ -127,6 +132,7 @@ class TelemetryModelDriven : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Subscription : public Entity
         {
             public:
@@ -140,8 +146,9 @@ class TelemetryModelDriven : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value subscription_identifier; //type: string
 
+
+                YLeaf subscription_identifier; //type: string
 
             class SensorProfiles : public Entity
             {
@@ -158,6 +165,7 @@ class TelemetryModelDriven : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SensorProfile : public Entity
                 {
                     public:
@@ -171,9 +179,10 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value sensorgroupid; //type: string
-                        Value sample_interval; //type: uint32
 
+
+                        YLeaf sensorgroupid; //type: string
+                        YLeaf sample_interval; //type: uint32
 
 
 
@@ -201,6 +210,7 @@ class TelemetryModelDriven : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DestinationProfile : public Entity
                 {
                     public:
@@ -214,8 +224,9 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value destination_id; //type: string
 
+
+                        YLeaf destination_id; //type: string
 
 
 
@@ -256,6 +267,7 @@ class TelemetryModelDriven : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class DestinationGroup : public Entity
         {
             public:
@@ -269,8 +281,9 @@ class TelemetryModelDriven : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value destination_id; //type: string
 
+
+                YLeaf destination_id; //type: string
 
             class Ipv6Destinations : public Entity
             {
@@ -287,6 +300,7 @@ class TelemetryModelDriven : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ipv6Destination : public Entity
                 {
                     public:
@@ -300,10 +314,11 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipv6_address; //type: string
-                        Value destination_port; //type: uint16
-                        Value encoding; //type: EncodeTypeEnum
 
+
+                        YLeaf ipv6_address; //type: string
+                        YLeaf destination_port; //type: uint16
+                        YLeaf encoding; //type: EncodeTypeEnum
 
                     class Protocol : public Entity
                     {
@@ -318,19 +333,18 @@ class TelemetryModelDriven : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value protocol; //type: ProtoTypeEnum
-                            Value tls_hostname; //type: string
-                            Value no_tls; //type: int32
 
 
-                            class ProtoTypeEnum;
+                            YLeaf protocol; //type: ProtoTypeEnum
+                            YLeaf tls_hostname; //type: string
+                            YLeaf no_tls; //type: int32
+
 
 
                     }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations::Ipv6Destination::Protocol
 
 
                         std::unique_ptr<Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations::Ipv6Destination::Protocol> protocol; // presence node
-                        class EncodeTypeEnum;
 
 
                 }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations::Ipv6Destination
@@ -357,6 +371,7 @@ class TelemetryModelDriven : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ipv4Destination : public Entity
                 {
                     public:
@@ -370,10 +385,11 @@ class TelemetryModelDriven : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipv4_address; //type: string
-                        Value destination_port; //type: uint16
-                        Value encoding; //type: EncodeTypeEnum
 
+
+                        YLeaf ipv4_address; //type: string
+                        YLeaf destination_port; //type: uint16
+                        YLeaf encoding; //type: EncodeTypeEnum
 
                     class Protocol : public Entity
                     {
@@ -388,19 +404,18 @@ class TelemetryModelDriven : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value protocol; //type: ProtoTypeEnum
-                            Value tls_hostname; //type: string
-                            Value no_tls; //type: int32
 
 
-                            class ProtoTypeEnum;
+                            YLeaf protocol; //type: ProtoTypeEnum
+                            YLeaf tls_hostname; //type: string
+                            YLeaf no_tls; //type: int32
+
 
 
                     }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations::Ipv4Destination::Protocol
 
 
                         std::unique_ptr<Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations::Ipv4Destination::Protocol> protocol; // presence node
-                        class EncodeTypeEnum;
 
 
                 }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations::Ipv4Destination
@@ -436,16 +451,16 @@ class TelemetryModelDriven : public Entity
 class ProtoTypeEnum : public Enum
 {
     public:
-        static const Enum::Value grpc;
-        static const Enum::Value tcp;
+        static const Enum::YLeaf grpc;
+        static const Enum::YLeaf tcp;
 
 };
 
 class EncodeTypeEnum : public Enum
 {
     public:
-        static const Enum::Value gpb;
-        static const Enum::Value self_describing_gpb;
+        static const Enum::YLeaf gpb;
+        static const Enum::YLeaf self_describing_gpb;
 
 };
 

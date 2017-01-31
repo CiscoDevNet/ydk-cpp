@@ -55,7 +55,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -151,7 +151,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 	|| is_set(type.operation)
 	|| is_set(trap.operation)
 	|| is_set(value_brief.operation)
-	|| (value_detailed !=  nullptr && is_set(value_detailed->operation));
+	|| (value_detailed !=  nullptr && value_detailed->has_operation());
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::get_segment_path() const
@@ -168,7 +168,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -288,7 +288,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -422,7 +422,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -555,8 +555,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(value_brief.operation)
-	|| (thresholds !=  nullptr && is_set(thresholds->operation))
-	|| (value_detailed !=  nullptr && is_set(value_detailed->operation));
+	|| (thresholds !=  nullptr && thresholds->has_operation())
+	|| (value_detailed !=  nullptr && value_detailed->has_operation());
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::get_segment_path() const
@@ -573,7 +573,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -711,7 +711,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -802,7 +802,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (sensor_names !=  nullptr && is_set(sensor_names->operation));
+	|| (sensor_names !=  nullptr && sensor_names->has_operation());
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::get_segment_path() const
@@ -819,7 +819,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -929,7 +929,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1057,7 +1057,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1168,7 +1168,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::has_operation() const
 {
     return is_set(operation)
-	|| (power_bag !=  nullptr && is_set(power_bag->operation));
+	|| (power_bag !=  nullptr && power_bag->has_operation());
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::get_segment_path() const
@@ -1185,7 +1185,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1278,8 +1278,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::has_ope
 {
     return is_set(operation)
 	|| is_set(module.operation)
-	|| (power !=  nullptr && is_set(power->operation))
-	|| (sensor_types !=  nullptr && is_set(sensor_types->operation));
+	|| (power !=  nullptr && power->has_operation())
+	|| (sensor_types !=  nullptr && sensor_types->has_operation());
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::get_segment_path() const
@@ -1296,7 +1296,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1429,7 +1429,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1520,7 +1520,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::has_operation() const
 {
     return is_set(operation)
 	|| is_set(slot.operation)
-	|| (modules !=  nullptr && is_set(modules->operation));
+	|| (modules !=  nullptr && modules->has_operation());
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_segment_path() const
@@ -1537,7 +1537,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1647,7 +1647,7 @@ EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1738,7 +1738,7 @@ bool EnvironmentalMonitoring::Racks::Rack::has_operation() const
 {
     return is_set(operation)
 	|| is_set(rack.operation)
-	|| (slots !=  nullptr && is_set(slots->operation));
+	|| (slots !=  nullptr && slots->has_operation());
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::get_segment_path() const
@@ -1952,7 +1952,7 @@ bool EnvironmentalMonitoring::has_data() const
 bool EnvironmentalMonitoring::has_operation() const
 {
     return is_set(operation)
-	|| (racks !=  nullptr && is_set(racks->operation));
+	|| (racks !=  nullptr && racks->has_operation());
 }
 
 std::string EnvironmentalMonitoring::get_segment_path() const
@@ -1969,7 +1969,7 @@ EntityPath EnvironmentalMonitoring::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

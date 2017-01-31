@@ -46,7 +46,7 @@ EntityPath ObjectGroup::Port::Objects::Object::Operators::Operator_::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -138,7 +138,7 @@ EntityPath ObjectGroup::Port::Objects::Object::Operators::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -239,7 +239,7 @@ EntityPath ObjectGroup::Port::Objects::Object::NestedGroups::NestedGroup::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -326,7 +326,7 @@ EntityPath ObjectGroup::Port::Objects::Object::NestedGroups::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -430,7 +430,7 @@ EntityPath ObjectGroup::Port::Objects::Object::PortRanges::PortRange::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -522,7 +522,7 @@ EntityPath ObjectGroup::Port::Objects::Object::PortRanges::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -626,9 +626,9 @@ bool ObjectGroup::Port::Objects::Object::has_operation() const
     return is_set(operation)
 	|| is_set(object_name.operation)
 	|| is_set(description.operation)
-	|| (nested_groups !=  nullptr && is_set(nested_groups->operation))
-	|| (operators !=  nullptr && is_set(operators->operation))
-	|| (port_ranges !=  nullptr && is_set(port_ranges->operation));
+	|| (nested_groups !=  nullptr && nested_groups->has_operation())
+	|| (operators !=  nullptr && operators->has_operation())
+	|| (port_ranges !=  nullptr && port_ranges->has_operation());
 }
 
 std::string ObjectGroup::Port::Objects::Object::get_segment_path() const
@@ -893,7 +893,7 @@ bool ObjectGroup::Port::has_data() const
 bool ObjectGroup::Port::has_operation() const
 {
     return is_set(operation)
-	|| (objects !=  nullptr && is_set(objects->operation));
+	|| (objects !=  nullptr && objects->has_operation());
 }
 
 std::string ObjectGroup::Port::get_segment_path() const
@@ -1008,7 +1008,7 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::NestedGrou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1095,7 +1095,7 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::NestedGroups::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1199,7 +1199,7 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::AddressRa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1291,7 +1291,7 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::AddressRanges::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1395,7 +1395,7 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Addresses::Address::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1487,7 +1487,7 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Addresses::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1588,7 +1588,7 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Hosts::Host::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1675,7 +1675,7 @@ EntityPath ObjectGroup::Network::Ipv6::Objects::Object::Hosts::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1784,10 +1784,10 @@ bool ObjectGroup::Network::Ipv6::Objects::Object::has_operation() const
     return is_set(operation)
 	|| is_set(object_name.operation)
 	|| is_set(description.operation)
-	|| (address_ranges !=  nullptr && is_set(address_ranges->operation))
-	|| (addresses !=  nullptr && is_set(addresses->operation))
-	|| (hosts !=  nullptr && is_set(hosts->operation))
-	|| (nested_groups !=  nullptr && is_set(nested_groups->operation));
+	|| (address_ranges !=  nullptr && address_ranges->has_operation())
+	|| (addresses !=  nullptr && addresses->has_operation())
+	|| (hosts !=  nullptr && hosts->has_operation())
+	|| (nested_groups !=  nullptr && nested_groups->has_operation());
 }
 
 std::string ObjectGroup::Network::Ipv6::Objects::Object::get_segment_path() const
@@ -2075,7 +2075,7 @@ bool ObjectGroup::Network::Ipv6::has_data() const
 bool ObjectGroup::Network::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (objects !=  nullptr && is_set(objects->operation));
+	|| (objects !=  nullptr && objects->has_operation());
 }
 
 std::string ObjectGroup::Network::Ipv6::get_segment_path() const
@@ -2190,7 +2190,7 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::NestedGrou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2277,7 +2277,7 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::NestedGroups::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2381,7 +2381,7 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::AddressRa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2473,7 +2473,7 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::AddressRanges::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2577,7 +2577,7 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Addresses::Address::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2669,7 +2669,7 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Addresses::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2770,7 +2770,7 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2857,7 +2857,7 @@ EntityPath ObjectGroup::Network::Ipv4::Objects::Object::Hosts::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2966,10 +2966,10 @@ bool ObjectGroup::Network::Ipv4::Objects::Object::has_operation() const
     return is_set(operation)
 	|| is_set(object_name.operation)
 	|| is_set(description.operation)
-	|| (address_ranges !=  nullptr && is_set(address_ranges->operation))
-	|| (addresses !=  nullptr && is_set(addresses->operation))
-	|| (hosts !=  nullptr && is_set(hosts->operation))
-	|| (nested_groups !=  nullptr && is_set(nested_groups->operation));
+	|| (address_ranges !=  nullptr && address_ranges->has_operation())
+	|| (addresses !=  nullptr && addresses->has_operation())
+	|| (hosts !=  nullptr && hosts->has_operation())
+	|| (nested_groups !=  nullptr && nested_groups->has_operation());
 }
 
 std::string ObjectGroup::Network::Ipv4::Objects::Object::get_segment_path() const
@@ -3257,7 +3257,7 @@ bool ObjectGroup::Network::Ipv4::has_data() const
 bool ObjectGroup::Network::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (objects !=  nullptr && is_set(objects->operation));
+	|| (objects !=  nullptr && objects->has_operation());
 }
 
 std::string ObjectGroup::Network::Ipv4::get_segment_path() const
@@ -3363,8 +3363,8 @@ bool ObjectGroup::Network::has_data() const
 bool ObjectGroup::Network::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string ObjectGroup::Network::get_segment_path() const
@@ -3493,8 +3493,8 @@ bool ObjectGroup::has_data() const
 bool ObjectGroup::has_operation() const
 {
     return is_set(operation)
-	|| (network !=  nullptr && is_set(network->operation))
-	|| (port !=  nullptr && is_set(port->operation));
+	|| (network !=  nullptr && network->has_operation())
+	|| (port !=  nullptr && port->has_operation());
 }
 
 std::string ObjectGroup::get_segment_path() const
@@ -3511,7 +3511,7 @@ EntityPath ObjectGroup::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3598,115 +3598,115 @@ std::unique_ptr<Entity> ObjectGroup::clone_ptr()
     return std::make_unique<ObjectGroup>();
 }
 
-const Enum::Value EndPortEnum::echo {7, "echo"};
-const Enum::Value EndPortEnum::discard {9, "discard"};
-const Enum::Value EndPortEnum::daytime {13, "daytime"};
-const Enum::Value EndPortEnum::chargen {19, "chargen"};
-const Enum::Value EndPortEnum::ftp_data {20, "ftp-data"};
-const Enum::Value EndPortEnum::ftp {21, "ftp"};
-const Enum::Value EndPortEnum::ssh {22, "ssh"};
-const Enum::Value EndPortEnum::telnet {23, "telnet"};
-const Enum::Value EndPortEnum::smtp {25, "smtp"};
-const Enum::Value EndPortEnum::time {37, "time"};
-const Enum::Value EndPortEnum::nicname {43, "nicname"};
-const Enum::Value EndPortEnum::tacacs {49, "tacacs"};
-const Enum::Value EndPortEnum::domain {53, "domain"};
-const Enum::Value EndPortEnum::gopher {70, "gopher"};
-const Enum::Value EndPortEnum::finger {79, "finger"};
-const Enum::Value EndPortEnum::www {80, "www"};
-const Enum::Value EndPortEnum::host_name {101, "host-name"};
-const Enum::Value EndPortEnum::pop2 {109, "pop2"};
-const Enum::Value EndPortEnum::pop3 {110, "pop3"};
-const Enum::Value EndPortEnum::sun_rpc {111, "sun-rpc"};
-const Enum::Value EndPortEnum::ident {113, "ident"};
-const Enum::Value EndPortEnum::nntp {119, "nntp"};
-const Enum::Value EndPortEnum::bgp {179, "bgp"};
-const Enum::Value EndPortEnum::irc {194, "irc"};
-const Enum::Value EndPortEnum::pim_auto_rp {496, "pim-auto-rp"};
-const Enum::Value EndPortEnum::exec {512, "exec"};
-const Enum::Value EndPortEnum::login {513, "login"};
-const Enum::Value EndPortEnum::cmd {514, "cmd"};
-const Enum::Value EndPortEnum::lpd {515, "lpd"};
-const Enum::Value EndPortEnum::uucp {540, "uucp"};
-const Enum::Value EndPortEnum::klogin {543, "klogin"};
-const Enum::Value EndPortEnum::kshell {544, "kshell"};
-const Enum::Value EndPortEnum::talk {517, "talk"};
-const Enum::Value EndPortEnum::ldp {646, "ldp"};
+const Enum::YLeaf EndPortEnum::echo {7, "echo"};
+const Enum::YLeaf EndPortEnum::discard {9, "discard"};
+const Enum::YLeaf EndPortEnum::daytime {13, "daytime"};
+const Enum::YLeaf EndPortEnum::chargen {19, "chargen"};
+const Enum::YLeaf EndPortEnum::ftp_data {20, "ftp-data"};
+const Enum::YLeaf EndPortEnum::ftp {21, "ftp"};
+const Enum::YLeaf EndPortEnum::ssh {22, "ssh"};
+const Enum::YLeaf EndPortEnum::telnet {23, "telnet"};
+const Enum::YLeaf EndPortEnum::smtp {25, "smtp"};
+const Enum::YLeaf EndPortEnum::time {37, "time"};
+const Enum::YLeaf EndPortEnum::nicname {43, "nicname"};
+const Enum::YLeaf EndPortEnum::tacacs {49, "tacacs"};
+const Enum::YLeaf EndPortEnum::domain {53, "domain"};
+const Enum::YLeaf EndPortEnum::gopher {70, "gopher"};
+const Enum::YLeaf EndPortEnum::finger {79, "finger"};
+const Enum::YLeaf EndPortEnum::www {80, "www"};
+const Enum::YLeaf EndPortEnum::host_name {101, "host-name"};
+const Enum::YLeaf EndPortEnum::pop2 {109, "pop2"};
+const Enum::YLeaf EndPortEnum::pop3 {110, "pop3"};
+const Enum::YLeaf EndPortEnum::sun_rpc {111, "sun-rpc"};
+const Enum::YLeaf EndPortEnum::ident {113, "ident"};
+const Enum::YLeaf EndPortEnum::nntp {119, "nntp"};
+const Enum::YLeaf EndPortEnum::bgp {179, "bgp"};
+const Enum::YLeaf EndPortEnum::irc {194, "irc"};
+const Enum::YLeaf EndPortEnum::pim_auto_rp {496, "pim-auto-rp"};
+const Enum::YLeaf EndPortEnum::exec {512, "exec"};
+const Enum::YLeaf EndPortEnum::login {513, "login"};
+const Enum::YLeaf EndPortEnum::cmd {514, "cmd"};
+const Enum::YLeaf EndPortEnum::lpd {515, "lpd"};
+const Enum::YLeaf EndPortEnum::uucp {540, "uucp"};
+const Enum::YLeaf EndPortEnum::klogin {543, "klogin"};
+const Enum::YLeaf EndPortEnum::kshell {544, "kshell"};
+const Enum::YLeaf EndPortEnum::talk {517, "talk"};
+const Enum::YLeaf EndPortEnum::ldp {646, "ldp"};
 
-const Enum::Value PortOperatorEnum::equal {0, "equal"};
-const Enum::Value PortOperatorEnum::not_equal {1, "not-equal"};
-const Enum::Value PortOperatorEnum::greater_than {2, "greater-than"};
-const Enum::Value PortOperatorEnum::less_than {3, "less-than"};
+const Enum::YLeaf PortOperatorEnum::equal {0, "equal"};
+const Enum::YLeaf PortOperatorEnum::not_equal {1, "not-equal"};
+const Enum::YLeaf PortOperatorEnum::greater_than {2, "greater-than"};
+const Enum::YLeaf PortOperatorEnum::less_than {3, "less-than"};
 
-const Enum::Value PortEnum::echo {7, "echo"};
-const Enum::Value PortEnum::discard {9, "discard"};
-const Enum::Value PortEnum::daytime {13, "daytime"};
-const Enum::Value PortEnum::chargen {19, "chargen"};
-const Enum::Value PortEnum::ftp_data {20, "ftp-data"};
-const Enum::Value PortEnum::ftp {21, "ftp"};
-const Enum::Value PortEnum::ssh {22, "ssh"};
-const Enum::Value PortEnum::telnet {23, "telnet"};
-const Enum::Value PortEnum::smtp {25, "smtp"};
-const Enum::Value PortEnum::time {37, "time"};
-const Enum::Value PortEnum::nicname {43, "nicname"};
-const Enum::Value PortEnum::tacacs {49, "tacacs"};
-const Enum::Value PortEnum::domain {53, "domain"};
-const Enum::Value PortEnum::gopher {70, "gopher"};
-const Enum::Value PortEnum::finger {79, "finger"};
-const Enum::Value PortEnum::www {80, "www"};
-const Enum::Value PortEnum::host_name {101, "host-name"};
-const Enum::Value PortEnum::pop2 {109, "pop2"};
-const Enum::Value PortEnum::pop3 {110, "pop3"};
-const Enum::Value PortEnum::sun_rpc {111, "sun-rpc"};
-const Enum::Value PortEnum::ident {113, "ident"};
-const Enum::Value PortEnum::nntp {119, "nntp"};
-const Enum::Value PortEnum::bgp {179, "bgp"};
-const Enum::Value PortEnum::irc {194, "irc"};
-const Enum::Value PortEnum::pim_auto_rp {496, "pim-auto-rp"};
-const Enum::Value PortEnum::exec {512, "exec"};
-const Enum::Value PortEnum::login {513, "login"};
-const Enum::Value PortEnum::cmd {514, "cmd"};
-const Enum::Value PortEnum::lpd {515, "lpd"};
-const Enum::Value PortEnum::uucp {540, "uucp"};
-const Enum::Value PortEnum::klogin {543, "klogin"};
-const Enum::Value PortEnum::kshell {544, "kshell"};
-const Enum::Value PortEnum::talk {517, "talk"};
-const Enum::Value PortEnum::ldp {646, "ldp"};
+const Enum::YLeaf PortEnum::echo {7, "echo"};
+const Enum::YLeaf PortEnum::discard {9, "discard"};
+const Enum::YLeaf PortEnum::daytime {13, "daytime"};
+const Enum::YLeaf PortEnum::chargen {19, "chargen"};
+const Enum::YLeaf PortEnum::ftp_data {20, "ftp-data"};
+const Enum::YLeaf PortEnum::ftp {21, "ftp"};
+const Enum::YLeaf PortEnum::ssh {22, "ssh"};
+const Enum::YLeaf PortEnum::telnet {23, "telnet"};
+const Enum::YLeaf PortEnum::smtp {25, "smtp"};
+const Enum::YLeaf PortEnum::time {37, "time"};
+const Enum::YLeaf PortEnum::nicname {43, "nicname"};
+const Enum::YLeaf PortEnum::tacacs {49, "tacacs"};
+const Enum::YLeaf PortEnum::domain {53, "domain"};
+const Enum::YLeaf PortEnum::gopher {70, "gopher"};
+const Enum::YLeaf PortEnum::finger {79, "finger"};
+const Enum::YLeaf PortEnum::www {80, "www"};
+const Enum::YLeaf PortEnum::host_name {101, "host-name"};
+const Enum::YLeaf PortEnum::pop2 {109, "pop2"};
+const Enum::YLeaf PortEnum::pop3 {110, "pop3"};
+const Enum::YLeaf PortEnum::sun_rpc {111, "sun-rpc"};
+const Enum::YLeaf PortEnum::ident {113, "ident"};
+const Enum::YLeaf PortEnum::nntp {119, "nntp"};
+const Enum::YLeaf PortEnum::bgp {179, "bgp"};
+const Enum::YLeaf PortEnum::irc {194, "irc"};
+const Enum::YLeaf PortEnum::pim_auto_rp {496, "pim-auto-rp"};
+const Enum::YLeaf PortEnum::exec {512, "exec"};
+const Enum::YLeaf PortEnum::login {513, "login"};
+const Enum::YLeaf PortEnum::cmd {514, "cmd"};
+const Enum::YLeaf PortEnum::lpd {515, "lpd"};
+const Enum::YLeaf PortEnum::uucp {540, "uucp"};
+const Enum::YLeaf PortEnum::klogin {543, "klogin"};
+const Enum::YLeaf PortEnum::kshell {544, "kshell"};
+const Enum::YLeaf PortEnum::talk {517, "talk"};
+const Enum::YLeaf PortEnum::ldp {646, "ldp"};
 
-const Enum::Value StartPortEnum::echo {7, "echo"};
-const Enum::Value StartPortEnum::discard {9, "discard"};
-const Enum::Value StartPortEnum::daytime {13, "daytime"};
-const Enum::Value StartPortEnum::chargen {19, "chargen"};
-const Enum::Value StartPortEnum::ftp_data {20, "ftp-data"};
-const Enum::Value StartPortEnum::ftp {21, "ftp"};
-const Enum::Value StartPortEnum::ssh {22, "ssh"};
-const Enum::Value StartPortEnum::telnet {23, "telnet"};
-const Enum::Value StartPortEnum::smtp {25, "smtp"};
-const Enum::Value StartPortEnum::time {37, "time"};
-const Enum::Value StartPortEnum::nicname {43, "nicname"};
-const Enum::Value StartPortEnum::tacacs {49, "tacacs"};
-const Enum::Value StartPortEnum::domain {53, "domain"};
-const Enum::Value StartPortEnum::gopher {70, "gopher"};
-const Enum::Value StartPortEnum::finger {79, "finger"};
-const Enum::Value StartPortEnum::www {80, "www"};
-const Enum::Value StartPortEnum::host_name {101, "host-name"};
-const Enum::Value StartPortEnum::pop2 {109, "pop2"};
-const Enum::Value StartPortEnum::pop3 {110, "pop3"};
-const Enum::Value StartPortEnum::sun_rpc {111, "sun-rpc"};
-const Enum::Value StartPortEnum::ident {113, "ident"};
-const Enum::Value StartPortEnum::nntp {119, "nntp"};
-const Enum::Value StartPortEnum::bgp {179, "bgp"};
-const Enum::Value StartPortEnum::irc {194, "irc"};
-const Enum::Value StartPortEnum::pim_auto_rp {496, "pim-auto-rp"};
-const Enum::Value StartPortEnum::exec {512, "exec"};
-const Enum::Value StartPortEnum::login {513, "login"};
-const Enum::Value StartPortEnum::cmd {514, "cmd"};
-const Enum::Value StartPortEnum::lpd {515, "lpd"};
-const Enum::Value StartPortEnum::uucp {540, "uucp"};
-const Enum::Value StartPortEnum::klogin {543, "klogin"};
-const Enum::Value StartPortEnum::kshell {544, "kshell"};
-const Enum::Value StartPortEnum::talk {517, "talk"};
-const Enum::Value StartPortEnum::ldp {646, "ldp"};
+const Enum::YLeaf StartPortEnum::echo {7, "echo"};
+const Enum::YLeaf StartPortEnum::discard {9, "discard"};
+const Enum::YLeaf StartPortEnum::daytime {13, "daytime"};
+const Enum::YLeaf StartPortEnum::chargen {19, "chargen"};
+const Enum::YLeaf StartPortEnum::ftp_data {20, "ftp-data"};
+const Enum::YLeaf StartPortEnum::ftp {21, "ftp"};
+const Enum::YLeaf StartPortEnum::ssh {22, "ssh"};
+const Enum::YLeaf StartPortEnum::telnet {23, "telnet"};
+const Enum::YLeaf StartPortEnum::smtp {25, "smtp"};
+const Enum::YLeaf StartPortEnum::time {37, "time"};
+const Enum::YLeaf StartPortEnum::nicname {43, "nicname"};
+const Enum::YLeaf StartPortEnum::tacacs {49, "tacacs"};
+const Enum::YLeaf StartPortEnum::domain {53, "domain"};
+const Enum::YLeaf StartPortEnum::gopher {70, "gopher"};
+const Enum::YLeaf StartPortEnum::finger {79, "finger"};
+const Enum::YLeaf StartPortEnum::www {80, "www"};
+const Enum::YLeaf StartPortEnum::host_name {101, "host-name"};
+const Enum::YLeaf StartPortEnum::pop2 {109, "pop2"};
+const Enum::YLeaf StartPortEnum::pop3 {110, "pop3"};
+const Enum::YLeaf StartPortEnum::sun_rpc {111, "sun-rpc"};
+const Enum::YLeaf StartPortEnum::ident {113, "ident"};
+const Enum::YLeaf StartPortEnum::nntp {119, "nntp"};
+const Enum::YLeaf StartPortEnum::bgp {179, "bgp"};
+const Enum::YLeaf StartPortEnum::irc {194, "irc"};
+const Enum::YLeaf StartPortEnum::pim_auto_rp {496, "pim-auto-rp"};
+const Enum::YLeaf StartPortEnum::exec {512, "exec"};
+const Enum::YLeaf StartPortEnum::login {513, "login"};
+const Enum::YLeaf StartPortEnum::cmd {514, "cmd"};
+const Enum::YLeaf StartPortEnum::lpd {515, "lpd"};
+const Enum::YLeaf StartPortEnum::uucp {540, "uucp"};
+const Enum::YLeaf StartPortEnum::klogin {543, "klogin"};
+const Enum::YLeaf StartPortEnum::kshell {544, "kshell"};
+const Enum::YLeaf StartPortEnum::talk {517, "talk"};
+const Enum::YLeaf StartPortEnum::ldp {646, "ldp"};
 
 
 }

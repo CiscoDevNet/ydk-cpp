@@ -70,7 +70,7 @@ EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -208,7 +208,7 @@ EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -305,7 +305,7 @@ bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::has_data() const
 bool Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::has_operation() const
 {
     return is_set(operation)
-	|| (twenty_four_hours_statistics !=  nullptr && is_set(twenty_four_hours_statistics->operation));
+	|| (twenty_four_hours_statistics !=  nullptr && twenty_four_hours_statistics->has_operation());
 }
 
 std::string Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_segment_path() const
@@ -322,7 +322,7 @@ EntityPath Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -447,7 +447,7 @@ EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatisti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -585,7 +585,7 @@ EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatisti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -682,7 +682,7 @@ bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::has_data() const
 bool Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::has_operation() const
 {
     return is_set(operation)
-	|| (fifteen_minutes_statistics !=  nullptr && is_set(fifteen_minutes_statistics->operation));
+	|| (fifteen_minutes_statistics !=  nullptr && fifteen_minutes_statistics->has_operation());
 }
 
 std::string Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_segment_path() const
@@ -699,7 +699,7 @@ EntityPath Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -788,8 +788,8 @@ bool Dwdm::Ports::Port::Prbs::has_data() const
 bool Dwdm::Ports::Port::Prbs::has_operation() const
 {
     return is_set(operation)
-	|| (fifteen_minutes_bucket !=  nullptr && is_set(fifteen_minutes_bucket->operation))
-	|| (twenty_four_hours_bucket !=  nullptr && is_set(twenty_four_hours_bucket->operation));
+	|| (fifteen_minutes_bucket !=  nullptr && fifteen_minutes_bucket->has_operation())
+	|| (twenty_four_hours_bucket !=  nullptr && twenty_four_hours_bucket->has_operation());
 }
 
 std::string Dwdm::Ports::Port::Prbs::get_segment_path() const
@@ -806,7 +806,7 @@ EntityPath Dwdm::Ports::Port::Prbs::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -933,7 +933,7 @@ EntityPath Dwdm::Ports::Port::Optics::WaveInfo::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1009,7 +1009,7 @@ bool Dwdm::Ports::Port::Optics::has_data() const
 bool Dwdm::Ports::Port::Optics::has_operation() const
 {
     return is_set(operation)
-	|| (wave_info !=  nullptr && is_set(wave_info->operation));
+	|| (wave_info !=  nullptr && wave_info->has_operation());
 }
 
 std::string Dwdm::Ports::Port::Optics::get_segment_path() const
@@ -1026,7 +1026,7 @@ EntityPath Dwdm::Ports::Port::Optics::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1133,7 +1133,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1240,7 +1240,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::EcTca::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1352,7 +1352,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::UcTca::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1461,7 +1461,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1565,7 +1565,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1669,7 +1669,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1773,7 +1773,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1877,7 +1877,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1981,7 +1981,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2085,7 +2085,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2189,7 +2189,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2293,7 +2293,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2397,7 +2397,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2504,7 +2504,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2616,7 +2616,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2728,7 +2728,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2840,7 +2840,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2952,7 +2952,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3064,7 +3064,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3164,7 +3164,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3244,7 +3244,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3324,7 +3324,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3404,7 +3404,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3484,7 +3484,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3564,7 +3564,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3644,7 +3644,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3724,7 +3724,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3891,7 +3891,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4229,31 +4229,31 @@ bool Dwdm::Ports::Port::Info::G709Info::OtuInfo::has_operation() const
     return is_set(operation)
 	|| is_set(bei.operation)
 	|| is_set(bip.operation)
-	|| (ais !=  nullptr && is_set(ais->operation))
-	|| (bbe !=  nullptr && is_set(bbe->operation))
-	|| (bbe_tca !=  nullptr && is_set(bbe_tca->operation))
-	|| (bber !=  nullptr && is_set(bber->operation))
-	|| (bdi !=  nullptr && is_set(bdi->operation))
-	|| (eoc !=  nullptr && is_set(eoc->operation))
-	|| (es !=  nullptr && is_set(es->operation))
-	|| (es_tca !=  nullptr && is_set(es_tca->operation))
-	|| (esr !=  nullptr && is_set(esr->operation))
-	|| (fc !=  nullptr && is_set(fc->operation))
-	|| (iae !=  nullptr && is_set(iae->operation))
-	|| (lof !=  nullptr && is_set(lof->operation))
-	|| (lom !=  nullptr && is_set(lom->operation))
-	|| (los !=  nullptr && is_set(los->operation))
-	|| (oof !=  nullptr && is_set(oof->operation))
-	|| (oom !=  nullptr && is_set(oom->operation))
-	|| (prefec_sd_ber !=  nullptr && is_set(prefec_sd_ber->operation))
-	|| (prefec_sf_ber !=  nullptr && is_set(prefec_sf_ber->operation))
-	|| (sd_ber !=  nullptr && is_set(sd_ber->operation))
-	|| (ses !=  nullptr && is_set(ses->operation))
-	|| (sesr !=  nullptr && is_set(sesr->operation))
-	|| (sf_ber !=  nullptr && is_set(sf_ber->operation))
-	|| (tim !=  nullptr && is_set(tim->operation))
-	|| (tti !=  nullptr && is_set(tti->operation))
-	|| (uas !=  nullptr && is_set(uas->operation));
+	|| (ais !=  nullptr && ais->has_operation())
+	|| (bbe !=  nullptr && bbe->has_operation())
+	|| (bbe_tca !=  nullptr && bbe_tca->has_operation())
+	|| (bber !=  nullptr && bber->has_operation())
+	|| (bdi !=  nullptr && bdi->has_operation())
+	|| (eoc !=  nullptr && eoc->has_operation())
+	|| (es !=  nullptr && es->has_operation())
+	|| (es_tca !=  nullptr && es_tca->has_operation())
+	|| (esr !=  nullptr && esr->has_operation())
+	|| (fc !=  nullptr && fc->has_operation())
+	|| (iae !=  nullptr && iae->has_operation())
+	|| (lof !=  nullptr && lof->has_operation())
+	|| (lom !=  nullptr && lom->has_operation())
+	|| (los !=  nullptr && los->has_operation())
+	|| (oof !=  nullptr && oof->has_operation())
+	|| (oom !=  nullptr && oom->has_operation())
+	|| (prefec_sd_ber !=  nullptr && prefec_sd_ber->has_operation())
+	|| (prefec_sf_ber !=  nullptr && prefec_sf_ber->has_operation())
+	|| (sd_ber !=  nullptr && sd_ber->has_operation())
+	|| (ses !=  nullptr && ses->has_operation())
+	|| (sesr !=  nullptr && sesr->has_operation())
+	|| (sf_ber !=  nullptr && sf_ber->has_operation())
+	|| (tim !=  nullptr && tim->has_operation())
+	|| (tti !=  nullptr && tti->has_operation())
+	|| (uas !=  nullptr && uas->has_operation());
 }
 
 std::string Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_segment_path() const
@@ -4270,7 +4270,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4939,7 +4939,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5043,7 +5043,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5147,7 +5147,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5251,7 +5251,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5355,7 +5355,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5459,7 +5459,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5563,7 +5563,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5670,7 +5670,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5782,7 +5782,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5894,7 +5894,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6006,7 +6006,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6106,7 +6106,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6186,7 +6186,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6266,7 +6266,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6346,7 +6346,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6426,7 +6426,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6506,7 +6506,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6586,7 +6586,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6666,7 +6666,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6833,7 +6833,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7146,26 +7146,26 @@ bool Dwdm::Ports::Port::Info::G709Info::OduInfo::has_operation() const
     return is_set(operation)
 	|| is_set(bei.operation)
 	|| is_set(bip.operation)
-	|| (ais !=  nullptr && is_set(ais->operation))
-	|| (bbe !=  nullptr && is_set(bbe->operation))
-	|| (bbe_tca !=  nullptr && is_set(bbe_tca->operation))
-	|| (bber !=  nullptr && is_set(bber->operation))
-	|| (bdi !=  nullptr && is_set(bdi->operation))
-	|| (eoc !=  nullptr && is_set(eoc->operation))
-	|| (es !=  nullptr && is_set(es->operation))
-	|| (es_tca !=  nullptr && is_set(es_tca->operation))
-	|| (esr !=  nullptr && is_set(esr->operation))
-	|| (fc !=  nullptr && is_set(fc->operation))
-	|| (lck !=  nullptr && is_set(lck->operation))
-	|| (oci !=  nullptr && is_set(oci->operation))
-	|| (ptim !=  nullptr && is_set(ptim->operation))
-	|| (sd_ber !=  nullptr && is_set(sd_ber->operation))
-	|| (ses !=  nullptr && is_set(ses->operation))
-	|| (sesr !=  nullptr && is_set(sesr->operation))
-	|| (sf_ber !=  nullptr && is_set(sf_ber->operation))
-	|| (tim !=  nullptr && is_set(tim->operation))
-	|| (tti !=  nullptr && is_set(tti->operation))
-	|| (uas !=  nullptr && is_set(uas->operation));
+	|| (ais !=  nullptr && ais->has_operation())
+	|| (bbe !=  nullptr && bbe->has_operation())
+	|| (bbe_tca !=  nullptr && bbe_tca->has_operation())
+	|| (bber !=  nullptr && bber->has_operation())
+	|| (bdi !=  nullptr && bdi->has_operation())
+	|| (eoc !=  nullptr && eoc->has_operation())
+	|| (es !=  nullptr && es->has_operation())
+	|| (es_tca !=  nullptr && es_tca->has_operation())
+	|| (esr !=  nullptr && esr->has_operation())
+	|| (fc !=  nullptr && fc->has_operation())
+	|| (lck !=  nullptr && lck->has_operation())
+	|| (oci !=  nullptr && oci->has_operation())
+	|| (ptim !=  nullptr && ptim->has_operation())
+	|| (sd_ber !=  nullptr && sd_ber->has_operation())
+	|| (ses !=  nullptr && ses->has_operation())
+	|| (sesr !=  nullptr && sesr->has_operation())
+	|| (sf_ber !=  nullptr && sf_ber->has_operation())
+	|| (tim !=  nullptr && tim->has_operation())
+	|| (tti !=  nullptr && tti->has_operation())
+	|| (uas !=  nullptr && uas->has_operation());
 }
 
 std::string Dwdm::Ports::Port::Info::G709Info::OduInfo::get_segment_path() const
@@ -7182,7 +7182,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::OduInfo::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7800,11 +7800,11 @@ bool Dwdm::Ports::Port::Info::G709Info::has_operation() const
 	|| is_set(qstr.operation)
 	|| is_set(remote_fec_mode.operation)
 	|| is_set(uc.operation)
-	|| (ec_tca !=  nullptr && is_set(ec_tca->operation))
-	|| (fec_mismatch !=  nullptr && is_set(fec_mismatch->operation))
-	|| (odu_info !=  nullptr && is_set(odu_info->operation))
-	|| (otu_info !=  nullptr && is_set(otu_info->operation))
-	|| (uc_tca !=  nullptr && is_set(uc_tca->operation));
+	|| (ec_tca !=  nullptr && ec_tca->has_operation())
+	|| (fec_mismatch !=  nullptr && fec_mismatch->has_operation())
+	|| (odu_info !=  nullptr && odu_info->has_operation())
+	|| (otu_info !=  nullptr && otu_info->has_operation())
+	|| (uc_tca !=  nullptr && uc_tca->has_operation());
 }
 
 std::string Dwdm::Ports::Port::Info::G709Info::get_segment_path() const
@@ -7821,7 +7821,7 @@ EntityPath Dwdm::Ports::Port::Info::G709Info::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8235,7 +8235,7 @@ EntityPath Dwdm::Ports::Port::Info::OpticsInfo::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8523,7 +8523,7 @@ EntityPath Dwdm::Ports::Port::Info::TdcInfo::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8610,7 +8610,7 @@ Dwdm::Ports::Port::Info::NetworkSrlgInfo::~NetworkSrlgInfo()
 
 bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_data() const
 {
-    for (auto const & leaf : network_srlg.getValues())
+    for (auto const & leaf : network_srlg.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8620,12 +8620,13 @@ bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_data() const
 
 bool Dwdm::Ports::Port::Info::NetworkSrlgInfo::has_operation() const
 {
-    for (auto const & leaf : network_srlg.getValues())
+    for (auto const & leaf : network_srlg.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(network_srlg.operation);
 }
 
 std::string Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_segment_path() const
@@ -8642,7 +8643,7 @@ EntityPath Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8801,7 +8802,7 @@ EntityPath Dwdm::Ports::Port::Info::Proactive::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9014,7 +9015,7 @@ EntityPath Dwdm::Ports::Port::Info::SignalLog::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9120,12 +9121,12 @@ bool Dwdm::Ports::Port::Info::has_operation() const
 	|| is_set(controller_state.operation)
 	|| is_set(slice_state.operation)
 	|| is_set(transport_admin_state.operation)
-	|| (g709_info !=  nullptr && is_set(g709_info->operation))
-	|| (network_srlg_info !=  nullptr && is_set(network_srlg_info->operation))
-	|| (optics_info !=  nullptr && is_set(optics_info->operation))
-	|| (proactive !=  nullptr && is_set(proactive->operation))
-	|| (signal_log !=  nullptr && is_set(signal_log->operation))
-	|| (tdc_info !=  nullptr && is_set(tdc_info->operation));
+	|| (g709_info !=  nullptr && g709_info->has_operation())
+	|| (network_srlg_info !=  nullptr && network_srlg_info->has_operation())
+	|| (optics_info !=  nullptr && optics_info->has_operation())
+	|| (proactive !=  nullptr && proactive->has_operation())
+	|| (signal_log !=  nullptr && signal_log->has_operation())
+	|| (tdc_info !=  nullptr && tdc_info->has_operation());
 }
 
 std::string Dwdm::Ports::Port::Info::get_segment_path() const
@@ -9142,7 +9143,7 @@ EntityPath Dwdm::Ports::Port::Info::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9370,9 +9371,9 @@ bool Dwdm::Ports::Port::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (info !=  nullptr && is_set(info->operation))
-	|| (optics !=  nullptr && is_set(optics->operation))
-	|| (prbs !=  nullptr && is_set(prbs->operation));
+	|| (info !=  nullptr && info->has_operation())
+	|| (optics !=  nullptr && optics->has_operation())
+	|| (prbs !=  nullptr && prbs->has_operation());
 }
 
 std::string Dwdm::Ports::Port::get_segment_path() const
@@ -9632,7 +9633,7 @@ bool Dwdm::has_data() const
 bool Dwdm::has_operation() const
 {
     return is_set(operation)
-	|| (ports !=  nullptr && is_set(ports->operation));
+	|| (ports !=  nullptr && ports->has_operation());
 }
 
 std::string Dwdm::get_segment_path() const
@@ -9649,7 +9650,7 @@ EntityPath Dwdm::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -9748,7 +9749,7 @@ EntityPath Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9818,7 +9819,7 @@ bool Vtxp::DwdmVtxp::PortVtxps::PortVtxp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (info !=  nullptr && is_set(info->operation));
+	|| (info !=  nullptr && info->has_operation());
 }
 
 std::string Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_segment_path() const
@@ -10032,7 +10033,7 @@ bool Vtxp::DwdmVtxp::has_data() const
 bool Vtxp::DwdmVtxp::has_operation() const
 {
     return is_set(operation)
-	|| (port_vtxps !=  nullptr && is_set(port_vtxps->operation));
+	|| (port_vtxps !=  nullptr && port_vtxps->has_operation());
 }
 
 std::string Vtxp::DwdmVtxp::get_segment_path() const
@@ -10133,7 +10134,7 @@ bool Vtxp::has_data() const
 bool Vtxp::has_operation() const
 {
     return is_set(operation)
-	|| (dwdm_vtxp !=  nullptr && is_set(dwdm_vtxp->operation));
+	|| (dwdm_vtxp !=  nullptr && dwdm_vtxp->has_operation());
 }
 
 std::string Vtxp::get_segment_path() const
@@ -10150,7 +10151,7 @@ EntityPath Vtxp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -10214,94 +10215,94 @@ std::unique_ptr<Entity> Vtxp::clone_ptr()
     return std::make_unique<Vtxp>();
 }
 
-const Enum::Value G709PpintfStateEnum::pp_intf_up {0, "pp-intf-up"};
-const Enum::Value G709PpintfStateEnum::pp_intf_failing {1, "pp-intf-failing"};
-const Enum::Value G709PpintfStateEnum::pp_intf_down {2, "pp-intf-down"};
+const Enum::YLeaf G709PpintfStateEnum::pp_intf_up {0, "pp-intf-up"};
+const Enum::YLeaf G709PpintfStateEnum::pp_intf_failing {1, "pp-intf-failing"};
+const Enum::YLeaf G709PpintfStateEnum::pp_intf_down {2, "pp-intf-down"};
 
-const Enum::Value G709PpfsmModeEnum::pp_disable {0, "pp-disable"};
-const Enum::Value G709PpfsmModeEnum::pp_default_mode {1, "pp-default-mode"};
-const Enum::Value G709PpfsmModeEnum::pp_graceful_mode {2, "pp-graceful-mode"};
+const Enum::YLeaf G709PpfsmModeEnum::pp_disable {0, "pp-disable"};
+const Enum::YLeaf G709PpfsmModeEnum::pp_default_mode {1, "pp-default-mode"};
+const Enum::YLeaf G709PpfsmModeEnum::pp_graceful_mode {2, "pp-graceful-mode"};
 
-const Enum::Value DwdmControllerStateEnum::dwdm_ui_state_up {0, "dwdm-ui-state-up"};
-const Enum::Value DwdmControllerStateEnum::dwdm_ui_state_down {1, "dwdm-ui-state-down"};
-const Enum::Value DwdmControllerStateEnum::dwdm_ui_state_admin_down {2, "dwdm-ui-state-admin-down"};
+const Enum::YLeaf DwdmControllerStateEnum::dwdm_ui_state_up {0, "dwdm-ui-state-up"};
+const Enum::YLeaf DwdmControllerStateEnum::dwdm_ui_state_down {1, "dwdm-ui-state-down"};
+const Enum::YLeaf DwdmControllerStateEnum::dwdm_ui_state_admin_down {2, "dwdm-ui-state-admin-down"};
 
-const Enum::Value DwdmtasStateEnum::tas_oos {0, "tas-oos"};
-const Enum::Value DwdmtasStateEnum::tas_is {1, "tas-is"};
-const Enum::Value DwdmtasStateEnum::tas_oos_mt {2, "tas-oos-mt"};
-const Enum::Value DwdmtasStateEnum::tas_is_cfg {3, "tas-is-cfg"};
+const Enum::YLeaf DwdmtasStateEnum::tas_oos {0, "tas-oos"};
+const Enum::YLeaf DwdmtasStateEnum::tas_is {1, "tas-is"};
+const Enum::YLeaf DwdmtasStateEnum::tas_oos_mt {2, "tas-oos-mt"};
+const Enum::YLeaf DwdmtasStateEnum::tas_is_cfg {3, "tas-is-cfg"};
 
-const Enum::Value G709PrbsModeEnum::mode_source {0, "mode-source"};
-const Enum::Value G709PrbsModeEnum::mode_sink {1, "mode-sink"};
-const Enum::Value G709PrbsModeEnum::mode_source_sink {2, "mode-source-sink"};
-const Enum::Value G709PrbsModeEnum::mode_invalid {3, "mode-invalid"};
+const Enum::YLeaf G709PrbsModeEnum::mode_source {0, "mode-source"};
+const Enum::YLeaf G709PrbsModeEnum::mode_sink {1, "mode-sink"};
+const Enum::YLeaf G709PrbsModeEnum::mode_source_sink {2, "mode-source-sink"};
+const Enum::YLeaf G709PrbsModeEnum::mode_invalid {3, "mode-invalid"};
 
-const Enum::Value G709PpfsmStateEnum::in_active {0, "in-active"};
-const Enum::Value G709PpfsmStateEnum::disabled {1, "disabled"};
-const Enum::Value G709PpfsmStateEnum::normal_state {2, "normal-state"};
-const Enum::Value G709PpfsmStateEnum::local_failing {3, "local-failing"};
-const Enum::Value G709PpfsmStateEnum::remote_failing {4, "remote-failing"};
-const Enum::Value G709PpfsmStateEnum::main_t_failing {5, "main-t-failing"};
-const Enum::Value G709PpfsmStateEnum::regen_failing {6, "regen-failing"};
-const Enum::Value G709PpfsmStateEnum::local_failed {7, "local-failed"};
-const Enum::Value G709PpfsmStateEnum::remote_failed {8, "remote-failed"};
-const Enum::Value G709PpfsmStateEnum::main_t_failed {9, "main-t-failed"};
-const Enum::Value G709PpfsmStateEnum::regen_failed {10, "regen-failed"};
+const Enum::YLeaf G709PpfsmStateEnum::in_active {0, "in-active"};
+const Enum::YLeaf G709PpfsmStateEnum::disabled {1, "disabled"};
+const Enum::YLeaf G709PpfsmStateEnum::normal_state {2, "normal-state"};
+const Enum::YLeaf G709PpfsmStateEnum::local_failing {3, "local-failing"};
+const Enum::YLeaf G709PpfsmStateEnum::remote_failing {4, "remote-failing"};
+const Enum::YLeaf G709PpfsmStateEnum::main_t_failing {5, "main-t-failing"};
+const Enum::YLeaf G709PpfsmStateEnum::regen_failing {6, "regen-failing"};
+const Enum::YLeaf G709PpfsmStateEnum::local_failed {7, "local-failed"};
+const Enum::YLeaf G709PpfsmStateEnum::remote_failed {8, "remote-failed"};
+const Enum::YLeaf G709PpfsmStateEnum::main_t_failed {9, "main-t-failed"};
+const Enum::YLeaf G709PpfsmStateEnum::regen_failed {10, "regen-failed"};
 
-const Enum::Value G709PrbsIntervalEnum::current_interval {0, "current-interval"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval {1, "previous-interval"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval2 {2, "previous-interval2"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval3 {3, "previous-interval3"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval4 {4, "previous-interval4"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval5 {5, "previous-interval5"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval6 {6, "previous-interval6"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval7 {7, "previous-interval7"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval8 {8, "previous-interval8"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval9 {9, "previous-interval9"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval10 {10, "previous-interval10"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval11 {11, "previous-interval11"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval12 {12, "previous-interval12"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval13 {13, "previous-interval13"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval14 {14, "previous-interval14"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval15 {15, "previous-interval15"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval16 {16, "previous-interval16"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval17 {17, "previous-interval17"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval18 {18, "previous-interval18"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval19 {19, "previous-interval19"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval20 {20, "previous-interval20"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval21 {21, "previous-interval21"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval22 {22, "previous-interval22"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval23 {23, "previous-interval23"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval24 {24, "previous-interval24"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval25 {25, "previous-interval25"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval26 {26, "previous-interval26"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval27 {27, "previous-interval27"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval28 {28, "previous-interval28"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval29 {29, "previous-interval29"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval30 {30, "previous-interval30"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval31 {31, "previous-interval31"};
-const Enum::Value G709PrbsIntervalEnum::previous_interval32 {32, "previous-interval32"};
+const Enum::YLeaf G709PrbsIntervalEnum::current_interval {0, "current-interval"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval {1, "previous-interval"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval2 {2, "previous-interval2"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval3 {3, "previous-interval3"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval4 {4, "previous-interval4"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval5 {5, "previous-interval5"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval6 {6, "previous-interval6"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval7 {7, "previous-interval7"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval8 {8, "previous-interval8"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval9 {9, "previous-interval9"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval10 {10, "previous-interval10"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval11 {11, "previous-interval11"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval12 {12, "previous-interval12"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval13 {13, "previous-interval13"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval14 {14, "previous-interval14"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval15 {15, "previous-interval15"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval16 {16, "previous-interval16"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval17 {17, "previous-interval17"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval18 {18, "previous-interval18"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval19 {19, "previous-interval19"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval20 {20, "previous-interval20"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval21 {21, "previous-interval21"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval22 {22, "previous-interval22"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval23 {23, "previous-interval23"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval24 {24, "previous-interval24"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval25 {25, "previous-interval25"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval26 {26, "previous-interval26"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval27 {27, "previous-interval27"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval28 {28, "previous-interval28"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval29 {29, "previous-interval29"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval30 {30, "previous-interval30"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval31 {31, "previous-interval31"};
+const Enum::YLeaf G709PrbsIntervalEnum::previous_interval32 {32, "previous-interval32"};
 
-const Enum::Value DwdmWaveChannelOwnerEnum::default_ {0, "default"};
-const Enum::Value DwdmWaveChannelOwnerEnum::configuration {1, "configuration"};
-const Enum::Value DwdmWaveChannelOwnerEnum::gmpls {2, "gmpls"};
+const Enum::YLeaf DwdmWaveChannelOwnerEnum::default_ {0, "default"};
+const Enum::YLeaf DwdmWaveChannelOwnerEnum::configuration {1, "configuration"};
+const Enum::YLeaf DwdmWaveChannelOwnerEnum::gmpls {2, "gmpls"};
 
-const Enum::Value G709EfecModeEnum::g975_none {0, "g975-none"};
-const Enum::Value G709EfecModeEnum::g975_1_i4 {1, "g975-1-i4"};
-const Enum::Value G709EfecModeEnum::g975_1_i7 {2, "g975-1-i7"};
+const Enum::YLeaf G709EfecModeEnum::g975_none {0, "g975-none"};
+const Enum::YLeaf G709EfecModeEnum::g975_1_i4 {1, "g975-1-i4"};
+const Enum::YLeaf G709EfecModeEnum::g975_1_i7 {2, "g975-1-i7"};
 
-const Enum::Value G709PrbsPatternEnum::pattern_none {0, "pattern-none"};
-const Enum::Value G709PrbsPatternEnum::pattern_null {1, "pattern-null"};
-const Enum::Value G709PrbsPatternEnum::pattern_pn11 {2, "pattern-pn11"};
-const Enum::Value G709PrbsPatternEnum::pattern_pn23 {3, "pattern-pn23"};
-const Enum::Value G709PrbsPatternEnum::pattern_pn31 {4, "pattern-pn31"};
+const Enum::YLeaf G709PrbsPatternEnum::pattern_none {0, "pattern-none"};
+const Enum::YLeaf G709PrbsPatternEnum::pattern_null {1, "pattern-null"};
+const Enum::YLeaf G709PrbsPatternEnum::pattern_pn11 {2, "pattern-pn11"};
+const Enum::YLeaf G709PrbsPatternEnum::pattern_pn23 {3, "pattern-pn23"};
+const Enum::YLeaf G709PrbsPatternEnum::pattern_pn31 {4, "pattern-pn31"};
 
-const Enum::Value G709ApsByteEnum::pp_no_protect {0, "pp-no-protect"};
-const Enum::Value G709ApsByteEnum::pp_no_request {15, "pp-no-request"};
-const Enum::Value G709ApsByteEnum::pp_regen_degrade {63, "pp-regen-degrade"};
-const Enum::Value G709ApsByteEnum::pp_sig_degrade {175, "pp-sig-degrade"};
-const Enum::Value G709ApsByteEnum::pp_remote_main {239, "pp-remote-main"};
-const Enum::Value G709ApsByteEnum::pp_aps_unknown {255, "pp-aps-unknown"};
+const Enum::YLeaf G709ApsByteEnum::pp_no_protect {0, "pp-no-protect"};
+const Enum::YLeaf G709ApsByteEnum::pp_no_request {15, "pp-no-request"};
+const Enum::YLeaf G709ApsByteEnum::pp_regen_degrade {63, "pp-regen-degrade"};
+const Enum::YLeaf G709ApsByteEnum::pp_sig_degrade {175, "pp-sig-degrade"};
+const Enum::YLeaf G709ApsByteEnum::pp_remote_main {239, "pp-remote-main"};
+const Enum::YLeaf G709ApsByteEnum::pp_aps_unknown {255, "pp-aps-unknown"};
 
 
 }

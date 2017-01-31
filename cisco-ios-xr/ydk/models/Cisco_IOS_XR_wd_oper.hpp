@@ -26,6 +26,7 @@ class Watchdog : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Watchdog : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Watchdog : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class ThresholdMemory : public Entity
             {
@@ -70,6 +73,7 @@ class Watchdog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Default_ : public Entity
@@ -87,6 +91,7 @@ class Watchdog : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ConfiguredMemory : public Entity
                     {
                         public:
@@ -100,10 +105,11 @@ class Watchdog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value minor; //type: uint32
-                            Value severe; //type: uint32
-                            Value critical; //type: uint64
 
+
+                            YLeaf minor; //type: uint32
+                            YLeaf severe; //type: uint32
+                            YLeaf critical; //type: uint64
 
 
 
@@ -123,12 +129,12 @@ class Watchdog : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value physical_memory; //type: uint32
-                            Value free_memory; //type: uint64
-                            Value memory_state; //type: MemoryStateEnum
 
 
-                            class MemoryStateEnum;
+                            YLeaf physical_memory; //type: uint32
+                            YLeaf free_memory; //type: uint64
+                            YLeaf memory_state; //type: MemoryStateEnum
+
 
 
                     }; // Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory
@@ -154,10 +160,11 @@ class Watchdog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value minor; //type: uint32
-                        Value severe; //type: uint32
-                        Value critical; //type: uint64
 
+
+                        YLeaf minor; //type: uint32
+                        YLeaf severe; //type: uint32
+                        YLeaf critical; //type: uint64
 
 
 
@@ -184,12 +191,12 @@ class Watchdog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value physical_memory; //type: uint32
-                    Value free_memory; //type: uint64
-                    Value memory_state; //type: MemoryStateEnum
 
 
-                    class MemoryStateEnum;
+                    YLeaf physical_memory; //type: uint32
+                    YLeaf free_memory; //type: uint64
+                    YLeaf memory_state; //type: MemoryStateEnum
+
 
 
             }; // Watchdog::Nodes::Node::MemoryState
@@ -208,10 +215,11 @@ class Watchdog : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value overload_control_notification; //type: OverloadCtrlNotifEnum
-                    Value default_wdsysmon_throttle; //type: uint32
-                    Value configured_wdsysmon_throttle; //type: uint32
 
+
+                    YLeaf overload_control_notification; //type: OverloadCtrlNotifEnum
+                    YLeaf default_wdsysmon_throttle; //type: uint32
+                    YLeaf configured_wdsysmon_throttle; //type: uint32
 
                 class CurrentThrottle : public Entity
                 {
@@ -226,9 +234,10 @@ class Watchdog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value throttle_duration; //type: uint32
-                        Value start_time; //type: string
 
+
+                        YLeaf throttle_duration; //type: uint32
+                        YLeaf start_time; //type: string
 
 
 
@@ -248,10 +257,11 @@ class Watchdog : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value throttle_duration; //type: uint32
-                        Value start_time; //type: string
-                        Value stop_time; //type: string
 
+
+                        YLeaf throttle_duration; //type: uint32
+                        YLeaf start_time; //type: string
+                        YLeaf stop_time; //type: string
 
 
 
@@ -260,7 +270,6 @@ class Watchdog : public Entity
 
                     std::unique_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::OverloadState::CurrentThrottle> current_throttle;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::OverloadState::LastThrottle> > last_throttle;
-                    class OverloadCtrlNotifEnum;
 
 
             }; // Watchdog::Nodes::Node::OverloadState
@@ -289,19 +298,19 @@ class Watchdog : public Entity
 class MemoryStateEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value normal;
-        static const Enum::Value minor;
-        static const Enum::Value severe;
-        static const Enum::Value critical;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf normal;
+        static const Enum::YLeaf minor;
+        static const Enum::YLeaf severe;
+        static const Enum::YLeaf critical;
 
 };
 
 class OverloadCtrlNotifEnum : public Enum
 {
     public:
-        static const Enum::Value disabled;
-        static const Enum::Value enabled;
+        static const Enum::YLeaf disabled;
+        static const Enum::YLeaf enabled;
 
 };
 

@@ -24,10 +24,11 @@ class Arp : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value max_entries; //type: uint32
-        Value inner_cos; //type: uint32
-        Value outer_cos; //type: uint32
 
+
+        YLeaf max_entries; //type: uint32
+        YLeaf inner_cos; //type: uint32
+        YLeaf outer_cos; //type: uint32
 
 
 
@@ -49,6 +50,7 @@ class Arpgmp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Vrf : public Entity
     {
         public:
@@ -62,8 +64,9 @@ class Arpgmp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value vrf_name; //type: string
 
+
+            YLeaf vrf_name; //type: string
 
         class Entries : public Entity
         {
@@ -80,6 +83,7 @@ class Arpgmp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Entry : public Entity
             {
                 public:
@@ -93,15 +97,14 @@ class Arpgmp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address; //type: string
-                    Value mac_address; //type: string
-                    Value encapsulation; //type: ArpEncapEnum
-                    Value entry_type; //type: ArpEntryEnum
-                    Value interface; //type: string
 
 
-                    class ArpEncapEnum;
-                    class ArpEntryEnum;
+                    YLeaf address; //type: string
+                    YLeaf mac_address; //type: string
+                    YLeaf encapsulation; //type: ArpEncapEnum
+                    YLeaf entry_type; //type: ArpEntryEnum
+                    YLeaf interface; //type: string
+
 
 
             }; // Arpgmp::Vrf::Entries::Entry
@@ -140,6 +143,7 @@ class ArpRedundancy : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Redundancy : public Entity
     {
         public:
@@ -153,8 +157,9 @@ class ArpRedundancy : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value enable; //type: empty
 
+
+            YLeaf enable; //type: empty
 
         class Groups : public Entity
         {
@@ -171,6 +176,7 @@ class ArpRedundancy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Group : public Entity
             {
                 public:
@@ -184,9 +190,10 @@ class ArpRedundancy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value group_id; //type: uint32
-                    Value source_interface; //type: string
 
+
+                    YLeaf group_id; //type: uint32
+                    YLeaf source_interface; //type: string
 
                 class Peers : public Entity
                 {
@@ -203,6 +210,7 @@ class ArpRedundancy : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Peer : public Entity
                     {
                         public:
@@ -216,8 +224,9 @@ class ArpRedundancy : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix_string; //type: string
 
+
+                            YLeaf prefix_string; //type: string
 
 
 
@@ -243,8 +252,9 @@ class ArpRedundancy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enable; //type: empty
 
+
+                        YLeaf enable; //type: empty
 
                     class Interfaces : public Entity
                     {
@@ -261,6 +271,7 @@ class ArpRedundancy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Interface : public Entity
                         {
                             public:
@@ -274,9 +285,10 @@ class ArpRedundancy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
-                                Value interface_id; //type: uint32
 
+
+                                YLeaf interface_name; //type: string
+                                YLeaf interface_id; //type: uint32
 
 
 
@@ -323,18 +335,18 @@ class ArpRedundancy : public Entity
 class ArpEntryEnum : public Enum
 {
     public:
-        static const Enum::Value static_;
-        static const Enum::Value alias;
+        static const Enum::YLeaf static_;
+        static const Enum::YLeaf alias;
 
 };
 
 class ArpEncapEnum : public Enum
 {
     public:
-        static const Enum::Value arpa;
-        static const Enum::Value srp;
-        static const Enum::Value srpa;
-        static const Enum::Value srpb;
+        static const Enum::YLeaf arpa;
+        static const Enum::YLeaf srp;
+        static const Enum::YLeaf srpa;
+        static const Enum::YLeaf srpb;
 
 };
 

@@ -26,6 +26,7 @@ class Ipv6Rib : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class RibTableIds : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Ipv6Rib : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RibTableId : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Ipv6Rib : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value tableid; //type: string
 
+
+                YLeaf tableid; //type: string
 
             class SummaryProtos : public Entity
             {
@@ -72,6 +75,7 @@ class Ipv6Rib : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SummaryProto : public Entity
                 {
                     public:
@@ -85,10 +89,11 @@ class Ipv6Rib : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value protoid; //type: int32
-                        Value name; //type: string
-                        Value instance; //type: string
 
+
+                        YLeaf protoid; //type: int32
+                        YLeaf name; //type: string
+                        YLeaf instance; //type: string
 
                     class ProtoRouteCount : public Entity
                     {
@@ -103,11 +108,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -127,11 +133,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -151,11 +158,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -175,11 +183,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -199,11 +208,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -223,11 +233,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -247,11 +258,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -271,11 +283,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -295,11 +308,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -319,11 +333,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -343,11 +358,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -367,11 +383,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -391,11 +408,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -415,11 +433,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -439,11 +458,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -463,11 +483,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -487,11 +508,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -511,11 +533,12 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -566,6 +589,7 @@ class Ipv6Rib : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RibTableItfHndl : public Entity
                 {
                     public:
@@ -579,8 +603,9 @@ class Ipv6Rib : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value handle; //type: int32
 
+
+                        YLeaf handle; //type: int32
 
                     class ItfRoute : public Entity
                     {
@@ -595,40 +620,41 @@ class Ipv6Rib : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value prefix; //type: string
-                            Value prefix_length_xr; //type: uint8
-                            Value route_version; //type: uint32
-                            Value protocol_id; //type: uint32
-                            Value protocol_name; //type: string
-                            Value instance; //type: string
-                            Value client_id; //type: uint32
-                            Value route_type; //type: uint16
-                            Value priority; //type: uint8
-                            Value svd_type; //type: uint8
-                            Value flags; //type: uint32
-                            Value extended_flags; //type: uint64
-                            Value tag; //type: uint32
-                            Value distance; //type: uint32
-                            Value diversion_distance; //type: uint32
-                            Value metric; //type: uint32
-                            Value paths_count; //type: uint32
-                            Value attribute_identity; //type: uint32
-                            Value traffic_index; //type: uint8
-                            Value route_precedence; //type: uint8
-                            Value qos_group; //type: uint8
-                            Value flow_tag; //type: uint8
-                            Value fwd_class; //type: uint8
-                            Value pic_count; //type: uint8
-                            Value active; //type: boolean
-                            Value diversion; //type: boolean
-                            Value diversion_proto_name; //type: string
-                            Value route_age; //type: uint32
-                            Value route_label; //type: uint32
-                            Value version; //type: uint32
-                            Value tbl_version; //type: uint64
-                            Value route_modify_time; //type: uint64
 
+
+                            YLeaf address; //type: string
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_length_xr; //type: uint8
+                            YLeaf route_version; //type: uint32
+                            YLeaf protocol_id; //type: uint32
+                            YLeaf protocol_name; //type: string
+                            YLeaf instance; //type: string
+                            YLeaf client_id; //type: uint32
+                            YLeaf route_type; //type: uint16
+                            YLeaf priority; //type: uint8
+                            YLeaf svd_type; //type: uint8
+                            YLeaf flags; //type: uint32
+                            YLeaf extended_flags; //type: uint64
+                            YLeaf tag; //type: uint32
+                            YLeaf distance; //type: uint32
+                            YLeaf diversion_distance; //type: uint32
+                            YLeaf metric; //type: uint32
+                            YLeaf paths_count; //type: uint32
+                            YLeaf attribute_identity; //type: uint32
+                            YLeaf traffic_index; //type: uint8
+                            YLeaf route_precedence; //type: uint8
+                            YLeaf qos_group; //type: uint8
+                            YLeaf flow_tag; //type: uint8
+                            YLeaf fwd_class; //type: uint8
+                            YLeaf pic_count; //type: uint8
+                            YLeaf active; //type: boolean
+                            YLeaf diversion; //type: boolean
+                            YLeaf diversion_proto_name; //type: string
+                            YLeaf route_age; //type: uint32
+                            YLeaf route_label; //type: uint32
+                            YLeaf version; //type: uint32
+                            YLeaf tbl_version; //type: uint64
+                            YLeaf route_modify_time; //type: uint64
 
                         class RoutePath : public Entity
                         {
@@ -645,6 +671,7 @@ class Ipv6Rib : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Ipv6RibEdmPath : public Entity
                             {
                                 public:
@@ -658,44 +685,45 @@ class Ipv6Rib : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value information_source; //type: string
-                                    Value v6_nexthop; //type: string
-                                    Value interface_name; //type: string
-                                    Value metric; //type: uint32
-                                    Value load_metric; //type: uint32
-                                    Value flags64; //type: uint64
-                                    Value flags; //type: uint16
-                                    Value private_flags; //type: uint16
-                                    Value looped; //type: boolean
-                                    Value next_hop_table_id; //type: uint32
-                                    Value next_hop_vrf_name; //type: string
-                                    Value next_hop_table_name; //type: string
-                                    Value next_hop_afi; //type: uint32
-                                    Value next_hop_safi; //type: uint32
-                                    Value route_label; //type: uint32
-                                    Value tunnel_id; //type: uint32
-                                    Value pathid; //type: uint32
-                                    Value backup_pathid; //type: uint32
-                                    Value ref_cnt_of_backup; //type: uint32
-                                    Value number_of_extended_communities; //type: uint32
-                                    Value mvpn_present; //type: boolean
-                                    Value path_rt_present; //type: boolean
-                                    Value vrf_import_rt_present; //type: boolean
-                                    Value source_asrt_present; //type: boolean
-                                    Value source_rd_present; //type: boolean
-                                    Value segmented_nexthop_present; //type: boolean
-                                    Value next_hop_id; //type: uint32
-                                    Value next_hop_id_refcount; //type: uint32
-                                    Value ospf_area_id; //type: string
-                                    Value has_labelstk; //type: boolean
-                                    Value num_labels; //type: uint8
-                                    Value binding_label; //type: uint32
-                                    Value nhid_feid; //type: uint64
-                                    Value mpls_feid; //type: uint64
-                                    ValueList remote_backup_addr; //type: list of  string
-                                    ValueList labelstk; //type: list of  uint32
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf information_source; //type: string
+                                    YLeaf v6_nexthop; //type: string
+                                    YLeaf interface_name; //type: string
+                                    YLeaf metric; //type: uint32
+                                    YLeaf load_metric; //type: uint32
+                                    YLeaf flags64; //type: uint64
+                                    YLeaf flags; //type: uint16
+                                    YLeaf private_flags; //type: uint16
+                                    YLeaf looped; //type: boolean
+                                    YLeaf next_hop_table_id; //type: uint32
+                                    YLeaf next_hop_vrf_name; //type: string
+                                    YLeaf next_hop_table_name; //type: string
+                                    YLeaf next_hop_afi; //type: uint32
+                                    YLeaf next_hop_safi; //type: uint32
+                                    YLeaf route_label; //type: uint32
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf pathid; //type: uint32
+                                    YLeaf backup_pathid; //type: uint32
+                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                    YLeaf number_of_extended_communities; //type: uint32
+                                    YLeaf mvpn_present; //type: boolean
+                                    YLeaf path_rt_present; //type: boolean
+                                    YLeaf vrf_import_rt_present; //type: boolean
+                                    YLeaf source_asrt_present; //type: boolean
+                                    YLeaf source_rd_present; //type: boolean
+                                    YLeaf segmented_nexthop_present; //type: boolean
+                                    YLeaf next_hop_id; //type: uint32
+                                    YLeaf next_hop_id_refcount; //type: uint32
+                                    YLeaf ospf_area_id; //type: string
+                                    YLeaf has_labelstk; //type: boolean
+                                    YLeaf num_labels; //type: uint8
+                                    YLeaf binding_label; //type: uint32
+                                    YLeaf nhid_feid; //type: uint64
+                                    YLeaf mpls_feid; //type: uint64
+                                    YLeafList remote_backup_addr; //type: list of  string
+                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -754,6 +782,7 @@ class Ipv6Rib : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -767,8 +796,9 @@ class Ipv6Rib : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class Afs : public Entity
             {
@@ -785,6 +815,7 @@ class Ipv6Rib : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Af : public Entity
                 {
                     public:
@@ -798,8 +829,9 @@ class Ipv6Rib : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af_name; //type: string
 
+
+                        YLeaf af_name; //type: string
 
                     class Safs : public Entity
                     {
@@ -816,6 +848,7 @@ class Ipv6Rib : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Saf : public Entity
                         {
                             public:
@@ -829,8 +862,9 @@ class Ipv6Rib : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value saf_name; //type: string
 
+
+                                YLeaf saf_name; //type: string
 
                             class IpRibRouteTableNames : public Entity
                             {
@@ -847,6 +881,7 @@ class Ipv6Rib : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class IpRibRouteTableName : public Entity
                                 {
                                     public:
@@ -860,8 +895,9 @@ class Ipv6Rib : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value route_table_name; //type: string
 
+
+                                        YLeaf route_table_name; //type: string
 
                                     class DestinationKw : public Entity
                                     {
@@ -876,6 +912,7 @@ class Ipv6Rib : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                                         class DestQRoutes : public Entity
@@ -893,6 +930,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class DestQRoute : public Entity
                                             {
                                                 public:
@@ -906,41 +944,42 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
-                                                    Value prefix_length; //type: uint8
-                                                    Value prefix; //type: string
-                                                    Value prefix_length_xr; //type: uint8
-                                                    Value route_version; //type: uint32
-                                                    Value protocol_id; //type: uint32
-                                                    Value protocol_name; //type: string
-                                                    Value instance; //type: string
-                                                    Value client_id; //type: uint32
-                                                    Value route_type; //type: uint16
-                                                    Value priority; //type: uint8
-                                                    Value svd_type; //type: uint8
-                                                    Value flags; //type: uint32
-                                                    Value extended_flags; //type: uint64
-                                                    Value tag; //type: uint32
-                                                    Value distance; //type: uint32
-                                                    Value diversion_distance; //type: uint32
-                                                    Value metric; //type: uint32
-                                                    Value paths_count; //type: uint32
-                                                    Value attribute_identity; //type: uint32
-                                                    Value traffic_index; //type: uint8
-                                                    Value route_precedence; //type: uint8
-                                                    Value qos_group; //type: uint8
-                                                    Value flow_tag; //type: uint8
-                                                    Value fwd_class; //type: uint8
-                                                    Value pic_count; //type: uint8
-                                                    Value active; //type: boolean
-                                                    Value diversion; //type: boolean
-                                                    Value diversion_proto_name; //type: string
-                                                    Value route_age; //type: uint32
-                                                    Value route_label; //type: uint32
-                                                    Value version; //type: uint32
-                                                    Value tbl_version; //type: uint64
-                                                    Value route_modify_time; //type: uint64
 
+
+                                                    YLeaf address; //type: string
+                                                    YLeaf prefix_length; //type: uint8
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length_xr; //type: uint8
+                                                    YLeaf route_version; //type: uint32
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf protocol_name; //type: string
+                                                    YLeaf instance; //type: string
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf route_type; //type: uint16
+                                                    YLeaf priority; //type: uint8
+                                                    YLeaf svd_type; //type: uint8
+                                                    YLeaf flags; //type: uint32
+                                                    YLeaf extended_flags; //type: uint64
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf distance; //type: uint32
+                                                    YLeaf diversion_distance; //type: uint32
+                                                    YLeaf metric; //type: uint32
+                                                    YLeaf paths_count; //type: uint32
+                                                    YLeaf attribute_identity; //type: uint32
+                                                    YLeaf traffic_index; //type: uint8
+                                                    YLeaf route_precedence; //type: uint8
+                                                    YLeaf qos_group; //type: uint8
+                                                    YLeaf flow_tag; //type: uint8
+                                                    YLeaf fwd_class; //type: uint8
+                                                    YLeaf pic_count; //type: uint8
+                                                    YLeaf active; //type: boolean
+                                                    YLeaf diversion; //type: boolean
+                                                    YLeaf diversion_proto_name; //type: string
+                                                    YLeaf route_age; //type: uint32
+                                                    YLeaf route_label; //type: uint32
+                                                    YLeaf version; //type: uint32
+                                                    YLeaf tbl_version; //type: uint64
+                                                    YLeaf route_modify_time; //type: uint64
 
                                                 class RoutePath : public Entity
                                                 {
@@ -957,6 +996,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Ipv6RibEdmPath : public Entity
                                                     {
                                                         public:
@@ -970,44 +1010,45 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value information_source; //type: string
-                                                            Value v6_nexthop; //type: string
-                                                            Value interface_name; //type: string
-                                                            Value metric; //type: uint32
-                                                            Value load_metric; //type: uint32
-                                                            Value flags64; //type: uint64
-                                                            Value flags; //type: uint16
-                                                            Value private_flags; //type: uint16
-                                                            Value looped; //type: boolean
-                                                            Value next_hop_table_id; //type: uint32
-                                                            Value next_hop_vrf_name; //type: string
-                                                            Value next_hop_table_name; //type: string
-                                                            Value next_hop_afi; //type: uint32
-                                                            Value next_hop_safi; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value tunnel_id; //type: uint32
-                                                            Value pathid; //type: uint32
-                                                            Value backup_pathid; //type: uint32
-                                                            Value ref_cnt_of_backup; //type: uint32
-                                                            Value number_of_extended_communities; //type: uint32
-                                                            Value mvpn_present; //type: boolean
-                                                            Value path_rt_present; //type: boolean
-                                                            Value vrf_import_rt_present; //type: boolean
-                                                            Value source_asrt_present; //type: boolean
-                                                            Value source_rd_present; //type: boolean
-                                                            Value segmented_nexthop_present; //type: boolean
-                                                            Value next_hop_id; //type: uint32
-                                                            Value next_hop_id_refcount; //type: uint32
-                                                            Value ospf_area_id; //type: string
-                                                            Value has_labelstk; //type: boolean
-                                                            Value num_labels; //type: uint8
-                                                            Value binding_label; //type: uint32
-                                                            Value nhid_feid; //type: uint64
-                                                            Value mpls_feid; //type: uint64
-                                                            ValueList remote_backup_addr; //type: list of  string
-                                                            ValueList labelstk; //type: list of  uint32
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf information_source; //type: string
+                                                            YLeaf v6_nexthop; //type: string
+                                                            YLeaf interface_name; //type: string
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf load_metric; //type: uint32
+                                                            YLeaf flags64; //type: uint64
+                                                            YLeaf flags; //type: uint16
+                                                            YLeaf private_flags; //type: uint16
+                                                            YLeaf looped; //type: boolean
+                                                            YLeaf next_hop_table_id; //type: uint32
+                                                            YLeaf next_hop_vrf_name; //type: string
+                                                            YLeaf next_hop_table_name; //type: string
+                                                            YLeaf next_hop_afi; //type: uint32
+                                                            YLeaf next_hop_safi; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf tunnel_id; //type: uint32
+                                                            YLeaf pathid; //type: uint32
+                                                            YLeaf backup_pathid; //type: uint32
+                                                            YLeaf ref_cnt_of_backup; //type: uint32
+                                                            YLeaf number_of_extended_communities; //type: uint32
+                                                            YLeaf mvpn_present; //type: boolean
+                                                            YLeaf path_rt_present; //type: boolean
+                                                            YLeaf vrf_import_rt_present; //type: boolean
+                                                            YLeaf source_asrt_present; //type: boolean
+                                                            YLeaf source_rd_present; //type: boolean
+                                                            YLeaf segmented_nexthop_present; //type: boolean
+                                                            YLeaf next_hop_id; //type: uint32
+                                                            YLeaf next_hop_id_refcount; //type: uint32
+                                                            YLeaf ospf_area_id; //type: string
+                                                            YLeaf has_labelstk; //type: boolean
+                                                            YLeaf num_labels; //type: uint8
+                                                            YLeaf binding_label; //type: uint32
+                                                            YLeaf nhid_feid; //type: uint64
+                                                            YLeaf mpls_feid; //type: uint64
+                                                            YLeafList remote_backup_addr; //type: list of  string
+                                                            YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -1047,6 +1088,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class DestBackupRoute : public Entity
                                             {
                                                 public:
@@ -1060,41 +1102,42 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
-                                                    Value prefix_length; //type: uint8
-                                                    Value prefix; //type: string
-                                                    Value prefix_length_xr; //type: uint8
-                                                    Value route_version; //type: uint32
-                                                    Value protocol_id; //type: uint32
-                                                    Value protocol_name; //type: string
-                                                    Value instance; //type: string
-                                                    Value client_id; //type: uint32
-                                                    Value route_type; //type: uint16
-                                                    Value priority; //type: uint8
-                                                    Value svd_type; //type: uint8
-                                                    Value flags; //type: uint32
-                                                    Value extended_flags; //type: uint64
-                                                    Value tag; //type: uint32
-                                                    Value distance; //type: uint32
-                                                    Value diversion_distance; //type: uint32
-                                                    Value metric; //type: uint32
-                                                    Value paths_count; //type: uint32
-                                                    Value attribute_identity; //type: uint32
-                                                    Value traffic_index; //type: uint8
-                                                    Value route_precedence; //type: uint8
-                                                    Value qos_group; //type: uint8
-                                                    Value flow_tag; //type: uint8
-                                                    Value fwd_class; //type: uint8
-                                                    Value pic_count; //type: uint8
-                                                    Value active; //type: boolean
-                                                    Value diversion; //type: boolean
-                                                    Value diversion_proto_name; //type: string
-                                                    Value route_age; //type: uint32
-                                                    Value route_label; //type: uint32
-                                                    Value version; //type: uint32
-                                                    Value tbl_version; //type: uint64
-                                                    Value route_modify_time; //type: uint64
 
+
+                                                    YLeaf address; //type: string
+                                                    YLeaf prefix_length; //type: uint8
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length_xr; //type: uint8
+                                                    YLeaf route_version; //type: uint32
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf protocol_name; //type: string
+                                                    YLeaf instance; //type: string
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf route_type; //type: uint16
+                                                    YLeaf priority; //type: uint8
+                                                    YLeaf svd_type; //type: uint8
+                                                    YLeaf flags; //type: uint32
+                                                    YLeaf extended_flags; //type: uint64
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf distance; //type: uint32
+                                                    YLeaf diversion_distance; //type: uint32
+                                                    YLeaf metric; //type: uint32
+                                                    YLeaf paths_count; //type: uint32
+                                                    YLeaf attribute_identity; //type: uint32
+                                                    YLeaf traffic_index; //type: uint8
+                                                    YLeaf route_precedence; //type: uint8
+                                                    YLeaf qos_group; //type: uint8
+                                                    YLeaf flow_tag; //type: uint8
+                                                    YLeaf fwd_class; //type: uint8
+                                                    YLeaf pic_count; //type: uint8
+                                                    YLeaf active; //type: boolean
+                                                    YLeaf diversion; //type: boolean
+                                                    YLeaf diversion_proto_name; //type: string
+                                                    YLeaf route_age; //type: uint32
+                                                    YLeaf route_label; //type: uint32
+                                                    YLeaf version; //type: uint32
+                                                    YLeaf tbl_version; //type: uint64
+                                                    YLeaf route_modify_time; //type: uint64
 
                                                 class RoutePath : public Entity
                                                 {
@@ -1111,6 +1154,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Ipv6RibEdmPath : public Entity
                                                     {
                                                         public:
@@ -1124,44 +1168,45 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value information_source; //type: string
-                                                            Value v6_nexthop; //type: string
-                                                            Value interface_name; //type: string
-                                                            Value metric; //type: uint32
-                                                            Value load_metric; //type: uint32
-                                                            Value flags64; //type: uint64
-                                                            Value flags; //type: uint16
-                                                            Value private_flags; //type: uint16
-                                                            Value looped; //type: boolean
-                                                            Value next_hop_table_id; //type: uint32
-                                                            Value next_hop_vrf_name; //type: string
-                                                            Value next_hop_table_name; //type: string
-                                                            Value next_hop_afi; //type: uint32
-                                                            Value next_hop_safi; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value tunnel_id; //type: uint32
-                                                            Value pathid; //type: uint32
-                                                            Value backup_pathid; //type: uint32
-                                                            Value ref_cnt_of_backup; //type: uint32
-                                                            Value number_of_extended_communities; //type: uint32
-                                                            Value mvpn_present; //type: boolean
-                                                            Value path_rt_present; //type: boolean
-                                                            Value vrf_import_rt_present; //type: boolean
-                                                            Value source_asrt_present; //type: boolean
-                                                            Value source_rd_present; //type: boolean
-                                                            Value segmented_nexthop_present; //type: boolean
-                                                            Value next_hop_id; //type: uint32
-                                                            Value next_hop_id_refcount; //type: uint32
-                                                            Value ospf_area_id; //type: string
-                                                            Value has_labelstk; //type: boolean
-                                                            Value num_labels; //type: uint8
-                                                            Value binding_label; //type: uint32
-                                                            Value nhid_feid; //type: uint64
-                                                            Value mpls_feid; //type: uint64
-                                                            ValueList remote_backup_addr; //type: list of  string
-                                                            ValueList labelstk; //type: list of  uint32
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf information_source; //type: string
+                                                            YLeaf v6_nexthop; //type: string
+                                                            YLeaf interface_name; //type: string
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf load_metric; //type: uint32
+                                                            YLeaf flags64; //type: uint64
+                                                            YLeaf flags; //type: uint16
+                                                            YLeaf private_flags; //type: uint16
+                                                            YLeaf looped; //type: boolean
+                                                            YLeaf next_hop_table_id; //type: uint32
+                                                            YLeaf next_hop_vrf_name; //type: string
+                                                            YLeaf next_hop_table_name; //type: string
+                                                            YLeaf next_hop_afi; //type: uint32
+                                                            YLeaf next_hop_safi; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf tunnel_id; //type: uint32
+                                                            YLeaf pathid; //type: uint32
+                                                            YLeaf backup_pathid; //type: uint32
+                                                            YLeaf ref_cnt_of_backup; //type: uint32
+                                                            YLeaf number_of_extended_communities; //type: uint32
+                                                            YLeaf mvpn_present; //type: boolean
+                                                            YLeaf path_rt_present; //type: boolean
+                                                            YLeaf vrf_import_rt_present; //type: boolean
+                                                            YLeaf source_asrt_present; //type: boolean
+                                                            YLeaf source_rd_present; //type: boolean
+                                                            YLeaf segmented_nexthop_present; //type: boolean
+                                                            YLeaf next_hop_id; //type: uint32
+                                                            YLeaf next_hop_id_refcount; //type: uint32
+                                                            YLeaf ospf_area_id; //type: string
+                                                            YLeaf has_labelstk; //type: boolean
+                                                            YLeaf num_labels; //type: uint8
+                                                            YLeaf binding_label; //type: uint32
+                                                            YLeaf nhid_feid; //type: uint64
+                                                            YLeaf mpls_feid; //type: uint64
+                                                            YLeafList remote_backup_addr; //type: list of  string
+                                                            YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -1201,6 +1246,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class DestBestRoute : public Entity
                                             {
                                                 public:
@@ -1214,40 +1260,41 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
-                                                    Value prefix; //type: string
-                                                    Value prefix_length_xr; //type: uint8
-                                                    Value route_version; //type: uint32
-                                                    Value protocol_id; //type: uint32
-                                                    Value protocol_name; //type: string
-                                                    Value instance; //type: string
-                                                    Value client_id; //type: uint32
-                                                    Value route_type; //type: uint16
-                                                    Value priority; //type: uint8
-                                                    Value svd_type; //type: uint8
-                                                    Value flags; //type: uint32
-                                                    Value extended_flags; //type: uint64
-                                                    Value tag; //type: uint32
-                                                    Value distance; //type: uint32
-                                                    Value diversion_distance; //type: uint32
-                                                    Value metric; //type: uint32
-                                                    Value paths_count; //type: uint32
-                                                    Value attribute_identity; //type: uint32
-                                                    Value traffic_index; //type: uint8
-                                                    Value route_precedence; //type: uint8
-                                                    Value qos_group; //type: uint8
-                                                    Value flow_tag; //type: uint8
-                                                    Value fwd_class; //type: uint8
-                                                    Value pic_count; //type: uint8
-                                                    Value active; //type: boolean
-                                                    Value diversion; //type: boolean
-                                                    Value diversion_proto_name; //type: string
-                                                    Value route_age; //type: uint32
-                                                    Value route_label; //type: uint32
-                                                    Value version; //type: uint32
-                                                    Value tbl_version; //type: uint64
-                                                    Value route_modify_time; //type: uint64
 
+
+                                                    YLeaf address; //type: string
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length_xr; //type: uint8
+                                                    YLeaf route_version; //type: uint32
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf protocol_name; //type: string
+                                                    YLeaf instance; //type: string
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf route_type; //type: uint16
+                                                    YLeaf priority; //type: uint8
+                                                    YLeaf svd_type; //type: uint8
+                                                    YLeaf flags; //type: uint32
+                                                    YLeaf extended_flags; //type: uint64
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf distance; //type: uint32
+                                                    YLeaf diversion_distance; //type: uint32
+                                                    YLeaf metric; //type: uint32
+                                                    YLeaf paths_count; //type: uint32
+                                                    YLeaf attribute_identity; //type: uint32
+                                                    YLeaf traffic_index; //type: uint8
+                                                    YLeaf route_precedence; //type: uint8
+                                                    YLeaf qos_group; //type: uint8
+                                                    YLeaf flow_tag; //type: uint8
+                                                    YLeaf fwd_class; //type: uint8
+                                                    YLeaf pic_count; //type: uint8
+                                                    YLeaf active; //type: boolean
+                                                    YLeaf diversion; //type: boolean
+                                                    YLeaf diversion_proto_name; //type: string
+                                                    YLeaf route_age; //type: uint32
+                                                    YLeaf route_label; //type: uint32
+                                                    YLeaf version; //type: uint32
+                                                    YLeaf tbl_version; //type: uint64
+                                                    YLeaf route_modify_time; //type: uint64
 
                                                 class RoutePath : public Entity
                                                 {
@@ -1264,6 +1311,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Ipv6RibEdmPath : public Entity
                                                     {
                                                         public:
@@ -1277,44 +1325,45 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value information_source; //type: string
-                                                            Value v6_nexthop; //type: string
-                                                            Value interface_name; //type: string
-                                                            Value metric; //type: uint32
-                                                            Value load_metric; //type: uint32
-                                                            Value flags64; //type: uint64
-                                                            Value flags; //type: uint16
-                                                            Value private_flags; //type: uint16
-                                                            Value looped; //type: boolean
-                                                            Value next_hop_table_id; //type: uint32
-                                                            Value next_hop_vrf_name; //type: string
-                                                            Value next_hop_table_name; //type: string
-                                                            Value next_hop_afi; //type: uint32
-                                                            Value next_hop_safi; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value tunnel_id; //type: uint32
-                                                            Value pathid; //type: uint32
-                                                            Value backup_pathid; //type: uint32
-                                                            Value ref_cnt_of_backup; //type: uint32
-                                                            Value number_of_extended_communities; //type: uint32
-                                                            Value mvpn_present; //type: boolean
-                                                            Value path_rt_present; //type: boolean
-                                                            Value vrf_import_rt_present; //type: boolean
-                                                            Value source_asrt_present; //type: boolean
-                                                            Value source_rd_present; //type: boolean
-                                                            Value segmented_nexthop_present; //type: boolean
-                                                            Value next_hop_id; //type: uint32
-                                                            Value next_hop_id_refcount; //type: uint32
-                                                            Value ospf_area_id; //type: string
-                                                            Value has_labelstk; //type: boolean
-                                                            Value num_labels; //type: uint8
-                                                            Value binding_label; //type: uint32
-                                                            Value nhid_feid; //type: uint64
-                                                            Value mpls_feid; //type: uint64
-                                                            ValueList remote_backup_addr; //type: list of  string
-                                                            ValueList labelstk; //type: list of  uint32
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf information_source; //type: string
+                                                            YLeaf v6_nexthop; //type: string
+                                                            YLeaf interface_name; //type: string
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf load_metric; //type: uint32
+                                                            YLeaf flags64; //type: uint64
+                                                            YLeaf flags; //type: uint16
+                                                            YLeaf private_flags; //type: uint16
+                                                            YLeaf looped; //type: boolean
+                                                            YLeaf next_hop_table_id; //type: uint32
+                                                            YLeaf next_hop_vrf_name; //type: string
+                                                            YLeaf next_hop_table_name; //type: string
+                                                            YLeaf next_hop_afi; //type: uint32
+                                                            YLeaf next_hop_safi; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf tunnel_id; //type: uint32
+                                                            YLeaf pathid; //type: uint32
+                                                            YLeaf backup_pathid; //type: uint32
+                                                            YLeaf ref_cnt_of_backup; //type: uint32
+                                                            YLeaf number_of_extended_communities; //type: uint32
+                                                            YLeaf mvpn_present; //type: boolean
+                                                            YLeaf path_rt_present; //type: boolean
+                                                            YLeaf vrf_import_rt_present; //type: boolean
+                                                            YLeaf source_asrt_present; //type: boolean
+                                                            YLeaf source_rd_present; //type: boolean
+                                                            YLeaf segmented_nexthop_present; //type: boolean
+                                                            YLeaf next_hop_id; //type: uint32
+                                                            YLeaf next_hop_id_refcount; //type: uint32
+                                                            YLeaf ospf_area_id; //type: string
+                                                            YLeaf has_labelstk; //type: boolean
+                                                            YLeaf num_labels; //type: uint8
+                                                            YLeaf binding_label; //type: uint32
+                                                            YLeaf nhid_feid; //type: uint64
+                                                            YLeaf mpls_feid; //type: uint64
+                                                            YLeafList remote_backup_addr; //type: list of  string
+                                                            YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -1354,6 +1403,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class DestNextHopRoute : public Entity
                                             {
                                                 public:
@@ -1367,40 +1417,41 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
-                                                    Value prefix; //type: string
-                                                    Value prefix_length_xr; //type: uint8
-                                                    Value route_version; //type: uint32
-                                                    Value protocol_id; //type: uint32
-                                                    Value protocol_name; //type: string
-                                                    Value instance; //type: string
-                                                    Value client_id; //type: uint32
-                                                    Value route_type; //type: uint16
-                                                    Value priority; //type: uint8
-                                                    Value svd_type; //type: uint8
-                                                    Value flags; //type: uint32
-                                                    Value extended_flags; //type: uint64
-                                                    Value tag; //type: uint32
-                                                    Value distance; //type: uint32
-                                                    Value diversion_distance; //type: uint32
-                                                    Value metric; //type: uint32
-                                                    Value paths_count; //type: uint32
-                                                    Value attribute_identity; //type: uint32
-                                                    Value traffic_index; //type: uint8
-                                                    Value route_precedence; //type: uint8
-                                                    Value qos_group; //type: uint8
-                                                    Value flow_tag; //type: uint8
-                                                    Value fwd_class; //type: uint8
-                                                    Value pic_count; //type: uint8
-                                                    Value active; //type: boolean
-                                                    Value diversion; //type: boolean
-                                                    Value diversion_proto_name; //type: string
-                                                    Value route_age; //type: uint32
-                                                    Value route_label; //type: uint32
-                                                    Value version; //type: uint32
-                                                    Value tbl_version; //type: uint64
-                                                    Value route_modify_time; //type: uint64
 
+
+                                                    YLeaf address; //type: string
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length_xr; //type: uint8
+                                                    YLeaf route_version; //type: uint32
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf protocol_name; //type: string
+                                                    YLeaf instance; //type: string
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf route_type; //type: uint16
+                                                    YLeaf priority; //type: uint8
+                                                    YLeaf svd_type; //type: uint8
+                                                    YLeaf flags; //type: uint32
+                                                    YLeaf extended_flags; //type: uint64
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf distance; //type: uint32
+                                                    YLeaf diversion_distance; //type: uint32
+                                                    YLeaf metric; //type: uint32
+                                                    YLeaf paths_count; //type: uint32
+                                                    YLeaf attribute_identity; //type: uint32
+                                                    YLeaf traffic_index; //type: uint8
+                                                    YLeaf route_precedence; //type: uint8
+                                                    YLeaf qos_group; //type: uint8
+                                                    YLeaf flow_tag; //type: uint8
+                                                    YLeaf fwd_class; //type: uint8
+                                                    YLeaf pic_count; //type: uint8
+                                                    YLeaf active; //type: boolean
+                                                    YLeaf diversion; //type: boolean
+                                                    YLeaf diversion_proto_name; //type: string
+                                                    YLeaf route_age; //type: uint32
+                                                    YLeaf route_label; //type: uint32
+                                                    YLeaf version; //type: uint32
+                                                    YLeaf tbl_version; //type: uint64
+                                                    YLeaf route_modify_time; //type: uint64
 
                                                 class RoutePath : public Entity
                                                 {
@@ -1417,6 +1468,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Ipv6RibEdmPath : public Entity
                                                     {
                                                         public:
@@ -1430,44 +1482,45 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value information_source; //type: string
-                                                            Value v6_nexthop; //type: string
-                                                            Value interface_name; //type: string
-                                                            Value metric; //type: uint32
-                                                            Value load_metric; //type: uint32
-                                                            Value flags64; //type: uint64
-                                                            Value flags; //type: uint16
-                                                            Value private_flags; //type: uint16
-                                                            Value looped; //type: boolean
-                                                            Value next_hop_table_id; //type: uint32
-                                                            Value next_hop_vrf_name; //type: string
-                                                            Value next_hop_table_name; //type: string
-                                                            Value next_hop_afi; //type: uint32
-                                                            Value next_hop_safi; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value tunnel_id; //type: uint32
-                                                            Value pathid; //type: uint32
-                                                            Value backup_pathid; //type: uint32
-                                                            Value ref_cnt_of_backup; //type: uint32
-                                                            Value number_of_extended_communities; //type: uint32
-                                                            Value mvpn_present; //type: boolean
-                                                            Value path_rt_present; //type: boolean
-                                                            Value vrf_import_rt_present; //type: boolean
-                                                            Value source_asrt_present; //type: boolean
-                                                            Value source_rd_present; //type: boolean
-                                                            Value segmented_nexthop_present; //type: boolean
-                                                            Value next_hop_id; //type: uint32
-                                                            Value next_hop_id_refcount; //type: uint32
-                                                            Value ospf_area_id; //type: string
-                                                            Value has_labelstk; //type: boolean
-                                                            Value num_labels; //type: uint8
-                                                            Value binding_label; //type: uint32
-                                                            Value nhid_feid; //type: uint64
-                                                            Value mpls_feid; //type: uint64
-                                                            ValueList remote_backup_addr; //type: list of  string
-                                                            ValueList labelstk; //type: list of  uint32
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf information_source; //type: string
+                                                            YLeaf v6_nexthop; //type: string
+                                                            YLeaf interface_name; //type: string
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf load_metric; //type: uint32
+                                                            YLeaf flags64; //type: uint64
+                                                            YLeaf flags; //type: uint16
+                                                            YLeaf private_flags; //type: uint16
+                                                            YLeaf looped; //type: boolean
+                                                            YLeaf next_hop_table_id; //type: uint32
+                                                            YLeaf next_hop_vrf_name; //type: string
+                                                            YLeaf next_hop_table_name; //type: string
+                                                            YLeaf next_hop_afi; //type: uint32
+                                                            YLeaf next_hop_safi; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf tunnel_id; //type: uint32
+                                                            YLeaf pathid; //type: uint32
+                                                            YLeaf backup_pathid; //type: uint32
+                                                            YLeaf ref_cnt_of_backup; //type: uint32
+                                                            YLeaf number_of_extended_communities; //type: uint32
+                                                            YLeaf mvpn_present; //type: boolean
+                                                            YLeaf path_rt_present; //type: boolean
+                                                            YLeaf vrf_import_rt_present; //type: boolean
+                                                            YLeaf source_asrt_present; //type: boolean
+                                                            YLeaf source_rd_present; //type: boolean
+                                                            YLeaf segmented_nexthop_present; //type: boolean
+                                                            YLeaf next_hop_id; //type: uint32
+                                                            YLeaf next_hop_id_refcount; //type: uint32
+                                                            YLeaf ospf_area_id; //type: string
+                                                            YLeaf has_labelstk; //type: boolean
+                                                            YLeaf num_labels; //type: uint8
+                                                            YLeaf binding_label; //type: uint32
+                                                            YLeaf nhid_feid; //type: uint64
+                                                            YLeaf mpls_feid; //type: uint64
+                                                            YLeafList remote_backup_addr; //type: list of  string
+                                                            YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -1516,6 +1569,7 @@ class Ipv6Rib : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Advert : public Entity
                                         {
                                             public:
@@ -1529,9 +1583,10 @@ class Ipv6Rib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
 
                                             class Ipv6RibEdmAdvert : public Entity
                                             {
@@ -1546,15 +1601,16 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value protocol_id; //type: uint32
-                                                    Value client_id; //type: uint32
-                                                    Value number_of_extended_communities; //type: uint32
-                                                    Value extended_communities; //type: string
-                                                    Value protocol_opaque_flags; //type: uint8
-                                                    Value protocol_opaque; //type: uint32
-                                                    Value code; //type: int8
-                                                    Value instance_name; //type: string
 
+
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                    YLeaf extended_communities; //type: string
+                                                    YLeaf protocol_opaque_flags; //type: uint8
+                                                    YLeaf protocol_opaque; //type: uint32
+                                                    YLeaf code; //type: int8
+                                                    YLeaf instance_name; //type: string
 
 
 
@@ -1588,6 +1644,7 @@ class Ipv6Rib : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class DeletedRoute : public Entity
                                         {
                                             public:
@@ -1601,41 +1658,42 @@ class Ipv6Rib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
-                                                Value prefix; //type: string
-                                                Value prefix_length_xr; //type: uint8
-                                                Value route_version; //type: uint32
-                                                Value protocol_id; //type: uint32
-                                                Value protocol_name; //type: string
-                                                Value instance; //type: string
-                                                Value client_id; //type: uint32
-                                                Value route_type; //type: uint16
-                                                Value priority; //type: uint8
-                                                Value svd_type; //type: uint8
-                                                Value flags; //type: uint32
-                                                Value extended_flags; //type: uint64
-                                                Value tag; //type: uint32
-                                                Value distance; //type: uint32
-                                                Value diversion_distance; //type: uint32
-                                                Value metric; //type: uint32
-                                                Value paths_count; //type: uint32
-                                                Value attribute_identity; //type: uint32
-                                                Value traffic_index; //type: uint8
-                                                Value route_precedence; //type: uint8
-                                                Value qos_group; //type: uint8
-                                                Value flow_tag; //type: uint8
-                                                Value fwd_class; //type: uint8
-                                                Value pic_count; //type: uint8
-                                                Value active; //type: boolean
-                                                Value diversion; //type: boolean
-                                                Value diversion_proto_name; //type: string
-                                                Value route_age; //type: uint32
-                                                Value route_label; //type: uint32
-                                                Value version; //type: uint32
-                                                Value tbl_version; //type: uint64
-                                                Value route_modify_time; //type: uint64
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
+                                                YLeaf prefix; //type: string
+                                                YLeaf prefix_length_xr; //type: uint8
+                                                YLeaf route_version; //type: uint32
+                                                YLeaf protocol_id; //type: uint32
+                                                YLeaf protocol_name; //type: string
+                                                YLeaf instance; //type: string
+                                                YLeaf client_id; //type: uint32
+                                                YLeaf route_type; //type: uint16
+                                                YLeaf priority; //type: uint8
+                                                YLeaf svd_type; //type: uint8
+                                                YLeaf flags; //type: uint32
+                                                YLeaf extended_flags; //type: uint64
+                                                YLeaf tag; //type: uint32
+                                                YLeaf distance; //type: uint32
+                                                YLeaf diversion_distance; //type: uint32
+                                                YLeaf metric; //type: uint32
+                                                YLeaf paths_count; //type: uint32
+                                                YLeaf attribute_identity; //type: uint32
+                                                YLeaf traffic_index; //type: uint8
+                                                YLeaf route_precedence; //type: uint8
+                                                YLeaf qos_group; //type: uint8
+                                                YLeaf flow_tag; //type: uint8
+                                                YLeaf fwd_class; //type: uint8
+                                                YLeaf pic_count; //type: uint8
+                                                YLeaf active; //type: boolean
+                                                YLeaf diversion; //type: boolean
+                                                YLeaf diversion_proto_name; //type: string
+                                                YLeaf route_age; //type: uint32
+                                                YLeaf route_label; //type: uint32
+                                                YLeaf version; //type: uint32
+                                                YLeaf tbl_version; //type: uint64
+                                                YLeaf route_modify_time; //type: uint64
 
                                             class RoutePath : public Entity
                                             {
@@ -1652,6 +1710,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Ipv6RibEdmPath : public Entity
                                                 {
                                                     public:
@@ -1665,44 +1724,45 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
-                                                        Value information_source; //type: string
-                                                        Value v6_nexthop; //type: string
-                                                        Value interface_name; //type: string
-                                                        Value metric; //type: uint32
-                                                        Value load_metric; //type: uint32
-                                                        Value flags64; //type: uint64
-                                                        Value flags; //type: uint16
-                                                        Value private_flags; //type: uint16
-                                                        Value looped; //type: boolean
-                                                        Value next_hop_table_id; //type: uint32
-                                                        Value next_hop_vrf_name; //type: string
-                                                        Value next_hop_table_name; //type: string
-                                                        Value next_hop_afi; //type: uint32
-                                                        Value next_hop_safi; //type: uint32
-                                                        Value route_label; //type: uint32
-                                                        Value tunnel_id; //type: uint32
-                                                        Value pathid; //type: uint32
-                                                        Value backup_pathid; //type: uint32
-                                                        Value ref_cnt_of_backup; //type: uint32
-                                                        Value number_of_extended_communities; //type: uint32
-                                                        Value mvpn_present; //type: boolean
-                                                        Value path_rt_present; //type: boolean
-                                                        Value vrf_import_rt_present; //type: boolean
-                                                        Value source_asrt_present; //type: boolean
-                                                        Value source_rd_present; //type: boolean
-                                                        Value segmented_nexthop_present; //type: boolean
-                                                        Value next_hop_id; //type: uint32
-                                                        Value next_hop_id_refcount; //type: uint32
-                                                        Value ospf_area_id; //type: string
-                                                        Value has_labelstk; //type: boolean
-                                                        Value num_labels; //type: uint8
-                                                        Value binding_label; //type: uint32
-                                                        Value nhid_feid; //type: uint64
-                                                        Value mpls_feid; //type: uint64
-                                                        ValueList remote_backup_addr; //type: list of  string
-                                                        ValueList labelstk; //type: list of  uint32
 
+
+                                                        YLeaf address; //type: string
+                                                        YLeaf information_source; //type: string
+                                                        YLeaf v6_nexthop; //type: string
+                                                        YLeaf interface_name; //type: string
+                                                        YLeaf metric; //type: uint32
+                                                        YLeaf load_metric; //type: uint32
+                                                        YLeaf flags64; //type: uint64
+                                                        YLeaf flags; //type: uint16
+                                                        YLeaf private_flags; //type: uint16
+                                                        YLeaf looped; //type: boolean
+                                                        YLeaf next_hop_table_id; //type: uint32
+                                                        YLeaf next_hop_vrf_name; //type: string
+                                                        YLeaf next_hop_table_name; //type: string
+                                                        YLeaf next_hop_afi; //type: uint32
+                                                        YLeaf next_hop_safi; //type: uint32
+                                                        YLeaf route_label; //type: uint32
+                                                        YLeaf tunnel_id; //type: uint32
+                                                        YLeaf pathid; //type: uint32
+                                                        YLeaf backup_pathid; //type: uint32
+                                                        YLeaf ref_cnt_of_backup; //type: uint32
+                                                        YLeaf number_of_extended_communities; //type: uint32
+                                                        YLeaf mvpn_present; //type: boolean
+                                                        YLeaf path_rt_present; //type: boolean
+                                                        YLeaf vrf_import_rt_present; //type: boolean
+                                                        YLeaf source_asrt_present; //type: boolean
+                                                        YLeaf source_rd_present; //type: boolean
+                                                        YLeaf segmented_nexthop_present; //type: boolean
+                                                        YLeaf next_hop_id; //type: uint32
+                                                        YLeaf next_hop_id_refcount; //type: uint32
+                                                        YLeaf ospf_area_id; //type: string
+                                                        YLeaf has_labelstk; //type: boolean
+                                                        YLeaf num_labels; //type: uint8
+                                                        YLeaf binding_label; //type: uint32
+                                                        YLeaf nhid_feid; //type: uint64
+                                                        YLeaf mpls_feid; //type: uint64
+                                                        YLeafList remote_backup_addr; //type: list of  string
+                                                        YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -1742,6 +1802,7 @@ class Ipv6Rib : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Local : public Entity
                                         {
                                             public:
@@ -1755,6 +1816,7 @@ class Ipv6Rib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
+
 
 
                                             class Lspv : public Entity
@@ -1772,6 +1834,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -1785,18 +1848,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -1818,6 +1882,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -1831,41 +1896,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -1882,6 +1948,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -1895,44 +1962,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -1979,6 +2047,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -1992,18 +2061,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -2025,6 +2095,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -2038,41 +2109,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -2089,6 +2161,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -2102,44 +2175,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -2193,6 +2267,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -2206,8 +2281,9 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -2222,18 +2298,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -2255,6 +2332,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -2268,41 +2346,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -2319,6 +2398,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -2332,44 +2412,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -2422,6 +2503,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class NonAs : public Entity
                                             {
                                                 public:
@@ -2437,6 +2519,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -2450,18 +2533,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -2483,6 +2567,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -2496,41 +2581,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -2547,6 +2633,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -2560,44 +2647,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -2650,6 +2738,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -2663,8 +2752,9 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -2679,18 +2769,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -2712,6 +2803,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -2725,41 +2817,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -2776,6 +2869,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -2789,44 +2883,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -2879,6 +2974,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -2892,8 +2988,9 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -2908,18 +3005,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -2941,6 +3039,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -2954,41 +3053,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -3005,6 +3105,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -3018,44 +3119,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -3108,6 +3210,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class NonAs : public Entity
                                             {
                                                 public:
@@ -3123,6 +3226,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -3136,18 +3240,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -3169,6 +3274,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -3182,41 +3288,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -3233,6 +3340,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -3246,44 +3354,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -3336,6 +3445,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class NonAs : public Entity
                                             {
                                                 public:
@@ -3351,6 +3461,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -3364,18 +3475,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -3397,6 +3509,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -3410,41 +3523,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -3461,6 +3575,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -3474,44 +3589,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -3564,6 +3680,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class NonAs : public Entity
                                             {
                                                 public:
@@ -3579,6 +3696,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -3592,18 +3710,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -3625,6 +3744,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -3638,41 +3758,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -3689,6 +3810,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -3702,44 +3824,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -3792,6 +3915,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -3805,8 +3929,9 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -3821,18 +3946,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -3854,6 +3980,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -3867,41 +3994,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -3918,6 +4046,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -3931,44 +4060,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -4021,6 +4151,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class L2Vpn : public Entity
                                             {
                                                 public:
@@ -4036,6 +4167,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -4049,18 +4181,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -4082,6 +4215,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -4095,41 +4229,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -4146,6 +4281,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -4159,44 +4295,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -4243,6 +4380,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -4256,18 +4394,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -4289,6 +4428,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -4302,41 +4442,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -4353,6 +4494,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -4366,44 +4508,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -4457,6 +4600,7 @@ class Ipv6Rib : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -4470,8 +4614,9 @@ class Ipv6Rib : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -4486,18 +4631,19 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -4519,6 +4665,7 @@ class Ipv6Rib : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -4532,41 +4679,42 @@ class Ipv6Rib : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -4583,6 +4731,7 @@ class Ipv6Rib : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -4596,44 +4745,45 @@ class Ipv6Rib : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -4702,6 +4852,7 @@ class Ipv6Rib : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Route : public Entity
                                         {
                                             public:
@@ -4715,43 +4866,44 @@ class Ipv6Rib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
-                                                Value next_hop_address; //type: string
-                                                Value interface_name; //type: string
-                                                Value prefix; //type: string
-                                                Value prefix_length_xr; //type: uint8
-                                                Value route_version; //type: uint32
-                                                Value protocol_id; //type: uint32
-                                                Value protocol_name; //type: string
-                                                Value instance; //type: string
-                                                Value client_id; //type: uint32
-                                                Value route_type; //type: uint16
-                                                Value priority; //type: uint8
-                                                Value svd_type; //type: uint8
-                                                Value flags; //type: uint32
-                                                Value extended_flags; //type: uint64
-                                                Value tag; //type: uint32
-                                                Value distance; //type: uint32
-                                                Value diversion_distance; //type: uint32
-                                                Value metric; //type: uint32
-                                                Value paths_count; //type: uint32
-                                                Value attribute_identity; //type: uint32
-                                                Value traffic_index; //type: uint8
-                                                Value route_precedence; //type: uint8
-                                                Value qos_group; //type: uint8
-                                                Value flow_tag; //type: uint8
-                                                Value fwd_class; //type: uint8
-                                                Value pic_count; //type: uint8
-                                                Value active; //type: boolean
-                                                Value diversion; //type: boolean
-                                                Value diversion_proto_name; //type: string
-                                                Value route_age; //type: uint32
-                                                Value route_label; //type: uint32
-                                                Value version; //type: uint32
-                                                Value tbl_version; //type: uint64
-                                                Value route_modify_time; //type: uint64
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
+                                                YLeaf next_hop_address; //type: string
+                                                YLeaf interface_name; //type: string
+                                                YLeaf prefix; //type: string
+                                                YLeaf prefix_length_xr; //type: uint8
+                                                YLeaf route_version; //type: uint32
+                                                YLeaf protocol_id; //type: uint32
+                                                YLeaf protocol_name; //type: string
+                                                YLeaf instance; //type: string
+                                                YLeaf client_id; //type: uint32
+                                                YLeaf route_type; //type: uint16
+                                                YLeaf priority; //type: uint8
+                                                YLeaf svd_type; //type: uint8
+                                                YLeaf flags; //type: uint32
+                                                YLeaf extended_flags; //type: uint64
+                                                YLeaf tag; //type: uint32
+                                                YLeaf distance; //type: uint32
+                                                YLeaf diversion_distance; //type: uint32
+                                                YLeaf metric; //type: uint32
+                                                YLeaf paths_count; //type: uint32
+                                                YLeaf attribute_identity; //type: uint32
+                                                YLeaf traffic_index; //type: uint8
+                                                YLeaf route_precedence; //type: uint8
+                                                YLeaf qos_group; //type: uint8
+                                                YLeaf flow_tag; //type: uint8
+                                                YLeaf fwd_class; //type: uint8
+                                                YLeaf pic_count; //type: uint8
+                                                YLeaf active; //type: boolean
+                                                YLeaf diversion; //type: boolean
+                                                YLeaf diversion_proto_name; //type: string
+                                                YLeaf route_age; //type: uint32
+                                                YLeaf route_label; //type: uint32
+                                                YLeaf version; //type: uint32
+                                                YLeaf tbl_version; //type: uint64
+                                                YLeaf route_modify_time; //type: uint64
 
                                             class RoutePath : public Entity
                                             {
@@ -4768,6 +4920,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Ipv6RibEdmPath : public Entity
                                                 {
                                                     public:
@@ -4781,44 +4934,45 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
-                                                        Value information_source; //type: string
-                                                        Value v6_nexthop; //type: string
-                                                        Value interface_name; //type: string
-                                                        Value metric; //type: uint32
-                                                        Value load_metric; //type: uint32
-                                                        Value flags64; //type: uint64
-                                                        Value flags; //type: uint16
-                                                        Value private_flags; //type: uint16
-                                                        Value looped; //type: boolean
-                                                        Value next_hop_table_id; //type: uint32
-                                                        Value next_hop_vrf_name; //type: string
-                                                        Value next_hop_table_name; //type: string
-                                                        Value next_hop_afi; //type: uint32
-                                                        Value next_hop_safi; //type: uint32
-                                                        Value route_label; //type: uint32
-                                                        Value tunnel_id; //type: uint32
-                                                        Value pathid; //type: uint32
-                                                        Value backup_pathid; //type: uint32
-                                                        Value ref_cnt_of_backup; //type: uint32
-                                                        Value number_of_extended_communities; //type: uint32
-                                                        Value mvpn_present; //type: boolean
-                                                        Value path_rt_present; //type: boolean
-                                                        Value vrf_import_rt_present; //type: boolean
-                                                        Value source_asrt_present; //type: boolean
-                                                        Value source_rd_present; //type: boolean
-                                                        Value segmented_nexthop_present; //type: boolean
-                                                        Value next_hop_id; //type: uint32
-                                                        Value next_hop_id_refcount; //type: uint32
-                                                        Value ospf_area_id; //type: string
-                                                        Value has_labelstk; //type: boolean
-                                                        Value num_labels; //type: uint8
-                                                        Value binding_label; //type: uint32
-                                                        Value nhid_feid; //type: uint64
-                                                        Value mpls_feid; //type: uint64
-                                                        ValueList remote_backup_addr; //type: list of  string
-                                                        ValueList labelstk; //type: list of  uint32
 
+
+                                                        YLeaf address; //type: string
+                                                        YLeaf information_source; //type: string
+                                                        YLeaf v6_nexthop; //type: string
+                                                        YLeaf interface_name; //type: string
+                                                        YLeaf metric; //type: uint32
+                                                        YLeaf load_metric; //type: uint32
+                                                        YLeaf flags64; //type: uint64
+                                                        YLeaf flags; //type: uint16
+                                                        YLeaf private_flags; //type: uint16
+                                                        YLeaf looped; //type: boolean
+                                                        YLeaf next_hop_table_id; //type: uint32
+                                                        YLeaf next_hop_vrf_name; //type: string
+                                                        YLeaf next_hop_table_name; //type: string
+                                                        YLeaf next_hop_afi; //type: uint32
+                                                        YLeaf next_hop_safi; //type: uint32
+                                                        YLeaf route_label; //type: uint32
+                                                        YLeaf tunnel_id; //type: uint32
+                                                        YLeaf pathid; //type: uint32
+                                                        YLeaf backup_pathid; //type: uint32
+                                                        YLeaf ref_cnt_of_backup; //type: uint32
+                                                        YLeaf number_of_extended_communities; //type: uint32
+                                                        YLeaf mvpn_present; //type: boolean
+                                                        YLeaf path_rt_present; //type: boolean
+                                                        YLeaf vrf_import_rt_present; //type: boolean
+                                                        YLeaf source_asrt_present; //type: boolean
+                                                        YLeaf source_rd_present; //type: boolean
+                                                        YLeaf segmented_nexthop_present; //type: boolean
+                                                        YLeaf next_hop_id; //type: uint32
+                                                        YLeaf next_hop_id_refcount; //type: uint32
+                                                        YLeaf ospf_area_id; //type: string
+                                                        YLeaf has_labelstk; //type: boolean
+                                                        YLeaf num_labels; //type: uint8
+                                                        YLeaf binding_label; //type: uint32
+                                                        YLeaf nhid_feid; //type: uint64
+                                                        YLeaf mpls_feid; //type: uint64
+                                                        YLeafList remote_backup_addr; //type: list of  string
+                                                        YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -4858,6 +5012,7 @@ class Ipv6Rib : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class QRoute : public Entity
                                         {
                                             public:
@@ -4871,41 +5026,42 @@ class Ipv6Rib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
-                                                Value prefix; //type: string
-                                                Value prefix_length_xr; //type: uint8
-                                                Value route_version; //type: uint32
-                                                Value protocol_id; //type: uint32
-                                                Value protocol_name; //type: string
-                                                Value instance; //type: string
-                                                Value client_id; //type: uint32
-                                                Value route_type; //type: uint16
-                                                Value priority; //type: uint8
-                                                Value svd_type; //type: uint8
-                                                Value flags; //type: uint32
-                                                Value extended_flags; //type: uint64
-                                                Value tag; //type: uint32
-                                                Value distance; //type: uint32
-                                                Value diversion_distance; //type: uint32
-                                                Value metric; //type: uint32
-                                                Value paths_count; //type: uint32
-                                                Value attribute_identity; //type: uint32
-                                                Value traffic_index; //type: uint8
-                                                Value route_precedence; //type: uint8
-                                                Value qos_group; //type: uint8
-                                                Value flow_tag; //type: uint8
-                                                Value fwd_class; //type: uint8
-                                                Value pic_count; //type: uint8
-                                                Value active; //type: boolean
-                                                Value diversion; //type: boolean
-                                                Value diversion_proto_name; //type: string
-                                                Value route_age; //type: uint32
-                                                Value route_label; //type: uint32
-                                                Value version; //type: uint32
-                                                Value tbl_version; //type: uint64
-                                                Value route_modify_time; //type: uint64
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
+                                                YLeaf prefix; //type: string
+                                                YLeaf prefix_length_xr; //type: uint8
+                                                YLeaf route_version; //type: uint32
+                                                YLeaf protocol_id; //type: uint32
+                                                YLeaf protocol_name; //type: string
+                                                YLeaf instance; //type: string
+                                                YLeaf client_id; //type: uint32
+                                                YLeaf route_type; //type: uint16
+                                                YLeaf priority; //type: uint8
+                                                YLeaf svd_type; //type: uint8
+                                                YLeaf flags; //type: uint32
+                                                YLeaf extended_flags; //type: uint64
+                                                YLeaf tag; //type: uint32
+                                                YLeaf distance; //type: uint32
+                                                YLeaf diversion_distance; //type: uint32
+                                                YLeaf metric; //type: uint32
+                                                YLeaf paths_count; //type: uint32
+                                                YLeaf attribute_identity; //type: uint32
+                                                YLeaf traffic_index; //type: uint8
+                                                YLeaf route_precedence; //type: uint8
+                                                YLeaf qos_group; //type: uint8
+                                                YLeaf flow_tag; //type: uint8
+                                                YLeaf fwd_class; //type: uint8
+                                                YLeaf pic_count; //type: uint8
+                                                YLeaf active; //type: boolean
+                                                YLeaf diversion; //type: boolean
+                                                YLeaf diversion_proto_name; //type: string
+                                                YLeaf route_age; //type: uint32
+                                                YLeaf route_label; //type: uint32
+                                                YLeaf version; //type: uint32
+                                                YLeaf tbl_version; //type: uint64
+                                                YLeaf route_modify_time; //type: uint64
 
                                             class RoutePath : public Entity
                                             {
@@ -4922,6 +5078,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Ipv6RibEdmPath : public Entity
                                                 {
                                                     public:
@@ -4935,44 +5092,45 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
-                                                        Value information_source; //type: string
-                                                        Value v6_nexthop; //type: string
-                                                        Value interface_name; //type: string
-                                                        Value metric; //type: uint32
-                                                        Value load_metric; //type: uint32
-                                                        Value flags64; //type: uint64
-                                                        Value flags; //type: uint16
-                                                        Value private_flags; //type: uint16
-                                                        Value looped; //type: boolean
-                                                        Value next_hop_table_id; //type: uint32
-                                                        Value next_hop_vrf_name; //type: string
-                                                        Value next_hop_table_name; //type: string
-                                                        Value next_hop_afi; //type: uint32
-                                                        Value next_hop_safi; //type: uint32
-                                                        Value route_label; //type: uint32
-                                                        Value tunnel_id; //type: uint32
-                                                        Value pathid; //type: uint32
-                                                        Value backup_pathid; //type: uint32
-                                                        Value ref_cnt_of_backup; //type: uint32
-                                                        Value number_of_extended_communities; //type: uint32
-                                                        Value mvpn_present; //type: boolean
-                                                        Value path_rt_present; //type: boolean
-                                                        Value vrf_import_rt_present; //type: boolean
-                                                        Value source_asrt_present; //type: boolean
-                                                        Value source_rd_present; //type: boolean
-                                                        Value segmented_nexthop_present; //type: boolean
-                                                        Value next_hop_id; //type: uint32
-                                                        Value next_hop_id_refcount; //type: uint32
-                                                        Value ospf_area_id; //type: string
-                                                        Value has_labelstk; //type: boolean
-                                                        Value num_labels; //type: uint8
-                                                        Value binding_label; //type: uint32
-                                                        Value nhid_feid; //type: uint64
-                                                        Value mpls_feid; //type: uint64
-                                                        ValueList remote_backup_addr; //type: list of  string
-                                                        ValueList labelstk; //type: list of  uint32
 
+
+                                                        YLeaf address; //type: string
+                                                        YLeaf information_source; //type: string
+                                                        YLeaf v6_nexthop; //type: string
+                                                        YLeaf interface_name; //type: string
+                                                        YLeaf metric; //type: uint32
+                                                        YLeaf load_metric; //type: uint32
+                                                        YLeaf flags64; //type: uint64
+                                                        YLeaf flags; //type: uint16
+                                                        YLeaf private_flags; //type: uint16
+                                                        YLeaf looped; //type: boolean
+                                                        YLeaf next_hop_table_id; //type: uint32
+                                                        YLeaf next_hop_vrf_name; //type: string
+                                                        YLeaf next_hop_table_name; //type: string
+                                                        YLeaf next_hop_afi; //type: uint32
+                                                        YLeaf next_hop_safi; //type: uint32
+                                                        YLeaf route_label; //type: uint32
+                                                        YLeaf tunnel_id; //type: uint32
+                                                        YLeaf pathid; //type: uint32
+                                                        YLeaf backup_pathid; //type: uint32
+                                                        YLeaf ref_cnt_of_backup; //type: uint32
+                                                        YLeaf number_of_extended_communities; //type: uint32
+                                                        YLeaf mvpn_present; //type: boolean
+                                                        YLeaf path_rt_present; //type: boolean
+                                                        YLeaf vrf_import_rt_present; //type: boolean
+                                                        YLeaf source_asrt_present; //type: boolean
+                                                        YLeaf source_rd_present; //type: boolean
+                                                        YLeaf segmented_nexthop_present; //type: boolean
+                                                        YLeaf next_hop_id; //type: uint32
+                                                        YLeaf next_hop_id_refcount; //type: uint32
+                                                        YLeaf ospf_area_id; //type: string
+                                                        YLeaf has_labelstk; //type: boolean
+                                                        YLeaf num_labels; //type: uint8
+                                                        YLeaf binding_label; //type: uint32
+                                                        YLeaf nhid_feid; //type: uint64
+                                                        YLeaf mpls_feid; //type: uint64
+                                                        YLeafList remote_backup_addr; //type: list of  string
+                                                        YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -5012,6 +5170,7 @@ class Ipv6Rib : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class BackupRoute : public Entity
                                         {
                                             public:
@@ -5025,42 +5184,43 @@ class Ipv6Rib : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
-                                                Value protoid; //type: int32
-                                                Value prefix; //type: string
-                                                Value prefix_length_xr; //type: uint8
-                                                Value route_version; //type: uint32
-                                                Value protocol_id; //type: uint32
-                                                Value protocol_name; //type: string
-                                                Value instance; //type: string
-                                                Value client_id; //type: uint32
-                                                Value route_type; //type: uint16
-                                                Value priority; //type: uint8
-                                                Value svd_type; //type: uint8
-                                                Value flags; //type: uint32
-                                                Value extended_flags; //type: uint64
-                                                Value tag; //type: uint32
-                                                Value distance; //type: uint32
-                                                Value diversion_distance; //type: uint32
-                                                Value metric; //type: uint32
-                                                Value paths_count; //type: uint32
-                                                Value attribute_identity; //type: uint32
-                                                Value traffic_index; //type: uint8
-                                                Value route_precedence; //type: uint8
-                                                Value qos_group; //type: uint8
-                                                Value flow_tag; //type: uint8
-                                                Value fwd_class; //type: uint8
-                                                Value pic_count; //type: uint8
-                                                Value active; //type: boolean
-                                                Value diversion; //type: boolean
-                                                Value diversion_proto_name; //type: string
-                                                Value route_age; //type: uint32
-                                                Value route_label; //type: uint32
-                                                Value version; //type: uint32
-                                                Value tbl_version; //type: uint64
-                                                Value route_modify_time; //type: uint64
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
+                                                YLeaf protoid; //type: int32
+                                                YLeaf prefix; //type: string
+                                                YLeaf prefix_length_xr; //type: uint8
+                                                YLeaf route_version; //type: uint32
+                                                YLeaf protocol_id; //type: uint32
+                                                YLeaf protocol_name; //type: string
+                                                YLeaf instance; //type: string
+                                                YLeaf client_id; //type: uint32
+                                                YLeaf route_type; //type: uint16
+                                                YLeaf priority; //type: uint8
+                                                YLeaf svd_type; //type: uint8
+                                                YLeaf flags; //type: uint32
+                                                YLeaf extended_flags; //type: uint64
+                                                YLeaf tag; //type: uint32
+                                                YLeaf distance; //type: uint32
+                                                YLeaf diversion_distance; //type: uint32
+                                                YLeaf metric; //type: uint32
+                                                YLeaf paths_count; //type: uint32
+                                                YLeaf attribute_identity; //type: uint32
+                                                YLeaf traffic_index; //type: uint8
+                                                YLeaf route_precedence; //type: uint8
+                                                YLeaf qos_group; //type: uint8
+                                                YLeaf flow_tag; //type: uint8
+                                                YLeaf fwd_class; //type: uint8
+                                                YLeaf pic_count; //type: uint8
+                                                YLeaf active; //type: boolean
+                                                YLeaf diversion; //type: boolean
+                                                YLeaf diversion_proto_name; //type: string
+                                                YLeaf route_age; //type: uint32
+                                                YLeaf route_label; //type: uint32
+                                                YLeaf version; //type: uint32
+                                                YLeaf tbl_version; //type: uint64
+                                                YLeaf route_modify_time; //type: uint64
 
                                             class RoutePath : public Entity
                                             {
@@ -5077,6 +5237,7 @@ class Ipv6Rib : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Ipv6RibEdmPath : public Entity
                                                 {
                                                     public:
@@ -5090,44 +5251,45 @@ class Ipv6Rib : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
-                                                        Value information_source; //type: string
-                                                        Value v6_nexthop; //type: string
-                                                        Value interface_name; //type: string
-                                                        Value metric; //type: uint32
-                                                        Value load_metric; //type: uint32
-                                                        Value flags64; //type: uint64
-                                                        Value flags; //type: uint16
-                                                        Value private_flags; //type: uint16
-                                                        Value looped; //type: boolean
-                                                        Value next_hop_table_id; //type: uint32
-                                                        Value next_hop_vrf_name; //type: string
-                                                        Value next_hop_table_name; //type: string
-                                                        Value next_hop_afi; //type: uint32
-                                                        Value next_hop_safi; //type: uint32
-                                                        Value route_label; //type: uint32
-                                                        Value tunnel_id; //type: uint32
-                                                        Value pathid; //type: uint32
-                                                        Value backup_pathid; //type: uint32
-                                                        Value ref_cnt_of_backup; //type: uint32
-                                                        Value number_of_extended_communities; //type: uint32
-                                                        Value mvpn_present; //type: boolean
-                                                        Value path_rt_present; //type: boolean
-                                                        Value vrf_import_rt_present; //type: boolean
-                                                        Value source_asrt_present; //type: boolean
-                                                        Value source_rd_present; //type: boolean
-                                                        Value segmented_nexthop_present; //type: boolean
-                                                        Value next_hop_id; //type: uint32
-                                                        Value next_hop_id_refcount; //type: uint32
-                                                        Value ospf_area_id; //type: string
-                                                        Value has_labelstk; //type: boolean
-                                                        Value num_labels; //type: uint8
-                                                        Value binding_label; //type: uint32
-                                                        Value nhid_feid; //type: uint64
-                                                        Value mpls_feid; //type: uint64
-                                                        ValueList remote_backup_addr; //type: list of  string
-                                                        ValueList labelstk; //type: list of  uint32
 
+
+                                                        YLeaf address; //type: string
+                                                        YLeaf information_source; //type: string
+                                                        YLeaf v6_nexthop; //type: string
+                                                        YLeaf interface_name; //type: string
+                                                        YLeaf metric; //type: uint32
+                                                        YLeaf load_metric; //type: uint32
+                                                        YLeaf flags64; //type: uint64
+                                                        YLeaf flags; //type: uint16
+                                                        YLeaf private_flags; //type: uint16
+                                                        YLeaf looped; //type: boolean
+                                                        YLeaf next_hop_table_id; //type: uint32
+                                                        YLeaf next_hop_vrf_name; //type: string
+                                                        YLeaf next_hop_table_name; //type: string
+                                                        YLeaf next_hop_afi; //type: uint32
+                                                        YLeaf next_hop_safi; //type: uint32
+                                                        YLeaf route_label; //type: uint32
+                                                        YLeaf tunnel_id; //type: uint32
+                                                        YLeaf pathid; //type: uint32
+                                                        YLeaf backup_pathid; //type: uint32
+                                                        YLeaf ref_cnt_of_backup; //type: uint32
+                                                        YLeaf number_of_extended_communities; //type: uint32
+                                                        YLeaf mvpn_present; //type: boolean
+                                                        YLeaf path_rt_present; //type: boolean
+                                                        YLeaf vrf_import_rt_present; //type: boolean
+                                                        YLeaf source_asrt_present; //type: boolean
+                                                        YLeaf source_rd_present; //type: boolean
+                                                        YLeaf segmented_nexthop_present; //type: boolean
+                                                        YLeaf next_hop_id; //type: uint32
+                                                        YLeaf next_hop_id_refcount; //type: uint32
+                                                        YLeaf ospf_area_id; //type: string
+                                                        YLeaf has_labelstk; //type: boolean
+                                                        YLeaf num_labels; //type: uint8
+                                                        YLeaf binding_label; //type: uint32
+                                                        YLeaf nhid_feid; //type: uint64
+                                                        YLeaf mpls_feid; //type: uint64
+                                                        YLeafList remote_backup_addr; //type: list of  string
+                                                        YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -5228,6 +5390,7 @@ class Ipv6RibStdby : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class RibTableIds : public Entity
     {
         public:
@@ -5243,6 +5406,7 @@ class Ipv6RibStdby : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RibTableId : public Entity
         {
             public:
@@ -5256,8 +5420,9 @@ class Ipv6RibStdby : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value tableid; //type: string
 
+
+                YLeaf tableid; //type: string
 
             class SummaryProtos : public Entity
             {
@@ -5274,6 +5439,7 @@ class Ipv6RibStdby : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SummaryProto : public Entity
                 {
                     public:
@@ -5287,10 +5453,11 @@ class Ipv6RibStdby : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value protoid; //type: int32
-                        Value name; //type: string
-                        Value instance; //type: string
 
+
+                        YLeaf protoid; //type: int32
+                        YLeaf name; //type: string
+                        YLeaf instance; //type: string
 
                     class ProtoRouteCount : public Entity
                     {
@@ -5305,11 +5472,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5329,11 +5497,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5353,11 +5522,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5377,11 +5547,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5401,11 +5572,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5425,11 +5597,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5449,11 +5622,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5473,11 +5647,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5497,11 +5672,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5521,11 +5697,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5545,11 +5722,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5569,11 +5747,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5593,11 +5772,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5617,11 +5797,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5641,11 +5822,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5665,11 +5847,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5689,11 +5872,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5713,11 +5897,12 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value active_routes_count; //type: uint32
-                            Value num_backup_routes; //type: uint32
-                            Value num_active_paths; //type: uint32
-                            Value num_backup_paths; //type: uint32
 
+
+                            YLeaf active_routes_count; //type: uint32
+                            YLeaf num_backup_routes; //type: uint32
+                            YLeaf num_active_paths; //type: uint32
+                            YLeaf num_backup_paths; //type: uint32
 
 
 
@@ -5768,6 +5953,7 @@ class Ipv6RibStdby : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RibTableItfHndl : public Entity
                 {
                     public:
@@ -5781,8 +5967,9 @@ class Ipv6RibStdby : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value handle; //type: int32
 
+
+                        YLeaf handle; //type: int32
 
                     class ItfRoute : public Entity
                     {
@@ -5797,40 +5984,41 @@ class Ipv6RibStdby : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value prefix; //type: string
-                            Value prefix_length_xr; //type: uint8
-                            Value route_version; //type: uint32
-                            Value protocol_id; //type: uint32
-                            Value protocol_name; //type: string
-                            Value instance; //type: string
-                            Value client_id; //type: uint32
-                            Value route_type; //type: uint16
-                            Value priority; //type: uint8
-                            Value svd_type; //type: uint8
-                            Value flags; //type: uint32
-                            Value extended_flags; //type: uint64
-                            Value tag; //type: uint32
-                            Value distance; //type: uint32
-                            Value diversion_distance; //type: uint32
-                            Value metric; //type: uint32
-                            Value paths_count; //type: uint32
-                            Value attribute_identity; //type: uint32
-                            Value traffic_index; //type: uint8
-                            Value route_precedence; //type: uint8
-                            Value qos_group; //type: uint8
-                            Value flow_tag; //type: uint8
-                            Value fwd_class; //type: uint8
-                            Value pic_count; //type: uint8
-                            Value active; //type: boolean
-                            Value diversion; //type: boolean
-                            Value diversion_proto_name; //type: string
-                            Value route_age; //type: uint32
-                            Value route_label; //type: uint32
-                            Value version; //type: uint32
-                            Value tbl_version; //type: uint64
-                            Value route_modify_time; //type: uint64
 
+
+                            YLeaf address; //type: string
+                            YLeaf prefix; //type: string
+                            YLeaf prefix_length_xr; //type: uint8
+                            YLeaf route_version; //type: uint32
+                            YLeaf protocol_id; //type: uint32
+                            YLeaf protocol_name; //type: string
+                            YLeaf instance; //type: string
+                            YLeaf client_id; //type: uint32
+                            YLeaf route_type; //type: uint16
+                            YLeaf priority; //type: uint8
+                            YLeaf svd_type; //type: uint8
+                            YLeaf flags; //type: uint32
+                            YLeaf extended_flags; //type: uint64
+                            YLeaf tag; //type: uint32
+                            YLeaf distance; //type: uint32
+                            YLeaf diversion_distance; //type: uint32
+                            YLeaf metric; //type: uint32
+                            YLeaf paths_count; //type: uint32
+                            YLeaf attribute_identity; //type: uint32
+                            YLeaf traffic_index; //type: uint8
+                            YLeaf route_precedence; //type: uint8
+                            YLeaf qos_group; //type: uint8
+                            YLeaf flow_tag; //type: uint8
+                            YLeaf fwd_class; //type: uint8
+                            YLeaf pic_count; //type: uint8
+                            YLeaf active; //type: boolean
+                            YLeaf diversion; //type: boolean
+                            YLeaf diversion_proto_name; //type: string
+                            YLeaf route_age; //type: uint32
+                            YLeaf route_label; //type: uint32
+                            YLeaf version; //type: uint32
+                            YLeaf tbl_version; //type: uint64
+                            YLeaf route_modify_time; //type: uint64
 
                         class RoutePath : public Entity
                         {
@@ -5847,6 +6035,7 @@ class Ipv6RibStdby : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Ipv6RibEdmPath : public Entity
                             {
                                 public:
@@ -5860,44 +6049,45 @@ class Ipv6RibStdby : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value information_source; //type: string
-                                    Value v6_nexthop; //type: string
-                                    Value interface_name; //type: string
-                                    Value metric; //type: uint32
-                                    Value load_metric; //type: uint32
-                                    Value flags64; //type: uint64
-                                    Value flags; //type: uint16
-                                    Value private_flags; //type: uint16
-                                    Value looped; //type: boolean
-                                    Value next_hop_table_id; //type: uint32
-                                    Value next_hop_vrf_name; //type: string
-                                    Value next_hop_table_name; //type: string
-                                    Value next_hop_afi; //type: uint32
-                                    Value next_hop_safi; //type: uint32
-                                    Value route_label; //type: uint32
-                                    Value tunnel_id; //type: uint32
-                                    Value pathid; //type: uint32
-                                    Value backup_pathid; //type: uint32
-                                    Value ref_cnt_of_backup; //type: uint32
-                                    Value number_of_extended_communities; //type: uint32
-                                    Value mvpn_present; //type: boolean
-                                    Value path_rt_present; //type: boolean
-                                    Value vrf_import_rt_present; //type: boolean
-                                    Value source_asrt_present; //type: boolean
-                                    Value source_rd_present; //type: boolean
-                                    Value segmented_nexthop_present; //type: boolean
-                                    Value next_hop_id; //type: uint32
-                                    Value next_hop_id_refcount; //type: uint32
-                                    Value ospf_area_id; //type: string
-                                    Value has_labelstk; //type: boolean
-                                    Value num_labels; //type: uint8
-                                    Value binding_label; //type: uint32
-                                    Value nhid_feid; //type: uint64
-                                    Value mpls_feid; //type: uint64
-                                    ValueList remote_backup_addr; //type: list of  string
-                                    ValueList labelstk; //type: list of  uint32
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf information_source; //type: string
+                                    YLeaf v6_nexthop; //type: string
+                                    YLeaf interface_name; //type: string
+                                    YLeaf metric; //type: uint32
+                                    YLeaf load_metric; //type: uint32
+                                    YLeaf flags64; //type: uint64
+                                    YLeaf flags; //type: uint16
+                                    YLeaf private_flags; //type: uint16
+                                    YLeaf looped; //type: boolean
+                                    YLeaf next_hop_table_id; //type: uint32
+                                    YLeaf next_hop_vrf_name; //type: string
+                                    YLeaf next_hop_table_name; //type: string
+                                    YLeaf next_hop_afi; //type: uint32
+                                    YLeaf next_hop_safi; //type: uint32
+                                    YLeaf route_label; //type: uint32
+                                    YLeaf tunnel_id; //type: uint32
+                                    YLeaf pathid; //type: uint32
+                                    YLeaf backup_pathid; //type: uint32
+                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                    YLeaf number_of_extended_communities; //type: uint32
+                                    YLeaf mvpn_present; //type: boolean
+                                    YLeaf path_rt_present; //type: boolean
+                                    YLeaf vrf_import_rt_present; //type: boolean
+                                    YLeaf source_asrt_present; //type: boolean
+                                    YLeaf source_rd_present; //type: boolean
+                                    YLeaf segmented_nexthop_present; //type: boolean
+                                    YLeaf next_hop_id; //type: uint32
+                                    YLeaf next_hop_id_refcount; //type: uint32
+                                    YLeaf ospf_area_id; //type: string
+                                    YLeaf has_labelstk; //type: boolean
+                                    YLeaf num_labels; //type: uint8
+                                    YLeaf binding_label; //type: uint32
+                                    YLeaf nhid_feid; //type: uint64
+                                    YLeaf mpls_feid; //type: uint64
+                                    YLeafList remote_backup_addr; //type: list of  string
+                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -5956,6 +6146,7 @@ class Ipv6RibStdby : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -5969,8 +6160,9 @@ class Ipv6RibStdby : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class Afs : public Entity
             {
@@ -5987,6 +6179,7 @@ class Ipv6RibStdby : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Af : public Entity
                 {
                     public:
@@ -6000,8 +6193,9 @@ class Ipv6RibStdby : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af_name; //type: string
 
+
+                        YLeaf af_name; //type: string
 
                     class Safs : public Entity
                     {
@@ -6018,6 +6212,7 @@ class Ipv6RibStdby : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Saf : public Entity
                         {
                             public:
@@ -6031,8 +6226,9 @@ class Ipv6RibStdby : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value saf_name; //type: string
 
+
+                                YLeaf saf_name; //type: string
 
                             class IpRibRouteTableNames : public Entity
                             {
@@ -6049,6 +6245,7 @@ class Ipv6RibStdby : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class IpRibRouteTableName : public Entity
                                 {
                                     public:
@@ -6062,8 +6259,9 @@ class Ipv6RibStdby : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value route_table_name; //type: string
 
+
+                                        YLeaf route_table_name; //type: string
 
                                     class DestinationKw : public Entity
                                     {
@@ -6078,6 +6276,7 @@ class Ipv6RibStdby : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                                         class DestQRoutes : public Entity
@@ -6095,6 +6294,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class DestQRoute : public Entity
                                             {
                                                 public:
@@ -6108,41 +6308,42 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
-                                                    Value prefix_length; //type: uint8
-                                                    Value prefix; //type: string
-                                                    Value prefix_length_xr; //type: uint8
-                                                    Value route_version; //type: uint32
-                                                    Value protocol_id; //type: uint32
-                                                    Value protocol_name; //type: string
-                                                    Value instance; //type: string
-                                                    Value client_id; //type: uint32
-                                                    Value route_type; //type: uint16
-                                                    Value priority; //type: uint8
-                                                    Value svd_type; //type: uint8
-                                                    Value flags; //type: uint32
-                                                    Value extended_flags; //type: uint64
-                                                    Value tag; //type: uint32
-                                                    Value distance; //type: uint32
-                                                    Value diversion_distance; //type: uint32
-                                                    Value metric; //type: uint32
-                                                    Value paths_count; //type: uint32
-                                                    Value attribute_identity; //type: uint32
-                                                    Value traffic_index; //type: uint8
-                                                    Value route_precedence; //type: uint8
-                                                    Value qos_group; //type: uint8
-                                                    Value flow_tag; //type: uint8
-                                                    Value fwd_class; //type: uint8
-                                                    Value pic_count; //type: uint8
-                                                    Value active; //type: boolean
-                                                    Value diversion; //type: boolean
-                                                    Value diversion_proto_name; //type: string
-                                                    Value route_age; //type: uint32
-                                                    Value route_label; //type: uint32
-                                                    Value version; //type: uint32
-                                                    Value tbl_version; //type: uint64
-                                                    Value route_modify_time; //type: uint64
 
+
+                                                    YLeaf address; //type: string
+                                                    YLeaf prefix_length; //type: uint8
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length_xr; //type: uint8
+                                                    YLeaf route_version; //type: uint32
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf protocol_name; //type: string
+                                                    YLeaf instance; //type: string
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf route_type; //type: uint16
+                                                    YLeaf priority; //type: uint8
+                                                    YLeaf svd_type; //type: uint8
+                                                    YLeaf flags; //type: uint32
+                                                    YLeaf extended_flags; //type: uint64
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf distance; //type: uint32
+                                                    YLeaf diversion_distance; //type: uint32
+                                                    YLeaf metric; //type: uint32
+                                                    YLeaf paths_count; //type: uint32
+                                                    YLeaf attribute_identity; //type: uint32
+                                                    YLeaf traffic_index; //type: uint8
+                                                    YLeaf route_precedence; //type: uint8
+                                                    YLeaf qos_group; //type: uint8
+                                                    YLeaf flow_tag; //type: uint8
+                                                    YLeaf fwd_class; //type: uint8
+                                                    YLeaf pic_count; //type: uint8
+                                                    YLeaf active; //type: boolean
+                                                    YLeaf diversion; //type: boolean
+                                                    YLeaf diversion_proto_name; //type: string
+                                                    YLeaf route_age; //type: uint32
+                                                    YLeaf route_label; //type: uint32
+                                                    YLeaf version; //type: uint32
+                                                    YLeaf tbl_version; //type: uint64
+                                                    YLeaf route_modify_time; //type: uint64
 
                                                 class RoutePath : public Entity
                                                 {
@@ -6159,6 +6360,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Ipv6RibEdmPath : public Entity
                                                     {
                                                         public:
@@ -6172,44 +6374,45 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value information_source; //type: string
-                                                            Value v6_nexthop; //type: string
-                                                            Value interface_name; //type: string
-                                                            Value metric; //type: uint32
-                                                            Value load_metric; //type: uint32
-                                                            Value flags64; //type: uint64
-                                                            Value flags; //type: uint16
-                                                            Value private_flags; //type: uint16
-                                                            Value looped; //type: boolean
-                                                            Value next_hop_table_id; //type: uint32
-                                                            Value next_hop_vrf_name; //type: string
-                                                            Value next_hop_table_name; //type: string
-                                                            Value next_hop_afi; //type: uint32
-                                                            Value next_hop_safi; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value tunnel_id; //type: uint32
-                                                            Value pathid; //type: uint32
-                                                            Value backup_pathid; //type: uint32
-                                                            Value ref_cnt_of_backup; //type: uint32
-                                                            Value number_of_extended_communities; //type: uint32
-                                                            Value mvpn_present; //type: boolean
-                                                            Value path_rt_present; //type: boolean
-                                                            Value vrf_import_rt_present; //type: boolean
-                                                            Value source_asrt_present; //type: boolean
-                                                            Value source_rd_present; //type: boolean
-                                                            Value segmented_nexthop_present; //type: boolean
-                                                            Value next_hop_id; //type: uint32
-                                                            Value next_hop_id_refcount; //type: uint32
-                                                            Value ospf_area_id; //type: string
-                                                            Value has_labelstk; //type: boolean
-                                                            Value num_labels; //type: uint8
-                                                            Value binding_label; //type: uint32
-                                                            Value nhid_feid; //type: uint64
-                                                            Value mpls_feid; //type: uint64
-                                                            ValueList remote_backup_addr; //type: list of  string
-                                                            ValueList labelstk; //type: list of  uint32
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf information_source; //type: string
+                                                            YLeaf v6_nexthop; //type: string
+                                                            YLeaf interface_name; //type: string
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf load_metric; //type: uint32
+                                                            YLeaf flags64; //type: uint64
+                                                            YLeaf flags; //type: uint16
+                                                            YLeaf private_flags; //type: uint16
+                                                            YLeaf looped; //type: boolean
+                                                            YLeaf next_hop_table_id; //type: uint32
+                                                            YLeaf next_hop_vrf_name; //type: string
+                                                            YLeaf next_hop_table_name; //type: string
+                                                            YLeaf next_hop_afi; //type: uint32
+                                                            YLeaf next_hop_safi; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf tunnel_id; //type: uint32
+                                                            YLeaf pathid; //type: uint32
+                                                            YLeaf backup_pathid; //type: uint32
+                                                            YLeaf ref_cnt_of_backup; //type: uint32
+                                                            YLeaf number_of_extended_communities; //type: uint32
+                                                            YLeaf mvpn_present; //type: boolean
+                                                            YLeaf path_rt_present; //type: boolean
+                                                            YLeaf vrf_import_rt_present; //type: boolean
+                                                            YLeaf source_asrt_present; //type: boolean
+                                                            YLeaf source_rd_present; //type: boolean
+                                                            YLeaf segmented_nexthop_present; //type: boolean
+                                                            YLeaf next_hop_id; //type: uint32
+                                                            YLeaf next_hop_id_refcount; //type: uint32
+                                                            YLeaf ospf_area_id; //type: string
+                                                            YLeaf has_labelstk; //type: boolean
+                                                            YLeaf num_labels; //type: uint8
+                                                            YLeaf binding_label; //type: uint32
+                                                            YLeaf nhid_feid; //type: uint64
+                                                            YLeaf mpls_feid; //type: uint64
+                                                            YLeafList remote_backup_addr; //type: list of  string
+                                                            YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -6249,6 +6452,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class DestBackupRoute : public Entity
                                             {
                                                 public:
@@ -6262,41 +6466,42 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
-                                                    Value prefix_length; //type: uint8
-                                                    Value prefix; //type: string
-                                                    Value prefix_length_xr; //type: uint8
-                                                    Value route_version; //type: uint32
-                                                    Value protocol_id; //type: uint32
-                                                    Value protocol_name; //type: string
-                                                    Value instance; //type: string
-                                                    Value client_id; //type: uint32
-                                                    Value route_type; //type: uint16
-                                                    Value priority; //type: uint8
-                                                    Value svd_type; //type: uint8
-                                                    Value flags; //type: uint32
-                                                    Value extended_flags; //type: uint64
-                                                    Value tag; //type: uint32
-                                                    Value distance; //type: uint32
-                                                    Value diversion_distance; //type: uint32
-                                                    Value metric; //type: uint32
-                                                    Value paths_count; //type: uint32
-                                                    Value attribute_identity; //type: uint32
-                                                    Value traffic_index; //type: uint8
-                                                    Value route_precedence; //type: uint8
-                                                    Value qos_group; //type: uint8
-                                                    Value flow_tag; //type: uint8
-                                                    Value fwd_class; //type: uint8
-                                                    Value pic_count; //type: uint8
-                                                    Value active; //type: boolean
-                                                    Value diversion; //type: boolean
-                                                    Value diversion_proto_name; //type: string
-                                                    Value route_age; //type: uint32
-                                                    Value route_label; //type: uint32
-                                                    Value version; //type: uint32
-                                                    Value tbl_version; //type: uint64
-                                                    Value route_modify_time; //type: uint64
 
+
+                                                    YLeaf address; //type: string
+                                                    YLeaf prefix_length; //type: uint8
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length_xr; //type: uint8
+                                                    YLeaf route_version; //type: uint32
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf protocol_name; //type: string
+                                                    YLeaf instance; //type: string
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf route_type; //type: uint16
+                                                    YLeaf priority; //type: uint8
+                                                    YLeaf svd_type; //type: uint8
+                                                    YLeaf flags; //type: uint32
+                                                    YLeaf extended_flags; //type: uint64
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf distance; //type: uint32
+                                                    YLeaf diversion_distance; //type: uint32
+                                                    YLeaf metric; //type: uint32
+                                                    YLeaf paths_count; //type: uint32
+                                                    YLeaf attribute_identity; //type: uint32
+                                                    YLeaf traffic_index; //type: uint8
+                                                    YLeaf route_precedence; //type: uint8
+                                                    YLeaf qos_group; //type: uint8
+                                                    YLeaf flow_tag; //type: uint8
+                                                    YLeaf fwd_class; //type: uint8
+                                                    YLeaf pic_count; //type: uint8
+                                                    YLeaf active; //type: boolean
+                                                    YLeaf diversion; //type: boolean
+                                                    YLeaf diversion_proto_name; //type: string
+                                                    YLeaf route_age; //type: uint32
+                                                    YLeaf route_label; //type: uint32
+                                                    YLeaf version; //type: uint32
+                                                    YLeaf tbl_version; //type: uint64
+                                                    YLeaf route_modify_time; //type: uint64
 
                                                 class RoutePath : public Entity
                                                 {
@@ -6313,6 +6518,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Ipv6RibEdmPath : public Entity
                                                     {
                                                         public:
@@ -6326,44 +6532,45 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value information_source; //type: string
-                                                            Value v6_nexthop; //type: string
-                                                            Value interface_name; //type: string
-                                                            Value metric; //type: uint32
-                                                            Value load_metric; //type: uint32
-                                                            Value flags64; //type: uint64
-                                                            Value flags; //type: uint16
-                                                            Value private_flags; //type: uint16
-                                                            Value looped; //type: boolean
-                                                            Value next_hop_table_id; //type: uint32
-                                                            Value next_hop_vrf_name; //type: string
-                                                            Value next_hop_table_name; //type: string
-                                                            Value next_hop_afi; //type: uint32
-                                                            Value next_hop_safi; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value tunnel_id; //type: uint32
-                                                            Value pathid; //type: uint32
-                                                            Value backup_pathid; //type: uint32
-                                                            Value ref_cnt_of_backup; //type: uint32
-                                                            Value number_of_extended_communities; //type: uint32
-                                                            Value mvpn_present; //type: boolean
-                                                            Value path_rt_present; //type: boolean
-                                                            Value vrf_import_rt_present; //type: boolean
-                                                            Value source_asrt_present; //type: boolean
-                                                            Value source_rd_present; //type: boolean
-                                                            Value segmented_nexthop_present; //type: boolean
-                                                            Value next_hop_id; //type: uint32
-                                                            Value next_hop_id_refcount; //type: uint32
-                                                            Value ospf_area_id; //type: string
-                                                            Value has_labelstk; //type: boolean
-                                                            Value num_labels; //type: uint8
-                                                            Value binding_label; //type: uint32
-                                                            Value nhid_feid; //type: uint64
-                                                            Value mpls_feid; //type: uint64
-                                                            ValueList remote_backup_addr; //type: list of  string
-                                                            ValueList labelstk; //type: list of  uint32
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf information_source; //type: string
+                                                            YLeaf v6_nexthop; //type: string
+                                                            YLeaf interface_name; //type: string
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf load_metric; //type: uint32
+                                                            YLeaf flags64; //type: uint64
+                                                            YLeaf flags; //type: uint16
+                                                            YLeaf private_flags; //type: uint16
+                                                            YLeaf looped; //type: boolean
+                                                            YLeaf next_hop_table_id; //type: uint32
+                                                            YLeaf next_hop_vrf_name; //type: string
+                                                            YLeaf next_hop_table_name; //type: string
+                                                            YLeaf next_hop_afi; //type: uint32
+                                                            YLeaf next_hop_safi; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf tunnel_id; //type: uint32
+                                                            YLeaf pathid; //type: uint32
+                                                            YLeaf backup_pathid; //type: uint32
+                                                            YLeaf ref_cnt_of_backup; //type: uint32
+                                                            YLeaf number_of_extended_communities; //type: uint32
+                                                            YLeaf mvpn_present; //type: boolean
+                                                            YLeaf path_rt_present; //type: boolean
+                                                            YLeaf vrf_import_rt_present; //type: boolean
+                                                            YLeaf source_asrt_present; //type: boolean
+                                                            YLeaf source_rd_present; //type: boolean
+                                                            YLeaf segmented_nexthop_present; //type: boolean
+                                                            YLeaf next_hop_id; //type: uint32
+                                                            YLeaf next_hop_id_refcount; //type: uint32
+                                                            YLeaf ospf_area_id; //type: string
+                                                            YLeaf has_labelstk; //type: boolean
+                                                            YLeaf num_labels; //type: uint8
+                                                            YLeaf binding_label; //type: uint32
+                                                            YLeaf nhid_feid; //type: uint64
+                                                            YLeaf mpls_feid; //type: uint64
+                                                            YLeafList remote_backup_addr; //type: list of  string
+                                                            YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -6403,6 +6610,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class DestBestRoute : public Entity
                                             {
                                                 public:
@@ -6416,40 +6624,41 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
-                                                    Value prefix; //type: string
-                                                    Value prefix_length_xr; //type: uint8
-                                                    Value route_version; //type: uint32
-                                                    Value protocol_id; //type: uint32
-                                                    Value protocol_name; //type: string
-                                                    Value instance; //type: string
-                                                    Value client_id; //type: uint32
-                                                    Value route_type; //type: uint16
-                                                    Value priority; //type: uint8
-                                                    Value svd_type; //type: uint8
-                                                    Value flags; //type: uint32
-                                                    Value extended_flags; //type: uint64
-                                                    Value tag; //type: uint32
-                                                    Value distance; //type: uint32
-                                                    Value diversion_distance; //type: uint32
-                                                    Value metric; //type: uint32
-                                                    Value paths_count; //type: uint32
-                                                    Value attribute_identity; //type: uint32
-                                                    Value traffic_index; //type: uint8
-                                                    Value route_precedence; //type: uint8
-                                                    Value qos_group; //type: uint8
-                                                    Value flow_tag; //type: uint8
-                                                    Value fwd_class; //type: uint8
-                                                    Value pic_count; //type: uint8
-                                                    Value active; //type: boolean
-                                                    Value diversion; //type: boolean
-                                                    Value diversion_proto_name; //type: string
-                                                    Value route_age; //type: uint32
-                                                    Value route_label; //type: uint32
-                                                    Value version; //type: uint32
-                                                    Value tbl_version; //type: uint64
-                                                    Value route_modify_time; //type: uint64
 
+
+                                                    YLeaf address; //type: string
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length_xr; //type: uint8
+                                                    YLeaf route_version; //type: uint32
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf protocol_name; //type: string
+                                                    YLeaf instance; //type: string
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf route_type; //type: uint16
+                                                    YLeaf priority; //type: uint8
+                                                    YLeaf svd_type; //type: uint8
+                                                    YLeaf flags; //type: uint32
+                                                    YLeaf extended_flags; //type: uint64
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf distance; //type: uint32
+                                                    YLeaf diversion_distance; //type: uint32
+                                                    YLeaf metric; //type: uint32
+                                                    YLeaf paths_count; //type: uint32
+                                                    YLeaf attribute_identity; //type: uint32
+                                                    YLeaf traffic_index; //type: uint8
+                                                    YLeaf route_precedence; //type: uint8
+                                                    YLeaf qos_group; //type: uint8
+                                                    YLeaf flow_tag; //type: uint8
+                                                    YLeaf fwd_class; //type: uint8
+                                                    YLeaf pic_count; //type: uint8
+                                                    YLeaf active; //type: boolean
+                                                    YLeaf diversion; //type: boolean
+                                                    YLeaf diversion_proto_name; //type: string
+                                                    YLeaf route_age; //type: uint32
+                                                    YLeaf route_label; //type: uint32
+                                                    YLeaf version; //type: uint32
+                                                    YLeaf tbl_version; //type: uint64
+                                                    YLeaf route_modify_time; //type: uint64
 
                                                 class RoutePath : public Entity
                                                 {
@@ -6466,6 +6675,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Ipv6RibEdmPath : public Entity
                                                     {
                                                         public:
@@ -6479,44 +6689,45 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value information_source; //type: string
-                                                            Value v6_nexthop; //type: string
-                                                            Value interface_name; //type: string
-                                                            Value metric; //type: uint32
-                                                            Value load_metric; //type: uint32
-                                                            Value flags64; //type: uint64
-                                                            Value flags; //type: uint16
-                                                            Value private_flags; //type: uint16
-                                                            Value looped; //type: boolean
-                                                            Value next_hop_table_id; //type: uint32
-                                                            Value next_hop_vrf_name; //type: string
-                                                            Value next_hop_table_name; //type: string
-                                                            Value next_hop_afi; //type: uint32
-                                                            Value next_hop_safi; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value tunnel_id; //type: uint32
-                                                            Value pathid; //type: uint32
-                                                            Value backup_pathid; //type: uint32
-                                                            Value ref_cnt_of_backup; //type: uint32
-                                                            Value number_of_extended_communities; //type: uint32
-                                                            Value mvpn_present; //type: boolean
-                                                            Value path_rt_present; //type: boolean
-                                                            Value vrf_import_rt_present; //type: boolean
-                                                            Value source_asrt_present; //type: boolean
-                                                            Value source_rd_present; //type: boolean
-                                                            Value segmented_nexthop_present; //type: boolean
-                                                            Value next_hop_id; //type: uint32
-                                                            Value next_hop_id_refcount; //type: uint32
-                                                            Value ospf_area_id; //type: string
-                                                            Value has_labelstk; //type: boolean
-                                                            Value num_labels; //type: uint8
-                                                            Value binding_label; //type: uint32
-                                                            Value nhid_feid; //type: uint64
-                                                            Value mpls_feid; //type: uint64
-                                                            ValueList remote_backup_addr; //type: list of  string
-                                                            ValueList labelstk; //type: list of  uint32
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf information_source; //type: string
+                                                            YLeaf v6_nexthop; //type: string
+                                                            YLeaf interface_name; //type: string
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf load_metric; //type: uint32
+                                                            YLeaf flags64; //type: uint64
+                                                            YLeaf flags; //type: uint16
+                                                            YLeaf private_flags; //type: uint16
+                                                            YLeaf looped; //type: boolean
+                                                            YLeaf next_hop_table_id; //type: uint32
+                                                            YLeaf next_hop_vrf_name; //type: string
+                                                            YLeaf next_hop_table_name; //type: string
+                                                            YLeaf next_hop_afi; //type: uint32
+                                                            YLeaf next_hop_safi; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf tunnel_id; //type: uint32
+                                                            YLeaf pathid; //type: uint32
+                                                            YLeaf backup_pathid; //type: uint32
+                                                            YLeaf ref_cnt_of_backup; //type: uint32
+                                                            YLeaf number_of_extended_communities; //type: uint32
+                                                            YLeaf mvpn_present; //type: boolean
+                                                            YLeaf path_rt_present; //type: boolean
+                                                            YLeaf vrf_import_rt_present; //type: boolean
+                                                            YLeaf source_asrt_present; //type: boolean
+                                                            YLeaf source_rd_present; //type: boolean
+                                                            YLeaf segmented_nexthop_present; //type: boolean
+                                                            YLeaf next_hop_id; //type: uint32
+                                                            YLeaf next_hop_id_refcount; //type: uint32
+                                                            YLeaf ospf_area_id; //type: string
+                                                            YLeaf has_labelstk; //type: boolean
+                                                            YLeaf num_labels; //type: uint8
+                                                            YLeaf binding_label; //type: uint32
+                                                            YLeaf nhid_feid; //type: uint64
+                                                            YLeaf mpls_feid; //type: uint64
+                                                            YLeafList remote_backup_addr; //type: list of  string
+                                                            YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -6556,6 +6767,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class DestNextHopRoute : public Entity
                                             {
                                                 public:
@@ -6569,40 +6781,41 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value address; //type: string
-                                                    Value prefix; //type: string
-                                                    Value prefix_length_xr; //type: uint8
-                                                    Value route_version; //type: uint32
-                                                    Value protocol_id; //type: uint32
-                                                    Value protocol_name; //type: string
-                                                    Value instance; //type: string
-                                                    Value client_id; //type: uint32
-                                                    Value route_type; //type: uint16
-                                                    Value priority; //type: uint8
-                                                    Value svd_type; //type: uint8
-                                                    Value flags; //type: uint32
-                                                    Value extended_flags; //type: uint64
-                                                    Value tag; //type: uint32
-                                                    Value distance; //type: uint32
-                                                    Value diversion_distance; //type: uint32
-                                                    Value metric; //type: uint32
-                                                    Value paths_count; //type: uint32
-                                                    Value attribute_identity; //type: uint32
-                                                    Value traffic_index; //type: uint8
-                                                    Value route_precedence; //type: uint8
-                                                    Value qos_group; //type: uint8
-                                                    Value flow_tag; //type: uint8
-                                                    Value fwd_class; //type: uint8
-                                                    Value pic_count; //type: uint8
-                                                    Value active; //type: boolean
-                                                    Value diversion; //type: boolean
-                                                    Value diversion_proto_name; //type: string
-                                                    Value route_age; //type: uint32
-                                                    Value route_label; //type: uint32
-                                                    Value version; //type: uint32
-                                                    Value tbl_version; //type: uint64
-                                                    Value route_modify_time; //type: uint64
 
+
+                                                    YLeaf address; //type: string
+                                                    YLeaf prefix; //type: string
+                                                    YLeaf prefix_length_xr; //type: uint8
+                                                    YLeaf route_version; //type: uint32
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf protocol_name; //type: string
+                                                    YLeaf instance; //type: string
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf route_type; //type: uint16
+                                                    YLeaf priority; //type: uint8
+                                                    YLeaf svd_type; //type: uint8
+                                                    YLeaf flags; //type: uint32
+                                                    YLeaf extended_flags; //type: uint64
+                                                    YLeaf tag; //type: uint32
+                                                    YLeaf distance; //type: uint32
+                                                    YLeaf diversion_distance; //type: uint32
+                                                    YLeaf metric; //type: uint32
+                                                    YLeaf paths_count; //type: uint32
+                                                    YLeaf attribute_identity; //type: uint32
+                                                    YLeaf traffic_index; //type: uint8
+                                                    YLeaf route_precedence; //type: uint8
+                                                    YLeaf qos_group; //type: uint8
+                                                    YLeaf flow_tag; //type: uint8
+                                                    YLeaf fwd_class; //type: uint8
+                                                    YLeaf pic_count; //type: uint8
+                                                    YLeaf active; //type: boolean
+                                                    YLeaf diversion; //type: boolean
+                                                    YLeaf diversion_proto_name; //type: string
+                                                    YLeaf route_age; //type: uint32
+                                                    YLeaf route_label; //type: uint32
+                                                    YLeaf version; //type: uint32
+                                                    YLeaf tbl_version; //type: uint64
+                                                    YLeaf route_modify_time; //type: uint64
 
                                                 class RoutePath : public Entity
                                                 {
@@ -6619,6 +6832,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class Ipv6RibEdmPath : public Entity
                                                     {
                                                         public:
@@ -6632,44 +6846,45 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value information_source; //type: string
-                                                            Value v6_nexthop; //type: string
-                                                            Value interface_name; //type: string
-                                                            Value metric; //type: uint32
-                                                            Value load_metric; //type: uint32
-                                                            Value flags64; //type: uint64
-                                                            Value flags; //type: uint16
-                                                            Value private_flags; //type: uint16
-                                                            Value looped; //type: boolean
-                                                            Value next_hop_table_id; //type: uint32
-                                                            Value next_hop_vrf_name; //type: string
-                                                            Value next_hop_table_name; //type: string
-                                                            Value next_hop_afi; //type: uint32
-                                                            Value next_hop_safi; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value tunnel_id; //type: uint32
-                                                            Value pathid; //type: uint32
-                                                            Value backup_pathid; //type: uint32
-                                                            Value ref_cnt_of_backup; //type: uint32
-                                                            Value number_of_extended_communities; //type: uint32
-                                                            Value mvpn_present; //type: boolean
-                                                            Value path_rt_present; //type: boolean
-                                                            Value vrf_import_rt_present; //type: boolean
-                                                            Value source_asrt_present; //type: boolean
-                                                            Value source_rd_present; //type: boolean
-                                                            Value segmented_nexthop_present; //type: boolean
-                                                            Value next_hop_id; //type: uint32
-                                                            Value next_hop_id_refcount; //type: uint32
-                                                            Value ospf_area_id; //type: string
-                                                            Value has_labelstk; //type: boolean
-                                                            Value num_labels; //type: uint8
-                                                            Value binding_label; //type: uint32
-                                                            Value nhid_feid; //type: uint64
-                                                            Value mpls_feid; //type: uint64
-                                                            ValueList remote_backup_addr; //type: list of  string
-                                                            ValueList labelstk; //type: list of  uint32
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf information_source; //type: string
+                                                            YLeaf v6_nexthop; //type: string
+                                                            YLeaf interface_name; //type: string
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf load_metric; //type: uint32
+                                                            YLeaf flags64; //type: uint64
+                                                            YLeaf flags; //type: uint16
+                                                            YLeaf private_flags; //type: uint16
+                                                            YLeaf looped; //type: boolean
+                                                            YLeaf next_hop_table_id; //type: uint32
+                                                            YLeaf next_hop_vrf_name; //type: string
+                                                            YLeaf next_hop_table_name; //type: string
+                                                            YLeaf next_hop_afi; //type: uint32
+                                                            YLeaf next_hop_safi; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf tunnel_id; //type: uint32
+                                                            YLeaf pathid; //type: uint32
+                                                            YLeaf backup_pathid; //type: uint32
+                                                            YLeaf ref_cnt_of_backup; //type: uint32
+                                                            YLeaf number_of_extended_communities; //type: uint32
+                                                            YLeaf mvpn_present; //type: boolean
+                                                            YLeaf path_rt_present; //type: boolean
+                                                            YLeaf vrf_import_rt_present; //type: boolean
+                                                            YLeaf source_asrt_present; //type: boolean
+                                                            YLeaf source_rd_present; //type: boolean
+                                                            YLeaf segmented_nexthop_present; //type: boolean
+                                                            YLeaf next_hop_id; //type: uint32
+                                                            YLeaf next_hop_id_refcount; //type: uint32
+                                                            YLeaf ospf_area_id; //type: string
+                                                            YLeaf has_labelstk; //type: boolean
+                                                            YLeaf num_labels; //type: uint8
+                                                            YLeaf binding_label; //type: uint32
+                                                            YLeaf nhid_feid; //type: uint64
+                                                            YLeaf mpls_feid; //type: uint64
+                                                            YLeafList remote_backup_addr; //type: list of  string
+                                                            YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -6718,6 +6933,7 @@ class Ipv6RibStdby : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Advert : public Entity
                                         {
                                             public:
@@ -6731,9 +6947,10 @@ class Ipv6RibStdby : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
 
                                             class Ipv6RibEdmAdvert : public Entity
                                             {
@@ -6748,15 +6965,16 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value protocol_id; //type: uint32
-                                                    Value client_id; //type: uint32
-                                                    Value number_of_extended_communities; //type: uint32
-                                                    Value extended_communities; //type: string
-                                                    Value protocol_opaque_flags; //type: uint8
-                                                    Value protocol_opaque; //type: uint32
-                                                    Value code; //type: int8
-                                                    Value instance_name; //type: string
 
+
+                                                    YLeaf protocol_id; //type: uint32
+                                                    YLeaf client_id; //type: uint32
+                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                    YLeaf extended_communities; //type: string
+                                                    YLeaf protocol_opaque_flags; //type: uint8
+                                                    YLeaf protocol_opaque; //type: uint32
+                                                    YLeaf code; //type: int8
+                                                    YLeaf instance_name; //type: string
 
 
 
@@ -6790,6 +7008,7 @@ class Ipv6RibStdby : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class DeletedRoute : public Entity
                                         {
                                             public:
@@ -6803,41 +7022,42 @@ class Ipv6RibStdby : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
-                                                Value prefix; //type: string
-                                                Value prefix_length_xr; //type: uint8
-                                                Value route_version; //type: uint32
-                                                Value protocol_id; //type: uint32
-                                                Value protocol_name; //type: string
-                                                Value instance; //type: string
-                                                Value client_id; //type: uint32
-                                                Value route_type; //type: uint16
-                                                Value priority; //type: uint8
-                                                Value svd_type; //type: uint8
-                                                Value flags; //type: uint32
-                                                Value extended_flags; //type: uint64
-                                                Value tag; //type: uint32
-                                                Value distance; //type: uint32
-                                                Value diversion_distance; //type: uint32
-                                                Value metric; //type: uint32
-                                                Value paths_count; //type: uint32
-                                                Value attribute_identity; //type: uint32
-                                                Value traffic_index; //type: uint8
-                                                Value route_precedence; //type: uint8
-                                                Value qos_group; //type: uint8
-                                                Value flow_tag; //type: uint8
-                                                Value fwd_class; //type: uint8
-                                                Value pic_count; //type: uint8
-                                                Value active; //type: boolean
-                                                Value diversion; //type: boolean
-                                                Value diversion_proto_name; //type: string
-                                                Value route_age; //type: uint32
-                                                Value route_label; //type: uint32
-                                                Value version; //type: uint32
-                                                Value tbl_version; //type: uint64
-                                                Value route_modify_time; //type: uint64
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
+                                                YLeaf prefix; //type: string
+                                                YLeaf prefix_length_xr; //type: uint8
+                                                YLeaf route_version; //type: uint32
+                                                YLeaf protocol_id; //type: uint32
+                                                YLeaf protocol_name; //type: string
+                                                YLeaf instance; //type: string
+                                                YLeaf client_id; //type: uint32
+                                                YLeaf route_type; //type: uint16
+                                                YLeaf priority; //type: uint8
+                                                YLeaf svd_type; //type: uint8
+                                                YLeaf flags; //type: uint32
+                                                YLeaf extended_flags; //type: uint64
+                                                YLeaf tag; //type: uint32
+                                                YLeaf distance; //type: uint32
+                                                YLeaf diversion_distance; //type: uint32
+                                                YLeaf metric; //type: uint32
+                                                YLeaf paths_count; //type: uint32
+                                                YLeaf attribute_identity; //type: uint32
+                                                YLeaf traffic_index; //type: uint8
+                                                YLeaf route_precedence; //type: uint8
+                                                YLeaf qos_group; //type: uint8
+                                                YLeaf flow_tag; //type: uint8
+                                                YLeaf fwd_class; //type: uint8
+                                                YLeaf pic_count; //type: uint8
+                                                YLeaf active; //type: boolean
+                                                YLeaf diversion; //type: boolean
+                                                YLeaf diversion_proto_name; //type: string
+                                                YLeaf route_age; //type: uint32
+                                                YLeaf route_label; //type: uint32
+                                                YLeaf version; //type: uint32
+                                                YLeaf tbl_version; //type: uint64
+                                                YLeaf route_modify_time; //type: uint64
 
                                             class RoutePath : public Entity
                                             {
@@ -6854,6 +7074,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Ipv6RibEdmPath : public Entity
                                                 {
                                                     public:
@@ -6867,44 +7088,45 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
-                                                        Value information_source; //type: string
-                                                        Value v6_nexthop; //type: string
-                                                        Value interface_name; //type: string
-                                                        Value metric; //type: uint32
-                                                        Value load_metric; //type: uint32
-                                                        Value flags64; //type: uint64
-                                                        Value flags; //type: uint16
-                                                        Value private_flags; //type: uint16
-                                                        Value looped; //type: boolean
-                                                        Value next_hop_table_id; //type: uint32
-                                                        Value next_hop_vrf_name; //type: string
-                                                        Value next_hop_table_name; //type: string
-                                                        Value next_hop_afi; //type: uint32
-                                                        Value next_hop_safi; //type: uint32
-                                                        Value route_label; //type: uint32
-                                                        Value tunnel_id; //type: uint32
-                                                        Value pathid; //type: uint32
-                                                        Value backup_pathid; //type: uint32
-                                                        Value ref_cnt_of_backup; //type: uint32
-                                                        Value number_of_extended_communities; //type: uint32
-                                                        Value mvpn_present; //type: boolean
-                                                        Value path_rt_present; //type: boolean
-                                                        Value vrf_import_rt_present; //type: boolean
-                                                        Value source_asrt_present; //type: boolean
-                                                        Value source_rd_present; //type: boolean
-                                                        Value segmented_nexthop_present; //type: boolean
-                                                        Value next_hop_id; //type: uint32
-                                                        Value next_hop_id_refcount; //type: uint32
-                                                        Value ospf_area_id; //type: string
-                                                        Value has_labelstk; //type: boolean
-                                                        Value num_labels; //type: uint8
-                                                        Value binding_label; //type: uint32
-                                                        Value nhid_feid; //type: uint64
-                                                        Value mpls_feid; //type: uint64
-                                                        ValueList remote_backup_addr; //type: list of  string
-                                                        ValueList labelstk; //type: list of  uint32
 
+
+                                                        YLeaf address; //type: string
+                                                        YLeaf information_source; //type: string
+                                                        YLeaf v6_nexthop; //type: string
+                                                        YLeaf interface_name; //type: string
+                                                        YLeaf metric; //type: uint32
+                                                        YLeaf load_metric; //type: uint32
+                                                        YLeaf flags64; //type: uint64
+                                                        YLeaf flags; //type: uint16
+                                                        YLeaf private_flags; //type: uint16
+                                                        YLeaf looped; //type: boolean
+                                                        YLeaf next_hop_table_id; //type: uint32
+                                                        YLeaf next_hop_vrf_name; //type: string
+                                                        YLeaf next_hop_table_name; //type: string
+                                                        YLeaf next_hop_afi; //type: uint32
+                                                        YLeaf next_hop_safi; //type: uint32
+                                                        YLeaf route_label; //type: uint32
+                                                        YLeaf tunnel_id; //type: uint32
+                                                        YLeaf pathid; //type: uint32
+                                                        YLeaf backup_pathid; //type: uint32
+                                                        YLeaf ref_cnt_of_backup; //type: uint32
+                                                        YLeaf number_of_extended_communities; //type: uint32
+                                                        YLeaf mvpn_present; //type: boolean
+                                                        YLeaf path_rt_present; //type: boolean
+                                                        YLeaf vrf_import_rt_present; //type: boolean
+                                                        YLeaf source_asrt_present; //type: boolean
+                                                        YLeaf source_rd_present; //type: boolean
+                                                        YLeaf segmented_nexthop_present; //type: boolean
+                                                        YLeaf next_hop_id; //type: uint32
+                                                        YLeaf next_hop_id_refcount; //type: uint32
+                                                        YLeaf ospf_area_id; //type: string
+                                                        YLeaf has_labelstk; //type: boolean
+                                                        YLeaf num_labels; //type: uint8
+                                                        YLeaf binding_label; //type: uint32
+                                                        YLeaf nhid_feid; //type: uint64
+                                                        YLeaf mpls_feid; //type: uint64
+                                                        YLeafList remote_backup_addr; //type: list of  string
+                                                        YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -6944,6 +7166,7 @@ class Ipv6RibStdby : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Local : public Entity
                                         {
                                             public:
@@ -6957,6 +7180,7 @@ class Ipv6RibStdby : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
+
 
 
                                             class Lspv : public Entity
@@ -6974,6 +7198,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -6987,18 +7212,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -7020,6 +7246,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -7033,41 +7260,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -7084,6 +7312,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -7097,44 +7326,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -7181,6 +7411,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -7194,18 +7425,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -7227,6 +7459,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -7240,41 +7473,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -7291,6 +7525,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -7304,44 +7539,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -7395,6 +7631,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -7408,8 +7645,9 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -7424,18 +7662,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -7457,6 +7696,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -7470,41 +7710,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -7521,6 +7762,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -7534,44 +7776,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -7624,6 +7867,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class NonAs : public Entity
                                             {
                                                 public:
@@ -7639,6 +7883,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -7652,18 +7897,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -7685,6 +7931,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -7698,41 +7945,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -7749,6 +7997,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -7762,44 +8011,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -7852,6 +8102,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -7865,8 +8116,9 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -7881,18 +8133,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -7914,6 +8167,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -7927,41 +8181,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -7978,6 +8233,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -7991,44 +8247,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -8081,6 +8338,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -8094,8 +8352,9 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -8110,18 +8369,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -8143,6 +8403,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -8156,41 +8417,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -8207,6 +8469,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -8220,44 +8483,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -8310,6 +8574,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class NonAs : public Entity
                                             {
                                                 public:
@@ -8325,6 +8590,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -8338,18 +8604,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -8371,6 +8638,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -8384,41 +8652,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -8435,6 +8704,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -8448,44 +8718,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -8538,6 +8809,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class NonAs : public Entity
                                             {
                                                 public:
@@ -8553,6 +8825,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -8566,18 +8839,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -8599,6 +8873,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -8612,41 +8887,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -8663,6 +8939,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -8676,44 +8953,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -8766,6 +9044,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class NonAs : public Entity
                                             {
                                                 public:
@@ -8781,6 +9060,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -8794,18 +9074,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -8827,6 +9108,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -8840,41 +9122,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -8891,6 +9174,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -8904,44 +9188,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -8994,6 +9279,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -9007,8 +9293,9 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -9023,18 +9310,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -9056,6 +9344,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -9069,41 +9358,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -9120,6 +9410,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -9133,44 +9424,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -9223,6 +9515,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class L2Vpn : public Entity
                                             {
                                                 public:
@@ -9238,6 +9531,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -9251,18 +9545,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -9284,6 +9579,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -9297,41 +9593,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -9348,6 +9645,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -9361,44 +9659,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -9445,6 +9744,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Information : public Entity
                                                 {
                                                     public:
@@ -9458,18 +9758,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -9491,6 +9792,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -9504,41 +9806,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -9555,6 +9858,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -9568,44 +9872,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -9659,6 +9964,7 @@ class Ipv6RibStdby : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class As : public Entity
                                             {
                                                 public:
@@ -9672,8 +9978,9 @@ class Ipv6RibStdby : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value as; //type: string
 
+
+                                                    YLeaf as; //type: string
 
                                                 class Information : public Entity
                                                 {
@@ -9688,18 +9995,19 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value protocol_names; //type: string
-                                                        Value instance; //type: string
-                                                        Value version; //type: uint32
-                                                        Value redistribution_client_count; //type: uint32
-                                                        Value protocol_clients_count; //type: uint32
-                                                        Value routes_counts; //type: uint32
-                                                        Value active_routes_count; //type: uint32
-                                                        Value deleted_routes_count; //type: uint32
-                                                        Value paths_count; //type: uint32
-                                                        Value protocol_route_memory; //type: uint32
-                                                        Value backup_routes_count; //type: uint32
 
+
+                                                        YLeaf protocol_names; //type: string
+                                                        YLeaf instance; //type: string
+                                                        YLeaf version; //type: uint32
+                                                        YLeaf redistribution_client_count; //type: uint32
+                                                        YLeaf protocol_clients_count; //type: uint32
+                                                        YLeaf routes_counts; //type: uint32
+                                                        YLeaf active_routes_count; //type: uint32
+                                                        YLeaf deleted_routes_count; //type: uint32
+                                                        YLeaf paths_count; //type: uint32
+                                                        YLeaf protocol_route_memory; //type: uint32
+                                                        YLeaf backup_routes_count; //type: uint32
 
 
 
@@ -9721,6 +10029,7 @@ class Ipv6RibStdby : public Entity
                                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                     class ProtocolRoute : public Entity
                                                     {
                                                         public:
@@ -9734,41 +10043,42 @@ class Ipv6RibStdby : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value address; //type: string
-                                                            Value prefix_length; //type: uint8
-                                                            Value prefix; //type: string
-                                                            Value prefix_length_xr; //type: uint8
-                                                            Value route_version; //type: uint32
-                                                            Value protocol_id; //type: uint32
-                                                            Value protocol_name; //type: string
-                                                            Value instance; //type: string
-                                                            Value client_id; //type: uint32
-                                                            Value route_type; //type: uint16
-                                                            Value priority; //type: uint8
-                                                            Value svd_type; //type: uint8
-                                                            Value flags; //type: uint32
-                                                            Value extended_flags; //type: uint64
-                                                            Value tag; //type: uint32
-                                                            Value distance; //type: uint32
-                                                            Value diversion_distance; //type: uint32
-                                                            Value metric; //type: uint32
-                                                            Value paths_count; //type: uint32
-                                                            Value attribute_identity; //type: uint32
-                                                            Value traffic_index; //type: uint8
-                                                            Value route_precedence; //type: uint8
-                                                            Value qos_group; //type: uint8
-                                                            Value flow_tag; //type: uint8
-                                                            Value fwd_class; //type: uint8
-                                                            Value pic_count; //type: uint8
-                                                            Value active; //type: boolean
-                                                            Value diversion; //type: boolean
-                                                            Value diversion_proto_name; //type: string
-                                                            Value route_age; //type: uint32
-                                                            Value route_label; //type: uint32
-                                                            Value version; //type: uint32
-                                                            Value tbl_version; //type: uint64
-                                                            Value route_modify_time; //type: uint64
 
+
+                                                            YLeaf address; //type: string
+                                                            YLeaf prefix_length; //type: uint8
+                                                            YLeaf prefix; //type: string
+                                                            YLeaf prefix_length_xr; //type: uint8
+                                                            YLeaf route_version; //type: uint32
+                                                            YLeaf protocol_id; //type: uint32
+                                                            YLeaf protocol_name; //type: string
+                                                            YLeaf instance; //type: string
+                                                            YLeaf client_id; //type: uint32
+                                                            YLeaf route_type; //type: uint16
+                                                            YLeaf priority; //type: uint8
+                                                            YLeaf svd_type; //type: uint8
+                                                            YLeaf flags; //type: uint32
+                                                            YLeaf extended_flags; //type: uint64
+                                                            YLeaf tag; //type: uint32
+                                                            YLeaf distance; //type: uint32
+                                                            YLeaf diversion_distance; //type: uint32
+                                                            YLeaf metric; //type: uint32
+                                                            YLeaf paths_count; //type: uint32
+                                                            YLeaf attribute_identity; //type: uint32
+                                                            YLeaf traffic_index; //type: uint8
+                                                            YLeaf route_precedence; //type: uint8
+                                                            YLeaf qos_group; //type: uint8
+                                                            YLeaf flow_tag; //type: uint8
+                                                            YLeaf fwd_class; //type: uint8
+                                                            YLeaf pic_count; //type: uint8
+                                                            YLeaf active; //type: boolean
+                                                            YLeaf diversion; //type: boolean
+                                                            YLeaf diversion_proto_name; //type: string
+                                                            YLeaf route_age; //type: uint32
+                                                            YLeaf route_label; //type: uint32
+                                                            YLeaf version; //type: uint32
+                                                            YLeaf tbl_version; //type: uint64
+                                                            YLeaf route_modify_time; //type: uint64
 
                                                         class RoutePath : public Entity
                                                         {
@@ -9785,6 +10095,7 @@ class Ipv6RibStdby : public Entity
                                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                             class Ipv6RibEdmPath : public Entity
                                                             {
                                                                 public:
@@ -9798,44 +10109,45 @@ class Ipv6RibStdby : public Entity
                                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                                     void set_value(const std::string & value_path, std::string value) override;
                                                                     std::map<std::string, Entity*> & get_children() override;
-                                                                    Value address; //type: string
-                                                                    Value information_source; //type: string
-                                                                    Value v6_nexthop; //type: string
-                                                                    Value interface_name; //type: string
-                                                                    Value metric; //type: uint32
-                                                                    Value load_metric; //type: uint32
-                                                                    Value flags64; //type: uint64
-                                                                    Value flags; //type: uint16
-                                                                    Value private_flags; //type: uint16
-                                                                    Value looped; //type: boolean
-                                                                    Value next_hop_table_id; //type: uint32
-                                                                    Value next_hop_vrf_name; //type: string
-                                                                    Value next_hop_table_name; //type: string
-                                                                    Value next_hop_afi; //type: uint32
-                                                                    Value next_hop_safi; //type: uint32
-                                                                    Value route_label; //type: uint32
-                                                                    Value tunnel_id; //type: uint32
-                                                                    Value pathid; //type: uint32
-                                                                    Value backup_pathid; //type: uint32
-                                                                    Value ref_cnt_of_backup; //type: uint32
-                                                                    Value number_of_extended_communities; //type: uint32
-                                                                    Value mvpn_present; //type: boolean
-                                                                    Value path_rt_present; //type: boolean
-                                                                    Value vrf_import_rt_present; //type: boolean
-                                                                    Value source_asrt_present; //type: boolean
-                                                                    Value source_rd_present; //type: boolean
-                                                                    Value segmented_nexthop_present; //type: boolean
-                                                                    Value next_hop_id; //type: uint32
-                                                                    Value next_hop_id_refcount; //type: uint32
-                                                                    Value ospf_area_id; //type: string
-                                                                    Value has_labelstk; //type: boolean
-                                                                    Value num_labels; //type: uint8
-                                                                    Value binding_label; //type: uint32
-                                                                    Value nhid_feid; //type: uint64
-                                                                    Value mpls_feid; //type: uint64
-                                                                    ValueList remote_backup_addr; //type: list of  string
-                                                                    ValueList labelstk; //type: list of  uint32
 
+
+                                                                    YLeaf address; //type: string
+                                                                    YLeaf information_source; //type: string
+                                                                    YLeaf v6_nexthop; //type: string
+                                                                    YLeaf interface_name; //type: string
+                                                                    YLeaf metric; //type: uint32
+                                                                    YLeaf load_metric; //type: uint32
+                                                                    YLeaf flags64; //type: uint64
+                                                                    YLeaf flags; //type: uint16
+                                                                    YLeaf private_flags; //type: uint16
+                                                                    YLeaf looped; //type: boolean
+                                                                    YLeaf next_hop_table_id; //type: uint32
+                                                                    YLeaf next_hop_vrf_name; //type: string
+                                                                    YLeaf next_hop_table_name; //type: string
+                                                                    YLeaf next_hop_afi; //type: uint32
+                                                                    YLeaf next_hop_safi; //type: uint32
+                                                                    YLeaf route_label; //type: uint32
+                                                                    YLeaf tunnel_id; //type: uint32
+                                                                    YLeaf pathid; //type: uint32
+                                                                    YLeaf backup_pathid; //type: uint32
+                                                                    YLeaf ref_cnt_of_backup; //type: uint32
+                                                                    YLeaf number_of_extended_communities; //type: uint32
+                                                                    YLeaf mvpn_present; //type: boolean
+                                                                    YLeaf path_rt_present; //type: boolean
+                                                                    YLeaf vrf_import_rt_present; //type: boolean
+                                                                    YLeaf source_asrt_present; //type: boolean
+                                                                    YLeaf source_rd_present; //type: boolean
+                                                                    YLeaf segmented_nexthop_present; //type: boolean
+                                                                    YLeaf next_hop_id; //type: uint32
+                                                                    YLeaf next_hop_id_refcount; //type: uint32
+                                                                    YLeaf ospf_area_id; //type: string
+                                                                    YLeaf has_labelstk; //type: boolean
+                                                                    YLeaf num_labels; //type: uint8
+                                                                    YLeaf binding_label; //type: uint32
+                                                                    YLeaf nhid_feid; //type: uint64
+                                                                    YLeaf mpls_feid; //type: uint64
+                                                                    YLeafList remote_backup_addr; //type: list of  string
+                                                                    YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -9904,6 +10216,7 @@ class Ipv6RibStdby : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Route : public Entity
                                         {
                                             public:
@@ -9917,43 +10230,44 @@ class Ipv6RibStdby : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
-                                                Value next_hop_address; //type: string
-                                                Value interface_name; //type: string
-                                                Value prefix; //type: string
-                                                Value prefix_length_xr; //type: uint8
-                                                Value route_version; //type: uint32
-                                                Value protocol_id; //type: uint32
-                                                Value protocol_name; //type: string
-                                                Value instance; //type: string
-                                                Value client_id; //type: uint32
-                                                Value route_type; //type: uint16
-                                                Value priority; //type: uint8
-                                                Value svd_type; //type: uint8
-                                                Value flags; //type: uint32
-                                                Value extended_flags; //type: uint64
-                                                Value tag; //type: uint32
-                                                Value distance; //type: uint32
-                                                Value diversion_distance; //type: uint32
-                                                Value metric; //type: uint32
-                                                Value paths_count; //type: uint32
-                                                Value attribute_identity; //type: uint32
-                                                Value traffic_index; //type: uint8
-                                                Value route_precedence; //type: uint8
-                                                Value qos_group; //type: uint8
-                                                Value flow_tag; //type: uint8
-                                                Value fwd_class; //type: uint8
-                                                Value pic_count; //type: uint8
-                                                Value active; //type: boolean
-                                                Value diversion; //type: boolean
-                                                Value diversion_proto_name; //type: string
-                                                Value route_age; //type: uint32
-                                                Value route_label; //type: uint32
-                                                Value version; //type: uint32
-                                                Value tbl_version; //type: uint64
-                                                Value route_modify_time; //type: uint64
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
+                                                YLeaf next_hop_address; //type: string
+                                                YLeaf interface_name; //type: string
+                                                YLeaf prefix; //type: string
+                                                YLeaf prefix_length_xr; //type: uint8
+                                                YLeaf route_version; //type: uint32
+                                                YLeaf protocol_id; //type: uint32
+                                                YLeaf protocol_name; //type: string
+                                                YLeaf instance; //type: string
+                                                YLeaf client_id; //type: uint32
+                                                YLeaf route_type; //type: uint16
+                                                YLeaf priority; //type: uint8
+                                                YLeaf svd_type; //type: uint8
+                                                YLeaf flags; //type: uint32
+                                                YLeaf extended_flags; //type: uint64
+                                                YLeaf tag; //type: uint32
+                                                YLeaf distance; //type: uint32
+                                                YLeaf diversion_distance; //type: uint32
+                                                YLeaf metric; //type: uint32
+                                                YLeaf paths_count; //type: uint32
+                                                YLeaf attribute_identity; //type: uint32
+                                                YLeaf traffic_index; //type: uint8
+                                                YLeaf route_precedence; //type: uint8
+                                                YLeaf qos_group; //type: uint8
+                                                YLeaf flow_tag; //type: uint8
+                                                YLeaf fwd_class; //type: uint8
+                                                YLeaf pic_count; //type: uint8
+                                                YLeaf active; //type: boolean
+                                                YLeaf diversion; //type: boolean
+                                                YLeaf diversion_proto_name; //type: string
+                                                YLeaf route_age; //type: uint32
+                                                YLeaf route_label; //type: uint32
+                                                YLeaf version; //type: uint32
+                                                YLeaf tbl_version; //type: uint64
+                                                YLeaf route_modify_time; //type: uint64
 
                                             class RoutePath : public Entity
                                             {
@@ -9970,6 +10284,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Ipv6RibEdmPath : public Entity
                                                 {
                                                     public:
@@ -9983,44 +10298,45 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
-                                                        Value information_source; //type: string
-                                                        Value v6_nexthop; //type: string
-                                                        Value interface_name; //type: string
-                                                        Value metric; //type: uint32
-                                                        Value load_metric; //type: uint32
-                                                        Value flags64; //type: uint64
-                                                        Value flags; //type: uint16
-                                                        Value private_flags; //type: uint16
-                                                        Value looped; //type: boolean
-                                                        Value next_hop_table_id; //type: uint32
-                                                        Value next_hop_vrf_name; //type: string
-                                                        Value next_hop_table_name; //type: string
-                                                        Value next_hop_afi; //type: uint32
-                                                        Value next_hop_safi; //type: uint32
-                                                        Value route_label; //type: uint32
-                                                        Value tunnel_id; //type: uint32
-                                                        Value pathid; //type: uint32
-                                                        Value backup_pathid; //type: uint32
-                                                        Value ref_cnt_of_backup; //type: uint32
-                                                        Value number_of_extended_communities; //type: uint32
-                                                        Value mvpn_present; //type: boolean
-                                                        Value path_rt_present; //type: boolean
-                                                        Value vrf_import_rt_present; //type: boolean
-                                                        Value source_asrt_present; //type: boolean
-                                                        Value source_rd_present; //type: boolean
-                                                        Value segmented_nexthop_present; //type: boolean
-                                                        Value next_hop_id; //type: uint32
-                                                        Value next_hop_id_refcount; //type: uint32
-                                                        Value ospf_area_id; //type: string
-                                                        Value has_labelstk; //type: boolean
-                                                        Value num_labels; //type: uint8
-                                                        Value binding_label; //type: uint32
-                                                        Value nhid_feid; //type: uint64
-                                                        Value mpls_feid; //type: uint64
-                                                        ValueList remote_backup_addr; //type: list of  string
-                                                        ValueList labelstk; //type: list of  uint32
 
+
+                                                        YLeaf address; //type: string
+                                                        YLeaf information_source; //type: string
+                                                        YLeaf v6_nexthop; //type: string
+                                                        YLeaf interface_name; //type: string
+                                                        YLeaf metric; //type: uint32
+                                                        YLeaf load_metric; //type: uint32
+                                                        YLeaf flags64; //type: uint64
+                                                        YLeaf flags; //type: uint16
+                                                        YLeaf private_flags; //type: uint16
+                                                        YLeaf looped; //type: boolean
+                                                        YLeaf next_hop_table_id; //type: uint32
+                                                        YLeaf next_hop_vrf_name; //type: string
+                                                        YLeaf next_hop_table_name; //type: string
+                                                        YLeaf next_hop_afi; //type: uint32
+                                                        YLeaf next_hop_safi; //type: uint32
+                                                        YLeaf route_label; //type: uint32
+                                                        YLeaf tunnel_id; //type: uint32
+                                                        YLeaf pathid; //type: uint32
+                                                        YLeaf backup_pathid; //type: uint32
+                                                        YLeaf ref_cnt_of_backup; //type: uint32
+                                                        YLeaf number_of_extended_communities; //type: uint32
+                                                        YLeaf mvpn_present; //type: boolean
+                                                        YLeaf path_rt_present; //type: boolean
+                                                        YLeaf vrf_import_rt_present; //type: boolean
+                                                        YLeaf source_asrt_present; //type: boolean
+                                                        YLeaf source_rd_present; //type: boolean
+                                                        YLeaf segmented_nexthop_present; //type: boolean
+                                                        YLeaf next_hop_id; //type: uint32
+                                                        YLeaf next_hop_id_refcount; //type: uint32
+                                                        YLeaf ospf_area_id; //type: string
+                                                        YLeaf has_labelstk; //type: boolean
+                                                        YLeaf num_labels; //type: uint8
+                                                        YLeaf binding_label; //type: uint32
+                                                        YLeaf nhid_feid; //type: uint64
+                                                        YLeaf mpls_feid; //type: uint64
+                                                        YLeafList remote_backup_addr; //type: list of  string
+                                                        YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -10060,6 +10376,7 @@ class Ipv6RibStdby : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class QRoute : public Entity
                                         {
                                             public:
@@ -10073,41 +10390,42 @@ class Ipv6RibStdby : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
-                                                Value prefix; //type: string
-                                                Value prefix_length_xr; //type: uint8
-                                                Value route_version; //type: uint32
-                                                Value protocol_id; //type: uint32
-                                                Value protocol_name; //type: string
-                                                Value instance; //type: string
-                                                Value client_id; //type: uint32
-                                                Value route_type; //type: uint16
-                                                Value priority; //type: uint8
-                                                Value svd_type; //type: uint8
-                                                Value flags; //type: uint32
-                                                Value extended_flags; //type: uint64
-                                                Value tag; //type: uint32
-                                                Value distance; //type: uint32
-                                                Value diversion_distance; //type: uint32
-                                                Value metric; //type: uint32
-                                                Value paths_count; //type: uint32
-                                                Value attribute_identity; //type: uint32
-                                                Value traffic_index; //type: uint8
-                                                Value route_precedence; //type: uint8
-                                                Value qos_group; //type: uint8
-                                                Value flow_tag; //type: uint8
-                                                Value fwd_class; //type: uint8
-                                                Value pic_count; //type: uint8
-                                                Value active; //type: boolean
-                                                Value diversion; //type: boolean
-                                                Value diversion_proto_name; //type: string
-                                                Value route_age; //type: uint32
-                                                Value route_label; //type: uint32
-                                                Value version; //type: uint32
-                                                Value tbl_version; //type: uint64
-                                                Value route_modify_time; //type: uint64
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
+                                                YLeaf prefix; //type: string
+                                                YLeaf prefix_length_xr; //type: uint8
+                                                YLeaf route_version; //type: uint32
+                                                YLeaf protocol_id; //type: uint32
+                                                YLeaf protocol_name; //type: string
+                                                YLeaf instance; //type: string
+                                                YLeaf client_id; //type: uint32
+                                                YLeaf route_type; //type: uint16
+                                                YLeaf priority; //type: uint8
+                                                YLeaf svd_type; //type: uint8
+                                                YLeaf flags; //type: uint32
+                                                YLeaf extended_flags; //type: uint64
+                                                YLeaf tag; //type: uint32
+                                                YLeaf distance; //type: uint32
+                                                YLeaf diversion_distance; //type: uint32
+                                                YLeaf metric; //type: uint32
+                                                YLeaf paths_count; //type: uint32
+                                                YLeaf attribute_identity; //type: uint32
+                                                YLeaf traffic_index; //type: uint8
+                                                YLeaf route_precedence; //type: uint8
+                                                YLeaf qos_group; //type: uint8
+                                                YLeaf flow_tag; //type: uint8
+                                                YLeaf fwd_class; //type: uint8
+                                                YLeaf pic_count; //type: uint8
+                                                YLeaf active; //type: boolean
+                                                YLeaf diversion; //type: boolean
+                                                YLeaf diversion_proto_name; //type: string
+                                                YLeaf route_age; //type: uint32
+                                                YLeaf route_label; //type: uint32
+                                                YLeaf version; //type: uint32
+                                                YLeaf tbl_version; //type: uint64
+                                                YLeaf route_modify_time; //type: uint64
 
                                             class RoutePath : public Entity
                                             {
@@ -10124,6 +10442,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Ipv6RibEdmPath : public Entity
                                                 {
                                                     public:
@@ -10137,44 +10456,45 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
-                                                        Value information_source; //type: string
-                                                        Value v6_nexthop; //type: string
-                                                        Value interface_name; //type: string
-                                                        Value metric; //type: uint32
-                                                        Value load_metric; //type: uint32
-                                                        Value flags64; //type: uint64
-                                                        Value flags; //type: uint16
-                                                        Value private_flags; //type: uint16
-                                                        Value looped; //type: boolean
-                                                        Value next_hop_table_id; //type: uint32
-                                                        Value next_hop_vrf_name; //type: string
-                                                        Value next_hop_table_name; //type: string
-                                                        Value next_hop_afi; //type: uint32
-                                                        Value next_hop_safi; //type: uint32
-                                                        Value route_label; //type: uint32
-                                                        Value tunnel_id; //type: uint32
-                                                        Value pathid; //type: uint32
-                                                        Value backup_pathid; //type: uint32
-                                                        Value ref_cnt_of_backup; //type: uint32
-                                                        Value number_of_extended_communities; //type: uint32
-                                                        Value mvpn_present; //type: boolean
-                                                        Value path_rt_present; //type: boolean
-                                                        Value vrf_import_rt_present; //type: boolean
-                                                        Value source_asrt_present; //type: boolean
-                                                        Value source_rd_present; //type: boolean
-                                                        Value segmented_nexthop_present; //type: boolean
-                                                        Value next_hop_id; //type: uint32
-                                                        Value next_hop_id_refcount; //type: uint32
-                                                        Value ospf_area_id; //type: string
-                                                        Value has_labelstk; //type: boolean
-                                                        Value num_labels; //type: uint8
-                                                        Value binding_label; //type: uint32
-                                                        Value nhid_feid; //type: uint64
-                                                        Value mpls_feid; //type: uint64
-                                                        ValueList remote_backup_addr; //type: list of  string
-                                                        ValueList labelstk; //type: list of  uint32
 
+
+                                                        YLeaf address; //type: string
+                                                        YLeaf information_source; //type: string
+                                                        YLeaf v6_nexthop; //type: string
+                                                        YLeaf interface_name; //type: string
+                                                        YLeaf metric; //type: uint32
+                                                        YLeaf load_metric; //type: uint32
+                                                        YLeaf flags64; //type: uint64
+                                                        YLeaf flags; //type: uint16
+                                                        YLeaf private_flags; //type: uint16
+                                                        YLeaf looped; //type: boolean
+                                                        YLeaf next_hop_table_id; //type: uint32
+                                                        YLeaf next_hop_vrf_name; //type: string
+                                                        YLeaf next_hop_table_name; //type: string
+                                                        YLeaf next_hop_afi; //type: uint32
+                                                        YLeaf next_hop_safi; //type: uint32
+                                                        YLeaf route_label; //type: uint32
+                                                        YLeaf tunnel_id; //type: uint32
+                                                        YLeaf pathid; //type: uint32
+                                                        YLeaf backup_pathid; //type: uint32
+                                                        YLeaf ref_cnt_of_backup; //type: uint32
+                                                        YLeaf number_of_extended_communities; //type: uint32
+                                                        YLeaf mvpn_present; //type: boolean
+                                                        YLeaf path_rt_present; //type: boolean
+                                                        YLeaf vrf_import_rt_present; //type: boolean
+                                                        YLeaf source_asrt_present; //type: boolean
+                                                        YLeaf source_rd_present; //type: boolean
+                                                        YLeaf segmented_nexthop_present; //type: boolean
+                                                        YLeaf next_hop_id; //type: uint32
+                                                        YLeaf next_hop_id_refcount; //type: uint32
+                                                        YLeaf ospf_area_id; //type: string
+                                                        YLeaf has_labelstk; //type: boolean
+                                                        YLeaf num_labels; //type: uint8
+                                                        YLeaf binding_label; //type: uint32
+                                                        YLeaf nhid_feid; //type: uint64
+                                                        YLeaf mpls_feid; //type: uint64
+                                                        YLeafList remote_backup_addr; //type: list of  string
+                                                        YLeafList labelstk; //type: list of  uint32
 
 
 
@@ -10214,6 +10534,7 @@ class Ipv6RibStdby : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class BackupRoute : public Entity
                                         {
                                             public:
@@ -10227,42 +10548,43 @@ class Ipv6RibStdby : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value address; //type: string
-                                                Value prefix_length; //type: uint8
-                                                Value protoid; //type: int32
-                                                Value prefix; //type: string
-                                                Value prefix_length_xr; //type: uint8
-                                                Value route_version; //type: uint32
-                                                Value protocol_id; //type: uint32
-                                                Value protocol_name; //type: string
-                                                Value instance; //type: string
-                                                Value client_id; //type: uint32
-                                                Value route_type; //type: uint16
-                                                Value priority; //type: uint8
-                                                Value svd_type; //type: uint8
-                                                Value flags; //type: uint32
-                                                Value extended_flags; //type: uint64
-                                                Value tag; //type: uint32
-                                                Value distance; //type: uint32
-                                                Value diversion_distance; //type: uint32
-                                                Value metric; //type: uint32
-                                                Value paths_count; //type: uint32
-                                                Value attribute_identity; //type: uint32
-                                                Value traffic_index; //type: uint8
-                                                Value route_precedence; //type: uint8
-                                                Value qos_group; //type: uint8
-                                                Value flow_tag; //type: uint8
-                                                Value fwd_class; //type: uint8
-                                                Value pic_count; //type: uint8
-                                                Value active; //type: boolean
-                                                Value diversion; //type: boolean
-                                                Value diversion_proto_name; //type: string
-                                                Value route_age; //type: uint32
-                                                Value route_label; //type: uint32
-                                                Value version; //type: uint32
-                                                Value tbl_version; //type: uint64
-                                                Value route_modify_time; //type: uint64
 
+
+                                                YLeaf address; //type: string
+                                                YLeaf prefix_length; //type: uint8
+                                                YLeaf protoid; //type: int32
+                                                YLeaf prefix; //type: string
+                                                YLeaf prefix_length_xr; //type: uint8
+                                                YLeaf route_version; //type: uint32
+                                                YLeaf protocol_id; //type: uint32
+                                                YLeaf protocol_name; //type: string
+                                                YLeaf instance; //type: string
+                                                YLeaf client_id; //type: uint32
+                                                YLeaf route_type; //type: uint16
+                                                YLeaf priority; //type: uint8
+                                                YLeaf svd_type; //type: uint8
+                                                YLeaf flags; //type: uint32
+                                                YLeaf extended_flags; //type: uint64
+                                                YLeaf tag; //type: uint32
+                                                YLeaf distance; //type: uint32
+                                                YLeaf diversion_distance; //type: uint32
+                                                YLeaf metric; //type: uint32
+                                                YLeaf paths_count; //type: uint32
+                                                YLeaf attribute_identity; //type: uint32
+                                                YLeaf traffic_index; //type: uint8
+                                                YLeaf route_precedence; //type: uint8
+                                                YLeaf qos_group; //type: uint8
+                                                YLeaf flow_tag; //type: uint8
+                                                YLeaf fwd_class; //type: uint8
+                                                YLeaf pic_count; //type: uint8
+                                                YLeaf active; //type: boolean
+                                                YLeaf diversion; //type: boolean
+                                                YLeaf diversion_proto_name; //type: string
+                                                YLeaf route_age; //type: uint32
+                                                YLeaf route_label; //type: uint32
+                                                YLeaf version; //type: uint32
+                                                YLeaf tbl_version; //type: uint64
+                                                YLeaf route_modify_time; //type: uint64
 
                                             class RoutePath : public Entity
                                             {
@@ -10279,6 +10601,7 @@ class Ipv6RibStdby : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Ipv6RibEdmPath : public Entity
                                                 {
                                                     public:
@@ -10292,44 +10615,45 @@ class Ipv6RibStdby : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value address; //type: string
-                                                        Value information_source; //type: string
-                                                        Value v6_nexthop; //type: string
-                                                        Value interface_name; //type: string
-                                                        Value metric; //type: uint32
-                                                        Value load_metric; //type: uint32
-                                                        Value flags64; //type: uint64
-                                                        Value flags; //type: uint16
-                                                        Value private_flags; //type: uint16
-                                                        Value looped; //type: boolean
-                                                        Value next_hop_table_id; //type: uint32
-                                                        Value next_hop_vrf_name; //type: string
-                                                        Value next_hop_table_name; //type: string
-                                                        Value next_hop_afi; //type: uint32
-                                                        Value next_hop_safi; //type: uint32
-                                                        Value route_label; //type: uint32
-                                                        Value tunnel_id; //type: uint32
-                                                        Value pathid; //type: uint32
-                                                        Value backup_pathid; //type: uint32
-                                                        Value ref_cnt_of_backup; //type: uint32
-                                                        Value number_of_extended_communities; //type: uint32
-                                                        Value mvpn_present; //type: boolean
-                                                        Value path_rt_present; //type: boolean
-                                                        Value vrf_import_rt_present; //type: boolean
-                                                        Value source_asrt_present; //type: boolean
-                                                        Value source_rd_present; //type: boolean
-                                                        Value segmented_nexthop_present; //type: boolean
-                                                        Value next_hop_id; //type: uint32
-                                                        Value next_hop_id_refcount; //type: uint32
-                                                        Value ospf_area_id; //type: string
-                                                        Value has_labelstk; //type: boolean
-                                                        Value num_labels; //type: uint8
-                                                        Value binding_label; //type: uint32
-                                                        Value nhid_feid; //type: uint64
-                                                        Value mpls_feid; //type: uint64
-                                                        ValueList remote_backup_addr; //type: list of  string
-                                                        ValueList labelstk; //type: list of  uint32
 
+
+                                                        YLeaf address; //type: string
+                                                        YLeaf information_source; //type: string
+                                                        YLeaf v6_nexthop; //type: string
+                                                        YLeaf interface_name; //type: string
+                                                        YLeaf metric; //type: uint32
+                                                        YLeaf load_metric; //type: uint32
+                                                        YLeaf flags64; //type: uint64
+                                                        YLeaf flags; //type: uint16
+                                                        YLeaf private_flags; //type: uint16
+                                                        YLeaf looped; //type: boolean
+                                                        YLeaf next_hop_table_id; //type: uint32
+                                                        YLeaf next_hop_vrf_name; //type: string
+                                                        YLeaf next_hop_table_name; //type: string
+                                                        YLeaf next_hop_afi; //type: uint32
+                                                        YLeaf next_hop_safi; //type: uint32
+                                                        YLeaf route_label; //type: uint32
+                                                        YLeaf tunnel_id; //type: uint32
+                                                        YLeaf pathid; //type: uint32
+                                                        YLeaf backup_pathid; //type: uint32
+                                                        YLeaf ref_cnt_of_backup; //type: uint32
+                                                        YLeaf number_of_extended_communities; //type: uint32
+                                                        YLeaf mvpn_present; //type: boolean
+                                                        YLeaf path_rt_present; //type: boolean
+                                                        YLeaf vrf_import_rt_present; //type: boolean
+                                                        YLeaf source_asrt_present; //type: boolean
+                                                        YLeaf source_rd_present; //type: boolean
+                                                        YLeaf segmented_nexthop_present; //type: boolean
+                                                        YLeaf next_hop_id; //type: uint32
+                                                        YLeaf next_hop_id_refcount; //type: uint32
+                                                        YLeaf ospf_area_id; //type: string
+                                                        YLeaf has_labelstk; //type: boolean
+                                                        YLeaf num_labels; //type: uint8
+                                                        YLeaf binding_label; //type: uint32
+                                                        YLeaf nhid_feid; //type: uint64
+                                                        YLeaf mpls_feid; //type: uint64
+                                                        YLeafList remote_backup_addr; //type: list of  string
+                                                        YLeafList labelstk; //type: list of  uint32
 
 
 

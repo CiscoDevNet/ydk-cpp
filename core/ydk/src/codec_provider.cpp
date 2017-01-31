@@ -38,23 +38,11 @@ re::sregex JSON_LOOKUP_KEY = re::sregex::compile("{[^\"]+\"(?P<key>[^\"]+)\"");
 std::string ERROR_MSG{"Failed to find namespace from %1% payload,"
                       " please make sure payload format is consistent with encoding format."};
 
-CodecServiceProvider::CodecServiceProvider(path::Repository * repo, EncodingFormat encoding)
-    : m_repo{repo}
+CodecServiceProvider::CodecServiceProvider(path::Repository & repo, EncodingFormat encoding)
+    : m_encoding{encoding}, m_repo{repo}
 {
-	if(encoding == EncodingFormat::XML)
-	{
-		m_encoding = path::CodecService::Format::XML;
-	}
-	else if(encoding == EncodingFormat::JSON)
-	{
-		m_encoding = path::CodecService::Format::JSON;
-	}
-	else
-	{
-		BOOST_THROW_EXCEPTION(YDKServiceProviderException("Encoding format not supported"));
-	}
     augment_lookup_tables();
-    m_root_schema = std::unique_ptr<ydk::path::RootSchemaNode>(m_repo->create_root_schema(get_global_capabilities()));
+    m_root_schema = std::unique_ptr<ydk::path::RootSchemaNode>(m_repo.create_root_schema(get_global_capabilities()));
 }
 
 CodecServiceProvider::~CodecServiceProvider()
@@ -70,7 +58,7 @@ CodecServiceProvider::get_root_schema()
 std::unique_ptr<Entity>
 CodecServiceProvider::get_top_entity(std::string & payload)
 {
-    if (m_encoding == path::CodecService::Format::XML)
+    if (m_encoding == EncodingFormat::XML)
     {
         return lookup_top_entity(get_xml_lookup_key(payload));
     }
@@ -94,7 +82,7 @@ static std::string get_xml_lookup_key(std::string & payload)
     {
         std::string error_msg{boost::str(boost::format(ERROR_MSG) % "XML")};
         BOOST_LOG_TRIVIAL(error) << error_msg;
-        BOOST_THROW_EXCEPTION(YDKServiceProviderException(error_msg));
+        BOOST_THROW_EXCEPTION(YCPPServiceProviderError(error_msg));
     }
     return lookup_key;
 }
@@ -112,7 +100,7 @@ static std::string get_json_lookup_key(std::string & payload)
     {
         std::string error_msg{boost::str(boost::format(ERROR_MSG) % "JSON")};
         BOOST_LOG_TRIVIAL(error) << error_msg;
-        BOOST_THROW_EXCEPTION(YDKServiceProviderException(error_msg));
+        BOOST_THROW_EXCEPTION(YCPPServiceProviderError(error_msg));
     }
     return lookup_key;
 }

@@ -26,6 +26,7 @@ class ShowFpd : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Locations : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class ShowFpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Location : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class ShowFpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location_name; //type: string
 
+
+                YLeaf location_name; //type: string
 
             class Fpd : public Entity
             {
@@ -70,8 +73,9 @@ class ShowFpd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value fpd_name; //type: string
 
+
+                    YLeaf fpd_name; //type: string
 
                 class FpdInfoDetaile : public Entity
                 {
@@ -86,15 +90,16 @@ class ShowFpd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value location; //type: string
-                        Value card_name; //type: string
-                        Value fpd_name; //type: string
-                        Value hw_version; //type: string
-                        Value secure_boot_attr; //type: string
-                        Value status; //type: string
-                        Value running_version; //type: string
-                        Value programd_version; //type: string
 
+
+                        YLeaf location; //type: string
+                        YLeaf card_name; //type: string
+                        YLeaf fpd_name; //type: string
+                        YLeaf hw_version; //type: string
+                        YLeaf secure_boot_attr; //type: string
+                        YLeaf status; //type: string
+                        YLeaf running_version; //type: string
+                        YLeaf programd_version; //type: string
 
 
 
@@ -134,6 +139,7 @@ class ShowFpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class FpdInfoDetaile : public Entity
         {
             public:
@@ -147,15 +153,16 @@ class ShowFpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location; //type: string
-                Value card_name; //type: string
-                Value fpd_name; //type: string
-                Value hw_version; //type: string
-                Value secure_boot_attr; //type: string
-                Value status; //type: string
-                Value running_version; //type: string
-                Value programd_version; //type: string
 
+
+                YLeaf location; //type: string
+                YLeaf card_name; //type: string
+                YLeaf fpd_name; //type: string
+                YLeaf hw_version; //type: string
+                YLeaf secure_boot_attr; //type: string
+                YLeaf status; //type: string
+                YLeaf running_version; //type: string
+                YLeaf programd_version; //type: string
 
 
 
@@ -183,6 +190,7 @@ class ShowFpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class HelpLocation : public Entity
         {
             public:
@@ -196,8 +204,9 @@ class ShowFpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location_name; //type: string
 
+
+                YLeaf location_name; //type: string
 
             class HelpFpd : public Entity
             {
@@ -214,6 +223,7 @@ class ShowFpd : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class FpdName : public Entity
                 {
                     public:
@@ -227,9 +237,10 @@ class ShowFpd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value location; //type: string
-                        Value fpd_name; //type: string
 
+
+                        YLeaf location; //type: string
+                        YLeaf fpd_name; //type: string
 
 
 
@@ -269,6 +280,7 @@ class ShowFpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class FpdName : public Entity
         {
             public:
@@ -282,9 +294,10 @@ class ShowFpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location; //type: string
-                Value fpd_name; //type: string
 
+
+                YLeaf location; //type: string
+                YLeaf fpd_name; //type: string
 
 
 
@@ -312,6 +325,7 @@ class ShowFpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class FpdPkgData : public Entity
         {
             public:
@@ -325,13 +339,14 @@ class ShowFpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value card_type; //type: string
-                Value fpd_desc; //type: string
-                Value upgrade_method; //type: string
-                Value fpd_ver; //type: string
-                Value min_sw_ver; //type: string
-                Value min_hw_ver; //type: string
 
+
+                YLeaf card_type; //type: string
+                YLeaf fpd_desc; //type: string
+                YLeaf upgrade_method; //type: string
+                YLeaf fpd_ver; //type: string
+                YLeaf min_sw_ver; //type: string
+                YLeaf min_hw_ver; //type: string
 
 
 
@@ -359,6 +374,7 @@ class ShowFpd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LocationName : public Entity
         {
             public:
@@ -372,8 +388,9 @@ class ShowFpd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value location_name; //type: string
 
+
+                YLeaf location_name; //type: string
 
 
 

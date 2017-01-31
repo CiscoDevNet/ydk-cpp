@@ -109,7 +109,7 @@ bool SubscriberManager::Accounting::has_data() const
 bool SubscriberManager::Accounting::has_operation() const
 {
     return is_set(operation)
-	|| (send_stop !=  nullptr && is_set(send_stop->operation));
+	|| (send_stop !=  nullptr && send_stop->has_operation());
 }
 
 std::string SubscriberManager::Accounting::get_segment_path() const
@@ -210,7 +210,7 @@ bool SubscriberManager::has_data() const
 bool SubscriberManager::has_operation() const
 {
     return is_set(operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation));
+	|| (accounting !=  nullptr && accounting->has_operation());
 }
 
 std::string SubscriberManager::get_segment_path() const
@@ -227,7 +227,7 @@ EntityPath SubscriberManager::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -429,7 +429,7 @@ EntityPath IedgeLicenseManager::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

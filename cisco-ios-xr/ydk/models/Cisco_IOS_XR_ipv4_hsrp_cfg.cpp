@@ -46,7 +46,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Bfd::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -134,7 +134,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -226,7 +226,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -330,7 +330,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedOb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -422,7 +422,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedOb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -538,7 +538,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Timers::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -646,7 +646,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::LinkLocal
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -731,7 +731,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -818,7 +818,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -946,12 +946,12 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::has_operation()
 	|| is_set(priority.operation)
 	|| is_set(session_name.operation)
 	|| is_set(virtual_mac_address.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (global_ipv6_addresses !=  nullptr && is_set(global_ipv6_addresses->operation))
-	|| (link_local_ipv6_address !=  nullptr && is_set(link_local_ipv6_address->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (tracked_interfaces !=  nullptr && is_set(tracked_interfaces->operation))
-	|| (tracked_objects !=  nullptr && is_set(tracked_objects->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (global_ipv6_addresses !=  nullptr && global_ipv6_addresses->has_operation())
+	|| (link_local_ipv6_address !=  nullptr && link_local_ipv6_address->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (tracked_interfaces !=  nullptr && tracked_interfaces->has_operation())
+	|| (tracked_objects !=  nullptr && tracked_objects->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::get_segment_path() const
@@ -968,7 +968,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1213,7 +1213,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1300,7 +1300,7 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::has_data() const
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::has_operation() const
 {
     return is_set(operation)
-	|| (groups !=  nullptr && is_set(groups->operation));
+	|| (groups !=  nullptr && groups->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv6::Version2::get_segment_path() const
@@ -1317,7 +1317,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::Version2::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1418,7 +1418,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::LinkLocal
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1503,7 +1503,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1590,7 +1590,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1692,8 +1692,8 @@ bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::has_operation()
 	|| is_set(slave_group_number.operation)
 	|| is_set(follow.operation)
 	|| is_set(virtual_mac_address.operation)
-	|| (global_ipv6_addresses !=  nullptr && is_set(global_ipv6_addresses->operation))
-	|| (link_local_ipv6_address !=  nullptr && is_set(link_local_ipv6_address->operation));
+	|| (global_ipv6_addresses !=  nullptr && global_ipv6_addresses->has_operation())
+	|| (link_local_ipv6_address !=  nullptr && link_local_ipv6_address->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::get_segment_path() const
@@ -1710,7 +1710,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1853,7 +1853,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1945,8 +1945,8 @@ bool Hsrp::Interfaces::Interface::Ipv6::has_data() const
 bool Hsrp::Interfaces::Interface::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (slave_groups !=  nullptr && is_set(slave_groups->operation))
-	|| (version2 !=  nullptr && is_set(version2->operation));
+	|| (slave_groups !=  nullptr && slave_groups->has_operation())
+	|| (version2 !=  nullptr && version2->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv6::get_segment_path() const
@@ -1963,7 +1963,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv6::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2087,7 +2087,7 @@ EntityPath Hsrp::Interfaces::Interface::Bfd::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2175,7 +2175,7 @@ EntityPath Hsrp::Interfaces::Interface::Delay::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2260,7 +2260,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::Secondary
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2347,7 +2347,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::Secondary
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2447,7 +2447,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::has_operation()
 	|| is_set(follow.operation)
 	|| is_set(primary_ipv4_address.operation)
 	|| is_set(virtual_mac_address.operation)
-	|| (secondary_ipv4_addresses !=  nullptr && is_set(secondary_ipv4_addresses->operation));
+	|| (secondary_ipv4_addresses !=  nullptr && secondary_ipv4_addresses->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::get_segment_path() const
@@ -2464,7 +2464,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2589,7 +2589,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2693,7 +2693,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2785,7 +2785,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2889,7 +2889,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Bfd::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2977,7 +2977,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedOb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3069,7 +3069,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedOb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3185,7 +3185,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Timers::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3293,7 +3293,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::PrimaryIp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3378,7 +3378,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Secondary
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3465,7 +3465,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Secondary
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3596,12 +3596,12 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::has_operation()
 	|| is_set(priority.operation)
 	|| is_set(session_name.operation)
 	|| is_set(virtual_mac_address.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (primary_ipv4_address !=  nullptr && is_set(primary_ipv4_address->operation))
-	|| (secondary_ipv4_addresses !=  nullptr && is_set(secondary_ipv4_addresses->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (tracked_interfaces !=  nullptr && is_set(tracked_interfaces->operation))
-	|| (tracked_objects !=  nullptr && is_set(tracked_objects->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (primary_ipv4_address !=  nullptr && primary_ipv4_address->has_operation())
+	|| (secondary_ipv4_addresses !=  nullptr && secondary_ipv4_addresses->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (tracked_interfaces !=  nullptr && tracked_interfaces->has_operation())
+	|| (tracked_objects !=  nullptr && tracked_objects->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::get_segment_path() const
@@ -3618,7 +3618,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3868,7 +3868,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3955,7 +3955,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::has_data() const
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::has_operation() const
 {
     return is_set(operation)
-	|| (groups !=  nullptr && is_set(groups->operation));
+	|| (groups !=  nullptr && groups->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv4::Version1::get_segment_path() const
@@ -3972,7 +3972,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version1::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4070,7 +4070,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Secondary
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4157,7 +4157,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Secondary
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4261,7 +4261,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Bfd::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4349,7 +4349,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::PrimaryIp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4437,7 +4437,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedOb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4529,7 +4529,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedOb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4633,7 +4633,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4725,7 +4725,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4841,7 +4841,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Timers::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4973,12 +4973,12 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::has_operation()
 	|| is_set(priority.operation)
 	|| is_set(session_name.operation)
 	|| is_set(virtual_mac_address.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (primary_ipv4_address !=  nullptr && is_set(primary_ipv4_address->operation))
-	|| (secondary_ipv4_addresses !=  nullptr && is_set(secondary_ipv4_addresses->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (tracked_interfaces !=  nullptr && is_set(tracked_interfaces->operation))
-	|| (tracked_objects !=  nullptr && is_set(tracked_objects->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (primary_ipv4_address !=  nullptr && primary_ipv4_address->has_operation())
+	|| (secondary_ipv4_addresses !=  nullptr && secondary_ipv4_addresses->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (tracked_interfaces !=  nullptr && tracked_interfaces->has_operation())
+	|| (tracked_objects !=  nullptr && tracked_objects->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::get_segment_path() const
@@ -4995,7 +4995,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5240,7 +5240,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5327,7 +5327,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::has_data() const
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::has_operation() const
 {
     return is_set(operation)
-	|| (groups !=  nullptr && is_set(groups->operation));
+	|| (groups !=  nullptr && groups->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv4::Version2::get_segment_path() const
@@ -5344,7 +5344,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::Version2::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5438,9 +5438,9 @@ bool Hsrp::Interfaces::Interface::Ipv4::has_data() const
 bool Hsrp::Interfaces::Interface::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (slave_groups !=  nullptr && is_set(slave_groups->operation))
-	|| (version1 !=  nullptr && is_set(version1->operation))
-	|| (version2 !=  nullptr && is_set(version2->operation));
+	|| (slave_groups !=  nullptr && slave_groups->has_operation())
+	|| (version1 !=  nullptr && version1->has_operation())
+	|| (version2 !=  nullptr && version2->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::Ipv4::get_segment_path() const
@@ -5457,7 +5457,7 @@ EntityPath Hsrp::Interfaces::Interface::Ipv4::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5615,10 +5615,10 @@ bool Hsrp::Interfaces::Interface::has_operation() const
 	|| is_set(mac_refresh.operation)
 	|| is_set(redirects_disable.operation)
 	|| is_set(use_bia.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (delay !=  nullptr && is_set(delay->operation))
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (delay !=  nullptr && delay->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Hsrp::Interfaces::Interface::get_segment_path() const
@@ -6001,8 +6001,8 @@ bool Hsrp::has_data() const
 bool Hsrp::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (logging !=  nullptr && is_set(logging->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (logging !=  nullptr && logging->has_operation());
 }
 
 std::string Hsrp::get_segment_path() const
@@ -6019,7 +6019,7 @@ EntityPath Hsrp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -6106,9 +6106,9 @@ std::unique_ptr<Entity> Hsrp::clone_ptr()
     return std::make_unique<Hsrp>();
 }
 
-const Enum::Value HsrpLinklocalEnum::manual {0, "manual"};
-const Enum::Value HsrpLinklocalEnum::auto_ {1, "auto"};
-const Enum::Value HsrpLinklocalEnum::legacy {2, "legacy"};
+const Enum::YLeaf HsrpLinklocalEnum::manual {0, "manual"};
+const Enum::YLeaf HsrpLinklocalEnum::auto_ {1, "auto"};
+const Enum::YLeaf HsrpLinklocalEnum::legacy {2, "legacy"};
 
 
 }

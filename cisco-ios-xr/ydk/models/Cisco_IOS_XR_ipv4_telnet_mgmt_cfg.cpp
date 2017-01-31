@@ -43,7 +43,7 @@ EntityPath Telnet::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -113,7 +113,7 @@ bool Telnet::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
 std::string Telnet::Vrfs::Vrf::get_segment_path() const
@@ -327,7 +327,7 @@ bool Telnet::has_data() const
 bool Telnet::has_operation() const
 {
     return is_set(operation)
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Telnet::get_segment_path() const
@@ -344,7 +344,7 @@ EntityPath Telnet::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

@@ -55,7 +55,7 @@ EntityPath ControllerPortMode::OpticsName::PortModeInfo::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -145,7 +145,7 @@ bool ControllerPortMode::OpticsName::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (port_mode_info !=  nullptr && is_set(port_mode_info->operation));
+	|| (port_mode_info !=  nullptr && port_mode_info->has_operation());
 }
 
 std::string ControllerPortMode::OpticsName::get_segment_path() const
@@ -272,7 +272,7 @@ EntityPath ControllerPortMode::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

@@ -26,6 +26,7 @@ class Nve : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Vnis : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Nve : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vni : public Entity
         {
             public:
@@ -54,28 +56,29 @@ class Nve : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vni; //type: string
-                Value interface_name; //type: string
-                Value vni_xr; //type: uint32
-                Value state; //type: int8
-                Value mcast_ipv4_address; //type: string
-                Value flags; //type: uint32
-                Value vni_min; //type: uint32
-                Value vni_max; //type: uint32
-                Value mcast_flags; //type: uint32
-                Value udp_port; //type: uint32
-                Value bvi_ifh; //type: uint32
-                Value bvi_state; //type: uint8
-                Value bvi_mac; //type: string
-                Value vrf_name; //type: string
-                Value vrf_id; //type: uint32
-                Value ipv4_tbl_id; //type: uint32
-                Value ipv6_tbl_id; //type: uint32
-                Value vrf_vni; //type: uint32
-                Value topo_valid; //type: boolean
-                Value topo_id; //type: uint32
-                Value topo_name; //type: string
 
+
+                YLeaf vni; //type: string
+                YLeaf interface_name; //type: string
+                YLeaf vni_xr; //type: uint32
+                YLeaf state; //type: int8
+                YLeaf mcast_ipv4_address; //type: string
+                YLeaf flags; //type: uint32
+                YLeaf vni_min; //type: uint32
+                YLeaf vni_max; //type: uint32
+                YLeaf mcast_flags; //type: uint32
+                YLeaf udp_port; //type: uint32
+                YLeaf bvi_ifh; //type: uint32
+                YLeaf bvi_state; //type: uint8
+                YLeaf bvi_mac; //type: string
+                YLeaf vrf_name; //type: string
+                YLeaf vrf_id; //type: uint32
+                YLeaf ipv4_tbl_id; //type: uint32
+                YLeaf ipv6_tbl_id; //type: uint32
+                YLeaf vrf_vni; //type: uint32
+                YLeaf topo_valid; //type: boolean
+                YLeaf topo_id; //type: uint32
+                YLeaf topo_name; //type: string
 
 
 
@@ -103,6 +106,7 @@ class Nve : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -116,23 +120,24 @@ class Nve : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value interface_name_xr; //type: string
-                Value state; //type: int8
-                Value admin_state; //type: int8
-                Value flags; //type: uint32
-                Value encap; //type: int8
-                Value source_interface_name; //type: string
-                Value source_ipv4_address; //type: string
-                Value if_handle; //type: uint64
-                Value source_state; //type: int8
-                Value udp_port; //type: uint32
-                Value any_cast_source_interface_name; //type: string
-                Value any_cast_source_ipv4_address; //type: string
-                Value any_cast_source_state; //type: int8
-                Value sync_mcast_ipv4_address; //type: string
-                Value sync_mcast_flags; //type: uint32
 
+
+                YLeaf interface_name; //type: string
+                YLeaf interface_name_xr; //type: string
+                YLeaf state; //type: int8
+                YLeaf admin_state; //type: int8
+                YLeaf flags; //type: uint32
+                YLeaf encap; //type: int8
+                YLeaf source_interface_name; //type: string
+                YLeaf source_ipv4_address; //type: string
+                YLeaf if_handle; //type: uint64
+                YLeaf source_state; //type: int8
+                YLeaf udp_port; //type: uint32
+                YLeaf any_cast_source_interface_name; //type: string
+                YLeaf any_cast_source_ipv4_address; //type: string
+                YLeaf any_cast_source_state; //type: int8
+                YLeaf sync_mcast_ipv4_address; //type: string
+                YLeaf sync_mcast_flags; //type: uint32
 
 
 

@@ -14,18 +14,18 @@ namespace Cisco_IOS_XR_ipv4_ma_oper {
 class RpfModeEnum : public Enum
 {
     public:
-        static const Enum::Value strict;
-        static const Enum::Value loose;
+        static const Enum::YLeaf strict;
+        static const Enum::YLeaf loose;
 
 };
 
 class Ipv4MaOperLineStateEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value shutdown;
-        static const Enum::Value down;
-        static const Enum::Value up;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf shutdown;
+        static const Enum::YLeaf down;
+        static const Enum::YLeaf up;
 
 };
 

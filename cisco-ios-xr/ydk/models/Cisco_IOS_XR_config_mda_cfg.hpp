@@ -7,8 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_infra_ltrace_cfg.hpp"
-#include "Cisco_IOS_XR_lpts_pre_ifib_cfg.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_config_mda_cfg {
@@ -29,6 +27,7 @@ class ActiveNodes : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class ActiveNode : public Entity
     {
         public:
@@ -42,8 +41,9 @@ class ActiveNodes : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value node_name; //type: string
 
+
+            YLeaf node_name; //type: string
 
         class Ltrace : public Entity
         {
@@ -60,6 +60,7 @@ class ActiveNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class AllocationParams : public Entity
             {
                 public:
@@ -73,12 +74,11 @@ class ActiveNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mode; //type: InfraLtraceModeEnum
-                    Value scale_factor; //type: InfraLtraceScaleEnum
 
 
-                    class InfraLtraceModeEnum;
-                    class InfraLtraceScaleEnum;
+                    YLeaf mode; //type: InfraLtraceModeEnum
+                    YLeaf scale_factor; //type: InfraLtraceScaleEnum
+
 
 
             }; // ActiveNodes::ActiveNode::Ltrace::AllocationParams
@@ -105,6 +105,7 @@ class ActiveNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class IpolicerLocalTables : public Entity
             {
                 public:
@@ -120,6 +121,7 @@ class ActiveNodes : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class IpolicerLocalTable : public Entity
                 {
                     public:
@@ -133,8 +135,9 @@ class ActiveNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value id1; //type: string
 
+
+                        YLeaf id1; //type: string
 
                     class Nps : public Entity
                     {
@@ -151,6 +154,7 @@ class ActiveNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Np : public Entity
                         {
                             public:
@@ -164,9 +168,10 @@ class ActiveNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value id1; //type: int32
-                                Value rate; //type: int32
 
+
+                                YLeaf id1; //type: int32
+                                YLeaf rate; //type: int32
 
 
 
@@ -204,8 +209,9 @@ class ActiveNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: empty
 
+
+                    YLeaf enable; //type: empty
 
                 class Flows : public Entity
                 {
@@ -222,6 +228,7 @@ class ActiveNodes : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Flow : public Entity
                     {
                         public:
@@ -235,9 +242,10 @@ class ActiveNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value flow_type; //type: LptsFlowEnum
-                            Value rate; //type: int32
 
+
+                            YLeaf flow_type; //type: LptsFlowEnum
+                            YLeaf rate; //type: int32
 
                         class Precedences : public Entity
                         {
@@ -252,17 +260,16 @@ class ActiveNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                ValueList precedence; //type: list of  one of uint32, enumeration
 
 
-                                class LptsPreIFibPrecedenceNumberEnum;
+                                YLeafList precedence; //type: list of  one of uint32, enumeration
+
 
 
                         }; // ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences
 
 
                             std::unique_ptr<Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences> precedences;
-                            class LptsFlowEnum;
 
 
                     }; // ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow
@@ -302,6 +309,7 @@ class ActiveNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MemoryThreshold : public Entity
             {
                 public:
@@ -315,10 +323,11 @@ class ActiveNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value minor; //type: uint32
-                    Value severe; //type: uint32
-                    Value critical; //type: uint32
 
+
+                    YLeaf minor; //type: uint32
+                    YLeaf severe; //type: uint32
+                    YLeaf critical; //type: uint32
 
 
 
@@ -346,6 +355,7 @@ class ActiveNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MemoryThreshold : public Entity
             {
                 public:
@@ -359,10 +369,11 @@ class ActiveNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value minor; //type: uint32
-                    Value severe; //type: uint32
-                    Value critical; //type: uint32
 
+
+                    YLeaf minor; //type: uint32
+                    YLeaf severe; //type: uint32
+                    YLeaf critical; //type: uint32
 
 
 
@@ -405,6 +416,7 @@ class PreconfiguredNodes : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class PreconfiguredNode : public Entity
     {
         public:
@@ -418,8 +430,9 @@ class PreconfiguredNodes : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value node_name; //type: string
 
+
+            YLeaf node_name; //type: string
 
         class Ltrace : public Entity
         {
@@ -436,6 +449,7 @@ class PreconfiguredNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class AllocationParams : public Entity
             {
                 public:
@@ -449,12 +463,11 @@ class PreconfiguredNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value mode; //type: InfraLtraceModeEnum
-                    Value scale_factor; //type: InfraLtraceScaleEnum
 
 
-                    class InfraLtraceModeEnum;
-                    class InfraLtraceScaleEnum;
+                    YLeaf mode; //type: InfraLtraceModeEnum
+                    YLeaf scale_factor; //type: InfraLtraceScaleEnum
+
 
 
             }; // PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams
@@ -481,6 +494,7 @@ class PreconfiguredNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class IpolicerLocalTables : public Entity
             {
                 public:
@@ -496,6 +510,7 @@ class PreconfiguredNodes : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class IpolicerLocalTable : public Entity
                 {
                     public:
@@ -509,8 +524,9 @@ class PreconfiguredNodes : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value id1; //type: string
 
+
+                        YLeaf id1; //type: string
 
                     class Nps : public Entity
                     {
@@ -527,6 +543,7 @@ class PreconfiguredNodes : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Np : public Entity
                         {
                             public:
@@ -540,9 +557,10 @@ class PreconfiguredNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value id1; //type: int32
-                                Value rate; //type: int32
 
+
+                                YLeaf id1; //type: int32
+                                YLeaf rate; //type: int32
 
 
 
@@ -580,8 +598,9 @@ class PreconfiguredNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: empty
 
+
+                    YLeaf enable; //type: empty
 
                 class Flows : public Entity
                 {
@@ -598,6 +617,7 @@ class PreconfiguredNodes : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Flow : public Entity
                     {
                         public:
@@ -611,9 +631,10 @@ class PreconfiguredNodes : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value flow_type; //type: LptsFlowEnum
-                            Value rate; //type: int32
 
+
+                            YLeaf flow_type; //type: LptsFlowEnum
+                            YLeaf rate; //type: int32
 
                         class Precedences : public Entity
                         {
@@ -628,17 +649,16 @@ class PreconfiguredNodes : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                ValueList precedence; //type: list of  one of uint32, enumeration
 
 
-                                class LptsPreIFibPrecedenceNumberEnum;
+                                YLeafList precedence; //type: list of  one of uint32, enumeration
+
 
 
                         }; // PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences
 
 
                             std::unique_ptr<Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences> precedences;
-                            class LptsFlowEnum;
 
 
                     }; // PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow
@@ -678,6 +698,7 @@ class PreconfiguredNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MemoryThreshold : public Entity
             {
                 public:
@@ -691,10 +712,11 @@ class PreconfiguredNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value minor; //type: uint32
-                    Value severe; //type: uint32
-                    Value critical; //type: uint32
 
+
+                    YLeaf minor; //type: uint32
+                    YLeaf severe; //type: uint32
+                    YLeaf critical; //type: uint32
 
 
 
@@ -722,6 +744,7 @@ class PreconfiguredNodes : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MemoryThreshold : public Entity
             {
                 public:
@@ -735,10 +758,11 @@ class PreconfiguredNodes : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value minor; //type: uint32
-                    Value severe; //type: uint32
-                    Value critical; //type: uint32
 
+
+                    YLeaf minor; //type: uint32
+                    YLeaf severe; //type: uint32
+                    YLeaf critical; //type: uint32
 
 
 

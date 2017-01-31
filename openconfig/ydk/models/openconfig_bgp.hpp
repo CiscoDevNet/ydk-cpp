@@ -7,8 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "openconfig_bgp_types.hpp"
-#include "openconfig_routing_policy.hpp"
 
 namespace ydk {
 namespace openconfig_bgp {
@@ -29,6 +27,7 @@ class Bgp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Global : public Entity
     {
         public:
@@ -44,6 +43,7 @@ class Bgp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Config : public Entity
         {
             public:
@@ -57,9 +57,10 @@ class Bgp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value as; //type: uint32
-                Value router_id; //type: string
 
+
+                YLeaf as; //type: uint32
+                YLeaf router_id; //type: string
 
 
 
@@ -79,11 +80,12 @@ class Bgp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value as; //type: uint32
-                Value router_id; //type: string
-                Value total_paths; //type: uint32
-                Value total_prefixes; //type: uint32
 
+
+                YLeaf as; //type: uint32
+                YLeaf router_id; //type: string
+                YLeaf total_paths; //type: uint32
+                YLeaf total_prefixes; //type: uint32
 
 
 
@@ -105,6 +107,7 @@ class Bgp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -118,13 +121,14 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value always_compare_med; //type: boolean
-                    Value ignore_as_path_length; //type: boolean
-                    Value external_compare_router_id; //type: boolean
-                    Value advertise_inactive_routes; //type: boolean
-                    Value enable_aigp; //type: boolean
-                    Value ignore_next_hop_igp_metric; //type: boolean
 
+
+                    YLeaf always_compare_med; //type: boolean
+                    YLeaf ignore_as_path_length; //type: boolean
+                    YLeaf external_compare_router_id; //type: boolean
+                    YLeaf advertise_inactive_routes; //type: boolean
+                    YLeaf enable_aigp; //type: boolean
+                    YLeaf ignore_next_hop_igp_metric; //type: boolean
 
 
 
@@ -144,13 +148,14 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value always_compare_med; //type: boolean
-                    Value ignore_as_path_length; //type: boolean
-                    Value external_compare_router_id; //type: boolean
-                    Value advertise_inactive_routes; //type: boolean
-                    Value enable_aigp; //type: boolean
-                    Value ignore_next_hop_igp_metric; //type: boolean
 
+
+                    YLeaf always_compare_med; //type: boolean
+                    YLeaf ignore_as_path_length; //type: boolean
+                    YLeaf external_compare_router_id; //type: boolean
+                    YLeaf advertise_inactive_routes; //type: boolean
+                    YLeaf enable_aigp; //type: boolean
+                    YLeaf ignore_next_hop_igp_metric; //type: boolean
 
 
 
@@ -179,6 +184,7 @@ class Bgp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -192,9 +198,10 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value external_route_distance; //type: uint8
-                    Value internal_route_distance; //type: uint8
 
+
+                    YLeaf external_route_distance; //type: uint8
+                    YLeaf internal_route_distance; //type: uint8
 
 
 
@@ -214,9 +221,10 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value external_route_distance; //type: uint8
-                    Value internal_route_distance; //type: uint8
 
+
+                    YLeaf external_route_distance; //type: uint8
+                    YLeaf internal_route_distance; //type: uint8
 
 
 
@@ -245,6 +253,7 @@ class Bgp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -258,10 +267,11 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enabled; //type: boolean
-                    Value identifier; //type: uint32
-                    ValueList member_as; //type: list of  uint32
 
+
+                    YLeaf enabled; //type: boolean
+                    YLeaf identifier; //type: uint32
+                    YLeafList member_as; //type: list of  uint32
 
 
 
@@ -281,10 +291,11 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enabled; //type: boolean
-                    Value identifier; //type: uint32
-                    ValueList member_as; //type: list of  uint32
 
+
+                    YLeaf enabled; //type: boolean
+                    YLeaf identifier; //type: uint32
+                    YLeafList member_as; //type: list of  uint32
 
 
 
@@ -313,6 +324,7 @@ class Bgp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -326,8 +338,9 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enabled; //type: boolean
 
+
+                    YLeaf enabled; //type: boolean
 
 
 
@@ -347,8 +360,9 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enabled; //type: boolean
 
+
+                    YLeaf enabled; //type: boolean
 
 
 
@@ -370,6 +384,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -383,9 +398,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value allow_multiple_as; //type: boolean
-                        Value maximum_paths; //type: uint32
 
+
+                        YLeaf allow_multiple_as; //type: boolean
+                        YLeaf maximum_paths; //type: uint32
 
 
 
@@ -405,9 +421,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value allow_multiple_as; //type: boolean
-                        Value maximum_paths; //type: uint32
 
+
+                        YLeaf allow_multiple_as; //type: boolean
+                        YLeaf maximum_paths; //type: uint32
 
 
 
@@ -436,6 +453,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -449,8 +467,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_paths; //type: uint32
 
+
+                        YLeaf maximum_paths; //type: uint32
 
 
 
@@ -470,8 +489,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_paths; //type: uint32
 
+
+                        YLeaf maximum_paths; //type: uint32
 
 
 
@@ -509,6 +529,7 @@ class Bgp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -522,11 +543,12 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enabled; //type: boolean
-                    Value restart_time; //type: uint16
-                    Value stale_routes_time; //type: decimal64
-                    Value helper_only; //type: boolean
 
+
+                    YLeaf enabled; //type: boolean
+                    YLeaf restart_time; //type: uint16
+                    YLeaf stale_routes_time; //type: decimal64
+                    YLeaf helper_only; //type: boolean
 
 
 
@@ -546,11 +568,12 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enabled; //type: boolean
-                    Value restart_time; //type: uint16
-                    Value stale_routes_time; //type: decimal64
-                    Value helper_only; //type: boolean
 
+
+                    YLeaf enabled; //type: boolean
+                    YLeaf restart_time; //type: uint16
+                    YLeaf stale_routes_time; //type: decimal64
+                    YLeaf helper_only; //type: boolean
 
 
 
@@ -579,6 +602,7 @@ class Bgp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class AfiSafi : public Entity
             {
                 public:
@@ -592,8 +616,9 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value afi_safi_name; //type: AfiSafiTypeIdentity
 
+
+                    YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
 
                 class GracefulRestart : public Entity
                 {
@@ -610,6 +635,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -623,8 +649,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enabled; //type: boolean
 
+
+                            YLeaf enabled; //type: boolean
 
 
 
@@ -644,8 +671,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enabled; //type: boolean
 
+
+                            YLeaf enabled; //type: boolean
 
 
 
@@ -672,9 +700,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi_safi_name; //type: AfiSafiTypeIdentity
-                        Value enabled; //type: boolean
 
+
+                        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
+                        YLeaf enabled; //type: boolean
 
 
 
@@ -694,11 +723,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi_safi_name; //type: AfiSafiTypeIdentity
-                        Value enabled; //type: boolean
-                        Value total_paths; //type: uint32
-                        Value total_prefixes; //type: uint32
 
+
+                        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
+                        YLeaf enabled; //type: boolean
+                        YLeaf total_paths; //type: uint32
+                        YLeaf total_prefixes; //type: uint32
 
 
 
@@ -720,6 +750,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -733,16 +764,15 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value default_import_policy; //type: DefaultPolicyTypeEnum
-                            Value default_export_policy; //type: DefaultPolicyTypeEnum
-                            //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                            ValueList import_policy;
-                            //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                            ValueList export_policy;
 
 
-                            class DefaultPolicyTypeEnum;
-                            class DefaultPolicyTypeEnum;
+                            YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                            YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                            //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                            YLeafList import_policy;
+                            //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                            YLeafList export_policy;
+
 
 
                     }; // Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config
@@ -761,16 +791,15 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value default_import_policy; //type: DefaultPolicyTypeEnum
-                            Value default_export_policy; //type: DefaultPolicyTypeEnum
-                            //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                            ValueList import_policy;
-                            //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                            ValueList export_policy;
 
 
-                            class DefaultPolicyTypeEnum;
-                            class DefaultPolicyTypeEnum;
+                            YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                            YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                            //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                            YLeafList import_policy;
+                            //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                            YLeafList export_policy;
+
 
 
                     }; // Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State
@@ -798,6 +827,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -813,6 +843,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -826,10 +857,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -849,10 +881,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -879,8 +912,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value send_default_route; //type: boolean
 
+
+                            YLeaf send_default_route; //type: boolean
 
 
 
@@ -900,8 +934,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value send_default_route; //type: boolean
 
+
+                            YLeaf send_default_route; //type: boolean
 
 
 
@@ -931,6 +966,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -946,6 +982,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -959,10 +996,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -982,10 +1020,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1012,8 +1051,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value send_default_route; //type: boolean
 
+
+                            YLeaf send_default_route; //type: boolean
 
 
 
@@ -1033,8 +1073,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value send_default_route; //type: boolean
 
+
+                            YLeaf send_default_route; //type: boolean
 
 
 
@@ -1064,6 +1105,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -1079,6 +1121,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1092,10 +1135,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1115,10 +1159,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1153,6 +1198,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -1168,6 +1214,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1181,10 +1228,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1204,10 +1252,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1242,6 +1291,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -1257,6 +1307,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1270,10 +1321,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1293,10 +1345,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1331,6 +1384,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -1346,6 +1400,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1359,10 +1414,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1382,10 +1438,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1420,6 +1477,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -1435,6 +1493,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1448,10 +1507,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1471,10 +1531,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1509,6 +1570,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -1524,6 +1586,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1537,10 +1600,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1560,10 +1624,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1598,6 +1663,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -1613,6 +1679,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1626,10 +1693,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1649,10 +1717,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1687,6 +1756,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PrefixLimit : public Entity
                     {
                         public:
@@ -1702,6 +1772,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1715,10 +1786,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1738,10 +1810,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value max_prefixes; //type: uint32
-                                Value shutdown_threshold_pct; //type: uint8
-                                Value restart_timer; //type: decimal64
 
+
+                                YLeaf max_prefixes; //type: uint32
+                                YLeaf shutdown_threshold_pct; //type: uint8
+                                YLeaf restart_timer; //type: decimal64
 
 
 
@@ -1776,6 +1849,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -1789,13 +1863,14 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value always_compare_med; //type: boolean
-                            Value ignore_as_path_length; //type: boolean
-                            Value external_compare_router_id; //type: boolean
-                            Value advertise_inactive_routes; //type: boolean
-                            Value enable_aigp; //type: boolean
-                            Value ignore_next_hop_igp_metric; //type: boolean
 
+
+                            YLeaf always_compare_med; //type: boolean
+                            YLeaf ignore_as_path_length; //type: boolean
+                            YLeaf external_compare_router_id; //type: boolean
+                            YLeaf advertise_inactive_routes; //type: boolean
+                            YLeaf enable_aigp; //type: boolean
+                            YLeaf ignore_next_hop_igp_metric; //type: boolean
 
 
 
@@ -1815,13 +1890,14 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value always_compare_med; //type: boolean
-                            Value ignore_as_path_length; //type: boolean
-                            Value external_compare_router_id; //type: boolean
-                            Value advertise_inactive_routes; //type: boolean
-                            Value enable_aigp; //type: boolean
-                            Value ignore_next_hop_igp_metric; //type: boolean
 
+
+                            YLeaf always_compare_med; //type: boolean
+                            YLeaf ignore_as_path_length; //type: boolean
+                            YLeaf external_compare_router_id; //type: boolean
+                            YLeaf advertise_inactive_routes; //type: boolean
+                            YLeaf enable_aigp; //type: boolean
+                            YLeaf ignore_next_hop_igp_metric; //type: boolean
 
 
 
@@ -1850,6 +1926,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -1863,8 +1940,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enabled; //type: boolean
 
+
+                            YLeaf enabled; //type: boolean
 
 
 
@@ -1884,8 +1962,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enabled; //type: boolean
 
+
+                            YLeaf enabled; //type: boolean
 
 
 
@@ -1907,6 +1986,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1920,9 +2000,10 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value allow_multiple_as; //type: boolean
-                                Value maximum_paths; //type: uint32
 
+
+                                YLeaf allow_multiple_as; //type: boolean
+                                YLeaf maximum_paths; //type: uint32
 
 
 
@@ -1942,9 +2023,10 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value allow_multiple_as; //type: boolean
-                                Value maximum_paths; //type: uint32
 
+
+                                YLeaf allow_multiple_as; //type: boolean
+                                YLeaf maximum_paths; //type: uint32
 
 
 
@@ -1973,6 +2055,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1986,8 +2069,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value maximum_paths; //type: uint32
 
+
+                                YLeaf maximum_paths; //type: uint32
 
 
 
@@ -2007,8 +2091,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value maximum_paths; //type: uint32
 
+
+                                YLeaf maximum_paths; //type: uint32
 
 
 
@@ -2073,6 +2158,7 @@ class Bgp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Config : public Entity
             {
                 public:
@@ -2086,16 +2172,15 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value default_import_policy; //type: DefaultPolicyTypeEnum
-                    Value default_export_policy; //type: DefaultPolicyTypeEnum
-                    //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                    ValueList import_policy;
-                    //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                    ValueList export_policy;
 
 
-                    class DefaultPolicyTypeEnum;
-                    class DefaultPolicyTypeEnum;
+                    YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                    YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                    //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                    YLeafList import_policy;
+                    //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                    YLeafList export_policy;
+
 
 
             }; // Bgp::Global::ApplyPolicy::Config
@@ -2114,16 +2199,15 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value default_import_policy; //type: DefaultPolicyTypeEnum
-                    Value default_export_policy; //type: DefaultPolicyTypeEnum
-                    //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                    ValueList import_policy;
-                    //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                    ValueList export_policy;
 
 
-                    class DefaultPolicyTypeEnum;
-                    class DefaultPolicyTypeEnum;
+                    YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                    YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                    //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                    YLeafList import_policy;
+                    //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                    YLeafList export_policy;
+
 
 
             }; // Bgp::Global::ApplyPolicy::State
@@ -2165,6 +2249,7 @@ class Bgp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Neighbor : public Entity
         {
             public:
@@ -2178,9 +2263,10 @@ class Bgp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                //type: union (refers to openconfig_bgp::Bgp::Neighbors::Neighbor::Config::neighbor_address)
-                Value neighbor_address;
 
+
+                //type: union (refers to openconfig_bgp::Bgp::Neighbors::Neighbor::Config::neighbor_address)
+                YLeaf neighbor_address;
 
             class Config : public Entity
             {
@@ -2195,22 +2281,20 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value peer_as; //type: uint32
-                    Value local_as; //type: uint32
-                    Value peer_type; //type: PeerTypeEnum
-                    Value auth_password; //type: string
-                    Value remove_private_as; //type: RemovePrivateAsOptionEnum
-                    Value route_flap_damping; //type: boolean
-                    Value send_community; //type: CommunityTypeEnum
-                    Value description; //type: string
+
+
+                    YLeaf peer_as; //type: uint32
+                    YLeaf local_as; //type: uint32
+                    YLeaf peer_type; //type: PeerTypeEnum
+                    YLeaf auth_password; //type: string
+                    YLeaf remove_private_as; //type: RemovePrivateAsOptionEnum
+                    YLeaf route_flap_damping; //type: boolean
+                    YLeaf send_community; //type: CommunityTypeEnum
+                    YLeaf description; //type: string
                     //type: leafref (refers to openconfig_bgp::Bgp::PeerGroups::PeerGroup::peer_group_name)
-                    Value peer_group;
-                    Value neighbor_address; //type: string
+                    YLeaf peer_group;
+                    YLeaf neighbor_address; //type: string
 
-
-                    class PeerTypeEnum;
-                    class RemovePrivateAsOptionEnum;
-                    class CommunityTypeEnum;
 
 
             }; // Bgp::Neighbors::Neighbor::Config
@@ -2229,20 +2313,21 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value peer_as; //type: uint32
-                    Value local_as; //type: uint32
-                    Value peer_type; //type: PeerTypeEnum
-                    Value auth_password; //type: string
-                    Value remove_private_as; //type: RemovePrivateAsOptionEnum
-                    Value route_flap_damping; //type: boolean
-                    Value send_community; //type: CommunityTypeEnum
-                    Value description; //type: string
-                    //type: leafref (refers to openconfig_bgp::Bgp::PeerGroups::PeerGroup::peer_group_name)
-                    Value peer_group;
-                    Value neighbor_address; //type: string
-                    Value session_state; //type: SessionStateEnum
-                    ValueList supported_capabilities; //type: list of  BgpCapabilityIdentity
 
+
+                    YLeaf peer_as; //type: uint32
+                    YLeaf local_as; //type: uint32
+                    YLeaf peer_type; //type: PeerTypeEnum
+                    YLeaf auth_password; //type: string
+                    YLeaf remove_private_as; //type: RemovePrivateAsOptionEnum
+                    YLeaf route_flap_damping; //type: boolean
+                    YLeaf send_community; //type: CommunityTypeEnum
+                    YLeaf description; //type: string
+                    //type: leafref (refers to openconfig_bgp::Bgp::PeerGroups::PeerGroup::peer_group_name)
+                    YLeaf peer_group;
+                    YLeaf neighbor_address; //type: string
+                    YLeaf session_state; //type: SessionStateEnum
+                    YLeafList supported_capabilities; //type: list of  BgpCapabilityIdentity
 
                 class Messages : public Entity
                 {
@@ -2259,6 +2344,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Sent : public Entity
                     {
                         public:
@@ -2272,9 +2358,10 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value update; //type: uint64
-                            Value notification; //type: uint64
 
+
+                            YLeaf update; //type: uint64
+                            YLeaf notification; //type: uint64
 
 
 
@@ -2294,9 +2381,10 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value update; //type: uint64
-                            Value notification; //type: uint64
 
+
+                            YLeaf update; //type: uint64
+                            YLeaf notification; //type: uint64
 
 
 
@@ -2323,9 +2411,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value input; //type: uint32
-                        Value output; //type: uint32
 
+
+                        YLeaf input; //type: uint32
+                        YLeaf output; //type: uint32
 
 
 
@@ -2334,9 +2423,6 @@ class Bgp : public Entity
 
                     std::unique_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::State::Messages> messages;
                     std::unique_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::State::Queues> queues;
-                    class PeerTypeEnum;
-                    class RemovePrivateAsOptionEnum;
-                    class CommunityTypeEnum;
                     class SessionStateEnum;
 
 
@@ -2358,6 +2444,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -2371,11 +2458,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value connect_retry; //type: decimal64
-                        Value hold_time; //type: decimal64
-                        Value keepalive_interval; //type: decimal64
-                        Value minimum_advertisement_interval; //type: decimal64
 
+
+                        YLeaf connect_retry; //type: decimal64
+                        YLeaf hold_time; //type: decimal64
+                        YLeaf keepalive_interval; //type: decimal64
+                        YLeaf minimum_advertisement_interval; //type: decimal64
 
 
 
@@ -2395,13 +2483,14 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value connect_retry; //type: decimal64
-                        Value hold_time; //type: decimal64
-                        Value keepalive_interval; //type: decimal64
-                        Value minimum_advertisement_interval; //type: decimal64
-                        Value uptime; //type: uint32
-                        Value negotiated_hold_time; //type: decimal64
 
+
+                        YLeaf connect_retry; //type: decimal64
+                        YLeaf hold_time; //type: decimal64
+                        YLeaf keepalive_interval; //type: decimal64
+                        YLeaf minimum_advertisement_interval; //type: decimal64
+                        YLeaf uptime; //type: uint32
+                        YLeaf negotiated_hold_time; //type: decimal64
 
 
 
@@ -2430,6 +2519,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -2443,11 +2533,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value tcp_mss; //type: uint16
-                        Value mtu_discovery; //type: boolean
-                        Value passive_mode; //type: boolean
-                        Value local_address; //type: one of union, string
 
+
+                        YLeaf tcp_mss; //type: uint16
+                        YLeaf mtu_discovery; //type: boolean
+                        YLeaf passive_mode; //type: boolean
+                        YLeaf local_address; //type: one of union, string
 
 
 
@@ -2467,14 +2558,15 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value tcp_mss; //type: uint16
-                        Value mtu_discovery; //type: boolean
-                        Value passive_mode; //type: boolean
-                        Value local_address; //type: one of union, string
-                        Value local_port; //type: uint16
-                        Value remote_address; //type: string
-                        Value remote_port; //type: uint16
 
+
+                        YLeaf tcp_mss; //type: uint16
+                        YLeaf mtu_discovery; //type: boolean
+                        YLeaf passive_mode; //type: boolean
+                        YLeaf local_address; //type: one of union, string
+                        YLeaf local_port; //type: uint16
+                        YLeaf remote_address; //type: string
+                        YLeaf remote_port; //type: uint16
 
 
 
@@ -2503,6 +2595,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -2516,8 +2609,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value treat_as_withdraw; //type: boolean
 
+
+                        YLeaf treat_as_withdraw; //type: boolean
 
 
 
@@ -2537,9 +2631,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value treat_as_withdraw; //type: boolean
-                        Value erroneous_update_messages; //type: uint32
 
+
+                        YLeaf treat_as_withdraw; //type: boolean
+                        YLeaf erroneous_update_messages; //type: uint32
 
 
 
@@ -2568,6 +2663,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -2581,8 +2677,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value log_neighbor_state_changes; //type: boolean
 
+
+                        YLeaf log_neighbor_state_changes; //type: boolean
 
 
 
@@ -2602,8 +2699,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value log_neighbor_state_changes; //type: boolean
 
+
+                        YLeaf log_neighbor_state_changes; //type: boolean
 
 
 
@@ -2632,6 +2730,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -2645,9 +2744,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value multihop_ttl; //type: uint8
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf multihop_ttl; //type: uint8
 
 
 
@@ -2667,9 +2767,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value multihop_ttl; //type: uint8
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf multihop_ttl; //type: uint8
 
 
 
@@ -2698,6 +2799,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -2711,9 +2813,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value route_reflector_cluster_id; //type: one of uint32, string
-                        Value route_reflector_client; //type: boolean
 
+
+                        YLeaf route_reflector_cluster_id; //type: one of uint32, string
+                        YLeaf route_reflector_client; //type: boolean
 
 
 
@@ -2733,9 +2836,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value route_reflector_cluster_id; //type: one of uint32, string
-                        Value route_reflector_client; //type: boolean
 
+
+                        YLeaf route_reflector_cluster_id; //type: one of uint32, string
+                        YLeaf route_reflector_client; //type: boolean
 
 
 
@@ -2764,6 +2868,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -2777,9 +2882,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value allow_own_as; //type: uint8
-                        Value replace_peer_as; //type: boolean
 
+
+                        YLeaf allow_own_as; //type: uint8
+                        YLeaf replace_peer_as; //type: boolean
 
 
 
@@ -2799,9 +2905,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value allow_own_as; //type: uint8
-                        Value replace_peer_as; //type: boolean
 
+
+                        YLeaf allow_own_as; //type: uint8
+                        YLeaf replace_peer_as; //type: boolean
 
 
 
@@ -2830,6 +2937,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -2843,9 +2951,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value receive; //type: boolean
-                        Value send_max; //type: uint8
 
+
+                        YLeaf receive; //type: boolean
+                        YLeaf send_max; //type: uint8
 
 
 
@@ -2865,9 +2974,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value receive; //type: boolean
-                        Value send_max; //type: uint8
 
+
+                        YLeaf receive; //type: boolean
+                        YLeaf send_max; //type: uint8
 
 
 
@@ -2896,6 +3006,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AfiSafi : public Entity
                 {
                     public:
@@ -2909,8 +3020,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi_safi_name; //type: AfiSafiTypeIdentity
 
+
+                        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
 
                     class GracefulRestart : public Entity
                     {
@@ -2927,6 +3039,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -2940,8 +3053,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
 
+
+                                YLeaf enabled; //type: boolean
 
 
 
@@ -2961,10 +3075,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
-                                Value received; //type: boolean
-                                Value advertised; //type: boolean
 
+
+                                YLeaf enabled; //type: boolean
+                                YLeaf received; //type: boolean
+                                YLeaf advertised; //type: boolean
 
 
 
@@ -2991,9 +3106,10 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi_safi_name; //type: AfiSafiTypeIdentity
-                            Value enabled; //type: boolean
 
+
+                            YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
+                            YLeaf enabled; //type: boolean
 
 
 
@@ -3013,10 +3129,11 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi_safi_name; //type: AfiSafiTypeIdentity
-                            Value enabled; //type: boolean
-                            Value active; //type: boolean
 
+
+                            YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
+                            YLeaf enabled; //type: boolean
+                            YLeaf active; //type: boolean
 
                         class Prefixes : public Entity
                         {
@@ -3031,10 +3148,11 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value received; //type: uint32
-                                Value sent; //type: uint32
-                                Value installed; //type: uint32
 
+
+                                YLeaf received; //type: uint32
+                                YLeaf sent; //type: uint32
+                                YLeaf installed; //type: uint32
 
 
 
@@ -3062,6 +3180,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -3075,16 +3194,15 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value default_import_policy; //type: DefaultPolicyTypeEnum
-                                Value default_export_policy; //type: DefaultPolicyTypeEnum
-                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                                ValueList import_policy;
-                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                                ValueList export_policy;
 
 
-                                class DefaultPolicyTypeEnum;
-                                class DefaultPolicyTypeEnum;
+                                YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                                YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                                YLeafList import_policy;
+                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                                YLeafList export_policy;
+
 
 
                         }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config
@@ -3103,16 +3221,15 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value default_import_policy; //type: DefaultPolicyTypeEnum
-                                Value default_export_policy; //type: DefaultPolicyTypeEnum
-                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                                ValueList import_policy;
-                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                                ValueList export_policy;
 
 
-                                class DefaultPolicyTypeEnum;
-                                class DefaultPolicyTypeEnum;
+                                YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                                YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                                YLeafList import_policy;
+                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                                YLeafList export_policy;
+
 
 
                         }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State
@@ -3140,6 +3257,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -3155,6 +3273,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3168,10 +3287,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3191,10 +3311,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3221,8 +3342,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_default_route; //type: boolean
 
+
+                                YLeaf send_default_route; //type: boolean
 
 
 
@@ -3242,8 +3364,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_default_route; //type: boolean
 
+
+                                YLeaf send_default_route; //type: boolean
 
 
 
@@ -3273,6 +3396,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -3288,6 +3412,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3301,10 +3426,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3324,10 +3450,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3354,8 +3481,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_default_route; //type: boolean
 
+
+                                YLeaf send_default_route; //type: boolean
 
 
 
@@ -3375,8 +3503,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_default_route; //type: boolean
 
+
+                                YLeaf send_default_route; //type: boolean
 
 
 
@@ -3406,6 +3535,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -3421,6 +3551,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3434,10 +3565,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3457,10 +3589,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3495,6 +3628,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -3510,6 +3644,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3523,10 +3658,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3546,10 +3682,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3584,6 +3721,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -3599,6 +3737,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3612,10 +3751,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3635,10 +3775,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3673,6 +3814,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -3688,6 +3830,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3701,10 +3844,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3724,10 +3868,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3762,6 +3907,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -3777,6 +3923,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3790,10 +3937,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3813,10 +3961,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3851,6 +4000,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -3866,6 +4016,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3879,10 +4030,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3902,10 +4054,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3940,6 +4093,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -3955,6 +4109,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -3968,10 +4123,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -3991,10 +4147,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -4029,6 +4186,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -4044,6 +4202,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -4057,10 +4216,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -4080,10 +4240,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -4118,6 +4279,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -4131,8 +4293,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
 
+
+                                YLeaf enabled; //type: boolean
 
 
 
@@ -4152,8 +4315,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
 
+
+                                YLeaf enabled; //type: boolean
 
 
 
@@ -4175,6 +4339,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -4188,8 +4353,9 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value allow_multiple_as; //type: boolean
 
+
+                                    YLeaf allow_multiple_as; //type: boolean
 
 
 
@@ -4209,8 +4375,9 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value allow_multiple_as; //type: boolean
 
+
+                                    YLeaf allow_multiple_as; //type: boolean
 
 
 
@@ -4273,6 +4440,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -4286,11 +4454,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value restart_time; //type: uint16
-                        Value stale_routes_time; //type: decimal64
-                        Value helper_only; //type: boolean
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf restart_time; //type: uint16
+                        YLeaf stale_routes_time; //type: decimal64
+                        YLeaf helper_only; //type: boolean
 
 
 
@@ -4310,15 +4479,16 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value restart_time; //type: uint16
-                        Value stale_routes_time; //type: decimal64
-                        Value helper_only; //type: boolean
-                        Value peer_restart_time; //type: uint16
-                        Value peer_restarting; //type: boolean
-                        Value local_restarting; //type: boolean
-                        Value mode; //type: ModeEnum
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf restart_time; //type: uint16
+                        YLeaf stale_routes_time; //type: decimal64
+                        YLeaf helper_only; //type: boolean
+                        YLeaf peer_restart_time; //type: uint16
+                        YLeaf peer_restarting; //type: boolean
+                        YLeaf local_restarting; //type: boolean
+                        YLeaf mode; //type: ModeEnum
 
                         class ModeEnum;
 
@@ -4348,6 +4518,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -4361,16 +4532,15 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value default_import_policy; //type: DefaultPolicyTypeEnum
-                        Value default_export_policy; //type: DefaultPolicyTypeEnum
-                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                        ValueList import_policy;
-                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                        ValueList export_policy;
 
 
-                        class DefaultPolicyTypeEnum;
-                        class DefaultPolicyTypeEnum;
+                        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                        YLeafList import_policy;
+                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                        YLeafList export_policy;
+
 
 
                 }; // Bgp::Neighbors::Neighbor::ApplyPolicy::Config
@@ -4389,16 +4559,15 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value default_import_policy; //type: DefaultPolicyTypeEnum
-                        Value default_export_policy; //type: DefaultPolicyTypeEnum
-                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                        ValueList import_policy;
-                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                        ValueList export_policy;
 
 
-                        class DefaultPolicyTypeEnum;
-                        class DefaultPolicyTypeEnum;
+                        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                        YLeafList import_policy;
+                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                        YLeafList export_policy;
+
 
 
                 }; // Bgp::Neighbors::Neighbor::ApplyPolicy::State
@@ -4426,6 +4595,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -4439,8 +4609,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
 
+
+                        YLeaf enabled; //type: boolean
 
 
 
@@ -4460,8 +4631,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
 
+
+                        YLeaf enabled; //type: boolean
 
 
 
@@ -4483,6 +4655,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -4496,8 +4669,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value allow_multiple_as; //type: boolean
 
+
+                            YLeaf allow_multiple_as; //type: boolean
 
 
 
@@ -4517,8 +4691,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value allow_multiple_as; //type: boolean
 
+
+                            YLeaf allow_multiple_as; //type: boolean
 
 
 
@@ -4580,6 +4755,7 @@ class Bgp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class PeerGroup : public Entity
         {
             public:
@@ -4593,9 +4769,10 @@ class Bgp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                //type: string (refers to openconfig_bgp::Bgp::PeerGroups::PeerGroup::Config::peer_group_name)
-                Value peer_group_name;
 
+
+                //type: string (refers to openconfig_bgp::Bgp::PeerGroups::PeerGroup::Config::peer_group_name)
+                YLeaf peer_group_name;
 
             class Config : public Entity
             {
@@ -4610,20 +4787,18 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value peer_as; //type: uint32
-                    Value local_as; //type: uint32
-                    Value peer_type; //type: PeerTypeEnum
-                    Value auth_password; //type: string
-                    Value remove_private_as; //type: RemovePrivateAsOptionEnum
-                    Value route_flap_damping; //type: boolean
-                    Value send_community; //type: CommunityTypeEnum
-                    Value description; //type: string
-                    Value peer_group_name; //type: string
 
 
-                    class PeerTypeEnum;
-                    class RemovePrivateAsOptionEnum;
-                    class CommunityTypeEnum;
+                    YLeaf peer_as; //type: uint32
+                    YLeaf local_as; //type: uint32
+                    YLeaf peer_type; //type: PeerTypeEnum
+                    YLeaf auth_password; //type: string
+                    YLeaf remove_private_as; //type: RemovePrivateAsOptionEnum
+                    YLeaf route_flap_damping; //type: boolean
+                    YLeaf send_community; //type: CommunityTypeEnum
+                    YLeaf description; //type: string
+                    YLeaf peer_group_name; //type: string
+
 
 
             }; // Bgp::PeerGroups::PeerGroup::Config
@@ -4642,22 +4817,20 @@ class Bgp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value peer_as; //type: uint32
-                    Value local_as; //type: uint32
-                    Value peer_type; //type: PeerTypeEnum
-                    Value auth_password; //type: string
-                    Value remove_private_as; //type: RemovePrivateAsOptionEnum
-                    Value route_flap_damping; //type: boolean
-                    Value send_community; //type: CommunityTypeEnum
-                    Value description; //type: string
-                    Value peer_group_name; //type: string
-                    Value total_paths; //type: uint32
-                    Value total_prefixes; //type: uint32
 
 
-                    class PeerTypeEnum;
-                    class RemovePrivateAsOptionEnum;
-                    class CommunityTypeEnum;
+                    YLeaf peer_as; //type: uint32
+                    YLeaf local_as; //type: uint32
+                    YLeaf peer_type; //type: PeerTypeEnum
+                    YLeaf auth_password; //type: string
+                    YLeaf remove_private_as; //type: RemovePrivateAsOptionEnum
+                    YLeaf route_flap_damping; //type: boolean
+                    YLeaf send_community; //type: CommunityTypeEnum
+                    YLeaf description; //type: string
+                    YLeaf peer_group_name; //type: string
+                    YLeaf total_paths; //type: uint32
+                    YLeaf total_prefixes; //type: uint32
+
 
 
             }; // Bgp::PeerGroups::PeerGroup::State
@@ -4678,6 +4851,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -4691,11 +4865,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value connect_retry; //type: decimal64
-                        Value hold_time; //type: decimal64
-                        Value keepalive_interval; //type: decimal64
-                        Value minimum_advertisement_interval; //type: decimal64
 
+
+                        YLeaf connect_retry; //type: decimal64
+                        YLeaf hold_time; //type: decimal64
+                        YLeaf keepalive_interval; //type: decimal64
+                        YLeaf minimum_advertisement_interval; //type: decimal64
 
 
 
@@ -4715,11 +4890,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value connect_retry; //type: decimal64
-                        Value hold_time; //type: decimal64
-                        Value keepalive_interval; //type: decimal64
-                        Value minimum_advertisement_interval; //type: decimal64
 
+
+                        YLeaf connect_retry; //type: decimal64
+                        YLeaf hold_time; //type: decimal64
+                        YLeaf keepalive_interval; //type: decimal64
+                        YLeaf minimum_advertisement_interval; //type: decimal64
 
 
 
@@ -4748,6 +4924,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -4761,11 +4938,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value tcp_mss; //type: uint16
-                        Value mtu_discovery; //type: boolean
-                        Value passive_mode; //type: boolean
-                        Value local_address; //type: one of union, string
 
+
+                        YLeaf tcp_mss; //type: uint16
+                        YLeaf mtu_discovery; //type: boolean
+                        YLeaf passive_mode; //type: boolean
+                        YLeaf local_address; //type: one of union, string
 
 
 
@@ -4785,11 +4963,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value tcp_mss; //type: uint16
-                        Value mtu_discovery; //type: boolean
-                        Value passive_mode; //type: boolean
-                        Value local_address; //type: one of union, string
 
+
+                        YLeaf tcp_mss; //type: uint16
+                        YLeaf mtu_discovery; //type: boolean
+                        YLeaf passive_mode; //type: boolean
+                        YLeaf local_address; //type: one of union, string
 
 
 
@@ -4818,6 +4997,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -4831,8 +5011,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value treat_as_withdraw; //type: boolean
 
+
+                        YLeaf treat_as_withdraw; //type: boolean
 
 
 
@@ -4852,8 +5033,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value treat_as_withdraw; //type: boolean
 
+
+                        YLeaf treat_as_withdraw; //type: boolean
 
 
 
@@ -4882,6 +5064,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -4895,8 +5078,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value log_neighbor_state_changes; //type: boolean
 
+
+                        YLeaf log_neighbor_state_changes; //type: boolean
 
 
 
@@ -4916,8 +5100,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value log_neighbor_state_changes; //type: boolean
 
+
+                        YLeaf log_neighbor_state_changes; //type: boolean
 
 
 
@@ -4946,6 +5131,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -4959,9 +5145,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value multihop_ttl; //type: uint8
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf multihop_ttl; //type: uint8
 
 
 
@@ -4981,9 +5168,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value multihop_ttl; //type: uint8
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf multihop_ttl; //type: uint8
 
 
 
@@ -5012,6 +5200,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -5025,9 +5214,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value route_reflector_cluster_id; //type: one of uint32, string
-                        Value route_reflector_client; //type: boolean
 
+
+                        YLeaf route_reflector_cluster_id; //type: one of uint32, string
+                        YLeaf route_reflector_client; //type: boolean
 
 
 
@@ -5047,9 +5237,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value route_reflector_cluster_id; //type: one of uint32, string
-                        Value route_reflector_client; //type: boolean
 
+
+                        YLeaf route_reflector_cluster_id; //type: one of uint32, string
+                        YLeaf route_reflector_client; //type: boolean
 
 
 
@@ -5078,6 +5269,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -5091,9 +5283,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value allow_own_as; //type: uint8
-                        Value replace_peer_as; //type: boolean
 
+
+                        YLeaf allow_own_as; //type: uint8
+                        YLeaf replace_peer_as; //type: boolean
 
 
 
@@ -5113,9 +5306,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value allow_own_as; //type: uint8
-                        Value replace_peer_as; //type: boolean
 
+
+                        YLeaf allow_own_as; //type: uint8
+                        YLeaf replace_peer_as; //type: boolean
 
 
 
@@ -5144,6 +5338,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -5157,9 +5352,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value receive; //type: boolean
-                        Value send_max; //type: uint8
 
+
+                        YLeaf receive; //type: boolean
+                        YLeaf send_max; //type: uint8
 
 
 
@@ -5179,9 +5375,10 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value receive; //type: boolean
-                        Value send_max; //type: uint8
 
+
+                        YLeaf receive; //type: boolean
+                        YLeaf send_max; //type: uint8
 
 
 
@@ -5210,6 +5407,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AfiSafi : public Entity
                 {
                     public:
@@ -5223,8 +5421,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value afi_safi_name; //type: AfiSafiTypeIdentity
 
+
+                        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
 
                     class GracefulRestart : public Entity
                     {
@@ -5241,6 +5440,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -5254,8 +5454,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
 
+
+                                YLeaf enabled; //type: boolean
 
 
 
@@ -5275,8 +5476,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
 
+
+                                YLeaf enabled; //type: boolean
 
 
 
@@ -5303,9 +5505,10 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi_safi_name; //type: AfiSafiTypeIdentity
-                            Value enabled; //type: boolean
 
+
+                            YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
+                            YLeaf enabled; //type: boolean
 
 
 
@@ -5325,9 +5528,10 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value afi_safi_name; //type: AfiSafiTypeIdentity
-                            Value enabled; //type: boolean
 
+
+                            YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
+                            YLeaf enabled; //type: boolean
 
 
 
@@ -5349,6 +5553,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -5362,16 +5567,15 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value default_import_policy; //type: DefaultPolicyTypeEnum
-                                Value default_export_policy; //type: DefaultPolicyTypeEnum
-                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                                ValueList import_policy;
-                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                                ValueList export_policy;
 
 
-                                class DefaultPolicyTypeEnum;
-                                class DefaultPolicyTypeEnum;
+                                YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                                YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                                YLeafList import_policy;
+                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                                YLeafList export_policy;
+
 
 
                         }; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::Config
@@ -5390,16 +5594,15 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value default_import_policy; //type: DefaultPolicyTypeEnum
-                                Value default_export_policy; //type: DefaultPolicyTypeEnum
-                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                                ValueList import_policy;
-                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                                ValueList export_policy;
 
 
-                                class DefaultPolicyTypeEnum;
-                                class DefaultPolicyTypeEnum;
+                                YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                                YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                                YLeafList import_policy;
+                                //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                                YLeafList export_policy;
+
 
 
                         }; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::State
@@ -5427,6 +5630,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -5442,6 +5646,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -5455,10 +5660,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5478,10 +5684,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5508,8 +5715,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_default_route; //type: boolean
 
+
+                                YLeaf send_default_route; //type: boolean
 
 
 
@@ -5529,8 +5737,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_default_route; //type: boolean
 
+
+                                YLeaf send_default_route; //type: boolean
 
 
 
@@ -5560,6 +5769,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -5575,6 +5785,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -5588,10 +5799,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5611,10 +5823,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5641,8 +5854,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_default_route; //type: boolean
 
+
+                                YLeaf send_default_route; //type: boolean
 
 
 
@@ -5662,8 +5876,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value send_default_route; //type: boolean
 
+
+                                YLeaf send_default_route; //type: boolean
 
 
 
@@ -5693,6 +5908,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -5708,6 +5924,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -5721,10 +5938,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5744,10 +5962,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5782,6 +6001,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -5797,6 +6017,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -5810,10 +6031,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5833,10 +6055,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5871,6 +6094,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -5886,6 +6110,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -5899,10 +6124,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5922,10 +6148,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -5960,6 +6187,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -5975,6 +6203,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -5988,10 +6217,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6011,10 +6241,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6049,6 +6280,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -6064,6 +6296,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -6077,10 +6310,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6100,10 +6334,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6138,6 +6373,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -6153,6 +6389,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -6166,10 +6403,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6189,10 +6427,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6227,6 +6466,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -6242,6 +6482,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -6255,10 +6496,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6278,10 +6520,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6316,6 +6559,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrefixLimit : public Entity
                         {
                             public:
@@ -6331,6 +6575,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -6344,10 +6589,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6367,10 +6613,11 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value max_prefixes; //type: uint32
-                                    Value shutdown_threshold_pct; //type: uint8
-                                    Value restart_timer; //type: decimal64
 
+
+                                    YLeaf max_prefixes; //type: uint32
+                                    YLeaf shutdown_threshold_pct; //type: uint8
+                                    YLeaf restart_timer; //type: decimal64
 
 
 
@@ -6405,6 +6652,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -6418,8 +6666,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
 
+
+                                YLeaf enabled; //type: boolean
 
 
 
@@ -6439,8 +6688,9 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enabled; //type: boolean
 
+
+                                YLeaf enabled; //type: boolean
 
 
 
@@ -6462,6 +6712,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -6475,9 +6726,10 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value allow_multiple_as; //type: boolean
-                                    Value maximum_paths; //type: uint32
 
+
+                                    YLeaf allow_multiple_as; //type: boolean
+                                    YLeaf maximum_paths; //type: uint32
 
 
 
@@ -6497,9 +6749,10 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value allow_multiple_as; //type: boolean
-                                    Value maximum_paths; //type: uint32
 
+
+                                    YLeaf allow_multiple_as; //type: boolean
+                                    YLeaf maximum_paths; //type: uint32
 
 
 
@@ -6528,6 +6781,7 @@ class Bgp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Config : public Entity
                             {
                                 public:
@@ -6541,8 +6795,9 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value maximum_paths; //type: uint32
 
+
+                                    YLeaf maximum_paths; //type: uint32
 
 
 
@@ -6562,8 +6817,9 @@ class Bgp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value maximum_paths; //type: uint32
 
+
+                                    YLeaf maximum_paths; //type: uint32
 
 
 
@@ -6601,6 +6857,7 @@ class Bgp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -6614,13 +6871,14 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value always_compare_med; //type: boolean
-                                Value ignore_as_path_length; //type: boolean
-                                Value external_compare_router_id; //type: boolean
-                                Value advertise_inactive_routes; //type: boolean
-                                Value enable_aigp; //type: boolean
-                                Value ignore_next_hop_igp_metric; //type: boolean
 
+
+                                YLeaf always_compare_med; //type: boolean
+                                YLeaf ignore_as_path_length; //type: boolean
+                                YLeaf external_compare_router_id; //type: boolean
+                                YLeaf advertise_inactive_routes; //type: boolean
+                                YLeaf enable_aigp; //type: boolean
+                                YLeaf ignore_next_hop_igp_metric; //type: boolean
 
 
 
@@ -6640,13 +6898,14 @@ class Bgp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value always_compare_med; //type: boolean
-                                Value ignore_as_path_length; //type: boolean
-                                Value external_compare_router_id; //type: boolean
-                                Value advertise_inactive_routes; //type: boolean
-                                Value enable_aigp; //type: boolean
-                                Value ignore_next_hop_igp_metric; //type: boolean
 
+
+                                YLeaf always_compare_med; //type: boolean
+                                YLeaf ignore_as_path_length; //type: boolean
+                                YLeaf external_compare_router_id; //type: boolean
+                                YLeaf advertise_inactive_routes; //type: boolean
+                                YLeaf enable_aigp; //type: boolean
+                                YLeaf ignore_next_hop_igp_metric; //type: boolean
 
 
 
@@ -6702,6 +6961,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -6715,11 +6975,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value restart_time; //type: uint16
-                        Value stale_routes_time; //type: decimal64
-                        Value helper_only; //type: boolean
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf restart_time; //type: uint16
+                        YLeaf stale_routes_time; //type: decimal64
+                        YLeaf helper_only; //type: boolean
 
 
 
@@ -6739,11 +7000,12 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
-                        Value restart_time; //type: uint16
-                        Value stale_routes_time; //type: decimal64
-                        Value helper_only; //type: boolean
 
+
+                        YLeaf enabled; //type: boolean
+                        YLeaf restart_time; //type: uint16
+                        YLeaf stale_routes_time; //type: decimal64
+                        YLeaf helper_only; //type: boolean
 
 
 
@@ -6772,6 +7034,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -6785,16 +7048,15 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value default_import_policy; //type: DefaultPolicyTypeEnum
-                        Value default_export_policy; //type: DefaultPolicyTypeEnum
-                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                        ValueList import_policy;
-                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                        ValueList export_policy;
 
 
-                        class DefaultPolicyTypeEnum;
-                        class DefaultPolicyTypeEnum;
+                        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                        YLeafList import_policy;
+                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                        YLeafList export_policy;
+
 
 
                 }; // Bgp::PeerGroups::PeerGroup::ApplyPolicy::Config
@@ -6813,16 +7075,15 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value default_import_policy; //type: DefaultPolicyTypeEnum
-                        Value default_export_policy; //type: DefaultPolicyTypeEnum
-                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                        ValueList import_policy;
-                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                        ValueList export_policy;
 
 
-                        class DefaultPolicyTypeEnum;
-                        class DefaultPolicyTypeEnum;
+                        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
+                        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
+                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                        YLeafList import_policy;
+                        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                        YLeafList export_policy;
+
 
 
                 }; // Bgp::PeerGroups::PeerGroup::ApplyPolicy::State
@@ -6850,6 +7111,7 @@ class Bgp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Config : public Entity
                 {
                     public:
@@ -6863,8 +7125,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
 
+
+                        YLeaf enabled; //type: boolean
 
 
 
@@ -6884,8 +7147,9 @@ class Bgp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enabled; //type: boolean
 
+
+                        YLeaf enabled; //type: boolean
 
 
 
@@ -6907,6 +7171,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -6920,9 +7185,10 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value allow_multiple_as; //type: boolean
-                            Value maximum_paths; //type: uint32
 
+
+                            YLeaf allow_multiple_as; //type: boolean
+                            YLeaf maximum_paths; //type: uint32
 
 
 
@@ -6942,9 +7208,10 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value allow_multiple_as; //type: boolean
-                            Value maximum_paths; //type: uint32
 
+
+                            YLeaf allow_multiple_as; //type: boolean
+                            YLeaf maximum_paths; //type: uint32
 
 
 
@@ -6973,6 +7240,7 @@ class Bgp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Config : public Entity
                     {
                         public:
@@ -6986,8 +7254,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_paths; //type: uint32
 
+
+                            YLeaf maximum_paths; //type: uint32
 
 
 
@@ -7007,8 +7276,9 @@ class Bgp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_paths; //type: uint32
 
+
+                            YLeaf maximum_paths; //type: uint32
 
 
 
@@ -7067,21 +7337,21 @@ class Bgp : public Entity
 class Bgp::Neighbors::Neighbor::State::SessionStateEnum : public Enum
 {
     public:
-        static const Enum::Value IDLE;
-        static const Enum::Value CONNECT;
-        static const Enum::Value ACTIVE;
-        static const Enum::Value OPENSENT;
-        static const Enum::Value OPENCONFIRM;
-        static const Enum::Value ESTABLISHED;
+        static const Enum::YLeaf IDLE;
+        static const Enum::YLeaf CONNECT;
+        static const Enum::YLeaf ACTIVE;
+        static const Enum::YLeaf OPENSENT;
+        static const Enum::YLeaf OPENCONFIRM;
+        static const Enum::YLeaf ESTABLISHED;
 
 };
 
 class Bgp::Neighbors::Neighbor::GracefulRestart::State::ModeEnum : public Enum
 {
     public:
-        static const Enum::Value HELPER_ONLY;
-        static const Enum::Value BILATERAL;
-        static const Enum::Value REMOTE_HELPER;
+        static const Enum::YLeaf HELPER_ONLY;
+        static const Enum::YLeaf BILATERAL;
+        static const Enum::YLeaf REMOTE_HELPER;
 
 };
 

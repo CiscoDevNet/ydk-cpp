@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_wanphy_ui_cfg {
 class WanphyLanModeEnum : public Enum
 {
     public:
-        static const Enum::Value on;
+        static const Enum::YLeaf on;
 
 };
 
 class WanphyWanModeEnum : public Enum
 {
     public:
-        static const Enum::Value on;
+        static const Enum::YLeaf on;
 
 };
 

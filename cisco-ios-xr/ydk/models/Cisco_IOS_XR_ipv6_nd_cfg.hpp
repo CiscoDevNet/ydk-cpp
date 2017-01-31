@@ -24,8 +24,9 @@ class Ipv6Neighbor : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value scavenge_timeout; //type: uint32
 
+
+        YLeaf scavenge_timeout; //type: uint32
 
     class Neighbors : public Entity
     {
@@ -42,6 +43,7 @@ class Ipv6Neighbor : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Neighbor : public Entity
         {
             public:
@@ -55,14 +57,14 @@ class Ipv6Neighbor : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value neighbor_address; //type: string
-                Value interface_name; //type: string
-                Value zone; //type: string
-                Value mac_address; //type: string
-                Value encapsulation; //type: Ipv6SrpEncapsulationEnum
 
 
-                class Ipv6SrpEncapsulationEnum;
+                YLeaf neighbor_address; //type: string
+                YLeaf interface_name; //type: string
+                YLeaf zone; //type: string
+                YLeaf mac_address; //type: string
+                YLeaf encapsulation; //type: Ipv6SrpEncapsulationEnum
+
 
 
         }; // Ipv6Neighbor::Neighbors::Neighbor
@@ -83,35 +85,35 @@ class Ipv6Neighbor : public Entity
 class Ipv6NdMonthEnum : public Enum
 {
     public:
-        static const Enum::Value january;
-        static const Enum::Value february;
-        static const Enum::Value march;
-        static const Enum::Value april;
-        static const Enum::Value may;
-        static const Enum::Value june;
-        static const Enum::Value july;
-        static const Enum::Value august;
-        static const Enum::Value september;
-        static const Enum::Value october;
-        static const Enum::Value november;
-        static const Enum::Value december;
+        static const Enum::YLeaf january;
+        static const Enum::YLeaf february;
+        static const Enum::YLeaf march;
+        static const Enum::YLeaf april;
+        static const Enum::YLeaf may;
+        static const Enum::YLeaf june;
+        static const Enum::YLeaf july;
+        static const Enum::YLeaf august;
+        static const Enum::YLeaf september;
+        static const Enum::YLeaf october;
+        static const Enum::YLeaf november;
+        static const Enum::YLeaf december;
 
 };
 
 class Ipv6NdRouterPrefEnum : public Enum
 {
     public:
-        static const Enum::Value high;
-        static const Enum::Value medium;
-        static const Enum::Value low;
+        static const Enum::YLeaf high;
+        static const Enum::YLeaf medium;
+        static const Enum::YLeaf low;
 
 };
 
 class Ipv6SrpEncapsulationEnum : public Enum
 {
     public:
-        static const Enum::Value srpa;
-        static const Enum::Value srpb;
+        static const Enum::YLeaf srpa;
+        static const Enum::YLeaf srpb;
 
 };
 

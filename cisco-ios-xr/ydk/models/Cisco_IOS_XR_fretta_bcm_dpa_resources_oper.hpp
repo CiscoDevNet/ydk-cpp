@@ -26,6 +26,7 @@ class Dpa : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Resources : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Dpa : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Nodes : public Entity
@@ -56,6 +58,7 @@ class Dpa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -69,8 +72,9 @@ class Dpa : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_name; //type: string
 
+
+                    YLeaf node_name; //type: string
 
                 class TableDatas : public Entity
                 {
@@ -87,6 +91,7 @@ class Dpa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class TableData : public Entity
                     {
                         public:
@@ -100,13 +105,14 @@ class Dpa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value resource; //type: uint32
-                            Value table_id; //type: uint32
-                            Value name; //type: string
-                            Value is_global; //type: boolean
-                            Value num_npus; //type: uint32
-                            Value table_specific_list; //type: string
 
+
+                            YLeaf resource; //type: uint32
+                            YLeaf table_id; //type: uint32
+                            YLeaf name; //type: string
+                            YLeaf is_global; //type: boolean
+                            YLeaf num_npus; //type: uint32
+                            YLeaf table_specific_list; //type: string
 
                         class NpuTblr : public Entity
                         {
@@ -121,22 +127,23 @@ class Dpa : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value npu_id; //type: uint32
-                                Value num_objs; //type: uint32
-                                Value create_req; //type: uint32
-                                Value create_ok; //type: uint32
-                                Value delete_req; //type: uint32
-                                Value delete_ok; //type: uint32
-                                Value update_req; //type: uint32
-                                Value update_ok; //type: uint32
-                                Value eod_req; //type: uint32
-                                Value eod_ok; //type: uint32
-                                Value err_hw_fail; //type: uint32
-                                Value err_ref_resolve; //type: uint32
-                                Value err_db_notfound; //type: uint32
-                                Value err_db_exists; //type: uint32
-                                Value err_db_nomem; //type: uint32
 
+
+                                YLeaf npu_id; //type: uint32
+                                YLeaf num_objs; //type: uint32
+                                YLeaf create_req; //type: uint32
+                                YLeaf create_ok; //type: uint32
+                                YLeaf delete_req; //type: uint32
+                                YLeaf delete_ok; //type: uint32
+                                YLeaf update_req; //type: uint32
+                                YLeaf update_ok; //type: uint32
+                                YLeaf eod_req; //type: uint32
+                                YLeaf eod_ok; //type: uint32
+                                YLeaf err_hw_fail; //type: uint32
+                                YLeaf err_ref_resolve; //type: uint32
+                                YLeaf err_db_notfound; //type: uint32
+                                YLeaf err_db_exists; //type: uint32
+                                YLeaf err_db_nomem; //type: uint32
 
 
 
@@ -188,6 +195,7 @@ class Dpa : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Nodes : public Entity
         {
             public:
@@ -203,6 +211,7 @@ class Dpa : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -216,8 +225,9 @@ class Dpa : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_name; //type: string
 
+
+                    YLeaf node_name; //type: string
 
                 class VoqBaseNumberStatsClears : public Entity
                 {
@@ -234,6 +244,7 @@ class Dpa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class VoqBaseNumberStatsClear : public Entity
                     {
                         public:
@@ -247,8 +258,9 @@ class Dpa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value npu_number; //type: int32
 
+
+                            YLeaf npu_number; //type: int32
 
                         class VoqBaseStatsClearData : public Entity
                         {
@@ -263,9 +275,10 @@ class Dpa : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value base_number; //type: uint32
-                                Value clear_status; //type: uint8
 
+
+                                YLeaf base_number; //type: uint32
+                                YLeaf clear_status; //type: uint8
 
 
 
@@ -299,6 +312,7 @@ class Dpa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class NpuNumberForTrapData : public Entity
                     {
                         public:
@@ -312,8 +326,9 @@ class Dpa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value npu_id; //type: int32
 
+
+                            YLeaf npu_id; //type: int32
 
                         class TrapSpecificStatsData : public Entity
                         {
@@ -328,23 +343,24 @@ class Dpa : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value trap_data; //type: uint32
-                                Value trap_strength; //type: uint32
-                                Value priority; //type: uint32
-                                Value trap_id; //type: uint32
-                                Value gport; //type: uint32
-                                Value fec_id; //type: uint32
-                                Value policer_id; //type: uint32
-                                Value stats_id; //type: uint32
-                                Value encap_id; //type: uint32
-                                Value mc_group; //type: uint32
-                                Value trap_string; //type: string
-                                Value id; //type: uint32
-                                Value offset; //type: uint64
-                                Value npu_id; //type: uint64
-                                Value packet_dropped; //type: uint64
-                                Value packet_accepted; //type: uint64
 
+
+                                YLeaf trap_data; //type: uint32
+                                YLeaf trap_strength; //type: uint32
+                                YLeaf priority; //type: uint32
+                                YLeaf trap_id; //type: uint32
+                                YLeaf gport; //type: uint32
+                                YLeaf fec_id; //type: uint32
+                                YLeaf policer_id; //type: uint32
+                                YLeaf stats_id; //type: uint32
+                                YLeaf encap_id; //type: uint32
+                                YLeaf mc_group; //type: uint32
+                                YLeaf trap_string; //type: string
+                                YLeaf id; //type: uint32
+                                YLeaf offset; //type: uint64
+                                YLeaf npu_id; //type: uint64
+                                YLeaf packet_dropped; //type: uint64
+                                YLeaf packet_accepted; //type: uint64
 
 
 
@@ -378,6 +394,7 @@ class Dpa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class VoqBaseNumber : public Entity
                     {
                         public:
@@ -391,8 +408,9 @@ class Dpa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value npu_number; //type: int32
 
+
+                            YLeaf npu_number; //type: int32
 
                         class VoqBaseStatsData : public Entity
                         {
@@ -407,21 +425,22 @@ class Dpa : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value base_number; //type: uint32
-                                Value is_inuse; //type: boolean
-                                Value rack_num; //type: uint8
-                                Value slot_num; //type: uint8
-                                Value npu_num; //type: uint8
-                                Value npu_core; //type: uint8
-                                Value port_num; //type: uint8
-                                Value ifhandle; //type: uint32
-                                Value sysport; //type: uint32
-                                Value pp_port; //type: uint32
-                                Value port_speed; //type: uint32
-                                Value voq_base; //type: uint32
-                                Value connector_id; //type: uint32
-                                Value is_local_port; //type: boolean
 
+
+                                YLeaf base_number; //type: uint32
+                                YLeaf is_inuse; //type: boolean
+                                YLeaf rack_num; //type: uint8
+                                YLeaf slot_num; //type: uint8
+                                YLeaf npu_num; //type: uint8
+                                YLeaf npu_core; //type: uint8
+                                YLeaf port_num; //type: uint8
+                                YLeaf ifhandle; //type: uint32
+                                YLeaf sysport; //type: uint32
+                                YLeaf pp_port; //type: uint32
+                                YLeaf port_speed; //type: uint32
+                                YLeaf voq_base; //type: uint32
+                                YLeaf connector_id; //type: uint32
+                                YLeaf is_local_port; //type: boolean
 
                             class VoqStat : public Entity
                             {
@@ -436,11 +455,12 @@ class Dpa : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value gport_received_bytes; //type: uint64
-                                    Value gport_received_pkts; //type: uint64
-                                    Value gport_dropped_bytes; //type: uint64
-                                    Value gport_dropped_pkts; //type: uint64
 
+
+                                    YLeaf gport_received_bytes; //type: uint64
+                                    YLeaf gport_received_pkts; //type: uint64
+                                    YLeaf gport_dropped_bytes; //type: uint64
+                                    YLeaf gport_dropped_pkts; //type: uint64
 
 
 
@@ -480,6 +500,7 @@ class Dpa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class NpuNumberForVoqData : public Entity
                     {
                         public:
@@ -493,8 +514,9 @@ class Dpa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value npu_id; //type: int32
 
+
+                            YLeaf npu_id; //type: int32
 
                         class VoqSpecificStatsData : public Entity
                         {
@@ -509,21 +531,22 @@ class Dpa : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value voq_data; //type: int32
-                                Value is_inuse; //type: boolean
-                                Value rack_num; //type: uint8
-                                Value slot_num; //type: uint8
-                                Value npu_num; //type: uint8
-                                Value npu_core; //type: uint8
-                                Value port_num; //type: uint8
-                                Value ifhandle; //type: uint32
-                                Value sysport; //type: uint32
-                                Value pp_port; //type: uint32
-                                Value port_speed; //type: uint32
-                                Value voq_base; //type: uint32
-                                Value connector_id; //type: uint32
-                                Value is_local_port; //type: boolean
 
+
+                                YLeaf voq_data; //type: int32
+                                YLeaf is_inuse; //type: boolean
+                                YLeaf rack_num; //type: uint8
+                                YLeaf slot_num; //type: uint8
+                                YLeaf npu_num; //type: uint8
+                                YLeaf npu_core; //type: uint8
+                                YLeaf port_num; //type: uint8
+                                YLeaf ifhandle; //type: uint32
+                                YLeaf sysport; //type: uint32
+                                YLeaf pp_port; //type: uint32
+                                YLeaf port_speed; //type: uint32
+                                YLeaf voq_base; //type: uint32
+                                YLeaf connector_id; //type: uint32
+                                YLeaf is_local_port; //type: boolean
 
                             class VoqStat : public Entity
                             {
@@ -538,11 +561,12 @@ class Dpa : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value gport_received_bytes; //type: uint64
-                                    Value gport_received_pkts; //type: uint64
-                                    Value gport_dropped_bytes; //type: uint64
-                                    Value gport_dropped_pkts; //type: uint64
 
+
+                                    YLeaf gport_received_bytes; //type: uint64
+                                    YLeaf gport_received_pkts; //type: uint64
+                                    YLeaf gport_dropped_bytes; //type: uint64
+                                    YLeaf gport_dropped_pkts; //type: uint64
 
 
 
@@ -582,6 +606,7 @@ class Dpa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ClearVoqDataForNpuNumber : public Entity
                     {
                         public:
@@ -595,8 +620,9 @@ class Dpa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value npu_id; //type: int32
 
+
+                            YLeaf npu_id; //type: int32
 
                         class VoqSpecificStatsDataClear : public Entity
                         {
@@ -611,9 +637,10 @@ class Dpa : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value voq_data; //type: int32
-                                Value clear_status; //type: uint8
 
+
+                                YLeaf voq_data; //type: int32
+                                YLeaf clear_status; //type: uint8
 
 
 
@@ -647,6 +674,7 @@ class Dpa : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class NpuNumberForTrapDataClear : public Entity
                     {
                         public:
@@ -660,8 +688,9 @@ class Dpa : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value npu_id; //type: int32
 
+
+                            YLeaf npu_id; //type: int32
 
                         class TrapSpecificStatsData : public Entity
                         {
@@ -676,9 +705,10 @@ class Dpa : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value trap_data; //type: uint32
-                                Value clear_status; //type: uint8
 
+
+                                YLeaf trap_data; //type: uint32
+                                YLeaf clear_status; //type: uint8
 
 
 

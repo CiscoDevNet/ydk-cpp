@@ -26,6 +26,7 @@ class IpExplicitPaths : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Paths : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class IpExplicitPaths : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Path : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class IpExplicitPaths : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: IpIepPathEnum
 
+
+                YLeaf type; //type: IpIepPathEnum
 
             class Name : public Entity
             {
@@ -70,9 +73,10 @@ class IpExplicitPaths : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
-                    Value disable; //type: empty
 
+
+                    YLeaf name; //type: string
+                    YLeaf disable; //type: empty
 
                 class Hops : public Entity
                 {
@@ -89,6 +93,7 @@ class IpExplicitPaths : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Hop : public Entity
                     {
                         public:
@@ -102,16 +107,15 @@ class IpExplicitPaths : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value index_number; //type: uint32
-                            Value ip_address; //type: string
-                            Value hop_type; //type: IpIepHopEnum
-                            Value if_index; //type: int32
-                            Value num_type; //type: IpIepNumEnum
-                            Value mpls_label; //type: int32
 
 
-                            class IpIepHopEnum;
-                            class IpIepNumEnum;
+                            YLeaf index_number; //type: uint32
+                            YLeaf ip_address; //type: string
+                            YLeaf hop_type; //type: IpIepHopEnum
+                            YLeaf if_index; //type: int32
+                            YLeaf num_type; //type: IpIepNumEnum
+                            YLeaf mpls_label; //type: int32
+
 
 
                     }; // IpExplicitPaths::Paths::Path::Name::Hops::Hop
@@ -142,9 +146,10 @@ class IpExplicitPaths : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value id; //type: uint32
-                    Value disable; //type: empty
 
+
+                    YLeaf id; //type: uint32
+                    YLeaf disable; //type: empty
 
                 class Hops : public Entity
                 {
@@ -161,6 +166,7 @@ class IpExplicitPaths : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Hop : public Entity
                     {
                         public:
@@ -174,16 +180,15 @@ class IpExplicitPaths : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value index_number; //type: uint32
-                            Value ip_address; //type: string
-                            Value hop_type; //type: IpIepHopEnum
-                            Value if_index; //type: int32
-                            Value num_type; //type: IpIepNumEnum
-                            Value mpls_label; //type: int32
 
 
-                            class IpIepHopEnum;
-                            class IpIepNumEnum;
+                            YLeaf index_number; //type: uint32
+                            YLeaf ip_address; //type: string
+                            YLeaf hop_type; //type: IpIepHopEnum
+                            YLeaf if_index; //type: int32
+                            YLeaf num_type; //type: IpIepNumEnum
+                            YLeaf mpls_label; //type: int32
+
 
 
                     }; // IpExplicitPaths::Paths::Path::Identifier::Hops::Hop
@@ -203,7 +208,6 @@ class IpExplicitPaths : public Entity
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ip_iep_cfg::IpExplicitPaths::Paths::Path::Identifier> > identifier;
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ip_iep_cfg::IpExplicitPaths::Paths::Path::Name> > name;
-                class IpIepPathEnum;
 
 
         }; // IpExplicitPaths::Paths::Path
@@ -224,27 +228,27 @@ class IpExplicitPaths : public Entity
 class IpIepPathEnum : public Enum
 {
     public:
-        static const Enum::Value identifier;
-        static const Enum::Value name;
+        static const Enum::YLeaf identifier;
+        static const Enum::YLeaf name;
 
 };
 
 class IpIepHopEnum : public Enum
 {
     public:
-        static const Enum::Value next_strict;
-        static const Enum::Value next_loose;
-        static const Enum::Value exclude;
-        static const Enum::Value exclude_srlg;
-        static const Enum::Value next_label;
+        static const Enum::YLeaf next_strict;
+        static const Enum::YLeaf next_loose;
+        static const Enum::YLeaf exclude;
+        static const Enum::YLeaf exclude_srlg;
+        static const Enum::YLeaf next_label;
 
 };
 
 class IpIepNumEnum : public Enum
 {
     public:
-        static const Enum::Value unnumbered;
-        static const Enum::Value numbered;
+        static const Enum::YLeaf unnumbered;
+        static const Enum::YLeaf numbered;
 
 };
 

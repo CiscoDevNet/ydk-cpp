@@ -52,7 +52,7 @@ EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -158,7 +158,7 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::has_ope
 	|| is_set(tid_type.operation)
 	|| is_set(vrf_name.operation)
 	|| is_set(vrf_name_xr.operation)
-	|| (ip_address !=  nullptr && is_set(ip_address->operation));
+	|| (ip_address !=  nullptr && ip_address->has_operation());
 }
 
 std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::get_segment_path() const
@@ -175,7 +175,7 @@ EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -555,7 +555,7 @@ EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -880,8 +880,8 @@ bool Sbfd::TargetIdentifier::has_data() const
 bool Sbfd::TargetIdentifier::has_operation() const
 {
     return is_set(operation)
-	|| (local_vrfs !=  nullptr && is_set(local_vrfs->operation))
-	|| (remote_vrfs !=  nullptr && is_set(remote_vrfs->operation));
+	|| (local_vrfs !=  nullptr && local_vrfs->has_operation())
+	|| (remote_vrfs !=  nullptr && remote_vrfs->has_operation());
 }
 
 std::string Sbfd::TargetIdentifier::get_segment_path() const
@@ -1005,7 +1005,7 @@ bool Sbfd::has_data() const
 bool Sbfd::has_operation() const
 {
     return is_set(operation)
-	|| (target_identifier !=  nullptr && is_set(target_identifier->operation));
+	|| (target_identifier !=  nullptr && target_identifier->has_operation());
 }
 
 std::string Sbfd::get_segment_path() const
@@ -1022,7 +1022,7 @@ EntityPath Sbfd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1086,12 +1086,12 @@ std::unique_ptr<Entity> Sbfd::clone_ptr()
     return std::make_unique<Sbfd>();
 }
 
-const Enum::Value SbfdAddressFamilyEnum::ipv4 {1, "ipv4"};
-const Enum::Value SbfdAddressFamilyEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf SbfdAddressFamilyEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf SbfdAddressFamilyEnum::ipv6 {2, "ipv6"};
 
-const Enum::Value BfdAfIdEnum::bfd_af_id_none {0, "bfd-af-id-none"};
-const Enum::Value BfdAfIdEnum::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
-const Enum::Value BfdAfIdEnum::bfd_af_id_ipv6 {26, "bfd-af-id-ipv6"};
+const Enum::YLeaf BfdAfIdEnum::bfd_af_id_none {0, "bfd-af-id-none"};
+const Enum::YLeaf BfdAfIdEnum::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
+const Enum::YLeaf BfdAfIdEnum::bfd_af_id_ipv6 {26, "bfd-af-id-ipv6"};
 
 
 }

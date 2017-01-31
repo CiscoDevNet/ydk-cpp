@@ -159,7 +159,7 @@ bool Srms::Mapping::MappingIpv4::MappingMi::has_operation() const
 	|| is_set(sid_count.operation)
 	|| is_set(sid_start.operation)
 	|| is_set(src.operation)
-	|| (addr !=  nullptr && is_set(addr->operation));
+	|| (addr !=  nullptr && addr->has_operation());
 }
 
 std::string Srms::Mapping::MappingIpv4::MappingMi::get_segment_path() const
@@ -553,7 +553,7 @@ bool Srms::Mapping::MappingIpv6::MappingMi::has_operation() const
 	|| is_set(sid_count.operation)
 	|| is_set(sid_start.operation)
 	|| is_set(src.operation)
-	|| (addr !=  nullptr && is_set(addr->operation));
+	|| (addr !=  nullptr && addr->has_operation());
 }
 
 std::string Srms::Mapping::MappingIpv6::MappingMi::get_segment_path() const
@@ -822,8 +822,8 @@ bool Srms::Mapping::has_data() const
 bool Srms::Mapping::has_operation() const
 {
     return is_set(operation)
-	|| (mapping_ipv4 !=  nullptr && is_set(mapping_ipv4->operation))
-	|| (mapping_ipv6 !=  nullptr && is_set(mapping_ipv6->operation));
+	|| (mapping_ipv4 !=  nullptr && mapping_ipv4->has_operation())
+	|| (mapping_ipv6 !=  nullptr && mapping_ipv6->has_operation());
 }
 
 std::string Srms::Mapping::get_segment_path() const
@@ -967,7 +967,7 @@ EntityPath Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1074,7 +1074,7 @@ bool Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::has_operation() const
 	|| is_set(sid_count.operation)
 	|| is_set(sid_start.operation)
 	|| is_set(src.operation)
-	|| (addr !=  nullptr && is_set(addr->operation));
+	|| (addr !=  nullptr && addr->has_operation());
 }
 
 std::string Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_segment_path() const
@@ -1353,7 +1353,7 @@ EntityPath Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1460,7 +1460,7 @@ bool Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::has_operation() const
 	|| is_set(sid_count.operation)
 	|| is_set(sid_start.operation)
 	|| is_set(src.operation)
-	|| (addr !=  nullptr && is_set(addr->operation));
+	|| (addr !=  nullptr && addr->has_operation());
 }
 
 std::string Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_segment_path() const
@@ -1724,8 +1724,8 @@ bool Srms::Policy::PolicyIpv4::has_data() const
 bool Srms::Policy::PolicyIpv4::has_operation() const
 {
     return is_set(operation)
-	|| (policy_ipv4_active !=  nullptr && is_set(policy_ipv4_active->operation))
-	|| (policy_ipv4_backup !=  nullptr && is_set(policy_ipv4_backup->operation));
+	|| (policy_ipv4_active !=  nullptr && policy_ipv4_active->has_operation())
+	|| (policy_ipv4_backup !=  nullptr && policy_ipv4_backup->has_operation());
 }
 
 std::string Srms::Policy::PolicyIpv4::get_segment_path() const
@@ -1869,7 +1869,7 @@ EntityPath Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1976,7 +1976,7 @@ bool Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::has_operation() const
 	|| is_set(sid_count.operation)
 	|| is_set(sid_start.operation)
 	|| is_set(src.operation)
-	|| (addr !=  nullptr && is_set(addr->operation));
+	|| (addr !=  nullptr && addr->has_operation());
 }
 
 std::string Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_segment_path() const
@@ -2255,7 +2255,7 @@ EntityPath Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2362,7 +2362,7 @@ bool Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::has_operation() const
 	|| is_set(sid_count.operation)
 	|| is_set(sid_start.operation)
 	|| is_set(src.operation)
-	|| (addr !=  nullptr && is_set(addr->operation));
+	|| (addr !=  nullptr && addr->has_operation());
 }
 
 std::string Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_segment_path() const
@@ -2626,8 +2626,8 @@ bool Srms::Policy::PolicyIpv6::has_data() const
 bool Srms::Policy::PolicyIpv6::has_operation() const
 {
     return is_set(operation)
-	|| (policy_ipv6_active !=  nullptr && is_set(policy_ipv6_active->operation))
-	|| (policy_ipv6_backup !=  nullptr && is_set(policy_ipv6_backup->operation));
+	|| (policy_ipv6_active !=  nullptr && policy_ipv6_active->has_operation())
+	|| (policy_ipv6_backup !=  nullptr && policy_ipv6_backup->has_operation());
 }
 
 std::string Srms::Policy::PolicyIpv6::get_segment_path() const
@@ -2756,8 +2756,8 @@ bool Srms::Policy::has_data() const
 bool Srms::Policy::has_operation() const
 {
     return is_set(operation)
-	|| (policy_ipv4 !=  nullptr && is_set(policy_ipv4->operation))
-	|| (policy_ipv6 !=  nullptr && is_set(policy_ipv6->operation));
+	|| (policy_ipv4 !=  nullptr && policy_ipv4->has_operation())
+	|| (policy_ipv6 !=  nullptr && policy_ipv6->has_operation());
 }
 
 std::string Srms::Policy::get_segment_path() const
@@ -2886,8 +2886,8 @@ bool Srms::has_data() const
 bool Srms::has_operation() const
 {
     return is_set(operation)
-	|| (mapping !=  nullptr && is_set(mapping->operation))
-	|| (policy !=  nullptr && is_set(policy->operation));
+	|| (mapping !=  nullptr && mapping->has_operation())
+	|| (policy !=  nullptr && policy->has_operation());
 }
 
 std::string Srms::get_segment_path() const
@@ -2904,7 +2904,7 @@ EntityPath Srms::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2991,16 +2991,16 @@ std::unique_ptr<Entity> Srms::clone_ptr()
     return std::make_unique<Srms>();
 }
 
-const Enum::Value SrmsMiAfEBEnum::none {0, "none"};
-const Enum::Value SrmsMiAfEBEnum::ipv4 {1, "ipv4"};
-const Enum::Value SrmsMiAfEBEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf SrmsMiAfEBEnum::none {0, "none"};
+const Enum::YLeaf SrmsMiAfEBEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf SrmsMiAfEBEnum::ipv6 {2, "ipv6"};
 
-const Enum::Value SrmsMiFlagEBEnum::false_ {0, "false"};
-const Enum::Value SrmsMiFlagEBEnum::true_ {1, "true"};
+const Enum::YLeaf SrmsMiFlagEBEnum::false_ {0, "false"};
+const Enum::YLeaf SrmsMiFlagEBEnum::true_ {1, "true"};
 
-const Enum::Value SrmsMiSrcEBEnum::none {0, "none"};
-const Enum::Value SrmsMiSrcEBEnum::local {1, "local"};
-const Enum::Value SrmsMiSrcEBEnum::remote {2, "remote"};
+const Enum::YLeaf SrmsMiSrcEBEnum::none {0, "none"};
+const Enum::YLeaf SrmsMiSrcEBEnum::local {1, "local"};
+const Enum::YLeaf SrmsMiSrcEBEnum::remote {2, "remote"};
 
 
 }

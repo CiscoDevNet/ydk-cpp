@@ -707,9 +707,9 @@ bool Parser::Alias::has_data() const
 bool Parser::Alias::has_operation() const
 {
     return is_set(operation)
-	|| (alls !=  nullptr && is_set(alls->operation))
-	|| (configurations !=  nullptr && is_set(configurations->operation))
-	|| (execs !=  nullptr && is_set(execs->operation));
+	|| (alls !=  nullptr && alls->has_operation())
+	|| (configurations !=  nullptr && configurations->has_operation())
+	|| (execs !=  nullptr && execs->has_operation());
 }
 
 std::string Parser::Alias::get_segment_path() const
@@ -1176,7 +1176,7 @@ bool Parser::Configuration::has_data() const
 bool Parser::Configuration::has_operation() const
 {
     return is_set(operation)
-	|| (disable !=  nullptr && is_set(disable->operation));
+	|| (disable !=  nullptr && disable->has_operation());
 }
 
 std::string Parser::Configuration::get_segment_path() const
@@ -1387,13 +1387,13 @@ bool Parser::has_data() const
 bool Parser::has_operation() const
 {
     return is_set(operation)
-	|| (alias !=  nullptr && is_set(alias->operation))
-	|| (configuration !=  nullptr && is_set(configuration->operation))
-	|| (history !=  nullptr && is_set(history->operation))
-	|| (indentation !=  nullptr && is_set(indentation->operation))
-	|| (interface_display !=  nullptr && is_set(interface_display->operation))
-	|| (netmask_format !=  nullptr && is_set(netmask_format->operation))
-	|| (submode_exit !=  nullptr && is_set(submode_exit->operation));
+	|| (alias !=  nullptr && alias->has_operation())
+	|| (configuration !=  nullptr && configuration->has_operation())
+	|| (history !=  nullptr && history->has_operation())
+	|| (indentation !=  nullptr && indentation->has_operation())
+	|| (interface_display !=  nullptr && interface_display->has_operation())
+	|| (netmask_format !=  nullptr && netmask_format->has_operation())
+	|| (submode_exit !=  nullptr && submode_exit->has_operation());
 }
 
 std::string Parser::get_segment_path() const
@@ -1410,7 +1410,7 @@ EntityPath Parser::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

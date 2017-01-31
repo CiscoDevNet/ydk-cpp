@@ -22,7 +22,7 @@ Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::~PbtsForwardClassFallb
 
 bool Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::has_data() const
 {
-    for (auto const & leaf : fallback_class_number_array.getValues())
+    for (auto const & leaf : fallback_class_number_array.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -33,13 +33,14 @@ bool Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::has_data() const
 
 bool Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::has_operation() const
 {
-    for (auto const & leaf : fallback_class_number_array.getValues())
+    for (auto const & leaf : fallback_class_number_array.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(forward_class_number.operation)
+	|| is_set(fallback_class_number_array.operation)
 	|| is_set(fallback_type.operation);
 }
 
@@ -246,7 +247,7 @@ bool Fib::has_operation() const
 {
     return is_set(operation)
 	|| is_set(prefer_aib_routes.operation)
-	|| (pbts_forward_class_fallbacks !=  nullptr && is_set(pbts_forward_class_fallbacks->operation));
+	|| (pbts_forward_class_fallbacks !=  nullptr && pbts_forward_class_fallbacks->has_operation());
 }
 
 std::string Fib::get_segment_path() const
@@ -263,7 +264,7 @@ EntityPath Fib::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -332,11 +333,11 @@ std::unique_ptr<Entity> Fib::clone_ptr()
     return std::make_unique<Fib>();
 }
 
-const Enum::Value FibPbtsFallbackEnum::list {1, "list"};
-const Enum::Value FibPbtsFallbackEnum::any {2, "any"};
-const Enum::Value FibPbtsFallbackEnum::drop {3, "drop"};
+const Enum::YLeaf FibPbtsFallbackEnum::list {1, "list"};
+const Enum::YLeaf FibPbtsFallbackEnum::any {2, "any"};
+const Enum::YLeaf FibPbtsFallbackEnum::drop {3, "drop"};
 
-const Enum::Value FibPbtsForwardClassEnum::any {8, "any"};
+const Enum::YLeaf FibPbtsForwardClassEnum::any {8, "any"};
 
 
 }

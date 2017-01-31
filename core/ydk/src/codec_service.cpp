@@ -57,10 +57,10 @@ CodecService::encode(CodecServiceProvider & provider, Entity & entity, bool pret
         path::CodecService core_codec_service{};
         return core_codec_service.encode(data_node, provider.m_encoding, pretty);
     }
-    catch (const YDKInvalidArgumentException& e)
+    catch (const YCPPInvalidArgumentError& e)
     {
         BOOST_LOG_TRIVIAL(error) << REPO_ERROR_MSG;
-        BOOST_THROW_EXCEPTION(YDKServiceProviderException(REPO_ERROR_MSG));
+        BOOST_THROW_EXCEPTION(YCPPServiceProviderError(REPO_ERROR_MSG));
     }
     return {};
 }
@@ -90,7 +90,7 @@ CodecService::decode(CodecServiceProvider & provider, std::string & payload)
     if (root_data_node->children().size() != 1)
     {
         BOOST_LOG_TRIVIAL(error) << PAYLOAD_ERROR_MSG;
-        BOOST_THROW_EXCEPTION(YDKServiceProviderException(PAYLOAD_ERROR_MSG));
+        BOOST_THROW_EXCEPTION(YCPPServiceProviderError(PAYLOAD_ERROR_MSG));
     }
     else
     {

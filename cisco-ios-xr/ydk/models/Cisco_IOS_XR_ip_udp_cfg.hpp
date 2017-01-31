@@ -24,8 +24,9 @@ class IpUdp : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value receive_q; //type: uint32
 
+
+        YLeaf receive_q; //type: uint32
 
     class NumThread : public Entity
     {
@@ -40,9 +41,10 @@ class IpUdp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value udp_in_q_threads; //type: uint32
-            Value udp_out_q_threads; //type: uint32
 
+
+            YLeaf udp_in_q_threads; //type: uint32
+            YLeaf udp_out_q_threads; //type: uint32
 
 
 
@@ -62,10 +64,11 @@ class IpUdp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value directoryname; //type: string
-            Value max_udp_debug_files; //type: uint32
-            Value max_file_size_files; //type: uint32
 
+
+            YLeaf directoryname; //type: string
+            YLeaf max_udp_debug_files; //type: uint32
+            YLeaf max_file_size_files; //type: uint32
 
 
 

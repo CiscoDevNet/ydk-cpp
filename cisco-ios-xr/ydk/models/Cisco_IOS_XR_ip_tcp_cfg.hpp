@@ -24,15 +24,16 @@ class IpTcp : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value accept_rate; //type: uint32
-        Value selective_ack; //type: empty
-        Value window_size; //type: uint32
-        Value receive_q; //type: uint32
-        Value maximum_segment_size; //type: uint32
-        Value syn_wait_time; //type: uint32
-        Value timestamp; //type: empty
-        Value path_mtu_discovery; //type: int32
 
+
+        YLeaf accept_rate; //type: uint32
+        YLeaf selective_ack; //type: empty
+        YLeaf window_size; //type: uint32
+        YLeaf receive_q; //type: uint32
+        YLeaf maximum_segment_size; //type: uint32
+        YLeaf syn_wait_time; //type: uint32
+        YLeaf timestamp; //type: empty
+        YLeaf path_mtu_discovery; //type: int32
 
     class Directory : public Entity
     {
@@ -47,10 +48,11 @@ class IpTcp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value directoryname; //type: string
-            Value max_debug_files; //type: uint32
-            Value max_file_size_files; //type: uint32
 
+
+            YLeaf directoryname; //type: string
+            YLeaf max_debug_files; //type: uint32
+            YLeaf max_file_size_files; //type: uint32
 
 
 
@@ -70,9 +72,10 @@ class IpTcp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value tcpmin_throttle; //type: uint32
-            Value tcpmaxthrottle; //type: uint32
 
+
+            YLeaf tcpmin_throttle; //type: uint32
+            YLeaf tcpmaxthrottle; //type: uint32
 
 
 
@@ -92,9 +95,10 @@ class IpTcp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value tcp_in_q_threads; //type: uint32
-            Value tcp_out_q_threads; //type: uint32
 
+
+            YLeaf tcp_in_q_threads; //type: uint32
+            YLeaf tcp_out_q_threads; //type: uint32
 
 
 
@@ -124,6 +128,7 @@ class Ip : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Cinetd : public Entity
     {
         public:
@@ -137,6 +142,7 @@ class Ip : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Services : public Entity
@@ -154,6 +160,7 @@ class Ip : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv4 : public Entity
             {
                 public:
@@ -167,6 +174,7 @@ class Ip : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class SmallServers : public Entity
@@ -184,6 +192,7 @@ class Ip : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class TcpSmallServers : public Entity
                     {
                         public:
@@ -197,9 +206,10 @@ class Ip : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value access_control_list_name; //type: string
-                            Value small_server; //type: int32
 
+
+                            YLeaf access_control_list_name; //type: string
+                            YLeaf small_server; //type: int32
 
 
 
@@ -219,9 +229,10 @@ class Ip : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value access_control_list_name; //type: string
-                            Value small_server; //type: uint32
 
+
+                            YLeaf access_control_list_name; //type: string
+                            YLeaf small_server; //type: uint32
 
 
 
@@ -256,6 +267,7 @@ class Ip : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Vrf : public Entity
                 {
                     public:
@@ -269,8 +281,9 @@ class Ip : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
 
+
+                        YLeaf vrf_name; //type: string
 
                     class Ipv6 : public Entity
                     {
@@ -285,6 +298,7 @@ class Ip : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
+
 
 
                         class Telnet : public Entity
@@ -302,6 +316,7 @@ class Ip : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Tcp : public Entity
                             {
                                 public:
@@ -315,9 +330,10 @@ class Ip : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value maximum_server; //type: uint32
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf maximum_server; //type: uint32
 
 
 
@@ -345,6 +361,7 @@ class Ip : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Udp : public Entity
                             {
                                 public:
@@ -358,11 +375,12 @@ class Ip : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value maximum_server; //type: uint32
-                                    Value home_directory; //type: string
-                                    Value dscp_value; //type: int32
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf maximum_server; //type: uint32
+                                    YLeaf home_directory; //type: string
+                                    YLeaf dscp_value; //type: int32
 
 
 
@@ -397,6 +415,7 @@ class Ip : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Telnet : public Entity
                         {
                             public:
@@ -412,6 +431,7 @@ class Ip : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Tcp : public Entity
                             {
                                 public:
@@ -425,9 +445,10 @@ class Ip : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value maximum_server; //type: uint32
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf maximum_server; //type: uint32
 
 
 
@@ -455,6 +476,7 @@ class Ip : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Udp : public Entity
                             {
                                 public:
@@ -468,11 +490,12 @@ class Ip : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value maximum_server; //type: uint32
-                                    Value home_directory; //type: string
-                                    Value dscp_value; //type: int32
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf maximum_server; //type: uint32
+                                    YLeaf home_directory; //type: string
+                                    YLeaf dscp_value; //type: int32
 
 
 
@@ -520,6 +543,7 @@ class Ip : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SmallServers : public Entity
                 {
                     public:
@@ -535,6 +559,7 @@ class Ip : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class TcpSmallServers : public Entity
                     {
                         public:
@@ -548,9 +573,10 @@ class Ip : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value access_control_list_name; //type: string
-                            Value small_server; //type: int32
 
+
+                            YLeaf access_control_list_name; //type: string
+                            YLeaf small_server; //type: int32
 
 
 
@@ -598,6 +624,7 @@ class Ip : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Udp : public Entity
         {
             public:
@@ -611,8 +638,9 @@ class Ip : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disable; //type: empty
 
+
+                YLeaf disable; //type: empty
 
             class Ports : public Entity
             {
@@ -629,6 +657,7 @@ class Ip : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Port : public Entity
                 {
                     public:
@@ -642,9 +671,10 @@ class Ip : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value port_id; //type: uint16
-                        Value enable; //type: boolean
 
+
+                        YLeaf port_id; //type: uint16
+                        YLeaf enable; //type: boolean
 
 
 

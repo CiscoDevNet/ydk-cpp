@@ -233,7 +233,7 @@ bool HardwareModuleQosMode::has_data() const
 bool HardwareModuleQosMode::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string HardwareModuleQosMode::get_segment_path() const
@@ -250,7 +250,7 @@ EntityPath HardwareModuleQosMode::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -352,7 +352,7 @@ EntityPath HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -444,7 +444,7 @@ EntityPath HardwareModuleTcpMssAdjust::Nodes::Node::Nps::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -535,7 +535,7 @@ bool HardwareModuleTcpMssAdjust::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (nps !=  nullptr && is_set(nps->operation));
+	|| (nps !=  nullptr && nps->has_operation());
 }
 
 std::string HardwareModuleTcpMssAdjust::Nodes::Node::get_segment_path() const
@@ -749,7 +749,7 @@ bool HardwareModuleTcpMssAdjust::has_data() const
 bool HardwareModuleTcpMssAdjust::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string HardwareModuleTcpMssAdjust::get_segment_path() const
@@ -766,7 +766,7 @@ EntityPath HardwareModuleTcpMssAdjust::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -931,7 +931,7 @@ bool HardwareModuleLoadBalance::Bundle::has_data() const
 bool HardwareModuleLoadBalance::Bundle::has_operation() const
 {
     return is_set(operation)
-	|| (l2_service !=  nullptr && is_set(l2_service->operation));
+	|| (l2_service !=  nullptr && l2_service->has_operation());
 }
 
 std::string HardwareModuleLoadBalance::Bundle::get_segment_path() const
@@ -1032,7 +1032,7 @@ bool HardwareModuleLoadBalance::has_data() const
 bool HardwareModuleLoadBalance::has_operation() const
 {
     return is_set(operation)
-	|| (bundle !=  nullptr && is_set(bundle->operation));
+	|| (bundle !=  nullptr && bundle->has_operation());
 }
 
 std::string HardwareModuleLoadBalance::get_segment_path() const
@@ -1049,7 +1049,7 @@ EntityPath HardwareModuleLoadBalance::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1334,7 +1334,7 @@ bool HardwareModuleTcam::has_operation() const
 {
     return is_set(operation)
 	|| is_set(global_profile.operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string HardwareModuleTcam::get_segment_path() const
@@ -1351,7 +1351,7 @@ EntityPath HardwareModuleTcam::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1458,7 +1458,7 @@ EntityPath HardwareModuleEfd::Nodes::Node::IpPrecedence::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1546,7 +1546,7 @@ EntityPath HardwareModuleEfd::Nodes::Node::VlanCos::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1634,7 +1634,7 @@ EntityPath HardwareModuleEfd::Nodes::Node::MplsExp::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1716,9 +1716,9 @@ bool HardwareModuleEfd::Nodes::Node::has_operation() const
 	|| is_set(node_name.operation)
 	|| is_set(enable.operation)
 	|| is_set(mode.operation)
-	|| (ip_precedence !=  nullptr && is_set(ip_precedence->operation))
-	|| (mpls_exp !=  nullptr && is_set(mpls_exp->operation))
-	|| (vlan_cos !=  nullptr && is_set(vlan_cos->operation));
+	|| (ip_precedence !=  nullptr && ip_precedence->has_operation())
+	|| (mpls_exp !=  nullptr && mpls_exp->has_operation())
+	|| (vlan_cos !=  nullptr && vlan_cos->has_operation());
 }
 
 std::string HardwareModuleEfd::Nodes::Node::get_segment_path() const
@@ -1988,7 +1988,7 @@ bool HardwareModuleEfd::has_data() const
 bool HardwareModuleEfd::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string HardwareModuleEfd::get_segment_path() const
@@ -2005,7 +2005,7 @@ EntityPath HardwareModuleEfd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2069,15 +2069,15 @@ std::unique_ptr<Entity> HardwareModuleEfd::clone_ptr()
     return std::make_unique<HardwareModuleEfd>();
 }
 
-const Enum::Value Asr9KEfdModeEnum::only_outer_encap {0, "only-outer-encap"};
-const Enum::Value Asr9KEfdModeEnum::include_inner_encap {1, "include-inner-encap"};
+const Enum::YLeaf Asr9KEfdModeEnum::only_outer_encap {0, "only-outer-encap"};
+const Enum::YLeaf Asr9KEfdModeEnum::include_inner_encap {1, "include-inner-encap"};
 
-const Enum::Value Asr9KEfdOperationEnum::less_than {2, "less-than"};
-const Enum::Value Asr9KEfdOperationEnum::greater_than_or_equal {3, "greater-than-or-equal"};
+const Enum::YLeaf Asr9KEfdOperationEnum::less_than {2, "less-than"};
+const Enum::YLeaf Asr9KEfdOperationEnum::greater_than_or_equal {3, "greater-than-or-equal"};
 
-const Enum::Value PrmTcamProfileEnum::profile0 {0, "profile0"};
-const Enum::Value PrmTcamProfileEnum::profile1 {1, "profile1"};
-const Enum::Value PrmTcamProfileEnum::profile2 {2, "profile2"};
+const Enum::YLeaf PrmTcamProfileEnum::profile0 {0, "profile0"};
+const Enum::YLeaf PrmTcamProfileEnum::profile1 {1, "profile1"};
+const Enum::YLeaf PrmTcamProfileEnum::profile2 {2, "profile2"};
 
 
 }

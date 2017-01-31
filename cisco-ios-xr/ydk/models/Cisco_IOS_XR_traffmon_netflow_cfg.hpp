@@ -26,6 +26,7 @@ class NetFlow : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class FlowExporterMaps : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class NetFlow : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class FlowExporterMap : public Entity
         {
             public:
@@ -54,10 +56,11 @@ class NetFlow : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value exporter_map_name; //type: string
-                Value source_interface; //type: string
-                Value dscp; //type: uint32
 
+
+                YLeaf exporter_map_name; //type: string
+                YLeaf source_interface; //type: string
+                YLeaf dscp; //type: uint32
 
             class Udp : public Entity
             {
@@ -72,8 +75,9 @@ class NetFlow : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value destination_port; //type: uint32
 
+
+                    YLeaf destination_port; //type: uint32
 
 
 
@@ -95,6 +99,7 @@ class NetFlow : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Version : public Entity
                 {
                     public:
@@ -108,11 +113,12 @@ class NetFlow : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value version_number; //type: uint32
-                        Value options_template_timeout; //type: uint32
-                        Value common_template_timeout; //type: uint32
-                        Value data_template_timeout; //type: uint32
 
+
+                        YLeaf version_number; //type: uint32
+                        YLeaf options_template_timeout; //type: uint32
+                        YLeaf common_template_timeout; //type: uint32
+                        YLeaf data_template_timeout; //type: uint32
 
                     class Options : public Entity
                     {
@@ -127,10 +133,11 @@ class NetFlow : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_table_export_timeout; //type: uint32
-                            Value sampler_table_export_timeout; //type: uint32
-                            Value vrf_table_export_timeout; //type: uint32
 
+
+                            YLeaf interface_table_export_timeout; //type: uint32
+                            YLeaf sampler_table_export_timeout; //type: uint32
+                            YLeaf vrf_table_export_timeout; //type: uint32
 
 
 
@@ -162,10 +169,11 @@ class NetFlow : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ip_address; //type: string
-                    Value ipv6_address; //type: string
-                    Value vrf_name; //type: string
 
+
+                    YLeaf ip_address; //type: string
+                    YLeaf ipv6_address; //type: string
+                    YLeaf vrf_name; //type: string
 
 
 
@@ -201,6 +209,7 @@ class NetFlow : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class FlowSamplerMap : public Entity
         {
             public:
@@ -214,8 +223,9 @@ class NetFlow : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value sampler_map_name; //type: string
 
+
+                YLeaf sampler_map_name; //type: string
 
             class SamplingModes : public Entity
             {
@@ -232,6 +242,7 @@ class NetFlow : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SamplingMode : public Entity
                 {
                     public:
@@ -245,12 +256,12 @@ class NetFlow : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value mode; //type: NfSamplingModeEnum
-                        Value sample_number; //type: uint32
-                        Value interval; //type: uint32
 
 
-                        class NfSamplingModeEnum;
+                        YLeaf mode; //type: NfSamplingModeEnum
+                        YLeaf sample_number; //type: uint32
+                        YLeaf interval; //type: uint32
+
 
 
                 }; // NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode
@@ -289,6 +300,7 @@ class NetFlow : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class FlowMonitorMap : public Entity
         {
             public:
@@ -302,14 +314,15 @@ class NetFlow : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value monitor_map_name; //type: string
-                Value cache_update_aging_timeout; //type: uint32
-                Value cache_entries; //type: uint32
-                Value cache_inactive_aging_timeout; //type: uint32
-                Value cache_active_aging_timeout; //type: uint32
-                Value cache_timeout_rate_limit; //type: uint32
-                Value cache_aging_mode; //type: NfCacheAgingModeEnum
 
+
+                YLeaf monitor_map_name; //type: string
+                YLeaf cache_update_aging_timeout; //type: uint32
+                YLeaf cache_entries; //type: uint32
+                YLeaf cache_inactive_aging_timeout; //type: uint32
+                YLeaf cache_active_aging_timeout; //type: uint32
+                YLeaf cache_timeout_rate_limit; //type: uint32
+                YLeaf cache_aging_mode; //type: NfCacheAgingModeEnum
 
             class Option : public Entity
             {
@@ -324,9 +337,10 @@ class NetFlow : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value filtered; //type: empty
-                    Value out_phys_int; //type: empty
 
+
+                    YLeaf filtered; //type: empty
+                    YLeaf out_phys_int; //type: empty
 
 
 
@@ -348,6 +362,7 @@ class NetFlow : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Exporter : public Entity
                 {
                     public:
@@ -361,8 +376,9 @@ class NetFlow : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value exporter_name; //type: string
 
+
+                        YLeaf exporter_name; //type: string
 
 
 
@@ -388,9 +404,10 @@ class NetFlow : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value record_name; //type: string
-                    Value label; //type: uint32
 
+
+                    YLeaf record_name; //type: string
+                    YLeaf label; //type: uint32
 
 
 
@@ -400,7 +417,6 @@ class NetFlow : public Entity
                 std::unique_ptr<Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters> exporters;
                 std::unique_ptr<Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option> option;
                 std::unique_ptr<Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record> record; // presence node
-                class NfCacheAgingModeEnum;
 
 
         }; // NetFlow::FlowMonitorMapTable::FlowMonitorMap
@@ -427,6 +443,7 @@ class NetFlow : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class FlowMonitorMap : public Entity
         {
             public:
@@ -440,14 +457,15 @@ class NetFlow : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value monitor_map_name; //type: string
-                Value cache_update_aging_timeout; //type: uint32
-                Value cache_entries; //type: uint32
-                Value cache_inactive_aging_timeout; //type: uint32
-                Value cache_active_aging_timeout; //type: uint32
-                Value cache_timeout_rate_limit; //type: uint32
-                Value cache_aging_mode; //type: NfCacheAgingModeEnum
 
+
+                YLeaf monitor_map_name; //type: string
+                YLeaf cache_update_aging_timeout; //type: uint32
+                YLeaf cache_entries; //type: uint32
+                YLeaf cache_inactive_aging_timeout; //type: uint32
+                YLeaf cache_active_aging_timeout; //type: uint32
+                YLeaf cache_timeout_rate_limit; //type: uint32
+                YLeaf cache_aging_mode; //type: NfCacheAgingModeEnum
 
             class Option : public Entity
             {
@@ -462,9 +480,10 @@ class NetFlow : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value filtered; //type: empty
-                    Value out_phys_int; //type: empty
 
+
+                    YLeaf filtered; //type: empty
+                    YLeaf out_phys_int; //type: empty
 
 
 
@@ -486,6 +505,7 @@ class NetFlow : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Exporter : public Entity
                 {
                     public:
@@ -499,8 +519,9 @@ class NetFlow : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value exporter_name; //type: string
 
+
+                        YLeaf exporter_name; //type: string
 
 
 
@@ -526,9 +547,10 @@ class NetFlow : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value record_name; //type: string
-                    Value label; //type: uint32
 
+
+                    YLeaf record_name; //type: string
+                    YLeaf label; //type: uint32
 
 
 
@@ -538,7 +560,6 @@ class NetFlow : public Entity
                 std::unique_ptr<Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters> exporters;
                 std::unique_ptr<Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option> option;
                 std::unique_ptr<Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record> record; // presence node
-                class NfCacheAgingModeEnum;
 
 
         }; // NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap
@@ -562,15 +583,15 @@ class NetFlow : public Entity
 class NfSamplingModeEnum : public Enum
 {
     public:
-        static const Enum::Value random;
+        static const Enum::YLeaf random;
 
 };
 
 class NfCacheAgingModeEnum : public Enum
 {
     public:
-        static const Enum::Value normal;
-        static const Enum::Value permanent;
+        static const Enum::YLeaf normal;
+        static const Enum::YLeaf permanent;
 
 };
 
